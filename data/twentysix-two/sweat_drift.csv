@@ -1,0 +1,12 @@
+parameter,value,unit_or_note
+sweat_rate_warm_marathon,0.92–0.99,L/h
+body_mass_loss_warm_marathon,−3.0 to −3.3,% 
+sweat_loss_underestimate,42.5,%
+hot_humid_sweat_rate,up to 1.5,L/h
+dubai_elite_sweat_rate,3.6,L/h
+dubai_elite_mass_loss,−9.8,% body mass
+hr_elevation_at_0.9pct_dehydration,+10,bpm vs euhydrated (21°C lab cycling)
+hr_elevation_at_2.8pct_dehydration,+18,bpm vs euhydrated (21°C lab cycling)
+drift_onset,~10,minutes of steady effort
+drift_magnitude_1h,~10,bpm faster than start
+drift_magnitude_lab_heat,+15,bpm over 45–60 min (lab cycling)

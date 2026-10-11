@@ -1,0 +1,9 @@
+stop_seconds,clock_label,distance_label,beat_title,runners,key_claim
+0,0:00,START · 0 KM,The gun fires. The tanks are full.,"Priya; Marcus; Louise",Muscle glycogen ~150–200 mmol/kg wet muscle in a carbohydrate-loaded runner
+3600,1:00,~14 KM,A liter gone.,"Priya; Marcus","Sweat 0.92–0.99 L/h (warm marathon); drift ~+10 bpm at 1:00 (+15 bpm over 45–60 min in lab heat); runners underestimate sweat loss by 42.5%; hot-humid rate up to 1.5 L/h; one elite Dubai winner 3.6 L/h and −9.8% body mass"
+5400,1:30,HALF · 21.1 KM,Halfway for Priya: half the tank gone.,Priya,"Glycogen burn ~5 mmol/kg/km; 21 km ≈ 105 mmol/kg of ~200 loaded; full 42.2 km ≈ 210 mmol/kg"
+8280,2:08–2:29,WALL ZONE · 30–35 KM,"The wall zone, for Priya.",Priya,"4:16/km → km 30–35 at 2:08–2:29; metabolic model predicts the wall at mile 21 (80–95% VO2max); sub-3:00 men wall rate 1.42%; 82% even-pace"
+10800,3:00,FINISH · PRIYA,Priya finishes.,Priya,3:00:00; ~3% lighter than at the start
+13500,3:30–4:00,MEDICAL TENT,Louise is in the medical tent.,Louise,"EAH 13% (Na ≤135 mmol/L); critical 0.6% (≤120); weight gain strongest predictor; 35% of field gained weight; fluid type/sex/NSAIDs did not matter; field sweated ~2 L and −1.5% mass by 2:00; HR +10 bpm at 0.9% / +18 bpm at 2.8% dehydration; 12 of 18 topped 40°C (max 41.7°C) with zero heat-illness symptoms"
+16200,4:30,FINISH · MARCUS,Marcus finishes.,Marcus,"4:30; 17.2% of Boston finishers over 4:30; median 3:46; wall at mile 20; second half 27 min slower (12.2% of field); pacing-defined wall 28% men / 17% women (4M+ records)"
+16200,+24:00,THE NEXT DAY,The enzymes peak.,"Priya; Marcus","Mean CK ~3,424 IU/L at 24 h (range 319–9,260); CK-MB 130 IU/L (8.3% of total); scintigraphy showed no myocardial injury"

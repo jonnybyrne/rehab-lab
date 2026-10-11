@@ -1,0 +1,12 @@
+measure,value,sample
+self_reported_wall,43%,"Buman et al. 2008, n=315"
+self_report_with_matching_slowdown,70%,of self-reported wall-hitters
+pacing_defined_wall_men,28%,"Smyth 2021, 4M+ race records"
+pacing_defined_wall_women,17%,"Smyth 2021, 4M+ race records"
+berlin_wall_men,17.6%,"Berlin 1999–2025, n=873,334"
+berlin_wall_women,9.7%,"Berlin 1999–2025, n=873,334"
+sub3_men_wall_rate,1.42%,"Berlin 1999–2025"
+sub3_even_pace,82%,"Boston 2015–17, n=78,912"
+strong_positive_split_cluster,12.2%,"Boston 2015–17, n=78,912"
+boston_finishers_over_430,17.2%,"Boston 2015–17, n=78,912"
+boston_median_finish,3:46,"Boston 2015–17"

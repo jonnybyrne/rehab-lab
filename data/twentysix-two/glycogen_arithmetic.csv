@@ -1,0 +1,7 @@
+parameter,value,unit_or_note
+utilization_per_km,5,mmol/kg/km
+race_distance,42.2,km
+full_race_cost,210,mmol/kg (5 × 42.2)
+loaded_stores,~200,mmol/kg
+resting_carbloaded_stores,150–200,mmol/kg wet muscle
+half_race_cost,~105,mmol/kg (21 km)
