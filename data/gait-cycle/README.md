@@ -1,18 +1,42 @@
-# Data: The knee has no single "bursa"
+# gait-cycle — chart data
 
-Anatomical reference used in the essay, extracted from the published page.
-No new data collected; see essay footnotes for full citations.
+Data behind Essay 07, "Walking is controlled falling."
+
+## Source
+
+Normative teaching values in the Perry / Rancho Los Amigos gait-analysis
+tradition, as presented in the essay. Joint angles approximate ±5°.
+Extracted October 2026 from the essay's embedded key values (no external
+retrieval; these are teaching values, not one person's recording).
 
 ## Files
-- `bursae.csv` — the five bursae/spaces featured in the MRI explorer, with
-  locations and clinical notes as presented in the essay.
 
-## Sources and access
-- Real sagittal T2-weighted MR image with teaching markers (essay visual).
-- Khodaee M. Common Superficial Bursitis. American Family Physician. 2017.
-- Atici A, et al. 2022 (pes anserine diagnosis accuracy).
-- Data extracted from the essay file on 2026-10-11.
+- `joint-angles.csv` — the eight key values the curves interpolate between:
+  `pct` (percent of gait cycle), `hip_deg`, `knee_deg`, `ankle_deg`.
+- `phases.csv` — the eight Perry phases with the per-phase joint values
+  shown in the scroll steps: `phase`, `pct_range`, `hip`, `knee`, `ankle`
+  (values as written in the essay, e.g. `~28° flex`, `~8° PF`).
 
-## Note
-Bursa counts vary by source; the essay uses "no single bursa" framing.
-Positions are as marked on the essay's MR image, not a standalone atlas.
+## Sign convention (joint-angles.csv)
+
+Positive = flexion / dorsiflexion (the chart axis reads
+"FLEXION / DORSIFLEXION POSITIVE"). Negative hip values are extension;
+negative ankle values are plantarflexion.
+
+## Transformations
+
+None beyond extraction: the CSVs hold the raw key values exactly as
+embedded in the essay. On the page, the joint-angle curves interpolate
+linearly between the `joint-angles.csv` rows, and the walking figure,
+clock, phase label, and joint readouts all read the same values.
+
+## Gaps
+
+- The center-of-gravity wave (~5 cm vertical, ~6 cm lateral) is drawn as a
+  decorative schematic path, not plotted from data — no CSV for it.
+- The stance 60% / swing 40% split, the ~10% double-support windows, and
+  the ~40% single-support figure are single reference numbers stated in
+  the essay text, not a dataset.
+- Cadence (~101–122 steps/min) and step length (~2.5 ft) are broad
+  teaching averages mentioned in the methods note; they are intentionally
+  not used to score the figure.
