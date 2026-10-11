@@ -1,0 +1,8 @@
+option_label,o2_cost_ml_kg_m,default_steps_per_day,source_tag,default_steps_estimated
+Intact walker,0.15,8338,0.15 mL/kg/m · textbook,False
+Transtibial (mid-range 1.3×),0.2,5318,studies span 1.0–1.6×,False
+Transfemoral (mid-range 1.75×),0.26,1540,studies span 1.3–2.2×,False
+Bilateral transtibial (1.8×),0.27,2000,Pinzur 60–100%,True
+Hemiplegia (mid-range 1.75×),0.26,4078,Macko 1.5–2×,False
+Bilateral KAFO (7.7×),1.15,2000,Waters via LER,True
+Hip disarticulation (4.3×),0.64,2000,older cohort,True

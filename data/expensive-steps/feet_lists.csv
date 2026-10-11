@@ -1,0 +1,12 @@
+era,name,description,price_2025_medicare,status
+1970,SACH foot,"Staros (VA), 1957. Wood keel, rubber shell, compressible foam heel, ""standard due to its availability, inexpensiveness, and durability.""",price not published,remained
+1970,Single-axis foot,"Hinged ankle with rubber bumper (e.g., Otto Bock).",price not published,remained
+1970,Jaipur foot,"Sethi, 1970s, India. Second most used prosthesis after SACH: hundreds of thousands of users across 20+ countries.",price not published,remained
+1970,Wood exoskeletal shank,Laminated wood/plastic lower leg. Period-standard component.,-,removed
+1970,Leather corset socket,Lacer leather socket suspension. Period-standard component.,-,removed
+2025,SACH foot,Still manufactured today (Medicare L5970).,$223.97,remained
+2025,Single-axis foot,"Still listed, now niche (Medicare L5974).",fee-schedule listed,remained
+2025,Jaipur foot,Still widely used in low-resource settings.,price not published,remained
+2025,Carbon-fiber energy-storing foot,Composite laminates; the ESAR class arrives in the late 1980s.,$571.34,added
+2025,Microprocessor foot,"Össur Proprio, ""the world's first bionic prosthetic foot,"" launched mid-2006.","$17,534.17",added
+2025,Powered foot,"BiOM (~2013–14), Ottobock Empower (>1,500 in use). No metabolic claim is made for powered feet.","$17,534.17 band",added

@@ -1,0 +1,18 @@
+key,label,category,dots,fare_multiple,o2_cost_ml_kg_m,speed,steps_per_day,source_label
+intact,Intact walker,intact,880,1.0,0.15,≈1.0–1.67 m/s typical,"8,338 / day (healthy matched)",textbook background
+tt1,Transtibial amputation,amp,8,1.1,0.17,max 1.6 m/s,"5,318 / day","Genin 2008 (traumatic, young)"
+tt2,Transtibial amputation,amp,10,1.2,0.18,"self-selected, varies","5,318 / day",Sci Rep 2018 review (10–30%)
+tt3,Transtibial amputation,amp,8,1.35,0.2,"self-selected, varies","5,318 / day",Esquenazi via VA/DoD CPG (25–40%)
+tt4,Transtibial amputation,amp,6,1.5,0.23,"self-selected, varies","5,318 / day",Pinzur via case report (40–60%)
+tf1,Transfemoral amputation,amp,5,1.45,0.22,max 1.2 m/s,"1,540 / day",Genin 2008 (30–60%)
+tf2,Transfemoral amputation,amp,6,1.85,0.28,52 m/min traumatic; 0.95 m/s comfortable,"1,540 / day",Esquenazi via VA/DoD CPG (68–100%)
+tf3,Transfemoral amputation,amp,5,2.05,0.31,52 m/min traumatic; 0.95 m/s comfortable,"1,540 / day",Pinzur via case report (90–120%)
+btt,Bilateral transtibial amputation,amp,5,1.8,0.27,64% of normal (vascular cohort),not published,Pinzur (60–100%)
+hip1,Hip disarticulation,amp,1,4.3,0.64,47.4 m/min (younger cohort),not published,older cohort 0.639 mL/kg/m
+hip2,Hip disarticulation,amp,1,1.6,0.24,47.4 m/min (younger cohort),not published,younger cohort 0.237 mL/kg/m
+hem1,"Hemiplegia, post-stroke",stroke,20,1.5,0.23,0.67–0.79 m/s comfortable,"4,078 / day","Macko 1997, Stroke"
+hem2,"Hemiplegia, post-stroke",stroke,20,1.75,0.26,0.67–0.79 m/s comfortable,"4,078 / day",review range
+hem3,"Hemiplegia, post-stroke",stroke,15,2.0,0.3,0.67–0.79 m/s comfortable,"4,078 / day",upper range
+kafo2,Paraplegia · bilateral KAFOs,sci,4,7.7,1.15,14 m/min (swing-through),"≈2,800 / day (n=1, limited data)",Waters via LER review
+kafo1,Paraplegia · single KAFO,sci,3,3.1,0.46,14 m/min (swing-through),"≈2,800 / day (n=1, limited data)",Waters via LER review
+kafo0,Paraplegia · no KAFO,sci,3,2.5,0.37,"self-selected, slow","≈2,800 / day (n=1, limited data)",Waters via LER review

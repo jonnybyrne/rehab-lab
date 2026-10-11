@@ -1,0 +1,8 @@
+condition,detail,fare_low_x_normal,fare_high_x_normal
+Intact walker,baseline · customary speed 1.0–1.67 m/s,1.0,1.0
+Transtibial amputation,"Genin 2008: 0–15% (traumatic, young); Sci Rep 2018: 10–30%; Esquenazi: 25–40%; Pinzur: 40–60%. Shown as a range, never averaged.",1.0,1.6
+Transfemoral amputation,Genin 2008: 30–60%; Esquenazi: 68–100%; Pinzur: 90–120%. Self-selected ≈52 m/min traumatic; 0.95 m/s comfortable.,1.3,2.2
+Bilateral transtibial,Pinzur: 60–100%; older vascular cohort: 2.23× cost at 64% normal speed,1.6,2.2
+"Hemiplegia, post-stroke","Macko et al., Stroke 1997: 1.5–2×. Comfortable 0.67–0.79 m/s.",1.5,2.0
+Hip disarticulation,Older cohort: 0.639 mL/kg/m (4.3×); younger cohort: 0.237 mL/kg/m at 47.4 m/min (1.6×); children: 161% of normal,1.6,4.3
+"Paraplegia, bilateral KAFOs",+226% O₂ rate; 1.15 mL/kg/m: the single most expensive walking in the table. One KAFO: 3.1× · No KAFO: 2.5×.,7.7,7.7
