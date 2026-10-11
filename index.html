@@ -373,6 +373,134 @@
 
 
 
+/* ============ ESSAY 10 · THE MOST EXPENSIVE STEPS · "the meter is running" ============ */
+#expensive-steps{--espaper:#f6f1e4;--esink:#26221a;--esmuted:#6f6656;--esamber:#c77f0a;--esamber-deep:#9a5f04;--esline:#e3d9c2;--escard:#fffdf6;--esmono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--espaper);color:var(--esink)}
+.es-wrap{max-width:880px;margin:0 auto;padding:0 22px 90px}
+.es-kicker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--esmono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--esmuted);padding:34px 0 6px}
+.es-draft{display:inline-block;background:var(--esamber);color:#fff;font-size:11px;letter-spacing:.12em;padding:5px 12px;border-radius:20px;transform:rotate(-2deg);box-shadow:0 2px 8px rgba(154,95,4,.35);text-transform:uppercase}
+.es-meter{position:sticky;top:0;z-index:6;margin:10px -22px 0;padding:10px 22px;background:var(--esink);color:#f6f1e4;font-family:var(--esmono);font-size:13px;letter-spacing:.08em;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+.es-meter b{color:#ffc44d;font-size:16px}
+.es-meter .es-meter-bar{flex:1;margin:0 14px;height:6px;background:#4a4436;border-radius:3px;overflow:hidden}
+.es-meter .es-meter-fill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--esamber),#ffc44d);border-radius:3px}
+.es-title{font-size:clamp(38px,7vw,64px);line-height:1.02;letter-spacing:-.01em;margin:26px 0 10px}
+.es-title .es-x{color:var(--esamber-deep)}
+.es-dek{font-size:19px;line-height:1.55;color:#3d382c;max-width:640px;margin:0 0 18px}
+.es-insight{background:var(--escard);border:2px dashed var(--esamber);border-radius:14px;padding:18px 22px;font-size:17px;line-height:1.6;margin:0 0 26px;transform:rotate(-.4deg)}
+.es-insight b{color:var(--esamber-deep)}
+.es-readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:0 0 34px}
+.es-readout{background:var(--escard);border:1px solid var(--esline);border-top:4px solid var(--esamber);border-radius:10px;padding:14px 16px}
+.es-readout b{display:block;font-family:var(--esmono);font-size:26px;color:var(--esink);margin-bottom:6px}
+.es-readout b .es-per{font-size:14px;color:var(--esmuted)}
+.es-readout span{font-size:13px;line-height:1.5;color:var(--esmuted)}
+.es-sec{margin:44px 0}
+.es-sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.es-sec-num{font-family:var(--esmono);font-size:13px;color:#fff;background:var(--esink);border-radius:50%;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.es-sec-head h2{font-size:clamp(24px,4vw,32px);margin:0;letter-spacing:-.01em}
+.es-lede{font-size:16.5px;line-height:1.65;color:#3d382c;max-width:660px;margin:8px 0 18px}
+.es-note{font-size:13px;color:var(--esmuted);font-style:italic}
+.es-tag-label{display:inline-block;font-family:var(--esmono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:#efe7d2;border:1px solid var(--esline);border-radius:4px;padding:3px 8px;color:var(--esmuted)}
+/* room */
+.es-room-tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;align-items:center}
+.es-fbtn{font-family:var(--esmono);font-size:12.5px;letter-spacing:.04em;padding:8px 14px;border-radius:20px;border:1.5px solid var(--esline);background:var(--escard);color:var(--esink);cursor:pointer}
+.es-fbtn[aria-pressed="true"]{background:var(--esink);color:#f6f1e4;border-color:var(--esink)}
+.es-find{font-family:var(--esmono);font-size:12.5px;padding:8px 14px;border-radius:20px;border:1.5px dashed var(--esamber-deep);background:#fdf3df;color:var(--esamber-deep);cursor:pointer}
+.es-room{background:var(--esink);border-radius:16px;padding:22px 18px;margin:0 0 8px;box-shadow:inset 0 2px 18px rgba(0,0,0,.4)}
+.es-dots{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;max-width:660px;margin:0 auto}
+.es-dot{width:10px;height:13px;border-radius:3px 8px 8px 3px;cursor:pointer;border:none;padding:0;transition:opacity .25s,transform .15s}
+.es-dot:hover{transform:scale(1.5)}
+.es-dot.dim{opacity:.12}
+.es-dot.es-ping{animation:es-ping 1s ease-in-out 4}
+@keyframes es-ping{0%,100%{transform:scale(1)}50%{transform:scale(2.1)}}
+.es-dotcard{background:var(--escard);border:1px solid var(--esline);border-left:5px solid var(--esamber);border-radius:10px;padding:16px 20px;margin:14px 0;min-height:120px}
+.es-dotcard h3{margin:0 0 4px;font-size:19px}
+.es-dotcard .es-fare{font-family:var(--esmono);font-size:30px;color:var(--esamber-deep);margin:4px 0}
+.es-dotcard dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px;margin:10px 0 0}
+.es-dotcard dt{color:var(--esmuted)}
+.es-dotcard dd{margin:0;font-family:var(--esmono);font-size:13px}
+/* rate/cost toggle */
+.es-toggle{display:inline-flex;border:1.5px solid var(--esline);border-radius:24px;overflow:hidden;margin:6px 0 18px;background:var(--escard)}
+.es-toggle button{font-family:var(--esmono);font-size:13px;padding:10px 18px;border:none;background:transparent;color:var(--esmuted);cursor:pointer}
+.es-toggle button[aria-pressed="true"]{background:var(--esink);color:#f6f1e4}
+.es-bars{display:flex;flex-direction:column;gap:14px;margin:6px 0 10px}
+.es-bar-row{display:grid;grid-template-columns:150px 1fr 92px;gap:10px;align-items:center}
+.es-bar-row .es-bl{font-size:14px;font-weight:600}
+.es-bar-track{position:relative;height:26px;background:#efe7d2;border-radius:13px;overflow:hidden}
+.es-bar-fill{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#e8b04b,var(--esamber-deep));border-radius:13px;transition:left .5s ease,width .5s ease}
+.es-bar-val{font-family:var(--esmono);font-size:13px;text-align:right}
+/* receipt table */
+.es-receipt{background:var(--escard);border:1px solid var(--esline);border-radius:6px;padding:6px 22px 14px;font-family:var(--esmono);font-size:13.5px;box-shadow:0 3px 10px rgba(60,50,30,.08)}
+.es-receipt .es-rh{text-align:center;letter-spacing:.2em;font-size:11px;color:var(--esmuted);padding:12px 0 4px}
+.es-rrow{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 0;border-bottom:1px dashed var(--esline);align-items:baseline}
+.es-rrow:last-child{border-bottom:none}
+.es-rrow .es-rname{font-family:inherit}
+.es-rrow .es-rname small{display:block;font-family:var(--esmono);font-size:11px;color:var(--esmuted);margin-top:2px}
+.es-rrow .es-rfare{font-size:17px;font-weight:700;color:var(--esamber-deep);white-space:nowrap}
+.es-rrow.es-rtotal .es-rfare{font-size:20px}
+/* paradox receipt */
+.es-paradox{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.es-ticket{background:var(--escard);border:2px dashed var(--esline);border-radius:12px;padding:18px}
+.es-ticket.hot{border-color:var(--esamber-deep);background:#fdf6e6}
+.es-ticket h4{margin:0 0 8px;font-size:15px}
+.es-ticket .es-bignum{font-family:var(--esmono);font-size:34px;color:var(--esamber-deep)}
+.es-ticket .es-math{font-family:var(--esmono);font-size:12.5px;color:var(--esmuted);margin-top:10px;line-height:1.7}
+/* foot panels */
+.es-panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.es-panel{background:var(--escard);border:1px solid var(--esline);border-radius:12px;padding:16px 18px}
+.es-panel h4{margin:0 0 6px;font-size:15.5px}
+.es-panel p{font-size:13.5px;line-height:1.6;color:#3d382c;margin:0 0 8px}
+.es-tension{background:#f3e9d2;border-left:4px solid var(--esamber);border-radius:0 10px 10px 0;padding:14px 18px;font-size:14px;line-height:1.65;margin:14px 0}
+/* feet lists */
+.es-lists-head{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.es-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.es-col h3{font-family:var(--esmono);font-size:15px;letter-spacing:.1em;margin:0 0 10px;padding-bottom:8px;border-bottom:2px solid var(--esink)}
+.es-item{background:var(--escard);border:1px solid var(--esline);border-radius:10px;padding:12px 16px;margin-bottom:10px;transition:opacity .3s,transform .3s}
+.es-item.hide{display:none}
+.es-item h4{margin:0 0 4px;font-size:15px}
+.es-item p{font-size:13px;line-height:1.55;color:#3d382c;margin:0 0 6px}
+.es-price{font-family:var(--esmono);font-size:13px;color:var(--esamber-deep);font-weight:700}
+.es-price.na{color:var(--esmuted);font-weight:400;font-style:italic}
+.es-verdict{display:inline-block;font-family:var(--esmono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;padding:2px 8px;margin-left:8px;vertical-align:middle}
+.es-v-added{background:#dcefe0;color:#1d6b2f}
+.es-v-removed{background:#f6deda;color:#a03a2a}
+.es-v-remained{background:#e3ecf7;color:#2456a0}
+/* calculator */
+.es-calc{background:var(--esink);color:#f6f1e4;border-radius:16px;padding:24px;margin:16px 0}
+.es-calc h3{margin:0 0 4px;font-size:19px}
+.es-calc p{font-size:13.5px;color:#cfc6b2;margin:0 0 16px}
+.es-calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.es-field label{display:block;font-family:var(--esmono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#cfc6b2;margin-bottom:6px}
+.es-field select,.es-field input{width:100%;font-family:var(--esmono);font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid #4a4436;background:#332e24;color:#f6f1e4;box-sizing:border-box}
+.es-calc-out{background:#211d15;border-radius:10px;padding:16px 18px;font-family:var(--esmono)}
+.es-calc-out .es-bignum{font-size:32px;color:#ffc44d}
+.es-calc-out .es-vs{font-size:13px;color:#cfc6b2;margin-top:8px;line-height:1.7}
+.es-calc-out .es-mathline{font-size:12px;color:#8f8672;margin-top:10px}
+/* coda */
+.es-coda{font-size:20px;line-height:1.65;max-width:640px;margin:30px 0;padding:22px 26px;background:var(--escard);border-radius:14px;border:1px solid var(--esline);transform:rotate(.4deg)}
+.es-coda b{color:var(--esamber-deep)}
+/* methodology */
+.es-methods{margin-top:50px;border-top:2px solid var(--esink);padding-top:20px}
+.es-methods h2{font-size:24px;margin:0 0 6px}
+.es-methods ol{font-size:13.5px;line-height:1.65;color:#3d382c;padding-left:20px}
+.es-methods li{margin-bottom:8px}
+.es-ptag{font-family:var(--esmono);font-size:10.5px;letter-spacing:.06em;border-radius:3px;padding:1px 6px;white-space:nowrap}
+.es-p{background:#dcefe0;color:#1d6b2f}
+.es-s{background:#e9e2d0;color:#6f6656}
+.es-caveats{background:#f3e9d2;border-radius:10px;padding:14px 20px;font-size:13.5px;line-height:1.65;margin:16px 0}
+.es-foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--esline);font-size:13px;color:var(--esmuted)}
+.es-foot .es-med{background:var(--escard);border:1px solid var(--esline);border-radius:8px;padding:12px 16px;margin-bottom:12px;font-size:13px}
+/* home card art */
+.home-card.es .home-card-art{background:linear-gradient(135deg,#f6f1e4,#e9dfc8)}
+.es-tag{width:74px;height:74px;background:#fffdf6;border:2px dashed var(--esamber-deep,#9a5f04);border-radius:12px 26px 12px 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-6deg);box-shadow:0 3px 8px rgba(60,50,30,.15);font-family:var(--esmono,var(--ttmono,monospace))}
+.es-tag small{font-size:9px;letter-spacing:.18em;color:#6f6656}
+.es-tag b{font-size:24px;color:#9a5f04}
+.es-card-tag{position:absolute;right:10px;bottom:8px;font-family:var(--esmono,"IBM Plex Mono",monospace);font-size:10px;letter-spacing:.14em;color:#9a5f04}
+@media (max-width:760px){
+.es-bar-row{grid-template-columns:110px 1fr 74px}
+.es-paradox,.es-cols,.es-calc-grid{grid-template-columns:1fr}
+.es-meter{font-size:11px}
+.es-meter b{font-size:14px}
+}
+
 </style>
 </head>
 <body><a class="back-home" href="#home" data-open-view="home">← All essays</a>
@@ -381,14 +509,15 @@
 <main>
 <div class="view active" id="home">
 <header class="home-hero"><div><div class="home-kicker">Visual essays in rehabilitation medicine</div><h1>The Rehab Lab</h1><p class="home-mission">Data-driven stories about bodies in motion—where every number traces to a published source.</p></div><aside class="home-hero-note"><strong>Eight investigations</strong>From MRI findings that frighten healthy backs to the atmospheric physics that slow a run, each essay turns evidence into something you can see, test, and scroll through.</aside></header>
-<section class="home-index" aria-labelledby="home-index-title"><div class="home-index-head"><h2 id="home-index-title">Enter an essay</h2><span>08 STORIES · DRAFT COLLECTION</span></div><div class="home-grid">
+<section class="home-index" aria-labelledby="home-index-title"><div class="home-index-head"><h2 id="home-index-title">Enter an essay</h2><span>10 STORIES · DRAFT COLLECTION</span></div><div class="home-grid">
 <a class="home-card knee" href="#essay" data-open-view="essay" aria-label="Open essay: Fourteen little balloons"><div class="home-card-art" aria-hidden="true"><div class="knee-scan"></div><i class="knee-dot d1"></i><i class="knee-dot d2"></i><i class="knee-dot d3"></i><div class="knee-note">Friction leaves a map</div></div><div class="home-card-copy"><span class="home-card-num">01 · MUSCULOSKELETAL MEDICINE</span><h3>Fourteen little balloons</h3><p>Five fluid-filled sacs, one very annoyed knee—a guided MRI tour of the bursae.</p><span class="home-card-cta">Explore the knee</span></div></a>
 <a class="home-card backpain" href="#essay-backpain" data-open-view="essay-backpain" aria-label="Open essay: Your MRI is lying to you"><div class="home-card-art" aria-hidden="true"><div class="pacs-frame"></div><div class="pacs-bars"><i></i><i></i><i></i></div></div><div class="home-card-copy"><span class="home-card-num">02 · IMAGING</span><h3>Your MRI is lying to you</h3><p>Degenerated discs are normal. Why your scan looks scary—and what it actually means.</p><span class="home-card-cta">Read the scan</span></div></a>
 <a class="home-card sci" href="#essay-sci" data-open-view="essay-sci" aria-label="Open essay: 50 Years of Spinal Cord Injury"><div class="home-card-art" aria-hidden="true"><div class="neural-line"></div><div class="neural-pulse-home"></div><div class="sci-years"><span>1972</span><span>2025</span></div></div><div class="home-card-copy"><span class="home-card-num">03 · EPIDEMIOLOGY</span><h3>50 Years of Spinal Cord Injury</h3><p>Half a century of SCI data—who gets injured, how long they live, and the survival paradox.</p><span class="home-card-cta">Scrub the timeline</span></div></a>
 <a class="home-card pickle" href="#pickleball-fracture-curve" data-open-view="pickleball-fracture-curve" aria-label="Open essay: Pickleball’s fracture curve"><div class="home-card-art" aria-hidden="true"><div class="court"></div><div class="pickle-ball"></div></div><div class="home-card-copy"><span class="home-card-num">04 · SPORTS EPIDEMIOLOGY</span><h3>Pickleball’s fracture curve</h3><p>America’s fastest-growing sport has an ER-visit explosion. The data behind the fractures.</p><span class="home-card-cta">Return serve</span></div></a>
 <a class="home-card carbon" href="#carbon-plate-revolution" data-open-view="carbon-plate-revolution" aria-label="Open essay: The carbon-plate revolution"><div class="home-card-art" aria-hidden="true"><div class="split-grid"></div><div class="split-line"></div><div class="plate-arc"></div></div><div class="home-card-copy"><span class="home-card-num">05 · RUNNING BIOMECHANICS</span><h3>The carbon-plate revolution</h3><p>How foam and carbon broke the marathon—from 4% lab savings to a sub-2:00 race.</p><span class="home-card-cta">Follow the split</span></div></a>
 <a class="home-card dew" href="#dew-point-killer" data-open-view="dew-point-killer" aria-label="Open essay: Dew point is the real killer"><div class="home-card-art" aria-hidden="true"><div class="dew-sun"></div><div class="dew-horizon"></div><i class="dew-drop a"></i><i class="dew-drop b"></i><div class="dew-reading">74°F DEW POINT</div></div><div class="home-card-copy"><span class="home-card-num">06 · EXERCISE PHYSIOLOGY</span><h3>Dew point is the real killer</h3><p>Humidity lies. Why dew point, not the thermometer, decides how your run feels.</p><span class="home-card-cta">Enter the air</span></div></a>
-<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: The Gait Cycle, Animated"><div class="home-card-art" aria-hidden="true"><div class="gait-grid"></div><div class="gait-stick"></div><div class="gait-leg a"></div><div class="gait-leg b"></div><i class="gait-marker m1"></i><i class="gait-marker m2"></i><i class="gait-marker m3"></i><div class="gait-read">CYCLE <b>68%</b><br>HIP +08°<br>KNEE +55°<br>ANKLE 08° PF</div></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>The Gait Cycle, Animated</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><div class="fh-spool"></div><span class="fh-card-tag">FIG. 01</span></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric — the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: 26.2"><div class="home-card-art" aria-hidden="true"><div class="tt-sign"><small>RACE CLOCK</small><b>26.2</b></div><span class="tt-card-tag">09 · FIG. 01</span></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>26.2</h3><p>An hour-by-hour autopsy of a marathon — three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a>
+<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: The Gait Cycle, Animated"><div class="home-card-art" aria-hidden="true"><div class="gait-grid"></div><div class="gait-stick"></div><div class="gait-leg a"></div><div class="gait-leg b"></div><i class="gait-marker m1"></i><i class="gait-marker m2"></i><i class="gait-marker m3"></i><div class="gait-read">CYCLE <b>68%</b><br>HIP +08°<br>KNEE +55°<br>ANKLE 08° PF</div></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>The Gait Cycle, Animated</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><div class="fh-spool"></div><span class="fh-card-tag">FIG. 01</span></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric — the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: 26.2"><div class="home-card-art" aria-hidden="true"><div class="tt-sign"><small>RACE CLOCK</small><b>26.2</b></div><span class="tt-card-tag">09 · FIG. 01</span></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>26.2</h3><p>An hour-by-hour autopsy of a marathon — three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><div class="es-tag"><small>FARE</small><b>7.7×</b></div><span class="es-card-tag">10 · FIG. 01</span></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>
+
 </div></section>
 <footer class="home-footer"><div class="home-footer-inner"><p><strong>Educational content only—not medical advice.</strong> Talk to your clinician about personal health decisions.</p><p class="draft-note">All essays are drafts under expert review.</p></div></footer>
 </div>
@@ -1030,6 +1159,166 @@
 </div>
 
 
+<div class="view" id="expensive-steps">
+<div class="es-wrap">
+<div class="es-kicker">Essay 10 · Gait Energetics <span class="es-draft">Draft for expert review</span></div>
+<div class="es-meter" id="es-meter" aria-hidden="true"><span>FARE&nbsp;·&nbsp;× NORMAL</span><span class="es-meter-bar"><span class="es-meter-fill" id="es-meter-fill"></span></span><b id="es-meter-val">1.0×</b></div>
+<header style="padding:26px 0 8px">
+<h1 class="es-title">The Most <span class="es-x">Expensive</span> Steps</h1>
+<p class="es-dek">Walking looks free. It isn't. Every meter you walk costs oxygen — and the fare depends on the body paying it. This is a room of 1,000 walkers, each paying a different price per step.</p>
+<div class="es-insight">The most expensive step in this room costs <b>7.7×</b> the cheapest one. And the people paying the highest fares walk <b>the fewest steps</b> of anyone here.</div>
+<div class="es-readouts">
+<div class="es-readout"><b>7.7<span class="es-per">×</span></b><span>The maximum fare: bilateral KAFO walking at 1.15 mL O₂/kg/m vs ~0.15 normal. Waters via LER review <span class="es-ptag es-s">secondary</span></span></div>
+<div class="es-readout"><b>1,540</b><span>Steps per day, the transfemoral average (Halsne 2013 <span class="es-ptag es-p">primary</span>). The priciest walkers walk the least.</span></div>
+<div class="es-readout"><b>0–15<span class="es-per">%</span></b><span>Extra energy for traumatic transtibial walking at speed (Genin 2008 <span class="es-ptag es-p">primary</span>). Four studies, four answers — the range is the finding.</span></div>
+<div class="es-readout"><b>$17,534</b><span>2025 Medicare fee-schedule band for a microprocessor/power foot — vs $223.97 for a SACH. Fee schedule, not retail <span class="es-ptag es-s">secondary</span></span></div>
+</div>
+</header>
+
+<section class="es-sec" id="es-sec-room">
+<div class="es-sec-head"><span class="es-sec-num">01</span><h2>The room</h2></div>
+<p class="es-lede">One thousand walkers. Each tag is a person; its color is the fare they pay for every meter. Most of the room glows faintly at the standard fare. A few tags burn bright. <em>Find the most expensive step in this room.</em></p>
+<p><span class="es-tag-label">Modeled mix, not a census — see methodology</span></p>
+<div class="es-room-tools" role="group" aria-label="Filter walkers">
+<button class="es-fbtn" data-esf="all" aria-pressed="true">All</button>
+<button class="es-fbtn" data-esf="intact" aria-pressed="false">Intact</button>
+<button class="es-fbtn" data-esf="amp" aria-pressed="false">Amputation</button>
+<button class="es-fbtn" data-esf="stroke" aria-pressed="false">Stroke</button>
+<button class="es-fbtn" data-esf="sci" aria-pressed="false">Spinal cord injury</button>
+<button class="es-find" id="es-find">⌖ Find the most expensive step</button>
+</div>
+<div class="es-room"><div class="es-dots" id="es-dots" role="group" aria-label="One thousand walkers"></div></div>
+<div class="es-dotcard" id="es-dotcard" aria-live="polite">
+<h3>Click any tag</h3>
+<p class="es-note">Condition, fare per meter, walking speed, and daily steps — every figure sourced.</p>
+</div>
+</section>
+
+<section class="es-sec" id="es-sec-ratecost">
+<div class="es-sec-head"><span class="es-sec-num">02</span><h2>The honest metric</h2></div>
+<p class="es-lede">There are two ways to bill a walk. <strong>O₂ rate</strong> — milliliters per kilo <em>per minute</em> — is how hard the engine works. <strong>O₂ cost</strong> — milliliters per kilo <em>per meter</em> — is the true fare. Patients almost always slow down to protect the rate, so the cost per meter is the honest comparator. Toggle the accounting:</p>
+<div class="es-toggle" role="group" aria-label="Rate or cost">
+<button data-esrc="rate" aria-pressed="false">Per minute · O₂ rate</button>
+<button data-esrc="cost" aria-pressed="true">Per meter · O₂ cost</button>
+</div>
+<div class="es-bars" id="es-bars"></div>
+<p class="es-note">Same walkers, two ledgers. Per minute, hemiplegic gait can look <em>cheaper</em> than yours — the body protects the engine by slowing down. Per meter, the fare is always higher. Bars show ranges where studies disagree; transtibial spans four published answers. (Waters' distinction, via LER review <span class="es-ptag es-s">secondary</span>)</p>
+</section>
+
+<section class="es-sec" id="es-sec-table">
+<div class="es-sec-head"><span class="es-sec-num">03</span><h2>The fare table</h2></div>
+<p class="es-lede">The price of one meter of walking, by condition. Fares are multiples of the intact-walker fare (~0.15 mL O₂/kg/m, textbook background <span class="es-ptag es-s">secondary</span>).</p>
+<div class="es-receipt">
+<div class="es-rh">— FARE SCHEDULE —</div>
+<div class="es-rrow"><div class="es-rname">Intact walker<small>baseline · customary speed 1.0–1.67 m/s</small></div><div class="es-rfare">1.0×</div></div>
+<div class="es-rrow"><div class="es-rname">Transtibial amputation<small>1.0–1.6× — Genin 2008: 0–15% (traumatic, young) <span class="es-ptag es-p">primary</span>; Sci Rep 2018: 10–30% <span class="es-ptag es-s">secondary</span>; Esquenazi: 25–40% <span class="es-ptag es-s">secondary</span>; Pinzur: 40–60% <span class="es-ptag es-s">secondary</span>. Spread = rate-vs-cost, traumatic-vs-vascular, speed-matched-vs-self-selected. Shown as a range, never averaged.</small></div><div class="es-rfare">1.0–1.6×</div></div>
+<div class="es-rrow"><div class="es-rname">Transfemoral amputation<small>Genin 2008: 30–60% <span class="es-ptag es-p">primary</span>; Esquenazi: 68–100% <span class="es-ptag es-s">secondary</span>; Pinzur: 90–120% <span class="es-ptag es-s">secondary</span>. Self-selected ≈52 m/min traumatic; 0.95 m/s comfortable.</small></div><div class="es-rfare">1.3–2.2×</div></div>
+<div class="es-rrow"><div class="es-rname">Bilateral transtibial<small>Pinzur: 60–100% <span class="es-ptag es-s">secondary</span>; older vascular cohort: 2.23× cost at 64% normal speed <span class="es-ptag es-s">secondary</span></small></div><div class="es-rfare">1.6–2.2×</div></div>
+<div class="es-rrow"><div class="es-rname">Hemiplegia, post-stroke<small>Macko et al., Stroke 1997: 1.5–2× <span class="es-ptag es-p">primary</span>. Comfortable 0.67–0.79 m/s.</small></div><div class="es-rfare">1.5–2.0×</div></div>
+<div class="es-rrow"><div class="es-rname">Hip disarticulation<small>Older cohort: 0.639 mL/kg/m (4.3×) <span class="es-ptag es-s">secondary</span>; younger cohort: 0.237 mL/kg/m at 47.4 m/min (1.6×) <span class="es-ptag es-s">secondary</span>; children: 161% of normal <span class="es-ptag es-s">secondary</span></small></div><div class="es-rfare">1.6–4.3×</div></div>
+<div class="es-rrow es-rtotal"><div class="es-rname"><strong>Paraplegia, bilateral KAFOs</strong><small>+226% O₂ rate; 1.15 mL/kg/m — the single most expensive walking in the table. One KAFO: 3.1× · No KAFO: 2.5×. Waters &amp; Mulroy 1999 via LER review <span class="es-ptag es-s">secondary</span></small></div><div class="es-rfare">7.7×</div></div>
+</div>
+</section>
+
+<section class="es-sec" id="es-sec-paradox">
+<div class="es-sec-head"><span class="es-sec-num">04</span><h2>The paradox</h2></div>
+<p class="es-lede">Fewer steps, roughly double the oxygen. Run the receipts:</p>
+<div class="es-paradox">
+<div class="es-ticket hot">
+<h4>Bilateral-KAFO walker</h4>
+<div class="es-bignum">≈1,610 <span style="font-size:15px">mL O₂/kg/day</span></div>
+<div class="es-math">2,000 steps × 0.7 m/step × 1.15 mL/kg/m<br>= 1,610 mL/kg/day<br><em>Derived — step length 0.7 m assumed</em></div>
+</div>
+<div class="es-ticket">
+<h4>Intact walker</h4>
+<div class="es-bignum">≈840 <span style="font-size:15px">mL O₂/kg/day</span></div>
+<div class="es-math">8,000 steps × 0.7 m/step × 0.15 mL/kg/m<br>= 840 mL/kg/day<br><em>Derived — step length 0.7 m assumed</em></div>
+</div>
+</div>
+<p class="es-lede">Transfemoral walkers average <strong>1,540 steps a day</strong> (Halsne 2013 <span class="es-ptag es-p">primary</span>); transtibial walkers 5,318; chronic stroke survivors 4,078 against 8,338 for healthy matches (2017 review, n=1,280 <span class="es-ptag es-p">primary</span>). The people paying the most per step take the fewest steps — and still outspend everyone.</p>
+<div class="es-calc">
+<h3>Your daily oxygen budget</h3>
+<p>Pick a walker, set the steps. The meter does the arithmetic — derived, with the math shown.</p>
+<div class="es-calc-grid">
+<div class="es-field"><label for="es-cond">Walker</label><select id="es-cond"></select></div>
+<div class="es-field"><label for="es-steps">Steps per day</label><input id="es-steps" type="number" min="0" max="60000" step="100" value="5000"></div>
+</div>
+<div class="es-calc-out">
+<div>Daily locomotor oxygen</div>
+<div class="es-bignum" id="es-budget">—</div>
+<div class="es-vs" id="es-budget-vs"></div>
+<div class="es-mathline" id="es-budget-math"></div>
+</div>
+</div>
+</section>
+
+<section class="es-sec" id="es-sec-foot">
+<div class="es-sec-head"><span class="es-sec-num">05</span><h2>The foot doesn't move the lab number</h2></div>
+<p class="es-lede">Fifty years of prosthetic feet — from wood and rubber to carbon and microprocessors. You would expect the meter to fall. It didn't.</p>
+<div class="es-panels">
+<div class="es-panel"><h4>No difference: SACH vs Flex-Foot</h4><p>Five active transtibial men walked and ran in three feet. The energy-storing Flex-Foot beat the SACH <strong>nowhere</strong> — no significant walking difference. (JOSPT 1999, PMID 10518294 <span class="es-ptag es-p">primary</span>)</p></div>
+<div class="es-panel"><h4>No difference: five feet</h4><p>Thirteen transtibial walkers, five feet of differing forefoot flexibility — <strong>no differences in oxygen cost</strong>. Subjects simply preferred the most ankle-like. (Northwestern 2010, via LER <span class="es-ptag es-s">secondary</span>)</p></div>
+<div class="es-panel"><h4>The difference: distance, not price</h4><p>Doubly-labeled water — the gold standard for total daily energy — found microprocessor knees changed <strong>no</strong> oxygen per unit distance. Users just walked <em>more</em>. (Kaufman, Mayo, via LER <span class="es-ptag es-s">secondary</span>)</p></div>
+</div>
+<div class="es-tension"><strong>Labelled tension:</strong> an MDPI encyclopedia entry asserts energy-storing feet "reduce metabolic costs" versus SACH — in direct tension with the JOSPT and Northwestern null findings above. Both are shown; the nulls are the stronger evidence. <span class="es-ptag es-s">secondary</span></div>
+<p class="es-insight" style="transform:rotate(.4deg)">The essay-safe line: <b>the foot you bolt on barely moves the lab number — it moves how far people choose to walk.</b></p>
+</section>
+
+<section class="es-sec" id="es-sec-lists">
+<div class="es-sec-head"><span class="es-sec-num">06</span><h2>Two lists, 55 years apart</h2></div>
+<p class="es-lede">Prosthetic feet, 1970 vs 2025 — <strong>added, removed, remained</strong>. Prices are 2025 U.S. Medicare fee-schedule figures (not retail); the 1970 SACH price was never published, so it is shown as such — not invented.</p>
+<div class="es-lists-head" role="group" aria-label="Filter list changes">
+<button class="es-fbtn" data-esl="all" aria-pressed="true">All</button>
+<button class="es-fbtn" data-esl="added" aria-pressed="false">Added</button>
+<button class="es-fbtn" data-esl="removed" aria-pressed="false">Removed</button>
+<button class="es-fbtn" data-esl="remained" aria-pressed="false">Remained</button>
+</div>
+<div class="es-cols">
+<div class="es-col"><h3>1970</h3><div id="es-list-1970"></div></div>
+<div class="es-col"><h3>2025</h3><div id="es-list-2025"></div></div>
+</div>
+<p class="es-note">SACH: Staros (VA), 1957 — wood keel, rubber shell, compressible foam heel; "standard due to its availability, inexpensiveness, and durability." Jaipur foot: Sethi, 1970s India — second most used after SACH, hundreds of thousands of users across 20+ countries. Carbon ESAR: late 1980s. Proprio microprocessor foot: Össur, mid-2006. Powered feet (BiOM ~2013–14, Ottobock Empower, &gt;1,500 in use): no metabolic claim made — not researched. <span class="es-ptag es-s">secondary</span></p>
+</section>
+
+<section class="es-sec" id="es-sec-coda">
+<div class="es-sec-head"><span class="es-sec-num">07</span><h2>The coda</h2></div>
+<div class="es-coda">The price of a step is set by <b>the body, not the device</b>. Fifty years of feet — wood, carbon, microprocessors — never renegotiated the fare; the nervous system did that work all along. Every tag in that room is a person who pays the meter <b>in full, every single day</b>. The most expensive steps are also the most hard-won.</div>
+</section>
+
+<section class="es-sec es-methods" id="es-sec-methods">
+<h2>Methodology &amp; sources</h2>
+<p class="es-lede">Every number traces to a published source. <span class="es-ptag es-p">primary</span> = original data verified this session. <span class="es-ptag es-s">secondary</span> = via review, abstract, fee schedule, or company source — weaker until the original is checked.</p>
+<ol>
+<li>Waters RL, Mulroy S. <em>The energy expenditure of normal and pathologic gait.</em> Gait Posture. 1999;9(3):207–231. <span class="es-ptag es-s">secondary</span> — the original paper could not be opened; anchor figures (KAFO +226% / 1.15 mL/kg/m; TT ~20% at a given speed) are via Cary Groner's Lower Extremity Review summary. A 2022 primary KAFO study (1.90±1.43 mL/kg/m, Sci Rep) is consistent with the range.</li>
+<li>Genin et al. <em>Effect of speed on the energy cost of walking in unilateral traumatic lower limb amputees.</em> Eur J Appl Physiol. 2008;103:655–663. <span class="es-ptag es-p">primary</span> — TT 0–15%, TF 30–60%; max 1.6 m/s TT, 1.2 m/s TF.</li>
+<li>Esquenazi &amp; Meier 1996, via VA/DoD Clinical Practice Guideline for Rehabilitation of Lower Limb Amputation. <span class="es-ptag es-s">secondary</span> — TT 25–40%, TF 68–100%.</li>
+<li>Pinzur et al., via Springer case report. <span class="es-ptag es-s">secondary</span> — TT 40–60%, TF 90–120%, bilateral TT 60–100%. The transtibial range across studies is shown, never averaged; the spread reflects rate-vs-cost, traumatic-vs-vascular, and speed-matched-vs-self-selected methods.</li>
+<li>Macko et al. <em>Treadmill aerobic exercise training reduces the energy expenditure…</em> Stroke. 1997;28:326–330. <span class="es-ptag es-p">primary</span> — hemiplegic ambulation elevated 1.5–2×.</li>
+<li>JOSPT 1999;29:526–533 (PMID 10518294). <span class="es-ptag es-p">primary</span> — no significant O₂ difference between Flex-Foot and SACH (n=5); Re-Flex VSP improved walking cost 5%.</li>
+<li>Northwestern 2010, via LER. <span class="es-ptag es-s">secondary</span> — no O₂-cost difference across five feet (n=13).</li>
+<li>Kaufman et al. (Mayo, doubly-labeled water), via LER. <span class="es-ptag es-s">secondary</span> — microprocessor knees: no O₂-per-distance difference; users more active.</li>
+<li>Halsne et al. 2013, via scoping review. <span class="es-ptag es-p">primary</span> — transfemoral 1,540 steps/day (StepWatch, 12 months).</li>
+<li>Unilateral transtibial 5,318±2,066 steps/day (2022, n=14). <span class="es-ptag es-p">primary</span></li>
+<li>Chronic stroke 4,078 steps/day vs 8,338 healthy (2017 systematic review, n=1,280, PMID 28444348). <span class="es-ptag es-p">primary</span></li>
+<li>2025 Medicare DME fee schedule (Maryland DMS, 1/1/2025). <span class="es-ptag es-s">secondary</span> — SACH L5970 $223.97; energy-storing L5976 $571.34; ankle-foot system L5973 $17,534.17. Fee schedule, not retail. The 1970 SACH price was not found in any published source.</li>
+<li>National Inpatient Sample/HCUP 2025 (PMID 39822203). <span class="es-ptag es-p">primary</span> — 2,309,000 Americans living with limb loss, ~91% lower-extremity.</li>
+<li>ICAN amputee clinic 2017–2024 (n=318). <span class="es-ptag es-s">secondary</span> — TT:TF ≈ 2:1.</li>
+<li>Lawrence et al., Stroke 2001. <span class="es-ptag es-p">primary</span> — 72.4% acute lower-limb motor deficit; ~7M stroke survivors (CDC, via review <span class="es-ptag es-s">secondary</span>).</li>
+<li>NSCISC-derived figures <span class="es-ptag es-s">secondary</span> — ~302k living with SCI, ~70% incomplete; ~1 in 3 walk a block at 1 year (Model Systems 2024).</li>
+<li>Huang et al. (paraplegic KAFO swing-through, n=8). <span class="es-ptag es-s">secondary</span> — 11.2 mL/kg/min at 14 m/min.</li>
+<li>Sci Rep 2022 (knee-powered exoskeleton vs KAFO crossover). <span class="es-ptag es-p">primary</span> — KAFO metabolic cost of transport 1.90±1.43 mL/kg/m.</li>
+<li>SACH foot: Staros (VA), 1957; Jaipur foot: Sethi, 1970s (PLoS One 2024); carbon ESAR late 1980s; Össur Proprio mid-2006; BiOM ~2013–14; Ottobock Empower &gt;1,500 in use. <span class="es-ptag es-s">secondary</span></li>
+</ol>
+<div class="es-caveats"><strong>Read the fine print.</strong> The 1,000-dot room is a modeled mix, not a census — the stroke share is an editorial estimate (no published headcount of hemiplegic-gait walkers exists). The MDPI encyclopedia's pro-ESAR claim sits in tension with the JOSPT/Northwestern nulls; both are shown. No metabolic claim is made about powered feet. Derived arithmetic (paradox receipts, budget calculator) assumes 0.7 m step length. Bilateral-transfemoral, hemipelvectomy, and SCI-ambulator step-count data were not found — they are absent, not zero.</div>
+</section>
+
+<footer class="es-foot">
+<div class="es-med"><strong>Educational content.</strong> For clinicians and learners — not a substitute for bedside assessment, institutional policy, or medical care.</div>
+<div>Essay 10 · The Most Expensive Steps · Draft for expert review · Every number traceable to the sources above.</div>
+</footer>
+</div>
+</div>
+
 <script>
 (function(){
 var data={
@@ -1078,7 +1367,7 @@ window.addEventListener('scroll',queueKneeSync,{passive:true});window.addEventLi
 selectBursa('prepatellar');window.requestAnimationFrame(queueKneeSync);
 var cases={front:'Most consistent with prepatellar bursitis. Next: inspect for a skin break, warmth, spreading erythema, systemic symptoms, and other infection risks before labeling it aseptic.',below:'Consider superficial infrapatellar bursitis, but distinguish it from patellar tendinopathy and tibial-tubercle pathology with precise palpation and loading.',medial:'Pes anserine is plausible, but medial-compartment OA, meniscal pathology, and MCL-region pain overlap. Clinical localization alone is imperfect.',joint:'This pattern is not safely explained by a superficial bursa. A true joint process—including septic arthritis—needs urgent consideration.'};
 document.querySelectorAll('.case-choice').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.case-choice').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.getElementById('caseResult').innerHTML='<strong>Working localization</strong><p>'+cases[b.dataset.case]+'</p>'})});
-function selectEssayView(id,setHash){var labels={home:'INDEX',essay:'KNEE',"essay-backpain":'BACK PAIN',"essay-sci":'50 YEARS',"pickleball-fracture-curve":'FRACTURE CURVE',"carbon-plate-revolution":'CARBON PLATE',"dew-point-killer":'DEW POINT',"gait-cycle":'GAIT CYCLE',"fifty-dollar-hand":'THE $50 HAND',"twentysix-two":'26.2',coloring:'3 SAMPLE PLATES'};var titles={home:'The Rehab Lab — Visual Essays in Rehabilitation Medicine',essay:'Fourteen Little Balloons — The Rehab Lab',"essay-backpain":'Your MRI Is Lying to You — The Rehab Lab',"essay-sci":'50 Years of Spinal Cord Injury — The Rehab Lab',"pickleball-fracture-curve":'Pickleball’s Fracture Curve — The Rehab Lab',"carbon-plate-revolution":'The Carbon-Plate Revolution — The Rehab Lab',"dew-point-killer":'Dew Point Is the Real Killer — The Rehab Lab',"gait-cycle":'The Gait Cycle, Animated — The Rehab Lab',"fifty-dollar-hand":'The $50 Hand — The Rehab Lab',"twentysix-two":'26.2 — The Rehab Lab',coloring:'PM&R Coloring Studies — The Rehab Lab'};document.querySelectorAll('.switcher button').forEach(function(x){x.setAttribute('aria-selected',String(x.dataset.view===id))});document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===id)});window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;var _pl=document.getElementById('progressLabel');if(_pl){_pl.textContent=labels[id]||'START'}var _bh=document.querySelector('.back-home');if(_bh){_bh.style.display=(id==='home')?'none':'block'};document.title=titles[id]||titles.home;if(setHash){history.replaceState(null,'',id==='home'?location.pathname:'#'+id)}}
+function selectEssayView(id,setHash){var labels={home:'INDEX',essay:'KNEE',"essay-backpain":'BACK PAIN',"essay-sci":'50 YEARS',"pickleball-fracture-curve":'FRACTURE CURVE',"carbon-plate-revolution":'CARBON PLATE',"dew-point-killer":'DEW POINT',"gait-cycle":'GAIT CYCLE',"fifty-dollar-hand":'THE $50 HAND',"twentysix-two":'26.2',"expensive-steps":'MOST EXPENSIVE STEPS',coloring:'3 SAMPLE PLATES'};var titles={home:'The Rehab Lab — Visual Essays in Rehabilitation Medicine',essay:'Fourteen Little Balloons — The Rehab Lab',"essay-backpain":'Your MRI Is Lying to You — The Rehab Lab',"essay-sci":'50 Years of Spinal Cord Injury — The Rehab Lab',"pickleball-fracture-curve":'Pickleball’s Fracture Curve — The Rehab Lab',"carbon-plate-revolution":'The Carbon-Plate Revolution — The Rehab Lab',"dew-point-killer":'Dew Point Is the Real Killer — The Rehab Lab',"gait-cycle":'The Gait Cycle, Animated — The Rehab Lab',"fifty-dollar-hand":'The $50 Hand — The Rehab Lab',"twentysix-two":'26.2 — The Rehab Lab',"expensive-steps":'The Most Expensive Steps — The Rehab Lab',coloring:'PM&R Coloring Studies — The Rehab Lab'};document.querySelectorAll('.switcher button').forEach(function(x){x.setAttribute('aria-selected',String(x.dataset.view===id))});document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===id)});window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;var _pl=document.getElementById('progressLabel');if(_pl){_pl.textContent=labels[id]||'START'}var _bh=document.querySelector('.back-home');if(_bh){_bh.style.display=(id==='home')?'none':'block'};document.title=titles[id]||titles.home;if(setHash){history.replaceState(null,'',id==='home'?location.pathname:'#'+id)}}
 document.querySelectorAll('.switcher button').forEach(function(b){b.addEventListener('click',function(){selectEssayView(b.dataset.view,true)})});
 document.querySelectorAll('[data-open-view]').forEach(function(link){link.addEventListener('click',function(e){e.preventDefault();selectEssayView(link.dataset.openView,true)})});
 var initialView=location.hash.slice(1);if(document.getElementById(initialView)&&document.getElementById(initialView).classList.contains('view'))selectEssayView(initialView,false);
@@ -1462,6 +1751,211 @@ if(hyd){hyd.addEventListener('input',hydTick);hydTick();}
 })();
 </script>
 
+
+<script>
+(function(){
+var root=document.getElementById('expensive-steps');if(!root)return;
+function $(s){return root.querySelector(s);}
+function $all(s){return Array.prototype.slice.call(root.querySelectorAll(s));}
+
+/* ---------- 1. The room of 1,000 walkers ---------- */
+var GROUPS=[
+ {key:'intact',cat:'intact',label:'Intact walker',n:880,mult:1.0,cost:0.15,speed:'≈1.0–1.67 m/s typical',steps:'8,338 / day (healthy matched)',src:'secondary · textbook background',srcCls:'es-s'},
+ {key:'tt1',cat:'amp',label:'Transtibial amputation',n:8,mult:1.1,cost:0.17,speed:'max 1.6 m/s',steps:'5,318 / day',src:'primary · Genin 2008 (traumatic, young)',srcCls:'es-p'},
+ {key:'tt2',cat:'amp',label:'Transtibial amputation',n:10,mult:1.2,cost:0.18,speed:'self-selected, varies',steps:'5,318 / day',src:'secondary · Sci Rep 2018 review (10–30%)',srcCls:'es-s'},
+ {key:'tt3',cat:'amp',label:'Transtibial amputation',n:8,mult:1.35,cost:0.20,speed:'self-selected, varies',steps:'5,318 / day',src:'secondary · Esquenazi via VA/DoD CPG (25–40%)',srcCls:'es-s'},
+ {key:'tt4',cat:'amp',label:'Transtibial amputation',n:6,mult:1.5,cost:0.23,speed:'self-selected, varies',steps:'5,318 / day',src:'secondary · Pinzur via case report (40–60%)',srcCls:'es-s'},
+ {key:'tf1',cat:'amp',label:'Transfemoral amputation',n:5,mult:1.45,cost:0.22,speed:'max 1.2 m/s',steps:'1,540 / day',src:'primary · Genin 2008 (30–60%)',srcCls:'es-p'},
+ {key:'tf2',cat:'amp',label:'Transfemoral amputation',n:6,mult:1.85,cost:0.28,speed:'52 m/min traumatic; 0.95 m/s comfortable',steps:'1,540 / day',src:'secondary · Esquenazi via VA/DoD CPG (68–100%)',srcCls:'es-s'},
+ {key:'tf3',cat:'amp',label:'Transfemoral amputation',n:5,mult:2.05,cost:0.31,speed:'52 m/min traumatic; 0.95 m/s comfortable',steps:'1,540 / day',src:'secondary · Pinzur via case report (90–120%)',srcCls:'es-s'},
+ {key:'btt',cat:'amp',label:'Bilateral transtibial amputation',n:5,mult:1.8,cost:0.27,speed:'64% of normal (vascular cohort)',steps:'not published',src:'secondary · Pinzur (60–100%)',srcCls:'es-s'},
+ {key:'hip1',cat:'amp',label:'Hip disarticulation',n:1,mult:4.3,cost:0.64,speed:'47.4 m/min (younger cohort)',steps:'not published',src:'secondary · older cohort 0.639 mL/kg/m',srcCls:'es-s'},
+ {key:'hip2',cat:'amp',label:'Hip disarticulation',n:1,mult:1.6,cost:0.24,speed:'47.4 m/min (younger cohort)',steps:'not published',src:'secondary · younger cohort 0.237 mL/kg/m',srcCls:'es-s'},
+ {key:'hem1',cat:'stroke',label:'Hemiplegia, post-stroke',n:20,mult:1.5,cost:0.23,speed:'0.67–0.79 m/s comfortable',steps:'4,078 / day',src:'primary · Macko 1997, Stroke',srcCls:'es-p'},
+ {key:'hem2',cat:'stroke',label:'Hemiplegia, post-stroke',n:20,mult:1.75,cost:0.26,speed:'0.67–0.79 m/s comfortable',steps:'4,078 / day',src:'secondary · review range',srcCls:'es-s'},
+ {key:'hem3',cat:'stroke',label:'Hemiplegia, post-stroke',n:15,mult:2.0,cost:0.30,speed:'0.67–0.79 m/s comfortable',steps:'4,078 / day',src:'secondary · upper range',srcCls:'es-s'},
+ {key:'kafo2',cat:'sci',label:'Paraplegia · bilateral KAFOs',n:4,mult:7.7,cost:1.15,speed:'14 m/min (swing-through)',steps:'≈2,800 / day (n=1 — limited data)',src:'secondary · Waters via LER review',srcCls:'es-s'},
+ {key:'kafo1',cat:'sci',label:'Paraplegia · single KAFO',n:3,mult:3.1,cost:0.46,speed:'14 m/min (swing-through)',steps:'≈2,800 / day (n=1 — limited data)',src:'secondary · Waters via LER review',srcCls:'es-s'},
+ {key:'kafo0',cat:'sci',label:'Paraplegia · no KAFO',n:3,mult:2.5,cost:0.37,speed:'self-selected, slow',steps:'≈2,800 / day (n=1 — limited data)',src:'secondary · Waters via LER review',srcCls:'es-s'}
+];
+var dotsEl=$('#es-dots'),cardEl=$('#es-dotcard');
+function dotColor(mult){
+ if(mult<=1.01)return '#d9d0ba';
+ var a=Math.min(0.3+ (mult/7.7)*0.7,1);
+ return 'rgba(199,127,10,'+a.toFixed(2)+')';
+}
+if(dotsEl){
+ var frag=document.createDocumentFragment(),idx=0;
+ GROUPS.forEach(function(g,gi){
+  for(var k=0;k<g.n;k++){
+   var d=document.createElement('button');
+   d.className='es-dot';d.type='button';d.dataset.g=gi;
+   d.style.background=dotColor(g.mult);
+   d.style.transform='rotate('+((idx*37)%9-4)+'deg)';
+   d.setAttribute('aria-label',g.label+', fare '+g.mult+'× normal');
+   frag.appendChild(d);idx++;
+  }
+ });
+ dotsEl.appendChild(frag);
+ dotsEl.addEventListener('click',function(e){
+  var t=e.target.closest('.es-dot');if(!t||!cardEl)return;
+  var g=GROUPS[+t.dataset.g];if(!g)return;
+  cardEl.innerHTML='<h3>'+g.label+'</h3>'+
+   '<div class="es-fare">'+g.mult.toFixed(g.mult<2?2:1)+'× <span style="font-size:14px;color:#6f6656">the intact fare</span></div>'+
+   '<dl><dt>O₂ cost</dt><dd>'+g.cost.toFixed(2)+' mL/kg/m</dd>'+
+   '<dt>Walking speed</dt><dd>'+g.speed+'</dd>'+
+   '<dt>Steps</dt><dd>'+g.steps+'</dd>'+
+   '<dt>Source</dt><dd><span class="es-ptag '+g.srcCls+'">'+g.src+'</span></dd></dl>';
+ });
+}
+$all('.es-fbtn[data-esf]').forEach(function(b){
+ b.addEventListener('click',function(){
+  $all('.es-fbtn[data-esf]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+  b.setAttribute('aria-pressed','true');
+  var f=b.dataset.esf;
+  $all('.es-dot').forEach(function(d){
+   var g=GROUPS[+d.dataset.g];
+   d.classList.toggle('dim',!(f==='all'||g.cat===f));
+  });
+ });
+});
+var findBtn=$('#es-find');
+if(findBtn&&dotsEl){
+ findBtn.addEventListener('click',function(){
+  $all('.es-fbtn[data-esf]').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.esf==='all'?'true':'false');});
+  $all('.es-dot').forEach(function(d){d.classList.remove('dim');});
+  var targets=$all('.es-dot').filter(function(d){return GROUPS[+d.dataset.g].key==='kafo2';});
+  targets.forEach(function(d){d.classList.add('es-ping');});
+  var g=GROUPS.filter(function(x){return x.key==='kafo2';})[0];
+  if(cardEl&&g){
+   cardEl.innerHTML='<h3>'+g.label+' — the most expensive step</h3>'+
+   '<div class="es-fare">7.7× <span style="font-size:14px;color:#6f6656">the intact fare</span></div>'+
+   '<dl><dt>O₂ cost</dt><dd>1.15 mL/kg/m</dd><dt>Walking speed</dt><dd>14 m/min (swing-through)</dd>'+
+   '<dt>Source</dt><dd><span class="es-ptag es-s">secondary · Waters via LER review</span></dd></dl>';
+  }
+  var room=dotsEl.closest('.es-room');
+  if(room&&room.scrollIntoView)room.scrollIntoView({behavior:'smooth',block:'center'});
+  setTimeout(function(){targets.forEach(function(d){d.classList.remove('es-ping');});},4200);
+ });
+}
+
+/* ---------- 2. Rate vs cost toggle ---------- */
+var RC=[
+ {label:'Intact',rate:[100,100],cost:[1,1]},
+ {label:'Transtibial',rate:[100,115],cost:[1.1,1.6],note:'range'},
+ {label:'Transfemoral',rate:[130,160],cost:[1.3,2.2],note:'range'},
+ {label:'Hemiplegia',rate:[85,100],cost:[1.5,2.0],note:'range'},
+ {label:'Bilateral KAFO',rate:[326,326],cost:[7.7,7.7]}
+];
+var barsEl=$('#es-bars'),mode='cost';
+function renderBars(){
+ if(!barsEl)return;
+ var max=mode==='rate'?350:8,unit=mode==='rate'?'% of normal':'× normal';
+ var h='';
+ RC.forEach(function(r){
+  var lo=mode==='rate'?r.rate[0]:r.cost[0],hi=mode==='rate'?r.rate[1]:r.cost[1];
+  var left=(lo/max*100).toFixed(1),w=Math.max(((hi-lo)/max*100),1.2).toFixed(1);
+  var val=lo===hi?(mode==='rate'?hi+'%':hi.toFixed(1)+'×'):(mode==='rate'?lo+'–'+hi+'%':lo.toFixed(1)+'–'+hi.toFixed(1)+'×');
+  h+='<div class="es-bar-row"><span class="es-bl">'+r.label+(r.note?' <span class="es-note">('+r.note+')</span>':'')+'</span>'+
+     '<span class="es-bar-track"><span class="es-bar-fill" style="left:'+left+'%;width:'+w+'%"></span></span>'+
+     '<span class="es-bar-val">'+val+'</span></div>';
+ });
+ barsEl.innerHTML=h+'<p class="es-note" style="margin:4px 0 0">Scale: 0–'+(mode==='rate'?'350% O₂ rate':'8× O₂ cost')+' · '+unit+'</p>';
+}
+$all('.es-toggle button').forEach(function(b){
+ b.addEventListener('click',function(){
+  $all('.es-toggle button').forEach(function(x){x.setAttribute('aria-pressed','false');});
+  b.setAttribute('aria-pressed','true');mode=b.dataset.esrc;renderBars();
+ });
+});
+renderBars();
+
+/* ---------- 3. Daily oxygen budget calculator ---------- */
+var CONDS=[
+ {label:'Intact walker',cost:0.15,tag:'0.15 mL/kg/m · textbook',steps:8338},
+ {label:'Transtibial (mid-range 1.3×)',cost:0.20,tag:'studies span 1.0–1.6×',steps:5318},
+ {label:'Transfemoral (mid-range 1.75×)',cost:0.26,tag:'studies span 1.3–2.2×',steps:1540},
+ {label:'Bilateral transtibial (1.8×)',cost:0.27,tag:'Pinzur 60–100%',steps:2000,est:true},
+ {label:'Hemiplegia (mid-range 1.75×)',cost:0.26,tag:'Macko 1.5–2×',steps:4078},
+ {label:'Bilateral KAFO (7.7×)',cost:1.15,tag:'Waters via LER',steps:2000,est:true},
+ {label:'Hip disarticulation (4.3×)',cost:0.64,tag:'older cohort',steps:2000,est:true}
+];
+var condSel=$('#es-cond'),stepsIn=$('#es-steps'),bOut=$('#es-budget'),bVs=$('#es-budget-vs'),bMath=$('#es-budget-math');
+if(condSel){
+ CONDS.forEach(function(c,i){
+  var o=document.createElement('option');o.value=i;o.textContent=c.label+' — '+c.tag;condSel.appendChild(o);
+ });
+ condSel.selectedIndex=5;
+ function fmt(n){return n.toLocaleString('en-US',{maximumFractionDigits:0});}
+ function calc(){
+  var c=CONDS[+condSel.value]||CONDS[0];
+  var s=Math.max(0,parseFloat(stepsIn.value)||0);
+  var day=s*0.7*c.cost;
+  var intactSame=s*0.7*0.15, intactTyp=8338*0.7*0.15;
+  if(bOut)bOut.textContent='≈'+fmt(day)+' mL O₂ / kg / day';
+  if(bVs)bVs.innerHTML='vs intact at the same steps: ≈'+fmt(intactSame)+' ('+(day>0?(day/intactSame).toFixed(1):'—')+'×)'+
+   '<br>vs intact at 8,338 steps: ≈'+fmt(intactTyp)+' ('+(day>0?(day/intactTyp).toFixed(1):'—')+'×)';
+  if(bMath)bMath.textContent=fmt(s)+' steps × 0.7 m/step × '+c.cost.toFixed(2)+' mL/kg/m = '+fmt(day)+' mL/kg/day · step length 0.7 m assumed'+(c.est?' · default steps estimated':'');
+ }
+ condSel.addEventListener('change',function(){
+  var c=CONDS[+condSel.value];if(c&&stepsIn)stepsIn.value=c.steps;calc();
+ });
+ if(stepsIn)stepsIn.addEventListener('input',calc);
+ stepsIn.value=CONDS[5].steps;calc();
+}
+
+/* ---------- 4. 1970 vs 2025 feet lists ---------- */
+var FEET70=[
+ {n:'SACH foot',d:'Staros (VA), 1957. Wood keel, rubber shell, compressible foam heel — "standard due to its availability, inexpensiveness, and durability."',p:'price not published',na:true,v:'remained'},
+ {n:'Single-axis foot',d:'Hinged ankle with rubber bumper (e.g., Otto Bock).',p:'price not published',na:true,v:'remained'},
+ {n:'Jaipur foot',d:'Sethi, 1970s, India. Second most used prosthesis after SACH — hundreds of thousands of users across 20+ countries.',p:'price not published',na:true,v:'remained'},
+ {n:'Wood exoskeletal shank',d:'Laminated wood/plastic lower leg. Period-standard component.',p:'—',na:true,v:'removed'},
+ {n:'Leather corset socket',d:'Lacer leather socket suspension. Period-standard component.',p:'—',na:true,v:'removed'}
+];
+var FEET25=[
+ {n:'SACH foot',d:'Still manufactured today (Medicare L5970).',p:'$223.97',v:'remained'},
+ {n:'Single-axis foot',d:'Still listed, now niche (Medicare L5974).',p:'fee-schedule listed',na:true,v:'remained'},
+ {n:'Jaipur foot',d:'Still widely used in low-resource settings.',p:'price not published',na:true,v:'remained'},
+ {n:'Carbon-fiber energy-storing foot',d:'Composite laminates; the ESAR class arrives in the late 1980s.',p:'$571.34',v:'added'},
+ {n:'Microprocessor foot',d:'Össur Proprio — "the world\'s first bionic prosthetic foot," launched mid-2006.',p:'$17,534.17',v:'added'},
+ {n:'Powered foot',d:'BiOM (~2013–14), Ottobock Empower (>1,500 in use). No metabolic claim made — not researched.',p:'$17,534.17 band',v:'added'}
+];
+function renderFeet(el,list){
+ if(!el)return;var h='';
+ list.forEach(function(f){
+  h+='<div class="es-item" data-esv="'+f.v+'"><h4>'+f.n+'<span class="es-verdict es-v-'+f.v+'">'+f.v+'</span></h4><p>'+f.d+'</p>'+
+     '<div class="es-price'+(f.na?' na':'')+'">'+(f.na?'':'2025 Medicare: ')+f.p+'</div></div>';
+ });
+ el.innerHTML=h;
+}
+renderFeet($('#es-list-1970'),FEET70);
+renderFeet($('#es-list-2025'),FEET25);
+$all('.es-fbtn[data-esl]').forEach(function(b){
+ b.addEventListener('click',function(){
+  $all('.es-fbtn[data-esl]').forEach(function(x){x.setAttribute('aria-pressed','false');});
+  b.setAttribute('aria-pressed','true');
+  var f=b.dataset.esl;
+  $all('.es-item').forEach(function(it){
+   it.classList.toggle('hide',!(f==='all'||it.dataset.esv===f));
+  });
+ });
+});
+
+/* ---------- 5. Fare meter ticks with scroll ---------- */
+var meter=$('#es-meter'),mFill=$('#es-meter-fill'),mVal=$('#es-meter-val');
+function tickMeter(){
+ if(!meter||!root.classList.contains('active'))return;
+ var r=root.getBoundingClientRect();
+ var total=r.height-window.innerHeight;
+ var p=total>0?Math.min(Math.max(-r.top/total,0),1):0;
+ var fare=(1+p*6.7);
+ if(mFill)mFill.style.width=(p*100).toFixed(1)+'%';
+ if(mVal)mVal.textContent=fare.toFixed(1)+'×';
+}
+window.addEventListener('scroll',tickMeter,{passive:true});
+tickMeter();
+})();
+</script>
 
 </body>
 </html>
