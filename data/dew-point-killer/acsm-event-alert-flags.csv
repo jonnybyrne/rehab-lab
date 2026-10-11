@@ -1,0 +1,6 @@
+flag,wbgt_band_f,guidance
+WHITE,<50,Hypothermia risk
+GREEN,50-64,Decreased risk
+YELLOW,65-72,At-risk runners slow down
+RED,73-82,At-risk withdraw; others slow
+BLACK,>82,Cancel or voluntary withdrawal

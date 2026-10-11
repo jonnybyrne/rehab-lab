@@ -1,0 +1,6 @@
+dew_point_band_f,runner_feel
+<=54,Dry to very comfortable
+55-64,Comfortable to okay for most
+65-69,A bit uncomfortable for most
+70-74,Very humid; quite uncomfortable
+>=75,Extremely uncomfortable

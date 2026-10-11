@@ -1,0 +1,6 @@
+rh_percent,dew_point_f_computed,tte_significance_vs_23pct_rh
+23,45,reference
+43,63,no reported significance
+52,68,no reported significance
+61,73,P=0.045
+71,77,P=0.005
