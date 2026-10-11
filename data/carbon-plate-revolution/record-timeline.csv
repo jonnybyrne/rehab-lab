@@ -1,0 +1,12 @@
+sex,year,time,seconds,athlete,event,date,note
+men,2014,2:02:57,7377,Dennis Kimetto,Berlin,"Sep. 28, 2014",pre-super-shoe
+men,2018,2:01:39,7299,Eliud Kipchoge,Berlin,"Sep. 16, 2018",Vaporfly era
+men,2022,2:01:09,7269,Eliud Kipchoge,Berlin,"Sep. 25, 2022",super-shoe era
+men,2023,2:00:35,7235,Kelvin Kiptum,Chicago,"Oct. 8, 2023",d. 2024
+men,2026,1:59:30,7170,Sabastian Sawe,London,"Apr. 26, 2026",first sub-2:00 in a ratified race
+women,2003,2:15:25,8125,Paula Radcliffe,London,"Apr. 13, 2003",pre-super-shoe
+women,2019,2:14:04,8044,Brigid Kosgei,Chicago,"Oct. 13, 2019",Vaporfly era
+women,2023,2:11:53,7913,Tigst Assefa,Berlin,"Sep. 24, 2023",super-shoe era
+women,2024,2:09:56,7796,Ruth Chepngetich,Chicago,"Oct. 13, 2024",suspended 2025; record stands
+women,2026,2:15:41,8141,Tigst Assefa,London,"Apr. 26, 2026",women-only world record
+ghost,2019,1:59:40.2,7180.2,Eliud Kipchoge,Ineos run,,unofficial; not a ratified record; plotted at 7180s on the chart

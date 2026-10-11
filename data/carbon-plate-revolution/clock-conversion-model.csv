@@ -1,0 +1,4 @@
+parameter,value,note
+modeled velocity gain (low),2.6%,"Kipp, Kram & Hoogkamer 2019; model-dependent"
+modeled velocity gain (high),3.4%,"Kipp, Kram & Hoogkamer 2019; model-dependent"
+formula,time_saved = PB_seconds x gain,"e.g. 3:00:00 (10800s) -> 4:41 at 2.6%, 6:07 at 3.4%"
