@@ -1,0 +1,13 @@
+device_label,device_cost_usd,interval_months,devices_age5_to18,total_usd
+"$50 · printed",50,6,26,1300
+"$50 · printed",50,12,13,650
+"$50 · printed",50,24,7,350
+"$5k · conventional",5000,6,26,130000
+"$5k · conventional",5000,12,13,65000
+"$5k · conventional",5000,24,7,35000
+"$10k · conventional",10000,6,26,260000
+"$10k · conventional",10000,12,13,130000
+"$10k · conventional",10000,24,7,70000
+"$40k · myoelectric",40000,6,26,1040000
+"$40k · myoelectric",40000,12,13,520000
+"$40k · myoelectric",40000,24,7,280000

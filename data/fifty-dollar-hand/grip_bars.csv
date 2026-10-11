@@ -1,0 +1,4 @@
+label,peak_grip_newtons,note
+"Adult man, peak grip",510,"Reference: adult male peak grip ~52 kg (~510 N)"
+"Touch Hand 4",30.4,"Only 50% grasp success across test objects; 4.5-second response time"
+"X-Limb (printed)",21.5,"Best-documented printed hand: 253 g, 45000 grasp cycles without failure, $200 bill of materials, passed the AM-ULA"
