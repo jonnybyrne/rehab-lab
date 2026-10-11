@@ -1,0 +1,11 @@
+era,n,mean_age_at_injury,vehicular_pct,violence_pct,sports_pct,falls_pct,medical_surgical_pct,other_pct,unknown_pct,source
+1972-79,"4,563",28.7,46.9,13.3,14.4,16.5,1.2,7.7,0.1,NSCISC 2021 Annual Statistical Report Table 36
+1980-84,"4,949",30.5,45.2,16.0,14.2,16.9,1.7,5.9,0.1,NSCISC 2021 Annual Statistical Report Table 36
+1985-89,"3,843",32.3,42.2,18.8,10.1,20.7,2.1,6.0,0.1,NSCISC 2021 Annual Statistical Report Table 36
+1990-94,"3,295",33.7,36.3,28.9,7.6,20.0,2.3,4.8,0.1,NSCISC 2021 Annual Statistical Report Table 36
+1995-99,"3,623",36.4,40.0,21.1,7.0,23.4,3.6,4.8,0.1,NSCISC 2021 Annual Statistical Report Table 36
+2000-04,"3,443",37.6,47.5,13.9,8.8,23.0,2.5,4.2,0.1,NSCISC 2021 Annual Statistical Report Table 36
+2005-09,"3,606",40.5,40.5,15.1,8.0,27.7,4.7,3.9,0.1,NSCISC 2021 Annual Statistical Report Table 36
+2010-14,"3,650",42.2,38.2,13.5,9.0,30.4,4.7,4.0,0.2,NSCISC 2021 Annual Statistical Report Table 36
+2015-21,"4,703",43.2,37.5,15.2,8.3,31.3,3.6,3.6,0.3,NSCISC 2021 Annual Statistical Report Table 36
+Since 2015,"38,647 total database through Aug 2025",44.3,37.1,15.2,7.6,32.5,3.8,3.9,0.0,NSCISC 2026 Data Sheet (separate anchor)
