@@ -1,42 +1,26 @@
-# gait-cycle — chart data
+# Data: The Pickleball Fracture Curve
 
-Data behind Essay 07, "Walking is controlled falling."
-
-## Source
-
-Normative teaching values in the Perry / Rancho Los Amigos gait-analysis
-tradition, as presented in the essay. Joint angles approximate ±5°.
-Extracted October 2026 from the essay's embedded key values (no external
-retrieval; these are teaching values, not one person's recording).
+Chart data used in the essay, extracted from the values in the published page.
+No new data collected; see essay footnotes for full citations.
 
 ## Files
+- `participation.csv` — SFIA U.S. pickleball player estimates, 2019–2024 (millions).
+- `ed_endpoints.csv` — NEISS nationally estimated pickleball ED visits for the two
+  verified Cheng endpoints (2020, 2022) with the essay's derived per-1,000-player rates.
+- `age_anchors.csv` — published age anchors for ED injuries (Cheng et al. 2024).
+  Only the 60–79 combined share (73%) and mean age are published; other bins are
+  shown pale in the chart with no values.
+- `mechanism.csv` — falls and wrist-injury shares (Yu et al. 2025; Weiss et al. 2021).
 
-- `joint-angles.csv` — the eight key values the curves interpolate between:
-  `pct` (percent of gait cycle), `hip_deg`, `knee_deg`, `ankle_deg`.
-- `phases.csv` — the eight Perry phases with the per-phase joint values
-  shown in the scroll steps: `phase`, `pct_range`, `hip`, `knee`, `ankle`
-  (values as written in the essay, e.g. `~28° flex`, `~8° PF`).
-
-## Sign convention (joint-angles.csv)
-
-Positive = flexion / dorsiflexion (the chart axis reads
-"FLEXION / DORSIFLEXION POSITIVE"). Negative hip values are extension;
-negative ankle values are plantarflexion.
+## Sources and access
+- Cheng R, et al. 2024 (NEISS analysis, via PubMed Central). DOI 10.1016/j.asmr.2024.101067.
+- Yu J, et al. 2025. DOI 10.1177/23259671241305364.
+- Weiss H, et al. 2021. DOI 10.1186/s40621-021-00327-9.
+- SFIA 2025 Topline Participation Report.
+- Data extracted from the essay file on 2026-10-11.
 
 ## Transformations
-
-None beyond extraction: the CSVs hold the raw key values exactly as
-embedded in the essay. On the page, the joint-angle curves interpolate
-linearly between the `joint-angles.csv` rows, and the walking figure,
-clock, phase label, and joint readouts all read the same values.
-
-## Gaps
-
-- The center-of-gravity wave (~5 cm vertical, ~6 cm lateral) is drawn as a
-  decorative schematic path, not plotted from data — no CSV for it.
-- The stance 60% / swing 40% split, the ~10% double-support windows, and
-  the ~40% single-support figure are single reference numbers stated in
-  the essay text, not a dataset.
-- Cadence (~101–122 steps/min) and step length (~2.5 ft) are broad
-  teaching averages mentioned in the methods note; they are intentionally
-  not used to score the figure.
+- Per-1,000-player rates are the essay's own arithmetic (ED visits ÷ SFIA players),
+  not published incidence rates.
+- The 2020 dip (−14%) is shown as reported; the essay labels it a pandemic
+  closure artifact, not a modeled safety improvement.
