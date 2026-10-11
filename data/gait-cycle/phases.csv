@@ -1,0 +1,9 @@
+phase,pct_range,hip,knee,ankle
+Initial contact,0%,~28° flex,~3° flex,0°
+Loading response,0–10%,~22° flex,~16° flex,~8° PF
+Midstance,10–30%,~10° flex,~11° flex,~2° PF
+Terminal stance,30–50%,~10° ext,~4° flex,~8° DF
+Pre-swing,50–60%,~15° ext,~22° flex,~4° PF
+Initial swing,60–73%,~8° flex,~55° flex,~8° PF
+Mid-swing,73–87%,~21° flex,~42° flex,~2° PF
+Terminal swing,87–100%,~23° flex,~12° flex,0°
