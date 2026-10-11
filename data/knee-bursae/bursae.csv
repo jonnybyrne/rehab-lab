@@ -1,0 +1,6 @@
+id,name,location,clinical_note,source
+suprapatellar,Suprapatellar recess,"Extension of knee joint capsule above patella; not a separate superficial bursa in usual adult anatomy","Shows fullness above patella as part of joint effusion; communicates with knee joint",Essay anatomy (real sagittal T2 MRI)
+prepatellar,Prepatellar,"Superficial sliding plane between skin and patella","Focal swelling over patella from kneeling/trauma; 'housemaid's knee'",Khodaee 2017
+superficial_infrapatellar,Superficial infrapatellar,"Between skin and tibial tubercle","Swelling below patella from upright kneeling; 'clergyman's knee'",Khodaee 2017
+deep_infrapatellar,Deep infrapatellar,"Between distal patellar tendon and anterior tibia","Deep anterior pain; can mimic patellar tendinopathy",Essay anatomy
+semimembranosus_gastrocnemius,Semimembranosus-gastrocnemius,"Posteromedial synovial space","Can distend as Baker cyst; often with intra-articular pathology",Essay anatomy
