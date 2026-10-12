@@ -1,0 +1,12 @@
+study,setting,group,measure,value
+"Todd et al. 2000","ED, long-bone fracture","White patients","Received analgesia","74%"
+"Todd et al. 2000","ED, long-bone fracture","Black patients","Received analgesia","57%"
+"Pletcher et al. 2008","ED pain visits, 1993-2005","White patients","Received an opioid","31%"
+"Pletcher et al. 2008","ED pain visits, 1993-2005","Black patients","Received an opioid","23%"
+"Pletcher et al. 2008","ED pain visits, 1993-2005","Hispanic patients","Received an opioid","24%"
+"Chen et al. 2008","ED, acute abdominal pain","Men","Received an opioid","56%"
+"Chen et al. 2008","ED, acute abdominal pain","Women","Received an opioid","45%"
+"Goyal et al. 2015","ED, pediatric appendicitis","White children","Received opioid analgesia","43.1%"
+"Goyal et al. 2015","ED, pediatric appendicitis","Black children","Received opioid analgesia","20.7%"
+"Shavit et al. 2016","Pediatric ED, fracture/dislocation, severe pain, nurse-driven protocol","Arab children","Received an opioid","99.05%"
+"Shavit et al. 2016","Pediatric ED, fracture/dislocation, severe pain, nurse-driven protocol","Jewish children","Received an opioid","99.08%"
