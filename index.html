@@ -1327,6 +1327,62 @@ background:var(--p407-bg)}
 /* home card accent */
 .home-card.wp{--accent:#b3352b}
 
+
+/* ---- Essay 11 scrolly: the evidence wall (Pudding-pattern interaction) ---- */
+.ct-wallzone{position:relative;margin-top:10px}
+.ct-wall{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;padding:14px 4px 10px;z-index:1}
+.ct-wall-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.ct-wall-title{font:800 13px "Archivo",sans-serif;letter-spacing:.22em;text-transform:uppercase}
+.ct-wall-title small{display:block;font:11px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--ctmut);text-transform:none;margin-top:4px}
+.ct-legend{display:flex;gap:14px;flex-wrap:wrap;font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.ct-legend span{display:none;align-items:center;gap:6px}
+.ct-legend span.on{display:inline-flex}
+.ct-legend i{width:13px;height:13px;display:inline-block;border:1.5px solid var(--ctink)}
+.ct-legend .lg-gap i{background:#f6d9d3;border-color:var(--ctred)}
+.ct-legend .lg-mech i{background:#dfe3ea;border-color:var(--ctink)}
+.ct-legend .lg-narrow i{background:#f7e8bd;border-color:#8a6d1f}
+.ct-legend .lg-parity i{background:#d7e1f5;border-color:var(--ctblue)}
+.ct-tiles{flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;min-height:0}
+.ct-tile{border:2px solid var(--ctink);background:var(--ctcard);padding:12px 13px;display:flex;flex-direction:column;gap:3px;transition:opacity .5s ease,background .5s ease,box-shadow .3s ease;text-align:left}
+.ct-tile .ct-t-yr{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--ctmut);text-transform:uppercase}
+.ct-tile .ct-t-big{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(21px,3.2vw,34px);line-height:1}
+.ct-tile .ct-t-lab{font:12px/1.45 "IBM Plex Mono",monospace;color:#33363e}
+.ct-tile .ct-t-stamp{margin-top:auto;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;opacity:0}
+.ct-tile.gap{background:#fbeae6}.ct-tile.gap .ct-t-stamp{opacity:1;color:var(--ctred)}
+.ct-tile.mech{background:#eceef2}.ct-tile.mech .ct-t-stamp{opacity:1;color:var(--ctink)}
+.ct-tile.narrow{background:#fdf3d3}.ct-tile.narrow .ct-t-stamp{opacity:1;color:#8a6d1f}
+.ct-tile.parity{background:#e6ecfa}.ct-tile.parity .ct-t-stamp{opacity:1;color:var(--ctblue)}
+.ct-tile.ghost{opacity:.3}
+.ct-tile.spot{box-shadow:0 0 0 3px var(--ctpaper),0 0 0 6.5px #d9a514}
+.ct-wall-cap{font:10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;color:var(--ctmut);text-transform:uppercase;margin-top:10px}
+.ct-steps{position:relative;z-index:2;margin-top:-100svh;pointer-events:none}
+.ct-step{min-height:92svh;display:flex;align-items:flex-end;padding:0 0 9svh 2px}
+.ct-step-card{pointer-events:auto;background:var(--ctcard);border:2px solid var(--ctink);box-shadow:7px 7px 0 rgba(22,24,29,.16);padding:20px 22px 16px;max-width:440px;width:min(440px,92vw)}
+.ct-step-card .ct-sp{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+.ct-step-card p{font:14.5px/1.68 "IBM Plex Mono",monospace;color:#23262d;margin:8px 0 0}
+.ct-step-card .ct-step-big{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(30px,4.6vw,44px);line-height:1;margin-top:12px}
+.ct-step-card mark.ct-hl{background:#f5cf4d;padding:0 2px;color:inherit}
+.ct-explore{max-width:1020px;margin:26px auto 0}
+.ct-tiles.static{grid-template-columns:repeat(4,1fr)}
+.ct-tiles.static .ct-tile{cursor:pointer;font:inherit;width:100%}
+.ct-tiles.static .ct-tile:hover,.ct-tiles.static .ct-tile:focus-visible{box-shadow:0 0 0 3px var(--ctpaper),0 0 0 6.5px #d9a514;outline:none}
+.ct-tiles.static .ct-tile.sel{box-shadow:0 0 0 3px var(--ctpaper),0 0 0 6.5px var(--ctink)}
+.ct-tag{margin-top:14px;border:2px solid var(--ctink);background:var(--ctcard);padding:18px 20px;position:relative}
+.ct-tag:before{content:"EVIDENCE TAG";position:absolute;top:-11px;left:16px;background:var(--ctred);color:#fff;font:700 10px "IBM Plex Mono",monospace;letter-spacing:.14em;padding:3px 9px}
+.ct-tag h4{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;font-size:17px;margin:2px 0 8px}
+.ct-tag p{font:13.5px/1.65 "IBM Plex Mono",monospace;color:#2b2e35;margin:0 0 7px}
+.ct-tag p b{color:var(--ctink)}
+.ct-tag .ct-tag-lim{color:#5a3d17}
+#whose-pain-gets-believed .ct-tile,#whose-pain-gets-believed .ct-tile .ct-t-big,#whose-pain-gets-believed .ct-step-big,#whose-pain-gets-believed .ct-bar-val{color:var(--ctink)}
+#whose-pain-gets-believed .ct-tile.narrow .ct-t-stamp{color:#75591a}
+@media(max-width:760px){
+ .ct-tiles{grid-template-columns:repeat(3,1fr);gap:7px}
+ .ct-tiles.static{grid-template-columns:repeat(3,1fr)}
+ .ct-tile{padding:9px 10px}
+ .ct-tile .ct-t-lab{display:none}
+ .ct-step-card{max-width:94vw}
+}
+
 </style>
 </head>
 <body><a class="back-home" href="#home" data-open-view="home">← All essays</a>
@@ -2514,229 +2570,83 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 </header>
 
-<section class="ct-session ct-reveal" aria-labelledby="ct-h1">
+<section class="ct-session" aria-labelledby="ct-hw">
 <div class="ct-sess-head">
-<div class="ct-sess-no">Session I</div>
-<h2 id="ct-h1">The Witness: The Chart</h2>
-<div class="ct-sess-sub">Direct examination of an uncomplicated fracture</div>
+<div class="ct-sess-no">Proceedings</div>
+<h2 id="ct-hw">The Evidence, Sworn</h2>
+<div class="ct-sess-sub">Twelve findings, entered one by one. Scroll, and the wall will keep the record.</div>
 <div class="ct-sess-rule"><i></i></div>
 </div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>State the presentation for the record.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>Isolated long-bone fracture. Confirmed on imaging. Pain reported as severe, and documented as severe. No complications, no ambiguity, nothing to interpret and nothing to suspect.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>With a presentation that clean, treatment is automatic?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>It depends on who the patient is. The court may consult Exhibit A. One chart; the only variable substituted is the patient.</p></div></div>
+
+<div class="ct-wallzone" id="ct-wallzone">
+<div class="ct-wall" aria-hidden="true">
+<div class="ct-wall-head">
+<div class="ct-wall-title">The Evidence Wall<small>Twelve audited findings · 1993 to 2024</small></div>
+<div class="ct-legend">
+<span class="lg-gap" id="ct-lg-gap"><i></i>Gap documented</span>
+<span class="lg-mech" id="ct-lg-mech"><i></i>The mechanism</span>
+<span class="lg-narrow" id="ct-lg-narrow"><i></i>Gap narrowing</span>
+<span class="lg-parity" id="ct-lg-parity"><i></i>Parity under protocol</span>
+</div>
+</div>
+<div class="ct-tiles" id="ct-tiles-live">
+<div class="ct-tile" data-tile="todd93"><span class="ct-t-yr">1993 · Todd</span><span class="ct-t-big">2×</span><span class="ct-t-lab">Hispanic fracture patients' risk of no analgesia</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="todd00"><span class="ct-t-yr">2000 · Todd</span><span class="ct-t-big">74/57</span><span class="ct-t-lab">Analgesia %, white vs Black, fractures</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="pletcher"><span class="ct-t-yr">2008 · Pletcher</span><span class="ct-t-big">31/23</span><span class="ct-t-lab">Opioid %, white vs Black, ED pain visits</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="chen"><span class="ct-t-yr">2008 · Chen</span><span class="ct-t-big">+16m</span><span class="ct-t-lab">Women's extra wait for analgesia</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="lazio"><span class="ct-t-yr">2010 · Lazio</span><span class="ct-t-big">80/50</span><span class="ct-t-lab">Minutes to analgesia, sickle cell vs kidney stone</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="goyal"><span class="ct-t-yr">2015 · Goyal</span><span class="ct-t-big">43/21</span><span class="ct-t-lab">Opioid %, white vs Black children, appendicitis</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="hoffman"><span class="ct-t-yr">2016 · Hoffman</span><span class="ct-t-big">~50%</span><span class="ct-t-lab">Trainees endorsing a false biological belief</span><span class="ct-t-stamp">The mechanism</span></div>
+<div class="ct-tile" data-tile="staal"><span class="ct-t-yr">2016 · Staal</span><span class="ct-t-big">7.4y</span><span class="ct-t-lab">Median delay to an endometriosis diagnosis</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="shavit"><span class="ct-t-yr">2016 · Shavit</span><span class="ct-t-big">99/99</span><span class="ct-t-lab">Protocol parity, Arab vs Jewish children</span><span class="ct-t-stamp">Parity · protocol</span></div>
+<div class="ct-tile" data-tile="pecarn"><span class="ct-t-yr">2020 · PECARN</span><span class="ct-t-big">0.86</span><span class="ct-t-lab">Opioid aOR, minority vs white children, the recount</span><span class="ct-t-stamp">Gap narrowing</span></div>
+<div class="ct-tile" data-tile="enzinger"><span class="ct-t-yr">2023 · Enzinger</span><span class="ct-t-big">−4.3</span><span class="ct-t-lab">Points, opioids near end of life, Black vs white</span><span class="ct-t-stamp">Gap documented</span></div>
+<div class="ct-tile" data-tile="man"><span class="ct-t-yr">2024 · Man</span><span class="ct-t-big">0.44</span><span class="ct-t-lab">Uninsured patients' odds of facility discharge after stroke</span><span class="ct-t-stamp">Gap documented</span></div>
+</div>
+<div class="ct-wall-cap">Nothing is stamped until it is sworn · The legend keeps count</div>
 </div>
 
-<div class="ct-exhibit">
-<span class="ct-exhibit-tag">Exhibit A</span>
-<h3>One chart, three patients</h3>
-<div class="ct-chartgrid">
-<div><b>Presentation</b>Isolated long-bone fracture</div>
-<div><b>Imaging</b>Fracture confirmed</div>
-<div><b>Reported pain</b>Severe, documented</div>
-<div><b>Complications</b>None</div>
-</div>
-<div class="ct-chips" role="group" aria-label="Substitute the patient">
-<button class="ct-chip" data-ct-patient="white" aria-pressed="true">Patient: white</button>
-<button class="ct-chip" data-ct-patient="black" aria-pressed="false">Patient: Black</button>
-<button class="ct-chip" data-ct-patient="hispanic" aria-pressed="false">Patient: Hispanic</button>
-</div>
-<div class="ct-readout" aria-live="polite">
-<div class="ct-big" id="ct-chart-big">74%</div>
-<div>
-<p id="ct-chart-text">of white patients with this presentation received analgesia in the emergency department.</p>
-<p class="ct-cite" id="ct-chart-cite">Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#ct-src-4">4</a></sup></p>
-<span class="ct-stamp blue" id="ct-chart-stamp">Admitted · The baseline</span>
-</div>
+<div class="ct-steps">
+<div class="ct-step" data-step="0"><div class="ct-step-card"><span class="ct-sp ct">The Clerk:</span><p>The evidence in this case is twelve findings, audited from thirty years of charts. At present they are unstamped. The court has not heard them yet.</p><div class="ct-step-big">12 findings</div></div></div>
+<div class="ct-step" data-step="1"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>Begin with the cleanest case in medicine: a broken bone, proven on imaging, pain documented as severe. <mark class="ct-hl">White patients received analgesia 74% of the time; Black patients, 57%</mark> (Todd, 2000). Seven years earlier, Hispanic patients with the same fractures were <mark class="ct-hl">twice as likely to receive no pain medication at all</mark> (Todd, 1993).</p><div class="ct-step-big">74 vs 57</div></div></div>
+<div class="ct-step" data-step="2"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>The mechanism, when researchers went looking: about <mark class="ct-hl">half of white medical students and residents endorsed at least one false belief</mark> about biological differences between Black and white people, claims like thicker skin and less sensitive nerve endings (Hoffman, 2016). Endorsers rated the Black patient's pain lower and treated it less accurately. Those who endorsed none showed no bias.</p><div class="ct-step-big">~50%</div></div></div>
+<div class="ct-step" data-step="3"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>Then the nation was counted: thirteen years of emergency department data. Prescribing rose for everyone, and <mark class="ct-hl">the gap did not move</mark>: opioids at 31% of white patients' pain visits, 23% of Black patients', 24% of Hispanic patients' (Pletcher, 2008). The test for the gap narrowing over time: P = .44.</p><div class="ct-step-big">31 vs 23</div></div></div>
+<div class="ct-step" data-step="4"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>Belief is also kept in minutes. Sickle cell patients arrived in more pain, triaged at higher priority, and still waited a median of <mark class="ct-hl">80 minutes for a first analgesic, against 50 for kidney stones</mark> (Lazio, 2010). Women with abdominal pain waited 65 minutes to men's 49 (Chen, 2008).</p><div class="ct-step-big">80 vs 50</div></div></div>
+<div class="ct-step" data-step="5"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>The defense will mention drug-seeking. The pediatric record answers it: children with appendicitis received opioids at <mark class="ct-hl">43.1% (white) against 20.7% (Black)</mark>, and with moderate pain Black children had one tenth the adjusted odds of receiving any analgesia at all (Goyal, 2015).</p><div class="ct-step-big">43 vs 21</div></div></div>
+<div class="ct-step" data-step="6"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>The recount, heard in full: by 2020, in seven pediatric centers, minority children were <mark class="ct-hl">more likely to receive some analgesic</mark> (aOR 1.72), while the opioid gap narrowed to <mark class="ct-hl">aOR 0.86</mark> (PECARN, 2020). Narrowing is entered as narrowing. It is not entered as closed.</p><div class="ct-step-big">0.86</div></div></div>
+<div class="ct-step" data-step="7"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>The long way around: a median of <mark class="ct-hl">7.4 years</mark> from symptoms to an endometriosis diagnosis (Staal, 2016). At the end of life, Black Medicare patients were <mark class="ct-hl">4.3 points less likely</mark> to receive any opioid (Enzinger, 2023). And after stroke, the strongest predictor of reaching a facility was the insurance card: uninsured odds 0.44 (Man, 2024).</p><div class="ct-step-big">7.4 yrs</div></div></div>
+<div class="ct-step" data-step="8"><div class="ct-step-card"><span class="ct-sp rec">The Record:</span><p>One entry reads differently. Under a nurse-driven protocol, where the medication decision followed standing orders rather than a clinician's read of the child: <mark class="ct-hl">99.05% versus 99.08%</mark> opioid receipt in severe pain, Arab and Jewish children (Shavit, 2016).</p><div class="ct-step-big">99 vs 99</div></div></div>
+<div class="ct-step" data-step="9"><div class="ct-step-card"><span class="ct-sp ct">The Court:</span><p>The evidence is complete, and it is now released to the gallery. Examine it below: every tile carries its study, its numbers, and its limits, on its tag.</p><div class="ct-step-big">↓</div></div></div>
 </div>
 </div>
 
-<div class="ct-qa" style="margin-top:36px">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ct">The Court:</span><p>Let the record show that the only variable changed was the patient. Proceed to the mechanism.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>What, in evidence, would make the same chart read differently?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>In 2016, researchers handed white laypeople, medical students, and residents a list of statements about biological differences between Black and white people, and asked which were true (Hoffman et al., PNAS).<sup><a href="#ct-src-2">2</a></sup> Read into the record, the inventory included:</p>
-<ul class="ct-items">
-<li>"Black people's skin is thicker than white people's skin."</li>
-<li>"Black people's nerve endings are less sensitive than white people's nerve endings."</li>
-<li>"Black people's blood coagulates more quickly than white people's blood."</li>
-</ul>
-<p>None of these statements is true. About 73% of laypeople endorsed at least one of them. About half of the medical students and residents did.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>And the consequence of endorsement?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>Participants who believed more of the false claims rated a Black patient's pain lower than a white patient's, and made less accurate treatment recommendations for the Black patient. Participants who endorsed none of them showed no treatment bias. Part of the gap, the record suggests, is built from false anatomy. False anatomy can be corrected.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ct">The Court:</span><p>The court notes the limitation: these were hypothetical cases, and the finding is a direction, not a dose. Admitted as such.</p></div></div>
+<div class="ct-explore">
+<div class="ct-wall-title" style="margin-bottom:4px">Examine the evidence<small style="display:block;font:11px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:var(--ctmut);margin-top:4px">Hover or tap any tile. The tag below it is the chain of custody: study, design, figures, limits.</small></div>
+<div class="ct-tiles static" id="ct-tiles-static">
+<button class="ct-tile gap" data-tile="todd93"><span class="ct-t-yr">1993 · Todd</span><span class="ct-t-big">2×</span><span class="ct-t-lab">Hispanic fracture patients' risk of no analgesia</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="todd00"><span class="ct-t-yr">2000 · Todd</span><span class="ct-t-big">74/57</span><span class="ct-t-lab">Analgesia %, white vs Black, fractures</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="pletcher"><span class="ct-t-yr">2008 · Pletcher</span><span class="ct-t-big">31/23</span><span class="ct-t-lab">Opioid %, white vs Black, ED pain visits</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="chen"><span class="ct-t-yr">2008 · Chen</span><span class="ct-t-big">+16m</span><span class="ct-t-lab">Women's extra wait for analgesia</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="lazio"><span class="ct-t-yr">2010 · Lazio</span><span class="ct-t-big">80/50</span><span class="ct-t-lab">Minutes to analgesia, sickle cell vs kidney stone</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="goyal"><span class="ct-t-yr">2015 · Goyal</span><span class="ct-t-big">43/21</span><span class="ct-t-lab">Opioid %, white vs Black children, appendicitis</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile mech" data-tile="hoffman"><span class="ct-t-yr">2016 · Hoffman</span><span class="ct-t-big">~50%</span><span class="ct-t-lab">Trainees endorsing a false biological belief</span><span class="ct-t-stamp">The mechanism</span></button>
+<button class="ct-tile gap" data-tile="staal"><span class="ct-t-yr">2016 · Staal</span><span class="ct-t-big">7.4y</span><span class="ct-t-lab">Median delay to an endometriosis diagnosis</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile parity" data-tile="shavit"><span class="ct-t-yr">2016 · Shavit</span><span class="ct-t-big">99/99</span><span class="ct-t-lab">Protocol parity, Arab vs Jewish children</span><span class="ct-t-stamp">Parity · protocol</span></button>
+<button class="ct-tile narrow" data-tile="pecarn"><span class="ct-t-yr">2020 · PECARN</span><span class="ct-t-big">0.86</span><span class="ct-t-lab">Opioid aOR, minority vs white children, the recount</span><span class="ct-t-stamp">Gap narrowing</span></button>
+<button class="ct-tile gap" data-tile="enzinger"><span class="ct-t-yr">2023 · Enzinger</span><span class="ct-t-big">−4.3</span><span class="ct-t-lab">Points, opioids near end of life, Black vs white</span><span class="ct-t-stamp">Gap documented</span></button>
+<button class="ct-tile gap" data-tile="man"><span class="ct-t-yr">2024 · Man</span><span class="ct-t-big">0.44</span><span class="ct-t-lab">Uninsured patients' odds of facility discharge after stroke</span><span class="ct-t-stamp">Gap documented</span></button>
 </div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h2">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session II</div>
-<h2 id="ct-h2">The National Record</h2>
-<div class="ct-sess-sub">Thirteen years of emergency departments, counted whole</div>
-<div class="ct-sess-rule"><i></i></div>
+<div class="ct-tag" id="ct-tag" aria-live="polite">
+<h4 id="ct-tag-title">Todd et al., Annals of Emergency Medicine, 2000</h4>
+<p id="ct-tag-design"><b>Design:</b> Retrospective cohort, urban ED in Atlanta; 217 patients with isolated long-bone fractures (127 Black, 90 white).</p>
+<p id="ct-tag-finding"><b>Finding:</b> Analgesics given to 74% of white vs 57% of Black patients, with similar documented pain; risk of receiving no analgesic was 66% higher for Black patients (RR 1.66).</p>
+<p class="ct-tag-lim" id="ct-tag-lim"><b>Limits:</b> Small, single-center, retrospective. The national surveys carry the generalizable weight.</p>
 </div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>Two small studies. Single centers, three decades old. Why should the court credit them?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>Because the nation was counted next. Thirteen years of US emergency department data, roughly 157,000 pain-related visits (Pletcher et al., JAMA, 2008).<sup><a href="#ct-src-5">5</a></sup> Across that span, opioid prescribing rose steeply for everyone, from 23% of pain visits in 1993 to 37% in 2005. The gap did not move. The test for whether the racial difference narrowed over time returned P = .44: no detectable change.</p></div></div>
 </div>
 
-<div class="ct-exhibit">
-<span class="ct-exhibit-tag">Exhibit B</span>
-<h3>Prescribing, counted nationally</h3>
-<div class="ct-bars">
-<div class="ct-bar-row"><span class="ct-lab">Received an opioid · White patients</span><div class="ct-bar"><i style="width:31%"></i></div><span class="ct-bar-val">31%</span></div>
-<div class="ct-bar-row"><span class="ct-lab">Received an opioid · Black patients</span><div class="ct-bar"><i class="red" style="width:23%"></i></div><span class="ct-bar-val">23%</span><p>Adjusted odds ratio 0.66, after accounting for pain severity and other factors.</p></div>
-<div class="ct-bar-row"><span class="ct-lab">Received an opioid · Hispanic patients</span><div class="ct-bar"><i class="red" style="width:24%"></i></div><span class="ct-bar-val">24%</span><p>Adjusted odds ratio 0.67.</p></div>
-</div>
-<span class="ct-stamp red">Gap unchanged over 13 years</span>
-<p class="ct-cite">Pletcher et al., JAMA, 2008 · All-period rates across 1993 to 2005</p>
-</div>
-
-<div class="ct-qa" style="margin-top:36px">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>Whatever drove prescribing upward through those years reached patients unevenly, in the same proportions, year after year. A disparity that stable is not a series of individual mistakes. It is a property of the system doing the prescribing.</p></div></div>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h3">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session III</div>
-<h2 id="ct-h3">The Clock Testifies</h2>
-<div class="ct-sess-sub">Belief, measured in minutes</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>Does the record keep time as well?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>It does. Patients with sickle cell disease arrived at one emergency department with higher pain scores than patients with kidney stones, and were triaged at higher priority (Lazio et al., 2010).<sup><a href="#ct-src-7">7</a></sup> They waited longer anyway. In a second department, women with acute abdominal pain received opioids less often than men with the same presentation, and waited longer to receive them (Chen et al., 2008).<sup><a href="#ct-src-6">6</a></sup> The court may run the clocks.</p></div></div>
-</div>
-
-<div class="ct-exhibit">
-<span class="ct-exhibit-tag">Exhibit C</span>
-<h3>The court's clock</h3>
-<div class="ct-chips" role="group" aria-label="Choose the comparison">
-<button class="ct-chip" data-ct-race="scd" aria-pressed="true">Sickle cell vs kidney stone</button>
-<button class="ct-chip" data-ct-race="sex" aria-pressed="false">Women vs men · abdominal pain</button>
-</div>
-<div class="ct-lane"><div class="ct-lab"><span id="ct-lane-a-lab">Kidney stone (renal colic)</span><output id="ct-lane-a-out">median 50 min</output></div><div class="ct-track"><i id="ct-lane-a"></i></div></div>
-<div class="ct-lane"><div class="ct-lab"><span id="ct-lane-b-lab">Sickle cell crisis</span><output id="ct-lane-b-out">median 80 min</output></div><div class="ct-track"><i class="red" id="ct-lane-b"></i></div></div>
-<button class="ct-play" id="ct-race-play">Run the clocks</button>
-<div class="ct-gapstamp" id="ct-race-stamp"></div>
-<p class="ct-cite" id="ct-race-cite">Median time to first analgesic. Lazio et al., Clinical Journal of Pain, 2010 (adjusted hazard ratio for timely analgesia 0.61).</p>
-</div>
-
-<div class="ct-qa" style="margin-top:36px">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ct">The Court:</span><p>Fifty minutes for the stone. Eighty for the crisis, from patients who arrived in more pain. So noted.</p></div></div>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h4">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session IV</div>
-<h2 id="ct-h4">The Pediatric Record</h2>
-<div class="ct-sess-sub">The witnesses who cannot be suspected</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>The defense will say clinicians were guarding against misuse. Answer that.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>The pediatric record answers it. In national data on appendicitis, a painful surgical emergency, only 56.8% of children received any pain medication at all. Within that undertreatment sat a second one (Goyal et al., JAMA Pediatrics, 2015).<sup><a href="#ct-src-8">8</a></sup> A child cannot be drug-seeking.</p></div></div>
-</div>
-
-<div class="ct-exhibit">
-<span class="ct-exhibit-tag">Exhibit D</span>
-<h3>Appendicitis, in children</h3>
-<div class="ct-bars">
-<div class="ct-bar-row"><span class="ct-lab">Opioid analgesia · White children</span><div class="ct-bar"><i style="width:43.1%"></i></div><span class="ct-bar-val">43.1%</span></div>
-<div class="ct-bar-row"><span class="ct-lab">Opioid analgesia · Black children</span><div class="ct-bar"><i class="red" style="width:20.7%"></i></div><span class="ct-bar-val">20.7%</span><p>Adjusted for ethnicity and pain severity: with moderate pain, Black children had one tenth the odds of receiving any analgesia (aOR 0.1, 95% CI 0.02 to 0.8); with severe pain, one fifth the odds of receiving opioids (aOR 0.2, 95% CI 0.06 to 0.9). The intervals are wide. The direction is not ambiguous.</p></div>
-</div>
-<p class="ct-cite">Goyal et al., JAMA Pediatrics, 2015 · NHAMCS 2003 to 2010</p>
-</div>
-
-<div class="ct-qa" style="margin-top:36px">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>And the most recent count? The court will hear it, whichever way it cuts.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>In 2020, a seven-center study of pediatric fractures found the pattern partly reversed: minority children were more likely than white children to receive some analgesic (aOR 1.72), while remaining less likely to receive an opioid, by a far smaller margin than in 2015 (aOR 0.86), and less likely to reach optimal pain reduction.<sup><a href="#ct-src-9">9</a></sup> The any-medication gap appears to have closed in that setting. The opioid gap narrowed. Neither fact strikes the earlier counts from the record.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ct">The Court:</span><p>The recount is admitted, in full, in the main record. Trends are not verdicts in either direction.</p></div></div>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h5">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session V</div>
-<h2 id="ct-h5">The Long Testimony</h2>
-<div class="ct-sess-sub">Where disbelief is measured in years</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>The emergency department measures disbelief in minutes. Chronic care measures it in years. Endometriosis, a disease whose cardinal symptom is pain, took a median of 89 months, about 7.4 years, from first symptoms to diagnosis in a Dutch specialist-center study, through delays at the patient, primary care, and specialist steps alike (Staal et al., 2016).<sup><a href="#ct-src-10">10</a></sup> The study was small, single-center, and recall-based; the record offers the figure as an illustration, not a constant.</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>Is the pattern named anywhere in the literature?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>Twice over. In 2001, Hoffmann and Tarzian titled their review "The Girl Who Cried Pain," documenting how women's pain reports are more readily read as exaggeration or emotion.<sup><a href="#ct-src-11">11</a></sup> A 2018 review supplied the shorthand for the norms themselves: the brave man, stoic by expectation, and the emotional woman, expressive by expectation, with clinical judgment bending toward whichever story it was handed.<sup><a href="#ct-src-12">12</a></sup> Norms like these never announce themselves. They set the prior probability that a report is believed, before the patient finishes the sentence.</p></div></div>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h6">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session VI</div>
-<h2 id="ct-h6">The Last Days</h2>
-<div class="ct-sess-sub">Restriction, rationed unevenly</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>The opioid era's correction cut access for everyone. Did it at least cut evenly?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>It did not. In Medicare data on more than 300,000 patients dying of poor-prognosis cancers between 2007 and 2019 (Enzinger et al., 2023),<sup><a href="#ct-src-13">13</a></sup> the gaps near the end of life were these:</p></div></div>
-</div>
-
-<div class="ct-exhibit">
-<span class="ct-exhibit-tag">Exhibit E</span>
-<h3>End of life, adjusted differences</h3>
-<div class="ct-bars">
-<div class="ct-bar-row"><span class="ct-lab">Any opioid · Black vs white patients</span><span class="ct-bar-val">−4.3 points</span><p>Percentage points (95% CI −4.8 to −3.6), with lower daily and total doses.</p></div>
-<div class="ct-bar-row"><span class="ct-lab">Any opioid · Hispanic vs white patients</span><span class="ct-bar-val">−3.6 points</span><p>Percentage points (95% CI −4.4 to −2.9).</p></div>
-<div class="ct-bar-row"><span class="ct-lab">Urine drug screening · Black vs white patients</span><span class="ct-bar-val">+0.5 points</span><p>Less medication, more surveillance: the two adjustments moved in opposite directions.</p></div>
-</div>
-<p class="ct-cite">Enzinger et al., Journal of Clinical Oncology, 2023 · The gaps did not shrink when socioeconomic factors were added to the model. The authors' summary: substantial and persistent.</p>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h7">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Session VII</div>
-<h2 id="ct-h7">The Rehab Door</h2>
-<div class="ct-sess-sub">The reporter's own field takes the stand</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div class="ct-qa">
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>After a stroke, what decides who reaches rehabilitation?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>In roughly one million US ischemic stroke admissions (Man et al., 2024),<sup><a href="#ct-src-14">14</a></sup> the clearest adjusted gaps ran through insurance. Hispanic patients covered by Medicare or Medicaid had lower odds of discharge to a facility than white patients (aOR 0.80), as did Hispanic patients paying out of pocket (aOR 0.75). The strongest predictor in the model was not race at all: uninsured patients of every background had the lowest odds of facility discharge (aOR 0.44).</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp ex">Examiner:</span><p>Does the record isolate rehabilitation facilities specifically?</p></div></div>
-<div class="ct-line"><div class="ct-lineno"></div><div class="ct-said"><span class="ct-sp rec">The Record:</span><p>It does not, and the record concedes the point. The outcome bundles inpatient rehabilitation with skilled nursing and facility hospice. A gap that runs through insurance is also a different problem, with different fixes, than a gap that runs through a clinician's judgment, and this record will not blur the two. What stands: belief is not the only rationing instrument in this case. The insurance card is another, and it is checked before the patient says a word.</p></div></div>
-</div>
-</section>
-
-<section class="ct-session ct-reveal" aria-labelledby="ct-h8">
-<div class="ct-sess-head">
-<div class="ct-sess-no">Appendix</div>
-<h2 id="ct-h8">The Exhibit Log</h2>
-<div class="ct-sess-sub">Every entry, kept the way evidence is kept</div>
-<div class="ct-sess-rule"><i></i></div>
-</div>
-<div style="max-width:820px;margin:0 auto">
-<div class="ct-chips" role="group" aria-label="Filter the exhibit log">
-<button class="ct-chip" data-ct-filter="all" aria-pressed="true">All testimony</button>
-<button class="ct-chip" data-ct-filter="adults" aria-pressed="false">Adult</button>
-<button class="ct-chip" data-ct-filter="children" aria-pressed="false">Pediatric</button>
-</div>
-<table class="ct-log">
-<thead><tr><th>Year</th><th>Entered by</th><th>Finding</th><th>The gap</th></tr></thead>
-<tbody>
-<tr data-ct-cat="adults"><td class="y">1993</td><td>Todd, JAMA</td><td>Hispanic patients, long-bone fractures, received no analgesia</td><td class="g">RR 2.12</td></tr>
-<tr data-ct-cat="adults"><td class="y">2000</td><td>Todd, Ann Emerg Med</td><td>Analgesia for long-bone fractures, white vs Black patients</td><td class="g">74% vs 57%</td></tr>
-<tr data-ct-cat="adults"><td class="y">2008</td><td>Pletcher, JAMA</td><td>Opioids at ED pain visits, white vs Black patients, 13 years</td><td class="g">31% vs 23%</td></tr>
-<tr data-ct-cat="adults"><td class="y">2008</td><td>Chen, Acad Emerg Med</td><td>Median wait for analgesia, women vs men, abdominal pain</td><td class="g">65 vs 49 min</td></tr>
-<tr data-ct-cat="adults"><td class="y">2010</td><td>Lazio, Clin J Pain</td><td>Median wait for first analgesic, sickle cell vs renal colic</td><td class="g">80 vs 50 min</td></tr>
-<tr data-ct-cat="children"><td class="y">2015</td><td>Goyal, JAMA Pediatr</td><td>Opioid analgesia in appendicitis, white vs Black children</td><td class="g">43.1% vs 20.7%</td></tr>
-<tr data-ct-cat="children"><td class="y">2020</td><td>Goyal (PECARN), Pediatrics</td><td>Opioid analgesia in fractures, minority vs white children</td><td class="g">aOR 0.86</td></tr>
-<tr data-ct-cat="adults"><td class="y">2023</td><td>Enzinger, J Clin Oncol</td><td>Any opioid near end of life, Black vs white Medicare patients</td><td class="g">−4.3 points</td></tr>
-</tbody>
-</table>
-<p class="ct-cite" style="font:11.5px 'IBM Plex Mono',monospace;color:var(--ctmut)">Full citations in the certification below. The pooled estimate across the ED literature (Lee et al., 2019): odds ratio 0.60 for Black patients receiving analgesia; the pooled Hispanic estimate, 0.75, did not reach significance, on a small base of 14 studies.<sup><a href="#ct-src-16">16</a></sup></p>
+<div class="ct-note" style="max-width:820px;margin-top:44px">
+<span class="ct-tag" style="font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.18em;color:var(--ctblue)">Judicial notice · The norms behind the numbers</span>
+<p>The court takes notice of two framings from the literature. In 2001, Hoffmann and Tarzian titled their review "The Girl Who Cried Pain," documenting how women's pain reports are more readily read as exaggeration or emotion.<sup><a href="#ct-src-11">11</a></sup> A 2018 review supplied the shorthand: the brave man, stoic by expectation, and the emotional woman, expressive by expectation, with clinical judgment bending toward whichever story it was handed.<sup><a href="#ct-src-12">12</a></sup> Norms like these never announce themselves. They set the prior probability that a report is believed, before the patient finishes the sentence.</p>
 </div>
 </section>
 
@@ -2834,91 +2744,72 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 var root=document.getElementById('whose-pain-gets-believed');
 if(!root)return;
 
-/* Exhibit A: one chart, three patients */
-var chartData={
-white:{big:'74%',stamp:'Admitted · The baseline',cls:'blue',
- text:'of white patients with this presentation received analgesia in the emergency department.',
- cite:'Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#ct-src-4">4</a></sup>'},
-black:{big:'57%',stamp:'Disparity noted · 17 points',cls:'red',
- text:'of Black patients with the same fracture type and similar documented pain received analgesia.',
- cite:'Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#ct-src-4">4</a></sup>'},
-hispanic:{big:'2\u00D7',stamp:'Most likely to get nothing',cls:'red',
- text:'Hispanic patients were about twice as likely as non-Hispanic white patients to receive no pain medication at all. In the adjusted model the odds ratio was 7.46, with a wide interval (2.22 to 25.04) in a small study.',
- cite:'Todd et al., JAMA, 1993 <sup><a href="#ct-src-3">3</a></sup>'}};
-var cBig=root.querySelector('#ct-chart-big'),cText=root.querySelector('#ct-chart-text'),
-    cCite=root.querySelector('#ct-chart-cite'),cStamp=root.querySelector('#ct-chart-stamp');
-root.querySelectorAll('[data-ct-patient]').forEach(function(btn){
- btn.addEventListener('click',function(){
-  root.querySelectorAll('[data-ct-patient]').forEach(function(b){b.setAttribute('aria-pressed','false')});
-  btn.setAttribute('aria-pressed','true');
-  var d=chartData[btn.dataset.ctPatient];if(!d)return;
-  cBig.textContent=d.big;cText.textContent=d.text;cCite.innerHTML=d.cite;
-  cStamp.textContent=d.stamp;cStamp.className='ct-stamp '+d.cls;
+/* ===== The evidence wall: scroll-driven state machine ===== */
+var PAINTS={1:{todd93:'gap',todd00:'gap'},2:{hoffman:'mech'},3:{pletcher:'gap'},
+ 4:{chen:'gap',lazio:'gap'},5:{goyal:'gap'},6:{pecarn:'narrow'},
+ 7:{staal:'gap',enzinger:'gap',man:'gap'},8:{shavit:'parity'}};
+var SPOTS={0:[],1:['todd93','todd00'],2:['hoffman'],3:['pletcher'],4:['chen','lazio'],
+ 5:['goyal'],6:['pecarn'],7:['staal','enzinger','man'],8:['shavit'],9:[]};
+var liveTiles={};
+root.querySelectorAll('#ct-tiles-live .ct-tile').forEach(function(t){liveTiles[t.dataset.tile]=t});
+function setStep(n){
+ var painted={};
+ for(var s=1;s<=Math.min(n,8);s++){var p=PAINTS[s];if(p)for(var k in p)painted[k]=p[k];}
+ var spots=SPOTS[n]||[];
+ Object.keys(liveTiles).forEach(function(id){
+  var t=liveTiles[id];
+  t.classList.remove('gap','mech','narrow','parity','ghost','spot');
+  if(painted[id])t.classList.add(painted[id]);
+  if(spots.indexOf(id)>=0)t.classList.add('spot');
+  else if(n>=1&&n<=8&&!painted[id])t.classList.add('ghost');
  });
-});
-
-/* Exhibit C: the court's clock */
-var races={
-scd:{aLab:'Kidney stone (renal colic)',a:50,bLab:'Sickle cell crisis',b:80,
- stamp:'Still waiting: +30 minutes, despite higher pain scores and higher triage priority',
- cite:'Median time to first analgesic. Lazio et al., Clinical Journal of Pain, 2010 (adjusted hazard ratio for timely analgesia 0.61).'},
-sex:{aLab:'Men, abdominal pain',a:49,bLab:'Women, abdominal pain',b:65,
- stamp:'Still waiting: +16 minutes, and opioids 45% vs 56% of the time',
- cite:'Median time to analgesia, and opioid receipt, by sex: Chen et al., Academic Emergency Medicine, 2008.'}};
-var cur='scd',anim=null;
-var lA=root.querySelector('#ct-lane-a'),lB=root.querySelector('#ct-lane-b'),
-    oA=root.querySelector('#ct-lane-a-out'),oB=root.querySelector('#ct-lane-b-out'),
-    labA=root.querySelector('#ct-lane-a-lab'),labB=root.querySelector('#ct-lane-b-lab'),
-    stampBox=root.querySelector('#ct-race-stamp'),raceCite=root.querySelector('#ct-race-cite'),
-    playBtn=root.querySelector('#ct-race-play');
-function setRace(key,animate){
- cur=key;var d=races[key];if(!d)return;
- labA.textContent=d.aLab;labB.textContent=d.bLab;raceCite.textContent=d.cite;
- if(anim)cancelAnimationFrame(anim);
- if(!animate){
-  lA.style.width=(d.a/90*100)+'%';lB.style.width=(d.b/90*100)+'%';
-  oA.textContent='median '+d.a+' min';oB.textContent='median '+d.b+' min';
-  stampBox.innerHTML='';return;
- }
- var t0=null,dur=2100;
- playBtn.disabled=true;
- function step(ts){
-  if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,2);
-  var va=Math.round(d.a*e),vb=Math.round(d.b*e);
-  lA.style.width=(va/90*100)+'%';lB.style.width=(vb/90*100)+'%';
-  oA.textContent=va+' min';oB.textContent=vb+' min';
-  if(p<1){anim=requestAnimationFrame(step);}
-  else{
-   oA.textContent='median '+d.a+' min';oB.textContent='median '+d.b+' min';
-   stampBox.innerHTML='<span class="ct-stamp red">'+d.stamp+'</span>';
-   playBtn.disabled=false;
-  }
- }
- anim=requestAnimationFrame(step);
+ var lg={gap:n>=1,mech:n>=2,narrow:n>=6,parity:n>=8};
+ Object.keys(lg).forEach(function(k){
+  var el=root.querySelector('#ct-lg-'+k);if(el)el.classList.toggle('on',lg[k]);
+ });
 }
-root.querySelectorAll('[data-ct-race]').forEach(function(btn){
- btn.addEventListener('click',function(){
-  root.querySelectorAll('[data-ct-race]').forEach(function(b){b.setAttribute('aria-pressed','false')});
-  btn.setAttribute('aria-pressed','true');
-  setRace(btn.dataset.ctRace,false);
- });
-});
-if(playBtn)playBtn.addEventListener('click',function(){setRace(cur,true)});
-setRace('scd',false);
+var steps=root.querySelectorAll('.ct-step');
+if('IntersectionObserver' in window&&steps.length){
+ var so=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){if(en.isIntersecting)setStep(parseInt(en.target.dataset.step,10)||0);});
+ },{rootMargin:'-48% 0px -48% 0px'});
+ steps.forEach(function(st){so.observe(st)});
+ setStep(0);
+}else{ setStep(9); }
 
-/* Exhibit log filter */
-root.querySelectorAll('[data-ct-filter]').forEach(function(btn){
- btn.addEventListener('click',function(){
-  root.querySelectorAll('[data-ct-filter]').forEach(function(b){b.setAttribute('aria-pressed','false')});
-  btn.setAttribute('aria-pressed','true');
-  var f=btn.dataset.ctFilter;
-  root.querySelectorAll('.ct-log tbody tr').forEach(function(tr){
-   tr.classList.toggle('off',f!=='all'&&tr.dataset.ctCat!==f);
-  });
- });
+/* ===== Examine the evidence: tags ===== */
+var TAGS={
+todd93:{t:'Todd et al., JAMA, 1993',d:'Retrospective cohort, UCLA emergency department; 139 patients aged 15 to 55 with isolated long-bone fractures (31 Hispanic, 108 non-Hispanic white).',f:'Hispanic patients were about twice as likely to receive no pain medication at all (crude RR 2.12); after adjustment, ethnicity was the strongest predictor (OR 7.46).',l:'Small and single-center, with a wide interval on the adjusted estimate (2.22 to 25.04). An opening exhibit, not the backbone.'},
+todd00:{t:'Todd et al., Annals of Emergency Medicine, 2000',d:'Retrospective cohort, urban ED in Atlanta; 217 patients with isolated long-bone fractures (127 Black, 90 white).',f:'Analgesics given to 74% of white vs 57% of Black patients, with similar documented pain; risk of receiving no analgesic was 66% higher for Black patients (RR 1.66).',l:'Small, single-center, retrospective. The national surveys carry the generalizable weight.'},
+pletcher:{t:'Pletcher et al., JAMA, 2008',d:'Thirteen years of the National Hospital Ambulatory Medical Care Survey (1993 to 2005); about 157,000 pain-related ED visits.',f:'Opioids at 31% of white, 23% of Black, and 24% of Hispanic pain visits (adjusted ORs 0.66 and 0.67). Prescribing rose for everyone, 23% to 37%; the gap did not diminish (P = .44).',l:'Observational survey data: it documents the difference precisely and cannot, by itself, say why it occurred.'},
+chen:{t:'Chen et al., Academic Emergency Medicine, 2008',d:'Prospective cohort of 981 adults with acute nontraumatic abdominal pain, one urban ED.',f:'Same mean pain scores by sex, but opioids for 45% of women vs 56% of men, and a median wait of 65 vs 49 minutes for analgesia.',l:'One ED, one presentation. The mechanism is unproven; the authors say possible gender bias.'},
+lazio:{t:'Lazio et al., Clinical Journal of Pain, 2010',d:'Retrospective chart review, single urban ED: sickle cell disease vs renal colic, identified by discharge diagnosis.',f:'Median time to first analgesic 80 minutes (sickle cell) vs 50 (renal colic), adjusted hazard ratio 0.61, despite higher pain scores and higher triage priority in the sickle cell group.',l:'Single-center and retrospective; the total sample size is not stated in the abstract.'},
+goyal:{t:'Goyal et al., JAMA Pediatrics, 2015',d:'Repeated cross-sectional study, NHAMCS 2003 to 2010; an estimated 0.94 million children with appendicitis.',f:'Opioid analgesia for 20.7% of Black vs 43.1% of white children. Moderate pain: aOR 0.1 for any analgesia. Severe pain: aOR 0.2 for opioids.',l:'Survey design with very wide confidence intervals in the race-by-severity subgroups (0.1: 0.02 to 0.8). Direction clear, magnitude imprecise.'},
+hoffman:{t:'Hoffman et al., PNAS, 2016',d:'Two studies in white participants: laypeople (92 analyzed) and 222 white medical students and residents, using a false-beliefs inventory and patient vignettes.',f:'About 73% of laypeople and about half of trainees endorsed at least one false belief (for example, that Black people\u2019s skin is thicker). Endorsement tracked lower pain ratings for the Black patient and less accurate treatment recommendations; non-endorsers showed no treatment bias.',l:'Hypothetical cases, white participants only, and the abstract reports the association directionally, with no effect size. A mechanism, shown in vitro.'},
+staal:{t:'Staal et al., Gynecologic and Obstetric Investigation, 2016',d:'Retrospective study of 139 patients at a Dutch specialist center; timelines reconstructed by questionnaire-guided interview.',f:'Median delay from symptom onset to endometriosis diagnosis: 89 months (7.4 years), across patient (7 months), GP (35), and gynecologist (5) steps.',l:'Small, single-center, recall-based, one country. Read the figure as an illustration, not a global constant.'},
+shavit:{t:'Shavit et al., Annals of Emergency Medicine, 2016',d:'Retrospective cohort, pediatric ED in northern Israel; 3,782 children aged 3 to 15 with fracture or dislocation, all treated under a nurse-driven pain protocol.',f:'In severe pain, opioid receipt was 99.05% for Arab vs 99.08% for Jewish children, a difference of 0.03 points, across every combination of patient and nurse ethnicity.',l:'Parity under a protocol, at one center, with no before-and-after period: it does not measure how much a protocol reduces a gap. Ethnic comparison is Arab vs Jewish in Israel, not US racial groups.'},
+pecarn:{t:'Goyal et al. (PECARN), Pediatrics, 2020',d:'21,069 visits with moderate-to-severe pain across 7 pediatric EDs; children with fractures.',f:'Minority children were MORE likely than white children to receive any analgesic (Black aOR 1.72; Hispanic 1.32), yet less likely to receive opioids (aOR 0.86 for both) or reach optimal pain reduction (0.78 / 0.80).',l:'The direction depends on which outcome you measure, and the opioid gap here (0.86) is far smaller than in the 2015 appendicitis study (0.2).'},
+enzinger:{t:'Enzinger et al., Journal of Clinical Oncology, 2023',d:'Medicare data 2007 to 2019; 318,549 decedents over 65 with poor-prognosis cancers, in the last 30 days of life or hospice.',f:'Any opioid: Black patients 4.3 points and Hispanic patients 3.6 points below white patients, with lower doses; urine drug screening was more likely for Black patients (+0.5 points). Gaps persisted after socioeconomic adjustment.',l:'Filled prescriptions only, in one narrow population; misses hospice-administered opioids and unfilled prescriptions.'},
+man:{t:'Man et al., Neurology: Clinical Practice, 2024',d:'National Inpatient Sample 2017 to 2018; about 1,000,980 weighted ischemic stroke admissions; discharge to facility vs home modeled by race, ethnicity, and insurance.',f:'Hispanic patients with Medicare/Medicaid (aOR 0.80) or self-pay (0.75) had lower odds of facility discharge than white patients; uninsured patients of any background had the lowest odds (0.44).',l:'The facility outcome bundles inpatient rehabilitation with skilled nursing and facility hospice, so no IRF-specific claim can be drawn. The gap is insurance-entangled.'}};
+var tagTitle=root.querySelector('#ct-tag-title'),tagDesign=root.querySelector('#ct-tag-design'),
+    tagFinding=root.querySelector('#ct-tag-finding'),tagLim=root.querySelector('#ct-tag-lim');
+function showTag(id,btn){
+ var d=TAGS[id];if(!d)return;
+ tagTitle.textContent=d.t;
+ tagDesign.innerHTML='<b>Design:</b> '+d.d;
+ tagFinding.innerHTML='<b>Finding:</b> '+d.f;
+ tagLim.innerHTML='<b>Limits:</b> '+d.l;
+ root.querySelectorAll('#ct-tiles-static .ct-tile').forEach(function(t){t.classList.toggle('sel',t===btn)});
+}
+root.querySelectorAll('#ct-tiles-static .ct-tile').forEach(function(btn){
+ btn.addEventListener('click',function(){showTag(btn.dataset.tile,btn)});
+ btn.addEventListener('mouseenter',function(){showTag(btn.dataset.tile,btn)});
+ btn.addEventListener('focus',function(){showTag(btn.dataset.tile,btn)});
 });
+var defBtn=root.querySelector('#ct-tiles-static .ct-tile[data-tile="todd00"]');
+if(defBtn)defBtn.classList.add('sel');
 
-/* The remedy: regime switch */
+/* ===== The remedy: regime switch ===== */
 var pj=root.querySelector('#ct-panel-judgment'),pp=root.querySelector('#ct-panel-protocol');
 root.querySelectorAll('[data-ct-regime]').forEach(function(btn){
  btn.addEventListener('click',function(){
@@ -2930,7 +2821,7 @@ root.querySelectorAll('[data-ct-regime]').forEach(function(btn){
  });
 });
 
-/* Scroll reveals */
+/* ===== Scroll reveals ===== */
 var reveals=root.querySelectorAll('.ct-reveal');
 if('IntersectionObserver' in window){
  var io=new IntersectionObserver(function(entries){
