@@ -1208,6 +1208,103 @@ background:var(--p407-bg)}
 #expensive-steps .es-lede a{color:#146c7e}
 
 #essay-sci .sci-neuro,#essay-sci .sci-los-values{color:#f0efff;--ink:#f0efff;--muted:#b6b4d7;--cyan:#8a7df4;--coral:#b46cff;--yellow:#9dddf9;--green:#6ed9cc}
+
+/* ============ ESSAY 11: WHOSE PAIN GETS BELIEVED: "the audit" ============ */
+#whose-pain-gets-believed{--wppaper:#f6f1e1;--wpink:#22252d;--wpmut:#54575e;--wpline:#d8cfb4;--wpteal:#0e5a4e;--wpred:#a93424;--wphigh:#f0d488;--wpcard:#fffdf4;
+  background:var(--wppaper);color:var(--wpink);
+  background-image:repeating-linear-gradient(0deg,transparent 0 30px,rgba(34,37,45,.045) 30px 31px)}
+#whose-pain-gets-believed .wp-wrap{max-width:1060px;margin:0 auto;padding:0 22px 90px}
+#whose-pain-gets-believed .byline,#whose-pain-gets-believed .why-line{color:#4c4f57}
+#whose-pain-gets-believed .byline strong,#whose-pain-gets-believed .why-line strong{color:var(--wpink)}
+#whose-pain-gets-believed a{color:#0e5a4e}
+#whose-pain-gets-believed sup a{text-decoration:none;font-weight:700}
+/* hero */
+.wp-hero{padding:84px 0 8px}
+.wp-issue{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--wpteal)}
+.wp-draft{display:inline-block;margin-left:10px;padding:3px 9px;border:2px double var(--wpred);border-radius:4px;color:var(--wpred);transform:rotate(-2deg);font-size:10.5px;letter-spacing:.12em}
+.wp-hero h1{font-family:"Newsreader",Georgia,serif;font-size:clamp(44px,7.4vw,84px);line-height:.98;font-weight:600;letter-spacing:-.015em;margin:20px 0 18px;max-width:12ch}
+.wp-lede{font-family:"Newsreader",Georgia,serif;font-size:clamp(20px,2.6vw,27px);line-height:1.45;max-width:34em;color:#33363e}
+.wp-lede b{color:var(--wpink);background:linear-gradient(transparent 62%,var(--wphigh) 62%);padding:0 2px}
+/* waiting room inhabitants */
+.wp-waiting{margin:44px 0 6px;border:1.5px solid var(--wpink);background:var(--wpcard);padding:16px 18px 10px;position:relative}
+.wp-waiting svg{width:100%;height:auto;display:block}
+.wp-waiting figcaption{font:11px "IBM Plex Mono",monospace;color:var(--wpmut);letter-spacing:.06em;margin-top:8px}
+.wp-fig{animation:wp-bob 3.4s ease-in-out infinite}
+.wp-fig.f2{animation-delay:.5s}.wp-fig.f3{animation-delay:1.1s}.wp-fig.f4{animation-delay:1.7s}.wp-fig.f5{animation-delay:2.3s}
+@keyframes wp-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+.wp-clockhand{transform-origin:560px 36px;animation:wp-tick 24s linear infinite}
+@keyframes wp-tick{to{transform:rotate(360deg)}}
+/* sections */
+.wp-sec{margin-top:64px;border-top:2.5px solid var(--wpink);padding-top:26px}
+.wp-entry{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.18em;color:var(--wpteal);text-transform:uppercase}
+.wp-sec h2{font-family:"Newsreader",Georgia,serif;font-size:clamp(29px,4.2vw,42px);line-height:1.08;font-weight:600;margin:10px 0 14px;max-width:22ch}
+.wp-sec p{font-family:"Newsreader",Georgia,serif;font-size:18.5px;line-height:1.62;max-width:38em;color:#2c2f37}
+.wp-sec p b{background:linear-gradient(transparent 64%,var(--wphigh) 64%);padding:0 1px;color:var(--wpink)}
+.wp-cite{font:12px "IBM Plex Mono",monospace;color:var(--wpmut);margin-top:10px}
+.wp-stamp{display:inline-block;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:2.5px double currentColor;border-radius:4px;transform:rotate(-2.5deg)}
+.wp-stamp.teal{color:var(--wpteal)}.wp-stamp.red{color:var(--wpred)}
+/* chart card + toggles */
+.wp-chart{border:1.5px solid var(--wpink);background:var(--wpcard);padding:22px;margin:24px 0 8px;box-shadow:5px 5px 0 rgba(34,37,45,.14)}
+.wp-chart-head{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--wpmut);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.wp-chart dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px 22px;margin:16px 0 4px}
+.wp-chart dt{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--wpmut)}
+.wp-chart dd{margin:2px 0 0;font-family:"Newsreader",Georgia,serif;font-size:18px}
+.wp-chips{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 4px}
+.wp-chip{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.06em;padding:9px 14px;border:1.5px solid var(--wpink);background:transparent;color:var(--wpink);border-radius:999px;cursor:pointer}
+.wp-chip[aria-pressed="true"]{background:var(--wpink);color:var(--wppaper)}
+.wp-readout{border-top:1.5px dashed var(--wpline);margin-top:16px;padding-top:16px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.wp-big{font-family:"Newsreader",Georgia,serif;font-size:clamp(34px,5vw,52px);font-weight:600;line-height:1}
+.wp-readout p{font-size:16.5px;margin:0;max-width:30em}
+/* stat rows + bars */
+.wp-stats{display:grid;gap:14px;margin:24px 0 6px}
+.wp-stat{border:1.5px solid var(--wpline);background:var(--wpcard);padding:16px 18px}
+.wp-stat .wp-lab{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--wpmut)}
+.wp-bar{height:16px;background:#e9e2cb;margin-top:10px;position:relative}
+.wp-bar i{position:absolute;inset:0 auto 0 0;background:var(--wpteal)}
+.wp-bar i.red{background:var(--wpred)}
+.wp-stat .wp-val{display:block;margin-top:6px;font-family:"Newsreader",Georgia,serif;font-size:30px;font-weight:600}
+.wp-stat p{font-size:16px;margin:8px 0 0}
+/* clock race */
+.wp-race{margin:22px 0 6px}
+.wp-lane{margin-top:16px}
+.wp-lane .wp-lab{display:flex;justify-content:space-between;font:700 12px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+.wp-lane .wp-lab output{font-size:14px}
+.wp-track{height:22px;background:#e9e2cb;margin-top:6px;position:relative}
+.wp-track i{position:absolute;inset:0 auto 0 0;width:0;background:var(--wpteal)}
+.wp-track i.red{background:var(--wpred)}
+.wp-play{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.08em;padding:10px 18px;border:1.5px solid var(--wpink);background:var(--wpink);color:var(--wppaper);border-radius:999px;cursor:pointer;margin-top:18px}
+.wp-gapstamp{margin-top:14px;min-height:30px}
+/* ledger */
+.wp-ledger{width:100%;border-collapse:collapse;margin:22px 0 6px;font-size:15.5px}
+.wp-ledger th{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--wpmut);text-align:left;padding:8px 10px;border-bottom:2.5px solid var(--wpink)}
+.wp-ledger td{padding:12px 10px;border-bottom:1px solid var(--wpline);font-family:"Newsreader",Georgia,serif;vertical-align:top}
+.wp-ledger td.y{font-family:"IBM Plex Mono",monospace;font-weight:700;white-space:nowrap}
+.wp-ledger td.g{font-family:"IBM Plex Mono",monospace;white-space:nowrap;font-weight:700}
+.wp-ledger tr.off{display:none}
+/* protocol switch */
+.wp-switch{display:flex;gap:0;border:1.5px solid var(--wpink);border-radius:999px;overflow:hidden;width:max-content;max-width:100%;margin:20px 0 6px}
+.wp-switch button{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.06em;padding:11px 18px;background:transparent;border:0;color:var(--wpink);cursor:pointer}
+.wp-switch button[aria-pressed="true"]{background:var(--wpink);color:var(--wppaper)}
+.wp-panels{border:1.5px solid var(--wpink);background:var(--wpcard);padding:20px;box-shadow:5px 5px 0 rgba(34,37,45,.14)}
+.wp-panelrow{display:flex;gap:14px;flex-wrap:wrap}
+.wp-panelrow .wp-stat{flex:1 1 200px}
+/* honesty + method */
+.wp-honest{border:2px dashed var(--wpred);padding:20px 22px;margin-top:26px;background:#fdf6ec}
+.wp-honest h3{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--wpred);margin:0 0 10px}
+.wp-honest p,.wp-honest li{font-family:"Newsreader",Georgia,serif;font-size:16.5px;line-height:1.55;color:#3a3d44}
+.wp-honest ul{margin:8px 0 0;padding-left:20px}
+.wp-method{margin-top:64px;border-top:2.5px solid var(--wpink);padding-top:26px}
+.wp-method p{font-family:"Newsreader",Georgia,serif;font-size:16.5px;line-height:1.6;color:#2c2f37;max-width:40em}
+.wp-src{font-size:14.5px;line-height:1.55;color:#3a3d44}
+.wp-src li{margin-bottom:8px}
+.wp-foot{margin-top:56px;border-top:1.5px solid var(--wpink);padding-top:18px;font:12px "IBM Plex Mono",monospace;color:var(--wpmut);display:grid;gap:8px}
+/* reveal */
+.wp-reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.wp-reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.wp-fig,.wp-clockhand{animation:none}.wp-reveal{opacity:1;transform:none;transition:none}}
+/* home card accent */
+.home-card.wp{--accent:#0e5a4e}
+
 </style>
 </head>
 <body><a class="back-home" href="#home" data-open-view="home">← All essays</a>
@@ -1215,7 +1312,7 @@ background:var(--p407-bg)}
 
 <main>
 <div class="view active" id="home">
-<header class="home-hero"><div><div class="home-kicker">Visual essays in rehabilitation medicine</div><h1>The Rehab Lab</h1><p class="home-mission">Visual essays about bodies in motion. Every number traces to a published source.</p><p class="home-about"><a href="#about" data-open-view="about">About the author →</a></p></div><aside class="home-hero-note"><strong>Ten investigations</strong>From MRI findings that frighten healthy backs to the atmospheric physics that slow a run, each essay turns evidence into something you can see, test, and scroll through.</aside><figure class="home-hero-img"><img src="images/home-hero.webp" alt="A physical therapist guiding a patient through gait training between parallel bars in a bright rehabilitation gym"><figcaption>Rehabilitation is practiced, not just prescribed. <span>Homepage images are AI-generated illustrations; essay imagery remains sourced photography and data.</span></figcaption></figure></header>
+<header class="home-hero"><div><div class="home-kicker">Visual essays in rehabilitation medicine</div><h1>The Rehab Lab</h1><p class="home-mission">Visual essays about bodies in motion. Every number traces to a published source.</p><p class="home-about"><a href="#about" data-open-view="about">About the author →</a></p></div><aside class="home-hero-note"><strong>Eleven investigations</strong>From MRI findings that frighten healthy backs to the atmospheric physics that slow a run, each essay turns evidence into something you can see, test, and scroll through.</aside><figure class="home-hero-img"><img src="images/home-hero.webp" alt="A physical therapist guiding a patient through gait training between parallel bars in a bright rehabilitation gym"><figcaption>Rehabilitation is practiced, not just prescribed. <span>Homepage images are AI-generated illustrations; essay imagery remains sourced photography and data.</span></figcaption></figure></header>
 <section class="home-index" aria-labelledby="home-index-title"><div class="home-index-head"><h2 id="home-index-title">Enter an essay</h2><span>10 STORIES</span></div><div class="home-grid">
 <a class="home-card knee" href="#essay" data-open-view="essay" aria-label="Open essay: How many bursae does a knee have? Nobody agrees."><div class="home-card-art" aria-hidden="true"><img src="images/card-01-knee.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">01 · MUSCULOSKELETAL MEDICINE</span><h3>How many bursae does a knee have? Nobody agrees.</h3><p>Five fluid-filled sacs, one very annoyed knee. A guided MRI tour of the bursae.</p><span class="home-card-cta">Explore the knee</span></div></a>
 <a class="home-card backpain" href="#essay-backpain" data-open-view="essay-backpain" aria-label="Open essay: If you had no back pain, what would your MRI say?"><div class="home-card-art" aria-hidden="true"><img src="images/card-02-backpain.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">02 · IMAGING</span><h3>If you had no back pain, what would your MRI say?</h3><p>Degenerated discs are normal. Why your scan looks scary, and what it actually means.</p><span class="home-card-cta">Read the scan</span></div></a>
@@ -1223,7 +1320,7 @@ background:var(--p407-bg)}
 <a class="home-card pickle" href="#pickleball-fracture-curve" data-open-view="pickleball-fracture-curve" aria-label="Open essay: Is pickleball actually dangerous?"><div class="home-card-art" aria-hidden="true"><img src="images/card-04-pickleball.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">04 · SPORTS EPIDEMIOLOGY</span><h3>Is pickleball actually dangerous?</h3><p>America’s fastest-growing sport has an ER-visit explosion. The data behind the fractures.</p><span class="home-card-cta">Return serve</span></div></a>
 <a class="home-card carbon" href="#carbon-plate-revolution" data-open-view="carbon-plate-revolution" aria-label="Open essay: Did carbon-plate shoes really break the marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-05-carbon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">05 · RUNNING BIOMECHANICS</span><h3>Did carbon-plate shoes really break the marathon?</h3><p>How foam and carbon broke the marathon, from 4% lab savings to a sub-2:00 race.</p><span class="home-card-cta">Follow the split</span></div></a>
 <a class="home-card dew" href="#dew-point-killer" data-open-view="dew-point-killer" aria-label="Open essay: Why does a humid 75°F morning feel so bad?"><div class="home-card-art" aria-hidden="true"><img src="images/card-06-dewpoint.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">06 · EXERCISE PHYSIOLOGY</span><h3>Why does a humid 75°F morning feel so bad?</h3><p>Humidity lies. Why dew point, not the thermometer, decides how your run feels.</p><span class="home-card-cta">Enter the air</span></div></a>
-<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: Walking is controlled falling."><div class="home-card-art" aria-hidden="true"><img src="images/card-07-gait.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>Walking is controlled falling.</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><img src="images/card-08-hand.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric: the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: What happens to your body at every hour of a marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-09-marathon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>What happens to your body at every hour of a marathon?</h3><p>An hour-by-hour account of a marathon: three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><img src="images/card-10-steps.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>
+<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: Walking is controlled falling."><div class="home-card-art" aria-hidden="true"><img src="images/card-07-gait.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>Walking is controlled falling.</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><img src="images/card-08-hand.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric: the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: What happens to your body at every hour of a marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-09-marathon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>What happens to your body at every hour of a marathon?</h3><p>An hour-by-hour account of a marathon: three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><img src="images/card-10-steps.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>  <a class="home-card wp" href="#whose-pain-gets-believed" data-open-view="whose-pain-gets-believed" aria-label="Open essay: Whose pain gets believed"><div class="home-card-art" aria-hidden="true"><img src="images/card-11-pain.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">11 · PAIN, AUDITED</span><h3>Whose Pain Gets Believed?</h3><p>Pain has no lab test; the only instrument is belief. Thirty years of audits show how that instrument is calibrated, and for whom.</p><span class="home-card-cta">Read the audit</span></div></a>
 
 </div></section>
 
@@ -2360,6 +2457,346 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 
 
+<div class="view" id="whose-pain-gets-believed">
+<div class="wp-wrap">
+
+<header class="wp-hero">
+<div class="wp-issue">Essay 11 · Pain medicine · An evidence audit <span class="wp-draft">Draft pending expert review</span></div>
+<h1>Whose pain gets believed?</h1>
+<p class="wp-lede">Pain has no lab test and no imaging finding. The only instrument is belief. About <b>1 in 4 US adults</b> lives with chronic pain, and 8.5% live with pain that limits life or work on most days.<sup><a href="#wp-src-1">1</a></sup> When they ask for help, this is the instrument they meet. What follows is an audit of that instrument: thirty years of receipts.</p>
+<p class="byline">By <strong>Jonathan Byrne, DO</strong> · October 2026</p>
+<p class="why-line"><strong>Why this essay:</strong> rehabilitation starts with a patient's report of what hurts and what they can no longer do. If the report is discounted, everything downstream is discounted with it. I wanted to see the receipts.</p>
+<figure class="wp-waiting" aria-hidden="true">
+<svg viewBox="0 0 640 150" role="presentation">
+<circle cx="560" cy="36" r="23" fill="none" stroke="#22252d" stroke-width="2.5"/>
+<line class="wp-clockhand" x1="560" y1="36" x2="560" y2="19" stroke="#a93424" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="560" cy="36" r="3" fill="#22252d"/>
+<rect x="24" y="118" width="480" height="6" fill="#22252d"/>
+<rect x="40" y="124" width="6" height="16" fill="#22252d"/><rect x="482" y="124" width="6" height="16" fill="#22252d"/>
+<g class="wp-fig f1"><circle cx="70" cy="82" r="10" fill="#0e5a4e"/><path d="M50 118 v-20 a20 15 0 0 1 40 0 v20 z" fill="#0e5a4e"/><rect x="86" y="100" width="13" height="9" fill="#fffdf4" stroke="#22252d" transform="rotate(14 92 104)"/></g>
+<g class="wp-fig f2"><circle cx="160" cy="82" r="10" fill="#a93424"/><path d="M140 118 v-20 a20 15 0 0 1 40 0 v20 z" fill="#a93424"/></g>
+<g class="wp-fig f3"><circle cx="250" cy="82" r="10" fill="#54575e"/><path d="M230 118 v-20 a20 15 0 0 1 40 0 v20 z" fill="#54575e"/><rect x="266" y="100" width="13" height="9" fill="#fffdf4" stroke="#22252d" transform="rotate(-10 272 104)"/></g>
+<g class="wp-fig f4"><circle cx="340" cy="82" r="10" fill="#31556e"/><path d="M320 118 v-20 a20 15 0 0 1 40 0 v20 z" fill="#31556e"/></g>
+<g class="wp-fig f5"><circle cx="430" cy="82" r="10" fill="#8a6d1f"/><path d="M410 118 v-20 a20 15 0 0 1 40 0 v20 z" fill="#8a6d1f"/></g>
+</svg>
+<figcaption>THE WAITING ROOM. EVERYONE ARRIVES WITH THE SAME COMPLAINT. THE AUDIT IS IN WHAT HAPPENS NEXT.</figcaption>
+</figure>
+</header>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h1">
+<div class="wp-entry">Audit entry 01 · The identical chart</div>
+<h2 id="wp-h1">Same fracture. Same pain score. Different patient.</h2>
+<p>Start with the cleanest case in medicine: a broken bone, confirmed on X-ray, in a patient reporting severe pain. There is nothing to interpret and nothing to suspect. Below is one chart. The only thing the buttons change is who the patient is. Everything in the readout is a published finding.</p>
+
+<div class="wp-chart">
+<div class="wp-chart-head"><span>Emergency department chart · Abstracted</span><span>Exhibit A</span></div>
+<dl>
+<div><dt>Presentation</dt><dd>Isolated long-bone fracture</dd></div>
+<div><dt>Imaging</dt><dd>Fracture confirmed</dd></div>
+<div><dt>Reported pain</dt><dd>Severe, documented</dd></div>
+<div><dt>Complications</dt><dd>None</dd></div>
+</dl>
+<div class="wp-chips" role="group" aria-label="Change the patient">
+<button class="wp-chip" data-wp-patient="white" aria-pressed="true">Patient: white</button>
+<button class="wp-chip" data-wp-patient="black" aria-pressed="false">Patient: Black</button>
+<button class="wp-chip" data-wp-patient="hispanic" aria-pressed="false">Patient: Hispanic</button>
+</div>
+<div class="wp-readout" aria-live="polite">
+<div class="wp-big" id="wp-chart-big">74%</div>
+<div>
+<p id="wp-chart-text">of white patients with this presentation received analgesia in the emergency department.</p>
+<p class="wp-cite" id="wp-chart-cite">Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#wp-src-4">4</a></sup></p>
+<span class="wp-stamp teal" id="wp-chart-stamp">The baseline</span>
+</div>
+</div>
+</div>
+<p class="wp-cite">The Hispanic readout comes from a separate 1993 study of the same presentation (Todd et al., JAMA).<sup><a href="#wp-src-3">3</a></sup> Small, single-center studies both; the national data arrive in Entry 02.</p>
+
+<h2 style="margin-top:44px">The mechanism, measured</h2>
+<p>Why would the chart change with the patient? In 2016, researchers handed white laypeople, medical students, and residents a list of statements about biological differences between Black and white people and asked which were true. The inventory included claims such as <b>Black people's skin is thicker</b>, their <b>nerve endings are less sensitive</b>, and their <b>blood coagulates more quickly</b>. None of these are true. About <b>73% of laypeople</b> and about <b>half of the medical students and residents</b> endorsed at least one.<sup><a href="#wp-src-2">2</a></sup></p>
+<p>The endorsement was not trivia. Participants who believed more of the false claims rated a Black patient's pain lower than a white patient's and made less accurate treatment recommendations for the Black patient. Participants who endorsed none of them showed no treatment bias. The study used hypothetical cases, not real prescribing, and the finding is a direction, not a dose. But it names a mechanism that lectures about bias never could: some of the gap is built from false anatomy, and false anatomy can be corrected.</p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h2">
+<div class="wp-entry">Audit entry 02 · The national ledger</div>
+<h2 id="wp-h2">A rising tide that lifted one boat faster</h2>
+<p>The Todd studies were small and single-center. So count the whole country: thirteen years of US emergency department data, about 157,000 pain-related visits (Pletcher et al., JAMA 2008).<sup><a href="#wp-src-5">5</a></sup> Over that span, opioid prescribing for pain rose steeply, from 23% of pain visits in 1993 to 37% in 2005. Prescribing became more generous for everyone. The gap did not move: the statistical test for the racial difference narrowing over time returned P = .44, which is to say, no detectable change at all.</p>
+<div class="wp-stats">
+<div class="wp-stat"><span class="wp-lab">Received an opioid, white patients</span><div class="wp-bar"><i style="width:31%"></i></div><span class="wp-val">31%</span></div>
+<div class="wp-stat"><span class="wp-lab">Received an opioid, Black patients</span><div class="wp-bar"><i class="red" style="width:23%"></i></div><span class="wp-val">23%</span><p>Adjusted odds ratio 0.66 after accounting for pain severity and other factors.</p></div>
+<div class="wp-stat"><span class="wp-lab">Received an opioid, Hispanic patients</span><div class="wp-bar"><i class="red" style="width:24%"></i></div><span class="wp-val">24%</span><p>Adjusted odds ratio 0.67.</p></div>
+</div>
+<span class="wp-stamp red">Gap unchanged over 13 years</span>
+<p style="margin-top:18px">Whatever was driving prescribing upward through the 1990s and 2000s, it reached patients unevenly, year after year, in the same proportions. A disparity that stable is not a series of individual mistakes. It is a property of the system doing the prescribing.</p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h3">
+<div class="wp-entry">Audit entry 03 · The wait</div>
+<h2 id="wp-h3">Belief, measured in minutes</h2>
+<p>A second instrument reads the same miscalibration: the clock. Two comparisons, both from real emergency departments. In the first, patients with sickle cell disease arrived with <b>higher pain scores</b> and were triaged at <b>higher priority</b> than patients with kidney stones, a condition famous for agony. They still waited half again as long for a first pain medication (Lazio et al., 2010).<sup><a href="#wp-src-7">7</a></sup> In the second, women with acute abdominal pain received opioids less often than men with the same presentation and waited longer to get them (Chen et al., 2008).<sup><a href="#wp-src-6">6</a></sup> Run the clocks.</p>
+
+<div class="wp-chips" role="group" aria-label="Choose the comparison">
+<button class="wp-chip" data-wp-race="scd" aria-pressed="true">Sickle cell vs kidney stone</button>
+<button class="wp-chip" data-wp-race="sex" aria-pressed="false">Women vs men, abdominal pain</button>
+</div>
+<div class="wp-race" id="wp-race-box">
+<div class="wp-lane"><div class="wp-lab"><span id="wp-lane-a-lab">Kidney stone (renal colic)</span><output id="wp-lane-a-out">median 50 min</output></div><div class="wp-track"><i id="wp-lane-a"></i></div></div>
+<div class="wp-lane"><div class="wp-lab"><span id="wp-lane-b-lab">Sickle cell crisis</span><output id="wp-lane-b-out">median 80 min</output></div><div class="wp-track"><i class="red" id="wp-lane-b"></i></div></div>
+<button class="wp-play" id="wp-race-play">Run the clocks</button>
+<div class="wp-gapstamp" id="wp-race-stamp"></div>
+<p class="wp-cite" id="wp-race-cite">Median time to first analgesic. Sickle cell vs renal colic: Lazio et al., Clinical Journal of Pain, 2010 (adjusted hazard ratio for timely analgesia 0.61).</p>
+</div>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h4">
+<div class="wp-entry">Audit entry 04 · The kids</div>
+<h2 id="wp-h4">Children cannot be drug-seeking</h2>
+<p>Every adult disparity in this essay attracts the same objection: perhaps clinicians were guarding against misuse. The objection has no answer for children. In national ED data on appendicitis, a painful surgical emergency, only 56.8% of children received any pain medication at all. Within that undertreatment sat a second one (Goyal et al., JAMA Pediatrics 2015).<sup><a href="#wp-src-8">8</a></sup></p>
+<div class="wp-stats">
+<div class="wp-stat"><span class="wp-lab">Opioid analgesia, white children</span><div class="wp-bar"><i style="width:43.1%"></i></div><span class="wp-val">43.1%</span></div>
+<div class="wp-stat"><span class="wp-lab">Opioid analgesia, Black children</span><div class="wp-bar"><i class="red" style="width:20.7%"></i></div><span class="wp-val">20.7%</span><p>Adjusted for ethnicity and pain severity, Black children with moderate pain had one tenth the odds of receiving any analgesia (aOR 0.1, 95% CI 0.02 to 0.8); with severe pain, one fifth the odds of receiving opioids (aOR 0.2, 95% CI 0.06 to 0.9). The intervals are wide. The direction is not ambiguous.</p></div>
+</div>
+<h2 style="margin-top:40px">The 2020 recount</h2>
+<p>An honest audit reports the recount too. In 2020, a seven-center pediatric study of fractures found the pattern had partly reversed: minority children were <b>more</b> likely than white children to receive some analgesic (aOR 1.72), while remaining less likely to receive an opioid, by a much smaller margin than in 2015 (aOR 0.86), and less likely to reach optimal pain reduction.<sup><a href="#wp-src-9">9</a></sup> Read together: the any-medication gap appears to have closed in that setting, the opioid gap narrowed, and neither fact erases the earlier counts. Trends are not verdicts, in either direction.</p>
+<span class="wp-stamp teal">Gap narrowing · not closed</span>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h5">
+<div class="wp-entry">Audit entry 05 · The long disbelief</div>
+<h2 id="wp-h5">Seven years of saying it hurts</h2>
+<p>The emergency department measures disbelief in minutes. Chronic care measures it in years. Endometriosis, a disease whose cardinal symptom is pain, takes a median of <b>89 months, about 7.4 years</b>, from first symptoms to diagnosis in a Dutch specialist-center study, through delays at the patient, GP, and specialist steps alike (Staal et al., 2016; a small, single-center, recall-based study, so read the figure as an illustration, not a constant).<sup><a href="#wp-src-10">10</a></sup></p>
+<p>The pattern has been named for decades. In 2001, Hoffmann and Tarzian called their review "The Girl Who Cried Pain," documenting how women's pain reports are more readily read as exaggeration or emotion.<sup><a href="#wp-src-11">11</a></sup> A 2018 literature review gave the norms their shorthand: the brave man, stoic by expectation, and the emotional woman, expressive by expectation, with clinicians' judgments bending toward whichever story they were handed.<sup><a href="#wp-src-12">12</a></sup> Norms like these do not announce themselves in the encounter. They set the prior probability that a report is believed before the patient finishes the sentence.</p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h6">
+<div class="wp-entry">Audit entry 06 · Even at the end of life</div>
+<h2 id="wp-h6">Restriction rationed unevenly</h2>
+<p>The opioid era's correction cut access for everyone. The reasonable hope was that tighter prescribing would at least tighten evenly. In Medicare data on more than 300,000 patients dying of poor-prognosis cancers between 2007 and 2019, it did not (Enzinger et al., 2023).<sup><a href="#wp-src-13">13</a></sup> Near the end of life:</p>
+<div class="wp-stats">
+<div class="wp-stat"><span class="wp-lab">Any opioid, Black vs white patients</span><span class="wp-val">−4.3 points</span><p>Adjusted difference in percentage points (95% CI −4.8 to −3.6), alongside lower daily and total doses.</p></div>
+<div class="wp-stat"><span class="wp-lab">Any opioid, Hispanic vs white patients</span><span class="wp-val">−3.6 points</span><p>Adjusted difference (95% CI −4.4 to −2.9).</p></div>
+<div class="wp-stat"><span class="wp-lab">Urine drug screening, Black vs white patients</span><span class="wp-val">+0.5 points</span><p>Less medication, more surveillance: the two adjustments moved in opposite directions.</p></div>
+</div>
+<p>The gaps did not shrink when socioeconomic factors were added to the model. The authors' own summary is the audit's: the inequities were substantial and persistent.</p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h7">
+<div class="wp-entry">Audit entry 07 · The rehab door</div>
+<h2 id="wp-h7">Who gets to rehab</h2>
+<p>This is where the audit reaches my own field. After a stroke, discharge to a rehabilitation facility is one of the strongest levers on long term function. In a national study of roughly one million ischemic stroke admissions (Man et al., 2024), the clearest adjusted gaps were specific, and they ran through insurance: Hispanic patients covered by Medicare or Medicaid had lower odds of discharge to a facility than white patients (aOR 0.80), as did Hispanic patients paying out of pocket (aOR 0.75). The single strongest predictor in the model was not race at all. Uninsured patients of every background had the lowest odds of facility discharge (aOR 0.44).<sup><a href="#wp-src-14">14</a></sup></p>
+<p>Two cautions belong in the chart. The study's facility outcome bundles inpatient rehabilitation with skilled nursing and facility hospice, so it cannot isolate the rehab door specifically. And a gap that runs through insurance is a different problem, with different fixes, than a gap that runs through a clinician's judgment. An audit that blurs that distinction would fail its own standard. What the entry does establish: belief is not the only rationing instrument in this essay. The insurance card is another, and it is checked before the patient says a word.</p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h8">
+<div class="wp-entry">Audit entry 08 · The thirty-year ledger</div>
+<h2 id="wp-h8">Every entry, one ledger</h2>
+<p>The findings above, kept the way an auditor keeps them: one line each, with the citation attached. Filter by who the patient was.</p>
+<div class="wp-chips" role="group" aria-label="Filter the ledger">
+<button class="wp-chip" data-wp-filter="all" aria-pressed="true">All entries</button>
+<button class="wp-chip" data-wp-filter="adults" aria-pressed="false">Adults</button>
+<button class="wp-chip" data-wp-filter="children" aria-pressed="false">Children</button>
+</div>
+<table class="wp-ledger">
+<thead><tr><th>Year</th><th>Study</th><th>Finding</th><th>The gap</th></tr></thead>
+<tbody>
+<tr data-wp-cat="adults"><td class="y">1993</td><td>Todd, JAMA</td><td>Hispanic patients, long-bone fractures, received no analgesia</td><td class="g">RR 2.12</td></tr>
+<tr data-wp-cat="adults"><td class="y">2000</td><td>Todd, Ann Emerg Med</td><td>Analgesia for long-bone fractures, white vs Black patients</td><td class="g">74% vs 57%</td></tr>
+<tr data-wp-cat="adults"><td class="y">2008</td><td>Pletcher, JAMA</td><td>Opioids at ED pain visits, white vs Black patients, 13 years</td><td class="g">31% vs 23%</td></tr>
+<tr data-wp-cat="adults"><td class="y">2008</td><td>Chen, Acad Emerg Med</td><td>Median wait for analgesia, women vs men, abdominal pain</td><td class="g">65 vs 49 min</td></tr>
+<tr data-wp-cat="adults"><td class="y">2010</td><td>Lazio, Clin J Pain</td><td>Median wait for first analgesic, sickle cell vs renal colic</td><td class="g">80 vs 50 min</td></tr>
+<tr data-wp-cat="children"><td class="y">2015</td><td>Goyal, JAMA Pediatr</td><td>Opioid analgesia in appendicitis, white vs Black children</td><td class="g">43.1% vs 20.7%</td></tr>
+<tr data-wp-cat="children"><td class="y">2020</td><td>Goyal (PECARN), Pediatrics</td><td>Opioid analgesia in fractures, minority vs white children</td><td class="g">aOR 0.86</td></tr>
+<tr data-wp-cat="adults"><td class="y">2023</td><td>Enzinger, J Clin Oncol</td><td>Any opioid near end of life, Black vs white Medicare patients</td><td class="g">−4.3 points</td></tr>
+</tbody>
+</table>
+<p class="wp-cite">Full citations in the source list below. The pooled estimate across the ED literature (Lee et al., 2019) is an odds ratio of 0.60 for Black patients receiving analgesia; the pooled Hispanic estimate, 0.75, did not reach significance, on a small base of 14 studies.<sup><a href="#wp-src-16">16</a></sup></p>
+</section>
+
+<section class="wp-sec wp-reveal" aria-labelledby="wp-h9">
+<div class="wp-entry">Audit entry 09 · The fix</div>
+<h2 id="wp-h9">Remove the judgment call</h2>
+<p>One entry in the ledger reads differently from all the others. A pediatric emergency department in Israel treated fractures and dislocations under a nurse-driven pain protocol: the medication decision followed standing orders, not an individual clinician's read of the child. In severe pain, opioid receipt was 99.05% for Arab children and 99.08% for Jewish children (Shavit et al., 2016).<sup><a href="#wp-src-15">15</a></sup> Flip the switch and compare the two regimes.</p>
+<div class="wp-switch" role="group" aria-label="Compare regimes">
+<button data-wp-regime="judgment" aria-pressed="true">Judgment call</button>
+<button data-wp-regime="protocol" aria-pressed="false">Protocol</button>
+</div>
+<div class="wp-panels">
+<div id="wp-panel-judgment">
+<div class="wp-panelrow">
+<div class="wp-stat"><span class="wp-lab">ED opioids, white vs Black</span><span class="wp-val">31% / 23%</span><p>Pletcher 2008</p></div>
+<div class="wp-stat"><span class="wp-lab">Fracture analgesia, white vs Black</span><span class="wp-val">74% / 57%</span><p>Todd 2000</p></div>
+<div class="wp-stat"><span class="wp-lab">Appendicitis opioids, white vs Black children</span><span class="wp-val">43.1% / 20.7%</span><p>Goyal 2015</p></div>
+</div>
+<p style="margin-top:14px">Wherever a person decides, the gap appears. It appears in different decades, different cities, different patient ages, in the same direction.</p>
+</div>
+<div id="wp-panel-protocol" hidden>
+<div class="wp-panelrow">
+<div class="wp-stat"><span class="wp-lab">Opioids in severe pain, Arab children</span><span class="wp-val">99.05%</span><p>312 of 315 children</p></div>
+<div class="wp-stat"><span class="wp-lab">Opioids in severe pain, Jewish children</span><span class="wp-val">99.08%</span><p>538 of 543 children</p></div>
+</div>
+<p style="margin-top:14px">The difference is 0.03 percentage points. <span class="wp-stamp teal">Gap: not detected</span></p>
+<p>The honest label, in the auditor's hand: this is one center, one protocol, and no before-and-after comparison, so it shows parity under a protocol rather than proving the protocol caused it. It is also the only configuration in this entire essay where the measured gap is zero.</p>
+</div>
+</div>
+<p style="margin-top:22px">That is the audit's finding, and its prescription. Belief will always be part of pain medicine; there is no scan coming to replace it. But the parts of the encounter that can be standardized can be taken out of belief's hands, and where they have been, the ledger balances. What remains is to keep counting. An unaudited instrument drifts.</p>
+
+<div class="wp-honest">
+<h3>Auditor's note · What this essay cannot prove</h3>
+<ul>
+<li>Nearly all of this evidence is observational. It documents that outcomes differ by who the patient is, adjusted for what the datasets record; it cannot, study by study, prove why.</li>
+<li>The classic studies are small and single-center (Todd 1993 rests on 31 Hispanic patients, with a wide confidence interval). The national surveys carry the generalizable weight, and they are the backbone here.</li>
+<li>The pooled literature is uneven: the Hispanic estimate in the largest meta-analysis did not reach significance, and the 2020 pediatric recount moved in the other direction on one outcome. Both are reported above, in the main text, on purpose.</li>
+<li>Nothing here measures any individual clinician's intent. The unit of this audit is the system, and the system is the thing that can be redesigned.</li>
+</ul>
+</div>
+</section>
+
+<section class="wp-method" aria-labelledby="wp-hm">
+<div class="wp-entry">Methodology & sources</div>
+<h2 id="wp-hm" style="font-family:'Newsreader',Georgia,serif;font-size:clamp(26px,3.6vw,36px);margin:10px 0 12px">How this audit was built</h2>
+<p>Every figure in this essay was read in the abstract or full text of the study it is attributed to during the research pass for this essay, and is tagged to that source at the point of use. Where a study's design limits what it can claim (small samples, single centers, bundled outcomes, vignette methods), the limitation travels with the number. Figures that could not be verified in the source were excluded rather than rounded into place. Chart data for this essay: <a href="data/whose-pain-gets-believed/">data/whose-pain-gets-believed/</a>.</p>
+<ol class="wp-src">
+<li id="wp-src-1">Lucas JW, Sohi I. Chronic Pain and High-impact Chronic Pain in U.S. Adults, 2023. NCHS Data Brief No. 518, November 2024.</li>
+<li id="wp-src-2">Hoffman KM, Trawalter S, Axt JR, Oliver MN. Racial bias in pain assessment and treatment recommendations, and false beliefs about biological differences between blacks and whites. Proceedings of the National Academy of Sciences. 2016;113(16):4296-4301. PMID 27044069.</li>
+<li id="wp-src-3">Todd KH, Samaroo N, Hoffman JR. Ethnicity as a risk factor for inadequate emergency department analgesia. JAMA. 1993;269(12):1537-1539. PMID 8445817.</li>
+<li id="wp-src-4">Todd KH, Deaton C, D'Adamo AP, Goe L. Ethnicity and analgesic practice. Annals of Emergency Medicine. 2000;35(1):11-16. PMID 10613935.</li>
+<li id="wp-src-5">Pletcher MJ, Kertesz SG, Kohn MA, Gonzales R. Trends in opioid prescribing by race/ethnicity for patients seeking care in US emergency departments. JAMA. 2008;299(1):70-78. PMID 18167408.</li>
+<li id="wp-src-6">Chen EH, Shofer FS, et al. Gender disparity in analgesic treatment of emergency department patients with acute abdominal pain. Academic Emergency Medicine. 2008;15(5):414-418. PMID 18439195.</li>
+<li id="wp-src-7">Lazio MP, Costello HH, et al. A comparison of analgesic management for emergency department patients with sickle cell disease and renal colic. Clinical Journal of Pain. 2010;26(3):199-205. PMID 20173433.</li>
+<li id="wp-src-8">Goyal MK, Kuppermann N, Cleary SD, Teach SJ, Chamberlain JM. Racial disparities in pain management of children with appendicitis in emergency departments. JAMA Pediatrics. 2015;169(11):996-1002. PMID 26366984.</li>
+<li id="wp-src-9">Goyal MK, et al. Racial and ethnic differences in emergency department pain management of children with fractures. Pediatrics. 2020;145(5):e20193370. PMID 32312910.</li>
+<li id="wp-src-10">Staal AHJ, van der Zanden M, Nap AW. Diagnostic delay of endometriosis in the Netherlands. Gynecologic and Obstetric Investigation. 2016;81(4):321-324. PMID 26742108.</li>
+<li id="wp-src-11">Hoffmann DE, Tarzian AJ. The girl who cried pain: a bias against women in the treatment of pain. Journal of Law, Medicine & Ethics. 2001;29(1):13-27. PMID 11521267.</li>
+<li id="wp-src-12">Samulowitz A, Gremyr I, Eriksson E, Hensing G. "Brave men" and "emotional women": a theory-guided literature review on gender bias in health care and gendered norms towards patients with chronic pain. Pain Research and Management. 2018;2018:6358624. PMID 29682130.</li>
+<li id="wp-src-13">Enzinger AC, Ghosh K, Keating NL, et al. Racial and ethnic disparities in opioid access and urine drug screening among older patients with poor-prognosis cancer near the end of life. Journal of Clinical Oncology. 2023;41(14):2511-2522. PMID 36626695.</li>
+<li id="wp-src-14">Man S, Bruckman D, Uchino K, Schold JD, Dalton J. Racial, ethnic, and regional disparities of post-acute service utilization after stroke in the United States. Neurology: Clinical Practice. 2024;14(5):e200329. PMID 39036785.</li>
+<li id="wp-src-15">Shavit I, Brumer E, Shavit D, et al. Emergency department pain management in pediatric patients with fracture or dislocation in a bi-ethnic population. Annals of Emergency Medicine. 2016;67(1):9-14. PMID 26343348.</li>
+<li id="wp-src-16">Lee P, Le Saux M, Siegel R, et al. Racial and ethnic disparities in the management of acute pain in US emergency departments: meta-analysis and systematic review. American Journal of Emergency Medicine. 2019;37(9):1770-1777. PMID 31186154.</li>
+</ol>
+</section>
+
+<footer class="wp-foot">
+<div><strong>Educational content.</strong> For clinicians and learners: not a substitute for bedside assessment, institutional policy, or medical care.</div>
+<div>Essay 11 · Whose Pain Gets Believed · Draft for expert review · Every number traceable to the sources above.</div>
+</footer>
+
+</div>
+</div>
+
+<script>
+(function(){
+var root=document.getElementById('whose-pain-gets-believed');
+if(!root)return;
+
+/* Interactive 1: the identical chart */
+var chartData={
+white:{big:'74%',stamp:'The baseline',cls:'teal',
+ text:'of white patients with this presentation received analgesia in the emergency department.',
+ cite:'Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#wp-src-4">4</a></sup>'},
+black:{big:'57%',stamp:'Gap: 17 points',cls:'red',
+ text:'of Black patients with the same fracture type and similar documented pain received analgesia.',
+ cite:'Todd et al., Annals of Emergency Medicine, 2000 <sup><a href="#wp-src-4">4</a></sup>'},
+hispanic:{big:'2\u00D7',stamp:'Most likely to get nothing',cls:'red',
+ text:'Hispanic patients were about twice as likely as non-Hispanic white patients to receive no pain medication at all. In the adjusted model the odds ratio was 7.46, with a wide interval (2.22 to 25.04) in a small study.',
+ cite:'Todd et al., JAMA, 1993 <sup><a href="#wp-src-3">3</a></sup>'}};
+var cBig=root.querySelector('#wp-chart-big'),cText=root.querySelector('#wp-chart-text'),
+    cCite=root.querySelector('#wp-chart-cite'),cStamp=root.querySelector('#wp-chart-stamp');
+root.querySelectorAll('[data-wp-patient]').forEach(function(btn){
+ btn.addEventListener('click',function(){
+  root.querySelectorAll('[data-wp-patient]').forEach(function(b){b.setAttribute('aria-pressed','false')});
+  btn.setAttribute('aria-pressed','true');
+  var d=chartData[btn.dataset.wpPatient];if(!d)return;
+  cBig.textContent=d.big;cText.textContent=d.text;cCite.innerHTML=d.cite;
+  cStamp.textContent=d.stamp;cStamp.className='wp-stamp '+d.cls;
+ });
+});
+
+/* Interactive 2: the waiting-room clocks */
+var races={
+scd:{aLab:'Kidney stone (renal colic)',a:50,bLab:'Sickle cell crisis',b:80,
+ stamp:'Still waiting: +30 minutes, despite higher pain scores and higher triage priority',
+ cite:'Median time to first analgesic. Sickle cell vs renal colic: Lazio et al., Clinical Journal of Pain, 2010 (adjusted hazard ratio for timely analgesia 0.61).'},
+sex:{aLab:'Men, abdominal pain',a:49,bLab:'Women, abdominal pain',b:65,
+ stamp:'Still waiting: +16 minutes, and opioids 45% vs 56% of the time',
+ cite:'Median time to analgesia, and opioid receipt, by sex: Chen et al., Academic Emergency Medicine, 2008.'}};
+var cur='scd',anim=null;
+var lA=root.querySelector('#wp-lane-a'),lB=root.querySelector('#wp-lane-b'),
+    oA=root.querySelector('#wp-lane-a-out'),oB=root.querySelector('#wp-lane-b-out'),
+    labA=root.querySelector('#wp-lane-a-lab'),labB=root.querySelector('#wp-lane-b-lab'),
+    stampBox=root.querySelector('#wp-race-stamp'),raceCite=root.querySelector('#wp-race-cite'),
+    playBtn=root.querySelector('#wp-race-play');
+function setRace(key,animate){
+ cur=key;var d=races[key];if(!d)return;
+ labA.textContent=d.aLab;labB.textContent=d.bLab;raceCite.textContent=d.cite;
+ if(anim)cancelAnimationFrame(anim);
+ if(!animate){
+  lA.style.width=(d.a/90*100)+'%';lB.style.width=(d.b/90*100)+'%';
+  oA.textContent='median '+d.a+' min';oB.textContent='median '+d.b+' min';
+  stampBox.innerHTML='';return;
+ }
+ var t0=null,dur=2100;
+ playBtn.disabled=true;
+ function step(ts){
+  if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,2);
+  var va=Math.round(d.a*e),vb=Math.round(d.b*e);
+  lA.style.width=(va/90*100)+'%';lB.style.width=(vb/90*100)+'%';
+  oA.textContent=va+' min';oB.textContent=vb+' min';
+  if(p<1){anim=requestAnimationFrame(step);}
+  else{
+   oA.textContent='median '+d.a+' min';oB.textContent='median '+d.b+' min';
+   stampBox.innerHTML='<span class="wp-stamp red">'+d.stamp+'</span>';
+   playBtn.disabled=false;
+  }
+ }
+ anim=requestAnimationFrame(step);
+}
+root.querySelectorAll('[data-wp-race]').forEach(function(btn){
+ btn.addEventListener('click',function(){
+  root.querySelectorAll('[data-wp-race]').forEach(function(b){b.setAttribute('aria-pressed','false')});
+  btn.setAttribute('aria-pressed','true');
+  setRace(btn.dataset.wpRace,false);
+ });
+});
+if(playBtn)playBtn.addEventListener('click',function(){setRace(cur,true)});
+setRace('scd',false);
+
+/* Interactive 3: ledger filter */
+root.querySelectorAll('[data-wp-filter]').forEach(function(btn){
+ btn.addEventListener('click',function(){
+  root.querySelectorAll('[data-wp-filter]').forEach(function(b){b.setAttribute('aria-pressed','false')});
+  btn.setAttribute('aria-pressed','true');
+  var f=btn.dataset.wpFilter;
+  root.querySelectorAll('.wp-ledger tbody tr').forEach(function(tr){
+   tr.classList.toggle('off',f!=='all'&&tr.dataset.wpCat!==f);
+  });
+ });
+});
+
+/* Interactive 4: the protocol switch */
+var pj=root.querySelector('#wp-panel-judgment'),pp=root.querySelector('#wp-panel-protocol');
+root.querySelectorAll('[data-wp-regime]').forEach(function(btn){
+ btn.addEventListener('click',function(){
+  root.querySelectorAll('[data-wp-regime]').forEach(function(b){b.setAttribute('aria-pressed','false')});
+  btn.setAttribute('aria-pressed','true');
+  var proto=btn.dataset.wpRegime==='protocol';
+  if(pj)pj.hidden=proto;
+  if(pp)pp.hidden=!proto;
+ });
+});
+
+/* Scroll reveals */
+var reveals=root.querySelectorAll('.wp-reveal');
+if('IntersectionObserver' in window){
+ var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+ },{threshold:0.1});
+ reveals.forEach(function(el){io.observe(el)});
+}else{
+ reveals.forEach(function(el){el.classList.add('in')});
+}
+})();
+
+</script>
 <script>
 (function(){
 var data={
@@ -2408,11 +2845,11 @@ window.addEventListener('scroll',queueKneeSync,{passive:true});window.addEventLi
 selectBursa('prepatellar');window.requestAnimationFrame(queueKneeSync);
 var cases={front:'Most consistent with prepatellar bursitis. Next: inspect for a skin break, warmth, spreading erythema, systemic symptoms, and other infection risks before labeling it aseptic.',below:'Consider superficial infrapatellar bursitis, but distinguish it from patellar tendinopathy and tibial-tubercle pathology with precise palpation and loading.',medial:'Pes anserine is plausible, but medial-compartment OA, meniscal pathology, and MCL-region pain overlap. Clinical localization alone is imperfect.',joint:'This pattern is not safely explained by a superficial bursa. A true joint process (including septic arthritis) needs urgent consideration.'};
 document.querySelectorAll('.case-choice').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.case-choice').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.getElementById('caseResult').innerHTML='<strong>Working localization</strong><p>'+cases[b.dataset.case]+'</p>'})});
-function selectEssayView(id,setHash){var labels={home:'INDEX',essay:'KNEE',"essay-backpain":'BACK PAIN',"essay-sci":'50 YEARS',"pickleball-fracture-curve":'FRACTURE CURVE',"carbon-plate-revolution":'CARBON PLATE',"dew-point-killer":'DEW POINT',"gait-cycle":'GAIT CYCLE',"fifty-dollar-hand":'THE $50 HAND',"twentysix-two":'26.2',"expensive-steps":'MOST EXPENSIVE STEPS',about:'ABOUT'};var titles={home:'The Rehab Lab | Visual Essays in Rehabilitation Medicine',essay:'How many bursae does a knee have? Nobody agrees. | The Rehab Lab',"essay-backpain":'If you had no back pain, what would your MRI say? | The Rehab Lab',"essay-sci":'The typical spinal cord injury patient is 15 years older than in 1973. | The Rehab Lab',"pickleball-fracture-curve":'Is pickleball actually dangerous? | The Rehab Lab',"carbon-plate-revolution":'Did carbon-plate shoes really break the marathon? | The Rehab Lab',"dew-point-killer":'Why does a humid 75°F morning feel so bad? | The Rehab Lab',"gait-cycle":'Walking is controlled falling. | The Rehab Lab',"fifty-dollar-hand":'The $50 Hand | The Rehab Lab',"twentysix-two":'What happens to your body at every hour of a marathon? | The Rehab Lab',"expensive-steps":'The Most Expensive Steps | The Rehab Lab',about:'About | The Rehab Lab'};document.querySelectorAll('.switcher button').forEach(function(x){x.setAttribute('aria-selected',String(x.dataset.view===id))});document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===id)});window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;var _pl=document.getElementById('progressLabel');if(_pl){_pl.textContent=labels[id]||'START'}var _bh=document.querySelector('.back-home');if(_bh){_bh.style.display=(id==='home')?'none':'block'};document.title=titles[id]||titles.home;if(setHash){history.replaceState(null,'',id==='home'?location.pathname:'#'+id)}}
+function selectEssayView(id,setHash){var labels={home:'INDEX',essay:'KNEE',"essay-backpain":'BACK PAIN',"essay-sci":'50 YEARS',"pickleball-fracture-curve":'FRACTURE CURVE',"carbon-plate-revolution":'CARBON PLATE',"dew-point-killer":'DEW POINT',"gait-cycle":'GAIT CYCLE',"fifty-dollar-hand":'THE $50 HAND',"twentysix-two":'26.2',"expensive-steps":'MOST EXPENSIVE STEPS',"whose-pain-gets-believed":'WHOSE PAIN',about:'ABOUT'};var titles={home:'The Rehab Lab | Visual Essays in Rehabilitation Medicine',essay:'How many bursae does a knee have? Nobody agrees. | The Rehab Lab',"essay-backpain":'If you had no back pain, what would your MRI say? | The Rehab Lab',"essay-sci":'The typical spinal cord injury patient is 15 years older than in 1973. | The Rehab Lab',"pickleball-fracture-curve":'Is pickleball actually dangerous? | The Rehab Lab',"carbon-plate-revolution":'Did carbon-plate shoes really break the marathon? | The Rehab Lab',"dew-point-killer":'Why does a humid 75°F morning feel so bad? | The Rehab Lab',"gait-cycle":'Walking is controlled falling. | The Rehab Lab',"fifty-dollar-hand":'The $50 Hand | The Rehab Lab',"twentysix-two":'What happens to your body at every hour of a marathon? | The Rehab Lab',"expensive-steps":'The Most Expensive Steps | The Rehab Lab',"whose-pain-gets-believed":'Whose pain gets believed? | The Rehab Lab',about:'About | The Rehab Lab'};document.querySelectorAll('.switcher button').forEach(function(x){x.setAttribute('aria-selected',String(x.dataset.view===id))});document.querySelectorAll('.view').forEach(function(v){v.classList.toggle('active',v.id===id)});window.scrollTo({top:0,left:0,behavior:'instant'});document.documentElement.scrollTop=0;document.body.scrollTop=0;var _pl=document.getElementById('progressLabel');if(_pl){_pl.textContent=labels[id]||'START'}var _bh=document.querySelector('.back-home');if(_bh){_bh.style.display=(id==='home')?'none':'block'};document.title=titles[id]||titles.home;if(setHash){history.replaceState(null,'',id==='home'?location.pathname:'#'+id)}}
 document.querySelectorAll('.switcher button').forEach(function(b){b.addEventListener('click',function(){selectEssayView(b.dataset.view,true)})});
 document.querySelectorAll('[data-open-view]').forEach(function(link){link.addEventListener('click',function(e){e.preventDefault();selectEssayView(link.dataset.openView,true)})});
 var initialView=location.hash.slice(1);if(document.getElementById(initialView)&&document.getElementById(initialView).classList.contains('view'))selectEssayView(initialView,false);
-window.addEventListener('scroll',function(){var max=document.documentElement.scrollHeight-innerHeight,p=max?scrollY/max:0;document.getElementById('readingBar').style.width=(p*100)+'%';document.getElementById('progressLabel').textContent=Math.round(p*100)+'% READ'});
+window.addEventListener('scroll',function(){var max=document.documentElement.scrollHeight-innerHeight,p=max?scrollY/max:0;document.getElementById('readingBar').style.width=(p*100)+'%';var _plEl=document.getElementById('progressLabel');if(_plEl)_plEl.textContent=Math.round(p*100)+'% READ'});
 
 var bpAges=[20,30,40,50,60,70,80];
 var bpColors=['#e85b47','#1c8ba3','#338466','#d89b22'];
