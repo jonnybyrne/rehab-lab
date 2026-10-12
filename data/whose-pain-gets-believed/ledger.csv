@@ -1,0 +1,9 @@
+year,study,population,finding,gap_measure
+1993,"Todd et al., JAMA","Adults, long-bone fractures","Hispanic patients receiving no analgesia vs non-Hispanic white patients","RR 2.12 (adjusted OR 7.46)"
+2000,"Todd et al., Ann Emerg Med","Adults, long-bone fractures","Received analgesia, white vs Black patients","74% vs 57%"
+2008,"Pletcher et al., JAMA","Adults, ED pain visits 1993-2005","Received an opioid, white vs Black patients","31% vs 23%"
+2008,"Chen et al., Acad Emerg Med","Adults, acute abdominal pain","Median wait for analgesia, women vs men","65 vs 49 min"
+2010,"Lazio et al., Clin J Pain","Adults, ED acute pain","Median wait for first analgesic, sickle cell disease vs renal colic","80 vs 50 min"
+2015,"Goyal et al., JAMA Pediatr","Children, appendicitis","Received opioid analgesia, white vs Black children","43.1% vs 20.7%"
+2020,"Goyal et al. (PECARN), Pediatrics","Children, fractures","Opioid analgesia, minority vs non-Hispanic white children","aOR 0.86"
+2023,"Enzinger et al., J Clin Oncol","Older Medicare patients, poor-prognosis cancer, end of life","Any opioid, Black vs white patients (adjusted difference)","-4.3 percentage points"
