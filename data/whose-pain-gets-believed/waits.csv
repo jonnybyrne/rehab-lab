@@ -1,0 +1,3 @@
+comparison,group_a,median_minutes_a,group_b,median_minutes_b,gap_minutes,source
+"Sickle cell disease vs renal colic, time to first analgesic","Renal colic",50,"Sickle cell disease",80,30,"Lazio et al., Clin J Pain 2010 (adjusted HR 0.61)"
+"Women vs men, acute abdominal pain, time to analgesia","Men",49,"Women",65,16,"Chen et al., Acad Emerg Med 2008"
