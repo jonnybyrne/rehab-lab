@@ -1621,7 +1621,7 @@ background:var(--p407-bg)}
 /* ---------- stakes (sober) ---------- */
 #odds-shelf .p413-stakes{
   margin-top:22px;border:1px solid var(--p413-line-strong);background:var(--p413-card);
-  padding:22px 22px 18px;box-shadow:var(--p413-shadow);
+  padding:22px;
 }#odds-shelf .p413-stakes h3{margin:0 0 4px;font:700 19px/1.25 "Newsreader",serif}#odds-shelf .p413-stakes .p413-plain{margin:0 0 14px;max-width:46em}#odds-shelf .p413-stakes-table{width:100%;border-collapse:collapse;font-size:14px}#odds-shelf .p413-stakes-table th,#odds-shelf .p413-stakes-table td{padding:8px 10px;border-top:1px solid var(--p413-line);text-align:left;vertical-align:top}#odds-shelf .p413-stakes-table th{font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--p413-muted);border-top:none}#odds-shelf .p413-stakes-table td.p413-rate{font:600 14px "IBM Plex Mono",monospace;white-space:nowrap}#odds-shelf .p413-stakes-table td.p413-src{color:var(--p413-muted);font-size:12.5px}#odds-shelf .p413-stakes .p413-sober{
   margin:16px 0 0;padding:14px 16px;border-left:3px solid var(--p413-ink);background:var(--p413-paper-2);
   font-size:15px;
@@ -1632,7 +1632,7 @@ background:var(--p407-bg)}
 }#odds-shelf .p413-tag.p413-scr{color:var(--p413-blue);border-color:var(--p413-blue)}#odds-shelf .p413-tag.p413-sym{color:var(--p413-green-deep);border-color:var(--p413-green)}
 
 /* ---------- house rules ---------- */
-#odds-shelf .p413-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}#odds-shelf .p413-rule{border:1px solid var(--p413-line);background:var(--p413-card);padding:14px 16px}#odds-shelf .p413-rule h4{margin:0 0 6px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-rule p{margin:0;font-size:13.5px;color:var(--p413-ink)}
+#odds-shelf .p413-key-intro{margin:18px 0 0;max-width:46em;font-size:15.5px}#odds-shelf .p413-key-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:20px 0 0;padding:0}#odds-shelf .p413-key-item{border-top:1px solid var(--p413-line);padding-top:9px}#odds-shelf .p413-key-item dt{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-key-item dd{margin:4px 0 0;font-size:13.5px}
 
 /* ---------- race card / patient selector ---------- */
 #odds-shelf .p413-racecard{
@@ -1644,18 +1644,18 @@ background:var(--p407-bg)}
   flex:1 1 130px;appearance:none;background:transparent;border:none;border-right:1px solid var(--p413-line);
   border-bottom:1px solid var(--p413-line);padding:12px 10px 10px;text-align:left;cursor:pointer;color:var(--p413-ink);
   font:600 13px/1.25 "IBM Plex Sans",sans-serif;
-}#odds-shelf .p413-patient-tab:last-child{border-right:none}#odds-shelf .p413-patient-tab .p413-pt-num{display:block;font:700 10px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.1em}#odds-shelf .p413-patient-tab[aria-pressed="true"]{background:var(--p413-ink);color:var(--p413-paper)}#odds-shelf .p413-patient-tab[aria-pressed="true"] .p413-pt-num{color:var(--p413-amber)}#odds-shelf .p413-patient-tab:focus-visible{outline:3px solid var(--p413-amber);outline-offset:-3px}#odds-shelf .p413-racecard-body{padding:16px 18px 18px}#odds-shelf .p413-rc-patient{font:700 clamp(21px,3.6vw,27px)/1.15 "Newsreader",serif;margin:0}#odds-shelf .p413-rc-baseline{margin:8px 0 0;font-size:15.5px}#odds-shelf .p413-rc-baseline strong{font-family:"IBM Plex Mono",monospace;font-weight:700}#odds-shelf .p413-rc-conditions{margin:8px 0 0;color:var(--p413-muted);font-size:14px;max-width:48em}#odds-shelf .p413-rc-conditions .p413-cond-label{font:700 10px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}
+}#odds-shelf .p413-patient-tab:last-child{border-right:none}#odds-shelf .p413-patient-tab .p413-pt-num{display:block;font:700 10px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.1em}#odds-shelf .p413-patient-tab[aria-pressed="true"]{background:var(--p413-ink);color:var(--p413-paper)}#odds-shelf .p413-patient-tab[aria-pressed="true"] .p413-pt-num{color:var(--p413-amber)}#odds-shelf .p413-patient-tab:focus-visible{outline:3px solid var(--p413-amber);outline-offset:-3px}#odds-shelf .p413-racecard-body{padding:18px 22px 20px}#odds-shelf .p413-rc-patient{font:700 clamp(21px,3.6vw,27px)/1.15 "Newsreader",serif;margin:0}#odds-shelf .p413-rc-baseline{margin:8px 0 0;font-size:15.5px}#odds-shelf .p413-rc-baseline strong{font-family:"IBM Plex Mono",monospace;font-weight:700}#odds-shelf .p413-rc-conditions{margin:8px 0 0;color:var(--p413-muted);font-size:14px;max-width:48em}#odds-shelf .p413-rc-conditions .p413-cond-label{font:700 10px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}
 
 /* ---------- the shelf ---------- */
 #odds-shelf .p413-shelf-zone{
-  margin-top:26px;padding:26px 18px 8px;
+  margin-top:28px;padding:30px 22px 16px;
   background:
     linear-gradient(var(--p413-paper-2),var(--p413-paper-2));
   border:1px solid var(--p413-line-strong);
-}#odds-shelf .p413-shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px 18px}#odds-shelf .p413-bottle-card{position:relative;display:flex;flex-direction:column;align-items:center}#odds-shelf .p413-bottle-card::after{
+}#odds-shelf .p413-shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 22px}#odds-shelf .p413-bottle-card{position:relative;display:flex;flex-direction:column;align-items:center}#odds-shelf .p413-bottle-card::after{
   content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:9px;
   background:linear-gradient(var(--p413-shelf),var(--p413-shelf-dark));border-radius:2px;
-  box-shadow:0 3px 5px rgba(34,29,18,.25);
+  box-shadow:0 2px 3px rgba(34,29,18,.18);
 }#odds-shelf .p413-bottle-shape{position:relative;width:104px;height:118px;flex:none}#odds-shelf .p413-bottle-shape .p413-neck{
   position:absolute;left:50%;top:0;transform:translateX(-50%);
   width:34px;height:20px;border:2px solid var(--p413-ink);border-bottom:none;
@@ -1670,13 +1670,13 @@ background:var(--p407-bg)}
 }#odds-shelf .p413-bottle-shape .p413-body-b .p413-glass-label{
   background:var(--p413-card);border:1px solid var(--p413-line-strong);padding:5px 4px;text-align:center;width:100%;
 }#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-class{display:block;font:600 8px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-name{display:block;font:700 11.5px/1.2 "Newsreader",serif;margin-top:2px}#odds-shelf .p413-bottle-shape.p413-box{width:118px;height:100px;margin-top:18px}#odds-shelf .p413-bottle-shape.p413-box .p413-body-b{top:0;border-radius:6px}#odds-shelf .p413-bottle-shape.p413-packet{width:96px;height:104px;margin-top:14px}#odds-shelf .p413-bottle-shape.p413-packet .p413-body-b{top:0;border-radius:4px 4px 14px 14px}#odds-shelf .p413-bottle-info{margin-top:20px;width:100%;text-align:left}#odds-shelf .p413-bottle-info .p413-b-name{font:700 16.5px/1.2 "Newsreader",serif;margin:0}#odds-shelf .p413-bottle-info .p413-b-what{margin:4px 0 0;font-size:12.5px;color:var(--p413-muted);min-height:2.4em}#odds-shelf .p413-odds-line{
-  margin:10px 0 0;padding:9px 10px;border:1px solid var(--p413-line);background:var(--p413-card);
+  margin:12px 0 0;padding:9px 0 0;border-top:1px solid var(--p413-line);
   font:12.5px/1.5 "IBM Plex Mono",monospace;
 }#odds-shelf .p413-odds-line .p413-ol-label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.13em;color:var(--p413-muted)}#odds-shelf .p413-odds-line .p413-ol-text{font-weight:500}#odds-shelf .p413-nnt-chip{
   display:inline-block;margin-top:7px;padding:2px 8px;border-radius:20px;background:var(--p413-ink);color:var(--p413-paper);
   font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.05em;
 }#odds-shelf .p413-nnt-chip:empty{display:none}#odds-shelf .p413-b-form{margin:9px 0 0;font-size:12px;color:var(--p413-muted)}#odds-shelf .p413-b-form .p413-f-label{font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-b-note{margin:6px 0 0;font-size:12.5px}#odds-shelf .p413-stamp{
-  position:absolute;top:64px;right:2px;z-index:3;padding:3px 8px;border:2.5px solid currentColor;border-radius:3px;
+  position:absolute;top:64px;right:2px;z-index:3;padding:3px 8px;border:2px solid currentColor;border-radius:2px;
   font:700 10px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;background:var(--p413-paper);
   transform:rotate(4deg);
 }#odds-shelf .p413-stamp.p413-fav{color:var(--p413-stamp-fav)}#odds-shelf .p413-stamp.p413-solid{color:var(--p413-stamp-solid)}#odds-shelf .p413-stamp.p413-long{color:var(--p413-stamp-long)}#odds-shelf .p413-stamp.p413-pulled{color:var(--p413-stamp-pulled)}#odds-shelf .p413-stamp.p413-none{color:var(--p413-stamp-none)}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-shape{filter:grayscale(.85);opacity:.55}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-info{opacity:.75}#odds-shelf .p413-bottle-card.p413-is-none .p413-bottle-shape{opacity:.7}#odds-shelf .p413-order-btn{
@@ -1687,7 +1687,7 @@ background:var(--p407-bg)}
 
 /* ---------- order tray ---------- */
 #odds-shelf .p413-tray{
-  margin-top:34px;border:2px solid var(--p413-ink);background:var(--p413-card);box-shadow:var(--p413-shadow);padding:18px;
+  margin-top:34px;border:2px solid var(--p413-ink);background:var(--p413-card);box-shadow:var(--p413-shadow);padding:20px 22px;
 }#odds-shelf .p413-tray h3{margin:0;font:700 21px/1.2 "Newsreader",serif}#odds-shelf .p413-tray .p413-tray-sub{margin:6px 0 0;color:var(--p413-muted);font-size:14px;max-width:46em}#odds-shelf .p413-tray-items{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;min-height:34px}#odds-shelf .p413-tray-chip{
   display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--p413-ink);border-radius:20px;
   padding:4px 6px 4px 12px;font:600 12px "IBM Plex Sans",sans-serif;background:var(--p413-paper);
@@ -1698,7 +1698,7 @@ background:var(--p407-bg)}
 
 
 /* ---------- photo finishes ---------- */
-#odds-shelf .p413-finishes{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}#odds-shelf .p413-finish{border:1px solid var(--p413-line-strong);background:var(--p413-card);padding:18px 20px;box-shadow:var(--p413-shadow)}#odds-shelf .p413-finish h3{margin:0;font:700 20px/1.25 "Newsreader",serif}#odds-shelf .p413-finish .p413-f-meta{margin:3px 0 0;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.04em}#odds-shelf .p413-race-rows{margin:14px 0 0}#odds-shelf .p413-race-row{display:grid;grid-template-columns:118px 1fr 118px;gap:10px;align-items:center;margin:9px 0}#odds-shelf .p413-race-row .p413-rr-label{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-race-row .p413-rr-val{font:700 12.5px "IBM Plex Mono",monospace;text-align:right}#odds-shelf .p413-race-row .p413-rr-val.p413-win{color:var(--p413-green-deep)}#odds-shelf .p413-bars{position:relative;height:26px}#odds-shelf .p413-bars .p413-bar{position:absolute;left:0;height:11px;border-radius:2px}#odds-shelf .p413-bars .p413-bar.p413-a{top:0;background:var(--p413-amber)}#odds-shelf .p413-bars .p413-bar.p413-b{top:14px;background:var(--p413-blue)}#odds-shelf .p413-bar-key{display:flex;gap:16px;margin-top:6px;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted)}#odds-shelf .p413-bar-key .p413-k{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}#odds-shelf .p413-bar-key .p413-k.p413-a{background:var(--p413-amber)}#odds-shelf .p413-bar-key .p413-k.p413-b{background:var(--p413-blue)}#odds-shelf .p413-finish .p413-f-verdict{margin:13px 0 0;font-size:14.5px}#odds-shelf .p413-finish .p413-f-verdict strong{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-green)}
+#odds-shelf .p413-finishes{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}#odds-shelf .p413-finish{border:1px solid var(--p413-line-strong);background:var(--p413-card);padding:20px 22px}#odds-shelf .p413-finish h3{margin:0;font:700 20px/1.25 "Newsreader",serif}#odds-shelf .p413-finish .p413-f-meta{margin:3px 0 0;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.04em}#odds-shelf .p413-race-rows{margin:14px 0 0}#odds-shelf .p413-race-row{display:grid;grid-template-columns:118px 1fr 118px;gap:10px;align-items:center;margin:9px 0}#odds-shelf .p413-race-row .p413-rr-label{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-race-row .p413-rr-val{font:700 12.5px "IBM Plex Mono",monospace;text-align:right}#odds-shelf .p413-race-row .p413-rr-val.p413-win{color:var(--p413-green-deep)}#odds-shelf .p413-bars{position:relative;height:26px}#odds-shelf .p413-bars .p413-bar{position:absolute;left:0;height:11px;border-radius:2px}#odds-shelf .p413-bars .p413-bar.p413-a{top:0;background:var(--p413-amber)}#odds-shelf .p413-bars .p413-bar.p413-b{top:14px;background:var(--p413-blue)}#odds-shelf .p413-bar-key{display:flex;gap:16px;margin-top:6px;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted)}#odds-shelf .p413-bar-key .p413-k{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}#odds-shelf .p413-bar-key .p413-k.p413-a{background:var(--p413-amber)}#odds-shelf .p413-bar-key .p413-k.p413-b{background:var(--p413-blue)}#odds-shelf .p413-finish .p413-f-verdict{margin:13px 0 0;font-size:14.5px}#odds-shelf .p413-finish .p413-f-verdict strong{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-green)}
 
 /* ---------- unclaimed ticket ---------- */
 #odds-shelf .p413-ticket{
@@ -1710,14 +1710,14 @@ background:var(--p407-bg)}
 }#odds-shelf .p413-ticket::before{left:-13px}#odds-shelf .p413-ticket::after{right:-13px}#odds-shelf .p413-ticket h3{margin:0;font:700 22px/1.2 "Newsreader",serif}#odds-shelf .p413-ticket .p413-t-lede{margin:8px 0 0;max-width:46em}#odds-shelf .p413-ticket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}#odds-shelf .p413-ticket-stat{border-top:2px solid var(--p413-ink);padding-top:10px}#odds-shelf .p413-ticket-stat .p413-ts-num{font:700 30px/1 "IBM Plex Mono",monospace;color:var(--p413-red)}#odds-shelf .p413-ticket-stat .p413-ts-what{margin:6px 0 0;font-size:13.5px}#odds-shelf .p413-ticket-stat .p413-ts-src{margin:4px 0 0;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted)}#odds-shelf .p413-ticket .p413-t-close{margin:18px 0 0;max-width:46em;font-size:15px}
 
 /* ---------- fine print + sources ---------- */
-#odds-shelf .p413-fineprint{margin-top:22px;border:1px solid var(--p413-line);background:var(--p413-card);padding:16px 18px}#odds-shelf .p413-fineprint h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-fineprint ul{margin:0;padding-left:18px;font-size:13.5px}#odds-shelf .p413-fineprint li{margin:5px 0}#odds-shelf .p413-sources{margin-top:22px;font-size:13px;color:var(--p413-muted)}#odds-shelf .p413-sources h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-ink)}#odds-shelf .p413-sources ol{margin:0;padding-left:20px}#odds-shelf .p413-sources li{margin:4px 0}#odds-shelf .p413-footer-note{
+#odds-shelf .p413-fineprint{margin-top:22px;border:1px solid var(--p413-line);background:var(--p413-card);padding:18px 22px}#odds-shelf .p413-fineprint h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-fineprint ul{margin:0;padding-left:18px;font-size:13.5px}#odds-shelf .p413-fineprint li{margin:5px 0}#odds-shelf .p413-sources{margin-top:22px;font-size:13px;color:var(--p413-muted)}#odds-shelf .p413-sources h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-ink)}#odds-shelf .p413-sources ol{margin:0;padding-left:20px}#odds-shelf .p413-sources li{margin:4px 0}#odds-shelf .p413-footer-note{
   margin:44px 0 0;padding-top:14px;border-top:2px solid var(--p413-ink);
   font:11.5px/1.6 "IBM Plex Mono",monospace;color:var(--p413-muted);
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 }
 
 /* ---------- responsive ---------- */
-@media (max-width:900px){#odds-shelf .p413-shelf-grid{grid-template-columns:repeat(2,1fr)}#odds-shelf .p413-rules{grid-template-columns:1fr}#odds-shelf .p413-ticket-grid{grid-template-columns:1fr}#odds-shelf .p413-race-row{grid-template-columns:96px 1fr 96px}
+@media (max-width:900px){#odds-shelf .p413-shelf-grid{grid-template-columns:repeat(2,1fr)}#odds-shelf .p413-key-list{grid-template-columns:1fr}#odds-shelf .p413-ticket-grid{grid-template-columns:1fr}#odds-shelf .p413-race-row{grid-template-columns:96px 1fr 96px}
 }
 @media (max-width:560px){#odds-shelf .p413-shelf-grid{grid-template-columns:1fr}#odds-shelf .p413-patient-tab{flex:1 1 45%}#odds-shelf .p413-wrap{padding:0 14px 70px}#odds-shelf .p413-stakes,#odds-shelf .p413-ticket{padding:18px 15px}#odds-shelf .p413-race-row{grid-template-columns:84px 1fr 84px}#odds-shelf .p413-stakes-table td.p413-rate{white-space:normal}
 }
@@ -1730,10 +1730,10 @@ background:var(--p407-bg)}
 .home-card.shelf .home-card-art{background:#f3ead3}
 /* Essay 13 addition: behind the counter (why the bottle gets picked) */
 #odds-shelf .p413-reach-lede{font-size:16.5px;max-width:74ch}
-#odds-shelf .p413-reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
-#odds-shelf .p413-reach{background:var(--p413-card);border:1px solid var(--p413-line-strong);border-top:3px dashed var(--p413-line-strong);box-shadow:var(--p413-shadow);padding:20px 22px}
-#odds-shelf .p413-reach-kicker{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--p413-green-deep);margin-bottom:9px}
-#odds-shelf .p413-reach-title{font-family:Georgia,'Times New Roman',serif;font-size:21px;line-height:1.2;font-weight:700;margin:0 0 9px;color:var(--p413-ink)}
+#odds-shelf .p413-reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+#odds-shelf .p413-reach{background:var(--p413-card);border:1px solid var(--p413-line-strong);padding:20px 22px}
+#odds-shelf .p413-reach-kicker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--p413-green-deep);margin-bottom:9px}
+#odds-shelf .p413-reach-title{font-family:"Newsreader",serif;font-size:21px;line-height:1.2;font-weight:700;margin:0 0 9px;color:var(--p413-ink)}
 #odds-shelf .p413-reach p{font-size:14.5px;line-height:1.62;margin:0 0 9px;color:var(--p413-ink)}
 #odds-shelf .p413-reach p:last-child{margin-bottom:0}
 @media(max-width:900px){#odds-shelf .p413-reach-grid{grid-template-columns:1fr}}
@@ -3276,23 +3276,23 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 
   <p class="p413-kicker">Formulary No. 13 · The Prophylaxis Board</p>
   <h1 class="p413-title">The Odds <em>Shelf</em></h1>
-  <p class="p413-dek">Nine ways to keep a still leg from clotting, stocked like a pharmacy and priced like a race card. Pick your patient; the whole shelf re-prices itself.</p>
+  <p class="p413-dek">Nine ways to keep a still leg from clotting, stocked like a pharmacy, priced like a race card. Pick a patient; the whole shelf re-prices itself.</p>
   <div class="p413-byline-row">
     <span class="p413-byline">By Jonathan Byrne, DO <span class="p413-role">· PM&amp;R</span></span>
     <span class="p413-draft-stamp">DRAFT: pending expert review</span>
   </div>
 
   <div class="p413-intro">
-    <p>Every hospital runs the same quiet book. A patient stops moving: after a fracture, a stroke, a cord injury, a long medical admission. Blood that stops moving starts to clot, and the house offers a shelf of countermeasures: injections, pills, pumps, and one famous pair of stockings. Each has a record. Each record was set against a specific kind of patient, and the odds change completely when the patient does.</p>
-    <p>So this essay is a shelf and a race card at once. Choose the patient at the top, and every bottle below posts its line for that patient: the risk with nothing on board, the risk on that agent, and the trial that set the price. The betting language is a framing device, nothing more. The clots are real, and where the numbers turn deadly they are presented straight, in the panel immediately below.</p>
+    <p>Every hospital runs the same quiet book. A patient stops moving: after a fracture, a stroke, a cord injury, a long admission. Blood that stops moving starts to clot, and the house answers with a shelf of countermeasures: injections, pills, pumps, one famous pair of stockings. Each has a record, set against a specific kind of patient. Change the patient and the odds change completely.</p>
+    <p>This essay is a shelf and a race card at once. Pick the patient at the top, and every bottle below posts its line for that patient: the risk with nothing on board, the risk on that agent, the trial that set the price. The betting language is only a frame. The clots are real, and where the numbers turn deadly they are presented straight, in the panel below.</p>
   </div>
 
   <section id="p413-stakes">
     <div class="p413-sec-head"><span class="p413-sec-num">First</span><h2 class="p413-sec-title">The stakes, stated plainly</h2></div>
-    <p class="p413-sec-sub">Before any odds are posted, here is what the board is actually about: how often blood clots in the legs when nobody does anything to stop it.</p>
+    <p class="p413-sec-sub">Before any odds: how often legs clot when nobody does anything to stop it.</p>
     <div class="p413-stakes">
       <h3>Risk of deep vein thrombosis with no prophylaxis at all</h3>
-      <p class="p413-plain">The older studies found these clots by scanning or injecting dye in everyone, symptoms or not, so they count mostly silent clots. Modern wards, with early mobilization and routine cover, see far fewer events that a patient can feel. Both statements are true; every line on the shelf below is tagged so you know which kind of number you are reading.</p>
+      <p class="p413-plain">The older studies scanned or injected dye in everyone, symptoms or not, so they count mostly silent clots. Modern wards, mobilizing early and covering routinely, see far fewer clots a patient can feel. Both are true; every line below is tagged by which kind of number it is.</p>
       <table class="p413-stakes-table">
         <thead><tr><th>Patient</th><th>DVT, untreated</th><th>Source</th></tr></thead>
         <tbody>
@@ -3305,33 +3305,30 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
         </tbody>
       </table>
       <div class="p413-sober">
-        <p><strong>What a clot can cost.</strong> A clot that breaks loose and reaches the lungs can kill, and it does so in exactly the patients on this board. Without prophylaxis, fatal pulmonary embolism followed hip fracture surgery in roughly 2.5 to 7.5% of patients in the classic series.</p>
-        <p>In the PEP trial (Lancet 2000), 13,356 hip fracture patients received aspirin or placebo. Forty-three people in the placebo group died of pulmonary embolism. Eighteen did in the aspirin group. That difference, 25 funerals, is why the bottles below exist, and it is the last time in this essay that death is given a number without a joke anywhere near it.</p>
+        <p><strong>What a clot can cost.</strong> A clot that breaks loose and reaches the lungs can kill, in exactly the patients on this board. Without prophylaxis, fatal pulmonary embolism followed hip fracture surgery in roughly 2.5 to 7.5% of patients in classic series.</p>
+        <p>In the PEP trial (Lancet 2000), 13,356 hip fracture patients received aspirin or placebo. Forty-three people in the placebo group died of pulmonary embolism; eighteen in the aspirin group. That difference, 25 funerals, is why the bottles below exist. It is the last time in this essay that death is given a number without a joke anywhere near it.</p>
       </div>
     </div>
   </section>
 
   <section id="p413-rules">
     <div class="p413-sec-head"><span class="p413-sec-num">House rules</span><h2 class="p413-sec-title">How to read the board</h2></div>
-    <div class="p413-rules">
-      <div class="p413-rule">
-        <h4>The odds line</h4>
-        <p>Each bottle posts the event rate with no cover and the rate on that agent, for the patient you selected. These are trial percentages, not bookmaker odds: 31% means 31 of 100 such patients developed the outcome in that study.</p>
-      </div>
-      <div class="p413-rule">
-        <h4>Screening vs symptomatic</h4>
-        <p><span class="p413-tag p413-scr">Screening</span> numbers come from studies that imaged everyone and counted silent clots. <span class="p413-tag p413-sym">Symptomatic</span> numbers count clots patients actually felt. Screening rates run 5 to 20 times higher; never compare across the two without noticing the tag.</p>
-      </div>
-      <div class="p413-rule">
-        <h4>NNT and the stamp</h4>
-        <p>The black chip is the number needed to treat: patients covered for one fewer event, computed from the trial's own rates. The colored stamp is the stewards' verdict for that patient: house favorite, solid bet, long shot, or pulled from the shelf entirely.</p>
-      </div>
-    </div>
+    <p class="p413-key-intro">Plainly, because the metaphor misleads if nobody declares it: there is no literal race. No one runs, and no purse is paid. The race card is the list of patient types at the top of the board. A patient's starting position is their chance of clotting with no treatment. When a bottle posts odds, it is posting the chance of a clot if that patient takes that drug. Everything else on the board is bookkeeping, and the key below defines it.</p>
+    <dl class="p413-key-list">
+      <div class="p413-key-item"><dt>Race card</dt><dd>The seven patient types. Pick one; every price is quoted for that patient.</dd></div>
+      <div class="p413-key-item"><dt>Starting position</dt><dd>That patient's chance of clotting with no treatment, posted in the stakes panel.</dd></div>
+      <div class="p413-key-item"><dt>Odds line</dt><dd>Rates with no cover and on that drug, from trials: 31% means 31 of 100 patients clotted.</dd></div>
+      <div class="p413-key-item"><dt>Form</dt><dd>The line under the price, naming the trial behind the number.</dd></div>
+      <div class="p413-key-item"><dt>NNT chip</dt><dd>The black chip: patients covered for one fewer event, from the trial's own rates.</dd></div>
+      <div class="p413-key-item"><dt>Pulled</dt><dd>Stamped do not stock: the evidence scratched this bottle for this patient.</dd></div>
+      <div class="p413-key-item"><dt>Verdict stamp</dt><dd>The stewards' bottom line: house favorite, solid bet, long shot, or pulled.</dd></div>
+      <div class="p413-key-item"><dt>Screening vs symptomatic</dt><dd>Screening counts silent clots found by imaging everyone; symptomatic counts clots patients felt. Screening runs 5 to 20 times higher; never compare across tags.</dd></div>
+    </dl>
   </section>
 
   <section id="p413-shelf">
     <div class="p413-sec-head"><span class="p413-sec-num">Second</span><h2 class="p413-sec-title">Pick a patient, then read the shelf</h2></div>
-    <p class="p413-sec-sub">The race card comes first. Every bottle underneath it re-prices the moment you change the patient, because in this literature the patient is most of the story.</p>
+    <p class="p413-sec-sub">Every bottle underneath re-prices the moment you change the patient, because in this literature the patient is most of the story.</p>
 
     <div class="p413-racecard" role="group" aria-label="Choose a patient">
       <div class="p413-racecard-top"><span>Race card · Form 13</span><span class="p413-rc-right">Seven runners, one shelf</span></div>
@@ -3349,7 +3346,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 
     <div class="p413-tray" id="p413-tray">
       <h3>Build the order</h3>
-      <p class="p413-tray-sub">Tap “+ Order” on any bottle to put it on the tray for the patient on the race card. The house then grades your ticket against the evidence: what covers, what is scratched, and what is missing.</p>
+      <p class="p413-tray-sub">Tap “+ Order” on any bottle to add it to the tray for the patient on the race card. The house grades your ticket against the evidence: what covers, what is scratched, what is missing.</p>
       <div class="p413-tray-items" id="p413-trayItems"><span class="p413-tray-empty">The tray is empty.</span></div>
       <div class="p413-tray-verdict" id="p413-trayVerdict" aria-live="polite"></div>
     </div>
@@ -3357,7 +3354,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 
   <section id="p413-finishes">
     <div class="p413-sec-head"><span class="p413-sec-num">Third</span><h2 class="p413-sec-title">Photo finishes</h2></div>
-    <p class="p413-sec-sub">Three head-to-heads did more to set the prices on that shelf than everything else combined. Each bar is a percentage of patients; shorter is better.</p>
+    <p class="p413-sec-sub">Three head-to-heads set the prices on that shelf more than everything else combined. Each bar is a percentage of patients; shorter is better.</p>
     <div class="p413-finishes">
 
       <article class="p413-finish">
@@ -3369,7 +3366,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
           <div class="p413-race-row"><span class="p413-rr-label">Nonfatal PE</span><div class="p413-bars"><div class="p413-bar p413-a" style="width:50%"></div><div class="p413-bar p413-b" style="width:50%"></div></div><span class="p413-rr-val">1.49 vs 1.49%</span></div>
           <div class="p413-race-row"><span class="p413-rr-label">Any DVT</span><div class="p413-bars"><div class="p413-bar p413-a" style="width:84%"></div><div class="p413-bar p413-b" style="width:57%"></div></div><span class="p413-rr-val">2.51 vs <span class="p413-win">1.71%</span></span></div>
         </div>
-        <p class="p413-f-verdict"><strong>Verdict ·</strong> A dead heat where it matters most, death and PE identical, and aspirin noninferior on the primary outcome. Enoxaparin wins the DVT line by 0.8 points (NNT about 125), and nearly all of that margin is below-knee clots. Whether a below-knee clot is worth 125 patients' worth of injections is the argument this trial started, not settled.</p>
+        <p class="p413-f-verdict"><strong>Verdict ·</strong> Dead heat where it matters most: death and PE identical, aspirin noninferior on the primary outcome. Enoxaparin takes DVT by 0.8 points (NNT about 125), nearly all below-knee clots. Whether one is worth 125 patients' worth of injections is the argument this trial started, not settled.</p>
       </article>
 
       <article class="p413-finish">
@@ -3383,7 +3380,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
           <div class="p413-bar-key"><span><span class="p413-k p413-a"></span>Aspirin step-down</span><span><span class="p413-k p413-b"></span>Rivaroxaban throughout</span></div>
           <div class="p413-race-row"><span class="p413-rr-label">Sympt. proximal VTE</span><div class="p413-bars"><div class="p413-bar p413-a" style="width:16%"></div><div class="p413-bar p413-b" style="width:18%"></div></div><span class="p413-rr-val">0.64 vs 0.70%</span></div>
         </div>
-        <p class="p413-f-verdict"><strong>Verdict ·</strong> Same horse, different start. As a day-zero solo act, aspirin lost clearly (and the trial was stopped early because of it). As the second phase after five days of a real anticoagulant, it finished in a dead heat. Aspirin's weakness is front-loaded, in the first days when clotting risk peaks, and the two trials together are the cleanest proof on the board.</p>
+        <p class="p413-f-verdict"><strong>Verdict ·</strong> Same horse, different start. As a day-zero solo act, aspirin lost clearly, and the trial was stopped early because of it. As the second phase after five days of a real anticoagulant, it dead-heated. Aspirin's weakness is front-loaded, in the first days when risk peaks; together, the two trials are the cleanest proof on the board.</p>
       </article>
 
       <article class="p413-finish">
@@ -3395,7 +3392,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
           <div class="p413-race-row"><span class="p413-rr-label">PE</span><div class="p413-bars"><div class="p413-bar p413-a" style="width:19%"></div><div class="p413-bar p413-b" style="width:33%"></div></div><span class="p413-rr-val"><span class="p413-win">1.3</span> vs 2.3%</span></div>
           <div class="p413-race-row"><span class="p413-rr-label">HIT</span><div class="p413-bars"><div class="p413-bar p413-a" style="width:5%"></div><div class="p413-bar p413-b" style="width:9%"></div></div><span class="p413-rr-val"><span class="p413-win">0.3</span> vs 0.6%</span></div>
         </div>
-        <p class="p413-f-verdict"><strong>Verdict ·</strong> The strangest finish on the board: the clots tie (5.1 vs 5.8%, no significant difference) and the emboli do not (PE hazard ratio 0.51 with dalteparin, NNT about 100). Nobody has fully explained how a drug prevents the embolism without visibly preventing the clot. It remains the cleanest demonstration that not all clots, and not all prevented clots, are equal.</p>
+        <p class="p413-f-verdict"><strong>Verdict ·</strong> The strangest finish on the board: the clots tie (5.1 vs 5.8%, not significant), the emboli do not (PE hazard ratio 0.51 with dalteparin, NNT about 100). Nobody has fully explained how a drug prevents the embolism without visibly preventing the clot. Not all clots, and not all prevented clots, are equal.</p>
       </article>
 
     </div>
@@ -3407,62 +3404,62 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
       <span class="p413-sec-num">Behind the counter</span>
       <h2 class="p413-sec-title">Why the surgeon reaches for that bottle</h2>
     </div>
-    <p class="p413-reach-lede">The board posts what the trials found. It cannot post why a particular hand reaches for a particular bottle at the start of a list. That part runs on three things no trial randomizes: the harm the surgeon can see, the schedule the day allows, and the default the order set already chose. Pinned behind the counter, service by service, are the reasons as the house understands them.</p>
+    <p class="p413-reach-lede">The board posts what the trials found, not why a hand reaches for a particular bottle. That runs on three things no trial randomizes: the harm the surgeon can see, the schedule the day allows, the default the order set chose. Pinned behind the counter, service by service, are the reasons.</p>
     <div class="p413-reach-grid">
       <article class="p413-reach">
         <div class="p413-reach-kicker">Arthroplasty · the aspirin habit</div>
         <h3 class="p413-reach-title">The harm you can see beats the clot you cannot</h3>
-        <p>The first reasons are practical, and the literature on the question says so plainly. Aspirin is a pill: no injection to teach, no blood monitoring, a low price, and nothing about it that makes a patient quietly stop taking it at home. A Bone &amp; Joint Journal review of aspirin after joint replacement adds the reason that carries the operating room: aspirin is a milder agent, less likely to fill the wound with blood.</p>
-        <p>A hematoma is the complication the surgeon personally meets again: at the wound check, on the return trip to theatre, in the drainage that will not stop, and each of those is a step toward an infected prosthesis. The clot aspirin misses is usually the opposite kind of event: silent, below the knee, found only because a trial went looking. The whole CRISTAL gap was driven by below-knee DVT, and EPCAT II showed aspirin matched rivaroxaban (0.64% vs 0.70%) once the first five days were covered by the stronger drug. The AAOS guideline, for its part, declines to name a best agent at all. Between a harm you can see and a harm you mostly cannot, the hand reaches for the pill.</p>
+        <p>The first reasons are practical: aspirin is a pill. No injection to teach, no monitoring, low price, and patients do not quietly stop taking it at home. A Bone &amp; Joint Journal review adds the operating room's reason: aspirin is milder, less likely to fill the wound with blood.</p>
+        <p>A hematoma is the complication the surgeon meets again: at the wound check, on the return trip to theatre, in drainage that will not stop, each a step toward an infected prosthesis. The clot aspirin misses is the opposite: silent, below the knee. The whole CRISTAL gap was below-knee DVT; EPCAT II showed aspirin matching rivaroxaban once the stronger drug had covered the first five days; the AAOS guideline names no best agent. Between a harm you can see and one you mostly cannot, the hand reaches for the pill.</p>
       </article>
       <article class="p413-reach">
         <div class="p413-reach-kicker">Trauma · early LMWH, lingering UFH</div>
         <h3 class="p413-reach-title">Start early, and keep a short leash in the drawer</h3>
-        <p>Trauma runs the other way: the clot is common, proximal, and lethal, and the data keep dragging the first dose earlier. A large registry analysis prices delay at roughly 1.5% higher VTE odds for every hour of the first 24, and in blunt solid organ injury, starting within 48 hours cut VTE to 3% from 7% with no extra bleeding failures. EAST and the critical care guideline both land on LMWH once bleeding allows.</p>
-        <p>The counterweight is the bleeding the trauma surgeon can watch happen: an intracranial hemorrhage expanding on the next scan. For the TBI patient who needs neurosurgery, the critical care guideline makes no recommendation at all, because the evidence is not there, and those calls get made on judgment in the middle of the night. Which is why UFH keeps its drawer in the trauma bay. It is not cleared by the kidneys, so it survives renal failure; it wears off fast and protamine can reverse it, so it survives the patient who is heading back to theatre. Not nostalgia: a short leash, kept for short-notice problems.</p>
+        <p>Trauma runs the other way: the clot is common, proximal, lethal, and the data keep dragging the first dose earlier. A large registry analysis prices delay at roughly 1.5% higher VTE odds per hour of the first 24; in blunt solid organ injury, starting within 48 hours cut VTE from 7% to 3%, no extra bleeding failures. EAST and the critical care guideline both land on LMWH once bleeding allows.</p>
+        <p>The counterweight is bleeding the surgeon can watch happen: an intracranial hemorrhage expanding on the next scan. For TBI needing neurosurgery, the critical care guideline makes no recommendation at all, the evidence is not there, and the call is judgment, in the middle of the night. Which is why UFH keeps its drawer in the trauma bay: not cleared by the kidneys, so it survives renal failure; quick to wear off and reversed by protamine, so it survives the trip back to theatre. Not nostalgia: a short leash for short-notice problems.</p>
       </article>
       <article class="p413-reach">
         <div class="p413-reach-kicker">Spine and neurosurgery · the ASRA clock</div>
         <h3 class="p413-reach-title">The dose waits for the catheter</h3>
-        <p>On a spine list, the complication that governs the shelf is not in the legs. A spinal epidural hematoma is a small bleed in a closed bony canal, beside the cord, and its price is a permanent deficit with the surgeon's name on it. That fear has a timetable, written by the ASRA consensus: a neuraxial needle or catheter waits at least 12 hours after a once-daily prophylactic LMWH dose and at least 24 hours after a twice-daily or treatment dose; the next dose waits at least 4 hours after the catheter comes out; and fondaparinux does not share a patient with an indwelling catheter at all.</p>
-        <p>Read those windows as a dosing schedule and the behavior explains itself: doses are held not from neglect but from arithmetic, and every held dose is one the patient never gets back. On this service the clock, not the clot, runs the shelf.</p>
+        <p>On a spine list, the complication that governs the shelf is not in the legs. A spinal epidural hematoma is a small bleed in a closed bony canal beside the cord, priced as a permanent deficit with the surgeon's name on it. That fear has a timetable, written by the ASRA consensus: a neuraxial needle or catheter waits at least 12 hours after a once-daily prophylactic LMWH dose, at least 24 hours after a twice-daily or treatment dose; the next dose waits at least 4 hours after the catheter comes out; fondaparinux does not share a patient with an indwelling catheter at all.</p>
+        <p>Read as a dosing schedule, the behavior explains itself: doses are held not from neglect but from arithmetic, and every held dose is one the patient never gets back. On this service the clock, not the clot, runs the shelf.</p>
       </article>
       <article class="p413-reach">
         <div class="p413-reach-kicker">Hip fracture · the long tradition</div>
         <h3 class="p413-reach-title">Old operation, long cover</h3>
-        <p>Hip fracture is where this shelf was built, and its habits are old for a reason. PEP randomized more than 13,000 hip fracture patients in 2000, and aspirin alone cut fatal PE deaths from 43 to 18: even the mildest agent on the shelf is a serious drug here. PENTATHLON then gave fondaparinux a clean win over enoxaparin, 8.3% vs 19.1% on scan-detected clots, and the service has trusted long, early cover ever since.</p>
-        <p>The calendar explains it: immobility starts at the fall, surgery follows fast because delay is its own danger, and the patient afterwards is older, anemic, and slow to get moving. NICE answers with a month of LMWH, fondaparinux if the bleeding balance tips that way. On this card the argument is rarely which bottle; it is whether cover started around the operation and survived the discharge.</p>
+        <p>Hip fracture is where this shelf was built, and its habits are old for a reason. PEP randomized more than 13,000 hip fracture patients in 2000, and aspirin alone cut fatal PE deaths from 43 to 18: even the mildest agent here is a serious drug. PENTATHLON gave fondaparinux a clean win over enoxaparin on scan-detected clots, and the service has trusted long, early cover ever since.</p>
+        <p>The calendar explains it: immobility starts at the fall, surgery follows fast because delay is its own danger, and the patient is older, anemic, slow to get moving. NICE answers with a month of LMWH, fondaparinux if the bleeding balance tips that way. On this card the argument is rarely which bottle; it is whether cover started around the operation and survived discharge.</p>
       </article>
       <article class="p413-reach">
         <div class="p413-reach-kicker">Discharge · the DOAC question</div>
         <h3 class="p413-reach-title">The best bottle is the one that gets taken</h3>
-        <p>At the discharge desk the contest changes: whatever won on the ward has to survive a kitchen table. A once-daily pill needs no injection teaching, no visiting nurse, and no blood monitoring, and ASH 2019 suggests a DOAC over LMWH after joint replacement largely on convenience.</p>
-        <p>The same desk keeps the refusals. Kidney function narrows the whole shelf: fondaparinux is contraindicated below a creatinine clearance of 30, enoxaparin accumulates below 30, and the DOACs carry their own renal restrictions. Cost and prior authorization push back toward a syringe or an aspirin bottle. And reversal is lopsided: protamine has unwound heparin for decades, fondaparinux has no reversal agent at all, and in practice DOAC reversal, where it exists, is newer, costlier, and far less rehearsed. Convenience wins only when the kidneys, the wallet, and the bleeding plan all sign the same ticket.</p>
+        <p>At the discharge desk the contest changes: whatever won on the ward has to survive a kitchen table. A once-daily pill needs no injection teaching, no nurse visits, no monitoring, and ASH 2019 suggests a DOAC over LMWH after joint replacement largely on convenience.</p>
+        <p>The same desk keeps the refusals. Kidneys narrow the shelf: fondaparinux is contraindicated below a creatinine clearance of 30, enoxaparin accumulates below 30, the DOACs carry their own renal restrictions. Cost and prior authorization push back toward a syringe or an aspirin bottle. Reversal is lopsided too: protamine has unwound heparin for decades, fondaparinux has no reversal agent at all, and DOAC reversal, where it exists, is newer, costlier, far less rehearsed. Convenience wins only when the kidneys, the wallet, and the bleeding plan all sign the same ticket.</p>
       </article>
       <article class="p413-reach">
         <div class="p413-reach-kicker">Every service · the order set</div>
         <h3 class="p413-reach-title">The default is the decision</h3>
-        <p>Most prophylaxis is never actively chosen. It arrives pre-checked in an admission order set, at a default drug, dose, and hour, and it runs until something interrupts it: a procedure window, a transfer, a refused injection. The failure data fit that picture exactly. In the trauma missed-dose study, patients who missed enoxaparin doses developed DVT at 23.5%, against 4.8% when every dose landed; in rehab, prophylaxis was dropped at medication reconciliation in 14.2% of stroke and brain injury transfers, stopped by default rather than by decision.</p>
-        <p>The famous preferences, aspirin versus enoxaparin and one DOAC versus another, are real, and the notes above are honest about them. But they are the small print. The headline is the default: whatever the order set says is what the patient gets, on the days it says it, until somebody chooses otherwise.</p>
+        <p>Most prophylaxis is never actively chosen. It arrives pre-checked in an admission order set, at a default drug, dose, and hour, and runs until something interrupts it: a procedure window, a transfer, a refused injection. The failure data fit that picture exactly: in the trauma missed-dose study, patients who missed enoxaparin doses developed DVT at 23.5%, against 4.8% when every dose landed; in rehab, prophylaxis was dropped at medication reconciliation in 14.2% of stroke and brain injury transfers, stopped by default rather than by decision.</p>
+        <p>The famous preferences, aspirin versus enoxaparin, one DOAC versus another, are real. But they are the small print. The headline is the default: whatever the order set says is what the patient gets, until somebody chooses otherwise.</p>
       </article>
     </div>
   </section>
 
 <section id="p413-rehab-gap">
     <div class="p413-sec-head"><span class="p413-sec-num">Last</span><h2 class="p413-sec-title">The unclaimed ticket</h2></div>
-    <p class="p413-sec-sub">Every trial above ends at discharge or at a fixed day count. Rehabilitation starts there. What happens to prophylaxis at the exact moment the patient changes buildings is the least studied, most Rehab Lab question on the board.</p>
+    <p class="p413-sec-sub">Every trial above ends at discharge or at a fixed day count; rehabilitation starts there. What happens to prophylaxis when the patient changes buildings is the least studied, most Rehab Lab question on the board.</p>
     <div class="p413-ticket">
       <h3>Nobody cashed it in</h3>
-      <p class="p413-t-lede">The acute hospital writes the order. Then the patient transfers, the medication list gets reconciled by hand, and the order quietly fails to make the trip. This is not a rare clerical slip; it has been measured, three different ways.</p>
+      <p class="p413-t-lede">The acute hospital writes the order. Then the patient transfers, the medication list is reconciled by hand, and the order quietly fails to make the trip. Not a rare clerical slip: it has been measured three different ways.</p>
       <div class="p413-ticket-grid">
         <div class="p413-ticket-stat">
           <div class="p413-ts-num">14.2%</div>
-          <p class="p413-ts-what">of stroke and brain injury patients arriving at one inpatient rehabilitation facility had their prophylaxis inappropriately dropped during transfer medication reconciliation. Heparin products were the most frequently dropped item.</p>
+          <p class="p413-ts-what">of stroke and brain injury patients arriving at one inpatient rehabilitation facility had their prophylaxis inappropriately dropped during transfer medication reconciliation. Heparin products were dropped most often.</p>
           <p class="p413-ts-src">Quality improvement study, Cureus 2022 (647 charts)</p>
         </div>
         <div class="p413-ticket-stat">
           <div class="p413-ts-num">12 of 16</div>
-          <p class="p413-ts-what">clots that developed after admission to SCI rehabilitation occurred after prophylaxis had already been stopped. In the same cohort, 21% of patients received no prophylaxis during rehab at all, usually because a clinician judged their mobility good enough.</p>
+          <p class="p413-ts-what">clots that developed after admission to SCI rehabilitation occurred after prophylaxis had already been stopped. In the same cohort, 21% of patients got no prophylaxis during rehab at all, usually because a clinician judged their mobility good enough.</p>
           <p class="p413-ts-src">Bluvshtein et al., NeuroRehabilitation 2023 (n=685)</p>
         </div>
         <div class="p413-ticket-stat">
@@ -3471,16 +3468,16 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
           <p class="p413-ts-src">Eichinger et al., PLoS ONE 2018 (n=185)</p>
         </div>
       </div>
-      <p class="p413-t-close">The receiving end is not imagining it: screening studies find a DVT already present in 8.6% of brain injury patients and 13.2% of stroke patients on the day they arrive at rehabilitation. And the risk window outlasts the building: about three quarters of symptomatic clots after hip replacement are diagnosed after discharge. Yet there is no randomized trial of prophylaxis in a rehabilitation facility, no rehab-specific guideline, and no study linking the scores rehab actually runs on (the FIM, the Berg Balance Scale) to who clots. A single stroke cohort found balance scores were the closest thing to a predictor anyone has. The honest summary: rehab prophylaxis runs on extrapolation, clinician judgment, and a handoff that fails about one time in seven. The ticket, most days, is simply never claimed.</p>
+      <p class="p413-t-close">The receiving end is not imagining it: screening finds a DVT already present in 8.6% of brain injury patients and 13.2% of stroke patients on arrival at rehabilitation. The risk window outlasts the building: about three quarters of symptomatic clots after hip replacement are diagnosed after discharge. Yet there is no randomized trial of prophylaxis in a rehabilitation facility, no rehab-specific guideline, and no study linking the scores rehab runs on (the FIM, the Berg Balance Scale) to who clots; one stroke cohort found balance scores the closest predictor anyone has. The summary: rehab prophylaxis runs on extrapolation, clinician judgment, and a handoff that fails about one time in seven. The ticket, most days, is simply never claimed.</p>
     </div>
 
     <div class="p413-fineprint">
       <h3>Fine print the stewards insist on</h3>
       <ul>
-        <li><strong>Screening endpoints set the prices.</strong> Drug approvals and guideline grades rest heavily on venographic trials that count silent clots, which occur 3 to 10 times more often than symptomatic events. A bottle can look dominant on the shelf and merely equal at the bedside.</li>
-        <li><strong>Anti-Xa titration did not survive contact with a big cohort.</strong> Adjusting enoxaparin doses to blood levels sounded right and failed: VTE 6.0% fixed dose vs 6.8% adjusted (Karcutskie et al., JAMA Surgery 2018, n=792).</li>
+        <li><strong>Screening endpoints set the prices:</strong> approvals and guideline grades rest heavily on venographic trials counting silent clots, which occur 3 to 10 times more often than symptomatic events. A bottle can look dominant on the shelf and merely equal at the bedside.</li>
+        <li><strong>Anti-Xa titration did not survive contact with a big cohort.</strong> Adjusting enoxaparin doses to blood levels sounded right and failed: VTE 6.0% on fixed dose vs 6.8% adjusted (Karcutskie et al., JAMA Surgery 2018, n=792).</li>
         <li><strong>IVC filters split the stewards.</strong> In the one modern trial (Ho et al., NEJM 2019, n=240), filters caught emboli (PE 0.8% vs 5.1%) without improving the composite outcome; ACCP says do not place them prophylactically, EAST says consider them in the highest-risk trauma patients who cannot be anticoagulated.</li>
-        <li><strong>SCI duration is the widest spread in the sport.</strong> Published guidance spans roughly 30 days to 24 weeks. One caution: the exact NICE wording on SCI duration is flagged UNVERIFIED in the underlying research memo, so this essay cites the spread, not the quote.</li>
+        <li><strong>SCI duration is the widest spread in the sport.</strong> Published guidance spans roughly 30 days to 24 weeks. One caution: the exact NICE wording on SCI duration is flagged UNVERIFIED in the research memo, so this essay cites the spread, not the quote.</li>
         <li><strong>No DOAC has earned the SCI shelf.</strong> The memo is explicit: there is no adequate trial evidence for DOAC prophylaxis after spinal cord injury, whatever the arthroplasty board says.</li>
       </ul>
     </div>
@@ -5142,11 +5139,11 @@ var BOTTLES = [
  {id:"ufh", name:"Unfractionated heparin", short:"UFH", cls:"Heparin · injection", tint:"#e6cf9e", kind:"bottle",
   what:"The original house pour: 5,000 units under the skin, two or three times a day. Cheap, short-acting, and fully reversible."},
  {id:"enox", name:"Enoxaparin", short:"Enoxaparin", cls:"LMWH · injection", tint:"#dfc493", kind:"bottle",
-  what:"The workhorse low molecular weight heparin. Once or twice daily; the dose on the label changes with the race."},
+  what:"The workhorse low molecular weight heparin. Once or twice daily; the dose changes with the race."},
  {id:"dalteparin", name:"Dalteparin", short:"Dalteparin", cls:"LMWH · injection", tint:"#d9bd8a", kind:"bottle",
   what:"Enoxaparin's sibling. Less famous, but it ran, and won, the ICU photo finish below."},
  {id:"aspirin", name:"Aspirin", short:"Aspirin", cls:"Antiplatelet · pill", tint:"#f0e9d8", kind:"bottle",
-  what:"A pill instead of a needle. The people's horse: cheap, oral, and forever arguing with the stewards about which races it belongs in."},
+  what:"A pill instead of a needle: cheap, oral, and forever arguing with the stewards about which races it belongs in."},
  {id:"riva", name:"Rivaroxaban", short:"Rivaroxaban", cls:"DOAC · pill", tint:"#bcd3c8", kind:"bottle",
   what:"Once-daily direct anticoagulant. Won its license on the arthroplasty track; its medical-track form is a scandal (see the card)."},
  {id:"apix", name:"Apixaban", short:"Apixaban", cls:"DOAC · pill", tint:"#c4d8cf", kind:"bottle",
@@ -5154,7 +5151,7 @@ var BOTTLES = [
  {id:"fonda", name:"Fondaparinux", short:"Fondaparinux", cls:"Factor Xa inhibitor · injection", tint:"#d8cfe4", kind:"bottle",
   what:"Once-daily synthetic with a superb trial record and two fine-print clauses: never when kidney clearance falls under 30, and no reversal agent."},
  {id:"stockings", name:"Graduated stockings", short:"Stockings", cls:"Mechanical · hosiery", tint:"#e3d7bd", kind:"p413-packet",
-  what:"The shelf's longest-tenured resident. Issued to every leg for decades. The modern form book, sadly, is at the bottom of its label."},
+  what:"The shelf's longest-tenured resident, issued to every leg for decades. Its modern form book sits at the bottom of its label."},
  {id:"ipc", name:"Pneumatic compression", short:"IPC unit", cls:"Mechanical · device", tint:"#c9cfc0", kind:"p413-box",
   what:"The device box: sleeves that squeeze the calves in sequence. The one mechanical entry with a randomized survival signal on its record."}
 ];
@@ -5164,108 +5161,108 @@ function C(s,o,tag,n,f,t){ return {s:s,o:o,tag:tag,n:n,f:f,t:t}; }
 var PATIENTS = [
  {id:"trauma", tab:"Major trauma", name:"Major trauma",
   baseline:"With no cover at all: <strong>58% DVT, 18% proximal</strong>, counted by venography in 349 untreated patients (Geerts et al., NEJM 1994).",
-  conditions:"The hazard is steepest in the first days. In a 2,047-patient trauma registry, each 1-hour delay in starting prophylaxis raised VTE odds by about 1.5%; in blunt solid organ injury, starting within 48 hours beat later starts, 3% vs 7% VTE, with no increase in bleeding failures.",
-  house:"Enoxaparin 30 mg twice daily as soon as bleeding allows, with compression sleeves holding the line while drugs are unsafe. EAST and SCCM both lean this way.",
+  conditions:"The hazard is steepest in the first days. In a 2,047-patient trauma registry, each hour of delay in starting prophylaxis raised VTE odds by about 1.5%; in blunt solid organ injury, starting within 48 hours beat later starts, 3% vs 7% VTE, no increase in bleeding failures.",
+  house:"Enoxaparin 30 mg twice daily as soon as bleeding allows, sleeves holding the line while drugs are unsafe. EAST and SCCM both lean this way.",
   cells:{
-   ufh:C("p413-solid","58% with no cover, 44% DVT on UFH 5,000 units twice daily","p413-scr","","Geerts et al., NEJM 1996 (n=344): proximal DVT 15% on UFH vs 6% on enoxaparin.","Beats nothing comfortably and loses the head-to-head. It keeps two niches: severe renal failure, and patients whose bleeding risk demands a short-acting, reversible drug."),
-   enox:C("p413-fav","58% with no cover, 31% DVT on enoxaparin; proximal 18% to 6%","p413-scr","NNT 8 vs UFH (any DVT)","Geerts et al., NEJM 1996; across trauma studies LMWH cut VTE by about 30% relative to UFH (meta-analysis, Ann Surg 2022).","The catch is not the drug, it is the dose sheet: after even one missed dose, DVT ran 23.5% vs 4.8% with uninterrupted cover (Louis et al., JAMA Surgery 2014)."),
-   dalteparin:C("p413-solid","No dedicated trauma run in the verified set; priced on the family record","","","LMWH class form: superior to UFH in the trauma comparisons (Ann Surg 2022).","Same stable, different silks. The ICU, below, is where this one keeps its own trophy."),
-   aspirin:C("p413-pulled","No line posted for polytrauma","","","PREVENT CLOT (NEJM 2023) enrolled operatively treated extremity and pelvic fractures, a different population from this card.","Do not let the fracture result ride here. The trauma argument is between heparins, and aspirin is not in it."),
-   riva:C("p413-none","No line posted","","","No prophylaxis trial in major trauma in the verified set.","Its licenses were won on other tracks. It is posted here so the gap is visible, not filled in."),
-   apix:C("p413-none","No line posted","","","No prophylaxis trial in major trauma in the verified set.","See rivaroxaban: the DOAC shelf has no trauma form in this literature."),
-   fonda:C("p413-none","No line posted","","","No trauma trial in the verified set.","Its long half-life (17 to 21 hours) and missing reversal agent make it a poor fit where bleeding and operations loom (memo, Section 6.2)."),
-   stockings:C("p413-pulled","Adds nothing measurable over LMWH","p413-sym","","GAPS (BMJ 2020, elective surgery, n=1,905): VTE 1.7% on LMWH alone vs 1.4% with stockings added.","The trauma bay still wraps legs out of habit. The board, respectfully, posts no price. The full stocking report is on the stroke card."),
-   ipc:C("p413-solid","The stand-in when the drug shelf is closed","","","SCCM trauma guideline: strong recommendation for intermittent pneumatic compression when anticoagulants are contraindicated.","Never a solo winner here, but the only cover that cannot cause bleeding, and the standard partner in the highest-risk groups.")
+   ufh:C("p413-solid","58% with no cover, 44% DVT on UFH 5,000 units twice daily","p413-scr","","Geerts et al., NEJM 1996 (n=344): proximal DVT 15% on UFH vs 6% on enoxaparin.","Loses the head-to-head; kept for severe renal failure and bleeding risk needing a short-acting, reversible drug."),
+   enox:C("p413-fav","58% with no cover, 31% DVT on enoxaparin; proximal 18% to 6%","p413-scr","NNT 8 vs UFH (any DVT)","Geerts et al., NEJM 1996; LMWH cut VTE about 30% vs UFH across trauma studies (meta-analysis, Ann Surg 2022).","The catch is the dose sheet: after even one missed dose, DVT ran 23.5% vs 4.8% (Louis et al., JAMA Surgery 2014)."),
+   dalteparin:C("p413-solid","No dedicated trauma run; priced on the family record","","","LMWH class form: superior to UFH in trauma comparisons (Ann Surg 2022).","Same stable, different silks; its trophy is in the ICU, below."),
+   aspirin:C("p413-pulled","No line posted for polytrauma","","","PREVENT CLOT (NEJM 2023) enrolled operatively treated extremity and pelvic fractures, not this population.","Do not let the fracture result ride here; the trauma argument is between heparins."),
+   riva:C("p413-none","No line posted","","","No trauma prophylaxis trial in the verified set.","Licensed on other tracks; posted so the gap is visible, not filled in."),
+   apix:C("p413-none","No line posted","","","No trauma prophylaxis trial in the verified set.","See rivaroxaban: no DOAC has trauma form here."),
+   fonda:C("p413-none","No line posted","","","No trauma trial in the verified set.","Long half-life (17 to 21 hours), no reversal agent: a poor fit where bleeding and operations loom (memo, Section 6.2)."),
+   stockings:C("p413-pulled","Adds nothing measurable over LMWH","p413-sym","","GAPS (BMJ 2020, elective surgery, n=1,905): VTE 1.7% on LMWH alone vs 1.4% with stockings added.","The trauma bay still wraps legs out of habit; the board posts no price. Full report on the stroke card."),
+   ipc:C("p413-solid","The stand-in when the drug shelf is closed","","","SCCM trauma guideline: strong recommendation for IPC when anticoagulants are contraindicated.","Never a solo winner, but the only cover that cannot cause bleeding, and the standard partner in high-risk groups.")
   }},
  {id:"hipfx", tab:"Hip fracture", name:"Hip fracture",
-  baseline:"With no cover: <strong>DVT 46 to 60%, proximal 23 to 30%, fatal PE 2.5 to 7.5%</strong> (ACCP-era table). Immobility starts at the fall, not in the operating room.",
-  conditions:"Median time to a symptomatic clot is about 3 weeks after hip fracture surgery, roughly two thirds of events are diagnosed after discharge, and the window runs about 3 months (Bjornara et al., 2006).",
-  house:"A full month of cover (NICE NG89): LMWH starting 6 to 12 hours after surgery, or fondaparinux at 6 hours if bleeding risk is low. ACCP: minimum 10 to 14 days, extended to 35.",
+  baseline:"With no cover: <strong>DVT 46 to 60%, proximal 23 to 30%, fatal PE 2.5 to 7.5%</strong> (ACCP-era table).",
+  conditions:"Median time to a symptomatic clot is about 3 weeks after hip fracture surgery; roughly two thirds are diagnosed after discharge, and the window runs about 3 months (Bjornara et al., 2006).",
+  house:"A full month of cover (NICE NG89): LMWH 6 to 12 hours after surgery, or fondaparinux at 6 hours if bleeding risk is low. ACCP: minimum 10 to 14 days, extended to 35.",
   cells:{
    ufh:C("p413-solid","Prophylaxis recommended, with LMWH or UFH favored","","","ASH 2019 guideline (low certainty evidence); ACCP 2012 prefers LMWH.","A legitimate ticket, priced a half-step behind its low molecular weight sibling."),
-   enox:C("p413-solid","46 to 60% with no cover, 19.1% venographic VTE on enoxaparin 40 mg daily","p413-scr","","PENTATHLON comparator arm (NEJM 2001). ACCP: LMWH preferred; extend prophylaxis to 35 days.","The reliable yardstick in this race: beaten on imaging by fondaparinux, beaten on symptoms by nobody."),
-   dalteparin:C("p413-solid","No hip fracture run of its own in the verified set","","","LMWH class form; ACCP prefers the class for this population.","Runs on family form."),
-   aspirin:C("p413-solid","Confirmed PE or DVT: 2.5% on placebo, 1.6% on aspirin 160 mg daily for 35 days","p413-sym","NNT 111 (composite endpoint)","PEP trial, Lancet 2000 (n=13,356): PE reduced 43%, symptomatic DVT reduced 29%.","Proven active, and proven weaker than the anticoagulants: event rates on aspirin stayed substantial. Cost: about 6 extra bleeding episodes needing transfusion per 1,000 treated. Its fatal PE result sits in the stakes panel, where it belongs."),
-   riva:C("p413-none","No line posted","","","No hip fracture trial in the verified set.","Approved next door in elective joints; that license does not transfer to the fracture service."),
+   enox:C("p413-solid","46 to 60% with no cover, 19.1% venographic VTE on enoxaparin 40 mg daily","p413-scr","","PENTATHLON comparator arm (NEJM 2001). ACCP: LMWH preferred; extend prophylaxis to 35 days.","The reliable yardstick: beaten on imaging by fondaparinux, on symptoms by nobody."),
+   dalteparin:C("p413-solid","No hip fracture run of its own","","","LMWH class form; ACCP prefers the class for this population.","Runs on family form."),
+   aspirin:C("p413-solid","Confirmed PE or DVT: 2.5% on placebo, 1.6% on aspirin 160 mg daily for 35 days","p413-sym","NNT 111 (composite endpoint)","PEP trial, Lancet 2000 (n=13,356): PE reduced 43%, symptomatic DVT reduced 29%.","Proven active, proven weaker: event rates stayed substantial, at about 6 extra bleeds needing transfusion per 1,000. Its fatal PE result sits in the stakes panel."),
+   riva:C("p413-none","No line posted","","","No hip fracture trial in the verified set.","Licensed next door in elective joints; that license does not transfer to fractures."),
    apix:C("p413-none","No line posted","","","No hip fracture trial in the verified set.","See rivaroxaban."),
-   fonda:C("p413-fav","Enoxaparin 19.1%, fondaparinux 8.3% venographic VTE on 2.5 mg daily","p413-scr","NNT 9 vs enoxaparin (screening)","PENTATHLON, NEJM 2001 (n=1,711). Extending three extra weeks: 1.4% vs 35.0% on placebo (Arch Intern Med 2003).","Wins the imaging decisively and ties the symptoms exactly (DVT 0.1%, PE 0.3% in both arms; major bleeding 2.2% vs 2.3%). Mind the kidney clause on the bottle."),
+   fonda:C("p413-fav","Enoxaparin 19.1%, fondaparinux 8.3% venographic VTE on 2.5 mg daily","p413-scr","NNT 9 vs enoxaparin (screening)","PENTATHLON, NEJM 2001 (n=1,711). Extending three extra weeks: 1.4% vs 35.0% on placebo (Arch Intern Med 2003).","Wins the imaging, ties the symptoms exactly (DVT 0.1%, PE 0.3% both arms; major bleeding 2.2% vs 2.3%). Mind the kidney clause."),
    stockings:C("p413-pulled","Adds nothing measurable over LMWH","","","GAPS, BMJ 2020.","The ward will issue them anyway. The evidence will not co-sign."),
-   ipc:C("p413-solid","Adjunct cover for the highest-risk legs","","","Combined mechanical plus drug prophylaxis is the consensus standard for the highest-risk groups (memo, Section 6.5).","A partner, not the headline act, on this card.")
+   ipc:C("p413-solid","Adjunct cover for the highest-risk legs","","","Combined mechanical plus drug prophylaxis is the consensus standard for high-risk groups (memo, Section 6.5).","A partner, not the headline act, on this card.")
   }},
  {id:"arthro", tab:"Elective hip / knee", name:"Elective hip or knee replacement",
   baseline:"With no cover, screening-detected DVT ran <strong>42 to 57% after hip replacement and 41 to 85% after knee replacement</strong> (ACCP-era table). With modern cover, symptomatic VTE is a 1 to 3% event.",
-  conditions:"About three quarters of symptomatic clots after hip replacement are diagnosed after discharge, at a median of about 4 weeks (knee: about 2 weeks), which is why every serious ticket on this card extends past the hospital stay (Bjornara et al., 2006).",
-  house:"An anticoagulant from day zero (a DOAC or LMWH), extended to about 35 days for hips and 14 for knees. Aspirin earns its place as the step-down after the first days, per EPCAT II, not as the opener.",
+  conditions:"About three quarters of symptomatic clots after hip replacement are diagnosed after discharge, at a median of about 4 weeks (knee: about 2 weeks), so every serious ticket here extends past the hospital stay (Bjornara et al., 2006).",
+  house:"An anticoagulant from day zero (a DOAC or LMWH), extended to about 35 days for hips, 14 for knees. Aspirin is the step-down after the first days, per EPCAT II, not the opener.",
   cells:{
-   ufh:C("p413-long","Acceptable on the ACCP list; rarely the pick","","","ACCP 2012: LMWH is the preferred agent; aspirin, LMWH, fondaparinux, and DOACs are all listed as acceptable.","On the shelf out of respect for seniority. Modern arthroplasty has moved on."),
+   ufh:C("p413-long","Acceptable on the ACCP list; rarely the pick","","","ACCP 2012: LMWH preferred; aspirin, LMWH, fondaparinux, and DOACs all listed as acceptable.","On the shelf out of respect for seniority. Modern arthroplasty has moved on."),
    enox:C("p413-solid","Symptomatic VTE 1.82% at 90 days on enoxaparin 40 mg daily","p413-sym","","CRISTAL comparator arm, JAMA 2022 (n=9,711). Venographic arms elsewhere: 3.7% (hip, RECORD 1) and 18.9% (knee, RECORD 3).","The benchmark every challenger is priced against, on both kinds of number."),
-   dalteparin:C("p413-solid","Its run: 10 days of dalteparin, then a handoff","","","EPCAT (2013): aspirin after an initial 10 days of dalteparin was noninferior for extended prophylaxis after hip replacement.","The original step-down partnership, repeated five years later with rivaroxaban in EPCAT II."),
-   aspirin:C("p413-long","Day-zero solo: symptomatic VTE 3.45% vs 1.82% on enoxaparin. As step-down after 5 days of rivaroxaban: 0.64% vs 0.70%","p413-sym","","CRISTAL, JAMA 2022 (stopped early; noninferiority failed). EPCAT II, NEJM 2018 (noninferior).","Stamped LONG SHOT as the opener, and the label carries the sequel: as the second phase it dead-heated a DOAC. Timing, not the molecule, is the whole story."),
-   riva:C("p413-fav","Total VTE 1.1% vs 3.7% on enoxaparin (hip, 35 days); 9.6% vs 18.9% (knee); symptomatic knee VTE 1.0% vs 2.7%","p413-scr","NNT 38 vs enoxaparin, hip (screening)","RECORD 1 and 3, NEJM 2008; RECORD 4, Lancet 2009. FDA approval 2011; ASH 2019 suggests a DOAC over LMWH when an anticoagulant is chosen.","The margins were set on imaging endpoints, so they shrink on symptoms, but the license, the once-daily pill, and the guideline nod are all real."),
-   apix:C("p413-solid","Holds the arthroplasty license on its own venographic program","","","FDA arthroplasty indication; the ASH 2019 DOAC suggestion covers the class.","The memo's verified set prices this family's arthroplasty form through RECORD, so apixaban is posted on class form here. Its own losing run was on the medical track (ADOPT)."),
-   fonda:C("p413-solid","Listed among the acceptable agents for this population","","","ACCP 2012 arthroplasty recommendations.","Its trophy case sits one card over, in hip fracture (PENTATHLON). Here it is a respected alternate with a kidney clause."),
-   stockings:C("p413-pulled","Adds nothing over LMWH: 1.4% with stockings, 1.7% without","p413-sym","","GAPS, BMJ 2020 (n=1,905). CRISTAL issued stockings and compression to everyone anyway; the trial that isolated the stockings found no effect.","England spends on the order of 63 million pounds a year on them (GAPS report). The shelf keeps a pair for tradition."),
-   ipc:C("p413-solid","Background cover in the big modern trial; adjunct in the guidelines","","","CRISTAL protocol (all patients received it); ACCP supports mechanical cover as an adjunct.","On this card it is the warm-up act, not the headliner, and there is no shame in that.")
+   dalteparin:C("p413-solid","Its run: 10 days of dalteparin, then a handoff","","","EPCAT (2013): aspirin after 10 initial days of dalteparin was noninferior for extended cover after hip replacement.","The original step-down partnership, repeated five years later with rivaroxaban in EPCAT II."),
+   aspirin:C("p413-long","Day-zero solo: symptomatic VTE 3.45% vs 1.82% on enoxaparin. As step-down after 5 days of rivaroxaban: 0.64% vs 0.70%","p413-sym","","CRISTAL, JAMA 2022 (stopped early; noninferiority failed). EPCAT II, NEJM 2018 (noninferior).","Stamped LONG SHOT as the opener, with the sequel on the label: as the second phase it dead-heated a DOAC. Timing, not the molecule, is the story."),
+   riva:C("p413-fav","Total VTE 1.1% vs 3.7% on enoxaparin (hip, 35 days); 9.6% vs 18.9% (knee); symptomatic knee VTE 1.0% vs 2.7%","p413-scr","NNT 38 vs enoxaparin, hip (screening)","RECORD 1 and 3, NEJM 2008; RECORD 4, Lancet 2009. FDA approval 2011; ASH 2019 suggests a DOAC over LMWH when one is chosen.","Margins were set on imaging endpoints, so they shrink on symptoms; the license, the once-daily pill, and the guideline nod are all real."),
+   apix:C("p413-solid","Holds the arthroplasty license on its own venographic program","","","FDA arthroplasty indication; the ASH 2019 DOAC suggestion covers the class.","Posted on class form: the verified set prices this family's arthroplasty record through RECORD. Its own losing run was medical (ADOPT)."),
+   fonda:C("p413-solid","Listed among the acceptable agents for this population","","","ACCP 2012 arthroplasty recommendations.","Its trophy case sits one card over, in hip fracture (PENTATHLON); here, a respected alternate with a kidney clause."),
+   stockings:C("p413-pulled","Adds nothing over LMWH: 1.4% with stockings, 1.7% without","p413-sym","","GAPS, BMJ 2020 (n=1,905). CRISTAL issued stockings to everyone anyway; the trial that isolated them found no effect.","England spends on the order of 63 million pounds a year on them (GAPS report). The shelf keeps a pair for tradition."),
+   ipc:C("p413-solid","Background cover in the big modern trial; adjunct in the guidelines","","","CRISTAL protocol (all patients received it); ACCP supports mechanical cover as an adjunct.","On this card it is the warm-up act, not the headliner.")
   }},
  {id:"sci", tab:"Spinal cord injury", name:"Spinal cord injury",
   baseline:"The highest-risk population in the hospital. With no cover, screening finds DVT in <strong>47 to 100%</strong> of acute injuries, pooled estimate <strong>62%</strong>. Clinical database rates run lower, about 10.3% in the first 3 months.",
-  conditions:"Risk switches on after about 72 hours, peaks in the first 2 weeks, and falls substantially by 8 weeks; 90% of first-year events land inside the first 91 days (Jones et al., 2004).",
-  house:"LMWH plus compression, started within 72 hours once bleeding is controlled. The drug is settled; the duration is not: guidance clusters at 8 weeks to 3 months, with published positions running from about 30 days to 24 weeks.",
+  conditions:"Risk switches on after about 72 hours, peaks in the first 2 weeks, and falls substantially by 8 weeks; 90% of first-year events land in the first 91 days (Jones et al., 2004).",
+  house:"LMWH plus compression, started within 72 hours once bleeding is controlled. The drug is settled; the duration is not: guidance clusters at 8 weeks to 3 months, published positions run from about 30 days to 24 weeks.",
   cells:{
-   ufh:C("p413-long","Superseded as the default","","","SCI Model Systems survey: LMWH is the predominant agent in US centers, and enoxaparin is the most common single choice.","Thrice-daily injections lost to pharmacology that works at least as well, once or twice a day."),
-   enox:C("p413-fav","Untreated pooled risk 62%; even on cover, 11% developed symptomatic VTE in one cohort despite a median 65 days of prophylaxis","p413-sym","","Thrombosis Research 2017 (n=151); SCI Model Systems provider survey.","Breakthrough clots happen, which is an argument about duration and surveillance, not about the drug. The duration fight gets a companion essay of its own."),
-   dalteparin:C("p413-solid","No SCI run of its own in the verified set","","","LMWH class form.","Priced as family. In practice, the Model Systems centers reach for enoxaparin."),
+   ufh:C("p413-long","Superseded as the default","","","SCI Model Systems survey: LMWH predominates in US centers; enoxaparin is the most common single choice.","Thrice-daily injections lost to pharmacology that works as well, once or twice a day."),
+   enox:C("p413-fav","Untreated pooled risk 62%; on cover, 11% still developed symptomatic VTE in one cohort (median 65 days of prophylaxis)","p413-sym","","Thrombosis Research 2017 (n=151); SCI Model Systems provider survey.","Breakthrough clots happen: an argument about duration and surveillance, not the drug. The duration fight gets a companion essay."),
+   dalteparin:C("p413-solid","No SCI run of its own","","","LMWH class form.","Priced as family. In practice, the Model Systems centers reach for enoxaparin."),
    aspirin:C("p413-pulled","No line: no prophylaxis evidence base here","","","Memo Sections 4 and 6.3: SCI prophylaxis runs on LMWH plus mechanical cover.","Aspirin's proven races are orthopedic. This is not one of them."),
-   riva:C("p413-pulled","Do not stock: unproven in this population","","","Memo Section 6.4: no adequate trial evidence exists for DOAC prophylaxis in SCI; the German S1 guideline notes that safety and efficacy research is lacking.","Convenience is not evidence. The bottle stays off this shelf until a trial puts it there."),
+   riva:C("p413-pulled","Do not stock: unproven in this population","","","Memo Section 6.4: no adequate DOAC trial evidence in SCI; the German S1 guideline notes safety and efficacy research is lacking.","Convenience is not evidence. The bottle stays off this shelf until a trial puts it there."),
    apix:C("p413-pulled","Do not stock: unproven in this population","","","Memo Section 6.4, the same finding as for rivaroxaban.","See rivaroxaban."),
-   fonda:C("p413-none","No line posted","","","No SCI prophylaxis trial in the verified set.","It appears in SCI care mainly down the hallway, as a non-heparin option when HIT strikes (memo, Section 6.6)."),
+   fonda:C("p413-none","No line posted","","","No SCI prophylaxis trial in the verified set.","It appears in SCI care mainly as a non-heparin option when HIT strikes (memo, Section 6.6)."),
    stockings:C("p413-long","Worn by everyone in the rehab cohort; the effect cannot be separated from the LMWH beside them","","","Eichinger et al., PLoS ONE 2018: all 185 rehabilitation patients received LMWH plus stockings.","Possibly helping, possibly just present. The trial record cannot separate the two, so the stamp stays humble."),
    ipc:C("p413-solid","Half of the standard cover","","","Guideline consensus: combine mechanical prophylaxis with LMWH in SCI (memo, Section 4).","Not posted as a solo act. In this population, the pair is the product.")
   }},
  {id:"stroke", tab:"Acute stroke", name:"Acute stroke",
-  baseline:"With no cover, older screening studies found DVT in <strong>20 to 50%</strong> of stroke patients, and in up to 75% of hemiplegic legs. Even with modern care, the no-compression arm of CLOTS 3 showed 12.1% proximal DVT.",
+  baseline:"With no cover, screening studies found DVT in <strong>20 to 50%</strong> of stroke patients, in up to 75% of hemiplegic legs. The no-compression arm of CLOTS 3 still showed 12.1% proximal DVT.",
   conditions:"Clot risk rides on the paretic leg and immobility; bleeding risk rides on the brain. No anticoagulant within 24 hours of thrombolysis, and in hemorrhage the drugs wait until bleeding has stopped (AHA/ASA 2022).",
-  house:"Enoxaparin or UFH within 24 to 48 hours of ischemic stroke, plus compression sleeves. In brain hemorrhage: sleeves from day one (Class 1), and low-dose heparin considered at 1 to 4 days once bleeding stops (Class 2b).",
+  house:"Enoxaparin or UFH within 24 to 48 hours of ischemic stroke, plus compression sleeves. In brain hemorrhage: sleeves from day one (Class 1), low-dose heparin considered at 1 to 4 days once bleeding stops (Class 2b).",
   cells:{
-   ufh:C("p413-solid","Composite VTE 18.1% on UFH 5,000 units twice daily","p413-scr","","PREVAIL control arm, Lancet 2007 (n=1,762).","A real ticket with a real record, beaten by its own sibling in the same trial."),
-   enox:C("p413-solid","18.1% on UFH, 10.2% on enoxaparin 40 mg daily (venographic DVT plus symptomatic or fatal PE)","p413-scr","NNT 13 vs UFH","PREVAIL, Lancet 2007. The benefit held whether treatment began within 24 hours or at 24 to 48 hours; clinically important bleeding did not differ significantly.","The best drug line on this card. It shares the podium with a pair of sleeves."),
-   dalteparin:C("p413-solid","No stroke run of its own in the verified set","","","LMWH class form (PREVAIL).","Family pricing."),
-   aspirin:C("p413-none","No prophylaxis line posted","","","The memo's stroke prophylaxis record runs on heparins and compression; aspirin's stroke role is antiplatelet treatment, a different chart.","Not scratched, just entered in a different race."),
+   ufh:C("p413-solid","Composite VTE 18.1% on UFH 5,000 units twice daily","p413-scr","","PREVAIL control arm, Lancet 2007 (n=1,762).","A real ticket, beaten by its own sibling in the same trial."),
+   enox:C("p413-solid","18.1% on UFH, 10.2% on enoxaparin 40 mg daily (venographic DVT plus symptomatic or fatal PE)","p413-scr","NNT 13 vs UFH","PREVAIL, Lancet 2007. Benefit held starting within 24 hours or at 24 to 48 hours; important bleeding did not differ.","The best drug line on this card. It shares the podium with a pair of sleeves."),
+   dalteparin:C("p413-solid","No stroke run of its own","","","LMWH class form (PREVAIL).","Family pricing."),
+   aspirin:C("p413-none","No prophylaxis line posted","","","Stroke prophylaxis here runs on heparins and compression; aspirin's stroke role is antiplatelet treatment, a different chart.","Not scratched, just entered in a different race."),
    riva:C("p413-none","No line posted","","","No stroke prophylaxis trial in the verified set.","Posted so the gap is visible."),
    apix:C("p413-none","No line posted","","","No stroke prophylaxis trial in the verified set.","See rivaroxaban."),
    fonda:C("p413-none","No line posted","","","No stroke prophylaxis trial in the verified set.","See rivaroxaban."),
-   stockings:C("p413-pulled","Proximal DVT 10.0% with stockings vs 10.5% without: nothing. Skin breaks 5% vs 1%","p413-scr","","CLOTS 1, Lancet 2009 (n=2,518). In hemorrhage guidance, stockings are Class 3: not beneficial.","The running joke ends on this card, because this is where it was tested properly: the stockings did not merely fail to help, they rubbed skin off immobile legs. Pulled, with the stewards' sympathy."),
-   ipc:C("p413-fav","Proximal DVT 12.1% without, 8.5% with intermittent pneumatic compression","p413-scr","NNT 28 per proximal DVT prevented","CLOTS 3, Lancet 2013 (n=2,876). Symptomatic DVT 4.6% vs 6.3%; six-month survival hazard ratio 0.86.","The only mechanical entry in the sport with a randomized survival signal leaning its way. In brain hemorrhage it is the Class 1 recommendation from the day of diagnosis.")
+   stockings:C("p413-pulled","Proximal DVT 10.0% with stockings vs 10.5% without: nothing. Skin breaks 5% vs 1%","p413-scr","","CLOTS 1, Lancet 2009 (n=2,518). In hemorrhage guidance, stockings are Class 3: not beneficial.","The running joke ends here, where it was tested properly: the stockings did not merely fail to help, they rubbed skin off immobile legs."),
+   ipc:C("p413-fav","Proximal DVT 12.1% without, 8.5% with intermittent pneumatic compression","p413-scr","NNT 28 per proximal DVT prevented","CLOTS 3, Lancet 2013 (n=2,876). Symptomatic DVT 4.6% vs 6.3%; six-month survival hazard ratio 0.86.","The only mechanical entry with a randomized survival signal. In brain hemorrhage, the Class 1 recommendation from day one.")
   }},
  {id:"medical", tab:"Medical inpatient", name:"Medical inpatient",
   baseline:"With placebo, venographic VTE ran <strong>14.9%</strong> in the landmark inpatient trial (MEDENOX, NEJM 1999); the classic table puts untreated medical inpatients at 10 to 20%.",
-  conditions:"Risk outlives the admission by roughly 6 weeks, which launched four large extension trials; all four failed to show net benefit (read the DOAC labels). Meanwhile, only 39.5% of at-risk medical inpatients worldwide received recommended prophylaxis at all (ENDORSE, Lancet 2008).",
-  house:"Enoxaparin 40 mg daily, the MEDENOX dose and not the 20 mg dose that failed, while in hospital. Then stop at discharge: ASH recommends against routine extension.",
+  conditions:"Risk outlives the admission by roughly 6 weeks, which launched four large extension trials; all four failed to show net benefit. Meanwhile only 39.5% of at-risk medical inpatients worldwide received recommended prophylaxis at all (ENDORSE, Lancet 2008).",
+  house:"Enoxaparin 40 mg daily, the MEDENOX dose, not the 20 mg dose that failed, while in hospital. Then stop at discharge: ASH recommends against routine extension.",
   cells:{
-   ufh:C("p413-solid","The ward standard for decades","","","Memo Section 6.1: LMWH matched or beat UFH in every large head-to-head; UFH keeps the renal failure and high bleeding risk niches.","Still stocked on every ward, increasingly out of habit and kidney function rather than form."),
+   ufh:C("p413-solid","The ward standard for decades","","","Memo Section 6.1: LMWH matched or beat UFH in every large head-to-head; UFH keeps the renal and high-bleeding niches.","Still stocked on every ward, increasingly from habit and kidney function rather than form."),
    enox:C("p413-fav","Placebo 14.9%, enoxaparin 40 mg daily 5.5% venographic VTE","p413-scr","NNT 11 vs placebo","MEDENOX, NEJM 1999. The 20 mg dose did nothing (15%): prophylaxis has a dose floor, and this trial found it.","Extension past discharge is a different, losing bet: EXCLAIM cut VTE (2.5% vs 4.0%) and raised major bleeding (0.8% vs 0.3%). Win the admission; do not chase the month."),
-   dalteparin:C("p413-solid","No medical run of its own in the verified set","","","LMWH class form (MEDENOX).","Family pricing."),
+   dalteparin:C("p413-solid","No medical run of its own","","","LMWH class form (MEDENOX).","Family pricing."),
    aspirin:C("p413-none","No line posted","","","No medical inpatient prophylaxis trial in the verified set.","Its proven races are surgical. The medical ward never gave it a start."),
-   riva:C("p413-pulled","Extended course: VTE 4.4% vs 5.7% for a short enoxaparin course, but clinically relevant bleeding 4.1% vs 1.7%","p413-scr","","MAGELLAN, NEJM 2013 (n=8,101). After discharge vs placebo: 0.83% vs 1.10%, primary endpoint missed (MARINER, NEJM 2018, n=12,024).","Pulled as a routine play: ASH recommends against routine extension. The FDA approved a version of it in 2019 anyway, which is why this bottle carries two stewards' signatures that disagree."),
-   apix:C("p413-pulled","Thirty days of apixaban vs a short enoxaparin course: VTE 2.71% vs 3.06%, not superior; major bleeding 0.47% vs 0.19%","p413-scr","","ADOPT, NEJM 2011 (n=6,528).","The extension experiment, run with a second molecule, to the same result: past discharge, the clots prevented cost more blood than they are worth, on average."),
+   riva:C("p413-pulled","Extended course: VTE 4.4% vs 5.7% for a short enoxaparin course, but clinically relevant bleeding 4.1% vs 1.7%","p413-scr","","MAGELLAN, NEJM 2013 (n=8,101). After discharge vs placebo: 0.83% vs 1.10%, primary endpoint missed (MARINER, NEJM 2018, n=12,024).","Pulled as a routine play: ASH recommends against routine extension, yet the FDA approved a version of it in 2019. Two stewards, two signatures."),
+   apix:C("p413-pulled","Thirty days of apixaban vs a short enoxaparin course: VTE 2.71% vs 3.06%, not superior; major bleeding 0.47% vs 0.19%","p413-scr","","ADOPT, NEJM 2011 (n=6,528).","The extension experiment, second molecule, same result: past discharge, prevented clots cost more blood than they are worth, on average."),
    fonda:C("p413-solid","Placebo 10.5%, fondaparinux 2.5 mg daily 5.6% VTE by day 15","p413-scr","NNT 20 vs placebo","ARTEMIS, BMJ 2006 (n=849, age 60 and older); no difference in major bleeding.","Works, full stop. It simply never took shelf space from enoxaparin, a commercial result the trials cannot explain."),
-   stockings:C("p413-pulled","No supporting run on this card","","","The scratch evidence is surgical (GAPS, BMJ 2020) and stroke (CLOTS 1); nothing in the verified set supports stockings for medical inpatients.","See the stroke card for the full stewards' report."),
-   ipc:C("p413-long","Held for when drugs are off the table","","","The compression proof in the memo lives in stroke (CLOTS 3) and in trauma guidance for contraindicated patients (SCCM).","A reasonable stand-in and an unproven headliner, on this particular card.")
+   stockings:C("p413-pulled","No supporting run on this card","","","Scratch evidence is surgical (GAPS, BMJ 2020) and stroke (CLOTS 1); no verified support for medical inpatients.","See the stroke card for the full stewards' report."),
+   ipc:C("p413-long","Held for when drugs are off the table","","","Compression proof lives in stroke (CLOTS 3) and trauma guidance for contraindicated patients (SCCM), via the memo.","A reasonable stand-in, an unproven headliner, on this card.")
   }},
  {id:"icu", tab:"ICU patient", name:"ICU patient",
-  baseline:"About <strong>3.5%</strong> of critically ill patients already have a proximal DVT on the screening ultrasound done before any trial drug could matter (PROTECT). Untreated screening risk across ICU cohorts spans 10 to 80%.",
-  conditions:"The ICU stacks every risk factor at once: the admitting illness, immobility, central lines, sedation, sometimes paralysis. The question on this card is narrower than elsewhere: not whether to cover, but which heparin.",
-  house:"Dalteparin 5,000 IU daily carries the trophy (PROTECT). UFH when kidneys fail or bleeding looms, since it is not renally cleared and wears off fast.",
+  baseline:"About <strong>3.5%</strong> of critically ill patients already have a proximal DVT on screening ultrasound before any trial drug could matter (PROTECT); untreated screening risk across ICU cohorts spans 10 to 80%.",
+  conditions:"The ICU stacks every risk factor at once: admitting illness, immobility, central lines, sedation, sometimes paralysis. The question here is narrower than elsewhere: not whether to cover, but which heparin.",
+  house:"Dalteparin 5,000 IU daily carries the trophy (PROTECT). UFH when kidneys fail or bleeding looms: not renally cleared, and it wears off fast.",
   cells:{
-   ufh:C("p413-solid","Proximal DVT 5.8%; PE 2.3%; HIT 0.6%","p413-scr","","PROTECT UFH arm, NEJM 2011 (n=3,764). Major bleeding 5.6%, no different from dalteparin.","Loses the PE line and the HIT line, ties everything else, and remains the default when creatinine clearance craters."),
-   enox:C("p413-solid","Priced on family form for this card","","","The ICU photo finish (PROTECT) was run by dalteparin; memo Section 6.1 summarizes the class record.","Same stable. If a unit stocks one LMWH, the class evidence travels with it."),
-   dalteparin:C("p413-fav","Proximal DVT 5.1% vs 5.8% (a tie); PE 1.3% vs 2.3%; HIT 0.3% vs 0.6%","p413-scr","NNT 100 vs UFH (for PE)","PROTECT, NEJM 2011: PE hazard ratio 0.51 (P=0.01); mortality and major bleeding did not differ.","The strangest favorite on the shelf: it wins the race that matters, the embolism, without visibly winning the race that feeds it, the clot. Full story in Photo Finishes."),
+   ufh:C("p413-solid","Proximal DVT 5.8%; PE 2.3%; HIT 0.6%","p413-scr","","PROTECT UFH arm, NEJM 2011 (n=3,764). Major bleeding 5.6%, no different from dalteparin.","Loses the PE and HIT lines, ties everything else, and remains the default when creatinine clearance craters."),
+   enox:C("p413-solid","Priced on family form for this card","","","The ICU photo finish (PROTECT) was dalteparin's; memo Section 6.1 summarizes the class record.","Same stable. If a unit stocks one LMWH, the class evidence travels with it."),
+   dalteparin:C("p413-fav","Proximal DVT 5.1% vs 5.8% (a tie); PE 1.3% vs 2.3%; HIT 0.3% vs 0.6%","p413-scr","NNT 100 vs UFH (for PE)","PROTECT, NEJM 2011: PE hazard ratio 0.51 (P=0.01); mortality and major bleeding did not differ.","The strangest favorite on the shelf: it wins the embolism without visibly winning the clot that feeds it."),
    aspirin:C("p413-none","No line posted","","","No ICU prophylaxis trial in the verified set.","Not a runner here."),
    riva:C("p413-none","No line posted","","","No ICU prophylaxis trial in the verified set.","Not a runner here."),
    apix:C("p413-none","No line posted","","","No ICU prophylaxis trial in the verified set.","Not a runner here."),
    fonda:C("p413-none","No line posted, and a kidney clause besides","","","Contraindicated below creatinine clearance 30 (FDA label, via memo Section 6.2), a common ICU address.","A brilliant drug for a different ward."),
    stockings:C("p413-pulled","Adds nothing over LMWH","","","GAPS, BMJ 2020.","Present on many ICU legs; absent from the evidence. See the stroke card."),
-   ipc:C("p413-solid","The cover that remains when anticoagulation is contraindicated","","","SCCM: strong recommendation for intermittent pneumatic compression in exactly that situation.","In the ICU it plays the same role as in trauma: never the first choice, often the only one.")
+   ipc:C("p413-solid","The cover that remains when anticoagulation is contraindicated","","","SCCM: strong recommendation for IPC in that situation.","In the ICU it plays the same role as in trauma: never the first choice, often the only one.")
   }}
 ];
 
@@ -5435,7 +5432,7 @@ function gradeTray(){
     lines.push("<p>Stockings alone: the house admires the tradition and declines the bet. Every modern trial that isolated them found no added protection.</p>");
   }
   if (!anyDrug && p.id !== "stroke" && ids.indexOf("stockings") === -1){
-    lines.push("<p>No working drug on this ticket. For this patient the evidence expects pharmacologic cover unless bleeding forbids it; pneumatic compression is the accepted stand-in while it does.</p>");
+    lines.push("<p>No working drug on this ticket. The evidence expects pharmacologic cover for this patient unless bleeding forbids it; pneumatic compression is the accepted stand-in while it does.</p>");
   }
   if (!anyDrug && p.id === "stroke"){
     lines.push("<p>No drug on the ticket. After stroke that is thinner than ideal, but not empty: compression alone carries genuine trial support (CLOTS 3).</p>");
@@ -5444,7 +5441,7 @@ function gradeTray(){
     lines.push("<p>Drug plus compression: the combination the guidelines reserve for the highest-risk patients.</p>");
   }
   if (ORDER["aspirin"] && p.id === "arthro"){
-    lines.push("<p>Timing flag: the evidence backs aspirin as the step-down after day 5 (EPCAT II), not as the day-zero opener (CRISTAL). The tray cannot model timing, so that flag travels with the order.</p>");
+    lines.push("<p>Timing flag: the evidence backs aspirin as the step-down after day 5 (EPCAT II), not as the day-zero opener (CRISTAL). The tray cannot model timing, so the flag travels with the order.</p>");
   }
   if (ORDER["enox"] && p.id === "medical"){
     lines.push("<p>Discharge flag: the win is the inpatient course (MEDENOX). Extending past discharge is the losing pattern graded on the rivaroxaban and apixaban labels; ASH advises against routine extension.</p>");
