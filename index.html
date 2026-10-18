@@ -1559,7 +1559,7 @@ background:var(--p407-bg)}
   --p413-blue:#33566e;
   --p413-gray:#8a8172;
   --p413-stamp-fav:#2e6b4f;
-  --p413-stamp-solid:#33566e;
+  --p413-stamp-solid:#5b6b76;
   --p413-stamp-long:#b97a1e;
   --p413-stamp-pulled:#b23a26;
   --p413-stamp-none:#8a8172;
@@ -1582,7 +1582,7 @@ background:var(--p407-bg)}
     --p413-blue:#9dbdd2;
     --p413-gray:#8a8172;
     --p413-stamp-fav:#7fc79f;
-    --p413-stamp-solid:#9dbdd2;
+    --p413-stamp-solid:#a9b8c2;
     --p413-stamp-long:#dda544;
     --p413-stamp-pulled:#e88a76;
     --p413-stamp-none:#8a8172;
@@ -1603,116 +1603,111 @@ background:var(--p407-bg)}
 
 /* ---------- title block ---------- */
 #odds-shelf .p413-kicker{
-  margin:38px 0 0;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.22em;
+  margin:38px 0 0;font:700 11px "IBM Plex Sans",sans-serif;letter-spacing:.18em;
   text-transform:uppercase;color:var(--p413-green);
 }#odds-shelf h1.p413-title{
   margin:8px 0 0;font:900 clamp(44px,9vw,84px)/0.98 "Newsreader",serif;letter-spacing:-0.01em;
 }#odds-shelf h1.p413-title em{font-style:italic;font-weight:500}#odds-shelf .p413-dek{
   margin:16px 0 0;max-width:44em;font:italic 500 clamp(17px,2.6vw,21px)/1.45 "Newsreader",serif;color:var(--p413-ink);
-}#odds-shelf .p413-byline-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:22px 0 0}#odds-shelf .p413-byline{font:600 13px "IBM Plex Mono",monospace;letter-spacing:.05em}#odds-shelf .p413-byline .p413-role{color:var(--p413-muted);font-weight:400}#odds-shelf .p413-draft-stamp{
-  display:inline-block;padding:4px 10px;border:2px solid var(--p413-red);color:var(--p413-red);
+}#odds-shelf .p413-byline-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:22px 0 0}#odds-shelf .p413-byline{font:600 13px "IBM Plex Sans",sans-serif;letter-spacing:.02em}#odds-shelf .p413-byline .p413-role{color:var(--p413-muted);font-weight:400}#odds-shelf .p413-draft-stamp{
+  display:inline-block;padding:4px 10px;border:1.5px solid var(--p413-red);color:var(--p413-red);
   font:700 10px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
   transform:rotate(-1.6deg);border-radius:2px;
 }#odds-shelf .p413-intro{margin:20px 0 0;max-width:46em;color:var(--p413-ink)}#odds-shelf .p413-intro p{margin:0 0 12px}
 
 /* ---------- section scaffolding ---------- */
-#odds-shelf section{margin:56px 0 0}#odds-shelf .p413-sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--p413-ink);padding-bottom:8px}#odds-shelf .p413-sec-num{font:700 12px "IBM Plex Mono",monospace;color:var(--p413-green);letter-spacing:.15em}#odds-shelf h2.p413-sec-title{margin:0;font:700 clamp(26px,4.5vw,36px)/1.1 "Newsreader",serif}#odds-shelf .p413-sec-sub{margin:10px 0 0;max-width:46em;color:var(--p413-muted)}
+#odds-shelf section{margin:56px 0 0}#odds-shelf .p413-sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--p413-ink);padding-bottom:8px}#odds-shelf .p413-sec-num{font:700 11px "IBM Plex Sans",sans-serif;color:var(--p413-green);letter-spacing:.14em}#odds-shelf h2.p413-sec-title{margin:0;font:700 clamp(26px,4.5vw,36px)/1.1 "Newsreader",serif}#odds-shelf .p413-sec-sub{margin:10px 0 0;max-width:46em;color:var(--p413-muted);font-size:15px}
 
 /* ---------- stakes (sober) ---------- */
 #odds-shelf .p413-stakes{
-  margin-top:22px;border:1px solid var(--p413-line-strong);background:var(--p413-card);
-  padding:22px;
-}#odds-shelf .p413-stakes h3{margin:0 0 4px;font:700 19px/1.25 "Newsreader",serif}#odds-shelf .p413-stakes .p413-plain{margin:0 0 14px;max-width:46em}#odds-shelf .p413-stakes-table{width:100%;border-collapse:collapse;font-size:14px}#odds-shelf .p413-stakes-table th,#odds-shelf .p413-stakes-table td{padding:8px 10px;border-top:1px solid var(--p413-line);text-align:left;vertical-align:top}#odds-shelf .p413-stakes-table th{font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--p413-muted);border-top:none}#odds-shelf .p413-stakes-table td.p413-rate{font:600 14px "IBM Plex Mono",monospace;white-space:nowrap}#odds-shelf .p413-stakes-table td.p413-src{color:var(--p413-muted);font-size:12.5px}#odds-shelf .p413-stakes .p413-sober{
-  margin:16px 0 0;padding:14px 16px;border-left:3px solid var(--p413-ink);background:var(--p413-paper-2);
+  margin-top:24px;border:1px solid var(--p413-line-strong);border-radius:10px;background:var(--p413-card);
+  padding:20px 22px;
+}#odds-shelf .p413-stakes h3{margin:0 0 4px;font:700 20px/1.25 "Newsreader",serif}#odds-shelf .p413-stakes .p413-plain{margin:0 0 14px;max-width:46em}#odds-shelf .p413-stakes-table{width:100%;border-collapse:collapse;font-size:14px}#odds-shelf .p413-stakes-table th,#odds-shelf .p413-stakes-table td{padding:8px 10px;border-top:1px solid var(--p413-line);text-align:left;vertical-align:top}#odds-shelf .p413-stakes-table th{font:600 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.09em;text-transform:uppercase;color:var(--p413-muted);border-top:none}#odds-shelf .p413-stakes-table td:first-child{font-weight:600}#odds-shelf .p413-stakes-table td.p413-rate{font:600 14px "IBM Plex Mono",monospace;white-space:nowrap}#odds-shelf .p413-stakes-table td.p413-src{color:var(--p413-muted);font-size:12.5px}#odds-shelf .p413-stakes .p413-sober{
+  margin:18px 0 0;padding:2px 0 2px 16px;border-left:3px solid var(--p413-ink);
   font-size:15px;
 }#odds-shelf .p413-stakes .p413-sober p{margin:0 0 8px}#odds-shelf .p413-stakes .p413-sober p:last-child{margin-bottom:0}#odds-shelf .p413-tag{
   display:inline-block;padding:1px 6px;border:1px solid var(--p413-line-strong);border-radius:20px;
-  font:600 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-muted);
+  font:600 9.5px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--p413-muted);
   vertical-align:1px;white-space:nowrap;
-}#odds-shelf .p413-tag.p413-scr{color:var(--p413-blue);border-color:var(--p413-blue)}#odds-shelf .p413-tag.p413-sym{color:var(--p413-green-deep);border-color:var(--p413-green)}
+}#odds-shelf .p413-tag.p413-scr{color:var(--p413-muted);border-color:var(--p413-line-strong)}#odds-shelf .p413-tag.p413-sym{color:var(--p413-green-deep);border-color:var(--p413-line-strong)}
 
 /* ---------- house rules ---------- */
-#odds-shelf .p413-key-intro{margin:18px 0 0;max-width:46em;font-size:15.5px}#odds-shelf .p413-key-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:20px 0 0;padding:0}#odds-shelf .p413-key-item{border-top:1px solid var(--p413-line);padding-top:9px}#odds-shelf .p413-key-item dt{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-key-item dd{margin:4px 0 0;font-size:13.5px}
+#odds-shelf .p413-key-intro{margin:18px 0 0;max-width:46em;font-size:15.5px}#odds-shelf .p413-key-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:24px 0 0;padding:0}#odds-shelf .p413-key-item{border-top:1px solid var(--p413-line);padding-top:9px}#odds-shelf .p413-key-item dt{font:700 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-key-item dd{margin:4px 0 0;font-size:13.5px}
 
 /* ---------- race card / patient selector ---------- */
 #odds-shelf .p413-racecard{
-  margin-top:22px;border:2px solid var(--p413-ink);background:var(--p413-card);box-shadow:var(--p413-shadow);
+  margin-top:24px;border:1px solid var(--p413-line-strong);border-radius:10px;overflow:hidden;background:var(--p413-card);
 }#odds-shelf .p413-racecard-top{
   display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid var(--p413-line);
-  font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;
+  font:700 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;
 }#odds-shelf .p413-racecard-top .p413-rc-right{color:var(--p413-muted);font-weight:500}#odds-shelf .p413-patient-tabs{display:flex;flex-wrap:wrap;gap:0}#odds-shelf .p413-patient-tab{
   flex:1 1 130px;appearance:none;background:transparent;border:none;border-right:1px solid var(--p413-line);
-  border-bottom:1px solid var(--p413-line);padding:12px 10px 10px;text-align:left;cursor:pointer;color:var(--p413-ink);
+  border-bottom:1px solid var(--p413-line);padding:11px 12px;text-align:left;cursor:pointer;color:var(--p413-ink);
   font:600 13px/1.25 "IBM Plex Sans",sans-serif;
-}#odds-shelf .p413-patient-tab:last-child{border-right:none}#odds-shelf .p413-patient-tab .p413-pt-num{display:block;font:700 10px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.1em}#odds-shelf .p413-patient-tab[aria-pressed="true"]{background:var(--p413-ink);color:var(--p413-paper)}#odds-shelf .p413-patient-tab[aria-pressed="true"] .p413-pt-num{color:var(--p413-amber)}#odds-shelf .p413-patient-tab:focus-visible{outline:3px solid var(--p413-amber);outline-offset:-3px}#odds-shelf .p413-racecard-body{padding:18px 22px 20px}#odds-shelf .p413-rc-patient{font:700 clamp(21px,3.6vw,27px)/1.15 "Newsreader",serif;margin:0}#odds-shelf .p413-rc-baseline{margin:8px 0 0;font-size:15.5px}#odds-shelf .p413-rc-baseline strong{font-family:"IBM Plex Mono",monospace;font-weight:700}#odds-shelf .p413-rc-conditions{margin:8px 0 0;color:var(--p413-muted);font-size:14px;max-width:48em}#odds-shelf .p413-rc-conditions .p413-cond-label{font:700 10px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}
+}#odds-shelf .p413-patient-tab:last-child{border-right:none}#odds-shelf .p413-patient-tab .p413-pt-num{display:inline-block;margin-right:7px;font:700 10px "IBM Plex Sans",sans-serif;color:var(--p413-muted);letter-spacing:.08em;vertical-align:1px}#odds-shelf .p413-patient-tab[aria-pressed="true"]{background:var(--p413-ink);color:var(--p413-paper)}#odds-shelf .p413-patient-tab:hover{background:var(--p413-paper-2)}#odds-shelf .p413-patient-tab[aria-pressed="true"]:hover{background:var(--p413-ink)}#odds-shelf .p413-patient-tab[aria-pressed="true"] .p413-pt-num{color:var(--p413-amber)}#odds-shelf .p413-patient-tab:focus-visible{outline:3px solid var(--p413-amber);outline-offset:-3px}#odds-shelf .p413-racecard-body{padding:20px 22px}#odds-shelf .p413-rc-patient{font:700 clamp(21px,3.6vw,27px)/1.15 "Newsreader",serif;margin:0}#odds-shelf .p413-rc-baseline{margin:8px 0 0;font-size:15.5px}#odds-shelf .p413-rc-baseline strong{font-family:"IBM Plex Mono",monospace;font-weight:700}#odds-shelf .p413-rc-conditions{margin:8px 0 0;color:var(--p413-muted);font-size:14px;max-width:48em}#odds-shelf .p413-rc-conditions .p413-cond-label{font:700 10px "IBM Plex Sans",sans-serif;letter-spacing:.11em;text-transform:uppercase;color:var(--p413-green)}
 
 /* ---------- the shelf ---------- */
 #odds-shelf .p413-shelf-zone{
-  margin-top:28px;padding:30px 22px 16px;
-  background:
-    linear-gradient(var(--p413-paper-2),var(--p413-paper-2));
-  border:1px solid var(--p413-line-strong);
-}#odds-shelf .p413-shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 22px}#odds-shelf .p413-bottle-card{position:relative;display:flex;flex-direction:column;align-items:center}#odds-shelf .p413-bottle-card::after{
+  margin-top:24px;padding:26px 22px 20px;
+  background:var(--p413-paper-2);
+  border-radius:12px;
+}#odds-shelf .p413-shelf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px}#odds-shelf .p413-bottle-card{position:relative;display:flex;flex-direction:column;align-items:center}#odds-shelf .p413-bottle-card::after{
   content:"";position:absolute;left:-6px;right:-6px;bottom:-9px;height:9px;
   background:linear-gradient(var(--p413-shelf),var(--p413-shelf-dark));border-radius:2px;
-  box-shadow:0 2px 3px rgba(34,29,18,.18);
+  box-shadow:0 1px 2px rgba(34,29,18,.16);
 }#odds-shelf .p413-bottle-shape{position:relative;width:104px;height:118px;flex:none}#odds-shelf .p413-bottle-shape .p413-neck{
   position:absolute;left:50%;top:0;transform:translateX(-50%);
-  width:34px;height:20px;border:2px solid var(--p413-ink);border-bottom:none;
-  background:var(--p413-tint,#e8dcc0);border-radius:4px 4px 0 0;
+  width:34px;height:20px;border:1.5px solid var(--p413-ink);border-bottom:none;
+  background:var(--p413-tint,#e8dcc0);background:color-mix(in srgb,var(--p413-tint,#e8dcc0) 62%,var(--p413-card));border-radius:4px 4px 0 0;
 }#odds-shelf .p413-bottle-shape .p413-cap{
   position:absolute;left:50%;top:-8px;transform:translateX(-50%);
   width:42px;height:9px;background:var(--p413-ink);border-radius:2px;
 }#odds-shelf .p413-bottle-shape .p413-body-b{
-  position:absolute;left:0;right:0;top:19px;bottom:0;border:2px solid var(--p413-ink);border-radius:12px 12px 8px 8px;
-  background:linear-gradient(105deg,rgba(255,255,255,.5),rgba(255,255,255,0) 45%),var(--p413-tint,#e8dcc0);
+  position:absolute;left:0;right:0;top:19px;bottom:0;border:1.5px solid var(--p413-ink);border-radius:12px 12px 8px 8px;
+  background:var(--p413-tint,#e8dcc0);background:linear-gradient(105deg,rgba(255,255,255,.35),rgba(255,255,255,0) 45%),color-mix(in srgb,var(--p413-tint,#e8dcc0) 62%,var(--p413-card));
   display:flex;align-items:center;justify-content:center;padding:8px;
 }#odds-shelf .p413-bottle-shape .p413-body-b .p413-glass-label{
-  background:var(--p413-card);border:1px solid var(--p413-line-strong);padding:5px 4px;text-align:center;width:100%;
-}#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-class{display:block;font:600 8px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-name{display:block;font:700 11.5px/1.2 "Newsreader",serif;margin-top:2px}#odds-shelf .p413-bottle-shape.p413-box{width:118px;height:100px;margin-top:18px}#odds-shelf .p413-bottle-shape.p413-box .p413-body-b{top:0;border-radius:6px}#odds-shelf .p413-bottle-shape.p413-packet{width:96px;height:104px;margin-top:14px}#odds-shelf .p413-bottle-shape.p413-packet .p413-body-b{top:0;border-radius:4px 4px 14px 14px}#odds-shelf .p413-bottle-info{margin-top:20px;width:100%;text-align:left}#odds-shelf .p413-bottle-info .p413-b-name{font:700 16.5px/1.2 "Newsreader",serif;margin:0}#odds-shelf .p413-bottle-info .p413-b-what{margin:4px 0 0;font-size:12.5px;color:var(--p413-muted);min-height:2.4em}#odds-shelf .p413-odds-line{
+  background:var(--p413-card);padding:5px 4px;text-align:center;width:100%;
+}#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-class{display:block;font:600 8px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-bottle-shape .p413-glass-label .p413-gl-name{display:block;font:700 11.5px/1.2 "Newsreader",serif;margin-top:2px}#odds-shelf .p413-bottle-shape.p413-box{width:118px;height:100px;margin-top:18px}#odds-shelf .p413-bottle-shape.p413-box .p413-body-b{top:0;border-radius:6px}#odds-shelf .p413-bottle-shape.p413-packet{width:96px;height:104px;margin-top:14px}#odds-shelf .p413-bottle-shape.p413-packet .p413-body-b{top:0;border-radius:4px 4px 14px 14px}#odds-shelf .p413-bottle-info{margin-top:18px;width:100%;text-align:left;flex:1;display:flex;flex-direction:column}#odds-shelf .p413-bottle-info .p413-b-name{font:700 16.5px/1.2 "Newsreader",serif;margin:0}#odds-shelf .p413-bottle-info .p413-b-what{margin:4px 0 0;font-size:13px;line-height:1.5;color:var(--p413-muted);min-height:4.5em}#odds-shelf .p413-odds-line{
   margin:12px 0 0;padding:9px 0 0;border-top:1px solid var(--p413-line);
   font:12.5px/1.5 "IBM Plex Mono",monospace;
-}#odds-shelf .p413-odds-line .p413-ol-label{display:block;font-size:9.5px;font-weight:700;letter-spacing:.13em;color:var(--p413-muted)}#odds-shelf .p413-odds-line .p413-ol-text{font-weight:500}#odds-shelf .p413-nnt-chip{
-  display:inline-block;margin-top:7px;padding:2px 8px;border-radius:20px;background:var(--p413-ink);color:var(--p413-paper);
+}#odds-shelf .p413-odds-line .p413-ol-label{display:block;font:700 9.5px "IBM Plex Sans",sans-serif;letter-spacing:.12em;color:var(--p413-muted)}#odds-shelf .p413-odds-line .p413-ol-text{font-weight:500}#odds-shelf .p413-nnt-chip{
+  display:inline-block;align-self:flex-start;margin-top:7px;padding:2px 8px;border-radius:20px;background:var(--p413-ink);color:var(--p413-paper);
   font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.05em;
-}#odds-shelf .p413-nnt-chip:empty{display:none}#odds-shelf .p413-b-form{margin:9px 0 0;font-size:12px;color:var(--p413-muted)}#odds-shelf .p413-b-form .p413-f-label{font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-b-note{margin:6px 0 0;font-size:12.5px}#odds-shelf .p413-stamp{
-  position:absolute;top:64px;right:2px;z-index:3;padding:3px 8px;border:2px solid currentColor;border-radius:2px;
-  font:700 10px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;background:var(--p413-paper);
+}#odds-shelf .p413-nnt-chip:empty{visibility:hidden}#odds-shelf .p413-b-form{margin:9px 0 0;font-size:12.5px;line-height:1.5;min-height:37px;color:var(--p413-muted)}#odds-shelf .p413-b-form .p413-f-label{font:700 9.5px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-b-note{margin:6px 0 12px;font-size:13px;line-height:1.5}#odds-shelf .p413-stamp{
+  position:absolute;top:64px;right:2px;z-index:3;padding:2px 7px;border:1.5px solid currentColor;border-radius:2px;
+  font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.09em;text-transform:uppercase;background:var(--p413-paper);
   transform:rotate(4deg);
-}#odds-shelf .p413-stamp.p413-fav{color:var(--p413-stamp-fav)}#odds-shelf .p413-stamp.p413-solid{color:var(--p413-stamp-solid)}#odds-shelf .p413-stamp.p413-long{color:var(--p413-stamp-long)}#odds-shelf .p413-stamp.p413-pulled{color:var(--p413-stamp-pulled)}#odds-shelf .p413-stamp.p413-none{color:var(--p413-stamp-none)}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-shape{filter:grayscale(.85);opacity:.55}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-info{opacity:.75}#odds-shelf .p413-bottle-card.p413-is-none .p413-bottle-shape{opacity:.7}#odds-shelf .p413-order-btn{
-  margin-top:12px;appearance:none;cursor:pointer;border:2px solid var(--p413-ink);background:var(--p413-paper);color:var(--p413-ink);
-  padding:7px 12px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;
+}#odds-shelf .p413-stamp.p413-fav{color:var(--p413-stamp-fav)}#odds-shelf .p413-stamp.p413-solid{color:var(--p413-stamp-solid)}#odds-shelf .p413-stamp.p413-long{color:var(--p413-stamp-long)}#odds-shelf .p413-stamp.p413-pulled{color:var(--p413-stamp-pulled)}#odds-shelf .p413-stamp.p413-none{color:var(--p413-stamp-none)}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-shape{filter:grayscale(1);opacity:.45}#odds-shelf .p413-bottle-card.p413-is-pulled .p413-bottle-info{opacity:.68}#odds-shelf .p413-bottle-card.p413-is-none .p413-bottle-shape{filter:grayscale(.35);opacity:.62}#odds-shelf .p413-order-btn{
+  margin-top:auto;align-self:flex-start;appearance:none;cursor:pointer;border:1.5px solid var(--p413-ink);background:var(--p413-paper);color:var(--p413-ink);
+  padding:7px 12px;font:700 11px "IBM Plex Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;border-radius:2px;
 }#odds-shelf .p413-order-btn[aria-pressed="true"]{background:var(--p413-green);border-color:var(--p413-green-deep);color:#fff}#odds-shelf .p413-order-btn:focus-visible{outline:3px solid var(--p413-amber);outline-offset:2px}#odds-shelf .p413-bottle-flash{animation:p413flash .5s ease}
 @keyframes p413flash{0%{background:var(--p413-paper-2)}100%{background:transparent}}
 
 /* ---------- order tray ---------- */
 #odds-shelf .p413-tray{
-  margin-top:34px;border:2px solid var(--p413-ink);background:var(--p413-card);box-shadow:var(--p413-shadow);padding:20px 22px;
-}#odds-shelf .p413-tray h3{margin:0;font:700 21px/1.2 "Newsreader",serif}#odds-shelf .p413-tray .p413-tray-sub{margin:6px 0 0;color:var(--p413-muted);font-size:14px;max-width:46em}#odds-shelf .p413-tray-items{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;min-height:34px}#odds-shelf .p413-tray-chip{
-  display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--p413-ink);border-radius:20px;
+  margin-top:24px;border:1px solid var(--p413-line-strong);border-radius:10px;background:var(--p413-card);padding:20px 22px;
+}#odds-shelf .p413-tray h3{margin:0;font:700 20px/1.2 "Newsreader",serif}#odds-shelf .p413-tray .p413-tray-sub{margin:6px 0 0;color:var(--p413-muted);font-size:14px;max-width:46em}#odds-shelf .p413-tray-items{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;min-height:34px}#odds-shelf .p413-tray-chip{
+  display:inline-flex;align-items:center;gap:8px;border:1px solid var(--p413-line-strong);border-radius:20px;
   padding:4px 6px 4px 12px;font:600 12px "IBM Plex Sans",sans-serif;background:var(--p413-paper);
 }#odds-shelf .p413-tray-chip button{
   appearance:none;border:none;background:var(--p413-ink);color:var(--p413-paper);width:18px;height:18px;border-radius:50%;
   cursor:pointer;font:700 11px/1 "IBM Plex Mono",monospace;padding:0;
-}#odds-shelf .p413-tray-empty{font:12.5px "IBM Plex Mono",monospace;color:var(--p413-muted);align-self:center}#odds-shelf .p413-tray-verdict{margin-top:14px;padding:13px 15px;border-left:3px solid var(--p413-amber);background:var(--p413-paper-2);font-size:14.5px}#odds-shelf .p413-tray-verdict p{margin:0 0 7px}#odds-shelf .p413-tray-verdict p:last-child{margin-bottom:0}#odds-shelf .p413-tray-verdict .p413-v-head{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-tray-verdict .p413-house{color:var(--p413-muted);font-size:13.5px}#odds-shelf .p413-tray-verdict .p413-warn{color:var(--p413-red);font-weight:600}
+}#odds-shelf .p413-tray-empty{font:italic 13px "IBM Plex Sans",sans-serif;color:var(--p413-muted);align-self:center}#odds-shelf .p413-tray-verdict{margin-top:14px;padding:13px 15px;border-left:3px solid var(--p413-amber);border-radius:0 6px 6px 0;background:var(--p413-paper-2);font-size:14.5px}#odds-shelf .p413-tray-verdict p{margin:0 0 7px}#odds-shelf .p413-tray-verdict p:last-child{margin-bottom:0}#odds-shelf .p413-tray-verdict .p413-v-head{font:700 11px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-tray-verdict .p413-house{color:var(--p413-muted);font-size:13.5px}#odds-shelf .p413-tray-verdict .p413-warn{color:var(--p413-red);font-weight:600}
 
 
 /* ---------- photo finishes ---------- */
-#odds-shelf .p413-finishes{display:grid;grid-template-columns:1fr;gap:16px;margin-top:22px}#odds-shelf .p413-finish{border:1px solid var(--p413-line-strong);background:var(--p413-card);padding:20px 22px}#odds-shelf .p413-finish h3{margin:0;font:700 20px/1.25 "Newsreader",serif}#odds-shelf .p413-finish .p413-f-meta{margin:3px 0 0;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted);letter-spacing:.04em}#odds-shelf .p413-race-rows{margin:14px 0 0}#odds-shelf .p413-race-row{display:grid;grid-template-columns:118px 1fr 118px;gap:10px;align-items:center;margin:9px 0}#odds-shelf .p413-race-row .p413-rr-label{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-race-row .p413-rr-val{font:700 12.5px "IBM Plex Mono",monospace;text-align:right}#odds-shelf .p413-race-row .p413-rr-val.p413-win{color:var(--p413-green-deep)}#odds-shelf .p413-bars{position:relative;height:26px}#odds-shelf .p413-bars .p413-bar{position:absolute;left:0;height:11px;border-radius:2px}#odds-shelf .p413-bars .p413-bar.p413-a{top:0;background:var(--p413-amber)}#odds-shelf .p413-bars .p413-bar.p413-b{top:14px;background:var(--p413-blue)}#odds-shelf .p413-bar-key{display:flex;gap:16px;margin-top:6px;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted)}#odds-shelf .p413-bar-key .p413-k{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}#odds-shelf .p413-bar-key .p413-k.p413-a{background:var(--p413-amber)}#odds-shelf .p413-bar-key .p413-k.p413-b{background:var(--p413-blue)}#odds-shelf .p413-finish .p413-f-verdict{margin:13px 0 0;font-size:14.5px}#odds-shelf .p413-finish .p413-f-verdict strong{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--p413-green)}
+#odds-shelf .p413-finishes{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}#odds-shelf .p413-finish{border:1px solid var(--p413-line-strong);border-radius:10px;background:var(--p413-card);padding:20px 22px}#odds-shelf .p413-finish h3{margin:0;font:700 20px/1.25 "Newsreader",serif}#odds-shelf .p413-finish .p413-f-meta{margin:3px 0 0;font:12px "IBM Plex Sans",sans-serif;color:var(--p413-muted);letter-spacing:.02em}#odds-shelf .p413-race-rows{margin:14px 0 0}#odds-shelf .p413-race-row{display:grid;grid-template-columns:112px 1fr 112px;gap:12px;align-items:center;margin:10px 0}#odds-shelf .p413-race-row .p413-rr-label{font:600 11px "IBM Plex Sans",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--p413-muted)}#odds-shelf .p413-race-row .p413-rr-val{font:700 12.5px "IBM Plex Mono",monospace;text-align:right}#odds-shelf .p413-race-row .p413-rr-val.p413-win{color:var(--p413-green-deep)}#odds-shelf .p413-bars{position:relative;height:27px;background:var(--p413-paper-2);border-radius:3px}#odds-shelf .p413-bars .p413-bar{position:absolute;left:0;height:10px;border-radius:2px}#odds-shelf .p413-bars .p413-bar.p413-a{top:2px;background:var(--p413-amber)}#odds-shelf .p413-bars .p413-bar.p413-b{top:15px;background:var(--p413-green)}#odds-shelf .p413-bar-key{display:flex;gap:16px;margin-top:6px;font:12px "IBM Plex Sans",sans-serif;color:var(--p413-muted)}#odds-shelf .p413-bar-key .p413-k{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}#odds-shelf .p413-bar-key .p413-k.p413-a{background:var(--p413-amber)}#odds-shelf .p413-bar-key .p413-k.p413-b{background:var(--p413-green)}#odds-shelf .p413-finish .p413-f-verdict{margin:13px 0 0;font-size:14.5px}#odds-shelf .p413-finish .p413-f-verdict strong{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--p413-green)}
 
 /* ---------- unclaimed ticket ---------- */
 #odds-shelf .p413-ticket{
-  margin-top:22px;border:2px dashed var(--p413-line-strong);background:var(--p413-card);padding:22px;
-  position:relative;
-}#odds-shelf .p413-ticket::before,#odds-shelf .p413-ticket::after{
-  content:"";position:absolute;top:50%;width:22px;height:22px;border-radius:50%;
-  background:var(--p413-paper);border:2px dashed var(--p413-line-strong);transform:translateY(-50%);
-}#odds-shelf .p413-ticket::before{left:-13px}#odds-shelf .p413-ticket::after{right:-13px}#odds-shelf .p413-ticket h3{margin:0;font:700 22px/1.2 "Newsreader",serif}#odds-shelf .p413-ticket .p413-t-lede{margin:8px 0 0;max-width:46em}#odds-shelf .p413-ticket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}#odds-shelf .p413-ticket-stat{border-top:2px solid var(--p413-ink);padding-top:10px}#odds-shelf .p413-ticket-stat .p413-ts-num{font:700 30px/1 "IBM Plex Mono",monospace;color:var(--p413-red)}#odds-shelf .p413-ticket-stat .p413-ts-what{margin:6px 0 0;font-size:13.5px}#odds-shelf .p413-ticket-stat .p413-ts-src{margin:4px 0 0;font:11px "IBM Plex Mono",monospace;color:var(--p413-muted)}#odds-shelf .p413-ticket .p413-t-close{margin:18px 0 0;max-width:46em;font-size:15px}
+  margin-top:24px;border:1px solid var(--p413-line-strong);border-radius:10px;background:var(--p413-card);padding:20px 22px;
+}#odds-shelf .p413-ticket::before,#odds-shelf .p413-ticket::after{content:none}#odds-shelf .p413-ticket h3{margin:0;font:700 20px/1.2 "Newsreader",serif}#odds-shelf .p413-ticket .p413-t-lede{margin:8px 0 0;max-width:46em}#odds-shelf .p413-ticket-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}#odds-shelf .p413-ticket-stat{border-top:2px solid var(--p413-ink);padding-top:10px}#odds-shelf .p413-ticket-stat .p413-ts-num{font:700 28px/1 "IBM Plex Mono",monospace;color:var(--p413-green-deep)}#odds-shelf .p413-ticket-stat .p413-ts-what{margin:6px 0 0;font-size:13.5px}#odds-shelf .p413-ticket-stat .p413-ts-src{margin:4px 0 0;font:12px "IBM Plex Sans",sans-serif;color:var(--p413-muted)}#odds-shelf .p413-ticket .p413-t-close{margin:18px 0 0;max-width:46em;font-size:15px}
 
 /* ---------- fine print + sources ---------- */
-#odds-shelf .p413-fineprint{margin-top:22px;border:1px solid var(--p413-line);background:var(--p413-card);padding:18px 22px}#odds-shelf .p413-fineprint h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-fineprint ul{margin:0;padding-left:18px;font-size:13.5px}#odds-shelf .p413-fineprint li{margin:5px 0}#odds-shelf .p413-sources{margin-top:22px;font-size:13px;color:var(--p413-muted)}#odds-shelf .p413-sources h3{margin:0 0 8px;font:700 11px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-ink)}#odds-shelf .p413-sources ol{margin:0;padding-left:20px}#odds-shelf .p413-sources li{margin:4px 0}#odds-shelf .p413-footer-note{
+#odds-shelf .p413-fineprint{margin-top:24px;border:1px solid var(--p413-line-strong);border-radius:10px;background:var(--p413-card);padding:20px 22px}#odds-shelf .p413-fineprint h3{margin:0 0 8px;font:700 11px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-green)}#odds-shelf .p413-fineprint ul{margin:0;padding-left:18px;font-size:13.5px}#odds-shelf .p413-fineprint li{margin:5px 0}#odds-shelf .p413-sources{margin-top:24px;font-size:13px;color:var(--p413-muted)}#odds-shelf .p413-sources h3{margin:0 0 8px;font:700 11px "IBM Plex Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p413-ink)}#odds-shelf .p413-sources ol{margin:0;padding-left:20px}#odds-shelf .p413-sources li{margin:4px 0}#odds-shelf .p413-footer-note{
   margin:44px 0 0;padding-top:14px;border-top:2px solid var(--p413-ink);
-  font:11.5px/1.6 "IBM Plex Mono",monospace;color:var(--p413-muted);
+  font:12px/1.6 "IBM Plex Sans",sans-serif;color:var(--p413-muted);
   display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 }
 
@@ -1730,10 +1725,10 @@ background:var(--p407-bg)}
 .home-card.shelf .home-card-art{background:#f3ead3}
 /* Essay 13 addition: behind the counter (why the bottle gets picked) */
 #odds-shelf .p413-reach-lede{font-size:16.5px;max-width:74ch}
-#odds-shelf .p413-reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
-#odds-shelf .p413-reach{background:var(--p413-card);border:1px solid var(--p413-line-strong);padding:20px 22px}
-#odds-shelf .p413-reach-kicker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--p413-green-deep);margin-bottom:9px}
-#odds-shelf .p413-reach-title{font-family:"Newsreader",serif;font-size:21px;line-height:1.2;font-weight:700;margin:0 0 9px;color:var(--p413-ink)}
+#odds-shelf .p413-reach-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+#odds-shelf .p413-reach{background:var(--p413-card);border:1px solid var(--p413-line-strong);border-radius:10px;padding:20px 22px}
+#odds-shelf .p413-reach-kicker{font-family:"IBM Plex Sans",sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--p413-green-deep);margin-bottom:9px}
+#odds-shelf .p413-reach-title{font-family:"Newsreader",serif;font-size:20px;line-height:1.2;font-weight:700;margin:0 0 9px;color:var(--p413-ink)}
 #odds-shelf .p413-reach p{font-size:14.5px;line-height:1.62;margin:0 0 9px;color:var(--p413-ink)}
 #odds-shelf .p413-reach p:last-child{margin-bottom:0}
 @media(max-width:900px){#odds-shelf .p413-reach-grid{grid-template-columns:1fr}}
