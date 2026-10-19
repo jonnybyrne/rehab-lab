@@ -1882,108 +1882,84 @@ background:var(--p407-bg)}
 #neurogenic-bladder *{animation:none!important;transition:none!important}
 }
 /* ============ ESSAY 15 · WHAT ACTUALLY WORKS FOR BACK PAIN (p415) ============ */
-#what-works-back-pain{--p415-paper:#f6f2e8;--p415-panel:#fffdf6;--p415-ink:#1d1a13;--p415-mut:#5d5747;--p415-line:#d9d2bd;--p415-line-strong:#a89e80;--p415-red:#bc2b1e;--p415-red-soft:#f3d9d4;--p415-good:#2e6b46;--p415-hatch:#e9e2cd;background:var(--p415-paper);color:var(--p415-ink)}
-@media (prefers-color-scheme: dark){#what-works-back-pain{--p415-paper:#171410;--p415-panel:#201c15;--p415-ink:#f0ead9;--p415-mut:#b3a98f;--p415-line:#3a3527;--p415-line-strong:#6b6350;--p415-red:#ff7a68;--p415-red-soft:#4a231d;--p415-good:#7cc79b;--p415-hatch:#26221a}}
+/* Simple ranked answer list. One column, one accent, no table, no controls but one toggle. */
+#what-works-back-pain{--p415-bg:#f7f6f2;--p415-card:#ffffff;--p415-ink:#1c1a17;--p415-mut:#6f6a5e;--p415-line:#e4e1d8;--p415-track:#edeae2;--p415-accent:#2e6b46;--p415-accent-ink:#27603d;--p415-accent-soft:#e4efe7;--p415-zone:rgba(46,107,70,.14);--p415-fill-neutral:#a49e8f;--p415-stamp:#8a4438;background:var(--p415-bg);color:var(--p415-ink)}
+@media (prefers-color-scheme: dark){#what-works-back-pain{--p415-bg:#16140f;--p415-card:#201d16;--p415-ink:#f1ecdf;--p415-mut:#ada58f;--p415-line:#3b372a;--p415-track:#2b2719;--p415-accent:#7cc79b;--p415-accent-ink:#9adbb4;--p415-accent-soft:#22392a;--p415-zone:rgba(124,199,155,.16);--p415-fill-neutral:#7d7663;--p415-stamp:#d89a8c}}
 #what-works-back-pain *,#what-works-back-pain *::before,#what-works-back-pain *::after{box-sizing:border-box}
-#what-works-back-pain ::selection{background:var(--p415-red);color:#fff}
-#what-works-back-pain .p415-wrap{max-width:1280px;margin:0 auto;padding:0 20px 90px}
-#what-works-back-pain .p415-kicker{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--p415-red);margin:34px 0 0}
-#what-works-back-pain h1.p415-title{font:700 clamp(38px,6vw,68px)/1.02 "Newsreader",Georgia,serif;letter-spacing:-.02em;margin:12px 0 10px;max-width:16em}
-#what-works-back-pain .p415-dek{font:400 clamp(17px,2.2vw,21px)/1.45 "Newsreader",Georgia,serif;color:var(--p415-mut);max-width:46em;margin:0}
-#what-works-back-pain .p415-byline-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:18px 0 0;padding-bottom:14px;border-bottom:3px double var(--p415-line-strong)}
-#what-works-back-pain .p415-byline{font:600 13px "IBM Plex Sans",sans-serif;letter-spacing:.02em}
+#what-works-back-pain ::selection{background:var(--p415-accent);color:#fff}
+#what-works-back-pain .p415-wrap{max-width:780px;margin:0 auto;padding:0 20px 84px}
+#what-works-back-pain .p415-kicker{font:600 12.5px "IBM Plex Sans",-apple-system,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--p415-mut);margin:38px 0 0}
+#what-works-back-pain h1.p415-title{font:700 clamp(36px,6vw,56px)/1.05 "Newsreader",Georgia,serif;letter-spacing:-.015em;margin:12px 0 14px;max-width:14em}
+#what-works-back-pain .p415-answer{font:600 clamp(21px,3.4vw,27px)/1.35 "IBM Plex Sans",-apple-system,sans-serif;letter-spacing:-.01em;margin:0;max-width:26em}
+#what-works-back-pain .p415-intro{font:400 17.5px/1.6 "IBM Plex Sans",-apple-system,sans-serif;color:var(--p415-mut);margin:16px 0 0;max-width:38em}
+#what-works-back-pain .p415-byline-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:22px 0 0;padding-bottom:20px;border-bottom:1px solid var(--p415-line)}
+#what-works-back-pain .p415-byline{font:600 13.5px "IBM Plex Sans",sans-serif}
 #what-works-back-pain .p415-byline .p415-role{color:var(--p415-mut);font-weight:400}
-#what-works-back-pain .p415-draft-stamp{display:inline-block;font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.08em;color:var(--p415-red);border:1.5px solid var(--p415-red);border-radius:3px;padding:3px 8px;transform:rotate(-2deg)}
-#what-works-back-pain .p415-layout{display:grid;grid-template-columns:288px minmax(0,1fr);gap:30px;margin-top:26px;align-items:start}
-#what-works-back-pain .p415-margin{position:sticky;top:18px;border:1px solid var(--p415-line-strong);background:var(--p415-panel);padding:18px 18px 8px}
-#what-works-back-pain .p415-margin-head{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--p415-red);border-bottom:1px solid var(--p415-line);padding-bottom:8px;margin-bottom:12px}
-#what-works-back-pain .p415-margin p{font-size:14.5px;line-height:1.55;margin:0 0 12px}
-#what-works-back-pain .p415-margin .p415-margin-cc{font:italic 500 16px/1.45 "Newsreader",Georgia,serif}
-#what-works-back-pain .p415-margin .p415-margin-note{font-size:12.5px;color:var(--p415-mut);border-top:1px dashed var(--p415-line-strong);padding-top:10px}
-#what-works-back-pain .p415-controls{border:1px solid var(--p415-line-strong);background:var(--p415-panel);padding:14px 16px 12px;margin-bottom:0}
-#what-works-back-pain .p415-controls-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
-#what-works-back-pain .p415-bar-label{font:700 11px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--p415-red)}
-#what-works-back-pain .p415-bar-value{font:700 22px/1 "IBM Plex Mono",monospace}
-#what-works-back-pain .p415-bar-value small{font-size:11px;color:var(--p415-mut);font-weight:500}
-#what-works-back-pain input.p415-slider{flex:1 1 220px;accent-color:var(--p415-red);height:28px;cursor:pointer}
-#what-works-back-pain .p415-readout{font:600 14.5px/1.45 "IBM Plex Sans",sans-serif;margin:10px 0 0}
-#what-works-back-pain .p415-readout b{font-family:"IBM Plex Mono",monospace;color:var(--p415-red)}
-#what-works-back-pain .p415-controls-sub{font-size:13px;color:var(--p415-mut);margin:6px 0 0;max-width:62em}
-#what-works-back-pain .p415-sorts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;border-top:1px solid var(--p415-line);padding-top:12px}
-#what-works-back-pain .p415-sorts span{font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--p415-mut);align-self:center}
-#what-works-back-pain .p415-sort{font:600 12.5px "IBM Plex Sans",sans-serif;border:1px solid var(--p415-line-strong);background:transparent;color:var(--p415-ink);border-radius:3px;padding:6px 11px;cursor:pointer}
-#what-works-back-pain .p415-sort[aria-pressed="true"]{background:var(--p415-ink);color:var(--p415-paper);border-color:var(--p415-ink)}
-#what-works-back-pain .p415-sort:hover:not([aria-pressed="true"]){background:var(--p415-hatch)}
-#what-works-back-pain .p415-sort:focus-visible,#what-works-back-pain .p415-expand:focus-visible,#what-works-back-pain input.p415-slider:focus-visible{outline:3px solid var(--p415-red);outline-offset:2px}
-#what-works-back-pain .p415-tablewrap{position:relative;margin-top:16px}
-#what-works-back-pain .p415-table{border:1.5px solid var(--p415-line-strong);background:var(--p415-panel)}
-#what-works-back-pain .p415-row{display:grid;grid-template-columns:52px minmax(168px,1.12fr) minmax(215px,1.5fr) minmax(185px,1.28fr) minmax(155px,1.02fr) minmax(118px,.82fr);border-bottom:1px solid var(--p415-line);transition:opacity .25s ease}
-#what-works-back-pain .p415-row:last-child{border-bottom:none}
-#what-works-back-pain .p415-row.p415-head{background:var(--p415-ink);color:var(--p415-paper);font:700 10.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase}
-#what-works-back-pain .p415-row.p415-head .p415-cell{padding:10px 12px}
-#what-works-back-pain .p415-cell{padding:13px 12px;font-size:14px;line-height:1.45;min-width:0}
-#what-works-back-pain .p415-cell + .p415-cell{border-left:1px solid var(--p415-line)}
-#what-works-back-pain .p415-num{font:700 15px "IBM Plex Mono",monospace;color:var(--p415-mut);padding-top:15px}
-#what-works-back-pain .p415-row.p415-lit .p415-num{color:var(--p415-red)}
-#what-works-back-pain button.p415-expand{display:block;background:none;border:0;padding:0;margin:0;font:700 16.5px/1.25 "Newsreader",Georgia,serif;color:var(--p415-ink);text-align:left;cursor:pointer}
-#what-works-back-pain button.p415-expand::after{content:" +";font-family:"IBM Plex Mono",monospace;font-weight:700;color:var(--p415-red);font-size:14px}
-#what-works-back-pain .p415-row.open button.p415-expand::after{content:" −"}
-#what-works-back-pain .p415-vs{display:block;font:500 11px "IBM Plex Mono",monospace;letter-spacing:.03em;color:var(--p415-mut);margin-top:5px}
-#what-works-back-pain .p415-verdict{display:inline-block;font:700 10px "IBM Plex Mono",monospace;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--p415-line-strong);border-radius:2px;padding:2px 6px;margin-top:8px;color:var(--p415-mut)}
-#what-works-back-pain .p415-row.p415-lit .p415-verdict{border-color:var(--p415-good);color:var(--p415-good)}
-#what-works-back-pain .p415-pain-num{font:700 26px/1 "IBM Plex Mono",monospace;letter-spacing:-.01em}
-#what-works-back-pain .p415-pain-unit{font:500 11px "IBM Plex Mono",monospace;color:var(--p415-mut);margin-left:5px}
-#what-works-back-pain .p415-paincell.p415-neg .p415-pain-num{color:var(--p415-red)}
-#what-works-back-pain .p415-track{height:9px;background:var(--p415-hatch);margin:8px 0 7px;position:relative}
-#what-works-back-pain .p415-fill{height:100%;background:var(--p415-ink);transition:width .25s ease}
-#what-works-back-pain .p415-row.p415-lit .p415-fill{background:var(--p415-good)}
-#what-works-back-pain .p415-pain-sub{display:block;font-size:12.5px;color:var(--p415-mut);line-height:1.4}
-#what-works-back-pain .p415-status{display:inline-block;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;margin-top:7px;padding:2px 6px;border-radius:2px;background:var(--p415-hatch);color:var(--p415-mut)}
-#what-works-back-pain .p415-row.p415-lit .p415-status{background:var(--p415-good);color:#fff}
-#what-works-back-pain .p415-row.p415-dim{opacity:.38;filter:grayscale(.65)}
-#what-works-back-pain .p415-row.p415-dim .p415-status{background:var(--p415-panel);border:1px solid var(--p415-line-strong)}
-#what-works-back-pain .p415-pain-na{font:600 13.5px/1.4 "IBM Plex Sans",sans-serif;display:block}
-#what-works-back-pain .p415-row.p415-base{background:repeating-linear-gradient(135deg,transparent 0 14px,var(--p415-hatch) 14px 15px)}
-#what-works-back-pain .p415-row.p415-base .p415-num{color:var(--p415-red)}
-#what-works-back-pain .p415-notes{display:none;grid-column:1/-1;border-top:1px dashed var(--p415-line-strong);padding:14px 16px 16px 64px;background:var(--p415-paper)}
-#what-works-back-pain .p415-row.open .p415-notes{display:block}
-#what-works-back-pain .p415-notes p{margin:0 0 9px;font-size:14.5px;line-height:1.6;max-width:62em}
-#what-works-back-pain .p415-notes .p415-src{font:500 11.5px "IBM Plex Mono",monospace;color:var(--p415-mut);margin:0}
-#what-works-back-pain .p415-spark{width:100%;max-width:560px;height:auto;display:block;margin:6px 0 4px}
-#what-works-back-pain .p415-spark-cap{font-size:12.5px;color:var(--p415-mut);margin:0 0 9px;max-width:62em}
-#what-works-back-pain .p415-rule{position:absolute;top:-8px;bottom:0;width:0;border-left:2.5px solid var(--p415-red);z-index:5;pointer-events:none;opacity:0}
-#what-works-back-pain .p415-rule.p415-rule-on{opacity:1}
-#what-works-back-pain .p415-rule-handle{position:absolute;top:0;left:-2.5px;transform:translateX(-50%);background:var(--p415-red);color:#fff;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;padding:3px 7px;border-radius:2px;pointer-events:auto;cursor:grab;white-space:nowrap;touch-action:none}
-#what-works-back-pain .p415-rule-handle::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:38px;transform:translate(-50%,-50%)}
-#what-works-back-pain.p415-dragging .p415-rule-handle{cursor:grabbing}
-#what-works-back-pain .p415-rule-cap{position:absolute;bottom:-24px;left:0;transform:translateX(-50%);font:600 10px "IBM Plex Mono",monospace;color:var(--p415-red);white-space:nowrap}
-#what-works-back-pain .p415-under-rule{height:26px}
-#what-works-back-pain .p415-bottom{margin-top:52px;border-top:3px double var(--p415-line-strong);padding-top:22px;max-width:52em}
-#what-works-back-pain .p415-bottom h2{font:700 clamp(24px,3.6vw,32px)/1.15 "Newsreader",Georgia,serif;margin:0 0 12px}
-#what-works-back-pain .p415-bottom p{font-size:16px;line-height:1.6;margin:0 0 12px}
-#what-works-back-pain .p415-sources{margin-top:44px;border-top:1px solid var(--p415-line-strong);padding-top:18px}
-#what-works-back-pain .p415-sources h2{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.13em;text-transform:uppercase;margin:0 0 12px;color:var(--p415-mut)}
-#what-works-back-pain .p415-sources ol{margin:0;padding-left:22px;font-size:13px;line-height:1.6;color:var(--p415-mut);columns:2;column-gap:44px}
-#what-works-back-pain .p415-sources li{margin-bottom:6px;break-inside:avoid}
-#what-works-back-pain .p415-footer-note{display:flex;flex-wrap:wrap;gap:6px 26px;justify-content:space-between;margin-top:40px;border-top:1px solid var(--p415-line-strong);padding-top:14px;font:500 11.5px "IBM Plex Mono",monospace;color:var(--p415-mut)}
-@media (max-width:900px){
-#what-works-back-pain .p415-layout{grid-template-columns:1fr}
-#what-works-back-pain .p415-margin{position:static}
-#what-works-back-pain .p415-sources ol{columns:1}
-}
-@media (max-width:760px){
-#what-works-back-pain .p415-table{border:none;background:transparent}
-#what-works-back-pain .p415-row.p415-head{display:none}
-#what-works-back-pain .p415-row{grid-template-columns:1fr;border:1.5px solid var(--p415-line-strong);background:var(--p415-panel);margin-bottom:14px}
-#what-works-back-pain .p415-row:last-child{border-bottom:1.5px solid var(--p415-line-strong)}
-#what-works-back-pain .p415-cell{padding:9px 14px}
-#what-works-back-pain .p415-cell + .p415-cell{border-left:none;border-top:1px solid var(--p415-line)}
-#what-works-back-pain .p415-cell::before{content:attr(data-label);display:block;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.11em;text-transform:uppercase;color:var(--p415-mut);margin-bottom:3px}
-#what-works-back-pain .p415-num{font-size:12px;padding-top:11px}
-#what-works-back-pain .p415-num::before{content:"ITEM "}
-#what-works-back-pain .p415-notes{padding:12px 14px 14px}
-#what-works-back-pain .p415-rule{display:none}
-#what-works-back-pain .p415-under-rule{display:none}
+#what-works-back-pain .p415-draft-stamp{display:inline-block;font:700 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--p415-stamp);border:1.5px solid var(--p415-stamp);border-radius:999px;padding:4px 10px}
+/* legend: how to read one bar, shown once */
+#what-works-back-pain .p415-legend{margin:26px 0 0;background:var(--p415-card);border:1px solid var(--p415-line);border-radius:18px;padding:18px 20px 14px}
+#what-works-back-pain .p415-legend p{font-size:15px;line-height:1.55;color:var(--p415-mut);margin:10px 0 4px}
+#what-works-back-pain .p415-legend p b{color:var(--p415-ink);font-weight:600}
+#what-works-back-pain .p415-track{position:relative;display:block;height:14px;border-radius:999px;background:var(--p415-track);overflow:hidden;margin-top:14px}
+#what-works-back-pain .p415-zone{position:absolute;top:0;bottom:0;left:10%;right:0;background:var(--p415-zone)}
+#what-works-back-pain .p415-fill{position:absolute;top:0;bottom:0;left:0;background:var(--p415-fill-neutral);border-radius:999px}
+#what-works-back-pain .p415-row[data-tier="helps"] .p415-fill{background:var(--p415-accent)}
+#what-works-back-pain .p415-track-base .p415-fill{background:repeating-linear-gradient(45deg,var(--p415-fill-neutral) 0 6px,transparent 6px,transparent 12px)}
+#what-works-back-pain .p415-ends{display:flex;justify-content:space-between;font:500 12px "IBM Plex Sans",sans-serif;color:var(--p415-mut);margin-top:7px}
+/* the one control */
+#what-works-back-pain .p415-filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:26px 0 18px}
+#what-works-back-pain .p415-filter{display:inline-flex;align-items:center;gap:12px;cursor:pointer;min-height:48px}
+#what-works-back-pain .p415-filter-label{font:600 16.5px "IBM Plex Sans",sans-serif}
+#what-works-back-pain input.p415-switch{appearance:none;-webkit-appearance:none;width:54px;height:32px;border-radius:999px;background:#cfccc2;border:none;margin:0;position:relative;cursor:pointer;flex:0 0 auto;transition:background .2s ease}
+@media (prefers-color-scheme: dark){#what-works-back-pain input.p415-switch{background:#4a4636}}
+#what-works-back-pain input.p415-switch::after{content:"";position:absolute;top:2px;left:2px;width:28px;height:28px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s ease}
+#what-works-back-pain input.p415-switch:checked{background:var(--p415-accent)}
+#what-works-back-pain input.p415-switch:checked::after{transform:translateX(22px)}
+#what-works-back-pain .p415-filter-hint{font-size:13.5px;color:var(--p415-mut)}
+/* ranked rows */
+#what-works-back-pain .p415-row{background:var(--p415-card);border:1px solid var(--p415-line);border-radius:20px;padding:20px 20px 16px;margin:0 0 14px;transition:opacity .3s ease}
+#what-works-back-pain .p415-list.p415-filtered .p415-row[data-tier="little"],
+#what-works-back-pain .p415-list.p415-filtered .p415-row[data-tier="barely"],
+#what-works-back-pain .p415-list.p415-filtered .p415-row[data-tier="none"]{opacity:.16}
+#what-works-back-pain button.p415-head{display:block;width:100%;background:none;border:0;padding:0;margin:0;text-align:left;cursor:pointer;color:var(--p415-ink);font:inherit;min-height:48px}
+#what-works-back-pain .p415-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+#what-works-back-pain .p415-rank{font:700 13px "IBM Plex Sans",sans-serif;color:var(--p415-mut);min-width:1.4em}
+#what-works-back-pain .p415-name{font:700 20px/1.25 "IBM Plex Sans",sans-serif;letter-spacing:-.01em}
+#what-works-back-pain .p415-chip{display:inline-block;font:600 12.5px "IBM Plex Sans",sans-serif;border-radius:999px;padding:4px 11px;background:var(--p415-track);color:var(--p415-mut);white-space:nowrap}
+#what-works-back-pain .p415-chip-helps{background:var(--p415-accent);color:#fff}
+@media (prefers-color-scheme: dark){#what-works-back-pain .p415-chip-helps{color:#12241a}}
+#what-works-back-pain .p415-chip-little{background:var(--p415-accent-soft);color:var(--p415-accent-ink)}
+#what-works-back-pain .p415-chip-special{background:transparent;border:1.5px dashed var(--p415-fill-neutral);color:var(--p415-mut)}
+#what-works-back-pain .p415-context{display:block;font-size:13.5px;color:var(--p415-mut);margin-top:5px;padding-left:calc(1.4em + 10px)}
+#what-works-back-pain .p415-barnote{display:block;font-size:13px;color:var(--p415-mut);margin-top:7px}
+#what-works-back-pain .p415-one{display:block;font-size:16.5px;line-height:1.55;margin-top:12px}
+#what-works-back-pain .p415-kept{display:none;font-size:13.5px;font-weight:600;color:var(--p415-accent-ink);margin-top:10px}
+#what-works-back-pain .p415-list.p415-filtered .p415-row:not([data-tier="little"]):not([data-tier="barely"]):not([data-tier="none"]) .p415-kept{display:block}
+#what-works-back-pain .p415-more{display:block;font:600 13.5px "IBM Plex Sans",sans-serif;color:var(--p415-accent-ink);margin-top:12px}
+#what-works-back-pain .p415-more::after{content:" +";font-weight:700}
+#what-works-back-pain .p415-row.open .p415-more::after{content:" −"}
+#what-works-back-pain .p415-details{border-top:1px solid var(--p415-line);margin-top:16px;padding-top:6px}
+#what-works-back-pain .p415-details[hidden]{display:none}
+#what-works-back-pain .p415-details p{font-size:15.5px;line-height:1.62;margin:12px 0 0}
+#what-works-back-pain .p415-details p.p415-fact{margin-top:10px}
+#what-works-back-pain .p415-details p.p415-fact b{font-weight:700}
+#what-works-back-pain .p415-details p.p415-src{font-size:13.5px;color:var(--p415-mut)}
+#what-works-back-pain .p415-spark{display:block;width:100%;max-width:520px;height:auto;margin:14px 0 0;color:var(--p415-mut)}
+#what-works-back-pain .p415-spark-cap{font-size:13px;color:var(--p415-mut);margin-top:6px}
+/* close */
+#what-works-back-pain .p415-recap{margin:38px 0 0}
+#what-works-back-pain .p415-recap h2,#what-works-back-pain .p415-sources h2{font:700 27px/1.2 "Newsreader",Georgia,serif;letter-spacing:-.01em;margin:0 0 12px}
+#what-works-back-pain .p415-recap p{font-size:17px;line-height:1.6;margin:0 0 12px;max-width:38em}
+#what-works-back-pain .p415-sources{margin:40px 0 0}
+#what-works-back-pain .p415-sources ol{margin:0;padding-left:22px}
+#what-works-back-pain .p415-sources li{font-size:14.5px;line-height:1.55;color:var(--p415-mut);margin:0 0 7px}
+#what-works-back-pain .p415-footer-note{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between;border-top:1px solid var(--p415-line);margin-top:44px;padding-top:16px;font-size:12.5px;color:var(--p415-mut)}
+#what-works-back-pain button.p415-head:focus-visible,#what-works-back-pain input.p415-switch:focus-visible{outline:3px solid var(--p415-accent);outline-offset:3px;border-radius:8px}
+@media (max-width:560px){
+#what-works-back-pain .p415-wrap{padding:0 16px 70px}
+#what-works-back-pain .p415-row{padding:18px 16px 14px;border-radius:18px}
+#what-works-back-pain .p415-name{font-size:19px}
+#what-works-back-pain .p415-context{padding-left:0}
 }
 @media (prefers-reduced-motion: reduce){
 #what-works-back-pain *{animation:none!important;transition:none!important}
@@ -2005,7 +1981,7 @@ background:var(--p407-bg)}
 <a class="home-card pickle" href="#pickleball-fracture-curve" data-open-view="pickleball-fracture-curve" aria-label="Open essay: Is pickleball actually dangerous?"><div class="home-card-art" aria-hidden="true"><img src="images/card-04-pickleball.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">04 · SPORTS EPIDEMIOLOGY</span><h3>Is pickleball actually dangerous?</h3><p>America’s fastest-growing sport has an ER-visit explosion. The data behind the fractures.</p><span class="home-card-cta">Return serve</span></div></a>
 <a class="home-card carbon" href="#carbon-plate-revolution" data-open-view="carbon-plate-revolution" aria-label="Open essay: Did carbon-plate shoes really break the marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-05-carbon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">05 · RUNNING BIOMECHANICS</span><h3>Did carbon-plate shoes really break the marathon?</h3><p>How foam and carbon broke the marathon, from 4% lab savings to a sub-2:00 race.</p><span class="home-card-cta">Follow the split</span></div></a>
 <a class="home-card dew" href="#dew-point-killer" data-open-view="dew-point-killer" aria-label="Open essay: Why does a humid 75°F morning feel so bad?"><div class="home-card-art" aria-hidden="true"><img src="images/card-06-dewpoint.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">06 · EXERCISE PHYSIOLOGY</span><h3>Why does a humid 75°F morning feel so bad?</h3><p>Humidity lies. Why dew point, not the thermometer, decides how your run feels.</p><span class="home-card-cta">Enter the air</span></div></a>
-<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: Walking is controlled falling."><div class="home-card-art" aria-hidden="true"><img src="images/card-07-gait.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>Walking is controlled falling.</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><img src="images/card-08-hand.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric: the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: What happens to your body at every hour of a marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-09-marathon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>What happens to your body at every hour of a marathon?</h3><p>An hour-by-hour account of a marathon: three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><img src="images/card-10-steps.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>  <a class="home-card wp" href="#whose-pain-gets-believed" data-open-view="whose-pain-gets-believed" aria-label="Open essay: Whose pain gets believed"><div class="home-card-art" aria-hidden="true"><img src="images/card-11-pain.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">11 · PAIN, AUDITED</span><h3>Whose Pain Gets Believed?</h3><p>Pain has no lab test; the only instrument is belief. Thirty years of audits show how that instrument is calibrated, and for whom.</p><span class="home-card-cta">Read the audit</span></div></a><a class="home-card vital" href="#gait-speed" data-open-view="gait-speed" aria-label="Open essay: How Fast Do You Walk?"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#eef4f2"/><rect y="118" width="400" height="102" fill="rgba(126,31,31,.20)"/><rect y="84" width="400" height="34" fill="rgba(176,58,46,.18)"/><rect y="52" width="400" height="32" fill="rgba(216,155,34,.25)"/><rect y="0" width="400" height="52" fill="rgba(46,125,91,.20)"/><polyline points="20,58 75,44 130,44 185,44 240,58 295,76 350,128" fill="none" stroke="#1d4e89" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="20,62 75,62 130,52 185,66 240,80 295,94 350,132" fill="none" stroke="#c2402f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle class="p412-card-dot" cx="240" cy="36" r="9" fill="#f1c453" stroke="#12232e" stroke-width="3"/><text x="20" y="204" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#43586a">4 M · USUAL PACE · M/S</text></svg></div><div class="home-card-copy"><span class="home-card-num">12 · GAIT SPEED</span><h3>How Fast Do You Walk?</h3><p>One hallway, one stopwatch, one number that behaves like a vital sign. Time your four meter walk and stand on the curve.</p><span class="home-card-cta">Time yourself</span></div></a><a class="home-card shelf" href="#odds-shelf" data-open-view="odds-shelf" aria-label="Open essay: The Formulary Shelf"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f3ead3"/><rect x="30" y="86" width="340" height="10" fill="#8a6b3f"/><rect x="30" y="168" width="340" height="10" fill="#8a6b3f"/><g stroke="#2f2a24" stroke-width="3"><path d="M52 86 v-34 h16 v34 z" fill="#e6cf9e"/><path d="M96 86 v-44 h18 v44 z" fill="#dfc493"/><path d="M142 86 v-30 h15 v30 z" fill="#f0e9d8"/><path d="M184 86 v-40 h17 v40 z" fill="#bcd3c8"/><path d="M226 86 v-36 h16 v36 z" fill="#d8cfe4"/><path d="M268 86 v-28 h26 v28 z" fill="#e3d7bd"/><path d="M316 86 v-42 h18 v42 z" fill="#c9cfc0"/><path d="M60 168 v-36 h17 v36 z" fill="#d9bd8a"/><path d="M104 168 v-26 h24 v26 z" fill="#e3d7bd"/><path d="M152 168 v-40 h16 v40 z" fill="#c4d8cf"/><path d="M196 168 v-30 h26 v30 z" fill="#c9cfc0"/><path d="M248 168 v-38 h17 v38 z" fill="#e6cf9e"/><path d="M292 168 v-27 h15 v27 z" fill="#f0e9d8"/></g><circle cx="330" cy="52" r="17" fill="none" stroke="#1d6b4f" stroke-width="3.5" transform="rotate(-14 330 52)"/><text x="316" y="57" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="700" fill="#1d6b4f" transform="rotate(-14 330 52)">Rx</text><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#6d5a36">FORMULARY No. 13 · VTE PROPHYLAXIS</text></svg></div><div class="home-card-copy"><span class="home-card-num">13 · VTE PROPHYLAXIS</span><h3>The Formulary Shelf</h3><p>Nine bottles, seven patients, and the trial evidence behind every pairing.</p><span class="home-card-cta">Browse the shelf</span></div></a><a class="home-card nb" href="#neurogenic-bladder" data-open-view="neurogenic-bladder" aria-label="Open essay: The Bladder Loses Its Instructions"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#e9f2f3"/><path d="M200,38 C246,38 272,72 272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 C128,72 154,38 200,38 Z" fill="#bcdfe3" stroke="#15222b" stroke-width="4"/><path d="M128,128 C160,118 240,118 272,128 L272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 Z" fill="#7fc4cc" opacity="0.65"/><line x1="96" y1="96" x2="304" y2="96" stroke="#b3352b" stroke-width="3" stroke-dasharray="7 6"/><text x="310" y="100" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="14" fill="#b3352b">40</text><path d="M200,178 L200,200" stroke="#15222b" stroke-width="5" stroke-linecap="round"/><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#4d6270">PDET · CAPACITY · RECEPTORS</text></svg></div><div class="home-card-copy"><span class="home-card-num">14 · NEUROGENIC BLADDER</span><h3>The Bladder Loses Its Instructions</h3><p>One bladder, three wirings, every receptor in the wall: neurogenic bladder after spinal cord injury, rebuilt as a rig you can run.</p><span class="home-card-cta">Run the rig</span></div></a><a class="home-card ww" href="#what-works-back-pain" data-open-view="what-works-back-pain" aria-label="Open essay: What Actually Works for Back Pain"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f6f2e8"/><g stroke="#a89e80" stroke-width="1.5"><line x1="0" y1="36" x2="400" y2="36"/><line x1="0" y1="72" x2="400" y2="72"/><line x1="0" y1="108" x2="400" y2="108"/><line x1="0" y1="144" x2="400" y2="144"/><line x1="0" y1="180" x2="400" y2="180"/><line x1="120" y1="0" x2="120" y2="220"/><line x1="300" y1="0" x2="300" y2="220"/></g><rect x="128" y="14" width="122" height="10" fill="#2e6b46"/><rect x="128" y="50" width="76" height="10" fill="#1d1a13"/><rect x="128" y="86" width="64" height="10" fill="#1d1a13" opacity="0.55"/><rect x="128" y="122" width="52" height="10" fill="#1d1a13" opacity="0.35"/><rect x="128" y="158" width="8" height="10" fill="#bc2b1e"/><line x1="238" y1="0" x2="238" y2="220" stroke="#bc2b1e" stroke-width="4"/><text x="16" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#1d1a13">02</text><text x="310" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#2e6b46">15.2</text><text x="310" y="60" font-family="IBM Plex Mono,monospace" font-size="15" fill="#1d1a13">9.2</text><text x="310" y="168" font-family="IBM Plex Mono,monospace" font-size="15" fill="#bc2b1e">-5</text><text x="16" y="206" font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2" fill="#5d5747">PAIN · FUNCTION · HARMS · COST</text></svg></div><div class="home-card-copy"><span class="home-card-num">15 · WHAT WORKS</span><h3>What Actually Works for Back Pain</h3><p>Thirteen treatments, one honest baseline, and a red bar almost none of them clear.</p><span class="home-card-cta">Read the table</span></div></a> 
+<a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: Walking is controlled falling."><div class="home-card-art" aria-hidden="true"><img src="images/card-07-gait.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>Walking is controlled falling.</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><img src="images/card-08-hand.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric: the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: What happens to your body at every hour of a marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-09-marathon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>What happens to your body at every hour of a marathon?</h3><p>An hour-by-hour account of a marathon: three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><img src="images/card-10-steps.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>  <a class="home-card wp" href="#whose-pain-gets-believed" data-open-view="whose-pain-gets-believed" aria-label="Open essay: Whose pain gets believed"><div class="home-card-art" aria-hidden="true"><img src="images/card-11-pain.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">11 · PAIN, AUDITED</span><h3>Whose Pain Gets Believed?</h3><p>Pain has no lab test; the only instrument is belief. Thirty years of audits show how that instrument is calibrated, and for whom.</p><span class="home-card-cta">Read the audit</span></div></a><a class="home-card vital" href="#gait-speed" data-open-view="gait-speed" aria-label="Open essay: How Fast Do You Walk?"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#eef4f2"/><rect y="118" width="400" height="102" fill="rgba(126,31,31,.20)"/><rect y="84" width="400" height="34" fill="rgba(176,58,46,.18)"/><rect y="52" width="400" height="32" fill="rgba(216,155,34,.25)"/><rect y="0" width="400" height="52" fill="rgba(46,125,91,.20)"/><polyline points="20,58 75,44 130,44 185,44 240,58 295,76 350,128" fill="none" stroke="#1d4e89" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="20,62 75,62 130,52 185,66 240,80 295,94 350,132" fill="none" stroke="#c2402f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle class="p412-card-dot" cx="240" cy="36" r="9" fill="#f1c453" stroke="#12232e" stroke-width="3"/><text x="20" y="204" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#43586a">4 M · USUAL PACE · M/S</text></svg></div><div class="home-card-copy"><span class="home-card-num">12 · GAIT SPEED</span><h3>How Fast Do You Walk?</h3><p>One hallway, one stopwatch, one number that behaves like a vital sign. Time your four meter walk and stand on the curve.</p><span class="home-card-cta">Time yourself</span></div></a><a class="home-card shelf" href="#odds-shelf" data-open-view="odds-shelf" aria-label="Open essay: The Formulary Shelf"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f3ead3"/><rect x="30" y="86" width="340" height="10" fill="#8a6b3f"/><rect x="30" y="168" width="340" height="10" fill="#8a6b3f"/><g stroke="#2f2a24" stroke-width="3"><path d="M52 86 v-34 h16 v34 z" fill="#e6cf9e"/><path d="M96 86 v-44 h18 v44 z" fill="#dfc493"/><path d="M142 86 v-30 h15 v30 z" fill="#f0e9d8"/><path d="M184 86 v-40 h17 v40 z" fill="#bcd3c8"/><path d="M226 86 v-36 h16 v36 z" fill="#d8cfe4"/><path d="M268 86 v-28 h26 v28 z" fill="#e3d7bd"/><path d="M316 86 v-42 h18 v42 z" fill="#c9cfc0"/><path d="M60 168 v-36 h17 v36 z" fill="#d9bd8a"/><path d="M104 168 v-26 h24 v26 z" fill="#e3d7bd"/><path d="M152 168 v-40 h16 v40 z" fill="#c4d8cf"/><path d="M196 168 v-30 h26 v30 z" fill="#c9cfc0"/><path d="M248 168 v-38 h17 v38 z" fill="#e6cf9e"/><path d="M292 168 v-27 h15 v27 z" fill="#f0e9d8"/></g><circle cx="330" cy="52" r="17" fill="none" stroke="#1d6b4f" stroke-width="3.5" transform="rotate(-14 330 52)"/><text x="316" y="57" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="700" fill="#1d6b4f" transform="rotate(-14 330 52)">Rx</text><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#6d5a36">FORMULARY No. 13 · VTE PROPHYLAXIS</text></svg></div><div class="home-card-copy"><span class="home-card-num">13 · VTE PROPHYLAXIS</span><h3>The Formulary Shelf</h3><p>Nine bottles, seven patients, and the trial evidence behind every pairing.</p><span class="home-card-cta">Browse the shelf</span></div></a><a class="home-card nb" href="#neurogenic-bladder" data-open-view="neurogenic-bladder" aria-label="Open essay: The Bladder Loses Its Instructions"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#e9f2f3"/><path d="M200,38 C246,38 272,72 272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 C128,72 154,38 200,38 Z" fill="#bcdfe3" stroke="#15222b" stroke-width="4"/><path d="M128,128 C160,118 240,118 272,128 L272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 Z" fill="#7fc4cc" opacity="0.65"/><line x1="96" y1="96" x2="304" y2="96" stroke="#b3352b" stroke-width="3" stroke-dasharray="7 6"/><text x="310" y="100" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="14" fill="#b3352b">40</text><path d="M200,178 L200,200" stroke="#15222b" stroke-width="5" stroke-linecap="round"/><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#4d6270">PDET · CAPACITY · RECEPTORS</text></svg></div><div class="home-card-copy"><span class="home-card-num">14 · NEUROGENIC BLADDER</span><h3>The Bladder Loses Its Instructions</h3><p>One bladder, three wirings, every receptor in the wall: neurogenic bladder after spinal cord injury, rebuilt as a rig you can run.</p><span class="home-card-cta">Run the rig</span></div></a><a class="home-card ww" href="#what-works-back-pain" data-open-view="what-works-back-pain" aria-label="Open essay: What Actually Works for Back Pain"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f6f2e8"/><g stroke="#a89e80" stroke-width="1.5"><line x1="0" y1="36" x2="400" y2="36"/><line x1="0" y1="72" x2="400" y2="72"/><line x1="0" y1="108" x2="400" y2="108"/><line x1="0" y1="144" x2="400" y2="144"/><line x1="0" y1="180" x2="400" y2="180"/><line x1="120" y1="0" x2="120" y2="220"/><line x1="300" y1="0" x2="300" y2="220"/></g><rect x="128" y="14" width="122" height="10" fill="#2e6b46"/><rect x="128" y="50" width="76" height="10" fill="#1d1a13"/><rect x="128" y="86" width="64" height="10" fill="#1d1a13" opacity="0.55"/><rect x="128" y="122" width="52" height="10" fill="#1d1a13" opacity="0.35"/><rect x="128" y="158" width="8" height="10" fill="#bc2b1e"/><line x1="238" y1="0" x2="238" y2="220" stroke="#bc2b1e" stroke-width="4"/><text x="16" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#1d1a13">02</text><text x="310" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#2e6b46">15.2</text><text x="310" y="60" font-family="IBM Plex Mono,monospace" font-size="15" fill="#1d1a13">9.2</text><text x="310" y="168" font-family="IBM Plex Mono,monospace" font-size="15" fill="#bc2b1e">-5</text><text x="16" y="206" font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2" fill="#5d5747">PAIN · FUNCTION · HARMS · COST</text></svg></div><div class="home-card-copy"><span class="home-card-num">15 · WHAT WORKS</span><h3>What Actually Works for Back Pain</h3><p>Thirteen treatments, one honest baseline, and a red bar almost none of them clear.</p><span class="home-card-cta">See what helps</span></div></a> 
 
 </div></section>
 
@@ -4179,275 +4155,221 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="view" id="what-works-back-pain">
 <div class="p415-wrap">
-<p class="p415-kicker">The Rehab Lab · Essay 15 · An evidence table, not an article</p>
+<p class="p415-kicker">The Rehab Lab · Essay 15</p>
 <h1 class="p415-title">What Actually Works for Back Pain</h1>
-<p class="p415-dek">Thirteen treatments, scored the same way, against the trials that tested them. One baseline that is not a treatment at all. Most of the table fails to clear a bar you can move.</p>
+<p class="p415-answer">Most treatments barely help. A few help a little. Nothing is magic.</p>
+<p class="p415-intro">&ldquo;Doc, my back hurts. What actually works?&rdquo; Some version of that question opens half my clinic days. I am a rehab doctor, so I checked the evidence, treatment by treatment. I scored them all the same way. Here is the honest list, best first.</p>
 <div class="p415-byline-row"><span class="p415-byline">Jonathan Byrne, DO <span class="p415-role">· PM&amp;R resident</span></span><span class="p415-draft-stamp">DRAFT: pending expert review</span></div>
-<div class="p415-layout">
-<aside class="p415-margin" aria-label="Presenting complaint">
-<div class="p415-margin-head">Presenting complaint</div>
-<p class="p415-margin-cc">&ldquo;Doc, my back hurts. What actually works?&rdquo;</p>
-<p>Some version of that question opens half my clinic days. I am a rehab doctor. Back pain is the bread and butter of my specialty, the thing I am supposed to have answers for.</p>
-<p>For a long time my honest answer was a shrug dressed up as a plan. Rest a little. Try this pill. Maybe an injection. Come back in six weeks and we will see.</p>
-<p>So I did what I tell my patients to do. I checked the evidence, treatment by treatment, and put it in one table. Same rules for every row. No favorites.</p>
-<p>The uncomfortable part is how much of this table barely beats doing nothing. A few things help a little. Two help enough to matter, and neither one comes in a bottle.</p>
-<p class="p415-margin-note">How to read this: every number comes from a published trial or review, listed at the bottom. Effects are group averages, not promises. Click any treatment name for its trial notes.</p>
-</aside>
-<div class="p415-main">
-<div class="p415-controls">
-<div class="p415-controls-top">
-<span class="p415-bar-label">The bar: clinically important difference</span>
-<span class="p415-bar-value"><span id="p415-bar-num">10</span> <small>points on a 0 to 100 pain scale</small></span>
-<input class="p415-slider" id="p415-slider" type="range" min="0" max="30" step="1" value="10" aria-label="Clinically important difference, in points on a 0 to 100 pain scale">
+<div class="p415-legend">
+<span class="p415-track" aria-hidden="true"><span class="p415-zone"></span><span class="p415-fill" style="width:15%"></span></span>
+<span class="p415-ends" aria-hidden="true"><span>No relief</span><span>Pain gone</span></span>
+<p>Each bar shows how much a treatment eased pain, on a scale from 0 to 100. <b>The shaded part starts at 10 points, about the smallest drop most people can actually feel.</b> Tap any treatment to see the studies behind it.</p>
 </div>
-<p class="p415-readout" id="p415-readout" role="status"></p>
-<p class="p415-controls-sub">The red rule is the smallest pain drop a patient would call worth it. Reviews of these treatments set it between 10 and 15 points. Drag the rule across the table, or use the slider. Rows that fall short go grey where they sit.</p>
-<div class="p415-sorts" role="group" aria-label="Sort the table">
-<span>Sort</span>
-<button class="p415-sort" type="button" data-sort="ranked" aria-pressed="true">Ranked order</button>
-<button class="p415-sort" type="button" data-sort="pain" aria-pressed="false">Pain effect</button>
-<button class="p415-sort" type="button" data-sort="func" aria-pressed="false">Function effect</button>
-<button class="p415-sort" type="button" data-sort="harm" aria-pressed="false">Fewest harms</button>
+<div class="p415-filterbar">
+<label class="p415-filter"><input class="p415-switch" id="p415-only-helps" type="checkbox"><span class="p415-filter-label">Only show what helps</span></label>
+<span class="p415-filter-hint">Off shows the full list.</span>
+</div>
+<div class="p415-list" id="p415-list">
+<div class="p415-row" data-tier="special" data-name="baseline">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank" aria-hidden="true"></span><span class="p415-name">Doing nothing</span><span class="p415-chip p415-chip-special">Not a treatment</span></span>
+<span class="p415-context">A new back pain episode, left alone</span>
+<span class="p415-track p415-track-base"><span class="p415-zone"></span><span class="p415-fill" style="width:30%"></span></span>
+<span class="p415-one">Pain from a new back episode drops about 30 points in 6 weeks with no treatment at all. Every treatment below has to beat this head start, and most add very little.</span>
+<span class="p415-kept">Still shown: this is the clock every treatment is timed against.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 55% have no disability by 6 weeks. 83% by 1 year.</p>
+<p class="p415-fact"><b>Downsides:</b> It often comes back. 73% had at least one recurrence within a year.</p>
+<p class="p415-fact"><b>Cost:</b> Free.</p>
+<p>This row is the background every other row has to beat, and it is embarrassingly strong for new back pain. A pooled analysis of 47 cohorts and 9,224 people found average pain fell from 56 to 26 in the first 6 weeks, then flattened: 22 at 26 weeks, 21 at 52 weeks.</p>
+<p>In one cohort of 973 people who saw a primary care clinician for a new episode, 39% were completely pain free (a full month with no pain) by 6 weeks, 58% by 12 weeks, and 73% by 1 year. Most improvement happens early, then levels off, and recurrence is common.</p>
+<p>Read the boundary carefully: this is the course of new, acute episodes. Pain that has already settled in for months improves far less on its own (in the same pooled analysis, persistent pain went from 56 to only 48 in 6 weeks). That difference is the whole reason the chronic rows below exist.</p>
+<p class="p415-src">Sources: clinical course systematic review and meta-analysis, CMAJ 2024 (47 cohorts, 9,224 people); Henschke et al., BMJ 2008 (n=973); Pengel et al., BMJ 2003 (15 studies).</p>
 </div>
 </div>
-<div class="p415-tablewrap" id="p415-tablewrap">
-<div class="p415-rule" id="p415-rule" aria-hidden="true"><div class="p415-rule-handle" id="p415-rule-handle" title="Drag to move the bar">BAR</div><div class="p415-rule-cap" id="p415-rule-cap">10 points</div></div>
-<div class="p415-table" role="table" aria-label="Evidence table: treatments for low back pain">
-<div class="p415-row p415-head" role="row">
-<div class="p415-cell">Item</div>
-<div class="p415-cell">Treatment</div>
-<div class="p415-cell">Effect on pain</div>
-<div class="p415-cell">Effect on function</div>
-<div class="p415-cell">Harms</div>
-<div class="p415-cell">Cost</div>
-</div>
-<div class="p415-row" role="row" data-name="cft" data-pain="func" data-func="19.2" data-harm="1" data-idx="0">
-<div class="p415-cell p415-num">01</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Cognitive functional therapy</button>
-<span class="p415-vs">vs usual care · chronic, disabling pain</span>
-<span class="p415-verdict">The standout</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-na">Not scored on pain. The win is function, next column.</span>
-<span class="p415-status">Scored on function</span>
-</div>
-<div class="p415-cell" data-label="Effect on function"><strong>4.6 points better</strong> on a 24 point activity scale at 13 weeks. Still better at 52 weeks.</div>
-<div class="p415-cell" data-label="Harms">No pills, no needles, no surgery. Coaching and practice.</div>
-<div class="p415-cell" data-label="Cost">More up front. Saved about AU$5,276 per person over a year.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="helps" data-name="cft">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">1</span><span class="p415-name">Cognitive functional therapy</span><span class="p415-chip p415-chip-helps">Helps</span></span>
+<span class="p415-context">One to one coaching with a physical therapist · long lasting, disabling pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:0%"></span></span>
+<span class="p415-barnote">Not scored on pain. Read why below.</span>
+<span class="p415-one">A coaching style of rehab that got people moving and living much better. The gains lasted a year. It tops this list on daily life, not on pain scores.</span>
+<span class="p415-kept">Still shown: it helps people move and live, not just hurt less.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 4.6 points better on a 24 point activity scale at 13 weeks. Still better at 52 weeks.</p>
+<p class="p415-fact"><b>Downsides:</b> No pills, no needles, no surgery. Coaching and practice.</p>
+<p class="p415-fact"><b>Cost:</b> More up front. Saved about AU$5,276 per person over a year.</p>
 <p>Cognitive functional therapy, or CFT, is rehab with a trained physical therapist. The therapist coaches you to move in ways that hurt less, and helps you rethink what the pain means, so fear stops running your life.</p>
 <p>The RESTORE trial put it against usual care in 492 adults with chronic, disabling back pain. Activity limitation (how much pain limits daily life, on a 24 point scale) improved 4.6 points more with CFT at 13 weeks, and the gain held at 52 weeks. One arm added movement sensors and biofeedback (live data from sensors worn on the body). It added nothing. The coaching was the treatment.</p>
-<p>Honest gap: RESTORE reported pain scores too, but no clean pain number could be confirmed from the primary report for this table, so this row is scored on its verified headline result. That is why the red bar does not dim it.</p>
+<p>Honest gap: RESTORE reported pain scores too, but no clean pain number could be confirmed from the primary report for this essay, so this row is scored on its verified headline result, which is about moving and living.</p>
 <p class="p415-src">Source: Kent et al., The Lancet 2023 (RESTORE trial, n=492).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="exercise" data-pain="15.2" data-func="6.8" data-harm="1" data-idx="1">
-<div class="p415-cell p415-num">02</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Exercise therapy</button>
-<span class="p415-vs">vs no treatment, usual care, or placebo · chronic pain</span>
-<span class="p415-verdict">Clears the bar</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">15.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:50.67%"></div></div>
-<span class="p415-pain-sub">better pain than no treatment, usual care, or placebo</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function"><strong>6.8 points better</strong> on a 0 to 100 scale. Under the 10 point bar set for function.</div>
-<div class="p415-cell" data-label="Harms">Sore muscles and short flare ups. Nothing serious in the trials.</div>
-<div class="p415-cell" data-label="Cost">Low. The real price is your time, for weeks.</div>
-<div class="p415-notes">
-<p>The biggest review in this table: 249 trials of exercise for chronic back pain, pooled. Pain improved 15.2 points more than doing nothing, usual care, or a placebo. That just clears the review's own line for a difference patients can feel, which was 15 points.</p>
+<div class="p415-row" data-tier="helps" data-name="exercise">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">2</span><span class="p415-name">Exercise</span><span class="p415-chip p415-chip-helps">Helps</span></span>
+<span class="p415-context">Structured exercise therapy · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:15.2%"></span></span>
+<span class="p415-one">Across 249 trials, exercise eased pain about 15 points more than doing nothing. It is the largest clear win in this list.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 6.8 points better on a 0 to 100 scale.</p>
+<p class="p415-fact"><b>Downsides:</b> Sore muscles and short flare ups. Nothing serious in the trials.</p>
+<p class="p415-fact"><b>Cost:</b> Low. The real price is your time, for weeks.</p>
+<p>The biggest review in this list: 249 trials of exercise for chronic back pain, pooled. Pain improved 15.2 points more than doing nothing, usual care, or a placebo. That just clears the review's own line for a difference patients can feel, which was 15 points.</p>
 <p>Two honest catches. Function improved less than pain did. And when exercise was compared with other real treatments instead of nothing, the pain edge shrank to 9.1 points, under the bar. Beating nothing is a lower bar than beating another treatment.</p>
 <p class="p415-src">Source: Hayden et al., Cochrane Database of Systematic Reviews 2021 (249 trials).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="acupuncture" data-pain="9.2" data-func="2" data-harm="2" data-idx="2">
-<div class="p415-cell p415-num">03</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Acupuncture</button>
-<span class="p415-vs">vs sham (pretend) needles · chronic pain</span>
-<span class="p415-verdict">Mostly the ritual</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">9.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:30.67%"></div></div>
-<span class="p415-pain-sub">better than sham needles, right after treatment. Low certainty.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">No clear gain over sham needles.</div>
-<div class="p415-cell" data-label="Harms">Needle pain, bruising, small bleeds. Harm rates about the same as sham.</div>
-<div class="p415-cell" data-label="Cost">Moderate. A course of sessions.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="little" data-name="acupuncture">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">3</span><span class="p415-name">Acupuncture</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">Tested against pretend (sham) needles · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:9.2%"></span></span>
+<span class="p415-one">Real needles beat pretend needles by about 9 points. Most of that gap looks like the ritual around the needles, not the needles themselves.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> No clear gain over sham needles.</p>
+<p class="p415-fact"><b>Downsides:</b> Needle pain, bruising, small bleeds. Harm rates about the same as sham.</p>
+<p class="p415-fact"><b>Cost:</b> Moderate. A course of sessions.</p>
 <p>Against no treatment, acupuncture looks good: pain 20.3 points better right after treatment. The hard test is sham treatment, needles placed to look real without doing the real thing. There the edge falls to 9.2 points, under this review's 15 point line, and function does not clearly improve at all.</p>
 <p>The GERAC trial shows why. In 1,162 people with years of back pain, 47.6% responded to real acupuncture and 44.2% responded to sham needles. That gap, 3.4 percentage points, was not significant. Both needle groups nearly doubled the response to standard drug and exercise care (27.4%). Where the needles went barely mattered. The ritual around them seems to do much of the work.</p>
 <p class="p415-src">Sources: Mu et al., Cochrane Database of Systematic Reviews 2020 (33 trials, 8,270 people); Haake et al., Archives of Internal Medicine 2007 (GERAC, n=1,162).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="relaxants" data-pain="7.7" data-func="3.3" data-harm="5" data-idx="3">
-<div class="p415-cell p415-num">04</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Muscle relaxants</button>
-<span class="p415-vs">vs placebo or control · acute pain</span>
-<span class="p415-verdict">Small and brief</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">7.7</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:25.67%"></div></div>
-<span class="p415-pain-sub">better at 2 weeks or less. Very low certainty. Gone by 3 to 13 weeks.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">3.3 points. Not a proven gain.</div>
-<div class="p415-cell" data-label="Harms">Side effects 1.6 times more common: dizzy, sleepy, headache, nausea.</div>
-<div class="p415-cell" data-label="Cost">Low. A short course of generic pills.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="little" data-name="relaxants">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">4</span><span class="p415-name">Muscle relaxant pills</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">For fresh, short term back pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:7.7%"></span></span>
+<span class="p415-one">These pills ease pain about 8 points for the first two weeks. Then the benefit is gone, and they often make people sleepy or dizzy.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 3.3 points. Not a proven gain.</p>
+<p class="p415-fact"><b>Downsides:</b> Side effects 1.6 times more common: dizzy, sleepy, headache, nausea.</p>
+<p class="p415-fact"><b>Cost:</b> Low. A short course of generic pills.</p>
 <p>These are the antispasmodic pills (drugs meant to calm muscle spasm) often given for a fresh back strain. A BMJ review pooled 31 trials with 6,505 people. Pain at 2 weeks or less improved 7.7 points. The review had set 10 points as the smallest effect worth having, and the authors say this one is probably too small to matter.</p>
 <p>By 3 to 13 weeks there was no pain benefit left. The trade for a small, brief gain is feeling sedated (slowed and sleepy) while it lasts.</p>
 <p class="p415-src">Source: Cashin et al., BMJ 2021 (31 trials, 6,505 participants).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="nsaids" data-pain="7" data-func="3.5" data-harm="4" data-idx="4">
-<div class="p415-cell p415-num">05</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">NSAIDs</button>
-<span class="p415-vs">vs placebo · chronic pain</span>
-<span class="p415-verdict">Small, and fragile</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">7.0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:23.33%"></div></div>
-<span class="p415-pain-sub">better than placebo. Low quality evidence.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">0.85 points better on a 24 point disability scale.</div>
-<div class="p415-cell" data-label="Harms">No extra harm seen in short trials. Stomach, kidney, and heart risks grow with dose and time.</div>
-<div class="p415-cell" data-label="Cost">Low. Mostly over the counter.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="little" data-name="nsaids">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">5</span><span class="p415-name">Anti-inflammatory pills (NSAIDs)</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">Like ibuprofen and naproxen · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:7%"></span></span>
+<span class="p415-one">These pills ease pain about 7 points more than a sugar pill, and even that small edge fades in the most careful trials.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 0.85 points better on a 24 point disability scale.</p>
+<p class="p415-fact"><b>Downsides:</b> No extra harm seen in short trials. Stomach, kidney, and heart risks grow with dose and time.</p>
+<p class="p415-fact"><b>Cost:</b> Low. Mostly over the counter.</p>
 <p>NSAIDs are the anti-inflammatory pain pills, like ibuprofen and naproxen. A Cochrane review of 13 trials and 4,807 people with chronic back pain found pain 7 points better than placebo. That is about half the exercise effect, from a bottle.</p>
 <p>The fragile part: when the reviewers kept only the trials with the most careful methods, the benefit stopped being significant. And the trials were short, a median of 56 days for the pain outcome, too short to weigh the harms this drug family is known for over months and years. That is why guidance says lowest dose, shortest course.</p>
 <p class="p415-src">Source: Enthoven et al., Cochrane Database of Systematic Reviews 2016 (13 trials, 4,807 people).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="duloxetine" data-pain="6.7" data-func="3.6" data-harm="5" data-idx="5">
-<div class="p415-cell p415-num">06</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Duloxetine</button>
-<span class="p415-vs">vs placebo · chronic pain</span>
-<span class="p415-verdict">Modest, with dropouts</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">6.7</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:22.33%"></div></div>
-<span class="p415-pain-sub">better than placebo (0.67 on a 0 to 10 scale).</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">About 0.9 points better on a 24 point disability scale.</div>
-<div class="p415-cell" data-label="Harms">Nausea and dry mouth are common. In one trial 15.2% stopped it for side effects, vs 5.4% on placebo.</div>
-<div class="p415-cell" data-label="Cost">Low to moderate. A generic pill, taken daily.</div>
-<div class="p415-notes">
-<p>Duloxetine is an antidepressant that also turns down pain signals. A 2020 meta-analysis of 9 trials (in joint arthritis or back pain) found average pain 0.67 points better than placebo on a 0 to 10 scale, about 7 points on this table's scale.</p>
+<div class="p415-row" data-tier="little" data-name="duloxetine">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">6</span><span class="p415-name">Duloxetine</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">A daily pill · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:6.7%"></span></span>
+<span class="p415-one">This daily pill eases pain about 7 points more than a sugar pill, but nausea is common and many people stop taking it.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> About 0.9 points better on a 24 point disability scale.</p>
+<p class="p415-fact"><b>Downsides:</b> Nausea and dry mouth are common. In one trial 15.2% stopped it for side effects, vs 5.4% on placebo.</p>
+<p class="p415-fact"><b>Cost:</b> Low to moderate. A generic pill, taken daily.</p>
+<p>Duloxetine is an antidepressant that also turns down pain signals. A 2020 meta-analysis of 9 trials (in joint arthritis or back pain) found average pain 0.67 points better than placebo on a 0 to 10 scale, about 7 points on this essay's scale.</p>
 <p>In the back pain trials alone, 59.7% of people on duloxetine got at least 30% pain relief, vs 47.8% on placebo. A real edge, and a modest one. The cost of it: across the pooled trials, people were more than twice as likely to quit the drug because of side effects (risk ratio 2.31).</p>
 <p class="p415-src">Sources: Weng et al., Osteoarthritis and Cartilage 2020 (9 trials); pooled responder analysis of 4 duloxetine back pain trials (1,295 people).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="epidural" data-pain="6.2" data-func="3.1" data-harm="6" data-idx="6">
-<div class="p415-cell p415-num">07</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Epidural steroid injections</button>
-<span class="p415-vs">vs placebo injections · leg pain from sciatica</span>
-<span class="p415-verdict">Brief and small</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">6.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:20.67%"></div></div>
-<span class="p415-pain-sub">better leg pain, for 2 weeks to 3 months only.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">3.1 points better disability, short term only.</div>
-<div class="p415-cell" data-label="Harms">A needle placed by the spine, each time. Small procedure risks, repeated.</div>
-<div class="p415-cell" data-label="Cost">Moderate to high. A procedure, often repeated.</div>
-<div class="p415-notes">
-<p>A steroid shot into the space around the spinal nerves. A review of 23 placebo controlled trials found leg pain 6.2 points better and disability 3.1 points better, both only in the short term. The range proposed as worth having was 10 to 30 points. This does not reach it.</p>
+<div class="p415-row" data-tier="little" data-name="epidural">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">7</span><span class="p415-name">Steroid shots near the spine</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">Epidural injections · for leg pain from sciatica</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:6.2%"></span></span>
+<span class="p415-one">A steroid shot near the spine eases leg pain from sciatica about 6 points, for a few weeks. It does not help back pain itself.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 3.1 points better disability, short term only.</p>
+<p class="p415-fact"><b>Downsides:</b> A needle placed by the spine, each time. Small procedure risks, repeated.</p>
+<p class="p415-fact"><b>Cost:</b> Moderate to high. A procedure, often repeated.</p>
+<p>A steroid shot into the space around the spinal nerves. A review of 23 placebo controlled trials found leg pain 6.2 points better and disability 3.1 points better, both only in the short term, meaning 2 weeks to 3 months. The range proposed as worth having was 10 to 30 points. This does not reach it.</p>
 <p>There was no significant long term effect, and no effect on back pain itself. This row is about sciatica, pain running down the leg from an irritated nerve root. The help is real, brief, and narrow.</p>
 <p class="p415-src">Source: Pinto et al., Annals of Internal Medicine 2012 (23 trials).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="multidisciplinary" data-pain="5" data-func="6.3" data-harm="2" data-idx="7">
-<div class="p415-cell p415-num">08</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Multidisciplinary rehab programs</button>
-<span class="p415-vs">vs usual care · chronic pain</span>
-<span class="p415-verdict">Small, plus work</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">5.0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:16.67%"></div></div>
-<span class="p415-pain-sub">better than usual care (0.5 on a 0 to 10 scale).</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">1.5 points better on a 24 point scale. More people at work at 1 year than with physical treatment alone.</div>
-<div class="p415-cell" data-label="Harms">Weeks of appointments. No physical harm signal.</div>
-<div class="p415-cell" data-label="Cost">High up front. A whole team, for weeks.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="little" data-name="multidisciplinary">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">8</span><span class="p415-name">Team rehab programs</span><span class="p415-chip p415-chip-little">Helps a little</span></span>
+<span class="p415-context">Exercise, pain education, and support from a whole team · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:5%"></span></span>
+<span class="p415-one">Team rehab programs ease pain about 5 points, and their clearest win is getting people back to work.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> 1.5 points better on a 24 point scale. More people at work at 1 year than with physical treatment alone.</p>
+<p class="p415-fact"><b>Downsides:</b> Weeks of appointments. No physical harm signal.</p>
+<p class="p415-fact"><b>Cost:</b> High up front. A whole team, for weeks.</p>
 <p>These programs combine exercise, pain education, and psychological support from a team, for people whose pain has lasted a long time. A Cochrane review of 41 trials and 6,858 people (pain for over a year on average) found small gains: pain 0.5 points better on a 0 to 10 scale, disability 1.5 points better on a 24 point scale, both vs usual care.</p>
 <p>The standout result is work. People in these programs were more likely to be at work at 1 year than people given physical treatments alone (odds ratio 1.87, meaning the odds were close to double). Against usual care, that work edge vanished. Two trials compared these programs with surgery and found little difference in outcomes, with more adverse events in the surgery groups.</p>
 <p class="p415-src">Source: Kamper et al., BMJ 2015 (Cochrane review, 41 trials, 6,858 people).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="manipulation" data-pain="3.2" data-func="5" data-harm="2" data-idx="8">
-<div class="p415-cell p415-num">09</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Spinal manipulation</button>
-<span class="p415-vs">vs recommended care · chronic pain</span>
-<span class="p415-verdict">Depends on the rival</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">3.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:10.67%"></div></div>
-<span class="p415-pain-sub">better than recommended care. Not significant.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">A small gain (standardised effect 0.25). One of the clearer function results in this table.</div>
-<div class="p415-cell" data-label="Harms">Sore muscles and joints for a day or two.</div>
-<div class="p415-cell" data-label="Cost">Moderate. Repeat visits.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="barely" data-name="manipulation">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">9</span><span class="p415-name">Hands-on spinal treatment</span><span class="p415-chip">Barely helps</span></span>
+<span class="p415-context">Spinal manipulation · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:3.2%"></span></span>
+<span class="p415-one">Hands-on spinal treatment eased pain about 3 points more than usual care, a gap so small it may not be real.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> A small gain (standardised effect 0.25). One of the clearer function results in this list.</p>
+<p class="p415-fact"><b>Downsides:</b> Sore muscles and joints for a day or two.</p>
+<p class="p415-fact"><b>Cost:</b> Moderate. Repeat visits.</p>
 <p>Hands-on spinal manipulation, the thrust techniques used by chiropractors, osteopaths, and some physical therapists. A BMJ review of 47 trials and 9,211 people found the answer depends on what it is compared with. Against recommended care (exercise, regular doctor care), pain was no better in the short term and function was a little better.</p>
 <p>Against weaker comparison treatments, the pain edge grew to 7.5 points, which the authors still call small and not clinically better. Against pretend manipulation, the evidence is too thin to judge. In the one trial big enough to count harms properly, manipulation caused no more harm than the pretend version.</p>
 <p class="p415-src">Source: Rubinstein et al., BMJ 2019 (47 trials, 9,211 people).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="peul" data-pain="0" data-func="0" data-harm="7" data-idx="9">
-<div class="p415-cell p415-num">10</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Early surgery for sciatica</button>
-<span class="p415-vs">vs waiting, with surgery later if needed</span>
-<span class="p415-verdict">Faster, not better</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:0%"></div></div>
-<span class="p415-pain-sub">at 1 year. Both groups ended in the same place. The difference was speed.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">No difference in disability scores overall.</div>
-<div class="p415-cell" data-label="Harms">An operation's risks, taken now instead of later.</div>
-<div class="p415-cell" data-label="Cost">High. Surgery plus recovery time.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="none" data-name="peul">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">10</span><span class="p415-name">Early surgery for sciatica</span><span class="p415-chip">Does not help</span></span>
+<span class="p415-context">Surgery soon vs waiting, with surgery later if needed</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:0%"></span></span>
+<span class="p415-one">Early surgery heals sciatica faster, but after one year both groups feel the same. It buys speed, not a better ending.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> No difference in disability scores overall.</p>
+<p class="p415-fact"><b>Downsides:</b> An operation's risks, taken now instead of later.</p>
+<p class="p415-fact"><b>Cost:</b> High. Surgery plus recovery time.</p>
 <svg class="p415-spark" viewBox="0 0 560 190" role="img" aria-label="Schematic chart: recovery after early surgery rises faster, near 50 percent by 4 weeks, while the waiting group reaches 50 percent at about 12 weeks. Both curves meet at 95 percent recovered at 1 year.">
 <line x1="40" y1="160" x2="545" y2="160" stroke="currentColor" stroke-width="1" opacity="0.4"/>
 <line x1="40" y1="160" x2="40" y2="18" stroke="currentColor" stroke-width="1" opacity="0.4"/>
-<path d="M40,160 C75,95 95,72 150,55 C260,30 420,24 540,22" fill="none" stroke="#bc2b1e" stroke-width="2.5"/>
+<path d="M40,160 C75,95 95,72 150,55 C260,30 420,24 540,22" fill="none" stroke="#2e6b46" stroke-width="2.5"/>
 <path d="M40,160 C90,140 130,105 190,80 C300,42 430,26 540,22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.75"/>
-<circle cx="79" cy="88" r="4" fill="#bc2b1e"/>
+<circle cx="79" cy="88" r="4" fill="#2e6b46"/>
 <circle cx="158" cy="88" r="4" fill="currentColor" opacity="0.75"/>
-<circle cx="540" cy="22" r="4.5" fill="#bc2b1e"/>
-<text x="86" y="80" font-family="IBM Plex Mono,monospace" font-size="11" fill="#bc2b1e">surgery: median 4.0 weeks</text>
-<text x="166" y="80" font-family="IBM Plex Mono,monospace" font-size="11" fill="currentColor" opacity="0.8">waiting: median 12.1 weeks</text>
-<text x="398" y="14" font-family="IBM Plex Mono,monospace" font-size="11" fill="currentColor">95% recovered, both groups</text>
-<text x="44" y="178" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity="0.6">weeks since the trial started: 0</text>
-<text x="492" y="178" font-family="IBM Plex Mono,monospace" font-size="10" fill="currentColor" opacity="0.6">52</text>
+<circle cx="540" cy="22" r="4.5" fill="#2e6b46"/>
+<text x="86" y="80" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="#2e6b46">surgery: median 4.0 weeks</text>
+<text x="166" y="80" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="currentColor" opacity="0.8">waiting: median 12.1 weeks</text>
+<text x="398" y="14" font-family="IBM Plex Sans,sans-serif" font-size="11" fill="currentColor">95% recovered, both groups</text>
+<text x="44" y="178" font-family="IBM Plex Sans,sans-serif" font-size="10" fill="currentColor" opacity="0.6">weeks since the trial started: 0</text>
+<text x="492" y="178" font-family="IBM Plex Sans,sans-serif" font-size="10" fill="currentColor" opacity="0.6">52</text>
 </svg>
 <p class="p415-spark-cap">Schematic, drawn from the trial's median recovery times and its 1 year recovery rate. It shows the shape of the result, not patient level data.</p>
 <p>The Peul trial enrolled 283 people with 6 to 12 weeks of severe sciatica. Half had early surgery to remove the disc material pressing on the nerve. Half stayed with conservative care, with surgery later if they still needed it.</p>
@@ -4455,106 +4377,64 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <p class="p415-src">Source: Peul et al., New England Journal of Medicine 2007 (n=283).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="fusion" data-pain="0" data-func="4.1" data-harm="7" data-idx="10">
-<div class="p415-cell p415-num">11</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Lumbar fusion surgery</button>
-<span class="p415-vs">vs intensive rehabilitation · chronic pain</span>
-<span class="p415-verdict">A tie, at surgical prices</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:0%"></div></div>
-<span class="p415-pain-sub">No proven pain edge over rehab.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">Disability 4.1 points better in one trial (0 to 100 scale). 2.3 points, not significant, in the other.</div>
-<div class="p415-cell" data-label="Harms">Complications in 11% of surgery patients vs 0% in rehab (MRC trial). By 4 years, 23% of fused patients had needed more surgery.</div>
-<div class="p415-cell" data-label="Cost">About $92,000 per quality adjusted life year gained vs rehab.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="none" data-name="fusion">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">11</span><span class="p415-name">Spinal fusion surgery</span><span class="p415-chip">Does not help</span></span>
+<span class="p415-context">Tested against intensive rehabilitation · long lasting pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:0%"></span></span>
+<span class="p415-one">Fusing spine bones together did no better on pain than hard rehab, and it carries the risks of a major operation.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> Disability 4.1 points better in one trial (0 to 100 scale). 2.3 points, not significant, in the other.</p>
+<p class="p415-fact"><b>Downsides:</b> Complications in 11% of surgery patients vs 0% in rehab (MRC trial). By 4 years, 23% of fused patients had needed more surgery.</p>
+<p class="p415-fact"><b>Cost:</b> About $92,000 per quality adjusted life year gained vs rehab.</p>
 <p>Fusion welds two or more vertebrae (spine bones) together so the segment stops moving. Two trial families asked whether that beats hard rehabilitation for chronic back pain. The answer, twice, was basically a tie.</p>
 <p>The MRC trial enrolled 349 people, every one already judged a fusion candidate. Disability improved slightly more with surgery, by 4.1 points on a 0 to 100 scale. The authors said that gap only just reached the smallest difference that counts, and nothing else differed, not even the walking test. Surgery also brought complications in 11% of patients, vs none in rehab, and 28% of the rehab group crossed over to surgery anyway.</p>
 <p>The Brox trial compared fusion with talk therapy plus exercise and found no significant difference (2.3 points). An independent judge rated 76% of the exercise group a success, vs 70% of the surgery group. At 4 years the gap between the approaches was 1.1 points. A quality adjusted life year is one year lived in full health; at about $92,000 each, fusion bought very few.</p>
 <p class="p415-src">Sources: Fairbank et al., BMJ 2005 (MRC Spine Stabilisation Trial, n=349); Brox et al., Spine 2003 (n=64) and Annals of the Rheumatic Diseases 2010 (4 year follow up, n=124); Rivero-Arias et al., BMJ 2005 (cost analysis).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="gabapentinoids" data-pain="0" data-func="0" data-harm="6" data-idx="11">
-<div class="p415-cell p415-num">12</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Gabapentinoids</button>
-<span class="p415-vs">vs placebo · chronic pain, with or without leg pain</span>
-<span class="p415-verdict">No benefit found</span>
-</div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:0%"></div></div>
-<span class="p415-pain-sub">No significant benefit for gabapentin. Pregabalin did worse than other pain drugs.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">No proven gain.</div>
-<div class="p415-cell" data-label="Harms">Dizziness, fatigue, muddled thinking, visual disturbance. All more common than on placebo.</div>
-<div class="p415-cell" data-label="Cost">Low to moderate. Generic pills, often taken for years.</div>
-<div class="p415-notes">
+<div class="p415-row" data-tier="none" data-name="gabapentinoids">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">12</span><span class="p415-name">Gabapentin and pregabalin</span><span class="p415-chip">Does not help</span></span>
+<span class="p415-context">Gabapentinoid pills · long lasting pain, with or without leg pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:0%"></span></span>
+<span class="p415-one">No proven pain benefit at all, and the side effects are real: dizziness, tiredness, and muddled thinking.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> No proven gain.</p>
+<p class="p415-fact"><b>Downsides:</b> Dizziness, fatigue, muddled thinking, visual disturbance. All more common than on placebo.</p>
+<p class="p415-fact"><b>Cost:</b> Low to moderate. Generic pills, often taken for years.</p>
 <p>Gabapentin and pregabalin were built for seizures and nerve pain, and are prescribed for ordinary back pain every day. A 2017 review found only 8 randomised trials to judge them by, and the evidence was mostly low or very low quality.</p>
 <p>Even so, the picture is clear enough: gabapentin showed no significant pain benefit vs placebo, and pregabalin performed worse than other pain medicines it was compared with. What the drugs reliably add is side effects. A treatment with no proven benefit does not need many harms to lose.</p>
 <p class="p415-src">Source: Shanthanna et al., PLoS Medicine 2017 (8 trials).</p>
 </div>
 </div>
-<div class="p415-row" role="row" data-name="opioids" data-pain="-5" data-func="0" data-harm="8" data-idx="12">
-<div class="p415-cell p415-num">13</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Opioids</button>
-<span class="p415-vs">vs non-opioid pain drugs · chronic back or joint pain</span>
-<span class="p415-verdict">Worse, with more symptoms</span>
-</div>
-<div class="p415-cell p415-paincell p415-neg" data-label="Effect on pain">
-<span class="p415-pain-num">-5</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:0%"></div></div>
-<span class="p415-pain-sub">Pain intensity 4.0 on opioids vs 3.5 without (0 to 10 scale). Slightly worse.</span>
-<span class="p415-status"></span>
-</div>
-<div class="p415-cell" data-label="Effect on function">A tie. Pain interference 3.4 vs 3.3 (0 to 10 scale) at 12 months.</div>
-<div class="p415-cell" data-label="Harms">Medication symptoms about double (score 1.8 vs 0.9). Plus the risk of dependence.</div>
-<div class="p415-cell" data-label="Cost">The pills are cheap. The habit is not.</div>
-<div class="p415-notes">
-<p>The SPACE trial randomised 240 veterans with chronic back pain or hip and knee arthritis pain to opioid or non-opioid medicines for 12 months. It is the fairest head to head test this table has.</p>
+<div class="p415-row" data-tier="none" data-name="opioids">
+<button class="p415-head" type="button" aria-expanded="false">
+<span class="p415-top"><span class="p415-rank">13</span><span class="p415-name">Opioid pain pills</span><span class="p415-chip">Does not help</span></span>
+<span class="p415-context">Tested against non-opioid pain drugs · long lasting back or joint pain</span>
+<span class="p415-track"><span class="p415-zone"></span><span class="p415-fill" style="width:0%"></span></span>
+<span class="p415-one">In the fairest head to head test, opioids did a little worse than plain pain pills. They also brought about twice the side effects, plus a real risk of dependence.</span>
+<span class="p415-more">Study details</span>
+</button>
+<div class="p415-details" hidden>
+<p class="p415-fact"><b>Moving and daily life:</b> A tie. Pain interference 3.4 vs 3.3 (0 to 10 scale) at 12 months.</p>
+<p class="p415-fact"><b>Downsides:</b> Medication symptoms about double (score 1.8 vs 0.9). Plus the risk of dependence.</p>
+<p class="p415-fact"><b>Cost:</b> The pills are cheap. The habit is not.</p>
+<p>The SPACE trial randomised 240 veterans with chronic back pain or hip and knee arthritis pain to opioid or non-opioid medicines for 12 months. It is the fairest head to head test this list has.</p>
 <p>Opioids did not win on function (a tie), did not win on pain (slightly worse), and caused about twice the medication related symptoms. Two caveats, stated plainly: the trial was not blinded, so people knew which drug they were taking, and it studied veterans, who may not match every clinic population. Neither caveat explains away a loss on every measure.</p>
 <p class="p415-src">Source: Krebs et al., JAMA 2018 (SPACE trial, n=240).</p>
 </div>
 </div>
-<div class="p415-row p415-base" role="row" data-name="baseline" data-pain="base" data-func="0" data-harm="0" data-idx="13">
-<div class="p415-cell p415-num">14</div>
-<div class="p415-cell" data-label="Treatment">
-<button class="p415-expand" type="button" aria-expanded="false">Do nothing (the baseline)</button>
-<span class="p415-vs">no treatment · new, acute episodes</span>
-<span class="p415-verdict">Not a treatment. The clock.</span>
 </div>
-<div class="p415-cell" data-label="Effect on pain">
-<span class="p415-pain-num">30</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:100%"></div></div>
-<span class="p415-pain-sub">Average acute pain falls from 56 to 26 in 6 weeks, on its own. Not a treatment effect.</span>
-<span class="p415-status">Baseline</span>
-</div>
-<div class="p415-cell" data-label="Effect on function">55% have no disability by 6 weeks. 83% by 1 year.</div>
-<div class="p415-cell" data-label="Harms">It often comes back. 73% had at least one recurrence within a year.</div>
-<div class="p415-cell" data-label="Cost">Free.</div>
-<div class="p415-notes">
-<p>This row is the background every other row has to beat, and it is embarrassingly strong for new back pain. A pooled analysis of 47 cohorts and 9,224 people found average pain fell from 56 to 26 in the first 6 weeks, then flattened: 22 at 26 weeks, 21 at 52 weeks.</p>
-<p>In one cohort of 973 people who saw a primary care clinician for a new episode, 39% were completely pain free (a full month with no pain) by 6 weeks, 58% by 12 weeks, and 73% by 1 year. Most improvement happens early, then levels off, and recurrence is common.</p>
-<p>Read the boundary carefully: this is the course of new, acute episodes. Pain that has already settled in for months improves far less on its own (in the same pooled analysis, persistent pain went from 56 to only 48 in 6 weeks). That difference is the whole reason the chronic rows above exist.</p>
-<p class="p415-src">Sources: clinical course systematic review and meta-analysis, CMAJ 2024 (47 cohorts, 9,224 people); Henschke et al., BMJ 2008 (n=973); Pengel et al., BMJ 2003 (15 studies).</p>
-</div>
-</div>
-</div>
-</div>
-<div class="p415-under-rule"></div>
-</div>
-</div>
-<section class="p415-bottom">
-<h2>The bottom line, in plain words</h2>
-<p>Read the table top to bottom and a pattern shows. The two rows that stay lit are both rehab: structured exercise, and a coaching based therapy that teaches people to move again without fear. Everything that targets one spot, one nerve, or one chemical moves the score a few points, for a while, or not at all.</p>
-<p>Nothing here argues for doing nothing about chronic pain. The baseline row is about new episodes, which mostly settle on their own. Pain that stays past 3 months is a different problem, and for that problem the honest menu is short: move, learn, give it time, and be suspicious of anything that promises more than the table shows.</p>
-<p>These are averages across thousands of people. Your back is not an average. Use this table to ask better questions, and talk to your own clinician before changing any treatment.</p>
+<section class="p415-recap">
+<h2>So what actually helps?</h2>
+<p>Moving helps most. Exercise and coaching style rehab sit at the top of this list. Both take time and effort instead of a prescription.</p>
+<p>Some pills and shots help a little, for a while. None of them fix a back. A few add side effects without adding any relief at all.</p>
+<p>New back pain often fades on its own. Stay as active as you can, give it time, and talk to your own clinician about what fits your back.</p>
 </section>
 <section class="p415-sources">
 <h2>Sources</h2>
@@ -6743,149 +6623,23 @@ if(!reduced){requestAnimationFrame(rigLoop);}
 (function(){
 var root=document.getElementById('what-works-back-pain');
 if(!root)return;
-var wrap=root.querySelector('#p415-tablewrap');
-var table=root.querySelector('.p415-table');
-var rule=root.querySelector('#p415-rule');
-var handle=root.querySelector('#p415-rule-handle');
-var ruleCap=root.querySelector('#p415-rule-cap');
-var slider=root.querySelector('#p415-slider');
-var barNum=root.querySelector('#p415-bar-num');
-var readout=root.querySelector('#p415-readout');
-var rows=Array.prototype.slice.call(table.querySelectorAll('.p415-row[data-name]'));
-var threshold=10;
-var SCALE=30;
-
-function applyBar(){
-  var lit=0,total=0;
-  rows.forEach(function(r){
-    var p=r.getAttribute('data-pain');
-    var status=r.querySelector('.p415-status');
-    r.classList.remove('p415-dim','p415-lit');
-    if(p==='func'){
-      r.classList.add('p415-lit');
-      if(status)status.textContent='Scored on function';
-      return;
-    }
-    if(p==='base'){
-      if(status)status.textContent='Baseline';
-      return;
-    }
-    total++;
-    var v=parseFloat(p);
-    if(v>=threshold){
-      lit++;
-      r.classList.add('p415-lit');
-      if(status)status.textContent='Clears the bar';
-    }else{
-      r.classList.add('p415-dim');
-      if(status)status.textContent='Below the bar';
-    }
+var list=root.querySelector('#p415-list');
+var toggle=root.querySelector('#p415-only-helps');
+if(list&&toggle){
+  toggle.addEventListener('change',function(){
+    list.classList.toggle('p415-filtered',toggle.checked);
   });
-  barNum.textContent=threshold;
-  if(ruleCap)ruleCap.textContent=threshold+' points';
-  readout.innerHTML='At a bar of <b>'+threshold+' points</b>, <b>'+lit+' of '+total+'</b> pain scored treatments clear it. CFT is scored on function, not pain, so it stays lit. The last row is a baseline, never scored.';
-  positionRule();
 }
-
-function measureTrack(){
-  for(var i=0;i<rows.length;i++){
-    var t=rows[i].querySelector('.p415-track');
-    if(t)return t;
-  }
-  return null;
-}
-
-function positionRule(){
-  if(!wrap||!rule)return;
-  var track=measureTrack();
-  if(!track){rule.classList.remove('p415-rule-on');return;}
-  var tr=track.getBoundingClientRect();
-  var wr=wrap.getBoundingClientRect();
-  if(tr.width<10||wr.width<10){rule.classList.remove('p415-rule-on');return;}
-  var left=(tr.left-wr.left)+(threshold/SCALE)*tr.width;
-  rule.style.left=left+'px';
-  rule.classList.add('p415-rule-on');
-}
-
-function setThreshold(v,fromSlider){
-  threshold=Math.max(0,Math.min(SCALE,Math.round(v)));
-  if(!fromSlider)slider.value=threshold;
-  applyBar();
-}
-
-slider.addEventListener('input',function(){setThreshold(parseFloat(slider.value),true);});
-
-if(handle&&wrap){
-  var dragging=false;
-  function evToThreshold(e){
-    var track=measureTrack();
-    if(!track)return threshold;
-    var tr=track.getBoundingClientRect();
-    if(tr.width<10)return threshold;
-    var f=(e.clientX-tr.left)/tr.width;
-    if(f<0)f=0;
-    if(f>1)f=1;
-    return f*SCALE;
-  }
-  handle.addEventListener('pointerdown',function(e){
-    dragging=true;
-    root.classList.add('p415-dragging');
-    if(handle.setPointerCapture)handle.setPointerCapture(e.pointerId);
-    e.preventDefault();
-    setThreshold(evToThreshold(e),false);
-  });
-  handle.addEventListener('pointermove',function(e){
-    if(!dragging)return;
-    setThreshold(evToThreshold(e),false);
-  });
-  function endDrag(){dragging=false;root.classList.remove('p415-dragging');}
-  handle.addEventListener('pointerup',endDrag);
-  handle.addEventListener('pointercancel',endDrag);
-}
-
-var sortBtns=Array.prototype.slice.call(root.querySelectorAll('.p415-sort'));
-function sortRows(mode){
-  var sortable=rows.filter(function(r){return r.getAttribute('data-pain')!=='base';});
-  var base=rows.filter(function(r){return r.getAttribute('data-pain')==='base';});
-  function key(r){
-    if(mode==='pain'){
-      var p=r.getAttribute('data-pain');
-      if(p==='func')return -1;
-      return parseFloat(p);
-    }
-    if(mode==='func')return parseFloat(r.getAttribute('data-func'));
-    if(mode==='harm')return -parseFloat(r.getAttribute('data-harm'));
-    return -parseFloat(r.getAttribute('data-idx'));
-  }
-  sortable.sort(function(a,b){
-    var d=key(b)-key(a);
-    if(d!==0)return d;
-    return parseFloat(a.getAttribute('data-idx'))-parseFloat(b.getAttribute('data-idx'));
-  });
-  sortable.concat(base).forEach(function(r){table.appendChild(r);});
-  sortBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-sort')===mode));});
-  applyBar();
-}
-sortBtns.forEach(function(b){
-  b.addEventListener('click',function(){sortRows(b.getAttribute('data-sort'));});
-});
-
-rows.forEach(function(r){
-  var btn=r.querySelector('.p415-expand');
-  if(!btn)return;
+Array.prototype.forEach.call(root.querySelectorAll('.p415-row'),function(row){
+  var btn=row.querySelector('.p415-head');
+  var det=row.querySelector('.p415-details');
+  if(!btn||!det)return;
   btn.addEventListener('click',function(){
-    var open=r.classList.toggle('open');
+    var open=row.classList.toggle('open');
     btn.setAttribute('aria-expanded',String(open));
+    det.hidden=!open;
   });
 });
-
-window.addEventListener('resize',positionRule);
-window.addEventListener('load',positionRule);
-if('MutationObserver' in window){
-  var mo=new MutationObserver(function(){positionRule();});
-  mo.observe(root,{attributes:true,attributeFilter:['class']});
-}
-applyBar();
 })();
 </script>
 
