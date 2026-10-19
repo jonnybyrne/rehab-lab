@@ -1953,7 +1953,9 @@ background:var(--p407-bg)}
 #what-works-back-pain .p415-spark-cap{font-size:12.5px;color:var(--p415-mut);margin:0 0 9px;max-width:62em}
 #what-works-back-pain .p415-rule{position:absolute;top:-8px;bottom:0;width:0;border-left:2.5px solid var(--p415-red);z-index:5;pointer-events:none;opacity:0}
 #what-works-back-pain .p415-rule.p415-rule-on{opacity:1}
-#what-works-back-pain .p415-rule-handle{position:absolute;top:0;left:-2.5px;transform:translateX(-50%);background:var(--p415-red);color:#fff;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;padding:3px 7px;border-radius:2px;pointer-events:auto;cursor:ew-resize;white-space:nowrap;touch-action:none}
+#what-works-back-pain .p415-rule-handle{position:absolute;top:0;left:-2.5px;transform:translateX(-50%);background:var(--p415-red);color:#fff;font:700 9.5px "IBM Plex Mono",monospace;letter-spacing:.08em;padding:3px 7px;border-radius:2px;pointer-events:auto;cursor:grab;white-space:nowrap;touch-action:none}
+#what-works-back-pain .p415-rule-handle::after{content:"";position:absolute;left:50%;top:50%;width:44px;height:38px;transform:translate(-50%,-50%)}
+#what-works-back-pain.p415-dragging .p415-rule-handle{cursor:grabbing}
 #what-works-back-pain .p415-rule-cap{position:absolute;bottom:-24px;left:0;transform:translateX(-50%);font:600 10px "IBM Plex Mono",monospace;color:var(--p415-red);white-space:nowrap}
 #what-works-back-pain .p415-under-rule{height:26px}
 #what-works-back-pain .p415-bottom{margin-top:52px;border-top:3px double var(--p415-line-strong);padding-top:22px;max-width:52em}
@@ -4249,7 +4251,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">15.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:15.2%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:50.67%"></div></div>
 <span class="p415-pain-sub">better pain than no treatment, usual care, or placebo</span>
 <span class="p415-status"></span>
 </div>
@@ -4271,7 +4273,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">9.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:9.2%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:30.67%"></div></div>
 <span class="p415-pain-sub">better than sham needles, right after treatment. Low certainty.</span>
 <span class="p415-status"></span>
 </div>
@@ -4293,7 +4295,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">7.7</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:7.7%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:25.67%"></div></div>
 <span class="p415-pain-sub">better at 2 weeks or less. Very low certainty. Gone by 3 to 13 weeks.</span>
 <span class="p415-status"></span>
 </div>
@@ -4315,7 +4317,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">7.0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:7%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:23.33%"></div></div>
 <span class="p415-pain-sub">better than placebo. Low quality evidence.</span>
 <span class="p415-status"></span>
 </div>
@@ -4337,7 +4339,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">6.7</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:6.7%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:22.33%"></div></div>
 <span class="p415-pain-sub">better than placebo (0.67 on a 0 to 10 scale).</span>
 <span class="p415-status"></span>
 </div>
@@ -4359,7 +4361,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">6.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:6.2%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:20.67%"></div></div>
 <span class="p415-pain-sub">better leg pain, for 2 weeks to 3 months only.</span>
 <span class="p415-status"></span>
 </div>
@@ -4381,7 +4383,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">5.0</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:5%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:16.67%"></div></div>
 <span class="p415-pain-sub">better than usual care (0.5 on a 0 to 10 scale).</span>
 <span class="p415-status"></span>
 </div>
@@ -4403,7 +4405,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">3.2</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:3.2%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:10.67%"></div></div>
 <span class="p415-pain-sub">better than recommended care. Not significant.</span>
 <span class="p415-status"></span>
 </div>
@@ -4529,7 +4531,7 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 </div>
 <div class="p415-cell" data-label="Effect on pain">
 <span class="p415-pain-num">30</span><span class="p415-pain-unit">points</span>
-<div class="p415-track"><div class="p415-fill" style="width:30%"></div></div>
+<div class="p415-track"><div class="p415-fill" style="width:100%"></div></div>
 <span class="p415-pain-sub">Average acute pain falls from 56 to 26 in 6 weeks, on its own. Not a treatment effect.</span>
 <span class="p415-status">Baseline</span>
 </div>
@@ -6751,6 +6753,7 @@ var barNum=root.querySelector('#p415-bar-num');
 var readout=root.querySelector('#p415-readout');
 var rows=Array.prototype.slice.call(table.querySelectorAll('.p415-row[data-name]'));
 var threshold=10;
+var SCALE=30;
 
 function applyBar(){
   var lit=0,total=0;
@@ -6799,13 +6802,13 @@ function positionRule(){
   var tr=track.getBoundingClientRect();
   var wr=wrap.getBoundingClientRect();
   if(tr.width<10||wr.width<10){rule.classList.remove('p415-rule-on');return;}
-  var left=(tr.left-wr.left)+(threshold/100)*tr.width;
+  var left=(tr.left-wr.left)+(threshold/SCALE)*tr.width;
   rule.style.left=left+'px';
   rule.classList.add('p415-rule-on');
 }
 
 function setThreshold(v,fromSlider){
-  threshold=Math.max(0,Math.min(30,Math.round(v)));
+  threshold=Math.max(0,Math.min(SCALE,Math.round(v)));
   if(!fromSlider)slider.value=threshold;
   applyBar();
 }
@@ -6819,19 +6822,25 @@ if(handle&&wrap){
     if(!track)return threshold;
     var tr=track.getBoundingClientRect();
     if(tr.width<10)return threshold;
-    return (e.clientX-tr.left)/tr.width*100;
+    var f=(e.clientX-tr.left)/tr.width;
+    if(f<0)f=0;
+    if(f>1)f=1;
+    return f*SCALE;
   }
   handle.addEventListener('pointerdown',function(e){
     dragging=true;
+    root.classList.add('p415-dragging');
     if(handle.setPointerCapture)handle.setPointerCapture(e.pointerId);
     e.preventDefault();
+    setThreshold(evToThreshold(e),false);
   });
   handle.addEventListener('pointermove',function(e){
     if(!dragging)return;
     setThreshold(evToThreshold(e),false);
   });
-  handle.addEventListener('pointerup',function(){dragging=false;});
-  handle.addEventListener('pointercancel',function(){dragging=false;});
+  function endDrag(){dragging=false;root.classList.remove('p415-dragging');}
+  handle.addEventListener('pointerup',endDrag);
+  handle.addEventListener('pointercancel',endDrag);
 }
 
 var sortBtns=Array.prototype.slice.call(root.querySelectorAll('.p415-sort'));
