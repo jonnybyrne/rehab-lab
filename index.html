@@ -2065,89 +2065,132 @@ background:var(--p407-bg)}
 #second-place-is-a-dnf .p417-draft-stamp{display:inline-block;font:700 10.5px "IBM Plex Sans",sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--p417-stamp);border:1.5px solid var(--p417-stamp);border-radius:999px;padding:4px 10px}
 #second-place-is-a-dnf .p417-body{font:400 17.5px/1.62 "IBM Plex Sans",sans-serif;margin:0 0 14px;max-width:38em}
 #second-place-is-a-dnf .p417-body b{font-weight:600}
-#second-place-is-a-dnf .p417-sec{margin:56px 0 0}
+#second-place-is-a-dnf .p417-sec{margin:52px 0 0}
 #second-place-is-a-dnf h2.p417-h2{font:700 clamp(29px,4.8vw,40px)/1.12 "Newsreader",Georgia,serif;letter-spacing:-.012em;margin:0 0 14px;max-width:20em}
-#second-place-is-a-dnf .p417-rules{list-style:none;margin:26px 0 0;padding:0}
-#second-place-is-a-dnf .p417-rules li{font:400 18.5px/1.55 "IBM Plex Sans",sans-serif;border-top:1px solid var(--p417-line);padding:14px 2px;display:flex;gap:14px}
+#second-place-is-a-dnf .p417-rules{list-style:none;margin:28px 0 0;padding:0}
+#second-place-is-a-dnf .p417-rules li{font:400 18px/1.5 "IBM Plex Sans",sans-serif;border-top:1px solid var(--p417-line);padding:13px 2px;display:flex;gap:16px;align-items:baseline}
 #second-place-is-a-dnf .p417-rules li:first-child{border-top:none}
-#second-place-is-a-dnf .p417-rules .p417-rnum{font:700 15px/1.5 "IBM Plex Mono",monospace;color:var(--p417-accent-ink);min-width:22px}
-#second-place-is-a-dnf .p417-machine{background:#171c26;color:#f2ede1;border-radius:20px;padding:22px 20px 20px;margin:30px 0 0}
+#second-place-is-a-dnf .p417-rules .p417-rnum{font:700 22px/1 "Newsreader",Georgia,serif;color:var(--p417-accent-ink);min-width:26px}
+#second-place-is-a-dnf .p417-rules b{font-weight:600}
+#second-place-is-a-dnf .p417-fig{margin:22px 0 0}
+#second-place-is-a-dnf .p417-fig img{width:100%;height:auto;display:block;border-radius:18px;aspect-ratio:16/9;object-fit:cover}
+#second-place-is-a-dnf .p417-fig figcaption{font:400 13px/1.5 "IBM Plex Sans",sans-serif;color:var(--p417-mut);margin:9px 2px 0}
+#second-place-is-a-dnf .p417-machine{background:#141a24;color:#f2ede1;border-radius:24px;margin:30px 0 0;overflow:hidden;box-shadow:0 18px 44px rgba(20,22,30,.22)}
+#second-place-is-a-dnf .p417-stage{position:relative;aspect-ratio:16/9;background:#0d1420;overflow:hidden}
+#second-place-is-a-dnf .p417-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease}
+#second-place-is-a-dnf .p417-photo.on{opacity:1}
+#second-place-is-a-dnf .p417-photo.pos-day{object-position:50% 32%}
+#second-place-is-a-dnf .p417-photo.pos-dusk{object-position:50% 42%}
+#second-place-is-a-dnf .p417-photo.pos-night{object-position:50% 30%}
+#second-place-is-a-dnf .p417-photo.pos-rest{object-position:50% 30%}
+#second-place-is-a-dnf .p417-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,22,0) 46%,rgba(10,14,22,.78) 100%)}
+#second-place-is-a-dnf .p417-stage-ui{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:16px 18px}
+#second-place-is-a-dnf .p417-loopbig{font:700 clamp(27px,5.4vw,36px)/1.05 "IBM Plex Mono",monospace;color:#fff;display:block}
+#second-place-is-a-dnf .p417-clock{font:500 13.5px "IBM Plex Mono",monospace;color:#cfd6de;display:block;margin-top:5px}
+#second-place-is-a-dnf .p417-ringwrap{position:relative;width:66px;height:66px;flex:0 0 auto}
+#second-place-is-a-dnf .p417-ringwrap svg{width:66px;height:66px;display:block;transform:rotate(-90deg)}
+#second-place-is-a-dnf .p417-ring-bg{fill:none;stroke:rgba(255,255,255,.28);stroke-width:5}
+#second-place-is-a-dnf .p417-ring-fg{fill:none;stroke:#e0aa3e;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset .55s ease}
+#second-place-is-a-dnf .p417-ringnum{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+#second-place-is-a-dnf .p417-ringnum b{font:700 19px/1 "IBM Plex Mono",monospace}
+#second-place-is-a-dnf .p417-ringnum span{font:600 8.5px "IBM Plex Sans",sans-serif;letter-spacing:.12em;color:#cfd6de;margin-top:2px}
+#second-place-is-a-dnf .p417-mach-body{padding:18px 20px 20px}
 #second-place-is-a-dnf .p417-machine h3{font:700 21px/1.15 "Newsreader",Georgia,serif;margin:0;color:#f2ede1}
-#second-place-is-a-dnf .p417-machine-sub{font:400 14.5px/1.55 "IBM Plex Sans",sans-serif;color:#b9bdb9;margin:8px 0 0;max-width:36em}
-#second-place-is-a-dnf .p417-sky{height:92px;border-radius:14px;margin:16px 0 0;position:relative;overflow:hidden;background:#9ec2e6;transition:background .6s ease}
-#second-place-is-a-dnf .p417-machine[data-phase="dusk"] .p417-sky{background:#e8a56b}
-#second-place-is-a-dnf .p417-machine[data-phase="dawn"] .p417-sky{background:#eec39a}
-#second-place-is-a-dnf .p417-machine[data-phase="night"] .p417-sky{background:#131c30}
-#second-place-is-a-dnf .p417-orb{position:absolute;width:22px;height:22px;border-radius:50%;background:#ffd94d;top:12px;right:16px;transition:background .6s ease}
-#second-place-is-a-dnf .p417-machine[data-phase="night"] .p417-orb{background:#e8e4d2}
-#second-place-is-a-dnf .p417-machine[data-phase="dusk"] .p417-orb{background:#ffdf8a}
-#second-place-is-a-dnf .p417-machine[data-phase="dawn"] .p417-orb{background:#ffe9a8}
-#second-place-is-a-dnf .p417-track{position:absolute;left:0;right:0;bottom:4px;width:100%;height:64px}
-#second-place-is-a-dnf .p417-clockrow{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;margin:16px 0 0}
-#second-place-is-a-dnf .p417-loopbig{font:700 30px/1.1 "IBM Plex Mono",monospace;color:#fff}
-#second-place-is-a-dnf .p417-clock{font:500 14.5px "IBM Plex Mono",monospace;color:#b9bdb9}
+#second-place-is-a-dnf .p417-machine-sub{font:400 14.5px/1.55 "IBM Plex Sans",sans-serif;color:#aeb6c0;margin:7px 0 0;max-width:38em}
+#second-place-is-a-dnf .p417-cap{font:400 12.5px/1.5 "IBM Plex Sans",sans-serif;color:#8b95a3;margin:12px 0 0}
 #second-place-is-a-dnf .p417-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 0}
-#second-place-is-a-dnf .p417-stat{background:#212836;border-radius:12px;padding:12px 14px}
+#second-place-is-a-dnf .p417-stat{background:#1d2534;border-radius:14px;padding:12px 14px}
 #second-place-is-a-dnf .p417-stat .p417-slab{display:block;font:600 11px "IBM Plex Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#98a0ae}
-#second-place-is-a-dnf .p417-stat .p417-sval{display:block;font:700 21px/1.25 "IBM Plex Mono",monospace;color:#fff;margin-top:4px}
+#second-place-is-a-dnf .p417-stat .p417-sval{display:block;font:700 22px/1.25 "IBM Plex Mono",monospace;color:#fff;margin-top:4px}
 #second-place-is-a-dnf .p417-stat .p417-ssub{display:block;font:400 12px/1.45 "IBM Plex Sans",sans-serif;color:#98a0ae;margin-top:2px}
-#second-place-is-a-dnf .p417-gauges{margin:16px 0 0;display:grid;gap:14px}
+#second-place-is-a-dnf .p417-gauges{margin:18px 0 0;display:grid;gap:15px}
 #second-place-is-a-dnf .p417-gauge .p417-glab{display:flex;justify-content:space-between;gap:12px;font:600 13.5px "IBM Plex Sans",sans-serif;color:#d8d4c6}
-#second-place-is-a-dnf .p417-gauge .p417-gval{font:700 13.5px "IBM Plex Mono",monospace;color:#fff}
-#second-place-is-a-dnf .p417-gtrack{height:12px;border-radius:999px;background:#2b3446;overflow:hidden;margin-top:7px}
-#second-place-is-a-dnf .p417-gfill{display:block;height:100%;border-radius:999px;background:#e0aa3e;width:0;transition:width .45s ease}
+#second-place-is-a-dnf .p417-gauge .p417-gval{font:700 14px "IBM Plex Mono",monospace;color:#fff}
+#second-place-is-a-dnf .p417-gtrack{height:10px;border-radius:999px;background:#2b3446;overflow:hidden;margin-top:7px}
+#second-place-is-a-dnf .p417-gfill{display:block;height:100%;border-radius:999px;background:#e0aa3e;width:0;transition:width .5s ease}
+#second-place-is-a-dnf .p417-gfill.rpe{background:#d97b4f}
 #second-place-is-a-dnf .p417-gfill.sleep{background:#7d9cc6}
-#second-place-is-a-dnf .p417-gcap{font:400 12.5px/1.5 "IBM Plex Sans",sans-serif;color:#98a0ae;margin:6px 0 0}
+#second-place-is-a-dnf .p417-gcap{font:400 12.5px/1.5 "IBM Plex Sans",sans-serif;color:#8b95a3;margin:6px 0 0}
 #second-place-is-a-dnf .p417-btnrow{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0}
-#second-place-is-a-dnf .p417-runbtn{appearance:none;-webkit-appearance:none;border:none;border-radius:999px;background:#e0aa3e;color:#1d1602;font:700 18px/1.2 "IBM Plex Sans",sans-serif;padding:15px 26px;cursor:pointer;min-height:56px}
+#second-place-is-a-dnf .p417-runbtn{appearance:none;-webkit-appearance:none;border:none;border-radius:999px;background:#e0aa3e;color:#1d1602;font:700 19px/1.2 "IBM Plex Sans",sans-serif;padding:16px 30px;cursor:pointer;min-height:60px;box-shadow:0 6px 18px rgba(224,170,62,.35);transition:transform .08s ease,background .2s ease,box-shadow .2s ease}
 #second-place-is-a-dnf .p417-runbtn:hover{background:#eec27a}
-#second-place-is-a-dnf .p417-runbtn:disabled{background:#3a4356;color:#98a0ae;cursor:default}
-#second-place-is-a-dnf .p417-runbtn:focus-visible,#second-place-is-a-dnf .p417-stopbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
-#second-place-is-a-dnf .p417-stopbtn{appearance:none;-webkit-appearance:none;border-radius:999px;background:transparent;color:#f2ede1;border:1.5px solid #4a5468;font:600 16px/1.2 "IBM Plex Sans",sans-serif;padding:14px 22px;cursor:pointer;min-height:56px}
+#second-place-is-a-dnf .p417-runbtn:active{transform:scale(.965);box-shadow:0 2px 8px rgba(224,170,62,.3)}
+#second-place-is-a-dnf .p417-runbtn:disabled{background:#3a4356;color:#98a0ae;cursor:default;box-shadow:none;transform:none}
+#second-place-is-a-dnf .p417-stopbtn{appearance:none;-webkit-appearance:none;border-radius:999px;background:transparent;color:#f2ede1;border:1.5px solid #4a5468;font:600 16px/1.2 "IBM Plex Sans",sans-serif;padding:14px 22px;cursor:pointer;min-height:60px;transition:transform .08s ease,border-color .2s ease}
 #second-place-is-a-dnf .p417-stopbtn:hover{border-color:#98a0ae}
-#second-place-is-a-dnf .p417-note{font:500 15.5px/1.55 "IBM Plex Sans",sans-serif;color:#f3e9cf;background:#212836;border-radius:12px;padding:12px 16px;margin:16px 0 0;min-height:24px}
-#second-place-is-a-dnf .p417-verdict{background:#f6e8d2;color:#211c15;border-radius:14px;padding:16px 18px;margin:16px 0 0}
+#second-place-is-a-dnf .p417-stopbtn:active{transform:scale(.965)}
+#second-place-is-a-dnf .p417-stopbtn:disabled{opacity:.45;cursor:default;transform:none}
+#second-place-is-a-dnf .p417-runbtn:focus-visible,#second-place-is-a-dnf .p417-stopbtn:focus-visible,#second-place-is-a-dnf .p417-napbtn:focus-visible,#second-place-is-a-dnf .p417-pushbtn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+#second-place-is-a-dnf .p417-note{font:500 15.5px/1.55 "IBM Plex Sans",sans-serif;color:#f3e9cf;background:#1d2534;border-radius:12px;padding:12px 16px;margin:16px 0 0;min-height:24px}
+#second-place-is-a-dnf .p417-choice{background:#212b3d;border:1px solid #39465e;border-radius:16px;padding:16px 18px;margin:16px 0 0}
+#second-place-is-a-dnf .p417-choice h4{font:700 18px/1.2 "Newsreader",Georgia,serif;margin:0 0 6px;color:#fff}
+#second-place-is-a-dnf .p417-choice p{font:400 14.5px/1.55 "IBM Plex Sans",sans-serif;color:#c3cad4;margin:0 0 12px}
+#second-place-is-a-dnf .p417-choice-row{display:flex;flex-wrap:wrap;gap:10px}
+#second-place-is-a-dnf .p417-napbtn{appearance:none;-webkit-appearance:none;border:none;border-radius:999px;background:#7d9cc6;color:#0e1622;font:700 16px/1.2 "IBM Plex Sans",sans-serif;padding:13px 22px;cursor:pointer;min-height:52px;transition:transform .08s ease,background .2s ease}
+#second-place-is-a-dnf .p417-napbtn:hover{background:#9db8da}
+#second-place-is-a-dnf .p417-napbtn:active{transform:scale(.965)}
+#second-place-is-a-dnf .p417-pushbtn{appearance:none;-webkit-appearance:none;border-radius:999px;background:transparent;color:#f2ede1;border:1.5px solid #4a5468;font:600 16px/1.2 "IBM Plex Sans",sans-serif;padding:13px 22px;cursor:pointer;min-height:52px;transition:transform .08s ease,border-color .2s ease}
+#second-place-is-a-dnf .p417-pushbtn:hover{border-color:#98a0ae}
+#second-place-is-a-dnf .p417-pushbtn:active{transform:scale(.965)}
+#second-place-is-a-dnf .p417-verdict{background:#f6e8d2;color:#211c15;border-radius:16px;padding:16px 18px;margin:16px 0 0}
 #second-place-is-a-dnf .p417-verdict h4{font:700 20px/1.2 "Newsreader",Georgia,serif;margin:0 0 8px}
 #second-place-is-a-dnf .p417-verdict p{font:400 15.5px/1.58 "IBM Plex Sans",sans-serif;margin:0 0 10px}
 #second-place-is-a-dnf .p417-againbtn{appearance:none;-webkit-appearance:none;border:1.5px solid #9a5b13;background:transparent;color:#8a4f0d;border-radius:999px;font:600 14.5px "IBM Plex Sans",sans-serif;padding:9px 18px;cursor:pointer}
+#second-place-is-a-dnf .p417-againbtn:active{transform:scale(.965)}
 #second-place-is-a-dnf .p417-againbtn:focus-visible{outline:3px solid #9a5b13;outline-offset:2px}
-#second-place-is-a-dnf .p417-strip{margin:22px 0 0}
+#second-place-is-a-dnf .p417-strip{margin:22px 0 2px}
 #second-place-is-a-dnf .p417-strip-cap{font:600 12px "IBM Plex Sans",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#98a0ae;margin:0 0 26px}
 #second-place-is-a-dnf .p417-strip-track{position:relative;height:4px;border-radius:2px;background:#2b3446;margin:0 48px 0 12px}
 #second-place-is-a-dnf .p417-mark{position:absolute;top:50%;width:10px;height:10px;border-radius:50%;background:#7d9cc6;transform:translate(-50%,-50%)}
 #second-place-is-a-dnf .p417-mark .p417-mlab{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font:600 11px "IBM Plex Sans",sans-serif;color:#b9bdb9}
 #second-place-is-a-dnf .p417-mark.up .p417-mlab{bottom:14px}
 #second-place-is-a-dnf .p417-mark.down .p417-mlab{top:14px}
-#second-place-is-a-dnf .p417-mark.you{background:#e0aa3e;width:14px;height:14px;border:2px solid #171c26}
+#second-place-is-a-dnf .p417-mark.you{background:#e0aa3e;width:14px;height:14px;border:2px solid #141a24}
 #second-place-is-a-dnf .p417-mark.you .p417-mlab{color:#eec27a;font-weight:700}
-#second-place-is-a-dnf .p417-arc{list-style:none;margin:20px 0 0;padding:0}
-#second-place-is-a-dnf .p417-arc li{font:400 16.5px/1.58 "IBM Plex Sans",sans-serif;border-top:1px solid var(--p417-line);padding:12px 2px;display:flex;gap:14px}
+#second-place-is-a-dnf .p417-arc{list-style:none;margin:18px 0 0;padding:0}
+#second-place-is-a-dnf .p417-arc li{font:400 16.5px/1.55 "IBM Plex Sans",sans-serif;border-top:1px solid var(--p417-line);padding:11px 2px;display:flex;gap:14px}
 #second-place-is-a-dnf .p417-arc .p417-anum{font:700 14px/1.55 "IBM Plex Mono",monospace;color:var(--p417-accent-ink);min-width:64px}
-#second-place-is-a-dnf .p417-fact{background:var(--p417-card);border:1px solid var(--p417-line);border-radius:18px;padding:20px 18px;margin:20px 0 0}
+#second-place-is-a-dnf .p417-records{list-style:none;margin:20px 0 0;padding:0}
+#second-place-is-a-dnf .p417-records li{display:flex;gap:16px;align-items:baseline;border-top:1px solid var(--p417-line);padding:11px 2px;font:400 16px/1.5 "IBM Plex Sans",sans-serif}
+#second-place-is-a-dnf .p417-records li:first-child{border-top:none}
+#second-place-is-a-dnf .p417-records .p417-rbig{font:700 20px/1.2 "IBM Plex Mono",monospace;color:var(--p417-accent-ink);min-width:118px}
+#second-place-is-a-dnf .p417-statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 4px}
+#second-place-is-a-dnf .p417-statgrid .p417-sg{background:var(--p417-card);border:1px solid var(--p417-line);border-radius:16px;padding:14px 16px}
+#second-place-is-a-dnf .p417-statgrid .p417-sg b{display:block;font:700 21px/1.2 "IBM Plex Mono",monospace;color:var(--p417-accent-ink)}
+#second-place-is-a-dnf .p417-statgrid .p417-sg span{display:block;font:400 13px/1.45 "IBM Plex Sans",sans-serif;color:var(--p417-mut);margin-top:4px}
+#second-place-is-a-dnf .p417-fact{background:var(--p417-card);border:1px solid var(--p417-line);border-radius:18px;padding:20px 18px;margin:18px 0 0}
 #second-place-is-a-dnf .p417-fact h3{font:700 21px/1.15 "Newsreader",Georgia,serif;margin:0 0 8px}
 #second-place-is-a-dnf .p417-fact p{font:400 16.5px/1.6 "IBM Plex Sans",sans-serif;margin:0 0 10px}
 #second-place-is-a-dnf .p417-fact p:last-child{margin-bottom:0}
+#second-place-is-a-dnf .p417-fact b{font-weight:600}
 #second-place-is-a-dnf .p417-charts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 0}
 #second-place-is-a-dnf .p417-chart{background:var(--p417-card);border:1px solid var(--p417-line);border-radius:18px;padding:18px 18px 12px}
 #second-place-is-a-dnf .p417-chart h3{font:700 18px/1.2 "Newsreader",Georgia,serif;margin:0}
 #second-place-is-a-dnf .p417-chart .p417-csub{font:400 13px/1.5 "IBM Plex Sans",sans-serif;color:var(--p417-mut);margin:5px 0 8px}
 #second-place-is-a-dnf .p417-chart svg{width:100%;height:auto;display:block}
 #second-place-is-a-dnf .p417-chart .p417-cval{font:700 14px "IBM Plex Mono",monospace;color:var(--p417-accent-ink);margin-top:6px;display:block}
-#second-place-is-a-dnf .p417-sources{margin:56px 0 0;border-top:1px solid var(--p417-line);padding-top:26px}
+#second-place-is-a-dnf .p417-sources{margin:52px 0 0;border-top:1px solid var(--p417-line);padding-top:26px}
 #second-place-is-a-dnf .p417-sources h2{font:700 24px/1.15 "Newsreader",Georgia,serif;margin:0 0 12px}
 #second-place-is-a-dnf .p417-sources ol{margin:0;padding-left:22px}
 #second-place-is-a-dnf .p417-sources li{font:400 14px/1.6 "IBM Plex Sans",sans-serif;color:var(--p417-mut);margin:0 0 8px}
+#second-place-is-a-dnf .p417-sources h3{font:700 17px/1.2 "Newsreader",Georgia,serif;margin:22px 0 8px;color:var(--p417-ink)}
+#second-place-is-a-dnf .p417-sources ul{margin:0;padding-left:22px}
 #second-place-is-a-dnf .p417-method-note{font:400 14px/1.6 "IBM Plex Sans",sans-serif;color:var(--p417-mut);margin:16px 0 0;max-width:40em}
 #second-place-is-a-dnf .p417-footer-note{display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between;border-top:1px solid var(--p417-line);margin-top:44px;padding-top:16px;font-size:12.5px;color:var(--p417-mut)}
 @media (max-width:720px){
 #second-place-is-a-dnf .p417-charts{grid-template-columns:1fr}
+#second-place-is-a-dnf .p417-stage{aspect-ratio:4/3.4}
 }
 @media (max-width:560px){
 #second-place-is-a-dnf .p417-wrap{padding:0 16px 70px}
 #second-place-is-a-dnf .p417-stats{grid-template-columns:1fr 1fr 1fr;gap:8px}
 #second-place-is-a-dnf .p417-stat{padding:10px 10px}
-#second-place-is-a-dnf .p417-stat .p417-sval{font-size:16px}
+#second-place-is-a-dnf .p417-stat .p417-sval{font-size:17px}
+#second-place-is-a-dnf .p417-statgrid{grid-template-columns:1fr}
 #second-place-is-a-dnf .p417-arc .p417-anum{min-width:52px}
+#second-place-is-a-dnf .p417-records .p417-rbig{min-width:96px;font-size:17px}
+#second-place-is-a-dnf .p417-mach-body{padding:16px 16px 18px}
+#second-place-is-a-dnf .p417-btnrow .p417-runbtn{flex:1 1 auto;text-align:center}
 }
 @media (prefers-reduced-motion: reduce){
 #second-place-is-a-dnf *{animation:none!important;transition:none!important}
@@ -2172,7 +2215,7 @@ background:var(--p407-bg)}
 <a class="home-card dew" href="#dew-point-killer" data-open-view="dew-point-killer" aria-label="Open essay: Why does a humid 75°F morning feel so bad?"><div class="home-card-art" aria-hidden="true"><img src="images/card-06-dewpoint.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">06 · EXERCISE PHYSIOLOGY</span><h3>Why does a humid 75°F morning feel so bad?</h3><p>Humidity lies. Why dew point, not the thermometer, decides how your run feels.</p><span class="home-card-cta">Enter the air</span></div></a>
 <a class="home-card gait" href="#gait-cycle" data-open-view="gait-cycle" aria-label="Open essay: Walking is controlled falling."><div class="home-card-art" aria-hidden="true"><img src="images/card-07-gait.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">07 · GAIT ANALYSIS</span><h3>Walking is controlled falling.</h3><p>One second of walking, scrubbed into eight phases: joints, rockers, muscle timing, and the clinical eye.</p><span class="home-card-cta">Walk the cycle</span></div></a><a class="home-card fh" href="#fifty-dollar-hand" data-open-view="fifty-dollar-hand" aria-label="Open essay: The $50 Hand"><div class="home-card-art" aria-hidden="true"><img src="images/card-08-hand.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">08 · PROSTHETICS</span><h3>The $50 Hand</h3><p>A $50 printed prosthetic against a $40,000 myoelectric: the cost-collapse story of 3D-printed hands, told with its clinical conscience intact.</p><span class="home-card-cta">Print the hand</span></div></a><a class="home-card tt" href="#twentysix-two" data-open-view="twentysix-two" aria-label="Open essay: What happens to your body at every hour of a marathon?"><div class="home-card-art" aria-hidden="true"><img src="images/card-09-marathon.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">09 · EXERCISE PHYSIOLOGY</span><h3>What happens to your body at every hour of a marathon?</h3><p>An hour-by-hour account of a marathon: three runners, one race clock, every beat sourced.</p><span class="home-card-cta">Run the clock</span></div></a><a class="home-card es" href="#expensive-steps" data-open-view="expensive-steps" aria-label="Open essay: The Most Expensive Steps"><div class="home-card-art" aria-hidden="true"><img src="images/card-10-steps.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">10 · GAIT ENERGETICS</span><h3>The Most Expensive Steps</h3><p>Every step has a price, measured in oxygen. A room of 1,000 walkers, each paying a different fare.</p><span class="home-card-cta">Enter the room</span></div></a>  <a class="home-card wp" href="#whose-pain-gets-believed" data-open-view="whose-pain-gets-believed" aria-label="Open essay: Whose pain gets believed"><div class="home-card-art" aria-hidden="true"><img src="images/card-11-pain.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">11 · PAIN, AUDITED</span><h3>Whose Pain Gets Believed?</h3><p>Pain has no lab test; the only instrument is belief. Thirty years of audits show how that instrument is calibrated, and for whom.</p><span class="home-card-cta">Read the audit</span></div></a><a class="home-card vital" href="#gait-speed" data-open-view="gait-speed" aria-label="Open essay: How Fast Do You Walk?"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#eef4f2"/><rect y="118" width="400" height="102" fill="rgba(126,31,31,.20)"/><rect y="84" width="400" height="34" fill="rgba(176,58,46,.18)"/><rect y="52" width="400" height="32" fill="rgba(216,155,34,.25)"/><rect y="0" width="400" height="52" fill="rgba(46,125,91,.20)"/><polyline points="20,58 75,44 130,44 185,44 240,58 295,76 350,128" fill="none" stroke="#1d4e89" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><polyline points="20,62 75,62 130,52 185,66 240,80 295,94 350,132" fill="none" stroke="#c2402f" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle class="p412-card-dot" cx="240" cy="36" r="9" fill="#f1c453" stroke="#12232e" stroke-width="3"/><text x="20" y="204" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#43586a">4 M · USUAL PACE · M/S</text></svg></div><div class="home-card-copy"><span class="home-card-num">12 · GAIT SPEED</span><h3>How Fast Do You Walk?</h3><p>One hallway, one stopwatch, one number that behaves like a vital sign. Time your four meter walk and stand on the curve.</p><span class="home-card-cta">Time yourself</span></div></a><a class="home-card shelf" href="#odds-shelf" data-open-view="odds-shelf" aria-label="Open essay: The Formulary Shelf"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f3ead3"/><rect x="30" y="86" width="340" height="10" fill="#8a6b3f"/><rect x="30" y="168" width="340" height="10" fill="#8a6b3f"/><g stroke="#2f2a24" stroke-width="3"><path d="M52 86 v-34 h16 v34 z" fill="#e6cf9e"/><path d="M96 86 v-44 h18 v44 z" fill="#dfc493"/><path d="M142 86 v-30 h15 v30 z" fill="#f0e9d8"/><path d="M184 86 v-40 h17 v40 z" fill="#bcd3c8"/><path d="M226 86 v-36 h16 v36 z" fill="#d8cfe4"/><path d="M268 86 v-28 h26 v28 z" fill="#e3d7bd"/><path d="M316 86 v-42 h18 v42 z" fill="#c9cfc0"/><path d="M60 168 v-36 h17 v36 z" fill="#d9bd8a"/><path d="M104 168 v-26 h24 v26 z" fill="#e3d7bd"/><path d="M152 168 v-40 h16 v40 z" fill="#c4d8cf"/><path d="M196 168 v-30 h26 v30 z" fill="#c9cfc0"/><path d="M248 168 v-38 h17 v38 z" fill="#e6cf9e"/><path d="M292 168 v-27 h15 v27 z" fill="#f0e9d8"/></g><circle cx="330" cy="52" r="17" fill="none" stroke="#1d6b4f" stroke-width="3.5" transform="rotate(-14 330 52)"/><text x="316" y="57" font-family="IBM Plex Mono,monospace" font-size="11" font-weight="700" fill="#1d6b4f" transform="rotate(-14 330 52)">Rx</text><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#6d5a36">FORMULARY No. 13 · VTE PROPHYLAXIS</text></svg></div><div class="home-card-copy"><span class="home-card-num">13 · VTE PROPHYLAXIS</span><h3>The Formulary Shelf</h3><p>Nine bottles, seven patients, and the trial evidence behind every pairing.</p><span class="home-card-cta">Browse the shelf</span></div></a><a class="home-card nb" href="#neurogenic-bladder" data-open-view="neurogenic-bladder" aria-label="Open essay: The Bladder Loses Its Instructions"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#e9f2f3"/><path d="M200,38 C246,38 272,72 272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 C128,72 154,38 200,38 Z" fill="#bcdfe3" stroke="#15222b" stroke-width="4"/><path d="M128,128 C160,118 240,118 272,128 L272,110 C272,150 240,178 200,178 C160,178 128,150 128,110 Z" fill="#7fc4cc" opacity="0.65"/><line x1="96" y1="96" x2="304" y2="96" stroke="#b3352b" stroke-width="3" stroke-dasharray="7 6"/><text x="310" y="100" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="14" fill="#b3352b">40</text><path d="M200,178 L200,200" stroke="#15222b" stroke-width="5" stroke-linecap="round"/><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="2" fill="#4d6270">PDET · CAPACITY · RECEPTORS</text></svg></div><div class="home-card-copy"><span class="home-card-num">14 · NEUROGENIC BLADDER</span><h3>The Bladder Loses Its Instructions</h3><p>One bladder, three wirings, every receptor in the wall: neurogenic bladder after spinal cord injury, rebuilt as a rig you can run.</p><span class="home-card-cta">Run the rig</span></div></a><a class="home-card ww" href="#what-works-back-pain" data-open-view="what-works-back-pain" aria-label="Open essay: What Actually Works for Back Pain"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#f6f2e8"/><g stroke="#a89e80" stroke-width="1.5"><line x1="0" y1="36" x2="400" y2="36"/><line x1="0" y1="72" x2="400" y2="72"/><line x1="0" y1="108" x2="400" y2="108"/><line x1="0" y1="144" x2="400" y2="144"/><line x1="0" y1="180" x2="400" y2="180"/><line x1="120" y1="0" x2="120" y2="220"/><line x1="300" y1="0" x2="300" y2="220"/></g><rect x="128" y="14" width="122" height="10" fill="#2e6b46"/><rect x="128" y="50" width="76" height="10" fill="#1d1a13"/><rect x="128" y="86" width="64" height="10" fill="#1d1a13" opacity="0.55"/><rect x="128" y="122" width="52" height="10" fill="#1d1a13" opacity="0.35"/><rect x="128" y="158" width="8" height="10" fill="#bc2b1e"/><line x1="238" y1="0" x2="238" y2="220" stroke="#bc2b1e" stroke-width="4"/><text x="16" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#1d1a13">02</text><text x="310" y="24" font-family="IBM Plex Mono,monospace" font-weight="700" font-size="15" fill="#2e6b46">15.2</text><text x="310" y="60" font-family="IBM Plex Mono,monospace" font-size="15" fill="#1d1a13">9.2</text><text x="310" y="168" font-family="IBM Plex Mono,monospace" font-size="15" fill="#bc2b1e">-5</text><text x="16" y="206" font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2" fill="#5d5747">PAIN · FUNCTION · HARMS · COST</text></svg></div><div class="home-card-copy"><span class="home-card-num">15 · WHAT WORKS</span><h3>What Actually Works for Back Pain</h3><p>Thirteen treatments, one honest baseline, and a red bar almost none of them clear.</p><span class="home-card-cta">See what helps</span></div></a> 
 <a class="home-card ask" href="#what-would-you-want-back" data-open-view="what-would-you-want-back" aria-label="Open essay: What Would You Want Back?"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#eef1f6"/><g font-family="IBM Plex Sans,sans-serif" font-weight="600" font-size="12.5" fill="#2f4d7a"><rect x="24" y="20" width="112" height="30" rx="15" fill="#ffffff" stroke="#2f4d7a" stroke-width="1.6"/><rect x="144" y="20" width="112" height="30" rx="15" fill="#2f4d7a"/><rect x="264" y="20" width="112" height="30" rx="15" fill="#ffffff" stroke="#2f4d7a" stroke-width="1.6"/><rect x="24" y="58" width="112" height="30" rx="15" fill="#ffffff" stroke="#2f4d7a" stroke-width="1.6"/><rect x="144" y="58" width="112" height="30" rx="15" fill="#ffffff" stroke="#2f4d7a" stroke-width="1.6"/><rect x="264" y="58" width="112" height="30" rx="15" fill="#ffffff" stroke="#2f4d7a" stroke-width="1.6"/><text x="80" y="39" text-anchor="middle">Walk</text><text x="200" y="39" text-anchor="middle" fill="#ffffff">Hands</text><text x="320" y="39" text-anchor="middle">Bladder</text><text x="80" y="77" text-anchor="middle">Bowels</text><text x="200" y="77" text-anchor="middle">Sex</text><text x="320" y="77" text-anchor="middle">No pain</text></g><g stroke="#b9c4d4" stroke-width="7" stroke-linecap="round"><line x1="48" y1="122" x2="168" y2="122"/><line x1="48" y1="146" x2="152" y2="146"/><line x1="48" y1="170" x2="160" y2="170"/><line x1="232" y1="122" x2="352" y2="122"/><line x1="232" y1="146" x2="336" y2="146"/><line x1="232" y1="170" x2="344" y2="170"/></g><g font-family="IBM Plex Mono,monospace" font-weight="700" font-size="13" fill="#2f4d7a"><text x="24" y="127">1</text><text x="24" y="151">2</text><text x="24" y="175">3</text><text x="208" y="127">1</text><text x="208" y="151">2</text><text x="208" y="175">3</text></g><circle cx="188" cy="170" r="7" fill="#d99a16" stroke="#ffffff" stroke-width="2.5"/><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2" fill="#5a6a80">ONE QUESTION · 681 ANSWERS</text></svg></div><div class="home-card-copy"><span class="home-card-num">16 · SPINAL CORD INJURY</span><h3>What Would You Want Back?</h3><p>Ask anyone what they would want back after a spinal cord injury and they say walking. Then ask the people who live with one.</p><span class="home-card-cta">Make your pick</span></div></a>
-<a class="home-card dnf" href="#second-place-is-a-dnf" data-open-view="second-place-is-a-dnf" aria-label="Open essay: Second Place Is a DNF"><div class="home-card-art" aria-hidden="true"><svg viewBox="0 0 400 220" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="400" height="220" fill="#171c26"/><ellipse cx="200" cy="118" rx="140" ry="52" fill="none" stroke="#f2ede1" stroke-opacity="0.6" stroke-width="4"/><circle cx="312" cy="86" r="7" fill="#e0aa3e" stroke="#171c26" stroke-width="2"/><circle cx="88" cy="86" r="5" fill="#7d9cc6"/><circle cx="150" cy="166" r="5" fill="#7d9cc6" fill-opacity="0.6"/><circle cx="262" cy="160" r="5" fill="#7d9cc6" fill-opacity="0.35"/><circle cx="330" cy="42" r="13" fill="#e8e4d2"/><circle cx="324" cy="38" r="11" fill="#171c26"/><text x="20" y="206" font-family="IBM Plex Mono,monospace" font-size="12" letter-spacing="2" fill="#98a0ae">ONE LOOP · EVERY HOUR · NO FINISH LINE</text></svg></div><div class="home-card-copy"><span class="home-card-num">17 · RUNNING</span><h3>Second Place Is a DNF</h3><p>Run the same 4.167-mile loop every hour until one person is left. Second place ran 445.83 miles and still did not finish. Neither will you, but tap to see how far you get.</p><span class="home-card-cta">Run the loop</span></div></a>
+<a class="home-card dnf" href="#second-place-is-a-dnf" data-open-view="second-place-is-a-dnf" aria-label="Open essay: Second Place Is a DNF"><div class="home-card-art" aria-hidden="true"><img src="images/by-card.jpg" alt="" loading="lazy"></div><div class="home-card-copy"><span class="home-card-num">17 · RUNNING</span><h3>Second Place Is a DNF</h3><p>Run the same 4.167-mile loop every hour until one person is left. Second place ran 445.83 miles and still did not finish. Neither will you, but tap to see how far you get.</p><span class="home-card-cta">Run the loop</span></div></a>
 
 
 
@@ -4784,21 +4827,31 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <div class="p417-byline-row"><span class="p417-byline">Jonathan Byrne, DO <span class="p417-role">· PM&amp;R resident</span></span><span class="p417-draft-stamp">DRAFT: pending expert review</span></div>
 
 <ul class="p417-rules">
-<li><span class="p417-rnum">1</span><span>Every hour, on the hour, you run the same loop: <b>4.167 miles</b>. Finish inside the hour and you earn the right to start the next one.</span></li>
-<li><span class="p417-rnum">2</span><span>Miss the start of a loop, or fail to finish one, and you are out. It does not matter if that happens at loop 3 or loop 103.</span></li>
-<li><span class="p417-rnum">3</span><span>The race ends when one runner completes a loop that nobody else completes. That runner wins. Everyone else is recorded as a <b>DNF</b>, did not finish, including the runner in second place.</span></li>
+<li><span class="p417-rnum">1</span><span>Run the same loop, <b>4.167 miles</b>. A new loop starts every hour, on the hour.</span></li>
+<li><span class="p417-rnum">2</span><span>Miss a start, or fail to finish, and you are out, at loop 3 or loop 103.</span></li>
+<li><span class="p417-rnum">3</span><span>The last runner to finish a loop alone wins. Everyone else is a <b>DNF</b>. Even second.</span></li>
 </ul>
 
-<p class="p417-body" style="margin-top:26px">The format is called a backyard ultra. It was invented in <b>2011</b> by Gary Cantrell, known as Lazarus Lake, in his own backyard in Bell Buckle, Tennessee. The race is named for his dog, Big. The first winner, Tim Englund, lasted 18 loops. The loop looks too easy, and that is the trap: 24 loops make exactly 100 miles, so the pace is gentle. The race is not asking how fast you are. It is asking how long you can keep answering the same question.</p>
+<p class="p417-body" style="margin-top:24px">Gary Cantrell, known as Lazarus Lake, invented the format in <b>2011</b> in his backyard in Bell Buckle, Tennessee, and named the race for his dog, Big. Tim Englund won the first race at 18 loops. Run 24 loops: exactly 100 miles.</p>
 
-<section class="p417-machine" id="p417-machine" data-phase="day" aria-labelledby="p417-machine-h">
-<h3 id="p417-machine-h">Run the race</h3>
-<p class="p417-machine-sub">This is Big's as it ran in October 2025, the world championship, with 72 of the best starters on Earth. Tap the button to run a loop. Stop when you would stop. At Big's, the course is trail by day and road by night.</p>
-<div class="p417-sky" aria-hidden="true">
-<div class="p417-orb"></div>
-<svg class="p417-track" viewBox="0 0 320 64" preserveAspectRatio="none" focusable="false"><ellipse cx="160" cy="34" rx="138" ry="24" fill="none" stroke="#f2ede1" stroke-opacity="0.55" stroke-width="3"/><circle id="p417-dot" cx="298" cy="34" r="6" fill="#e0aa3e" stroke="#171c26" stroke-width="2"/></svg>
+<section class="p417-machine" id="p417-machine" data-phase="start" aria-labelledby="p417-machine-h">
+<div class="p417-stage" aria-hidden="true">
+<img class="p417-photo on" data-photo="start" src="images/by-start.jpg" alt="">
+<img class="p417-photo pos-day" data-photo="day" src="images/by-day.jpg" alt="" loading="lazy">
+<img class="p417-photo pos-dusk" data-photo="dusk" src="images/by-dusk.jpg" alt="" loading="lazy">
+<img class="p417-photo pos-night" data-photo="night" src="images/by-night.jpg" alt="" loading="lazy">
+<img class="p417-photo" data-photo="deep" src="images/by-road.jpg" alt="" loading="lazy">
+<img class="p417-photo" data-photo="dawn" src="images/by-dawn.jpg" alt="" loading="lazy">
+<div class="p417-scrim"></div>
+<div class="p417-stage-ui">
+<div><span class="p417-loopbig" id="p417-loopbig">Loop 0 done</span><span class="p417-clock" id="p417-clock">Saturday, 7:00 AM · the first start</span></div>
+<div class="p417-ringwrap"><svg viewBox="0 0 66 66" focusable="false"><circle class="p417-ring-bg" cx="33" cy="33" r="28"/><circle class="p417-ring-fg" id="p417-ringfg" cx="33" cy="33" r="28" stroke-dasharray="175.93" stroke-dashoffset="175.93"/></svg><div class="p417-ringnum"><b id="p417-ringnum">0</b><span>OF 119</span></div></div>
 </div>
-<div class="p417-clockrow"><span class="p417-loopbig" id="p417-loopbig">Loop 0 done</span><span class="p417-clock" id="p417-clock">Saturday, 7:00 AM · the first start</span></div>
+</div>
+<div class="p417-mach-body">
+<h3 id="p417-machine-h">Run the race</h3>
+<p class="p417-machine-sub">Big's 2025, the world championship: 72 starters. Run a loop. Stop when you would stop. Trail by day, road by night.</p>
+<p class="p417-cap" id="p417-cap">Race morning, a trail race start line. Illustrative photo: Dmitrii Eremin via Pexels.</p>
 <div class="p417-stats">
 <div class="p417-stat"><span class="p417-slab">Loops</span><span class="p417-sval" id="p417-stloops">0</span><span class="p417-ssub">4.167 miles each</span></div>
 <div class="p417-stat"><span class="p417-slab">Miles</span><span class="p417-sval" id="p417-stmiles">0.0</span><span class="p417-ssub">100 miles at loop 24</span></div>
@@ -4807,24 +4860,37 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <div class="p417-gauges">
 <div class="p417-gauge">
 <div class="p417-glab"><span>Heart rate, same pace</span><span class="p417-gval" id="p417-hrval">126 bpm</span></div>
-<div class="p417-gtrack"><span class="p417-gfill" id="p417-hrfill"></span></div>
-<p class="p417-gcap">Modeled. It starts at the measured average from a real backyard study and climbs the way lab studies say it should. The full story is below.</p>
+<div class="p417-gtrack"><span class="p417-gfill" id="p417-hrfill" style="width:52%"></span></div>
+<p class="p417-gcap">Modeled, from the studies below.</p>
+</div>
+<div class="p417-gauge">
+<div class="p417-glab"><span>How hard it feels, 6 to 20</span><span class="p417-gval" id="p417-rpeval">9.7</span></div>
+<div class="p417-gtrack"><span class="p417-gfill rpe" id="p417-rpefill" style="width:26%"></span></div>
+<p class="p417-gcap">Modeled on the Belgian study. Your night calls move this one.</p>
 </div>
 <div class="p417-gauge">
 <div class="p417-glab"><span>Hours since real sleep</span><span class="p417-gval" id="p417-sleepval">0 hours</span></div>
 <div class="p417-gtrack"><span class="p417-gfill sleep" id="p417-sleepfill"></span></div>
-<p class="p417-gcap">Nobody sleeps through a night here. The best in the world steal minutes between loops. That playbook is below, too.</p>
+<p class="p417-gcap">Banked naps buy this back. Playbook below.</p>
+</div>
+</div>
+<div class="p417-choice" id="p417-choice" hidden>
+<h4>A night call</h4>
+<p>The record holder banks sleep on nights like this: faster loops, then a short nap. Your call:</p>
+<div class="p417-choice-row">
+<button class="p417-napbtn" type="button" id="p417-nap" data-p417="nap">Bank a nap (15 min)</button>
+<button class="p417-pushbtn" type="button" id="p417-push" data-p417="push">Push on</button>
 </div>
 </div>
 <div class="p417-btnrow">
-<button class="p417-runbtn" type="button" id="p417-run">Run loop 1</button>
-<button class="p417-stopbtn" type="button" id="p417-stop">I would stop here</button>
+<button class="p417-runbtn" type="button" id="p417-run" data-p417="run">Run loop 1</button>
+<button class="p417-stopbtn" type="button" id="p417-stop" data-p417="stop">I would stop here</button>
 </div>
 <p class="p417-note" id="p417-note" aria-live="polite">The whistle blows at the top of every hour. Three whistles, then two, then one, then the bell. Run a loop to begin.</p>
 <div class="p417-verdict" id="p417-verdict" hidden>
 <h4 id="p417-verdict-h">Your race</h4>
 <p id="p417-verdict-p"></p>
-<button class="p417-againbtn" type="button" id="p417-again">Run it again</button>
+<button class="p417-againbtn" type="button" id="p417-again" data-p417="again">Run it again</button>
 </div>
 <div class="p417-strip" aria-hidden="true">
 <p class="p417-strip-cap">How far the real race went · loops</p>
@@ -4839,30 +4905,43 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <span class="p417-mark you" id="p417-youmark" style="left:0%" hidden><span class="p417-mlab">You</span></span>
 </div>
 </div>
+</div>
 </section>
 
-<p class="p417-body" style="margin-top:22px">No time to tap through four days? Here is the same race on one screen, from the real 2025 results:</p>
+<p class="p417-body" style="margin-top:24px">No time to tap through four days? The same race, from the real 2025 results:</p>
 <ul class="p417-arc">
 <li><span class="p417-anum">Loop 1</span><span>All 72 starters finish. It feels easy. It is supposed to.</span></li>
-<li><span class="p417-anum">Loop 24</span><span>One full day. 100 miles. At a typical backyard race, fewer than 1 in 10 starters is still running after 24 hours. This field is the world championship, so it runs much deeper.</span></li>
-<li><span class="p417-anum">Loop 72</span><span>Three days in. At least 25 of the 72 were still going. Every one of them had now run 300 miles.</span></li>
-<li><span class="p417-anum">Loop 95</span><span>Sarah Perry of the United Kingdom stops here, on purpose, with a sore back. Her 95 loops are the women's world record. Ten runners had made it this far. Nine went on without her.</span></li>
+<li><span class="p417-anum">Loop 24</span><span>100 miles, one day. At a typical backyard race, fewer than 1 in 10 starters is still running now.</span></li>
+<li><span class="p417-anum">Loop 72</span><span>Three days in. At least 25 of the 72 still going, each at 300 miles.</span></li>
+<li><span class="p417-anum">Loop 95</span><span>Sarah Perry stops here, on purpose, with a sore back. Her 95 loops are the women's world record. Ten runners got here.</span></li>
 <li><span class="p417-anum">Loop 111</span><span>Four runners left: Phil Gore, Ivo Steyaert, Harvey Lewis, and Jon Noll.</span></li>
-<li><span class="p417-anum">Loop 114</span><span>Steyaert stops at 113. Gore runs loop 114 alone and wins. His reward for 475 miles is the only finish in the results. Steyaert's 470.83 miles go in the books as a DNF.</span></li>
+<li><span class="p417-anum">Loop 114</span><span>Steyaert stops at 113. Gore runs 114 alone and wins the only finish. Steyaert's 470.83 miles: a DNF.</span></li>
 </ul>
 
 <section class="p417-sec" aria-labelledby="p417-dnf-h">
 <h2 class="p417-h2" id="p417-dnf-h">Why second place is a DNF</h2>
-<p class="p417-body">Most races measure how fast you cover a fixed distance. This one has no fixed distance, so it can only measure one thing: who is left. The winner must complete <b>one more loop than anyone else</b>, a final loop run entirely alone. The runner who made that possible, the one who lasted second longest, is called the <b>assist</b>. The assist is the most honored loser in sports, and the results still record the assist as a DNF.</p>
-<p class="p417-body">In 2023, Ihor Verys of Ukraine ran <b>107 loops, 445.83 miles</b>, over four and a half days, often finishing loops faster than the winner. On loop 108 he turned back to the start and stopped. Harvey Lewis finished that loop alone and won with 108. Verys got the assist, the respect of everyone watching, and a DNF.</p>
-<p class="p417-body">It can be crueler than that. In 2014, the last two runners at Big's both stopped after 49 loops, one of them to catch a flight home to Sweden. With nobody left to run one more loop, the race simply had <b>no winner</b>. Two men ran about 200 miles each, and the race recorded zero finishers.</p>
-<p class="p417-body">And it scales with the record. When Gore set the world record of 119 loops in Australia in June 2025, Sam Harvey of New Zealand ran 118 loops next to him, 491.67 miles, and collected a DNF for the second-greatest run in the sport's history.</p>
+<figure class="p417-fig">
+<img src="images/by-start.jpg" alt="A crowd of runners in cold weather gear packed under a trail race start arch" loading="lazy">
+<figcaption>A trail race start line. All but one of these runners would score a DNF. Illustrative photo: Dmitrii Eremin via Pexels.</figcaption>
+</figure>
+<p class="p417-body" style="margin-top:20px">Most races measure speed over a fixed distance. This one has none. The winner runs <b>one more loop than anyone else</b>, alone. The second longest is the <b>assist</b>, and the results record the assist as a DNF.</p>
+<p class="p417-body">In 2023, Ihor Verys of Ukraine ran <b>107 loops, 445.83 miles</b> in four and a half days, then stopped on loop 108. Harvey Lewis ran it alone and won. Verys: the assist, and a DNF.</p>
+<p class="p417-body">In 2014 the last two both stopped after 49 loops, one to catch a flight home to Sweden. Nobody ran one more, so the race had <b>no winner</b>: about 200 miles each, zero finishers.</p>
+<p class="p417-body">And when Gore set the world record in June 2025, Sam Harvey ran 118 loops beside him: 491.67 miles, a DNF for the second greatest run in the sport's history.</p>
+<ul class="p417-records">
+<li><span class="p417-rbig">119 loops</span><span>495.8 miles. Phil Gore, world record, Dead Cow Gully, Australia, June 2025. Assist: Sam Harvey, 118.</span></li>
+<li><span class="p417-rbig">116 loops</span><span>Mateusz Wrobel, May 2025.</span></li>
+<li><span class="p417-rbig">114 loops</span><span>Gore wins Big's 2025. Assist: Ivo Steyaert, 113. Lewis and Noll reached 111.</span></li>
+<li><span class="p417-rbig">108 loops</span><span>Lewis wins Big's 2023. Assist: Verys, 107, a DNF at 445.83 miles.</span></li>
+<li><span class="p417-rbig">95 loops</span><span>395.8 miles. Sarah Perry, women's record, Big's, October 2025. Katarzyna Eckert: 92.</span></li>
+<li><span class="p417-rbig">74 · 68</span><span>Jennifer Russo ran 74 loops in 2023. Courtney Dauwalter ran 68 in 2020.</span></li>
+</ul>
 </section>
 
 <section class="p417-sec" aria-labelledby="p417-heart-h">
 <h2 class="p417-h2" id="p417-heart-h">The same loop costs more every hour</h2>
-<p class="p417-body">Hold a steady pace and your heart quietly starts charging you more for it. The rise even has a name: <b>cardiovascular drift</b>. About <b>10 minutes</b> into steady exercise, the heart rate begins to climb and each beat pumps a little less blood, a drop called <b>stroke volume</b>, so the heart beats faster to deliver the same amount. In lab studies in the heat, the same steady effort cost <b>15 extra beats per minute</b> after 45 minutes, and 14 extra beats after an hour of cycling.</p>
-<p class="p417-body">Researchers finally measured this inside a real backyard ultra in Belgium in 2023, tracking 12 experienced runners through a whole race. The runners averaged about 34 laps each. Their average speed slid from <b>9.0 to 7.5 kilometers per hour</b>. And their heart rates, on paper, barely moved at all: 126 beats per minute early, 121 near the end. The cost did not vanish. It moved. Look at how hard the same running <i>felt</i>, on a scale of 6 to 20:</p>
+<p class="p417-body">Hold a steady pace and your heart quietly charges more for it: <b>cardiovascular drift</b>. It starts about <b>10 minutes</b> in: each beat pumps a little less blood (a drop called <b>stroke volume</b>), so the heart beats faster to make it up. In lab heat, the same effort cost <b>15 extra beats per minute</b> after 45 minutes, 14 extra after an hour of cycling.</p>
+<p class="p417-body">At a backyard ultra in Belgium in 2023, 12 runners averaged about 34 laps each. They answered the drift by slowing down. Heart rates barely moved. The cost moved into how hard the running felt:</p>
 <div class="p417-charts">
 <div class="p417-chart">
 <h3>Heart rate</h3>
@@ -4877,29 +4956,37 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <span class="p417-cval">9.7 → 16.0 of 20</span>
 </div>
 </div>
-<p class="p417-body" style="margin-top:20px">The runners protected their hearts by slowing down, and their brains paid the difference. One split did show in the heart data. Runners who stopped <b>before 35 laps</b> needed a clearly higher heart rate for the same speed late in their race: the drift caught them. Runners who went <b>past 35 laps</b> showed no such rise. Their hearts held the line at the same speed. The researchers call that gap physiological resilience, and it separated the field better than speed ever did.</p>
+<div class="p417-statgrid">
+<div class="p417-sg"><b>9.0 → 7.5</b><span>Speed in km/h, start to finish, Belgian race</span></div>
+<div class="p417-sg"><b>126 → 121</b><span>Heart rate in bpm. It stayed flat because they slowed</span></div>
+<div class="p417-sg"><b>35 laps</b><span>Stop before 35 laps and the drift showed. Past 35, it did not</span></div>
+</div>
+<p class="p417-body" style="margin-top:18px">Past 35 laps, runners needed no extra heart rate for the same speed late on. Stoppers did. The researchers call that gap physiological resilience, and it separated the field better than speed.</p>
 </section>
 
 <section class="p417-sec" aria-labelledby="p417-sleep-h">
 <h2 class="p417-h2" id="p417-sleep-h">Sleep is the real race</h2>
-<p class="p417-body">There is no night off in this format. Sleep exists only in the minutes between finishing a loop and the next start, so the best runners treat sleep the way pit crews treat fuel: small, planned, and rehearsed.</p>
+<figure class="p417-fig">
+<img src="images/by-rest.jpg" alt="A runner lying flat on a track, resting after a race" loading="lazy" style="aspect-ratio:16/10;object-position:50% 32%">
+<figcaption>Horizontal is a strategy. Sleep only exists between loops. Illustrative photo: Kaybee Photography via Pexels.</figcaption>
+</figure>
+<p class="p417-body" style="margin-top:20px">There is no night off. Sleep exists only between finishing a loop and the next start, so the best runners plan it like pit stops.</p>
 <div class="p417-fact">
 <h3>The record holder's system</h3>
-<p>Phil Gore, who holds the world record, runs his nights on a loop of their own. On night loops he runs <b>three faster loops in a row</b>, banking time, then takes a <b>micro-nap of about 15 to 20 minutes</b>. Then he runs <b>one slower loop</b> to eat and reset, and repeats the pattern. It adds up to roughly <b>2 to 2.5 hours of sleep a night</b>, in scraps. He says the nights he misses that sleep are the nights he gets loopy.</p>
+<p>Phil Gore: <b>three faster night loops</b> to bank time, a <b>micro-nap of 15 to 20 minutes</b>, then <b>one slower loop</b> to eat and reset. About <b>2 to 2.5 hours a night</b>, in scraps. Miss it, he says, and the night gets loopy.</p>
 </div>
 <div class="p417-fact">
 <h3>The teacher's four-minute naps</h3>
-<p>Harvey Lewis is a high school teacher from Ohio who has won Big's twice. In his 85-loop win in 2021, his loops averaged about 50 minutes, and he squeezed in <b>naps of about 4 minutes</b> at night when he could, rarely more than a minute or two of sleep in the day. He trained for it at school, practicing falling asleep in 3 to 5 minutes on a yoga mat in a storage closet.</p>
-<p>By his 108-loop win in 2023, the routine was finer: an eye mask, earplugs, and slow breathing his crew taught him to settle his nerves. The first night, he lay down for 10 minutes and mostly did not sleep. By the fourth night, on 55-minute loops, he could fall asleep for <b>a minute or two</b> between loops, and on day five he could take a planned one-minute nap. He had started that race on 3 hours of sleep.</p>
+<p>Harvey Lewis, a high school teacher from Ohio, has won Big's twice. His 2021 win: 85 loops at 50:18 a loop, <b>naps of about 4 minutes</b> at night. His 2023 win, 108 loops: eye mask, earplugs, slow breathing, asleep for <b>a minute or two</b> between loops by night four. He started that race on 3 hours of sleep.</p>
 </div>
-<p class="p417-body" style="margin-top:20px">The science says their problem is not the body giving out. A classic review of sleep-loss studies found that <b>30 to 72 hours</b> without sleep did not reduce strength, aerobic capacity, or the heart's response to exercise. What fell was time to exhaustion: the work felt harder, so people stopped sooner. Sleep loss attacks the will to continue, not the machinery.</p>
-<p class="p417-body">It attacks thinking, too. At a backyard ultra in Suffolk, England, researchers tested runners before the race and right after they quit: <b>reaction time had slowed by 77 milliseconds</b>, and mental flexibility was worse, while planning held up. Runners who had slept better in the week before the race declined less. In the Belgian study, a vigilance test, the kind that catches a drifting mind, slowed from <b>243 to 283 milliseconds</b> after the race.</p>
-<p class="p417-body">And then there are the things runners report, which no study has counted. Lewis described hallucinations at a race in Australia, seeing figures he called grass people and trees coming alive. On day four at Big's in 2023, he caught himself talking gibberish, half in a dream while still running. These are stories from runners, not measurements. But they are why the last night of a backyard ultra belongs to whoever can still tell the difference between the trail and a dream.</p>
+<p class="p417-body" style="margin-top:20px">Sleep loss does not weaken the body first. In lab reviews, <b>30 to 72 hours</b> awake left strength, aerobic capacity, and the heart's response intact. What fell was time to exhaustion.</p>
+<p class="p417-body">Thinking goes too. After runners quit at the Suffolk backyard ultra, <b>choice reaction time had slowed by 77 milliseconds</b> and mental flexibility was worse; planning held up. Better pre-race sleep meant a smaller drop (r = 0.61 to 0.64). A Belgian vigilance test slowed from <b>243 to 283 milliseconds</b>.</p>
+<p class="p417-body">The rest is runner reported, never measured: Lewis saw figures he called grass people at a race in Australia, and caught himself talking gibberish on day four at Big's in 2023. Stories, not data.</p>
 </section>
 
 <section class="p417-sec" aria-labelledby="p417-close-h">
 <h2 class="p417-h2" id="p417-close-h">Patience beats speed</h2>
-<p class="p417-body">Every other race on Earth rewards the fastest person. This one cannot even see speed: the slowest loop that beats the hour counts exactly the same as the fastest. What is left is a stranger set of skills. Keep the heart quiet at the same pace. Sleep in four-minute scraps and wake on a whistle. Eat when eating is the last thing you want. Then answer one small question, one more loop, more times than anyone else alive that week. The first Big's ended at 18 loops in 2011. Fourteen years later the record is 119, and nobody believes it is finished climbing. Second place will keep running almost all of it, and keep getting the same three letters. That is not a flaw in the race. That is the race.</p>
+<p class="p417-body">This race cannot even see speed: the slowest loop that beats the hour counts the same as the fastest. What is left is a stranger set of skills. A quiet heart. Four-minute naps, waking on a whistle. Eating when eating is the last thing you want. First race: 18 loops, 2011. The record is 119 now, still climbing, and second place will keep running almost all of it for the same three letters. That is the race.</p>
 </section>
 
 <section class="p417-sources" aria-labelledby="p417-sources-h">
@@ -4916,7 +5003,17 @@ id="method"><div class="issue">Methodology &amp; sources</div><h2>How this essay
 <li>Trail Runner Magazine. Harvey Lewis runs 354.2 miles at Big Dog's Backyard Ultra. 2021. The 85-loop win and the four-minute naps.</li>
 <li>UltraRunning Magazine. Ultra Weekend Recap, October 26, 2025, and the Big's 2025 feature. Final totals for the 2025 championship.</li>
 </ol>
-<p class="p417-method-note">A note on the loop machine: the runners-left counter is drawn smoothly between real checkpoints from the 2025 Big's results (72 starters; at least 25 finished 72 loops; 10 finished 95; 4 finished 111; the winner finished 114), so the counts between those loops are a model of that race, not a count. The heart-rate gauge is also a model: it starts at the Belgian study's measured early average and climbs by the amounts the lab studies report. Effort ratings, speeds, and reaction times are measured values from the studies above. Stories about hallucinations are reported by the runners themselves and are labeled as stories, not measurements.</p>
+<h3>Photos</h3>
+<ul>
+<li>Start line (machine, section, card): Dmitrii Eremin via Pexels, Pexels License.</li>
+<li>Day loop, forest trail: Alin Serban via Pexels, Pexels License.</li>
+<li>Dusk silhouette: Taiye Salawu via Pexels, Pexels License.</li>
+<li>Night trail, headlamp: Tomasz Mastalerz via Pexels, Pexels License.</li>
+<li>Night road marathon: VANNGO Ng via Pexels, Pexels License.</li>
+<li>Dawn silhouette: Dom Gould via Pexels, Pexels License.</li>
+<li>Resting runner: Kaybee Photography via Pexels, Pexels License.</li>
+</ul>
+<p class="p417-method-note">A note on the loop machine: the runners-left counter is drawn smoothly between real checkpoints from the 2025 Big's results (72 starters; at least 25 finished 72 loops; 10 finished 95; 4 finished 111; 2 finished 113; the winner finished 114), so counts between checkpoints are a model, not a count. The heart-rate, effort, and sleep readouts are models too, built from the measured values in the studies above. The photos are illustrative of the format and do not show Big's itself. Hallucination stories are reported by the runners themselves, not measured.</p>
 </section>
 <div class="p417-footer-note">
 <span>The Rehab Lab · Essay 17 · Second Place Is a DNF</span>
@@ -7160,8 +7257,9 @@ if(reveal&&!reduced&&'IntersectionObserver' in window){
 </script>
 <script>
 (function(){
-var root=document.getElementById('second-place-is-a-dnf');
-if(!root)return;
+'use strict';
+var VIEW_ID='second-place-is-a-dnf';
+var S={loops:0,stopped:false,banked:0,adjVal:0,adjFrom:-1,adjUntil:-1,lastOffer:-99,pending:false};
 var ANCHORS=[[0,72],[72,25],[95,10],[111,4],[113,2],[114,1]];
 function fieldAt(n){
   if(n<=0)return 72;
@@ -7180,11 +7278,30 @@ function hrAt(n){
   var d=15*Math.min(1,(n-6)/44);
   return Math.round(126+d);
 }
+function rpeAt(n){
+  var base=9.7+6.3*Math.min(1,n/102);
+  var adj=(n>=S.adjFrom&&n<=S.adjUntil)?S.adjVal:0;
+  var v=base+adj;
+  if(v<6)v=6; if(v>20)v=20;
+  return Math.round(v*10)/10;
+}
+function sleepDebt(n){return Math.max(0,n-S.banked/60);}
 function miles(n){return n*100/24;}
-function phaseFor(hour){
-  if(hour>=6&&hour<18)return 'day';
-  if(hour===18||hour===19)return 'dusk';
-  if(hour===5)return 'dawn';
+var CAPS={
+start:'Race morning, a trail race start line. Illustrative photo: Dmitrii Eremin via Pexels.',
+day:'The day loop is trail, through the woods. Illustrative photo: Alin Serban via Pexels.',
+dusk:'Dusk. At Big\u2019s the race moves to the road loop for the night. Illustrative photo: Taiye Salawu via Pexels.',
+night:'Night trail, by headlamp. Illustrative photo: Tomasz Mastalerz via Pexels.',
+deep:'The night road loop, deep into the race. Illustrative photo: VANNGO Ng via Pexels.',
+dawn:'Dawn. Still running. Illustrative photo: Dom Gould via Pexels.'
+};
+function phaseFor(n){
+  if(n<=0)return 'start';
+  var total=7+n,h=total%24,d=Math.floor(total/24);
+  if(h===5)return 'dawn';
+  if(h>=6&&h<18)return 'day';
+  if(h===18||h===19)return 'dusk';
+  if(h<=4&&d>=2)return 'deep';
   return 'night';
 }
 var DAYS=['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'];
@@ -7200,57 +7317,64 @@ var NOTES={
 1:'Loop 1 done. All 72 are still in. It feels easy. It is supposed to.',
 6:'Six loops, 25 miles. The sun is up, the field is whole, and everyone feels clever.',
 12:'Half a day gone. 50 miles. The loops still feel like a gift.',
-18:'First dusk. At Big\'s the race moves to the road loop for the night.',
+18:'First dusk. At Big\u2019s the race moves to the road loop for the night.',
 24:'24 loops. 100 miles in one day. At a typical backyard race, fewer than 1 in 10 starters is still running now. This field runs deeper.',
 36:'A day and a half. The minutes between loops now go to food, feet, and closing your eyes on purpose.',
 48:'48 loops. 200 miles. Two full days of the same question.',
-60:'Sixty loops. At Big\'s in 2023, 31 runners were still out on this loop, and that race ran three more days.',
+60:'Sixty loops. At Big\u2019s in 2023, 31 runners were still out on this loop, and that race ran three more days.',
 72:'72 loops. Real checkpoint: at least 25 of the 72 starters finished this loop in 2025.',
 84:'Three and a half days. This is the country where one-minute naps and grass people live.',
-95:'95 loops. Real checkpoint: Sarah Perry stopped here in 2025, holding the women\'s world record. Ten runners had made it this far.',
+95:'95 loops. Real checkpoint: Sarah Perry stopped here in 2025, holding the women\u2019s world record. Ten runners had made it this far.',
 100:'100 loops. In 2023, six runners passed this mark. Six, in the whole world, in one race.',
-108:'108 loops. Harvey Lewis won Big\'s with this in 2023. Ihor Verys ran 445.83 miles for second place and a DNF.',
+108:'108 loops. Harvey Lewis won Big\u2019s with this in 2023. Ihor Verys ran 445.83 miles for second place and a DNF.',
 111:'Real checkpoint: only four runners finished this loop in 2025. Gore, Steyaert, Lewis, Noll.',
 113:'Real checkpoint: two runners left. Steyaert stops at 113. Gore goes out alone.',
-114:'114 loops. Phil Gore wins Big\'s 2025, the only finisher of 72. If you are still tapping, you have outlasted the entire real field. The world record is 119.',
+114:'114 loops. Phil Gore wins Big\u2019s 2025, the only finisher of 72. If you are still tapping, you have outlasted the entire real field. The world record is 119.',
 119:'119 loops. You have matched the world record: 495.8 miles, just under five days of hourly starts. The machine stops here. So does everyone.'
 };
-var loops=0,stopped=false;
-var machine=root.querySelector('#p417-machine');
-var dot=root.querySelector('#p417-dot');
-var loopbig=root.querySelector('#p417-loopbig');
-var clockEl=root.querySelector('#p417-clock');
-var stloops=root.querySelector('#p417-stloops');
-var stmiles=root.querySelector('#p417-stmiles');
-var stleft=root.querySelector('#p417-stleft');
-var hrval=root.querySelector('#p417-hrval');
-var hrfill=root.querySelector('#p417-hrfill');
-var sleepval=root.querySelector('#p417-sleepval');
-var sleepfill=root.querySelector('#p417-sleepfill');
-var runBtn=root.querySelector('#p417-run');
-var stopBtn=root.querySelector('#p417-stop');
-var note=root.querySelector('#p417-note');
-var verdict=root.querySelector('#p417-verdict');
-var verdictP=root.querySelector('#p417-verdict-p');
-var againBtn=root.querySelector('#p417-again');
-var youmark=root.querySelector('#p417-youmark');
-function render(){
-  var h=(7+loops)%24;
-  machine.setAttribute('data-phase',phaseFor(h));
-  var ang=((loops*137.5)%360)*Math.PI/180;
-  if(dot){dot.setAttribute('cx',(160+138*Math.cos(ang)).toFixed(1));dot.setAttribute('cy',(34+24*Math.sin(ang)).toFixed(1));}
-  loopbig.textContent='Loop '+loops+' done';
-  clockEl.textContent=loops===0?'Saturday, 7:00 AM · the first start':clockFor(loops)+' · day '+(Math.floor((7+loops)/24)+1);
-  stloops.textContent=loops;
-  stmiles.textContent=miles(loops).toFixed(1);
-  stleft.textContent=fieldAt(loops);
-  var hr=hrAt(loops);
-  hrval.textContent=hr+' bpm';
-  hrfill.style.width=((hr-100)/(150-100)*100)+'%';
-  sleepval.textContent=loops+(loops===1?' hour':' hours');
-  sleepfill.style.width=Math.min(100,loops/119*100)+'%';
-  runBtn.textContent=loops>=119?'No loop 120 exists':'Run loop '+(loops+1);
-  runBtn.disabled=loops>=119||stopped;
+function fallbackNote(n){
+  var left=fieldAt(n),m=miles(n).toFixed(1);
+  var t=n%3;
+  if(t===0)return 'Loop '+n+' done. '+m+' miles in. '+left+' runners are still out here with you.';
+  if(t===1)return 'Loop '+n+' done. The whistle, the loop, the chair, the whistle. '+left+' runners left.';
+  return 'Loop '+n+' done. Same loop, new hour. The field is down to '+left+'.';
+}
+function q(root,sel){try{return root.querySelector(sel);}catch(e){return null;}}
+function setText(el,txt){if(el)el.textContent=txt;}
+function render(root){
+  var n=S.loops;
+  var phase=phaseFor(n);
+  var machine=q(root,'#p417-machine');
+  if(machine)machine.setAttribute('data-phase',phase);
+  var photos=root.querySelectorAll('.p417-photo');
+  for(var i=0;i<photos.length;i++){photos[i].classList.toggle('on',photos[i].getAttribute('data-photo')===phase);}
+  setText(q(root,'#p417-cap'),CAPS[phase]||CAPS.day);
+  setText(q(root,'#p417-loopbig'),'Loop '+n+' done');
+  setText(q(root,'#p417-clock'),n===0?'Saturday, 7:00 AM \u00B7 the first start':clockFor(n)+' \u00B7 day '+(Math.floor((7+n)/24)+1));
+  setText(q(root,'#p417-stloops'),String(n));
+  setText(q(root,'#p417-stmiles'),miles(n).toFixed(1));
+  setText(q(root,'#p417-stleft'),String(fieldAt(n)));
+  var ring=q(root,'#p417-ringfg');
+  if(ring)ring.setAttribute('stroke-dashoffset',(175.93*(1-n/119)).toFixed(2));
+  setText(q(root,'#p417-ringnum'),String(n));
+  var hr=hrAt(n);
+  setText(q(root,'#p417-hrval'),hr+' bpm');
+  var hrf=q(root,'#p417-hrfill'); if(hrf)hrf.style.width=((hr-100)/50*100)+'%';
+  var rpe=rpeAt(n);
+  setText(q(root,'#p417-rpeval'),rpe.toFixed(1));
+  var rf=q(root,'#p417-rpefill'); if(rf)rf.style.width=((rpe-6)/14*100)+'%';
+  var debt=sleepDebt(n);
+  var dTxt=(Math.round(debt*10)/10).toString();
+  setText(q(root,'#p417-sleepval'),dTxt+(debt===1?' hour':' hours'));
+  var sf=q(root,'#p417-sleepfill'); if(sf)sf.style.width=Math.min(100,debt/72*100)+'%';
+  var choice=q(root,'#p417-choice'); if(choice)choice.hidden=!S.pending;
+  var runBtn=q(root,'#p417-run');
+  if(runBtn){
+    runBtn.textContent=n>=119?'No loop 120 exists':'Run loop '+(n+1);
+    runBtn.disabled=S.stopped||S.pending||n>=119;
+  }
+  var stopBtn=q(root,'#p417-stop');
+  if(stopBtn)stopBtn.disabled=S.stopped||S.pending;
 }
 function verdictText(n){
   var m=miles(n).toFixed(1);
@@ -7263,35 +7387,95 @@ function verdictText(n){
   if(n>=114&&n<119)s+='In the 2025 race, that beats the winning total of 114. Only the world record, 119, sits above you. ';
   else if(n===119)s+='That matches the world record exactly. Nobody has ever run loop 120. ';
   else s+='In the 2025 race, about '+left+' of the 72 starters were still running at that point. ';
+  if(S.banked>0)s+='Along the way you banked '+S.banked+' minutes of naps. ';
   s+='Everyone who stops gets the same word in the results: DNF. The 2025 winner, Phil Gore, ran 114 loops. The world record is 119.';
   return s;
 }
-runBtn.addEventListener('click',function(){
-  if(stopped||loops>=119)return;
-  loops++;
-  render();
-  if(NOTES[loops])note.textContent=NOTES[loops];
-  else if(loops>24&&loops<72)note.textContent='Loop '+loops+' done. '+(72-loops)+' loops to the three-day mark. The field is thinning around you.';
-  else if(loops>=119)note.textContent=NOTES[119];
-  if(loops>=119){runBtn.textContent='No loop 120 exists';runBtn.disabled=true;}
-});
-stopBtn.addEventListener('click',function(){
-  if(stopped)return;
-  stopped=true;
-  verdict.hidden=false;
-  verdictP.textContent=verdictText(loops);
-  if(youmark){youmark.hidden=false;youmark.style.left=(loops/119*100)+'%';var lab=youmark.querySelector('.p417-mlab');if(lab)lab.textContent='You · '+loops;}
-  runBtn.disabled=true;
-  note.textContent='Race over, for you. Your result is recorded as a DNF, same as the runner who stops at 113. That is the whole point of the title.';
-});
-againBtn.addEventListener('click',function(){
-  loops=0;stopped=false;
-  verdict.hidden=true;
+function maybeOffer(root){
+  var n=S.loops;
+  if(S.stopped||S.pending||n<12||n>=119)return;
+  var finishHour=(7+n)%24;
+  var isNight=(finishHour>=20||finishHour<=4);
+  if(isNight&&(n-S.lastOffer)>=6){
+    S.pending=true; S.lastOffer=n;
+    setText(q(root,'#p417-note'),'Deep in the night shift. The machine is holding your next start until you make the call below.');
+  }
+}
+function doRun(root){
+  if(S.stopped||S.pending||S.loops>=119)return;
+  S.loops++;
+  render(root);
+  var note=q(root,'#p417-note');
+  if(NOTES[S.loops])setText(note,NOTES[S.loops]);
+  else setText(note,fallbackNote(S.loops));
+  maybeOffer(root);
+  render(root);
+}
+function doStop(root){
+  if(S.stopped||S.pending)return;
+  S.stopped=true;
+  var verdict=q(root,'#p417-verdict');
+  if(verdict)verdict.hidden=false;
+  setText(q(root,'#p417-verdict-p'),verdictText(S.loops));
+  var youmark=q(root,'#p417-youmark');
+  if(youmark){youmark.hidden=false;youmark.style.left=(S.loops/119*100)+'%';var lab=youmark.querySelector('.p417-mlab');if(lab)lab.textContent='You \u00B7 '+S.loops;}
+  setText(q(root,'#p417-note'),'Race over, for you. Your result is recorded as a DNF, same as the runner who stops at 113. That is the whole point of the title.');
+  render(root);
+}
+function doAgain(root){
+  S.loops=0;S.stopped=false;S.banked=0;S.adjVal=0;S.adjFrom=-1;S.adjUntil=-1;S.lastOffer=-99;S.pending=false;
+  var verdict=q(root,'#p417-verdict');
+  if(verdict)verdict.hidden=true;
+  var youmark=q(root,'#p417-youmark');
   if(youmark)youmark.hidden=true;
-  note.textContent='The whistle blows at the top of every hour. Three whistles, then two, then one, then the bell. Run a loop to begin.';
-  render();
-});
-render();
+  setText(q(root,'#p417-note'),'The whistle blows at the top of every hour. Three whistles, then two, then one, then the bell. Run a loop to begin.');
+  render(root);
+}
+function choose(root,kind){
+  if(!S.pending)return;
+  S.pending=false;
+  var note=q(root,'#p417-note');
+  if(kind==='nap'){
+    S.banked+=17;
+    S.adjVal=-0.8; S.adjFrom=S.loops+1; S.adjUntil=S.loops+6;
+    setText(note,'You bank a 17 minute nap between starts, the Gore pattern: three faster loops, then sleep in the gap. The debt drops, and the next few loops feel a little easier.');
+  }else{
+    S.adjVal=0.6; S.adjFrom=S.loops+1; S.adjUntil=S.loops+6;
+    setText(note,'You push on. No sleep banked, no ground given up. The next few loops will feel harder, and the debt keeps climbing.');
+  }
+  render(root);
+}
+function init(){
+  var root=document.getElementById(VIEW_ID);
+  if(!root)return false;
+  if(root.getAttribute('data-p417-init')==='1')return true;
+  root.setAttribute('data-p417-init','1');
+  root.addEventListener('click',function(ev){
+    var t=ev.target;
+    if(!t||typeof t.closest!=='function')return;
+    var b=t.closest('[data-p417]');
+    if(!b||!root.contains(b))return;
+    var a=b.getAttribute('data-p417');
+    try{
+      if(a==='run')doRun(root);
+      else if(a==='stop')doStop(root);
+      else if(a==='again')doAgain(root);
+      else if(a==='nap')choose(root,'nap');
+      else if(a==='push')choose(root,'push');
+    }catch(e){}
+  });
+  try{render(root);}catch(e){}
+  return true;
+}
+try{
+  if(!init()){
+    var mo=new MutationObserver(function(){if(init()){try{mo.disconnect();}catch(e){}}});
+    mo.observe(document.documentElement,{childList:true,subtree:true});
+    setTimeout(function(){try{mo.disconnect();}catch(e){}},20000);
+  }
+  document.addEventListener('DOMContentLoaded',function(){init();});
+  window.addEventListener('hashchange',function(){init();});
+}catch(e){}
 })();
 </script>
 
