@@ -2311,93 +2311,99 @@ background:var(--p407-bg)}
 #home .home-card:hover .home-card-art img{transform:none}
 }
 
-/* ===== HOMEPAGE V3 (2026-10-20): editorial magazine ===== */
-#home{--hv3-band:#0B2921;--hv3-band2:#11382C;--hv3-cream:#FBF6E9;--hv3-gold:#E7B44C;--hv3-paper:#F4EDDE;--hv3-card:#FCF8ED;--hv3-ink:#152A21;--hv3-muted:#55614F;--hv3-line:#D9CFB4;--hv3-ticker:#A63A24;--hv3-tickertxt:#F8EFDB;--hv3-scrim:#0A1510;--home-bg:#F4EDDE;--home-paper:#FCF8ED;--home-ink:#152A21;--home-muted:#55614F;--home-line:#D9CFB4;--home-red:#B23A2A;background:var(--hv3-paper);color:var(--hv3-ink)}
-@media(prefers-color-scheme:dark){#home{--hv3-paper:#0D1712;--hv3-card:#14211A;--hv3-ink:#EFF4E8;--hv3-muted:#A9B8A4;--hv3-line:#2C4034;--home-bg:#0D1712;--home-paper:#14211A;--home-ink:#EFF4E8;--home-muted:#A9B8A4;--home-line:#2C4034;--home-red:#FF7C66}}
-#home .hv3-masthead{display:flex;justify-content:space-between;align-items:baseline;gap:10px 22px;flex-wrap:wrap;background:var(--hv3-band);color:var(--hv3-cream);padding:15px max(24px,calc((100vw - 1240px)/2 + 24px)) 13px;border-bottom:1px solid color-mix(in srgb,var(--hv3-cream) 24%,transparent)}
+/* ===== HOMEPAGE V4 (2026-10-20): sleek cinematic dark ===== */
+#home{--hv4-bg:#0A0B0D;--hv4-bg2:#101216;--hv4-panel:#14171B;--hv4-panel2:#1B1F24;--hv4-h:#F5F7FA;--hv4-body:#C7CDD4;--hv4-muted:#8A919B;--hv4-accent:#7DD3FC;--hv4-scrim:#050607;--hv4-foot:#07080A;--home-bg:#0A0B0D;--home-paper:#14171B;--home-ink:#F5F7FA;--home-muted:#8A919B;--home-line:#262B31;--home-red:#7DD3FC;--home-blue:#7DD3FC;background:var(--hv4-bg);color:var(--hv4-body)}
+#home .hv3-masthead{display:flex;justify-content:space-between;align-items:baseline;gap:10px 22px;flex-wrap:wrap;background:var(--hv4-bg);color:var(--hv4-h);padding:15px max(24px,calc((100vw - 1240px)/2 + 24px)) 13px;border-bottom:1px solid rgba(255,255,255,.10)}
 #home .hv3-mast-word{font:700 15px "Newsreader",serif;letter-spacing:.34em;text-transform:uppercase}
-#home .hv3-mast-issue{font:500 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--hv3-cream) 78%,var(--hv3-band))}
-#home .home-hero{background:var(--hv3-band);color:var(--hv3-cream);max-width:none;margin:0;padding:72px max(24px,calc((100vw - 1240px)/2 + 24px)) 58px}
-#home .hv2-hero-top{background-image:radial-gradient(color-mix(in srgb,var(--hv3-cream) 10%,transparent) 1.2px,transparent 1.4px)}
-#home .home-kicker{color:var(--hv3-gold)}
-#home .home-hero h1{color:var(--hv3-cream)}
-#home .home-mission{color:color-mix(in srgb,var(--hv3-cream) 86%,var(--hv3-band))}
-#home .home-hero .home-about a{color:var(--hv3-gold)}
-#home .hv2-surprise{background:var(--hv3-cream);color:var(--hv3-band);box-shadow:5px 5px 0 #C8432B}
-#home .hv2-surprise:hover{box-shadow:8px 8px 0 #C8432B}
-#home .hv2-surprise:active{box-shadow:2px 2px 0 #C8432B}
-#home .hv2-surprise:focus-visible{outline-color:var(--hv3-gold)}
-#home .home-hero-note{background:color-mix(in srgb,var(--hv3-cream) 7%,var(--hv3-band));border:1px solid color-mix(in srgb,var(--hv3-cream) 18%,transparent);border-top:6px solid var(--hv3-gold);border-radius:4px;color:color-mix(in srgb,var(--hv3-cream) 88%,var(--hv3-band));box-shadow:none}
-#home .home-hero-note strong{color:var(--hv3-cream)}
-#home .home-hero .hv2-featured-label{color:var(--hv3-gold)}
-#home .home-hero .hv2-featured-label::after{border-top-color:color-mix(in srgb,var(--hv3-cream) 25%,transparent)}
-#home .home-card.feat{background:var(--hv3-band2);color:var(--hv3-cream);border-color:color-mix(in srgb,var(--hv3-cream) 16%,transparent);border-radius:4px}
-#home .home-card.feat .home-card-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 72%,color-mix(in srgb,var(--hv3-band2) 55%,transparent))}
-#home .home-card.feat .home-card-num{color:var(--hv3-gold)}
-#home .home-card.feat h3{color:var(--hv3-cream)}
-#home .home-card.feat p{color:color-mix(in srgb,var(--hv3-cream) 86%,var(--hv3-band2))}
-#home .home-card.feat .home-card-cta{color:var(--hv3-cream)}
-#home .home-card.feat .home-card-cta::after{color:var(--hv3-gold)}
-#home .home-card.feat .hv2-badge-play{border-color:var(--hv3-gold);color:var(--hv3-gold)}
-#home .hv3-ticker{background:var(--hv3-ticker);color:var(--hv3-tickertxt);border-block:1px solid #7E2C1B;overflow:hidden;padding:9px 0}
-#home .hv3-ticker-track{display:flex;width:max-content;animation:hv3tick 60s linear infinite}
+#home .hv3-mast-issue{font:500 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hv4-muted)}
+#home .home-hero{background:linear-gradient(180deg,var(--hv4-bg2),var(--hv4-bg) 80%);color:var(--hv4-body);max-width:none;margin:0;padding:72px max(24px,calc((100vw - 1240px)/2 + 24px)) 58px}
+#home .hv2-hero-top{background-image:radial-gradient(color-mix(in srgb,#fff 7%,transparent) 1.2px,transparent 1.4px)}
+#home .home-kicker{color:var(--hv4-accent)}
+#home .home-hero h1{color:var(--hv4-h)}
+#home .home-mission{color:var(--hv4-body)}
+#home .home-hero .home-about a{color:var(--hv4-accent)}
+#home .hv2-surprise{background:var(--hv4-h);color:var(--hv4-bg);box-shadow:0 10px 30px rgba(0,0,0,.45)}
+#home .hv2-surprise:hover{background:var(--hv4-accent);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+#home .hv2-surprise:active{background:var(--hv4-accent);box-shadow:0 4px 14px rgba(0,0,0,.5)}
+#home .hv2-surprise:focus-visible{outline-color:var(--hv4-accent)}
+#home .home-hero-note{background:var(--hv4-panel);border:1px solid rgba(255,255,255,.09);border-radius:14px;color:var(--hv4-body);box-shadow:0 18px 44px rgba(0,0,0,.42)}
+#home .home-hero-note strong{color:var(--hv4-h)}
+#home .home-hero .hv2-featured-label{color:var(--hv4-accent)}
+#home .home-hero .hv2-featured-label::after{border-top-color:rgba(255,255,255,.14)}
+#home .home-card{--accent:var(--hv4-accent);border-radius:14px}
+#home .home-card:hover{box-shadow:0 20px 48px rgba(0,0,0,.55),0 4px 14px rgba(0,0,0,.4)}
+#home .home-card.feat{--accent:var(--hv4-accent);background:linear-gradient(135deg,var(--hv4-panel),var(--hv4-panel2));color:var(--hv4-body);border-color:rgba(255,255,255,.10);border-radius:14px}
+#home .home-card.feat .home-card-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,23,27,0) 58%,rgba(20,23,27,.9))}
+#home .home-card.feat .home-card-num{color:var(--hv4-accent)}
+#home .home-card.feat h3{color:var(--hv4-h)}
+#home .home-card.feat p{color:var(--hv4-body)}
+#home .home-card.feat .home-card-cta{color:var(--hv4-h)}
+#home .home-card.feat .home-card-cta::after{color:var(--hv4-accent)}
+#home .home-card.feat .hv2-badge-play{border-color:var(--hv4-accent);color:var(--hv4-accent)}
+#home .hv2-badge-new{background:var(--hv4-h);color:var(--hv4-bg)}
+#home .hv3-ticker{background:var(--hv4-bg);color:var(--hv4-muted);border-block:1px solid rgba(255,255,255,.10);overflow:hidden;padding:9px 0}
+#home .hv3-ticker-track{display:flex;width:max-content;animation:hv4tick 60s linear infinite}
 #home .hv3-ticker-set{white-space:nowrap;font:600 12.5px "IBM Plex Sans",sans-serif;letter-spacing:.03em}
-@keyframes hv3tick{to{transform:translateX(-50%)}}
-#home .home-pitch-inner p:first-of-type::first-letter{font:700 3.3em/.82 "Newsreader",serif;float:left;padding:7px 12px 0 0;color:var(--home-red)}
-#home .home-pitch .home-hero-img img{border-radius:4px}
+#home .hv4-sep{color:var(--hv4-accent)}
+@keyframes hv4tick{to{transform:translateX(-50%)}}
+#home .home-pitch-inner{border-left:2px solid var(--hv4-accent)}
+#home .home-pitch .hp-kicker{color:var(--hv4-accent)}
+#home .home-pitch p{color:var(--hv4-body)}
+#home .home-pitch .hp-sign{color:var(--hv4-muted)}
+#home .home-pitch-inner p:first-of-type::first-letter{font:700 3.3em/.82 "Newsreader",serif;float:left;padding:7px 12px 0 0;color:var(--hv4-accent)}
+#home .home-pitch .home-hero-img img{border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.42)}
 #home .home-index{border-top:0;padding-top:52px}
-#home .home-index-head{flex-wrap:wrap;border-top:2px solid var(--hv3-ink);padding-top:16px}
-#home .hv3-index-kicker{flex:1 1 100%;margin:0 0 10px;font:600 11px "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--home-red)}
-#home .home-index-head span{background:var(--hv3-ink);color:var(--hv3-paper);border:0}
-#home .home-card{border-radius:4px}
-#home .home-grid .hv3-photo{min-height:448px;background:var(--hv3-scrim)}
+#home .home-index-head{flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
+#home .home-index-head h2{color:var(--hv4-h)}
+#home .hv3-index-kicker{flex:1 1 100%;margin:0 0 10px;font:600 11px "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--hv4-accent)}
+#home .home-index-head span{background:transparent;color:var(--hv4-body);border:1px solid rgba(255,255,255,.22)}
+#home .home-grid .hv3-photo{min-height:448px;background:var(--hv4-scrim);border-color:rgba(255,255,255,.09)}
 #home .home-grid .hv3-photo.t-tall{min-height:568px}
 #home .home-grid .hv3-photo .home-card-art{position:absolute;inset:0;height:100%;z-index:0}
-#home .home-grid .hv3-photo .home-card-copy{margin-top:auto;background:linear-gradient(to top,rgba(10,21,16,.94) 52%,rgba(10,21,16,.62) 80%,rgba(10,21,16,0));color:var(--hv3-cream);padding:96px 24px 24px;z-index:1}
-#home .home-grid .hv3-photo .home-card-num{color:color-mix(in srgb,var(--accent) 60%,#fff)}
-#home .home-grid .hv3-photo h3{color:var(--hv3-cream)}
-#home .home-grid .hv3-photo p{color:color-mix(in srgb,var(--hv3-cream) 86%,var(--hv3-scrim))}
-#home .home-grid .hv3-photo .home-card-cta{color:var(--hv3-cream)}
-#home .home-grid .hv3-photo .home-card-cta::after{color:color-mix(in srgb,var(--accent) 60%,#fff)}
-#home .home-grid .hv3-photo .hv2-badge-play{border-color:color-mix(in srgb,var(--hv3-cream) 65%,transparent);color:var(--hv3-cream);background:rgba(10,21,16,.45)}
-#home .home-grid .home-card.t-wide:not(.hv3-typo) .home-card-art::before{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(to top,rgba(10,21,16,.55),transparent);z-index:1}
+#home .home-grid .hv3-photo .home-card-copy{margin-top:auto;background:linear-gradient(to top,rgba(5,6,7,.95) 52%,rgba(5,6,7,.62) 80%,rgba(5,6,7,0));color:var(--hv4-body);padding:96px 24px 24px;z-index:1}
+#home .home-grid .hv3-photo .home-card-num{color:var(--hv4-accent)}
+#home .home-grid .hv3-photo h3{color:var(--hv4-h)}
+#home .home-grid .hv3-photo p{color:var(--hv4-body)}
+#home .home-grid .hv3-photo .home-card-cta{color:var(--hv4-h)}
+#home .home-grid .hv3-photo .home-card-cta::after{color:var(--hv4-accent)}
+#home .home-grid .hv3-photo .hv2-badge-play{border-color:rgba(255,255,255,.55);color:var(--hv4-h);background:rgba(5,6,7,.45)}
+#home .home-grid .home-card.t-wide:not(.hv3-typo) .home-card-art::before{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(to top,rgba(5,6,7,.55),transparent);z-index:1}
 #home .home-grid .home-card.t-wide:not(.hv3-typo) .home-card-art::after{position:absolute;left:16px;bottom:6px;z-index:2;font:700 58px/1 "Newsreader",serif;color:#fff}
 #home .home-grid .home-card.knee .home-card-art::after{content:"01"}
 #home .home-grid .home-card.dew .home-card-art::after{content:"06"}
 #home .home-grid .home-card.vital .home-card-art::after{content:"12"}
-#home .home-grid .home-card.shelf{--tile:#6E4510}
-#home .home-grid .home-card.nb{--tile:#0A4A52}
-#home .home-grid .home-card.ww{--tile:#8C2318}
-#home .home-grid .home-card.ask{--tile:#243A5E}
-#home .home-grid .hv3-typo{background:var(--tile);border-color:color-mix(in srgb,var(--tile) 55%,#000);color:#FFF6E0}
-#home .home-grid .hv3-typo .home-card-art{background:var(--tile)}
+#home .home-grid .hv3-typo{background:linear-gradient(165deg,var(--hv4-panel2),#12151A);border-color:rgba(255,255,255,.10);color:var(--hv4-body)}
+#home .home-grid .hv3-typo .home-card-art{background:transparent}
 #home .home-grid .hv3-typo .home-card-art svg{display:none}
-#home .home-grid .hv3-typo .home-card-art::after{position:absolute;left:18px;bottom:0;font:700 104px/1 "Newsreader",serif;color:color-mix(in srgb,#FFF6E0 88%,var(--tile))}
+#home .home-grid .hv3-typo .home-card-art::after{position:absolute;left:18px;bottom:0;font:700 104px/1 "Newsreader",serif;color:rgba(245,247,250,.13)}
 #home .home-grid .home-card.shelf .home-card-art::after{content:"13"}
 #home .home-grid .home-card.nb .home-card-art::after{content:"14"}
 #home .home-grid .home-card.ww .home-card-art::after{content:"15"}
 #home .home-grid .home-card.ask .home-card-art::after{content:"16"}
-#home .home-grid .hv3-typo .home-card-num{color:color-mix(in srgb,var(--accent) 30%,#FFF6E0)}
-#home .home-grid .hv3-typo h3{color:#FFF6E0}
-#home .home-grid .hv3-typo p{color:color-mix(in srgb,#FFF6E0 87%,var(--tile))}
-#home .home-grid .hv3-typo .home-card-cta{color:#FFF6E0}
-#home .home-grid .hv3-typo .home-card-cta::after{color:color-mix(in srgb,var(--accent) 30%,#FFF6E0)}
-#home .home-grid .hv3-typo .hv2-ghost{color:#FFF6E0;opacity:.14}
-#home .home-grid .hv3-typo .hv2-badge-new{background:#FBF6E9;color:#7A1D12}
-#home .home-grid .hv3-typo .hv2-badge-play{border-color:color-mix(in srgb,#FFF6E0 65%,transparent);color:#FFF6E0}
-#home .home-grid .hv3-typo:focus-visible{outline-color:#FFF6E0}
-#home .home-footer{background:var(--hv3-band);color:var(--hv3-cream);border-top:0;padding:58px max(24px,calc((100vw - 1240px)/2 + 24px)) 66px}
+#home .home-grid .hv3-typo .home-card-num{color:var(--hv4-accent)}
+#home .home-grid .hv3-typo h3{color:var(--hv4-h)}
+#home .home-grid .hv3-typo p{color:var(--hv4-body)}
+#home .home-grid .hv3-typo .home-card-cta{color:var(--hv4-h)}
+#home .home-grid .hv3-typo .home-card-cta::after{color:var(--hv4-accent)}
+#home .home-grid .hv3-typo .hv2-ghost{color:var(--hv4-h);opacity:.05}
+#home .home-grid .hv3-typo .hv2-badge-play{border-color:var(--hv4-accent);color:var(--hv4-accent)}
+#home .home-grid .hv3-typo:focus-visible{outline-color:var(--hv4-accent)}
+#home .home-footer{background:var(--hv4-foot);color:var(--hv4-body);border-top:1px solid rgba(255,255,255,.10);padding:58px max(24px,calc((100vw - 1240px)/2 + 24px)) 66px}
 #home .home-footer-inner{display:block}
-#home .hv3-colophon-word{font:700 clamp(38px,5.6vw,60px)/1 "Newsreader",serif;letter-spacing:-.02em;color:var(--hv3-cream);margin:0 0 14px}
-#home .hv3-colophon-meta{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--hv3-cream) 78%,var(--hv3-band));margin:0 0 14px}
-#home .hv3-colophon-mission{font:500 19px/1.4 "Newsreader",serif;color:color-mix(in srgb,var(--hv3-cream) 86%,var(--hv3-band));margin:0}
-#home .hv3-colophon-rule{border-top:1px solid color-mix(in srgb,var(--hv3-cream) 22%,transparent);padding-top:22px;margin-top:26px}
-#home .home-footer p{color:color-mix(in srgb,var(--hv3-cream) 86%,var(--hv3-band))}
-#home .home-footer strong{color:var(--hv3-cream)}
-#home .home-footer .draft-note{text-align:left;color:color-mix(in srgb,var(--hv3-cream) 72%,var(--hv3-band));margin-top:10px}
-#home .home-footer a{color:var(--hv3-gold)}
-#about .dek::first-letter{font:700 3.1em/.8 "Newsreader",serif;float:left;padding:5px 10px 0 0;color:var(--home-red)}
-#about h1{border-bottom:2px solid var(--home-ink);padding-bottom:18px}
+#home .hv3-colophon-word{font:700 clamp(38px,5.6vw,60px)/1 "Newsreader",serif;letter-spacing:-.02em;color:var(--hv4-h);margin:0 0 14px}
+#home .hv3-colophon-meta{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--hv4-muted);margin:0 0 14px}
+#home .hv3-colophon-mission{font:500 19px/1.4 "Newsreader",serif;color:var(--hv4-body);margin:0}
+#home .hv3-colophon-rule{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;margin-top:26px}
+#home .home-footer p{color:var(--hv4-body)}
+#home .home-footer strong{color:var(--hv4-h)}
+#home .home-footer .draft-note{text-align:left;color:var(--hv4-muted);margin-top:10px}
+#home .home-footer a{color:var(--hv4-accent)}
+#about{--home-line:#262B31;--home-muted:#8A919B;--home-ink:#F5F7FA;--home-red:#7DD3FC;background:#0A0B0D;color:#C7CDD4;min-height:100vh}
+#about h1{border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:18px;color:#F5F7FA}
+#about .dek{color:#C7CDD4}
+#about .dek::first-letter{font:700 3.1em/.8 "Newsreader",serif;float:left;padding:5px 10px 0 0;color:#7DD3FC}
+#about .copy h2{color:#F5F7FA}
+#about a{color:#7DD3FC}
 @media(max-width:1080px){
 #home .home-grid .hv3-photo{min-height:480px}
 #home .home-grid .hv3-photo.t-tall{min-height:520px}
@@ -2423,7 +2429,7 @@ background:var(--p407-bg)}
 <main>
 <div class="view active" id="home"><div class="hv3-masthead"><span class="hv3-mast-word">The Rehab Lab</span><span class="hv3-mast-issue">17 investigations · Updated October 2026 · Hollywood, Florida</span></div>
 <header class="home-hero hv2-hero"><div class="hv2-hero-top"><div class="hv2-hero-main"><div class="home-kicker">Visual essays in rehabilitation medicine</div><h1>The Rehab Lab</h1><p class="home-mission">Visual essays about bodies in motion. Every number traces to a published source.</p><div class="hv2-hero-actions"><button type="button" class="hv2-surprise" id="hv2-surprise" aria-label="Surprise me: open a random essay">Surprise me</button><p class="home-about"><a href="#about" data-open-view="about">About the author →</a></p></div></div><aside class="home-hero-note"><strong>Seventeen investigations</strong>From MRI findings that frighten healthy backs to the atmospheric physics that slow a run, each essay turns evidence into something you can see, test, and scroll through.</aside></div><div class="hv2-featured hv2-reveal"><div class="hv2-featured-label">Featured · the newest essay</div><a class="home-card feat dnf" href="#second-place-is-a-dnf" data-open-view="second-place-is-a-dnf" data-num="17" aria-label="Open essay: Second Place Is a DNF"><div class="home-card-art" aria-hidden="true"><img src="images/by-start.jpg" alt="" loading="eager" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">17 · RUNNING</span><span class="hv2-badges"><span class="hv2-badge hv2-badge-new">New</span><span class="hv2-badge hv2-badge-play">Playable</span></span><h3>Second Place Is a DNF</h3><p>Run the same 4.167-mile loop every hour until one person is left. Second place ran 445.83 miles and still did not finish. Neither will you, but tap to see how far you get.</p><span class="home-card-cta">Run the loop</span></div></a></div></header>
-<div class="hv3-ticker" aria-hidden="true"><div class="hv3-ticker-track"><span class="hv3-ticker-set">How many bursae does a knee have? Nobody agrees. ✦ If you had no back pain, what would your MRI say? ✦ Is pickleball actually dangerous? ✦ Did carbon-plate shoes really break the marathon? ✦ Why does a humid 75°F morning feel so bad? ✦ What happens to your body at every hour of a marathon? ✦ Whose Pain Gets Believed? ✦ How Fast Do You Walk? ✦ The $50 Hand ✦ What Actually Works for Back Pain ✦ What Would You Want Back? ✦ Second Place Is a DNF ✦ </span><span class="hv3-ticker-set">How many bursae does a knee have? Nobody agrees. ✦ If you had no back pain, what would your MRI say? ✦ Is pickleball actually dangerous? ✦ Did carbon-plate shoes really break the marathon? ✦ Why does a humid 75°F morning feel so bad? ✦ What happens to your body at every hour of a marathon? ✦ Whose Pain Gets Believed? ✦ How Fast Do You Walk? ✦ The $50 Hand ✦ What Actually Works for Back Pain ✦ What Would You Want Back? ✦ Second Place Is a DNF ✦ </span></div></div>
+<div class="hv3-ticker" aria-hidden="true"><div class="hv3-ticker-track"><span class="hv3-ticker-set">How many bursae does a knee have? Nobody agrees. <span class="hv4-sep">✦</span> If you had no back pain, what would your MRI say? <span class="hv4-sep">✦</span> Is pickleball actually dangerous? <span class="hv4-sep">✦</span> Did carbon-plate shoes really break the marathon? <span class="hv4-sep">✦</span> Why does a humid 75°F morning feel so bad? <span class="hv4-sep">✦</span> What happens to your body at every hour of a marathon? <span class="hv4-sep">✦</span> Whose Pain Gets Believed? <span class="hv4-sep">✦</span> How Fast Do You Walk? <span class="hv4-sep">✦</span> The $50 Hand <span class="hv4-sep">✦</span> What Actually Works for Back Pain <span class="hv4-sep">✦</span> What Would You Want Back? <span class="hv4-sep">✦</span> Second Place Is a DNF <span class="hv4-sep">✦</span> </span><span class="hv3-ticker-set">How many bursae does a knee have? Nobody agrees. <span class="hv4-sep">✦</span> If you had no back pain, what would your MRI say? <span class="hv4-sep">✦</span> Is pickleball actually dangerous? <span class="hv4-sep">✦</span> Did carbon-plate shoes really break the marathon? <span class="hv4-sep">✦</span> Why does a humid 75°F morning feel so bad? <span class="hv4-sep">✦</span> What happens to your body at every hour of a marathon? <span class="hv4-sep">✦</span> Whose Pain Gets Believed? <span class="hv4-sep">✦</span> How Fast Do You Walk? <span class="hv4-sep">✦</span> The $50 Hand <span class="hv4-sep">✦</span> What Actually Works for Back Pain <span class="hv4-sep">✦</span> What Would You Want Back? <span class="hv4-sep">✦</span> Second Place Is a DNF <span class="hv4-sep">✦</span> </span></div></div>
 <section class="home-pitch hv2-reveal" aria-label="Why The Rehab Lab exists"><div class="home-pitch-inner"><div class="hp-kicker">Why this exists</div><p>I came to medicine from the outside. I studied business and data science, worked in healthcare consulting, and only later found my way to medical school, so I remember exactly what medical evidence looks like to everyone else: locked behind jargon, paywalls, and papers written for other researchers. The science was sound. The communication was not, and people were left making real decisions about their own bodies from whatever fragments they could piece together. My mind has always worked the other way: take something complicated and make it digestible without making it smaller. So I built The Rehab Lab, visual essays that treat readers as smart, show the actual numbers behind rehabilitation medicine, say plainly what the evidence cannot prove, and open a field that too often talks only to itself.</p><div class="hp-sign">Jonathan Byrne, DO · Founder</div></div><figure class="home-hero-img"><img src="images/home-hero.webp" alt="A physical therapist guiding a patient through gait training between parallel bars in a bright rehabilitation gym"><figcaption>Rehabilitation is practiced, not just prescribed. <span>Homepage images are AI-generated illustrations; essay imagery remains sourced photography and data.</span></figcaption></figure></section>
 <section class="home-index" aria-labelledby="home-index-title"><div class="home-index-head"><p class="hv3-index-kicker">In this issue</p><h2 id="home-index-title">Enter an essay</h2><span>17 STORIES</span></div><div class="home-grid">
 <a class="home-card knee t-wide hv2-reveal" href="#essay" data-open-view="essay" data-num="01" aria-label="Open essay: How many bursae does a knee have? Nobody agrees."><div class="home-card-art" aria-hidden="true"><img src="images/card-01-knee.webp" alt="" loading="lazy" decoding="async"></div><div class="home-card-copy"><span class="home-card-num">01 · MUSCULOSKELETAL MEDICINE</span><h3>How many bursae does a knee have? Nobody agrees.</h3><p>Five fluid-filled sacs, one very annoyed knee. A guided MRI tour of the bursae.</p><span class="home-card-cta">Explore the knee</span></div></a>
