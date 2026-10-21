@@ -2275,6 +2275,13 @@ background:var(--p407-bg)}
 #home .home-pitch .home-hero-img img{border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.42)}
 #home .home-pitch{grid-template-columns:11fr 9fr}
 #home .home-pitch .home-hero-img{grid-column:auto}
+/* Pitch mobile fix (2026-10-21): the V4 two-column rule above sits after the earlier 1080px stacking rule in the cascade, so it silently overrode it at phone widths. Re-assert the stack here, after V4. */
+@media(max-width:1080px){
+#home .home-pitch{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:640px){
+#home .home-pitch{padding:44px 16px 52px}
+}
 #home .home-index{border-top:0;padding-top:52px}
 #home .home-index-head{flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:16px}
 #home .home-index-head h2{color:var(--hv4-h)}
