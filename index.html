@@ -3182,6 +3182,8 @@ if('IntersectionObserver' in window&&!reduced){
 #two-ways-to-build-a-clot .p420-bar.net i{background:var(--p420-veinbar)}
 #two-ways-to-build-a-clot .p420-status{padding:16px 22px;border-top:1px solid var(--p420-line);background:var(--p420-panel);font:400 16.5px/1.6 "Newsreader",Georgia,serif;color:var(--p420-body);min-height:3.2em}
 #two-ways-to-build-a-clot .p420-status b{color:var(--p420-ink)}
+#two-ways-to-build-a-clot .p420-occ-note{display:block;margin-top:8px;font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--p420-vein)}
+#two-ways-to-build-a-clot .p420-occ-note:empty{display:none}
 #two-ways-to-build-a-clot .p420-controls{padding:18px 22px 6px;border-top:1px solid var(--p420-line)}
 #two-ways-to-build-a-clot .p420-ctl-lab{font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--p420-mut);margin:0 0 10px}
 #two-ways-to-build-a-clot .p420-btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
@@ -3334,7 +3336,7 @@ if('IntersectionObserver' in window&&!reduced){
 </div>
 <div class="p420-readout">
 <span class="p420-readout-lab"><span>Vein · net growth</span><output id="p420-net-out">0%</output></span>
-<div class="p420-bar net"><i id="p420-net-bar"></i></div>
+<div class="p420-bar net"><i id="p420-net-bar"></i></div><span class="p420-occ-note" id="p420-net-note"></span>
 </div>
 </div>
 <p class="p420-status" id="p420-status" aria-live="polite">Both lanes are running clean. Start an event, or switch a drug on first and then start one.</p>
@@ -3357,6 +3359,7 @@ if('IntersectionObserver' in window&&!reduced){
 <p class="p420-note" style="margin:0">What the rail is made of, in one line each. Aspirin silences thromboxane for the life of the platelet. P2Y12 inhibitors mute the ADP call; clopidogrel and prasugrel must be switched on by the liver and bind for good, ticagrelor works as swallowed and lets go. Heparins hand antithrombin its speed: unfractionated chains strike Xa and thrombin about evenly, one to one; the shorter LMWH chains lean on Xa, enoxaparin about 3.8 to 1. Warfarin stops the liver building factors II, VII, IX and X, and works only as the old factors wear out. Xa inhibitors and dabigatran bind their enzyme directly, no middleman.</p>
 </div>
 </div>
+<p class="p420-note" style="margin:18px 2px 0">One thing the rail cannot do: nothing on it dissolves a clot that already exists. These drugs stop new growth and hold the line, and any slow shrinking on the panel is the body's own plasmin clearing the clot once growth is held. Dissolving a clot outright takes a different class of drug, the thrombolytics, at a different bleeding price.</p>
 </section>
 
 <section class="p420-sec">
@@ -3590,6 +3593,7 @@ try{ctx=canvas&&canvas.getContext?canvas.getContext('2d'):null;}catch(e){ctx=nul
 var statusEl=root.querySelector('#p420-status');
 var plugOut=root.querySelector('#p420-plug-out'),plugBar=root.querySelector('#p420-plug-bar');
 var netOut=root.querySelector('#p420-net-out'),netBar=root.querySelector('#p420-net-bar');
+var netNote=root.querySelector('#p420-net-note');
 var shearA=root.querySelector('#p420-shear-a'),shearV=root.querySelector('#p420-shear-v');
 var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -3600,7 +3604,7 @@ var DRUGS={
  xa:{plug:0.90,net:0.08},
  thrombin:{plug:0.80,net:0.08}
 };
-var S={plug:0,net:0,fibA:0,artEvent:false,veinEvent:false,drugs:{aspirin:false,p2y12:false,heparin:false,warfarin:false,xa:false,thrombin:false},warfT:-1,t:0,saidPlug:false,saidNet:false};
+var S={plug:0,net:0,fibA:0,artEvent:false,veinEvent:false,drugs:{aspirin:false,p2y12:false,heparin:false,warfarin:false,xa:false,thrombin:false},warfT:-1,t:0,saidPlug:false,saidNet:false,saidRecA:false,saidRecV:false};
 
 function warfarinFactors(){
  if(!S.drugs.warfarin)return{plug:1,net:1};
@@ -3616,6 +3620,7 @@ function mult(){
  return{plug:Math.max(0.02,pm),net:Math.max(0.02,nm)};
 }
 function anyCascadeOn(){return S.drugs.heparin||S.drugs.xa||S.drugs.thrombin||(S.drugs.warfarin&&S.warfT>=2.5);}
+function cascadeHeld(){return S.drugs.heparin||S.drugs.xa||S.drugs.thrombin||(S.drugs.warfarin&&S.warfT>=6);}
 function anyPlateletOn(){return S.drugs.aspirin||S.drugs.p2y12;}
 
 function describe(){
@@ -3626,13 +3631,13 @@ function describe(){
  }
  if(S.artEvent){
    if(S.plug>=100){parts.push('<b>The plug has closed the artery lane.</b> Reset to run it again under different drugs.');}
-   else if(S.drugs.aspirin&&S.drugs.p2y12){parts.push('Both platelet shouts are cut and the plug creeps. This is the dual therapy effect the stent cards are priced on.');}
+   else if(S.drugs.aspirin&&S.drugs.p2y12){parts.push('Both platelet shouts are cut and the plug is held where it stands. This is the dual therapy effect the stent cards are priced on.');}
    else if(anyPlateletOn()){parts.push('One platelet shout is cut, and the plug grows at a fraction of its speed. Adhesion and aggregation still work; the recruiting is muted.');}
    else if(anyCascadeOn()){parts.push('The cascade drugs thin the fibrin weave, but the plug is platelets, and it keeps growing. Anticoagulation alone does not stop a high shear plug.');}
    else{parts.push('The plaque is open and platelets are doing what they do at speed: tether, shout, link arms. The plug grows at full rate.');}
  }
  if(S.veinEvent){
-   if(S.net>=100){parts.push('<b>The net fills the valve pocket.</b> Reset to run it again under different drugs.');}
+   if(S.net>=70&&!cascadeHeld()){parts.push('<b>The net has filled the pocket and narrowed the vein to a channel.</b> Many real DVTs stop here: stuck to the wall, flow still passing, dangerous because pieces can break off, not because the pipe is sealed.');}
    else if(S.drugs.warfarin&&S.warfT>=0&&S.warfT<2.5){parts.push('Warfarin is inside its window: protein C, half-life about 8 hours, has fallen, while factor II, about 60 hours, has not. For these first seconds the net grows faster, not slower.');}
    else if(m.net<=0.25){parts.push('The cascade is cut and the net stalls. This is the anticoagulants home lane: no Xa, no thrombin, no new fibrin.');}
    else if(anyPlateletOn()&&!anyCascadeOn()){parts.push('Platelet drugs are on, and the net grows straight through them. This clot is fibrin and trapped red cells; there is almost no platelet structure to block.');}
@@ -3671,9 +3676,31 @@ function draw(){
  for(i=0;i<parts.length;i++){p=parts[i];
    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.2832);
    ctx.fillStyle=p.red?'rgba(176,32,36,.8)':'rgba(216,178,106,.9)';ctx.fill();}
- /* vein net in pocket */
+ /* vein net: wall-and-pocket thrombus */
  if(S.net>1){
    var n=Math.floor(S.net/100*64);
+   var occD=Math.min(0.78,0.78*(S.net/70));
+   var topD=302-occD*88;
+   /* wall-hugging layer along the vein floor */
+   ctx.fillStyle='rgba(44,58,140,.30)';
+   var wlD=2+5*(S.net/100);
+   ctx.fillRect(548,302-wlD,264,wlD);
+   /* thrombus body rising from the pocket; occlusion caps at 78 percent, channel stays open */
+   ctx.beginPath();
+   ctx.moveTo(600,340);ctx.lineTo(601,topD+16);
+   ctx.quadraticCurveTo(604,topD,660,topD);
+   ctx.quadraticCurveTo(716,topD,719,topD+16);
+   ctx.lineTo(720,340);ctx.closePath();
+   ctx.fillStyle='rgba(44,58,140,.24)';ctx.fill();
+   ctx.strokeStyle='rgba(44,58,140,.45)';ctx.lineWidth=1.2;ctx.stroke();
+   /* fibrin strands woven across the body */
+   ctx.strokeStyle='rgba(44,58,140,'+(0.16+0.3*S.net/100)+')';ctx.lineWidth=1;
+   for(i=0;i<8;i++){var by=topD+8+i*Math.max(4,(298-topD)/8);ctx.beginPath();ctx.moveTo(606,by);ctx.quadraticCurveTo(660,by+4,714,by);ctx.stroke();}
+   /* red cells packed through the body */
+   var nb=Math.floor(S.net/100*100);
+   for(i=0;i<nb;i++){var sb=seed[(i*11)%seed.length];var bx=606+sb.x*108,byy=topD+5+sb.y*(330-topD);
+     ctx.beginPath();ctx.arc(bx,byy,2.9+sb.r*0.5,0,6.2832);ctx.fillStyle='rgba(176,32,36,.88)';ctx.fill();}
+   /* pocket strands and cells, as before */
    ctx.strokeStyle='rgba(44,58,140,'+(0.14+0.3*S.net/100)+')';ctx.lineWidth=1;
    for(i=0;i<10;i++){var yy=308+ (i%5)*7;ctx.beginPath();ctx.moveTo(602,yy);ctx.lineTo(718,yy+((i*37)%11)-5);ctx.stroke();}
    for(i=0;i<n;i++){var sd=seed[(i*7)%seed.length];var cx=606+sd.x*108,cy=306+sd.y*30;
@@ -3694,12 +3721,13 @@ function draw(){
  ctx.fillStyle='rgba(90,78,64,.95)';ctx.font='600 10px "IBM Plex Mono",monospace';
  ctx.fillText('ARTERY',14,22);ctx.fillText('VEIN',14,196);
  if(S.plug>=100){ctx.fillStyle='#9E1B1E';ctx.fillText('LANE CLOSED',500,22);}
- if(S.net>=100){ctx.fillStyle='#9E1B1E';ctx.fillText('POCKET FULL',500,196);}
+ if(S.net>=70){ctx.fillStyle='#2C3A8C';ctx.fillText('CHANNEL STILL OPEN',500,196);}
 }
 
 function render(){
  plugOut.textContent=Math.round(S.plug)+'%';plugBar.style.width=S.plug+'%';
  netOut.textContent=Math.round(S.net)+'%';netBar.style.width=S.net+'%';
+ netNote.textContent=S.net>=70?'Channel still open':'';
  var sa=S.plug>=100?'lane closed':'about '+Math.round((1240+240*Math.sin(S.t*1.6))/10)*10+' /s';
  shearA.textContent=sa;
  var sv=S.veinEvent?('about '+(4+Math.round(2*Math.abs(Math.sin(S.t*2.1))))+' /s (stalled)'):('about '+Math.round((62+9*Math.sin(S.t*1.1))/1)+' /s');
@@ -3710,19 +3738,41 @@ function tick(dt){
  S.t+=dt;
  if(S.drugs.warfarin&&S.warfT>=0)S.warfT+=dt;
  var m=mult();
- if(S.artEvent&&S.plug<100){
-   S.plug=Math.min(100,S.plug+dt*9*m.plug);
-   S.fibA=Math.min(S.plug,S.fibA+dt*3.2*m.net);
-   if(S.plug>=100&&!S.saidPlug){S.saidPlug=true;describe();}
+ if(S.artEvent){
+   var dualP=S.drugs.aspirin&&S.drugs.p2y12;
+   if(dualP&&S.plug>0){
+     /* dual platelet therapy holds the lane: no new growth, plasmin clears slowly */
+     S.plug=Math.max(0,S.plug-dt*Math.max(0.15,S.plug*0.0042));
+     S.fibA=Math.min(S.fibA,S.plug);
+     if(S.plug<95)S.saidPlug=false;
+     if(!S.saidRecA){S.saidRecA=true;statusEl.innerHTML='Growth is stopped, and the body’s own cleanup shows: plasmin is chewing the edges faster than platelets can add. The drug did not dissolve this plug. It held the line while the body cleared it.';}
+   } else if(S.plug<100){
+     /* one platelet drug alone is partial: net growth near zero, no clearance */
+     var grA=anyPlateletOn()?9*m.plug*0.06:9*m.plug;
+     S.plug=Math.min(100,S.plug+dt*grA);
+     S.fibA=Math.min(S.plug,S.fibA+dt*3.2*m.net);
+     if(S.plug>=100&&!S.saidPlug){S.saidPlug=true;describe();}
+   }
  }
- if(S.veinEvent&&S.net<100){
-   S.net=Math.min(100,S.net+dt*8*m.net);
-   if(S.net>=100&&!S.saidNet){S.saidNet=true;describe();}
+ if(S.veinEvent){
+   if(cascadeHeld()&&S.net>0){
+     /* a working cascade drug holds the vein: no new fibrin, plasmin clears slowly */
+     S.net=Math.max(0,S.net-dt*Math.max(0.13,S.net*0.0037));
+     if(S.net<65)S.saidNet=false;
+     if(!S.saidRecV){S.saidRecV=true;statusEl.innerHTML='Growth is stopped, and the body’s own cleanup shows: plasmin is trimming the net faster than the cascade can weave it. The drug did not dissolve this net. It held the line while the body cleared it.';}
+   } else if(S.net<100){
+     S.net=Math.min(100,S.net+dt*8*m.net);
+     if(S.net>=70&&!S.saidNet){S.saidNet=true;describe();}
+   }
  }
  if(!reduced){
    for(var i=0;i<parts.length;i++){var p=parts[i];
      if(p.lane===0){p.x+=dt*300*p.sp*(S.plug>=100?0.25:1);if(p.x>966){p.x=-6;p.y=48+((p.y*7)%56);}}
-     else{var vf=S.veinEvent?0.1:1;p.x+=dt*30*p.sp*vf;if(p.x>966){p.x=-6;p.y=228+((p.y*7)%64);}}
+     else{var vf=S.veinEvent?0.1:1;
+     if(S.net>1&&p.x>588&&p.x<732){var occP=Math.min(0.78,0.78*(S.net/70));var chBotP=298-occP*88;
+       if(p.y>chBotP){var tgtP=218+((p.r*7)%Math.max(3,chBotP-218));p.y-=(p.y-tgtP)*Math.min(1,dt*3);}
+       vf*=1.8;}
+     p.x+=dt*30*p.sp*vf;if(p.x>966){p.x=-6;p.y=228+((p.y*7)%64);}}
    }
  }
  draw();render();
@@ -3743,7 +3793,7 @@ setInterval(function(){
 root.querySelector('#p420-ev-art').addEventListener('click',function(){S.artEvent=true;describe();draw();});
 root.querySelector('#p420-ev-vein').addEventListener('click',function(){S.veinEvent=true;describe();draw();});
 root.querySelector('#p420-reset').addEventListener('click',function(){
- S.plug=0;S.net=0;S.fibA=0;S.artEvent=false;S.veinEvent=false;S.saidPlug=false;S.saidNet=false;
+ S.plug=0;S.net=0;S.fibA=0;S.artEvent=false;S.veinEvent=false;S.saidPlug=false;S.saidNet=false;S.saidRecA=false;S.saidRecV=false;
  S.warfT=S.drugs.warfarin?0:-1;
  statusEl.textContent='Lanes reset. Both vessels are running clean again; the drug rail keeps its settings.';
  draw();render();
