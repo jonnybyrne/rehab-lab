@@ -2531,7 +2531,15 @@ background:var(--p407-bg)}
 <h1 class="p418-title">Every Prescription Is a Bet</h1>
 <p class="p418-answer">Medicine runs on odds. This essay reads one prescription the way an actuary would: as a priced bet on a single life.</p>
 <div class="p418-byline-row"><span class="p418-byline">Jonathan Byrne, DO <span class="p418-role">· PM&amp;R resident physician</span></span></div>
-<p class="p418-body">Start with one small white pill: aspirin. In a large trial of people with diabetes, aspirin prevented one serious vascular event for every 91 people who took it. Serious vascular event was the trial’s own composite: a nonfatal heart attack, a nonfatal stroke or a transient ischemic attack (a brief, stroke-like episode), or death from a vascular cause, with bleeding in the brain counted on the harm side, not in this number. In that same trial, aspirin caused one major bleed for every 111. Help and harm, side by side, at nearly the same size.</p>
+<div class="p418-slip p418-openbet p418-reveal" role="group" aria-label="Aspirin in the ASCEND trial: one serious vascular event prevented for every 91 people treated, and one major bleed caused for every 111 people treated">
+<p class="p418-slip-head"><span>The opening slip · Aspirin, priced both ways</span><span>ASCEND · 7.4 years</span></p>
+<div class="p418-openbet-grid">
+<div class="p418-openbet-cell helped"><span class="p418-openbet-num">91</span><span class="p418-openbet-lab">people treated for one serious vascular event prevented</span></div>
+<div class="p418-openbet-cell harmed"><span class="p418-openbet-num">111</span><span class="p418-openbet-lab">people treated for one major bleed caused</span></div>
+</div>
+<p class="p418-openbet-qual">One trial, one population: 15,480 people with diabetes, followed for 7.4 years. Serious vascular event was the trial’s own composite: a nonfatal heart attack, a nonfatal stroke or a transient ischemic attack (a brief, stroke-like episode), or death from a vascular cause, with bleeding in the brain counted on the harm side, not in this number. The two counts are different events and are printed separately on purpose; this slip never nets them into one number. The trial’s own verdict: the gains were largely wiped out by the bleeding.</p>
+</div>
+<p class="p418-body">Start with one small white pill: aspirin. The slip above prices that trial both ways, in its own terms. Help and harm, side by side, at nearly the same size.</p>
 <p class="p418-body">That is not a fact about aspirin. It is the shape of almost every choice in medicine. Each drug, each test, each operation is a bet: some chance of gain, some chance of loss, and one person who has to live with how it lands.</p>
 <p class="p418-body">So here is the claim of this essay. Good medicine is good betting. Not gambling, which is betting blind. Betting with the odds worked out, the stakes priced, and the size of the bet matched to the person in front of you. The field that does this for a living is not medicine. It is actuarial science, the math of pricing risk. Medicine borrowed its tools long ago. It just rarely says so.</p>
 <p class="p418-body">A note from the person who wrote this slip. Before medical school, I interned in actuarial consulting and worked as a health care analytics analyst. I priced risk for groups of strangers. Now I treat one person at a time, and the same math keeps showing up at the bedside.</p>
@@ -10110,6 +10118,29 @@ if('IntersectionObserver' in window&&!reduced){
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible,[tabindex="0"]:focus-visible{outline:3px solid var(--coral,#e85b47);outline-offset:2px}
 .view h1:focus{outline:none}
 @media (prefers-reduced-motion:reduce){.p3-drawer-chev{transition:none}}
+
+/* Polish batch, Oct 26 2026: MRI and prescription and clot openings, homepage spacing, phone tap targets. */
+/* Item 1: MRI headline steps down about 12 percent; the scan takes a larger share of the hero grid. */
+#essay-backpain .bp-hero h1{font-size:clamp(47px,7.35vw,95px)}
+@media(min-width:1101px){#essay-backpain .bp-hero{grid-template-columns:minmax(0,.92fr) minmax(300px,.8fr) minmax(200px,.42fr);gap:30px}}
+/* Item 2: the opening slip visual, aspirin priced both ways. */
+#every-prescription-is-a-bet .p418-openbet{margin:26px 0 30px}
+#every-prescription-is-a-bet .p418-openbet-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:8px 0 18px}
+#every-prescription-is-a-bet .p418-openbet-cell{border-top:3px solid var(--p418-accent);padding-top:14px}
+#every-prescription-is-a-bet .p418-openbet-cell.harmed{border-top-color:var(--p418-mut)}
+#every-prescription-is-a-bet .p418-openbet-num{display:block;font:700 clamp(72px,8vw,110px)/0.95 "Newsreader",Georgia,serif;letter-spacing:-.03em;color:var(--p418-ink)}
+#every-prescription-is-a-bet .p418-openbet-lab{display:block;margin-top:10px;font:600 13px/1.5 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--p418-body)}
+#every-prescription-is-a-bet .p418-openbet-qual{font:400 16.5px/1.6 "Newsreader",Georgia,serif;color:var(--p418-body);margin:0;max-width:46em}
+@media(max-width:640px){#every-prescription-is-a-bet .p418-openbet-grid{gap:18px}#every-prescription-is-a-bet .p418-openbet-num{font-size:64px}#every-prescription-is-a-bet .p418-openbet-lab{font-size:11.5px}}
+/* Item 3: clot opening paragraph narrows to about a 60 character measure; the percentage panels breathe. */
+#two-ways-to-build-a-clot .p420-answer{max-width:60ch}
+#two-ways-to-build-a-clot .p420-hero-nums{gap:20px;background:transparent;border:0;margin:16px 0 40px}
+#two-ways-to-build-a-clot .p420-hero-nums>div{border:1px solid var(--p420-line);padding:34px 36px}
+/* Item 4: homepage upper spacing trimmed; the title keeps its size. */
+#home .home-hero{padding-top:30px}
+#home .hv2-featured{margin-top:18px}
+/* Item 5c: clot event and reset buttons reach a comfortable phone tap height. */
+@media(max-width:760px){#two-ways-to-build-a-clot .p420-btn{min-height:44px}}
 </style>
 
 <script>
