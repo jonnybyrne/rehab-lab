@@ -4847,6 +4847,7 @@ selectLever('stretch');
 
 <header class="p423-hero">
 <svg class="p423-contours" viewBox="0 0 760 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><g fill="none" stroke="#1d3a49" stroke-width="1"><ellipse cx="640" cy="30" rx="90" ry="46"/><ellipse cx="640" cy="30" rx="160" ry="84"/><ellipse cx="640" cy="30" rx="235" ry="124"/><ellipse cx="640" cy="30" rx="315" ry="166"/><ellipse cx="640" cy="30" rx="400" ry="210"/><ellipse cx="640" cy="30" rx="490" ry="256"/></g><g fill="none" stroke="#274b5e" stroke-width="1"><ellipse cx="90" cy="230" rx="120" ry="60"/><ellipse cx="90" cy="230" rx="200" ry="102"/><ellipse cx="90" cy="230" rx="285" ry="146"/></g></svg>
+<div class="p423-motes" id="p423-motes" aria-hidden="true"></div>
 <p class="p423-kicker">The PM&amp;R Files · Essay 22 · Running</p>
 <h1 class="p423-title">Tahoe Lung</h1>
 <p class="p423-answer">It is not a diagnosis. It is trail slang for what 200 miles of dusty, pollen-thick, cold mountain air does to lungs breathing hard for days. The name is folklore. The ingredients are measurable.</p>
@@ -4859,7 +4860,7 @@ selectLever('stretch');
 <p class="p423-ch-label">Section one · The name</p>
 <h2 class="p423-h2">A diagnosis that isn't</h2>
 <p class="p423-body">Ask Tahoe 200 finishers about the cough, and many will give it a local name. No journal has ever published that name. It survives the way trail wisdom survives: repeated at aid stations until it sounds like fact.</p>
-<figure class="p423-note-card">
+<figure class="p423-note-card p423-rv">
 <figcaption class="p423-note-tag">Field note · the folk definition</figcaption>
 <blockquote class="p423-note-quote">Something the locals call Tahoe lung. Dust, pollen, cold air, and altitude gang up and fill your lungs with gunk until you cannot breathe right.</blockquote>
 </figure>
@@ -4871,14 +4872,15 @@ selectLever('stretch');
 <p class="p423-ch-label">Section two · The course</p>
 <h2 class="p423-h2">Two hundred miles of June air</h2>
 <p class="p423-body">The Tahoe 200 loops the rim of Lake Tahoe: about 200 miles, more than 36,000 feet of climbing, from 6,200 feet at the start to high ground over 10,000 feet. The cutoff is 100 to 105 hours, so finishers breathe course air for days and nights. The race ran in September for years; since 2022 it runs in June.</p>
-<div class="p423-profile" role="img" aria-label="Schematic elevation profile of the Tahoe 200 course: start at Homewood at 6,234 feet, climbing to high ground over 10,000 feet, returning to lake level.">
+<div class="p423-profile p423-rv" role="img" aria-label="Schematic elevation profile of the Tahoe 200 course: start at Homewood at 6,234 feet, climbing to high ground over 10,000 feet, returning to lake level.">
 <svg viewBox="0 0 760 215" focusable="false">
 <line x1="30" y1="50" x2="740" y2="50" stroke="#33566b" stroke-width="1" stroke-dasharray="5 5"/>
 <text class="p423-svglabel" x="36" y="42">10,000 ft</text>
-<path d="M30 163 L120 110 L200 128 L300 72 L390 95 L470 48 L560 118 L640 88 L740 163" fill="none" stroke="#7fd8e8" stroke-width="2.5"/>
+<path id="p423-profPath" d="M30 163 L120 110 L200 128 L300 72 L390 95 L470 48 L560 118 L640 88 L740 163" fill="none" stroke="#7fd8e8" stroke-width="2.5"/>
 <circle cx="30" cy="163" r="4" fill="#ffc95e"/>
 <circle cx="470" cy="48" r="4" fill="#ffc95e"/>
 <circle cx="740" cy="163" r="4" fill="#ffc95e"/>
+<circle class="p423-runner" cx="0" cy="0" r="5" fill="#ffc95e" stroke="#08131a" stroke-width="1.5"><animateMotion dur="11s" repeatCount="indefinite" path="M30 163 L120 110 L200 128 L300 72 L390 95 L470 48 L560 118 L640 88 L740 163"/></circle>
 <text class="p423-svglabel p423-svglabel-amber" x="30" y="188">START · HOMEWOOD · 6,234 FT</text>
 <text class="p423-svglabel p423-svglabel-amber" x="470" y="30" text-anchor="middle">HIGH GROUND · OVER 10,000 FT</text>
 <text class="p423-svglabel p423-svglabel-amber" x="740" y="188" text-anchor="end">BACK TO THE LAKE</text>
@@ -4893,8 +4895,9 @@ selectLever('stretch');
 <h2 class="p423-h2">The dose is in the distance</h2>
 <p class="p423-body">Breathing quietly, you move about 6 litres of air a minute, roughly 8,600 litres a day. At marathon effort, ventilation (the volume breathed per minute) climbs above 80 litres a minute. An ultrarunner sits between those numbers for days.</p>
 <p class="p423-body">Around 35 to 40 litres a minute, breathing switches from nose to mouth, and the nose's filter and humidifier drop partly out of the circuit. Nearly every moving minute of a 200-miler is spent past that switch. The totals:</p>
-<div class="p423-ledger">
-<div class="p423-lrow"><span class="p423-lnum">216 m³</span><p><span class="p423-llab">A mid-pack illustration</span> 80 hours moving at an average 45 litres a minute comes to 216,000 litres: about 25 days of resting breathing in one race.</p></div>
+<div class="p423-breath" aria-hidden="true"><svg viewBox="0 0 220 160" focusable="false"><path d="M110 4 L110 42" stroke="#41657d" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M110 42 C101 55 90 63 79 69" stroke="#41657d" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M110 42 C119 55 130 63 141 69" stroke="#41657d" stroke-width="4" stroke-linecap="round" fill="none"/><g class="p423-breath-lobes"><path d="M79 69 C55 75 42 97 46 119 C49 138 67 148 85 144 C101 140 107 126 105 106 C103 86 95 72 79 69 Z" fill="#0d1c28" stroke="#33566b" stroke-width="2"/><path d="M141 69 C165 75 178 97 174 119 C171 138 153 148 135 144 C119 140 113 126 115 106 C117 86 125 72 141 69 Z" fill="#0d1c28" stroke="#33566b" stroke-width="2"/><ellipse class="p423-breath-glow" cx="76" cy="108" rx="17" ry="24" fill="#7fd8e8" opacity=".16"/><ellipse class="p423-breath-glow" cx="144" cy="108" rx="17" ry="24" fill="#7fd8e8" opacity=".16"/></g></svg></div>
+<div class="p423-ledger p423-rv">
+<div class="p423-lrow"><span class="p423-lnum" data-count="216" data-suffix=" m³">216 m³</span><p><span class="p423-llab">A mid-pack illustration</span> 80 hours moving at an average 45 litres a minute comes to 216,000 litres: about 25 days of resting breathing in one race.</p></div>
 <div class="p423-lrow"><span class="p423-lnum p423-lnum-sm">200 to 260 m³</span><p><span class="p423-llab">The finisher range</span> Fast (about 48 hours of moving, breathing hard) or slow (105 hours, breathing easier), the total barely moves: speed changes the rate, the distance sets the dose.</p></div>
 </div>
 <p class="p423-plate">Arithmetic, not a measurement: nobody has metered the air on the course.</p>
@@ -4904,10 +4907,44 @@ selectLever('stretch');
 <p class="p423-ch-label">Section four · What is in the air</p>
 <h2 class="p423-h2">Size decides the neighborhood</h2>
 <p class="p423-body">Where a particle lands is mostly a question of size. Drag the marker.</p>
-<div class="p423-xpanel">
+<div class="p423-xpanel p423-rv">
 <p class="p423-panel-tag">The Particle Explorer</p>
 <div class="p423-xtrack" aria-hidden="true"><div class="p423-xzone p423-xzone-alv" id="p423-zoneAlv"><span>Alveoli</span></div><div class="p423-xzone p423-xzone-cond on" id="p423-zoneCond"><span>Conducting airways</span></div><div class="p423-xzone p423-xzone-nose" id="p423-zoneNose"><span>Nose and throat</span></div><div class="p423-xmark" id="p423-xmark"></div></div>
 <div class="p423-xscale" aria-hidden="true"><span>0.1</span><span>1</span><span>10</span><span>100 microns</span></div>
+<div class="p423-xstage" id="p423-xstage">
+<svg viewBox="0 0 720 316" aria-hidden="true" focusable="false">
+<path d="M300 168 C232 162 196 206 206 246 C213 276 258 290 298 284 C328 279 340 252 338 222 C337 192 326 171 300 168 Z" fill="#0d1c28" stroke="#1d3a49" stroke-width="1.5"/>
+<path d="M420 168 C488 162 524 206 514 246 C507 276 462 290 422 284 C392 279 380 252 382 222 C383 192 394 171 420 168 Z" fill="#0d1c28" stroke="#1d3a49" stroke-width="1.5"/>
+<g class="p423-awzone" id="p423-awNose" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<path d="M314 6 C301 19 300 32 312 37 C305 40 306 47 314 48"/>
+<path d="M321 53 q9 -6 18 0 q-9 6 -18 0"/>
+<path d="M340 28 C348 42 355 53 359 66"/>
+</g>
+<g class="p423-awzone" id="p423-awCond" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+<path d="M348 66 L348 148"/>
+<path d="M372 66 L372 148"/>
+<path d="M348 84 L372 84 M348 102 L372 102 M348 120 L372 120" stroke-width="1.5" opacity=".65"/>
+<path d="M352 148 C338 172 312 188 286 198"/>
+<path d="M368 148 C382 172 408 188 434 198"/>
+<path d="M286 198 C272 214 258 226 244 234"/>
+<path d="M286 198 C282 218 276 234 268 246"/>
+<path d="M286 198 C298 214 306 228 310 240"/>
+<path d="M434 198 C448 214 462 226 476 234"/>
+<path d="M434 198 C438 218 444 234 452 246"/>
+<path d="M434 198 C422 214 414 228 410 240"/>
+</g>
+<g class="p423-awzone" id="p423-awAlv" fill="none" stroke="currentColor" stroke-width="2">
+<circle class="aw-alv" cx="238" cy="241" r="6"/><circle class="aw-alv" cx="228" cy="231" r="4.5"/><circle class="aw-alv" cx="249" cy="231" r="4.5"/>
+<circle class="aw-alv" cx="262" cy="253" r="6"/><circle class="aw-alv" cx="252" cy="243" r="4.5"/><circle class="aw-alv" cx="273" cy="243" r="4.5"/>
+<circle class="aw-alv" cx="316" cy="247" r="6"/><circle class="aw-alv" cx="306" cy="237" r="4.5"/><circle class="aw-alv" cx="327" cy="237" r="4.5"/>
+<circle class="aw-alv" cx="482" cy="241" r="6"/><circle class="aw-alv" cx="472" cy="231" r="4.5"/><circle class="aw-alv" cx="493" cy="231" r="4.5"/>
+<circle class="aw-alv" cx="458" cy="253" r="6"/><circle class="aw-alv" cx="448" cy="243" r="4.5"/><circle class="aw-alv" cx="469" cy="243" r="4.5"/>
+<circle class="aw-alv" cx="404" cy="247" r="6"/><circle class="aw-alv" cx="394" cy="237" r="4.5"/><circle class="aw-alv" cx="415" cy="237" r="4.5"/>
+</g>
+</svg>
+<div class="p423-xmotes" id="p423-xmotes" aria-hidden="true"></div>
+<canvas class="p423-xcanvas" id="p423-xcanvas" width="720" height="316" aria-hidden="true"></canvas>
+</div>
 <div class="p423-ctl">
 <label class="p423-ctl-label" for="p423-xsize">Particle size <span class="p423-ctl-state" id="p423-xsizeState">about 5 microns</span></label>
 <input type="range" class="p423-range" id="p423-xsize" min="0" max="300" step="1" value="170" aria-describedby="p423-xhint">
@@ -4934,9 +4971,9 @@ selectLever('stretch');
 <p class="p423-ch-label">Section five · What the studies measure</p>
 <h2 class="p423-h2">Measured, on other mountains</h2>
 <p class="p423-body">Nobody has put a spirometer, a device that measures how fast you can blow air out, at the Tahoe finish line. Around other races, the pattern is consistent:</p>
-<div class="p423-ledger">
-<div class="p423-lrow"><span class="p423-lnum">-19.5%</span><p><span class="p423-llab">FEV1 after a 107 km mountain ultra</span> (47 runners, 2025). Maximal inspiratory pressure, the strength of the inhale itself, fell 25.3%. <span class="p423-lsrc">Martinez-Navarro and colleagues, Sports Medicine Open, 2025</span></p></div>
-<div class="p423-lrow"><span class="p423-lnum">-9.5%</span><p><span class="p423-llab">FEV1 after 80.6 to 100 km runs</span> (15 runners, 1981). Total lung volume blown out fell 12.4%; values improved within 2.5 hours of finishing. <span class="p423-lsrc">Mahler and Loke, Yale Journal of Biology and Medicine, 1981</span></p></div>
+<div class="p423-ledger p423-rv">
+<div class="p423-lrow"><span class="p423-lnum" data-count="-19.5" data-dec="1" data-suffix="%">-19.5%</span><p><span class="p423-llab">FEV1 after a 107 km mountain ultra</span> (47 runners, 2025). Maximal inspiratory pressure, the strength of the inhale itself, fell 25.3%. <span class="p423-lsrc">Martinez-Navarro and colleagues, Sports Medicine Open, 2025</span></p></div>
+<div class="p423-lrow"><span class="p423-lnum" data-count="-9.5" data-dec="1" data-suffix="%">-9.5%</span><p><span class="p423-llab">FEV1 after 80.6 to 100 km runs</span> (15 runners, 1981). Total lung volume blown out fell 12.4%; values improved within 2.5 hours of finishing. <span class="p423-lsrc">Mahler and Loke, Yale Journal of Biology and Medicine, 1981</span></p></div>
 <div class="p423-lrow"><span class="p423-lnum">1 in 5</span><p><span class="p423-llab">Athletes have lower airway dysfunction</span>; among elite endurance athletes it is 1 in 4. In a survey of 1,212 ultrarunners, 13 in 100 reported exercise-induced asthma. Much of any ultra field starts with reactive airways. <span class="p423-lsrc">IOC consensus meta-analysis, British Journal of Sports Medicine; the ULTRA study, PLOS ONE</span></p></div>
 </div>
 <p class="p423-body">The cough stops being mysterious: airways narrow measurably, the breathing muscles tire measurably, and the air was breathed cold, dry, dusty, and full of pollen, at altitude. Most of the drop recovers within hours; small-airway changes can linger about a day.</p>
@@ -5020,6 +5057,7 @@ var mark=document.getElementById('p423-xmark');
 var zones={alv:document.getElementById('p423-zoneAlv'),cond:document.getElementById('p423-zoneCond'),nose:document.getElementById('p423-zoneNose')};
 var chips=view.querySelectorAll('.p423-chip');
 var pinned='about 5 microns';
+var stageUpdate=null;
 var ZONES={
 alv:{where:'the alveoli',desc:'The smallest particles reach the alveoli, the tiny air sacs where oxygen and carbon dioxide trade places, and clearing down here is slow.'},
 cond:{where:'the conducting airways',desc:'Mid-size particles settle in the branching tubes that carry air down, where mucus and a good cough can clear some of them back out.'},
@@ -5037,6 +5075,7 @@ function render(){
  desc.textContent=ZONES[z].desc;
  mark.style.left=(v/3)+'%';
  for(var k in zones){zones[k].classList.toggle('on',k===z);}
+ if(stageUpdate)stageUpdate(z,s);
 }
 slider.addEventListener('input',function(){
  pinned=null;
@@ -5052,6 +5091,196 @@ chips.forEach(function(ch){
   render();
  });
 });
+
+/* Motion pass, Oct 28 2026: hero motes, scroll reveals, profile draw-in,
+   stat count-ups, and the animated Particle Explorer stage. Presentation only. */
+var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var stage=document.getElementById('p423-xstage');
+var awZones={nose:document.getElementById('p423-awNose'),cond:document.getElementById('p423-awCond'),alv:document.getElementById('p423-awAlv')};
+function makeMotes(box,n){
+ if(!box||RM)return;
+ for(var i=0;i<n;i++){
+  var m=document.createElement('span');
+  m.className='p423-mote';
+  var sz=(1.5+Math.random()*2.6).toFixed(1);
+  m.style.width=sz+'px';m.style.height=sz+'px';
+  m.style.left=(Math.random()*97).toFixed(1)+'%';
+  m.style.top=(8+Math.random()*84).toFixed(1)+'%';
+  m.style.setProperty('--d',(9+Math.random()*9).toFixed(1)+'s');
+  m.style.setProperty('--dl',(-Math.random()*12).toFixed(1)+'s');
+  if(Math.random()<.4)m.classList.add('amber');
+  box.appendChild(m);
+ }
+}
+makeMotes(document.getElementById('p423-motes'),14);
+makeMotes(document.getElementById('p423-xmotes'),8);
+if(RM){view.querySelectorAll('animateMotion').forEach(function(a){var c=a.parentNode;if(c){c.setAttribute('cx','30');c.setAttribute('cy','163');}a.remove();});}
+var hasIO=('IntersectionObserver' in window);
+if(!RM&&hasIO){
+ view.classList.add('p423-anim');
+ var rvIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rvIO.unobserve(e.target);}});},{threshold:.12});
+ view.querySelectorAll('.p423-rv').forEach(function(el){rvIO.observe(el);});
+ var profPath=document.getElementById('p423-profPath');
+ if(profPath){
+  var plen=profPath.getTotalLength();
+  profPath.style.strokeDasharray=plen;
+  profPath.style.strokeDashoffset=plen;
+  var profBox=view.querySelector('.p423-profile');
+  var prIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){profPath.style.transition='stroke-dashoffset 2.6s ease .15s';profPath.style.strokeDashoffset='0';prIO.disconnect();}});},{threshold:.3});
+  if(profBox)prIO.observe(profBox);
+ }
+ var cuIO=new IntersectionObserver(function(es){es.forEach(function(en){
+  if(!en.isIntersecting)return;
+  cuIO.unobserve(en.target);
+  var el=en.target,target=parseFloat(el.getAttribute('data-count')),dec=parseInt(el.getAttribute('data-dec')||'0',10),suf=el.getAttribute('data-suffix')||'',orig=el.getAttribute('data-orig'),t0=null;
+  function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1300,1),e=1-Math.pow(1-p,3);el.textContent=(target*e).toFixed(dec)+suf;if(p<1)requestAnimationFrame(step);else el.textContent=orig;}
+  requestAnimationFrame(step);
+ });},{threshold:.4});
+ view.querySelectorAll('.p423-lnum[data-count]').forEach(function(el){el.setAttribute('data-orig',el.textContent);cuIO.observe(el);});
+}
+var xcv=document.getElementById('p423-xcanvas');
+var xctx=xcv?xcv.getContext('2d'):null;
+var SW=720,SH=316,parts=[],stageLive=false,lastT=0,spawnAcc=0,stageTimer=null;
+var stageState={zone:'cond',size:5,preset:null};
+var TIPS={L:[[244,234],[268,246],[310,240]],R:[[476,234],[452,246],[410,240]]};
+stageUpdate=function(z,s){
+ var pk=null;
+ var pressed=view.querySelector('.p423-chip[aria-pressed="true"]');
+ if(pressed){var xv=pressed.getAttribute('data-xv');pk=xv==='52'?'smoke':(xv==='287'?'pollen':'dust');}
+ stageState={zone:z,size:s,preset:pk};
+ for(var k in awZones){if(awZones[k])awZones[k].classList.toggle('on',k===z);}
+ if(RM){drawStaticStage();return;}
+ if(stageTimer)clearTimeout(stageTimer);
+ stageTimer=setTimeout(resetStream,110);
+};
+function buildPath(side,tip){
+ var pts=[[322,26],[346,50],[359,76],[360,110],[360,146]];
+ if(side==='L'){pts.push([336,168],[290,196]);}else{pts.push([384,168],[430,196]);}
+ pts.push(tip);
+ var cum=[0];
+ for(var i=1;i<pts.length;i++){var dx=pts[i][0]-pts[i-1][0],dy=pts[i][1]-pts[i-1][1];cum.push(cum[i-1]+Math.sqrt(dx*dx+dy*dy));}
+ return {pts:pts,cum:cum,total:cum[cum.length-1]};
+}
+function pointAt(p,d){
+ if(d<=0)return p.pts[0];
+ if(d>=p.total)return p.pts[p.pts.length-1];
+ var i=1;while(p.cum[i]<d)i++;
+ var f=(d-p.cum[i-1])/(p.cum[i]-p.cum[i-1]);
+ return [p.pts[i-1][0]+(p.pts[i][0]-p.pts[i-1][0])*f,p.pts[i-1][1]+(p.pts[i][1]-p.pts[i-1][1])*f];
+}
+function zoneTarget(p){
+ if(stageState.zone==='nose')return 6+Math.random()*(p.cum[3]-8);
+ if(stageState.zone==='cond')return p.cum[3]+Math.random()*Math.max(p.cum[6]-6-p.cum[3],1);
+ return p.total-2-Math.random()*5;
+}
+function particleColor(){
+ if(stageState.preset==='smoke')return '215,227,232';
+ if(stageState.preset==='dust')return '232,207,154';
+ if(stageState.preset==='pollen')return '255,201,94';
+ if(stageState.zone==='alv')return '127,216,232';
+ if(stageState.zone==='nose')return '255,201,94';
+ return '169,220,234';
+}
+function particleRadius(){
+ var r=1.3+((Math.log10(stageState.size)+1)/3)*4.2;
+ return Math.max(1.1,r)*(0.8+Math.random()*0.45);
+}
+function maxParts(){
+ var r0=1.3+((Math.log10(stageState.size)+1)/3)*4.2;
+ var n=Math.round(34*Math.min(1,3.6/Math.max(r0,2.2)));
+ return window.innerWidth<720?Math.round(n*0.7):n;
+}
+function spawn(distributed){
+ var side=Math.random()<.5?'L':'R';
+ var tips=TIPS[side];
+ var p=buildPath(side,tips[Math.floor(Math.random()*tips.length)]);
+ var tgt=zoneTarget(p);
+ var r=particleRadius(),jj=Math.min(11,3.5*r);
+ parts.push({p:p,tgt:tgt,d:distributed?Math.random()*tgt:0,sp:52+Math.random()*36,r:r,col:particleColor(),mode:'go',ttl:2.2+Math.random()*1.4,age:0,seed:Math.random()*6.28,lane:(Math.random()-0.5)*9,jx:(Math.random()-0.5)*jj,jy:(Math.random()-0.5)*jj});
+}
+function resetStream(){
+ parts=[];
+ var n=maxParts();
+ for(var i=0;i<n;i++)spawn(true);
+}
+function sizeCanvas(){
+ if(!xcv||!stage)return;
+ var dpr=Math.min(window.devicePixelRatio||1,2);
+ var w=stage.clientWidth,h=stage.clientHeight;
+ if(!w||!h)return;
+ xcv.width=Math.round(w*dpr);xcv.height=Math.round(h*dpr);
+}
+function drawParts(ts,dt){
+ if(!xctx)return;
+ var dpr=Math.min(window.devicePixelRatio||1,2);
+ var sc=(xcv.clientWidth||SW)/SW;
+ xctx.setTransform(dpr*sc,0,0,dpr*sc,0,0);
+ xctx.clearRect(0,0,SW,SH);
+ spawnAcc+=dt;
+ var maxN=maxParts();
+ var spawnGap=stageState.size>20?0.34:0.14;
+ while(spawnAcc>spawnGap&&parts.length<maxN){spawn(false);spawnAcc-=spawnGap;}
+ if(spawnAcc>spawnGap)spawnAcc=0;
+ for(var i=parts.length-1;i>=0;i--){
+  var pt=parts[i];
+  if(pt.mode==='go'){
+   var remain=pt.tgt-pt.d;
+   var v=pt.sp*Math.max(0.22,Math.min(1,remain/55));
+   pt.d+=v*dt;
+   if(pt.d>=pt.tgt){pt.d=pt.tgt;pt.mode='sit';}
+  }else{
+   pt.age+=dt;
+   if(pt.age>pt.ttl){parts.splice(i,1);continue;}
+  }
+  var pos=pointAt(pt.p,pt.d);
+  var sway=pt.mode==='go'?Math.sin(ts/340+pt.seed)*1.6:Math.sin(ts/620+pt.seed)*0.9;
+  var x=pos[0]+sway+pt.lane*0.7+(pt.mode==='sit'?pt.jx*0.4:0);
+  var y=pos[1]+pt.lane*0.3+(pt.mode==='sit'?pt.jy*0.4+Math.sin(ts/700+pt.seed)*0.7:0);
+  var fade=1;
+  if(pt.mode==='sit'&&pt.age>pt.ttl-0.6)fade=Math.max((pt.ttl-pt.age)/0.6,0);
+  xctx.beginPath();xctx.arc(x,y,pt.r*1.45,0,6.283);xctx.fillStyle='rgba('+pt.col+','+(0.09*fade)+')';xctx.fill();
+  xctx.beginPath();xctx.arc(x,y,pt.r,0,6.283);xctx.fillStyle='rgba('+pt.col+','+(0.92*fade)+')';xctx.fill();
+ }
+}
+function stageLoop(ts){
+ if(!stageLive)return;
+ var dt=lastT?Math.min((ts-lastT)/1000,0.05):0.016;
+ lastT=ts;
+ drawParts(ts,dt);
+ requestAnimationFrame(stageLoop);
+}
+function drawStaticStage(){
+ if(!xctx||!stage)return;
+ sizeCanvas();
+ var dpr=Math.min(window.devicePixelRatio||1,2);
+ var sc=(xcv.clientWidth||SW)/SW;
+ xctx.setTransform(dpr*sc,0,0,dpr*sc,0,0);
+ xctx.clearRect(0,0,SW,SH);
+ var col=particleColor();
+ for(var i=0;i<16;i++){
+  var side=i%2?'L':'R';
+  var tips=TIPS[side];
+  var p=buildPath(side,tips[i%tips.length]);
+  var pos=pointAt(p,zoneTarget(p));
+  xctx.beginPath();xctx.arc(pos[0],pos[1],particleRadius(),0,6.283);xctx.fillStyle='rgba('+col+',0.9)';xctx.fill();
+ }
+}
+if(xctx&&stage){
+ if(RM){
+  var rIO=hasIO?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)drawStaticStage();});},{threshold:.15}):null;
+  if(rIO)rIO.observe(stage);else drawStaticStage();
+ }else{
+  resetStream();
+  if(hasIO){
+   var sIO=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&!stageLive){sizeCanvas();stageLive=true;lastT=0;requestAnimationFrame(stageLoop);}
+    else if(!e.isIntersecting){stageLive=false;}
+   });},{threshold:.15});
+   sIO.observe(stage);
+  }
+  window.addEventListener('resize',sizeCanvas);
+ }
+}
 render();
 })();
 </script>
@@ -11010,39 +11239,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 }
 #tahoe-lung{--p423-bg:#08131a;--p423-panel:#0c1a23;--p423-panel2:#0a151d;--p423-line:#1e3542;--p423-ink:#dcebf2;--p423-dim:#8fb0bf;--p423-air:#7fd8e8;--p423-pollen:#ffc95e;background:var(--p423-bg);color:var(--p423-ink)}
 #tahoe-lung .p423-wrap{max-width:1080px;margin:0 auto;padding:0 24px 90px}
-#tahoe-lung .p423-hero{position:relative;padding:64px 0 10px;overflow:hidden}
+#tahoe-lung .p423-hero{position:relative;padding:64px 0 10px;overflow:hidden;text-align:center}
 #tahoe-lung .p423-contours{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
 #tahoe-lung .p423-kicker{position:relative;font:600 12px "IBM Plex Mono",monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--p423-pollen);margin:0 0 18px}
 #tahoe-lung .p423-title{position:relative;font:600 clamp(48px,7.4vw,80px)/1.02 "Newsreader",Georgia,serif;letter-spacing:-.01em;margin:0 0 20px;color:#f2f9fc}
-#tahoe-lung .p423-answer{position:relative;font:italic 400 clamp(18px,2.2vw,22px)/1.55 "Newsreader",Georgia,serif;color:var(--p423-ink);max-width:48ch;margin:0 0 26px}
-#tahoe-lung .p423-byline-row{position:relative;border-top:1px solid var(--p423-line);padding-top:14px}
+#tahoe-lung .p423-answer{position:relative;font:italic 400 clamp(18px,2.2vw,22px)/1.55 "Newsreader",Georgia,serif;color:var(--p423-ink);max-width:48ch;margin:0 auto 26px}
+#tahoe-lung .p423-byline-row{position:relative;border-top:1px solid var(--p423-line);padding-top:14px;text-align:center}
 #tahoe-lung .p423-byline{font:500 12.5px "IBM Plex Mono",monospace;letter-spacing:.04em;color:var(--p423-dim)}
 #tahoe-lung .p423-byline .p423-role{color:#5f7f8f}
 #tahoe-lung .p423-sec{margin-top:64px}
-#tahoe-lung .p423-ch-label{font:600 11.5px "IBM Plex Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--p423-air);margin:0 0 10px}
-#tahoe-lung .p423-h2{font:600 clamp(27px,3.6vw,36px)/1.14 "Newsreader",Georgia,serif;margin:0 0 16px;color:#f2f9fc}
-#tahoe-lung .p423-body{font:400 17px/1.68 "IBM Plex Sans",sans-serif;color:var(--p423-ink);max-width:68ch;margin:0 0 16px}
-#tahoe-lung .p423-caption{font:400 15.5px/1.6 "IBM Plex Sans",sans-serif;color:var(--p423-dim);max-width:68ch;margin:14px 0 0}
-#tahoe-lung .p423-note-card{margin:26px 0;border:1px solid var(--p423-line);border-left:3px solid var(--p423-pollen);background:var(--p423-panel);border-radius:8px;padding:22px 24px;max-width:72ch}
+#tahoe-lung .p423-ch-label{font:600 11.5px "IBM Plex Mono",monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--p423-air);margin:0 0 10px;text-align:center}
+#tahoe-lung .p423-h2{font:600 clamp(27px,3.6vw,36px)/1.14 "Newsreader",Georgia,serif;margin:0 0 16px;color:#f2f9fc;text-align:center}
+#tahoe-lung .p423-body{font:400 17px/1.68 "IBM Plex Sans",sans-serif;color:var(--p423-ink);max-width:68ch;margin:0 auto 16px}
+#tahoe-lung .p423-caption{font:400 15.5px/1.6 "IBM Plex Sans",sans-serif;color:var(--p423-dim);max-width:68ch;margin:14px auto 0}
+#tahoe-lung .p423-note-card{margin:26px auto;border:1px solid var(--p423-line);border-left:3px solid var(--p423-pollen);background:var(--p423-panel);border-radius:8px;padding:22px 24px;max-width:72ch}
 #tahoe-lung .p423-note-tag{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--p423-pollen);margin:0 0 12px}
 #tahoe-lung .p423-note-quote{font:italic 400 clamp(18px,2.3vw,21px)/1.55 "Newsreader",Georgia,serif;color:#f2f9fc;margin:0}
 #tahoe-lung .p423-note-attr{font:500 12.5px "IBM Plex Mono",monospace;color:var(--p423-dim);margin:14px 0 0}
-#tahoe-lung .p423-profile{margin:22px 0 4px;border:1px solid var(--p423-line);border-radius:8px;background:var(--p423-panel2);padding:14px 10px 4px}
+#tahoe-lung .p423-profile{margin:22px auto 4px;max-width:880px;border:1px solid var(--p423-line);border-radius:8px;background:var(--p423-panel2);padding:14px 10px 4px}
 #tahoe-lung .p423-profile svg{width:100%;height:auto;display:block}
 #tahoe-lung .p423-svglabel{font:600 10.5px "IBM Plex Mono",monospace;fill:var(--p423-dim);letter-spacing:.08em}
 #tahoe-lung .p423-svglabel-amber{fill:var(--p423-pollen)}
 #tahoe-lung .p423-svglabel-cyan{fill:var(--p423-air)}
-#tahoe-lung .p423-panel-tag{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--p423-pollen);margin:0 0 16px}
+#tahoe-lung .p423-panel-tag{font:600 11px "IBM Plex Mono",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--p423-pollen);margin:0 0 16px;text-align:center}
 #tahoe-lung .p423-ctl{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-#tahoe-lung .p423-ctl-label{font:600 11.5px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--p423-dim)}
+#tahoe-lung .p423-ctl-label{font:600 11.5px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--p423-dim);text-align:center}
 #tahoe-lung .p423-ctl-state{color:var(--p423-pollen);letter-spacing:.05em}
 #tahoe-lung input.p423-range{width:100%;min-height:44px;accent-color:var(--p423-air);cursor:pointer;margin:0}
-#tahoe-lung .p423-airchips{display:flex;flex-wrap:wrap;gap:8px}
+#tahoe-lung .p423-airchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 #tahoe-lung .p423-chip{min-height:44px;padding:10px 14px;border:1px solid var(--p423-line);border-radius:6px;background:#0d1b25;color:var(--p423-ink);font:600 12.5px "IBM Plex Mono",monospace;cursor:pointer}
 #tahoe-lung .p423-chip[aria-pressed="true"]{border-color:var(--p423-pollen);color:var(--p423-pollen);background:#1d1607}
 #tahoe-lung .p423-chip:focus-visible,#tahoe-lung input.p423-range:focus-visible{outline:2px solid var(--p423-pollen);outline-offset:2px}
-#tahoe-lung .p423-plate{display:inline-block;margin:16px 0 2px;border:1px dashed #33566b;border-radius:4px;padding:7px 12px;font:500 11.5px "IBM Plex Mono",monospace;color:var(--p423-dim)}
-#tahoe-lung .p423-xpanel{border:1px solid var(--p423-line);background:var(--p423-panel2);border-radius:10px;padding:22px 22px 18px;margin-top:22px}
+#tahoe-lung .p423-plate{display:block;width:fit-content;margin:16px auto 2px;border:1px dashed #33566b;border-radius:4px;padding:7px 12px;font:500 11.5px "IBM Plex Mono",monospace;color:var(--p423-dim)}
+#tahoe-lung .p423-xpanel{border:1px solid var(--p423-line);background:var(--p423-panel2);border-radius:10px;padding:22px 22px 18px;margin:22px auto 0;max-width:780px;position:relative}
 #tahoe-lung .p423-xtrack{position:relative;display:flex;height:60px;border:1px solid var(--p423-line);border-radius:8px;margin-top:4px}
 #tahoe-lung .p423-xzone{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6px;transition:background .2s ease}
 #tahoe-lung .p423-xzone span{font:600 10.5px "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--p423-dim)}
@@ -11056,21 +11285,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #tahoe-lung .p423-xmark{position:absolute;top:-7px;bottom:-7px;left:56.7%;width:3px;background:var(--p423-pollen);transform:translateX(-50%);pointer-events:none}
 #tahoe-lung .p423-xmark::before{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:11px;height:11px;border-radius:50%;background:var(--p423-pollen)}
 #tahoe-lung .p423-xscale{display:flex;justify-content:space-between;font:500 10.5px "IBM Plex Mono",monospace;color:#5f7f8f;margin:7px 0 16px}
-#tahoe-lung .p423-xhint{font:400 12.5px/1.5 "IBM Plex Sans",sans-serif;color:var(--p423-dim);margin:2px 0 0}
+#tahoe-lung .p423-xhint{font:400 12.5px/1.5 "IBM Plex Sans",sans-serif;color:var(--p423-dim);margin:2px 0 0;text-align:center}
 #tahoe-lung .p423-xread{border-top:1px solid var(--p423-line);margin-top:18px;padding-top:16px}
-#tahoe-lung .p423-xland{font:600 16.5px/1.45 "IBM Plex Sans",sans-serif;color:var(--p423-ink);margin:0 0 8px}
+#tahoe-lung .p423-xland{font:600 16.5px/1.45 "IBM Plex Sans",sans-serif;color:var(--p423-ink);margin:0 0 8px;text-align:center}
 #tahoe-lung .p423-xwhere{color:var(--p423-air)}
-#tahoe-lung .p423-xdesc{font:400 15.5px/1.6 "IBM Plex Sans",sans-serif;color:var(--p423-ink);margin:0;max-width:68ch}
-#tahoe-lung .p423-ledger{margin-top:20px;border-top:1px solid var(--p423-line)}
+#tahoe-lung .p423-xdesc{font:400 15.5px/1.6 "IBM Plex Sans",sans-serif;color:var(--p423-ink);margin:0 auto;max-width:68ch}
+#tahoe-lung .p423-ledger{margin:20px auto 0;max-width:880px;border-top:1px solid var(--p423-line)}
 #tahoe-lung .p423-lrow{display:grid;grid-template-columns:250px 1fr;gap:6px 26px;padding:18px 0;border-bottom:1px solid var(--p423-line);align-items:baseline}
 #tahoe-lung .p423-lnum{font:700 clamp(30px,4vw,42px)/1.05 "IBM Plex Mono",monospace;color:var(--p423-air);white-space:nowrap}
 #tahoe-lung .p423-lnum-sm{font-size:clamp(21px,2.9vw,30px)}
 #tahoe-lung .p423-lrow p{font:400 15.5px/1.62 "IBM Plex Sans",sans-serif;color:var(--p423-ink);margin:0}
 #tahoe-lung .p423-llab{font:700 12px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--p423-pollen);display:block;margin-bottom:5px}
 #tahoe-lung .p423-lsrc{color:var(--p423-dim);font-size:13px}
-#tahoe-lung .p423-note{font:400 15px/1.65 "IBM Plex Sans",sans-serif;color:var(--p423-ink);max-width:68ch;margin:0 0 12px}
+#tahoe-lung .p423-note{font:400 15px/1.65 "IBM Plex Sans",sans-serif;color:var(--p423-ink);max-width:68ch;margin:0 auto 12px}
 #tahoe-lung .p423-note b{color:var(--p423-pollen);font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.03em}
-#tahoe-lung .p423-notes,#tahoe-lung .p423-sources{margin-top:26px;border-top:1px solid var(--p423-line)}
+#tahoe-lung .p423-notes,#tahoe-lung .p423-sources{margin:26px auto 0;max-width:880px;border-top:1px solid var(--p423-line)}
 #tahoe-lung .p423-notes h3,#tahoe-lung .p423-sources h3{font:600 18px "IBM Plex Sans",sans-serif;color:#f2f9fc}
 #tahoe-lung .p423-notes ol,#tahoe-lung .p423-sources ol{font:400 14px/1.65 "IBM Plex Sans",sans-serif;color:var(--p423-dim);padding-left:22px}
 #tahoe-lung .p423-notes li,#tahoe-lung .p423-sources li{margin-bottom:7px}
@@ -11078,6 +11307,39 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #tahoe-lung .p3-drawer-title{color:#f2f9fc}
 #tahoe-lung .p3-drawer-hint{color:var(--p423-dim)}
 #tahoe-lung .p423-footer{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--p423-line);margin-top:34px;padding-top:16px;font:500 12px "IBM Plex Mono",monospace;color:#5f7f8f}
+#tahoe-lung .p423-motes{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#tahoe-lung .p423-mote{position:absolute;border-radius:50%;background:var(--p423-air);opacity:0;animation:p423Drift var(--d,11s) ease-in-out var(--dl,0s) infinite alternate}
+#tahoe-lung .p423-mote.amber{background:var(--p423-pollen)}
+@keyframes p423Drift{0%{transform:translate3d(0,10px,0);opacity:0}30%{opacity:.5}70%{opacity:.32}100%{transform:translate3d(12px,-34px,0);opacity:0}}
+#tahoe-lung.p423-anim .p423-rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+#tahoe-lung.p423-anim .p423-rv.in{opacity:1;transform:none}
+#tahoe-lung .p423-runner{filter:drop-shadow(0 0 4px rgba(255,201,94,.65))}
+#tahoe-lung .p423-breath{display:flex;justify-content:center;margin:30px auto 2px}
+#tahoe-lung .p423-breath svg{width:210px;height:auto;display:block}
+#tahoe-lung .p423-breath-lobes{transform-box:fill-box;transform-origin:50% 0;animation:p423Breath 5.4s ease-in-out infinite}
+#tahoe-lung .p423-breath-glow{animation:p423Glow 5.4s ease-in-out infinite}
+@keyframes p423Breath{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes p423Glow{0%,100%{opacity:.16}50%{opacity:.4}}
+#tahoe-lung .p423-xstage{position:relative;margin:4px 0 18px;border:1px solid var(--p423-line);border-radius:8px;background:#081520;overflow:hidden;aspect-ratio:720/316}
+#tahoe-lung .p423-xstage>svg{position:absolute;inset:0;width:100%;height:100%}
+#tahoe-lung .p423-xcanvas{position:absolute;inset:0;width:100%;height:100%}
+#tahoe-lung .p423-xmotes{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#tahoe-lung .p423-awzone{color:#42667d;opacity:.5;transition:opacity .35s ease}
+#tahoe-lung .p423-awzone.on{opacity:1;animation:p423ZonePulse 2.2s ease-in-out infinite alternate}
+#tahoe-lung #p423-awNose.on{color:var(--p423-pollen);filter:drop-shadow(0 0 5px rgba(255,201,94,.45))}
+#tahoe-lung #p423-awCond.on{color:var(--p423-air);filter:drop-shadow(0 0 5px rgba(127,216,232,.4))}
+#tahoe-lung #p423-awAlv.on{color:var(--p423-air);filter:drop-shadow(0 0 5px rgba(127,216,232,.4))}
+#tahoe-lung #p423-awAlv .aw-alv{fill:#0e2230;transition:fill .35s ease}
+#tahoe-lung #p423-awAlv.on .aw-alv{fill:#1a4a66}
+@keyframes p423ZonePulse{from{opacity:.8}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){
+#tahoe-lung .p423-mote{animation:none}
+#tahoe-lung .p423-breath-lobes{animation:none}
+#tahoe-lung .p423-breath-glow{animation:none}
+#tahoe-lung .p423-awzone{transition:none}
+#tahoe-lung .p423-awzone.on{animation:none}
+#tahoe-lung .p423-xzone{transition:none}
+}
 @media(max-width:720px){
 #tahoe-lung .p423-wrap{padding:0 16px 70px}
 #tahoe-lung .p423-hero{padding-top:44px}
@@ -11086,6 +11348,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #tahoe-lung .p423-xtrack{height:54px}
 #tahoe-lung .p423-xzone span{font-size:9px}
 #tahoe-lung .p423-xpanel{padding:16px 14px 14px}
+#tahoe-lung .p423-breath svg{width:168px}
 }
 
 </style>
