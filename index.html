@@ -7573,10 +7573,10 @@ var hero=$('p426-hero');
 if(hero){
   var arm=document.createElement('div'); arm.className='p426-arm'; arm.setAttribute('aria-hidden','true');
   arm.innerHTML='<div class="p426-arm-inner"><svg viewBox="0 0 176 176" width="176" height="176" focusable="false">'
-    +'<line x1="146" y1="22" x2="60" y2="128" stroke="#8E9BB3" stroke-width="5" stroke-linecap="round"/>'
+    +'<line x1="146" y1="22" x2="60" y2="128" stroke="#C9A86A" stroke-width="5" stroke-linecap="round"/>'
     +'<rect x="47" y="116" width="21" height="9" rx="2" transform="rotate(50 57 120)" fill="#FFD479"/>'
-    +'<line x1="60" y1="128" x2="53" y2="147" stroke="#E8ECF1" stroke-width="2"/>'
-    +'<circle cx="146" cy="22" r="11" fill="#141A24" stroke="#3A4356" stroke-width="1.5"/>'
+    +'<line x1="60" y1="128" x2="53" y2="147" stroke="#E8DCC0" stroke-width="2"/>'
+    +'<circle cx="146" cy="22" r="11" fill="#2A1C0E" stroke="#7A5E22" stroke-width="1.5"/>'
     +'<circle cx="146" cy="22" r="3.5" fill="#FFD479"/></svg></div>';
   hero.appendChild(arm);
   var lower=$('p426-lower'), skip=$('p426-skip');
@@ -14172,6 +14172,167 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #the-muscle-microphone .p426-scope-btns{margin-top:8px}
 #the-muscle-microphone .p426-sbtn{min-height:36px;padding:7px 12px}
 }
+
+/* ===== Essay 24 RE-THEME 2026-10-31 · photo-finish film lab on a light table =====
+   A LIGHT essay: warm paper base, ink traces, race red kept for timing only.
+   Palette: paper #F6F1E3 · card #FFFDF4 · deep paper #EFE7CF · ink #1B1611 ·
+   soft ink #4E4636 · faint ink #655B40 · rule #D9CEAC · strong rule #AE9C6E ·
+   timing red #D92B20 · red text #B02318 · button red #BC2418 ·
+   sensory cobalt #2456A0 · caught green #1E7A46.
+   Presentation only: no copy, numbers, or engine logic are touched. */
+#the-speed-trap{background:#F6F1E3;background-image:radial-gradient(120% 60% at 50% -10%,#FCF8EC 0%,rgba(252,248,236,0) 55%),repeating-linear-gradient(0deg,rgba(27,22,17,.014) 0 1px,rgba(27,22,17,0) 1px,rgba(27,22,17,0) 5px);color:#1B1611}
+#the-speed-trap .p425-wrap{color:#1B1611}
+#the-speed-trap .p425-hero{background-image:radial-gradient(58% 46% at 16% -4%,rgba(217,43,32,.07),rgba(217,43,32,0) 62%),radial-gradient(46% 38% at 88% 4%,rgba(36,86,160,.06),rgba(36,86,160,0) 60%)}
+#the-speed-trap .p425-kicker{color:#B02318}
+#the-speed-trap .p425-kicker::before{background:#D92B20}
+#the-speed-trap .p425-title{color:#1B1611}
+#the-speed-trap .p425-title::after{border-color:#AE9C6E;background:repeating-conic-gradient(#1B1611 0% 25%,#F6F1E3 0% 50%);background-size:18px 18px}
+#the-speed-trap .p425-byline{color:#655B40}
+#the-speed-trap .p425-armed{color:#B02318;border-color:#D92B20;background:#FFFDF4}
+#the-speed-trap .p425-armed.p425-caught{color:#1E7A46;border-color:#1E7A46}
+#the-speed-trap .p425-strip{background-color:#F1EAD2;border-color:#CBBD93}
+#the-speed-trap .p425-fwsvg{background-color:#F1EAD2;border-color:#CBBD93}
+#the-speed-trap .p425-strip,#the-speed-trap .p425-fwsvg{background-image:radial-gradient(circle,#FFFDF4 2.1px,rgba(203,189,147,.85) 2.9px),radial-gradient(circle,#FFFDF4 2.1px,rgba(203,189,147,.85) 2.9px)}
+#the-speed-trap .p425-wipebar{background:linear-gradient(90deg,rgba(217,43,32,0),rgba(217,43,32,.05) 52%,rgba(217,43,32,.15));mix-blend-mode:normal}
+#the-speed-trap .p425-svgtext{fill:#4E4636}
+#the-speed-trap .p425-dimtext{fill:#655B40}
+#the-speed-trap .p425-gridlab{fill:#655B40}
+#the-speed-trap .p425-gridline{stroke:#DFD3AC}
+#the-speed-trap .p425-trackline{stroke:#C4B384}
+#the-speed-trap .p425-gantryframe{stroke:#D92B20}
+#the-speed-trap .p425-flash{fill:#E4D8B2}
+#the-speed-trap .p425-flashed .p425-flash{fill:#D92B20;filter:drop-shadow(0 0 5px rgba(217,43,32,.45))}
+#the-speed-trap .p425-gantry.p425-passflash .p425-flash{fill:#FF6B5E;filter:drop-shadow(0 0 7px rgba(217,43,32,.55))}
+#the-speed-trap .p425-musclebox{fill:#FFFDF4;stroke:#AE9C6E}
+#the-speed-trap .p425-muscle.p425-hit .p425-musclebox{stroke:#D92B20;filter:drop-shadow(0 0 7px rgba(217,43,32,.35))}
+#the-speed-trap .p425-trace{stroke:#171208;filter:drop-shadow(0 0 2px rgba(23,18,8,.3))}
+#the-speed-trap .p425-trace-sens{stroke:#2456A0}
+#the-speed-trap .p425-bracketline{stroke:#D92B20}
+#the-speed-trap .p425-bracket-text{fill:#B02318}
+#the-speed-trap .p425-lanelab{fill:#655B40}
+#the-speed-trap .p425-strip-tag{fill:#B02318}
+#the-speed-trap .p425-fire{background:#BC2418;border-color:#BC2418;color:#FFFFFF}
+#the-speed-trap .p425-fire:hover{background:#A31E14}
+#the-speed-trap .p425-skip{color:#4E4636;border-color:#AE9C6E}
+#the-speed-trap .p425-orient{color:#4E4636}
+#the-speed-trap .p425-cue{color:#B02318}
+#the-speed-trap .p425-sec::before{background-image:radial-gradient(circle at 50% 2px,#D92B20 3px,rgba(217,43,32,.25) 5.5px,rgba(217,43,32,0) 8px),linear-gradient(#AE9C6E,#AE9C6E),linear-gradient(#AE9C6E,#AE9C6E),linear-gradient(#AE9C6E,#AE9C6E)}
+#the-speed-trap .p425-ch-label{background:#1B1611;border-color:#1B1611;border-left-color:#D92B20;color:#F6F1E3}
+#the-speed-trap .p425-h2{color:#1B1611}
+#the-speed-trap .p425-body a{color:#B02318}
+#the-speed-trap .p425-panel{background:#FFFDF4;border-color:#D9CEAC}
+#the-speed-trap .p425-panel-tag{color:#B02318}
+#the-speed-trap .p425-timebar{color:#4E4636;background:rgba(255,253,244,.96);border-color:#D9CEAC;border-left-color:#D92B20}
+#the-speed-trap .p425-timebar b{color:#1B1611}
+#the-speed-trap .p425-ctl-lab{color:#4E4636}
+#the-speed-trap .p425-stim{color:#B02318;border-color:#D92B20;background:rgba(217,43,32,.05)}
+#the-speed-trap .p425-stim:hover{background:rgba(217,43,32,.11)}
+#the-speed-trap .p425-chipbtn{color:#1B1611;border-color:#AE9C6E}
+#the-speed-trap .p425-chipbtn[aria-pressed="true"]{background:#BC2418;border-color:#BC2418;color:#FFFFFF}
+#the-speed-trap .p425-range{accent-color:#D92B20}
+#the-speed-trap .p425-tempnote{color:#B02318}
+#the-speed-trap .p425-readouts{background:#FFFDF4;border-color:#D9CEAC}
+#the-speed-trap .p425-ro{border-right-color:#E4D9B8;border-bottom-color:#E4D9B8}
+#the-speed-trap .p425-ro-lab{color:#655B40}
+#the-speed-trap .p425-ro-lab::before{background:#D92B20}
+#the-speed-trap .p425-ro-val{color:#1B1611}
+#the-speed-trap .p425-verdict{color:#4E4636;border-color:#D9CEAC;background:#FFFDF4}
+#the-speed-trap .p425-verdict.p425-alert{color:#B02318;border-color:rgba(176,35,24,.55)}
+#the-speed-trap .p425-fw-up{stroke:#171208}
+#the-speed-trap .p425-fw-down{stroke:#D92B20}
+#the-speed-trap .p425-fw-point{fill:#D92B20}
+#the-speed-trap .p425-fw-cord{fill:#EFE7CF;stroke:#C4B384}
+#the-speed-trap .p425-caption{color:#4E4636}
+#the-speed-trap .p425-tunnelspan{fill:rgba(217,43,32,.05)}
+#the-speed-trap .p425-tunnelspan.p425-tunnel-on{fill:rgba(217,43,32,.16)}
+#the-speed-trap .p425-peakline{stroke:#2456A0}
+#the-speed-trap .p425-csi-lab{color:#4E4636}
+#the-speed-trap .p425-csi-track{background:#E4D9B8}
+#the-speed-trap .p425-csi-bar{background:#2456A0}
+#the-speed-trap .p425-csi-val{color:#1B1611}
+#the-speed-trap .p425-clock-day{color:#B02318}
+#the-speed-trap .p425-flag{color:#4E4636;border-left-color:#D92B20}
+#the-speed-trap .p425-lane-lab{color:#4E4636}
+#the-speed-trap .p425-lane-track{background-color:#E7DDB9;background-image:repeating-linear-gradient(90deg,rgba(27,22,17,.16) 0 1px,rgba(27,22,17,0) 1px,rgba(27,22,17,0) 10%)}
+#the-speed-trap .p425-lane-fill{background:#1B1611}
+#the-speed-trap #p425-lane-sens,#the-speed-trap #p425-lane-snap{background:#2456A0}
+#the-speed-trap .p425-lane-fill.p425-lane-zero{background:#C9BB8D}
+#the-speed-trap .p425-lane-val{color:#1B1611}
+#the-speed-trap .p425-note{color:#3B342A}
+#the-speed-trap .p425-footer{color:#655B40;border-top-color:#D9CEAC}
+#the-speed-trap .p425-pulse{fill:#D92B20;filter:drop-shadow(0 0 5px rgba(217,43,32,.6))}
+#the-speed-trap .p425-pulsetrail{stroke:#D92B20}
+
+/* ===== Essay 25 RE-THEME 2026-10-31 · analog recording studio in warm materials =====
+   Deep walnut and amber-brown surfaces, cream VU faces, phosphor-amber traces.
+   Palette: walnut base #251709 (gradient #2C1C0D to #1E1207) · panel #2E1F10 ·
+   gear #3A2812 · line #4E3A20 · strong line #6E5636 · cream #F3E5C3 ·
+   bright cream #F8EED6 · soft cream #D9C096 · faint cream #BFA273 ·
+   amber #FFD479 · deep amber #F2C14E · booth blue #7FB2FF · booth ember #FF8A5C ·
+   booth teal #2DD4BF. Presentation only: no copy, numbers, or engine logic. */
+#the-muscle-microphone{background:#251709;background-image:radial-gradient(90% 42% at 50% -6%,rgba(255,180,84,.10),rgba(255,180,84,0) 60%),repeating-linear-gradient(90deg,rgba(0,0,0,.13) 0 1px,rgba(0,0,0,0) 1px,rgba(0,0,0,0) 148px),linear-gradient(180deg,#2C1C0D 0%,#251709 34%,#1E1207 100%);color:#F3E5C3}
+#the-muscle-microphone .p426-wrap{color:#F3E5C3}
+#the-muscle-microphone .p426-kicker{color:#F2C14E}
+#the-muscle-microphone .p426-title{color:#F8EED6}
+#the-muscle-microphone .p426-byline{color:#BFA273}
+#the-muscle-microphone .p426-scope{background-color:#17100A;border-color:#4E3A20}
+#the-muscle-microphone .p426-scope{background-image:radial-gradient(115% 105% at 50% 42%,#20150B 0%,rgba(23,16,10,0) 74%),repeating-linear-gradient(0deg,rgba(255,220,160,.025) 0 1px,rgba(255,220,160,0) 1px,rgba(255,220,160,0) 3px)}
+#the-muscle-microphone .p426-gridline{stroke:#33240F}
+#the-muscle-microphone .p426-trace{stroke:#FFD479;filter:drop-shadow(0 0 2.5px rgba(255,190,90,.8)) drop-shadow(0 0 9px rgba(255,170,70,.35))}
+#the-muscle-microphone .p426-svgtext{fill:#D9C096}
+#the-muscle-microphone .p426-sweepnote{opacity:.85}
+#the-muscle-microphone .p426-lower{background:#FFD479;border-color:#FFD479;color:#241806}
+#the-muscle-microphone .p426-lower:hover{background:#FFDF9E}
+#the-muscle-microphone .p426-skip{color:#D9C096;border-color:#6E5636}
+#the-muscle-microphone .p426-door{background:#2A1B0D;border-color:#4E3A20}
+#the-muscle-microphone .p426-door-sub{color:#BFA273}
+#the-muscle-microphone #p426-door-1.p426-lit{border-color:#7FB2FF;background:rgba(127,178,255,.08);box-shadow:0 0 26px rgba(127,178,255,.14)}
+#the-muscle-microphone #p426-door-2.p426-lit{border-color:#FF8A5C;background:rgba(255,138,92,.08);box-shadow:0 0 26px rgba(255,138,92,.15)}
+#the-muscle-microphone #p426-door-3.p426-lit{border-color:#2DD4BF;background:rgba(45,212,191,.08);box-shadow:0 0 26px rgba(45,212,191,.14)}
+#the-muscle-microphone .p426-orient{color:#D9C096}
+#the-muscle-microphone .p426-cue{color:#F2C14E}
+#the-muscle-microphone .p426-ch-label{color:#F2C14E}
+#the-muscle-microphone #p426-sec-rest .p426-ch-label{color:#A9C8FF}
+#the-muscle-microphone #p426-sec-voice .p426-ch-label{color:#FFAB85}
+#the-muscle-microphone #p426-sec-crowd .p426-ch-label{color:#7BE8D8}
+#the-muscle-microphone .p426-h2{color:#F8EED6}
+#the-muscle-microphone .p426-body a{color:#FFD479}
+#the-muscle-microphone .p426-room::before{background:repeating-linear-gradient(45deg,rgba(0,0,0,.28) 0 9px,rgba(255,205,130,.045) 9px,rgba(0,0,0,0) 10px,rgba(0,0,0,0) 18px),repeating-linear-gradient(-45deg,rgba(0,0,0,.28) 0 9px,rgba(255,205,130,.045) 9px,rgba(0,0,0,0) 10px,rgba(0,0,0,0) 18px)}
+#the-muscle-microphone .p426-needlesvg{background:#17100A;border-color:#4E3A20}
+#the-muscle-microphone .p426-fibre{fill:#2A1B0D;stroke:#4E3A20}
+#the-muscle-microphone .p426-unitfibre{stroke:#FFD479;fill:rgba(255,212,121,.08)}
+#the-muscle-microphone .p426-needleline{stroke:#F3E5C3}
+#the-muscle-microphone .p426-needletip{fill:#F3E5C3}
+#the-muscle-microphone .p426-caption{color:#D9C096}
+#the-muscle-microphone .p426-scopebox{background:linear-gradient(180deg,#3D2A13,#2A1B0C);background-image:linear-gradient(180deg,#3D2A13,#2A1B0C),repeating-linear-gradient(90deg,rgba(255,224,170,.022) 0 2px,rgba(255,224,170,0) 2px,rgba(255,224,170,0) 4px);border-color:#6E5636}
+#the-muscle-microphone .p426-chipbtn{color:#F3E5C3;border-color:#4E3A20}
+#the-muscle-microphone #p426-sec-rest .p426-chipbtn[aria-pressed="true"]{background:#7FB2FF;border-color:#7FB2FF;color:#241806}
+#the-muscle-microphone #p426-sec-voice .p426-chipbtn[aria-pressed="true"]{background:#FF8A5C;border-color:#FF8A5C;color:#241806}
+#the-muscle-microphone #p426-sec-crowd .p426-chipbtn[aria-pressed="true"]{background:#2DD4BF;border-color:#2DD4BF;color:#241806}
+#the-muscle-microphone .p426-ro{background:#1E130A;border-color:#4E3A20}
+#the-muscle-microphone .p426-ro-lab{color:#BFA273}
+#the-muscle-microphone .p426-ro-val{color:#F3E5C3}
+#the-muscle-microphone .p426-sbtn{color:#D9C096;border-color:#4E3A20}
+#the-muscle-microphone .p426-note-line{color:#D9C096}
+#the-muscle-microphone .p426-speedstate{color:#D9C096}
+#the-muscle-microphone .p426-markerline{stroke:#FFD479}
+#the-muscle-microphone .p426-markerlab{fill:#FFD479}
+#the-muscle-microphone .p426-gradewin{background:#17100A;border-color:#4E3A20}
+#the-muscle-microphone .p426-grade-lab{color:#D9C096}
+#the-muscle-microphone .p426-clockpanel{background:linear-gradient(180deg,#33220F,#20150A);border-color:#4E3A20}
+#the-muscle-microphone .p426-panel-tag{color:#F2C14E}
+#the-muscle-microphone .p426-clock-day{color:#F3E5C3}
+#the-muscle-microphone .p426-range{accent-color:#FFD479}
+#the-muscle-microphone #p426-sec-crowd .p426-range{accent-color:#2DD4BF}
+#the-muscle-microphone .p426-ruler-n{color:#BFA273}
+#the-muscle-microphone .p426-clock-rowlab{color:#CBB27F}
+#the-muscle-microphone .p426-cchip{border-color:#4E3A20;color:#C2A878}
+#the-muscle-microphone .p426-cchip.p426-on{background:#FFD479;border-color:#FFD479;color:#241806}
+#the-muscle-microphone .p426-verdict{color:#F3E5C3}
+#the-muscle-microphone #p426-sec-crowd .p426-verdict{color:#D9C096;border-color:#4E3A20}
+#the-muscle-microphone .p426-ctl-lab{color:#D9C096}
+#the-muscle-microphone .p426-note{color:#EBDCB4}
+#the-muscle-microphone .p426-footer{color:#BFA273;border-top-color:#4E3A20}
 
 </style>
 
