@@ -6752,7 +6752,7 @@ if(hf) hf.addEventListener('click',function(){
 <div class="p426-hero-inner">
 <p class="p426-kicker">The PM&amp;R Files · Essay 25 · Electrodiagnostics · Needle EMG</p>
 <h1 class="p426-title">The Muscle Microphone</h1>
-<p class="p426-answer">An EMG is a listening exam. A needle microphone sits in the muscle and reports what it hears: silence, static, single voices, and crowds. This essay teaches you to hear the four things it can tell apart. It is a silent visual guide to signals usually judged by sight and sound: everything here is read, nothing is played.</p>
+<p class="p426-answer">An EMG is a listening exam. A needle microphone sits in the muscle and reports what it hears: silence, static, single voices, and crowds. This essay teaches you to hear the four things it can tell apart. Its sounds stay off until you switch them on, and every one is simulated: synthesized in your browser from the numbers that draw the traces, not a recording of any patient.</p>
 <div class="p426-byline-row"><span class="p426-byline">By a PM&amp;R resident physician</span></div>
 <svg class="p426-scope p426-heroscope" id="p426-hero-scope" viewBox="0 0 400 180" role="img" aria-label="The hero oscilloscope: a flat trace, waiting for the needle.">
 <g class="p426-grid"></g>
@@ -6765,6 +6765,10 @@ if(hf) hf.addEventListener('click',function(){
 <div class="p426-launch-btns">
 <button type="button" class="p426-lower" id="p426-lower">Lower the needle</button>
 <button type="button" class="p426-skip" id="p426-skip">Skip</button>
+</div>
+<div class="p426-soundpanel">
+<button type="button" class="p426-sndtoggle" id="p426-snd-toggle" aria-pressed="false"><span class="p426-snd-dot" aria-hidden="true"></span><span id="p426-snd-toggle-lab">Simulated sound · Off</span></button>
+<p class="p426-snd-note">Every sound in this essay is simulated: synthesized live in your browser from the rates and sizes on this page. None is a recording.</p>
 </div>
 <div class="p426-doors">
 <div class="p426-door" id="p426-door-1"><span class="p426-door-name">ROOM ONE</span><span class="p426-door-sub">At rest</span></div>
@@ -6841,6 +6845,7 @@ if(hf) hf.addEventListener('click',function(){
 <button type="button" class="p426-sbtn" id="p426-r1-speed">One-tenth time</button>
 <span class="p426-speedstate" id="p426-r1-speedstate">Speed: real time</span>
 <button type="button" class="p426-sbtn" id="p426-r1-step">Step 100 ms</button>
+<button type="button" class="p426-sbtn p426-hearbtn" id="p426-r1-hear" aria-pressed="false">Hear this signal</button>
 </div>
 </div>
 </div>
@@ -6907,6 +6912,7 @@ if(hf) hf.addEventListener('click',function(){
 <p class="p426-note-line" id="p426-r2-note">Printed ranges: duration 5 to 15 ms, amplitude 100 µV to 2 mV (Daube and Rubin). The captured window is phase locked to the unit's own firing.</p>
 <div class="p426-scope-btns">
 <button type="button" class="p426-sbtn" id="p426-r2-play">Play it live</button>
+<button type="button" class="p426-sbtn p426-hearbtn" id="p426-r2-hear" aria-pressed="false">Hear this voice</button>
 </div>
 </div>
 </div>
@@ -6949,6 +6955,7 @@ if(hf) hf.addEventListener('click',function(){
 <p class="p426-verdict" id="p426-r3-interp">Orderly. Each new voice joins on schedule, and no voice is shouting.</p>
 <div class="p426-scope-btns">
 <button type="button" class="p426-sbtn" id="p426-r3-play">Pause</button>
+<span class="p426-speedstate" id="p426-r3-sndstate">Bench sound follows the simulated-sound switch, up top</span>
 </div>
 </div>
 </div>
@@ -6966,7 +6973,7 @@ if(hf) hf.addEventListener('click',function(){
 <p class="p426-ch-label">Fine print</p>
 <h2 class="p426-h2" tabindex="-1">What the model is, and where the evidence stops</h2>
 <p class="p426-note"><b>The traces are synthesised exemplars,</b> drawn from the durations, amplitudes, and rates in the Sources and labelled as display models wherever a number is drawn rather than quoted. Durations and phases were measured off the drawn templates with the same baseline rules the laboratory uses, which is why an exemplar's printed width is its measured width, not a round number. The recruitment bench compresses continuous physiology into canonical steps: three modes (normal, axon loss, myopathy), each a ladder of rule-of-fives states, so the ratio stays readable; real recruitment is a continuum, and the rule of fives describes the moment a new unit joins, not every moment of a contraction.</p>
-<p class="p426-note"><b>The clock's day counts are the textbook tradition's bands,</b> drawn from the narrative sources in the Sources drawer. Experts dispute day-exact dating of lesions from needle findings, and this essay does not do it: the clock prints bands, and its verdicts speak in epochs. There is no audio on this page by design. The one sound picture in the text, the dive bomber, is flagged where it appears as an old audio description; the essay's claims stand on the shapes alone. Nothing here is a measurement of you.</p>
+<p class="p426-note"><b>The clock's day counts are the textbook tradition's bands,</b> drawn from the narrative sources in the Sources drawer. Experts dispute day-exact dating of lesions from needle findings, and this essay does not do it: the clock prints bands, and its verdicts speak in epochs. The page's sounds are simulated: each is synthesized in your browser from the rates and sizes printed beside its trace, and none is a recording of a patient or of an examination. The one sound picture in the text, the dive bomber, is flagged where it appears as an old audio description; the essay's claims stand on the shapes alone, and the sounds only illustrate them. Nothing here is a measurement of you.</p>
 <div class="p426-notes p3-drawer p3-closed" id="p426-notes"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p426-notes"><span class="p3-drawer-title">Notes</span><span class="p3-drawer-hint">How the models were fitted</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
 <h3>Notes</h3>
 <ol>
@@ -7614,6 +7621,340 @@ if(panel&&slider){
   window.addEventListener('load',layoutClock);
   layoutClock(); setTimeout(layoutClock,700);
 }
+})();
+</script>
+<script>
+(function(){
+'use strict';
+/* Essay 25 · simulated sound layer (audio addendum, 2026-10-31).
+   Every sound is synthesized live with the Web Audio API from the same
+   quantities that draw the traces: the display engine's ROOM1 schedules,
+   VOICES table, bench states and clock days. No audio files, no recordings.
+   The engine tables are frozen, so the constants below mirror them, and all
+   live state is read back from the essay's own controls and readouts, which
+   keeps ears and eyes on the same numbers. Sound exists only after the
+   reader taps the simulated-sound switch, and stops when the switch is
+   turned off or the essay view is left. */
+var V=document.getElementById('the-muscle-microphone');
+if(!V) return;
+function $(id){return V.querySelector('#'+id);}
+var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- quantities mirrored from the display engine (frozen tables) ---- */
+var FIB_PERIOD=769.23, PSW_PERIOD=909.09;                       /* ms: fib 1.3 Hz, PSW 1.1 Hz, regular */
+var ENDP_IV=[300,700,450,1200,500,900,350,1500,650,800];         /* end-plate spikes, irregular */
+var FASC_IV=[1300,1900,950,2200,1400,1650,1100,2000,1450,1350]; /* fasciculation, avg interval 1430 ms = 0.70 Hz */
+var CRD_SERR=[0.50,0.82,1.00,0.88,0.66,0.42], CRD_CENT=[4,10.5,17,23.5,30,36]; /* one complex: 6 serrations in 40 ms, 220 uV */
+var CRD_EVTS=(function(){ var a=[]; for(var b=0;b<2;b++) for(var k=0;k<16;k++) a.push(b*3500+k*125); return a; })(); /* 2 s bursts at 8 Hz, 7 s loop */
+var MYO_EVTS=(function(){ /* identical phase integration to the engine's myotonic run: 4 s sweep, 30 to 130 to 30 Hz */
+  var evts=[],phase=0,t=0,target=0;
+  while(t<4000){ var f=30+100*Math.sin(Math.PI*t/4000); phase+=f/1000; if(phase>=target+1){ evts.push(t); target+=1; } t+=1; }
+  return evts;
+})();
+function myoEnv(tauMs){ return 0.35+0.65*Math.sin(Math.PI*tauMs/4000); }
+var VAMP={normal:800,myopathic:150,reinnervated:2400,nascent:120};   /* voice amplitudes, uV (engine VOICES) */
+var BENCH_VOICE={normal:'normal',axonloss:'reinnervated',myopathy:'myopathic'};
+var BJIT=[1.00,0.97,1.03,0.98,1.02,0.96,1.04,0.99,1.01,0.95,1.05,0.98]; /* the engine's trace-only rate jitter, mirrored */
+function gAmp(uv){ var g=0.58*Math.sqrt(uv/800); return g<0.04?0.04:(g>0.92?0.92:g); } /* uV to gain, compressed */
+
+/* ---- live state, read from the essay's own controls ---- */
+var r1key='silence', r1Playing=!RM, r1Speed=1;
+var r2key='normal';
+var r3mode='normal', r3force=20, r3Playing=!RM;
+var clockDay=0, benchInView=false;
+V.querySelectorAll('[data-p426-sig]').forEach(function(b){ b.addEventListener('click',function(){
+  r1key=b.getAttribute('data-p426-sig');
+  if(aud&&aud.room==='r1'&&ctx) initR1Aud();
+});});
+$('p426-r1-play').addEventListener('click',function(){
+  var was=r1Playing; r1Playing=($('p426-r1-play').textContent==='Pause');
+  if(aud&&aud.room==='r1'&&ctx){
+    if(was&&!r1Playing) aud.holdAt=ctx.currentTime;
+    if(!was&&r1Playing&&aud.holdAt){ var d=ctx.currentTime-aud.holdAt; aud.nextT+=d; aud.cycStart+=d; aud.holdAt=0; }
+  }
+});
+$('p426-r1-speed').addEventListener('click',function(){
+  var old=r1Speed, ss=$('p426-r1-speedstate');
+  r1Speed=(ss&&ss.textContent.indexOf('one-tenth')>-1)?0.1:1;
+  if(aud&&aud.room==='r1'&&ctx&&old!==r1Speed){
+    var now=ctx.currentTime;
+    if(aud.nextT>now) aud.nextT=now+(aud.nextT-now)*(old/r1Speed);
+    aud.cycStart=now-(now-aud.cycStart)*(old/r1Speed);
+  }
+});
+V.querySelectorAll('[data-p426-voice]').forEach(function(b){ b.addEventListener('click',function(){ r2key=b.getAttribute('data-p426-voice'); });});
+V.querySelectorAll('[data-p426-mode]').forEach(function(b){ b.addEventListener('click',function(){ r3mode=b.getAttribute('data-p426-mode'); });});
+$('p426-r3-force').addEventListener('input',function(e){ r3force=+e.target.value; });
+$('p426-r3-play').addEventListener('click',function(){ r3Playing=($('p426-r3-play').textContent==='Pause'); });
+$('p426-clock-slider').addEventListener('input',function(){ clockDay=+this.value; });
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(es){ es.forEach(function(en){ benchInView=en.isIntersecting; }); },{threshold:0.12}).observe($('p426-sec-crowd'));
+} else benchInView=true;
+
+/* ---- audio graph and synthesized buffers ---- */
+var ctx=null, bus=null, analyserNode=null, BUF=null;
+var toneGain=null, washGain=null;
+var liveSrc=[];
+function makeBuffers(c){
+  var sr=c.sampleRate;
+  function buf(durMs,fn){
+    var n=Math.max(1,Math.round(sr*durMs/1000)), b=c.createBuffer(1,n,sr), d=b.getChannelData(0);
+    var seed=1234567, lp=0;
+    function rn(){ seed=(seed*1103515245+12345)%2147483648; return seed/2147483648*2-1; }
+    function lowp(x,a){ lp+=a*(x-lp); return lp; }
+    for(var i=0;i<n;i++) d[i]=fn(i/sr,1/sr,rn,lowp);
+    var pk=0,i2; for(i2=0;i2<n;i2++) pk=Math.max(pk,Math.abs(d[i2]));
+    if(pk>0){ var s=0.95/pk; for(i2=0;i2<n;i2++) d[i2]*=s; }
+    return b;
+  }
+  function sweepTone(f0,f1,tau){
+    var ph=0,T=tau*4;
+    return function(t,dt){ var f=f0+(f1-f0)*Math.min(1,t/T); ph+=2*Math.PI*f*dt; return Math.sin(ph)*Math.exp(-t/tau); };
+  }
+  var out={};
+  out.fib=buf(40,function(t,dt,rn){ return 0.55*Math.sin(2*Math.PI*2300*t)*Math.exp(-t/0.0022)+0.75*rn()*Math.exp(-t/0.003); });
+  out.endp=buf(30,function(t,dt,rn){ return 0.50*Math.sin(2*Math.PI*3100*t)*Math.exp(-t/0.0016)+0.85*rn()*Math.exp(-t/0.0018); });
+  out.psw=buf(260,function(t,dt,rn,lp){ return 0.85*Math.sin(2*Math.PI*105*t)*Math.exp(-t/0.052)+0.40*Math.sin(2*Math.PI*58*t)*Math.exp(-t/0.070)+0.50*lp(rn(),0.05)*Math.exp(-t/0.038); });
+  out.crd=buf(16,function(t,dt,rn){ return 0.55*Math.sin(2*Math.PI*880*t)*Math.exp(-t/0.003)+0.70*rn()*Math.exp(-t/0.0035); });
+  out.muap={
+    normal:(function(){ var s=sweepTone(165,95,0.016); return buf(110,function(t,dt,rn){ return 0.90*s(t,dt)+0.50*rn()*Math.exp(-t/0.005)+0.30*Math.sin(2*Math.PI*520*t)*Math.exp(-t/0.007); }); })(),
+    myopathic:(function(){ var s=sweepTone(280,190,0.007); return buf(55,function(t,dt,rn){ return 0.85*s(t,dt)+0.55*rn()*Math.exp(-t/0.0028); }); })(),
+    reinnervated:(function(){ var s=sweepTone(100,58,0.042); return buf(240,function(t,dt,rn,lp){ return 0.90*s(t,dt)+0.50*Math.sin(2*Math.PI*52*t)*Math.exp(-t/0.055)+0.30*lp(rn(),0.12)*Math.exp(-t/0.009); }); })(),
+    nascent:(function(){ var s=sweepTone(235,160,0.011); return buf(70,function(t,dt,rn){ return 0.85*s(t,dt)+0.45*rn()*Math.exp(-t/0.004); }); })()
+  };
+  var nz=c.createBuffer(1,sr*2,sr), nd=nz.getChannelData(0), nseed=987654321;
+  for(var i3=0;i3<nd.length;i3++){ nseed=(nseed*1103515245+12345)%2147483648; nd[i3]=nseed/2147483648*2-1; }
+  out.noise=nz;
+  return out;
+}
+function loopNoise(filterType,freq,q){
+  var s=ctx.createBufferSource(); s.buffer=BUF.noise; s.loop=true;
+  var f=ctx.createBiquadFilter(); f.type=filterType; f.frequency.value=freq; f.Q.value=q;
+  var g=ctx.createGain(); g.gain.value=0;
+  s.connect(f); f.connect(g); g.connect(bus); s.start();
+  return g;
+}
+function buildGraph(){
+  var AC=window.AudioContext||window.webkitAudioContext;
+  ctx=new AC();
+  bus=ctx.createGain(); bus.gain.value=1;
+  var master=ctx.createGain(); master.gain.value=0.9;
+  var comp=ctx.createDynamicsCompressor();
+  comp.threshold.value=-20; comp.knee.value=18; comp.ratio.value=12; comp.attack.value=0.002; comp.release.value=0.18;
+  analyserNode=ctx.createAnalyser(); analyserNode.fftSize=2048;
+  bus.connect(master); master.connect(comp); comp.connect(analyserNode); analyserNode.connect(ctx.destination);
+  BUF=makeBuffers(ctx);
+  toneGain=loopNoise('lowpass',300,0.4);   /* the room tone under the resting muscle */
+  washGain=loopNoise('bandpass',550,0.6);  /* the interference-pattern wash */
+}
+
+/* ---- event scheduling ---- */
+var counts={}, evLog=[];
+function logOnly(kind,t,g){ counts[kind]=(counts[kind]||0)+1; evLog.push({kind:kind,t:Math.round(t*1000)/1000,g:Math.round(g*1000)/1000}); if(evLog.length>800) evLog.splice(0,evLog.length-800); }
+function pop(b,t,g,kind,rate){
+  if(!ctx||!b) return;
+  var s=ctx.createBufferSource(); s.buffer=b; if(rate) s.playbackRate.value=rate;
+  var gn=ctx.createGain(); gn.gain.value=g;
+  s.connect(gn); gn.connect(bus); s.start(t);
+  liveSrc.push(s); s.onended=function(){ var i=liveSrc.indexOf(s); if(i>-1) liveSrc.splice(i,1); };
+  logOnly(kind,t,g);
+}
+
+/* ---- sources. One audition at a time; the bench yields to it; the
+        resting bed yields to both. ---- */
+var aud=null;
+function initR1Aud(){
+  var now=ctx.currentTime;
+  aud.nextT=now+0.08; aud.cycStart=now+0.08; aud.idx=0; aud.evtIdx=0; aud.holdAt=0;
+}
+function startAud(room){
+  aud={room:room,n:0,nextT:0,cycStart:0,idx:0,evtIdx:0,holdAt:0};
+  if(room==='r1') initR1Aud(); else aud.nextT=ctx.currentTime+0.08;
+  updateHearBtns();
+}
+function stopAud(){ aud=null; updateHearBtns(); }
+function updateHearBtns(){
+  var r1=$('p426-r1-hear'), r2=$('p426-r2-hear');
+  if(r1){ var a=!!(aud&&aud.room==='r1'); r1.setAttribute('aria-pressed',a?'true':'false'); r1.textContent=a?'Stop':'Hear this signal'; }
+  if(r2){ var b=!!(aud&&aud.room==='r2'); r2.setAttribute('aria-pressed',b?'true':'false'); r2.textContent=b?'Stop':'Hear this voice'; }
+}
+function loopFill(evts,loopMs,until,emit){
+  var guard=0;
+  while(guard++<4000){
+    var et=aud.cycStart+evts[aud.evtIdx]/1000/r1Speed;
+    if(et>=until) break;
+    if(et>=ctx.currentTime-0.05) emit(et,evts[aud.evtIdx]);
+    aud.evtIdx++;
+    if(aud.evtIdx>=evts.length){ aud.evtIdx=0; aud.cycStart+=loopMs/1000/r1Speed; }
+  }
+}
+function audFill(until){
+  if(!aud) return;
+  if(aud.room==='r2'){
+    if(aud.nextT<ctx.currentTime-0.05) aud.nextT=ctx.currentTime+0.03;
+    while(aud.nextT<until){
+      var key=r2key, g=gAmp(VAMP[key]);
+      if(key==='nascent') g*=1+0.3*Math.sin(aud.n*2.7);   /* the engine's own discharge-to-discharge jitter */
+      pop(BUF.muap[key],aud.nextT,g,'muap-'+key);
+      if(key==='reinnervated') pop(BUF.muap.reinnervated,aud.nextT+0.026,gAmp(2400)*0.15,'muap-reinnervated-sat',3); /* the satellite, 26 ms late at 15% */
+      aud.n++; aud.nextT+=0.125;                          /* the cards fire at a steady 8 Hz */
+    }
+    return;
+  }
+  if(!r1Playing) return;                                   /* ears follow the scope's own play state */
+  var sp=r1Speed, now=ctx.currentTime;
+  if(r1key==='fib'||r1key==='psw'){
+    var per=(r1key==='fib'?FIB_PERIOD:PSW_PERIOD)/1000/sp, b=r1key==='fib'?BUF.fib:BUF.psw, amp=r1key==='fib'?120:150;
+    if(aud.nextT<now-0.05) aud.nextT=now+0.03;
+    while(aud.nextT<until){ pop(b,aud.nextT,gAmp(amp),r1key); aud.nextT+=per; }
+  } else if(r1key==='endplate'||r1key==='fasciculation'){
+    var iv=r1key==='endplate'?ENDP_IV:FASC_IV, b2=r1key==='endplate'?BUF.endp:BUF.muap.normal, amp2=r1key==='endplate'?120:800;
+    if(aud.nextT<now-0.05) aud.nextT=now+0.03;
+    while(aud.nextT<until){ pop(b2,aud.nextT,gAmp(amp2),r1key); aud.nextT+=iv[aud.idx]/1000/sp; aud.idx=(aud.idx+1)%iv.length; }
+  } else if(r1key==='myotonic'){
+    loopFill(MYO_EVTS,5000,until,function(et,ev){ pop(BUF.fib,et,gAmp(120)*myoEnv(ev),'myotonic'); });
+  } else if(r1key==='crd'){
+    loopFill(CRD_EVTS,7000,until,function(et){
+      for(var m=0;m<6;m++) pop(BUF.crd,et+CRD_CENT[m]/1000/sp,gAmp(220)*CRD_SERR[m],'crdmini');
+      logOnly('crd',et,gAmp(220));
+    });
+  }
+  /* silence: no events; the room tone carries it (see toneTarget) */
+}
+
+/* room three: pops per unit from the bench's own readouts, plus the wash */
+var benchUnits=[], benchSig='';
+function readBench(){
+  var N=parseInt((($('p426-r3-units')||{}).textContent||'0'),10)||0;
+  var F=parseFloat((($('p426-r3-fast')||{}).textContent||'0'))||0;
+  return {mode:r3mode,N:N,F:F};
+}
+function benchRates(st){
+  var r=[],j;
+  if(st.mode==='axonloss'){ for(j=0;j<st.N;j++) r.push(Math.max(2,st.F-5*j)); }
+  else { for(j=0;j<st.N;j++) r.push(5*(st.N-j)*BJIT[j]); }
+  return r;
+}
+function benchHot(){ return r3Playing&&benchInView; }
+function setWash(v){ if(washGain) washGain.gain.setTargetAtTime(v,ctx.currentTime,0.07); }
+function benchFill(until){
+  if(aud||!benchHot()){ setWash(0); return; }
+  var st=readBench(), rates=benchRates(st), sig=st.mode+'|'+rates.join(',');
+  if(sig!==benchSig){
+    benchSig=sig;
+    var now=ctx.currentTime, nu=[], j;
+    for(j=0;j<rates.length;j++){
+      var old=benchUnits[j];
+      nu.push({rate:rates[j],nextT:(old&&Math.abs(old.rate-rates[j])<0.01&&old.nextT>now)?old.nextT:now+0.05+j*0.03});
+    }
+    benchUnits=nu;
+  }
+  var vkey=BENCH_VOICE[st.mode], b=BUF.muap[vkey], g=gAmp(VAMP[vkey]);
+  var cum=0,total=0,u; for(u=0;u<rates.length;u++) total+=rates[u];
+  for(u=0;u<benchUnits.length;u++){
+    var un=benchUnits[u]; cum+=un.rate;
+    if(cum>135) continue;                                  /* the smallest voices live in the wash */
+    if(un.nextT<ctx.currentTime-0.05) un.nextT=ctx.currentTime+0.02+u*0.017;
+    while(un.nextT<until){ pop(b,un.nextT,g,'bench-'+vkey); un.nextT+=1000/un.rate/1000; }
+  }
+  var full=Math.max(0,Math.min(1,(total-50)/340));
+  var cap=st.mode==='axonloss'?0.22:1;                     /* axon loss never fills: single units stay pickable */
+  var fl=0.85+0.15*Math.sin(ctx.currentTime*6.3)+0.05*Math.sin(ctx.currentTime*17.7);
+  setWash(full*cap*0.16*Math.max(0.7,fl));
+}
+
+/* the resting bed: room tone, then the clock's crackle past the fib window */
+function bedRate(){ return clockDay<10?0:0.35+(clockDay-10)/33*1.55; }
+var bedNextT=0;
+function bedFill(until){
+  if(aud||benchHot()) return;
+  var rate=bedRate(); if(rate<=0) return;
+  var fade=Math.min(1,(clockDay-9)/4); if(fade<0) fade=0;
+  if(bedNextT<ctx.currentTime-0.1) bedNextT=ctx.currentTime+0.05;
+  while(bedNextT<until){
+    if(Math.random()<0.72) pop(BUF.fib,bedNextT,gAmp(120)*0.8*fade,'bedfib');
+    else pop(BUF.psw,bedNextT,gAmp(150)*0.8*fade,'bedpsw');
+    bedNextT+= -Math.log(1-Math.random())/rate;
+  }
+}
+function toneTarget(){
+  if(aud&&aud.room==='r1'&&r1key==='silence') return 0.03;
+  if(!aud&&!benchHot()) return 0.012;
+  return 0;
+}
+
+/* ---- master switch ---- */
+var on=false, timer=null;
+function paintToggle(){
+  var b=$('p426-snd-toggle'); if(!b) return;
+  b.setAttribute('aria-pressed',on?'true':'false');
+  $('p426-snd-toggle-lab').textContent=on?'Simulated sound · On':'Simulated sound · Off';
+}
+function turnOn(){
+  if(on) return;
+  if(!ctx){ try{ buildGraph(); }catch(e){ return; } }
+  if(ctx.resume) ctx.resume();
+  on=true; bedNextT=0; benchSig='';
+  timer=setInterval(tick,60);
+  paintToggle(); updateBenchLine(true);
+}
+function turnOff(){
+  if(!on) return;
+  on=false; stopAud();
+  if(timer){ clearInterval(timer); timer=null; }
+  liveSrc.slice().forEach(function(s){ try{ s.stop(); }catch(e){} });
+  liveSrc=[];
+  if(toneGain) toneGain.gain.setTargetAtTime(0,ctx.currentTime,0.03);
+  if(washGain) washGain.gain.setTargetAtTime(0,ctx.currentTime,0.03);
+  if(ctx&&ctx.suspend) ctx.suspend();
+  benchUnits=[]; benchSig='';
+  paintToggle(); updateBenchLine(true);
+}
+var lastBenchLine='';
+function updateBenchLine(force){
+  var el=$('p426-r3-sndstate'); if(!el) return;
+  var s;
+  if(!on) s='Bench sound follows the simulated-sound switch, up top';
+  else if(aud) s='Bench sound: holding while you listen';
+  else if(benchHot()) s='Bench sound: on';
+  else s='Bench sound: ready when the bench is in view';
+  if(force||s!==lastBenchLine){ lastBenchLine=s; el.textContent=s; }
+}
+function tick(){
+  if(!on||!ctx||ctx.state!=='running') return;
+  if(V.getClientRects().length===0){ turnOff(); return; }  /* the router hid the view */
+  var until=ctx.currentTime+0.22;
+  toneGain.gain.setTargetAtTime(toneTarget(),ctx.currentTime,0.09);
+  bedFill(until); benchFill(until); audFill(until);
+  updateBenchLine(false);
+}
+$('p426-snd-toggle').addEventListener('click',function(){ if(on) turnOff(); else turnOn(); });
+function hearClick(room){
+  if(!on){ turnOn(); if(!on) return; }
+  if(aud&&aud.room===room) stopAud(); else startAud(room);
+}
+$('p426-r1-hear').addEventListener('click',function(){ hearClick('r1'); });
+$('p426-r2-hear').addEventListener('click',function(){ hearClick('r2'); });
+V.addEventListener('pmr:viewhidden',function(){ if(on) turnOff(); });
+document.addEventListener('visibilitychange',function(){
+  if(!ctx) return;
+  if(document.hidden){ if(ctx.state==='running') ctx.suspend(); }
+  else if(on&&ctx.state==='suspended') ctx.resume();
+});
+paintToggle(); updateHearBtns(); updateBenchLine(true);
+
+/* verification handle: state, event log, per-sound counts, analyser */
+window.__p426audio={
+  version:1,
+  isOn:function(){ return on; },
+  context:function(){ return ctx; },
+  analyser:function(){ return analyserNode; },
+  counts:function(){ return counts; },
+  log:function(){ return evLog.slice(); },
+  bedRate:bedRate,
+  bench:function(){ var st=readBench(); return {mode:st.mode,N:st.N,F:st.F,rates:benchRates(st),hot:benchHot()&&!aud}; },
+  audition:function(){ return aud?{room:aud.room}:null; }
+};
 })();
 </script>
 
@@ -14333,6 +14674,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #the-muscle-microphone .p426-ctl-lab{color:#D9C096}
 #the-muscle-microphone .p426-note{color:#EBDCB4}
 #the-muscle-microphone .p426-footer{color:#BFA273;border-top-color:#4E3A20}
+/* Essay 25 · simulated sound deck (audio addendum 2026-10-31) */
+#the-muscle-microphone .p426-soundpanel{display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:780px;margin:2px 0 18px;padding:14px 16px;background:linear-gradient(180deg,#3D2A13,#2A1B0C);border:1px solid #6E5636;border-radius:12px}
+#the-muscle-microphone .p426-sndtoggle{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;letter-spacing:.04em;background:#1E130A;color:#D9C096;border:1px solid #6E5636;border-radius:999px;padding:11px 18px;cursor:pointer;min-height:48px}
+#the-muscle-microphone .p426-snd-dot{width:10px;height:10px;border-radius:50%;background:transparent;border:2px solid #6E5636;flex:none}
+#the-muscle-microphone .p426-sndtoggle[aria-pressed="true"]{color:#F8EED6;border-color:#FFD479}
+#the-muscle-microphone .p426-sndtoggle[aria-pressed="true"] .p426-snd-dot{background:#FFD479;border-color:#FFD479;box-shadow:0 0 10px rgba(255,212,121,.85)}
+#the-muscle-microphone .p426-snd-note{flex:1 1 250px;margin:0;font-size:13.5px;line-height:1.5;color:#D9C096}
+#the-muscle-microphone .p426-hearbtn[aria-pressed="true"]{background:#FFD479;border-color:#FFD479;color:#241806}
+@media (max-width:640px){#the-muscle-microphone .p426-soundpanel{flex-direction:column;align-items:flex-start}}
+/* D-A1 fix 2026-10-31: at phone widths the scopebox (734px) is wider than the viewport and
+   the view clips the overflow, so room one's hear button, last in its 712px button row, sat
+   off screen and could not be tapped. A zero-height full-width flex break after the row's
+   own controls wraps the hear button onto its own line at the row's left edge, inside the
+   visible width, with its deck styling unchanged. Nothing here applies above 640px, so the
+   desktop row renders exactly as before. */
+@media (max-width:640px){
+#the-muscle-microphone #p426-sec-rest .p426-scope-btns::after{content:"";flex:0 0 100%;height:0;order:1}
+#the-muscle-microphone #p426-r1-hear{order:2}
+}
 
 </style>
 
