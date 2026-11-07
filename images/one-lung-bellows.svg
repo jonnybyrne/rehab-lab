@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="Schematic drawing of the two lungs as ribbed glass bellows chambers under a windpipe. The left chamber is divided into two lobes, the right into three.">
+<rect x="0" y="0" width="720" height="300" fill="#10281F"></rect>
+<defs>
+<linearGradient id="p438-glass1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26543F"/><stop offset=".45" stop-color="#173B2D"/><stop offset="1" stop-color="#0D231A"/></linearGradient>
+<linearGradient id="p438-brass1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2CE6B"/><stop offset=".55" stop-color="#D9A62E"/><stop offset="1" stop-color="#96700F"/></linearGradient>
+</defs>
+<ellipse cx="360" cy="130" rx="336" ry="120" fill="#A8D8CE" opacity="0.05"></ellipse>
+<g stroke="#F0E7CE" stroke-width="1" opacity="0.05"><line x1="180" y1="6" x2="180" y2="294"></line><line x1="540" y1="6" x2="540" y2="294"></line><line x1="6" y1="228" x2="714" y2="228"></line></g>
+<g stroke="#9DB4A4" stroke-width="1.6" opacity="0.8"><line x1="351" y1="26" x2="369" y2="26"></line><line x1="351" y1="38" x2="369" y2="38"></line><line x1="351" y1="50" x2="369" y2="50"></line></g>
+<path d="M 360 14 L 360 62" stroke="#F0E7CE" stroke-width="7" fill="none"></path>
+<path d="M 360 62 Q 300 74 252 92 M 360 62 Q 420 74 468 92" stroke="#F0E7CE" stroke-width="5" fill="none"></path>
+<g>
+<rect x="90" y="72" width="240" height="142" rx="34" fill="url(#p438-glass1)" stroke="#F0E7CE" stroke-width="2"></rect>
+<g fill="none" stroke="#9DB4A4" stroke-width="1.2" opacity="0.7"><path d="M 100 104 Q 210 92 320 104"></path><path d="M 98 140 Q 210 128 322 140"></path><path d="M 100 176 Q 210 164 320 176"></path></g>
+<line x1="96" y1="143" x2="324" y2="143" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
+<text x="210" y="196" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">LEFT LUNG · 2 LOBES</text>
+</g>
+<g>
+<rect x="390" y="72" width="240" height="142" rx="34" fill="url(#p438-glass1)" stroke="#F0E7CE" stroke-width="2"></rect>
+<g fill="none" stroke="#9DB4A4" stroke-width="1.2" opacity="0.7"><path d="M 400 104 Q 510 92 620 104"></path><path d="M 398 140 Q 510 128 622 140"></path><path d="M 400 176 Q 510 164 620 176"></path></g>
+<line x1="396" y1="119" x2="624" y2="119" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
+<line x1="396" y1="167" x2="624" y2="167" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
+<text x="510" y="196" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">RIGHT LUNG · 3 LOBES</text>
+</g>
+<g>
+<polygon points="126,80 172,80 138,206 106,206" fill="#F0E7CE" opacity="0.055"></polygon>
+<polygon points="426,80 472,80 438,206 406,206" fill="#F0E7CE" opacity="0.055"></polygon>
+<g fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.20"><path d="M 152 78 Q 146 143 152 208"></path><path d="M 268 78 Q 274 143 268 208"></path><path d="M 452 78 Q 446 143 452 208"></path><path d="M 568 78 Q 574 143 568 208"></path></g>
+<g fill="none" stroke="#9DB4A4" stroke-width="1.1" opacity="0.55"><path d="M 102 88 Q 210 76 318 88"></path><path d="M 102 192 Q 210 180 318 192"></path><path d="M 402 88 Q 510 76 618 88"></path><path d="M 402 192 Q 510 180 618 192"></path></g>
+<rect x="94" y="76" width="232" height="134" rx="30" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
+<rect x="394" y="76" width="232" height="134" rx="30" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
+<rect x="168" y="64" width="84" height="13" rx="6.5" fill="url(#p438-brass1)"></rect>
+<rect x="468" y="64" width="84" height="13" rx="6.5" fill="url(#p438-brass1)"></rect>
+<rect x="168" y="209" width="84" height="11" rx="5.5" fill="url(#p438-brass1)" opacity="0.9"></rect>
+<rect x="468" y="209" width="84" height="11" rx="5.5" fill="url(#p438-brass1)" opacity="0.9"></rect>
+<g fill="url(#p438-brass1)" stroke="#0C1F19" stroke-width="0.8"><circle cx="110" cy="92" r="3.2"></circle><circle cx="310" cy="92" r="3.2"></circle><circle cx="110" cy="194" r="3.2"></circle><circle cx="310" cy="194" r="3.2"></circle><circle cx="410" cy="92" r="3.2"></circle><circle cx="610" cy="92" r="3.2"></circle><circle cx="410" cy="194" r="3.2"></circle><circle cx="610" cy="194" r="3.2"></circle></g>
+<ellipse cx="210" cy="226" rx="128" ry="7" fill="#000000" opacity="0.28"></ellipse>
+<ellipse cx="510" cy="226" rx="128" ry="7" fill="#000000" opacity="0.28"></ellipse>
+</g>
+<path d="M 70 238 Q 360 262 650 238" fill="none" stroke="#F0E7CE" stroke-width="1.6" opacity="0.65"></path>
+<path d="M 84 246 Q 360 268 636 246" fill="none" stroke="#9DB4A4" stroke-width="1" opacity="0.35"></path>
+<text x="360" y="272" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9DB4A4" text-anchor="middle">THE DIAPHRAGM BELOW · DRAWN FOR THIS ESSAY · NOT TO SCALE</text>
+<text x="36" y="40" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#9DB4A4">A TEACHING BELLOWS · SCHEMATIC</text>
+</svg>

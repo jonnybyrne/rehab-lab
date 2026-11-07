@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" width="720" height="340" role="img" aria-label="Schematic side view of a head and brain. The large cerebral hemisphere is drawn at the top; at the back, low down, the compartment where the cerebellum should sit is shown filled with pale fluid and labeled empty, beside a small slim brainstem. A brass gear floats outside the compartment, disconnected.">
+<defs><radialGradient id="p437-scan-glow" cx="80%" cy="10%" r="70%"><stop offset="0%" stop-color="#C9A227" stop-opacity="0.12"></stop><stop offset="55%" stop-color="#C9A227" stop-opacity="0"></stop></radialGradient></defs>
+<rect x="0" y="0" width="720" height="340" fill="#182B23"></rect>
+<rect x="0" y="0" width="720" height="340" fill="url(#p437-scan-glow)"></rect>
+<rect x="18" y="18" width="684" height="304" fill="none" stroke="#F2EBD9" stroke-opacity="0.16"></rect>
+<g stroke="#9DB4A4" stroke-width="1" opacity="0.4"><line x1="78" y1="18" x2="78" y2="27"></line><line x1="138" y1="18" x2="138" y2="27"></line><line x1="198" y1="18" x2="198" y2="27"></line><line x1="258" y1="18" x2="258" y2="27"></line><line x1="318" y1="18" x2="318" y2="27"></line><line x1="378" y1="18" x2="378" y2="27"></line><line x1="438" y1="18" x2="438" y2="27"></line><line x1="498" y1="18" x2="498" y2="27"></line><line x1="558" y1="18" x2="558" y2="27"></line><line x1="618" y1="18" x2="618" y2="27"></line></g>
+<g fill="none" stroke="#9DB4A4" stroke-width="1.3"><circle cx="34" cy="34" r="4"></circle><circle cx="686" cy="306" r="4"></circle><circle cx="34" cy="306" r="4"></circle></g>
+<g stroke="#9DB4A4" stroke-width="1"><line x1="31" y1="34" x2="37" y2="34"></line><line x1="683" y1="306" x2="689" y2="306"></line><line x1="31" y1="306" x2="37" y2="306"></line></g>
+<g transform="translate(-30,8)">
+<path d="M 120 250 Q 90 150 170 84 Q 260 18 420 30 Q 560 40 606 130 Q 640 196 596 252 Q 560 292 470 288 L 210 288 Q 140 286 120 250 Z" fill="none" stroke="#F2EBD9" stroke-width="2"></path>
+<path d="M 150 236 Q 132 156 196 102 Q 272 44 408 52 Q 524 60 562 128 Q 578 158 572 190 L 300 190 Q 190 190 150 236 Z" fill="#233A30" stroke="#9DB4A4" stroke-width="1.2"></path>
+<path d="M 166 226 Q 152 162 204 110 Q 274 54 398 64 Q 500 72 540 126" fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.35"></path>
+<g fill="none" stroke="#9DB4A4" stroke-width="1" opacity="0.55"><path d="M 200 120 Q 300 92 420 104"></path><path d="M 190 160 Q 310 132 470 146"></path><path d="M 250 84 Q 330 66 430 76"></path><path d="M 214 186 Q 330 164 486 172" opacity="0.6"></path><path d="M 292 68 Q 360 56 448 64" opacity="0.6"></path></g>
+<text x="330" y="130" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#9DB4A4" text-anchor="middle">CEREBRAL HEMISPHERE</text>
+<path d="M 452 196 Q 540 190 588 214 Q 606 250 580 276 Q 520 292 466 278 Q 446 240 452 196 Z" fill="#86C5BB" opacity="0.22"></path>
+<g fill="none" stroke="#86C5BB" stroke-width="1.1" opacity="0.55"><path d="M 484 238 q 9 -6 18 0 t 18 0 t 18 0"></path></g>
+<path d="M 452 196 Q 540 190 588 214 Q 606 250 580 276 Q 520 292 466 278 Q 446 240 452 196 Z" fill="none" stroke="#86C5BB" stroke-width="1.6" stroke-dasharray="6 5"></path>
+<text x="518" y="222" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#F2EBD9" text-anchor="middle">POSTERIOR FOSSA</text>
+<text x="524" y="254" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.3" fill="#86C5BB" text-anchor="middle">CEREBROSPINAL FLUID</text>
+<text x="524" y="269" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.3" fill="#86C5BB" text-anchor="middle">NO CEREBELLAR TISSUE</text>
+<path d="M 413 196 Q 410 240 413 284 L 433 284 Q 436 240 433 196 Q 423 203 413 196 Z" fill="#2A4438" stroke="#F2EBD9" stroke-width="1.4" opacity="0.95"></path><g fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.6"><path d="M 414 226 Q 423 232 432 226"></path><path d="M 414 244 Q 423 250 432 244"></path></g>
+<path d="M 422 206 L 421 272" fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.5"></path>
+<line x1="398" y1="254" x2="409" y2="254" stroke="#9DB4A4" stroke-width="1" stroke-dasharray="3 3"></line>
+<circle cx="411" cy="254" r="2.2" fill="#C9A227"></circle>
+<text x="392" y="246" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9DB4A4" text-anchor="end">BRAINSTEM,</text>
+<text x="392" y="262" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9DB4A4" text-anchor="end">PRESENT, SLIMMED</text>
+</g>
+<circle cx="662" cy="62" r="31" fill="none" stroke="#C9A227" stroke-width="1" stroke-dasharray="3 5" opacity="0.55"></circle>
+<g class="p437-gear"><g transform="translate(662,62)"><circle r="21" fill="none" stroke="#C9A227" stroke-width="3"></circle><circle r="11" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.6"></circle><circle r="6" fill="#C9A227"></circle><circle r="2.4" fill="#182B23"></circle><g fill="#C9A227"><rect x="-3.5" y="-29" width="7" height="10"></rect><rect x="-3.5" y="19" width="7" height="10"></rect><rect x="-29" y="-3.5" width="10" height="7"></rect><rect x="19" y="-3.5" width="10" height="7"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(45)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(45)"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(90)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(90)"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(135)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(135)"></rect></g></g></g>
+<text x="662" y="118" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#C9A227" text-anchor="middle">THE FINEST GEAR,</text>
+<text x="662" y="134" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#C9A227" text-anchor="middle">NEVER FITTED</text>
+<text x="50" y="315" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9DB4A4">SCHEMATIC · NOT HER SCAN · SIDE VIEW</text>
+</svg>
