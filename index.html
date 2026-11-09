@@ -23332,7 +23332,8 @@ root.appendChild(bar);
 var audio=document.createElement('audio');
 audio.id='p438-tour-audio';
 audio.preload='auto';
-audio.src='audio/one-lung-tour.mp3';
+var C=[];
+if(C.join('').length===624528){audio.src='data:audio/mpeg;base64,'+C.join('');}else{audio.src='audio/one-lung-tour.mp3';}
 root.appendChild(audio);
 var btn=document.getElementById('p438-tour-btn');
 var note=document.getElementById('p438-tour-note');
