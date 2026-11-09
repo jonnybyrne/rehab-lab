@@ -22714,6 +22714,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 #only-one-lung .p438-preset{transition:none}
 }
 
+/* Audio tour layer (test build, essay 37). Added for the tour page only;
+   the essay fragment CSS above is untouched. */
+#only-one-lung .p438-tour{margin:6px 0 8px}
+#only-one-lung .p438-tour-btn{appearance:none;border:1.5px solid var(--p438-brass);background:transparent;color:var(--p438-ink);font:600 13.5px "IBM Plex Sans",sans-serif;padding:11px 20px;border-radius:999px;cursor:pointer;letter-spacing:.02em}
+#only-one-lung .p438-tour-btn:hover{background:var(--p438-brass);color:var(--p438-ground)}
+#only-one-lung .p438-tour-btn:focus-visible{outline:2px solid var(--p438-air);outline-offset:2px}
+#only-one-lung .p438-tour-note{font:400 13px/1.55 "IBM Plex Sans",sans-serif;color:var(--p438-mut);margin:10px 0 0;max-width:38em}
+#only-one-lung .p438-tour-note:empty{display:none}
+#only-one-lung .p438-tour-hint{font:400 13px/1.55 "IBM Plex Sans",sans-serif;color:var(--p438-mut);margin:10px 0 0;max-width:38em}
+#only-one-lung .p438-tourbar .p438-tour-status{white-space:normal}
+#only-one-lung .p438-tourbar{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:60;display:none;align-items:center;gap:14px;background:var(--p438-panel2);border:1.5px solid var(--p438-brass);border-radius:999px;padding:10px 18px;box-shadow:0 18px 40px rgba(0,0,0,.55);max-width:calc(100vw - 24px)}
+#only-one-lung .p438-tourbar.on{display:flex}
+#only-one-lung .p438-tourbar button{appearance:none;border:1.5px solid var(--p438-line);background:transparent;color:var(--p438-ink);font:600 12.5px "IBM Plex Sans",sans-serif;padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+#only-one-lung .p438-tourbar button:hover{border-color:var(--p438-brass)}
+#only-one-lung .p438-tourbar .p438-tour-prog{width:130px;height:6px;border-radius:3px;background:rgba(240,231,206,.18);overflow:hidden}
+#only-one-lung .p438-tourbar .p438-tour-fill{display:block;height:100%;width:0;background:var(--p438-brass)}
+#only-one-lung .p438-tourbar .p438-tour-status{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--p438-air);white-space:nowrap}
+@media (max-width:560px){#only-one-lung .p438-tourbar .p438-tour-prog{width:64px}}
+
 #no-cerebellum-at-all{--p437-ground:#12211C;--p437-ground2:#182B23;--p437-panel:#1B2F27;--p437-panel2:#233A30;--p437-ink:#F2EBD9;--p437-body:#D9D3BF;--p437-mut:#9DB4A4;--p437-line:rgba(242,235,217,.28);--p437-accent:#C9A227;--p437-fluid:#86C5BB;background:var(--p437-ground);color:var(--p437-body);min-height:100vh}
 #no-cerebellum-at-all .p437-wrap{max-width:1080px;margin:0 auto;padding:0 24px 90px}
 #no-cerebellum-at-all .p437-kicker{font:500 11px "IBM Plex Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--p437-mut);margin:0 0 22px}
@@ -23217,6 +23236,224 @@ document.addEventListener('click',function(e){
   });
   openForHash();
 })();
+</script>
+<script>
+
+/* Audio tour driver (test build, essay 37).
+   Plays audio/one-lung-tour.mp3 and, at each cue time, scrolls the matching
+   section into view and fires that section's action through the
+   essay's own controls (preset buttons, bench slider, sources
+   drawer), exactly as a visitor's click would. Manual scrolling
+   during play yields: the tour pauses and offers resume. */
+(function(){
+var root=document.getElementById('only-one-lung');
+if(!root)return;
+var CUES=[
+ {
+  "id": "hero",
+  "t": 0.0,
+  "sel": ".p438-hero",
+  "block": "start"
+ },
+ {
+  "id": "gauges-vol",
+  "t": 28.4,
+  "sel": "#p438-gauges-stage",
+  "block": "center"
+ },
+ {
+  "id": "gauges-o2",
+  "t": 51.0,
+  "sel": "#p438-gauges-stage",
+  "block": "center"
+ },
+ {
+  "id": "limiter",
+  "t": 77.3,
+  "sel": ".p438-lamps",
+  "block": "center"
+ },
+ {
+  "id": "lobectomy",
+  "t": 98.8,
+  "sel": "#p438-gauges-stage",
+  "block": "center"
+ },
+ {
+  "id": "chain",
+  "t": 119.8,
+  "sel": "#p438-chain-sec",
+  "block": "start"
+ },
+ {
+  "id": "arc-split",
+  "t": 143.4,
+  "sel": "#p438-panel-a",
+  "block": "center"
+ },
+ {
+  "id": "arc-case",
+  "t": 170.2,
+  "sel": "#p438-panel-b",
+  "block": "center"
+ },
+ {
+  "id": "arc-young",
+  "t": 191.2,
+  "sel": "#p438-panel-c",
+  "block": "center"
+ },
+ {
+  "id": "closing",
+  "t": 213.7,
+  "sel": "#p438-recap-sec",
+  "block": "start"
+ }
+];
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+window.__tourLog=[];
+var hero=root.querySelector('.p438-hero');
+if(!hero)return;
+var wrap=document.createElement('div');
+wrap.className='p438-tour';
+wrap.innerHTML='<button type="button" class="p438-tour-btn" id="p438-tour-btn">Listen: audio tour</button>'
+ +'<p class="p438-tour-hint">Just press play and let the page scroll on its own. If you scroll yourself, the tour pauses; tap Resume to rejoin.</p>'
+ +'<p class="p438-tour-note" id="p438-tour-note"></p>';
+var cueLine=hero.querySelector('.p438-cue');
+if(cueLine){hero.insertBefore(wrap,cueLine);}else{hero.appendChild(wrap);}
+var bar=document.createElement('div');
+bar.className='p438-tourbar';
+bar.setAttribute('aria-label','Audio tour controls');
+bar.innerHTML='<button type="button" id="p438-tour-toggle">Pause</button>'
+ +'<span class="p438-tour-prog"><span class="p438-tour-fill" id="p438-tour-fill"></span></span>'
+ +'<span class="p438-tour-status" id="p438-tour-status">Tour playing</span>'
+ +'<button type="button" id="p438-tour-stop">Stop</button>';
+root.appendChild(bar);
+var audio=document.createElement('audio');
+audio.id='p438-tour-audio';
+audio.preload='auto';
+audio.src='audio/one-lung-tour.mp3';
+root.appendChild(audio);
+var btn=document.getElementById('p438-tour-btn');
+var note=document.getElementById('p438-tour-note');
+var toggle=document.getElementById('p438-tour-toggle');
+var stopBtn=document.getElementById('p438-tour-stop');
+var fill=document.getElementById('p438-tour-fill');
+var statusEl=document.getElementById('p438-tour-status');
+var fired={}, playing=false, rafId=null, lastY=window.scrollY, progScrolling=false;
+function log(entry){entry.at=performance.now()/1000;window.__tourLog.push(entry);}
+function smoothTo(el,block){
+ if(!el)return;
+ el.scrollIntoView({behavior:reduced?'auto':'smooth',block:block||'start'});
+}
+function benchTo(state){
+ var bench=root.querySelector('#p438-bench');
+ if(bench){bench.value=String(state);bench.dispatchEvent(new Event('input',{bubbles:true}));}
+}
+function preset(name){
+ var b=root.querySelector('.p438-preset[data-set="'+name+'"]');
+ if(b)b.click();
+}
+var ACTIONS={
+ 'hero':function(){},
+ 'gauges-vol':function(){preset('pneum');benchTo(2);},
+ 'gauges-o2':function(){benchTo(3);},
+ 'limiter':function(){
+   var lamp=root.querySelector('#p438-lamp-breath');
+   log({cue:'limiter-check',lampBreathOn:!!(lamp&&lamp.classList.contains('p438-lamp-on'))});
+ },
+ 'lobectomy':function(){preset('lob');benchTo(3);},
+ 'chain':function(){},
+ 'arc-split':function(){},
+ 'arc-case':function(){},
+ 'arc-young':function(){},
+ 'closing':function(){
+   var drawer=root.querySelector('#p438-sources');
+   if(drawer&&drawer.classList.contains('p3-closed')){
+     var db=drawer.querySelector('.p3-drawer-btn');
+     if(db)db.click();
+   }
+ }
+};
+function fireCue(cue){
+ var before=window.scrollY;
+ var target=document.querySelector(cue.sel);
+ progScrolling=true;
+ smoothTo(target,cue.block);
+ if(ACTIONS[cue.id])ACTIONS[cue.id]();
+ log({cue:cue.id,audioTime:audio.currentTime,scrollBefore:before});
+ setTimeout(function(){
+   log({cue:cue.id+':settled',audioTime:audio.currentTime,scrollAfter:window.scrollY});
+ },reduced?60:700);
+}
+function tick(){
+ if(!playing)return;
+ var t=audio.currentTime;
+ for(var i=0;i<CUES.length;i++){
+   var c=CUES[i];
+   if(!fired[c.id]&&t>=c.t){fired[c.id]=true;fireCue(c);}
+ }
+ if(audio.duration&&isFinite(audio.duration)){fill.style.width=(t/audio.duration*100).toFixed(1)+'%';}
+ rafId=requestAnimationFrame(tick);
+}
+function startTour(){
+ fired={};
+ audio.play().then(function(){
+   playing=true;bar.classList.add('on');toggle.textContent='Pause';
+   statusEl.textContent='Tour playing';btn.textContent='Tour playing';
+   lastY=window.scrollY;tick();
+   log({cue:'tour-start',audioTime:audio.currentTime});
+ }).catch(function(){
+   note.textContent='The tour audio could not be played. The essay below works as usual.';
+ });
+}
+function pauseTour(reason){
+ if(!playing)return;
+ playing=false;audio.pause();
+ if(rafId)cancelAnimationFrame(rafId);
+ toggle.textContent='Resume';
+ statusEl.textContent=(reason==='manual')?'Paused. It scrolls for you':'Tour paused';
+ btn.textContent='Listen: audio tour';
+ log({cue:'tour-pause',reason:reason||'button',audioTime:audio.currentTime});
+}
+function resumeTour(){
+ audio.play().then(function(){
+   playing=true;toggle.textContent='Pause';statusEl.textContent='Tour playing';
+   btn.textContent='Tour playing';lastY=window.scrollY;tick();
+   log({cue:'tour-resume',audioTime:audio.currentTime});
+ }).catch(function(){});
+}
+function stopTour(){
+ pauseTour('stop');
+ audio.currentTime=0;fired={};fill.style.width='0';
+ bar.classList.remove('on');statusEl.textContent='Tour playing';
+ log({cue:'tour-stop',audioTime:0});
+}
+btn.addEventListener('click',function(){
+ if(playing){pauseTour('button');}
+ else if(audio.currentTime>0&&!audio.ended){resumeTour();}
+ else{startTour();}
+});
+toggle.addEventListener('click',function(){ if(playing){pauseTour('button');}else{resumeTour();} });
+stopBtn.addEventListener('click',stopTour);
+audio.addEventListener('ended',function(){
+ playing=false;if(rafId)cancelAnimationFrame(rafId);
+ bar.classList.remove('on');btn.textContent='Listen: audio tour';
+ fill.style.width='100%';
+ log({cue:'tour-ended',audioTime:audio.currentTime});
+});
+audio.addEventListener('error',function(){
+ note.textContent='The tour audio could not be loaded. The essay below works as usual.';
+ log({cue:'tour-audio-error'});
+});
+window.addEventListener('wheel',function(){
+ if(playing)pauseTour('manual');
+},{passive:true});
+window.addEventListener('touchmove',function(){
+ if(playing)pauseTour('manual');
+},{passive:true});
+})();
+
 </script>
 </body>
 </html>
