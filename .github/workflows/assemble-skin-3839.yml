@@ -1,0 +1,32 @@
+name: Assemble essays 38-39 modern skin index
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Assemble index.html from chunks and verify md5
+        run: |
+          cat chunk-00.html chunk-01.html chunk-02.html chunk-03.html chunk-04.html chunk-05.html chunk-06.html chunk-07.html chunk-08.html chunk-09.html chunk-10.html chunk-11.html chunk-12.html chunk-13.html > index.html
+          actual="$(md5sum index.html | awk '{print $1}')"
+          echo "Assembled index.html md5: $actual"
+          if [ "$actual" != "d1f6395fa9acc1108f5b12e6544448d9" ]; then
+            echo "ERROR: assembled md5 $actual does not match expected d1f6395fa9acc1108f5b12e6544448d9; refusing to commit."
+            exit 1
+          fi
+
+      - name: Commit assembled index.html
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Assemble essays 38-39 modern skin index from chunks"
+          git push
