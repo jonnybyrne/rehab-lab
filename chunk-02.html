@@ -1,3 +1,616 @@
+ural sensory amplitude floor 4 microvolts. All Chen 2016, AANEM Normative Data Task Force selected values.</li>
+<li>The 70 and 130 percent pair printed in the axon-failure section comes from the Guillain-Barré criteria sets tabulated in Uncini's review (Sources); Hadden's set uses 90 and 110. Neither pair is a CIDP boundary: the 2021 EAN/PNS CIDP guideline's demyelination thresholds are the ones quoted in the text.</li>
+</ol>
+</div>
+<div class="p425-sources p3-drawer p3-closed" id="p425-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p425-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Every number, sourced</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
+<h3>Sources</h3>
+<ol>
+<li>Chen S et al. Electrodiagnostic reference values for upper and lower limb nerve conduction studies in adult populations (AANEM Normative Data Task Force). Muscle Nerve, 2016 (the reference panel: median motor latency ceiling 4.5 ms, amplitude floor 4.1 mV, forearm velocity floor 49 m/s; median sensory peak ceiling 4.0 ms at 14 cm and amplitude floor 11 µV; ulnar, fibular, tibial, and sural limits; the 0.4 ms median minus ulnar peak difference; the 71 percent healthy tibial amplitude drop).</li>
+<li>Buschbacher RM. Median nerve motor conduction to the abductor pollicis brevis. American Journal of Physical Medicine and Rehabilitation, 1999 (the cohort means the trap is calibrated to: latency 3.7 ms, amplitude 10.2 mV, velocity 57 m/s).</li>
+<li>Halar EM, DeLisa JA, Brozovich FV. Peroneal nerve conduction velocity: the importance of temperature correction. Archives of Physical Medicine and Rehabilitation, 1981 (2.0 m/s per degree Celsius, with the published correction formula).</li>
+<li>Halar EM, et al. Archives of Physical Medicine and Rehabilitation, 1983 (the upper-limb temperature study by Halar, DeLisa, and Soine: median motor conduction slowed 1.5 m/s per degree Celsius; the median-nerve companion to the peroneal coefficient above).</li>
+<li>Olney RK. Consensus criteria for the diagnosis of partial conduction block (AAEM). Muscle Nerve, 1999 (definite block: about 50 to 60 percent amplitude and 40 to 50 percent area reduction with duration increase of 30 percent or less; the normal duration growth of up to about 25 percent).</li>
+<li>Joint Task Force of the EFNS and PNS. Guideline on management of chronic inflammatory demyelinating polyradiculoneuropathy. Journal of the Peripheral Nervous System, 2010 (temporal dispersion above 30 percent).</li>
+<li>Kimura J. Electrodiagnosis in Diseases of Nerve and Muscle (the dissenting dispersion threshold of 15 percent, as cited in the Guillain-Barré electrodiagnostics literature).</li>
+<li>Uncini A et al. Electrodiagnostic findings in Guillain-Barré syndrome (the criteria sets' slowing thresholds, the 70 and 130 percent conventions, and F waves among the earliest abnormalities).</li>
+<li>Preston DC, Shapiro BE. Electromyography and Neuromuscular Disorders (the latency as a sum; supramaximal stimulation; amplitude as an axon count; the F wave chapter and its Table 4-1 values; temperature at about 5 percent per degree; warming practice).</li>
+<li>Normative value of F-wave minimum latency in a tertiary care centre in Eastern India. Neurology India (150 volunteers: median minimal F latency mean 24.9 ms, ulnar 25.1 ms; height the dominant determinant).</li>
+<li>AAEM, AAN, AAPM&amp;R. Practice parameter for electrodiagnostic studies in carpal tunnel syndrome. Muscle Nerve, 2002 (the recommended study sequence).</li>
+<li>Jablecki CK et al. Literature review of the usefulness of nerve conduction studies and electromyography for carpal tunnel syndrome. Muscle Nerve, 2002 (sensitivity above 85 percent, specificity above 95 percent).</li>
+<li>Robinson LR, Micklesen PJ, Wang L. Strategies for analyzing nerve conduction data: superiority of a summary index over single tests. Muscle Nerve, 1998 (the combined sensory index: sensitivity 83.1 percent against 69.7 to 75.8 percent for its components).</li>
+<li>Lew HL, Wang L, Robinson LR. Test-retest reliability of combined sensory index. Muscle Nerve, 2000 (reliability rho 0.95; the index applied at the 0.9 ms cutoff).</li>
+<li>Washington State Department of Labor and Industries. Work-related carpal tunnel syndrome diagnosis and treatment guideline (the comparison thresholds: ring difference 0.5 ms, palm difference about 0.3 ms, sensory cutoff 3.6 ms, combined sensory index 0.9 ms).</li>
+<li>Influence of temperature on comparative nerve conduction techniques for carpal tunnel syndrome diagnosis. Arquivos de Neuro-Psiquiatria, 2005 (comparison differences stable in a cold hand; the index applied at the 1.1 ms cutoff).</li>
+<li>Salerno DF et al. Can carpal tunnel syndrome be appropriately diagnosed in a cold hand? (comparison studies are partly temperature proof).</li>
+<li>Katirji B, Kaminski HJ, Ruff RL. Electrodiagnostic Findings in Neuromuscular Disorders (the Wallerian sequence; the early block mimic; repeat the study at 10 to 11 days).</li>
+<li>Adams RD, Victor M et al. Adams and Victor's Principles of Neurology (motor nadir at day 5 to 6; sensory holding 5 to 6 days and nadiring at day 10 to 11; the under 70 percent demyelination rule).</li>
+</ol>
+</div>
+<div class="p425-footer"><span>The Speed Trap · The PM&amp;R Files</span><span>Essay 24</span></div>
+</section>
+
+</div>
+</div>
+</div>
+<script>
+(function(){
+/* The Speed Trap: nerve conduction engine. Implements spec Part 2.1 to 2.4.
+   Pure state machine, no DOM. Published constants are never tuned;
+   calibrated constants live in CAL and may be adjusted per spec Part 2.5. */
+'use strict';
+
+var PUB = {
+  CV_LLN: 49,          // Chen 2016 (spec 1.2.3)
+  DL_ULN: 4.5,         // Chen 2016 (spec 1.2.1)
+  AMP_LLN: 4.1,        // Chen 2016 (spec 1.2.2)
+  TEMP_COEF_CV: 2.0,   // Halar 1981 (spec 1.5.1), m/s per degC below 33
+  TEMP_COEF_DL: 0.2,   // teaching figure (spec 1.5.3), ms per degC below 33
+  BLOCK_AMP_DROP: 50,  // Olney 1999 (spec 1.4.2)
+  BLOCK_AREA_DROP: 40, // Olney 1999 (spec 1.4.2)
+  DISPERSION_LIMIT: 30 // EFNS/PNS; AAEM framing (spec 1.4.1)
+};
+
+var CAL = {
+  CV_BASE: 57,          // Buschbacher cohort mean forearm CV (spec 1.2.4)
+  TERMINAL: 2.3,        // fitted so default wrist onset = 3.7 ms cohort mean
+  DISTAL_CM: 8,         // NDTF technique distance (spec 1.2.13) - published geometry
+  SEGMENT_CM: 24,       // stated model geometry (spec 2.3)
+  SPREAD_INTACT: 0.06,  // fibre velocity spread, intact
+  SIGMA_RISE: 0.5,      // unit bump rise width, ms (display calibration)
+  SIGMA_DECAY: 2.2,     // unit bump decay width, ms (display calibration, W_MOTOR family)
+  AMP_SCALE: 0.409,     // mV per unit of summed waveform; fitted so default wrist peak = 10.2 mV
+  SHUF: [7, 19, 2, 23, 11, 0, 15, 5, 21, 9, 13, 3, 17, 24, 1, 20, 8, 14, 22, 4, 18, 10, 6, 16, 12]
+};
+
+/* Myelin positions (spec 2.4, calibrated per spec 2.3: fitted so each position
+   lands in its sourced pattern band and passes checkpoint 2 or 3). */
+var MYELIN = {
+  intact:   { M: 1.00, SPREAD: 0.06, BLOCKED: 0 },
+  patchy:   { M: 0.50, SPREAD: 0.18, BLOCKED: 4 },
+  stripped: { M: 0.85, SPREAD: 0.10, BLOCKED: 15 }
+};
+
+var Z = [];
+for (var zi = 0; zi < 25; zi++) Z.push((zi - 12) / 12);
+
+function cvEff(temp) {
+  var d = Math.max(0, 33 - temp);
+  return CAL.CV_BASE - PUB.TEMP_COEF_CV * d;
+}
+function distalTransit(temp, i) { // ms, fastest-path uses group i's own z
+  return CAL.DISTAL_CM / ((cvEff(temp) * (1 + CAL.SPREAD_INTACT * Z[i])) / 10);
+}
+function terminalEff(temp) {
+  var d = Math.max(0, 33 - temp);
+  if (d === 0) return CAL.TERMINAL;
+  // Net distal-latency coefficient (spec 1.5.3) applied via the terminal term:
+  // the terminal absorbs the difference between the net DL shift and the
+  // distal segment's own conduction slowing, so the wrist onset moves by
+  // exactly TEMP_COEF_DL per degree while velocities still use TEMP_COEF_CV.
+  var fastest = 24; // index of z = +1
+  return CAL.TERMINAL + PUB.TEMP_COEF_DL * d - (distalTransit(temp, fastest) - distalTransit(33, fastest));
+}
+function blockedSet(myelinKey) {
+  var n = MYELIN[myelinKey].BLOCKED, s = {};
+  for (var k = 0; k < n; k++) s[CAL.SHUF[k]] = true;
+  return s;
+}
+function arrival(temp, myelinKey, site, i) {
+  // arrival time (ms) of group i's unit potential at the recording electrode
+  var t = terminalEff(temp) + distalTransit(temp, i);
+  if (site === 'elbow') {
+    var m = MYELIN[myelinKey];
+    var vg = cvEff(temp) * m.M * (1 + m.SPREAD * Z[i]); // m/s
+    t += CAL.SEGMENT_CM / (vg / 10);
+  }
+  return t;
+}
+function bump(x) { // unit potential shape, peak 1 at x = 0, negative-going drawn as positive value here
+  var s = x < 0 ? CAL.SIGMA_RISE : CAL.SIGMA_DECAY;
+  var q = x / s;
+  return Math.exp(-q * q);
+}
+function waveform(state, site) {
+  // returns {t:[], v:[]} sampled sum (positive = response magnitude), plus arrivals used
+  var blocked = site === 'elbow' ? blockedSet(state.myelin) : {};
+  var dt = 0.01, T = 26, n = Math.floor(T / dt) + 1;
+  var v = new Float64Array(n);
+  var arrivals = [];
+  for (var i = 0; i < 25; i++) {
+    if (blocked[i]) continue;
+    var a = arrival(state.temp, state.myelin, site, i);
+    arrivals.push(a);
+    var amp = state.axons; // axon slider scales every group equally (spec 2.4)
+    var start = Math.max(0, Math.floor((a - 2) / dt));
+    var end = Math.min(n - 1, Math.ceil((a + 7) / dt));
+    for (var j = start; j <= end; j++) v[j] += amp * bump(j * dt - a);
+  }
+  return { dt: dt, v: v, arrivals: arrivals };
+}
+function measure(state, site) {
+  var w = waveform(state, site);
+  var v = w.v, dt = w.dt, i, peak = 0;
+  for (i = 0; i < v.length; i++) if (v[i] > peak) peak = v[i];
+  var onset = Math.min.apply(null, w.arrivals);
+  var thresh = 0.05 * peak, last = onset;
+  for (i = v.length - 1; i >= 0; i--) { if (v[i] >= thresh) { last = i * dt; break; } }
+  var area = 0;
+  for (i = 0; i < v.length; i++) area += v[i] * dt;
+  return {
+    onset: onset,
+    peakUnits: peak,
+    amplitude: peak * CAL.AMP_SCALE,
+    duration: last - onset,
+    area: area
+  };
+}
+function run(state) {
+  var wrist = measure(state, 'wrist');
+  var elbow = measure(state, 'elbow');
+  var segVel = CAL.SEGMENT_CM / (elbow.onset - wrist.onset) * 10; // cm per ms -> m/s
+  var ampDrop = 100 * (1 - elbow.amplitude / wrist.amplitude);
+  var areaDrop = 100 * (1 - elbow.area / wrist.area);
+  var durInc = 100 * (elbow.duration / wrist.duration - 1);
+  return { wrist: wrist, elbow: elbow, segVel: segVel, ampDrop: ampDrop, areaDrop: areaDrop, durInc: durInc };
+}
+function pattern(state, r) {
+  if (r.ampDrop >= PUB.BLOCK_AMP_DROP && r.areaDrop >= PUB.BLOCK_AREA_DROP && r.durInc <= PUB.DISPERSION_LIMIT) return 'block';
+  if (r.durInc > PUB.DISPERSION_LIMIT) return 'dispersion';
+  if (r.wrist.amplitude < PUB.AMP_LLN && r.segVel >= PUB.CV_LLN) return 'axonal';
+  return 'none';
+}
+
+/* Carpal tunnel panel (spec 2.6): separate small analytic model */
+var CTS = {
+  V_SEG: 52,            // m/s, both 7 cm sub-segments (calibrated, anchored 1.2.5/1.2.7)
+  TERMINAL_SENSORY: 0.65,
+  TUNNEL_MULT: 0.55,
+  ULNAR_PEAK: 3.3,      // the case's given comparison value
+  MOTOR_ADD: 0.9,       // ms added to motor distal latency when narrowed (calibrated, 1.7.4)
+  CSI_OPEN: [0.10, 0.05, 0.05],
+  CSI_NARROWED: [0.40, 1.14, 0.90]
+};
+function ctsPeak(narrowed) {
+  var vD = CTS.V_SEG / 10, vT = CTS.V_SEG * (narrowed ? CTS.TUNNEL_MULT : 1) / 10;
+  return CTS.TERMINAL_SENSORY + 7 / vD + 7 / vT;
+}
+
+/* Injury clock (spec 2.7): published anchor days, piecewise-linear display */
+var CLOCK = {
+  CMAP: [[0, 100], [2, 100], [3, 70], [4, 35], [5, 12], [6, 5], [14, 5]],
+  SNAP: [[0, 100], [5, 100], [6, 85], [8, 45], [10, 12], [11, 5], [14, 5]]
+};
+function clockVal(anchors, day) {
+  if (day <= anchors[0][0]) return anchors[0][1];
+  for (var i = 1; i < anchors.length; i++) {
+    if (day <= anchors[i][0]) {
+      var a = anchors[i - 1], b = anchors[i];
+      return a[1] + (b[1] - a[1]) * (day - a[0]) / (b[0] - a[0]);
+    }
+  }
+  return anchors[anchors.length - 1][1];
+}
+
+var V=document.getElementById('the-speed-trap'); if(!V) return;
+var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function $(id){return V.querySelector('#'+id);}
+function fmt(x,d){return x.toFixed(d);}
+
+/* grids: millisecond ticks on the main strips (0 to 15 ms) */
+V.querySelectorAll('#p425-strip .p425-grid, #p425-h-strip .p425-grid').forEach(function(g){
+  var s='';
+  for(var ms=0;ms<=15;ms++){var x=40+ms*44; s+='<line x1="'+x+'" y1="24" x2="'+x+'" y2="180" class="p425-gridline"/><text x="'+x+'" y="180" text-anchor="middle" class="p425-svgtext p425-gridlab">'+ms+'</text>';}
+  g.innerHTML=s;
+});
+/* CTS strip grid: 0 to 10 ms */
+(function(){var g=V.querySelector('#p425-cts-strip .p425-grid'); if(!g)return; var s=''; for(var ms=0;ms<=10;ms++){var x=40+ms*66; s+='<line x1="'+x+'" y1="24" x2="'+x+'" y2="160" class="p425-gridline"/><text x="'+x+'" y="160" text-anchor="middle" class="p425-svgtext p425-gridlab">'+ms+'</text>';} g.innerHTML=s;})();
+
+var state={myelin:'intact',axons:1,temp:33};
+var fired={w:false,e:false};
+
+/* ---- main strip ---- */
+var X0=40,PX=44;
+function tracePath(st,site,laneBase,yScale){
+  var w=waveform(st,site); var p=''; var step=4;
+  for(var j=0;j<w.v.length;j+=step){var t=j*w.dt; var x=X0+t*PX; var y=laneBase-w.v[j]*yScale; p+=(j===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1);}
+  return p;
+}
+function paintTrace(el,path,animate){
+  if(!el) return;
+  el.setAttribute('d',path);
+  if(animate&&!RM&&el.getTotalLength){try{var L=el.getTotalLength(); el.style.transition='none'; el.style.strokeDasharray=L; el.style.strokeDashoffset=L; el.getBoundingClientRect(); el.style.transition='stroke-dashoffset .7s linear'; el.style.strokeDashoffset='0';}catch(e){}}
+}
+function drawStrips(animate){
+  var pw=tracePath(state,'wrist',76,1.9), pe=tracePath(state,'elbow',166,1.9);
+  if(fired.w){ paintTrace($('p425-trace-w'),pw,animate); paintTrace($('p425-h-trace-w'),pw,false); }
+  if(fired.e){ paintTrace($('p425-trace-e'),pe,animate); paintTrace($('p425-h-trace-e'),pe,false); }
+}
+function paintBracket(gid,lineId,textId,r){
+  var g=$(gid); if(!g) return;
+  if(!(fired.w&&fired.e)){g.hidden=true; return;}
+  g.hidden=false;
+  var x1=X0+r.wrist.onset*PX, x2=X0+r.elbow.onset*PX;
+  var line=$(lineId); line.setAttribute('x1',x1); line.setAttribute('x2',x2);
+  var tx=$(textId); tx.setAttribute('x',(x1+x2)/2);
+  tx.textContent='THE SEGMENT · 0.24 M ÷ '+((r.elbow.onset-r.wrist.onset)/1000).toFixed(5)+' S = '+Math.round(r.segVel)+' M/S';
+}
+function readouts(){
+  var r=run(state);
+  if(fired.w){$('p425-ro-wlat').textContent=fmt(r.wrist.onset,1)+' ms'; $('p425-ro-wamp').textContent=fmt(r.wrist.amplitude,1)+' mV';}
+  if(fired.e){$('p425-ro-elat').textContent=fmt(r.elbow.onset,1)+' ms'; $('p425-ro-eamp').textContent=fmt(r.elbow.amplitude,1)+' mV';}
+  if(fired.w&&fired.e){
+    var pk=pattern(state,r);
+    $('p425-ro-vel').textContent=Math.round(r.segVel)+' m/s';
+    $('p425-ro-adrop').textContent=Math.round(r.ampDrop)+'%';
+    $('p425-ro-dur').textContent='+'+Math.round(r.durInc)+'%';
+    $('p425-tb-w').textContent=fmt(r.wrist.onset,1)+' MS';
+    $('p425-tb-v').textContent=Math.round(r.segVel)+' M/S';
+    $('p425-tb-a').textContent=fmt(r.elbow.amplitude,1)+' MV';
+    var vc=$('p425-chip-vel');
+    if(r.segVel<PUB.CV_LLN){vc.textContent='SEGMENT VELOCITY '+Math.round(r.segVel)+' M/S · below the 49 m/s floor (Chen 2016)'; vc.className='p425-verdict p425-alert';}
+    else {vc.textContent='SEGMENT VELOCITY '+Math.round(r.segVel)+' M/S · floor 49 m/s (Chen 2016)'; vc.className='p425-verdict';}
+    var pc=$('p425-chip-pat');
+    if(pk==='block'){pc.textContent='Amplitude drop '+Math.round(r.ampDrop)+'%, area drop '+Math.round(r.areaDrop)+'%, duration +'+Math.round(r.durInc)+'% · definite conduction block pattern (AAEM consensus)'; pc.className='p425-verdict p425-alert'; $('p425-tb-p').textContent='BLOCK PATTERN';}
+    else if(pk==='dispersion'){pc.textContent='Duration increase +'+Math.round(r.durInc)+'% · temporal dispersion (guideline threshold 30%, textbook 15%)'; pc.className='p425-verdict p425-alert'; $('p425-tb-p').textContent='DISPERSION PATTERN';}
+    else if(pk==='axonal'){pc.textContent='Small at both gates with speed preserved · axonal pattern'; pc.className='p425-verdict p425-alert'; $('p425-tb-p').textContent='AXONAL PATTERN';}
+    else {pc.textContent='No pattern flagged · drops and spread inside the healthy bands'; pc.className='p425-verdict'; $('p425-tb-p').textContent='NO PATTERN FLAGGED';}
+  }
+  if(fired.w){
+    var lc=$('p425-chip-lat');
+    lc.textContent='WRIST LATENCY '+fmt(r.wrist.onset,1)+' MS · ceiling 4.5 ms (Chen 2016)';
+    lc.className='p425-verdict'+(r.wrist.onset>PUB.DL_ULN?' p425-alert':'');
+  }
+  paintBracket('p425-bracket','p425-bracket-line','p425-bracket-text',r);
+  paintBracket('p425-h-bracket','p425-h-bracket-line','p425-h-bracket-text',r);
+  paintCtsMotor(r);
+}
+function fire(which,animate){
+  if(which==='w'){fired.w=true; $('p425-gate1').classList.add('p425-flashed'); $('p425-h-gate1').classList.add('p425-flashed');}
+  else {fired.e=true; $('p425-gate2').classList.add('p425-flashed'); $('p425-h-gate2').classList.add('p425-flashed');}
+  drawStrips(animate); readouts();
+}
+$('p425-stim-w').addEventListener('click',function(){fire('w',true);});
+$('p425-stim-e').addEventListener('click',function(){fire('e',true);});
+V.querySelectorAll('[data-p425-myelin]').forEach(function(b){b.addEventListener('click',function(){
+  state.myelin=b.getAttribute('data-p425-myelin');
+  V.querySelectorAll('[data-p425-myelin]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+  drawStrips(false); readouts();
+});});
+$('p425-axons').addEventListener('input',function(e){state.axons=+e.target.value/100; $('p425-axons-v').textContent=e.target.value; drawStrips(false); readouts();});
+$('p425-temp').addEventListener('input',function(e){state.temp=+e.target.value; $('p425-temp-v').textContent=e.target.value; $('p425-tempnote').hidden=!(state.temp<33); drawStrips(false); readouts();});
+
+/* ---- hero run ---- */
+var heroDone=false;
+function heroFinish(){heroDone=true; $('p425-cue').hidden=false; $('p425-armed').textContent='CAUGHT'; $('p425-armed').classList.add('p425-caught');}
+$('p425-fire').addEventListener('click',function(){
+  if(heroDone) return;
+  if(RM){fire('w',false); fire('e',false); heroFinish(); return;}
+  fire('w',true);
+  setTimeout(function(){fire('e',true); heroFinish();},800);
+});
+$('p425-skip').addEventListener('click',function(){ if(heroDone) return; fire('w',false); fire('e',false); heroFinish(); });
+
+/* ---- CTS panel ---- */
+var ctsNarrowed=false;
+function ctsData(){
+  var peak=ctsPeak(ctsNarrowed);
+  var csi=ctsNarrowed?CTS.CSI_NARROWED:CTS.CSI_OPEN;
+  return { medianPeak:peak, ulnar:CTS.ULNAR_PEAK, diff:peak-CTS.ULNAR_PEAK, csi:csi, csiSum:csi[0]+csi[1]+csi[2], motorAdd:ctsNarrowed?CTS.MOTOR_ADD:0 };
+}
+function sensPath(peak,lane){
+  var p=''; var yS=34;
+  for(var j=0;j<=200;j++){var t=j*0.05; var v=0;
+    for(var i=0;i<25;i++){var z=(i-12)/12; var x=t-(peak+z*0.35); var g=x<0?Math.exp(-Math.pow(x/0.28,2)):Math.exp(-Math.pow(x/0.62,2)); v+=g;}
+    v=v/25*1.9; var xx=40+t*66; var y=lane-v*yS; p+=(j===0?'M':'L')+xx.toFixed(1)+' '+y.toFixed(1);
+  }
+  return p;
+}
+function drawCts(){
+  var c=ctsData();
+  $('p425-cts-trace-m').setAttribute('d',sensPath(c.medianPeak,56));
+  $('p425-cts-trace-u').setAttribute('d',sensPath(c.ulnar,146));
+  var px=40+c.medianPeak*66;
+  var pl=$('p425-cts-peakline'); pl.setAttribute('x1',px); pl.setAttribute('x2',px);
+  var lab=$('p425-cts-peaklab'); lab.setAttribute('x',px+36); lab.setAttribute('text-anchor','start'); lab.textContent='PEAK '+c.medianPeak.toFixed(2)+' MS';
+  $('p425-cts-peak').textContent=c.medianPeak.toFixed(2)+' ms';
+  $('p425-cts-diff').textContent=c.diff.toFixed(2)+' ms';
+  var keys=['palm','ring','thumb'];
+  keys.forEach(function(k,idx){ $('p425-csi-'+k).style.width=Math.min(100,c.csi[idx]/1.5*100)+'%'; $('p425-csi-'+k+'-v').textContent=c.csi[idx].toFixed(2)+' ms'; });
+  var cp=$('p425-cts-chip-peak');
+  if(c.medianPeak>4.0){cp.textContent='Median sensory peak '+c.medianPeak.toFixed(2)+' ms · past the 3.6 ms disease cutoff and the 4.0 ms normative ceiling'; cp.className='p425-verdict p425-alert';}
+  else if(c.medianPeak>3.6){cp.textContent='Median sensory peak '+c.medianPeak.toFixed(2)+' ms · past the 3.6 ms disease cutoff, inside the 4.0 ms normative ceiling'; cp.className='p425-verdict p425-alert';}
+  else {cp.textContent='Median sensory peak '+c.medianPeak.toFixed(2)+' ms · inside both the 3.6 ms disease cutoff and the 4.0 ms normative ceiling'; cp.className='p425-verdict';}
+  var cd=$('p425-cts-chip-diff');
+  cd.textContent='Median minus ulnar '+c.diff.toFixed(2)+' ms · '+(c.diff>=0.4?'past':'inside')+' the 0.4 ms difference limit';
+  cd.className='p425-verdict'+(c.diff>=0.4?' p425-alert':'');
+  var cs=$('p425-csi-sum');
+  cs.textContent='COMBINED SENSORY INDEX '+c.csiSum.toFixed(2)+' MS · cutoffs in the literature: 0.9 ms and 1.1 ms; this panel flags at 0.9, the lower of the two';
+  cs.className='p425-verdict'+(c.csiSum>=0.9?' p425-alert':'');
+  $('p425-tunnel-span').classList.toggle('p425-tunnel-on',ctsNarrowed);
+  paintCtsMotor(run(state));
+}
+function paintCtsMotor(r){
+  var c=ctsData();
+  $('p425-cts-motor').textContent=(r.wrist.onset+c.motorAdd).toFixed(1)+' ms';
+  $('p425-cts-vel').textContent=Math.round(r.segVel)+' m/s';
+}
+$('p425-tunnel-btn').addEventListener('click',function(){
+  ctsNarrowed=!ctsNarrowed;
+  this.setAttribute('aria-pressed',ctsNarrowed?'true':'false');
+  this.textContent=ctsNarrowed?'Open the tunnel':'Narrow the tunnel';
+  drawCts();
+});
+drawCts();
+
+/* ---- injury clock ---- */
+function paintClock(){
+  var d=+$('p425-clock-slider').value;
+  $('p425-clock-day-v').textContent=(Math.round(d*2)/2);
+  $('p425-lane-cmap').style.width=clockVal(CLOCK.CMAP,d)+'%'; $('p425-lane-cmap-v').textContent=Math.round(clockVal(CLOCK.CMAP,d))+'%';
+  $('p425-lane-snap').style.width=clockVal(CLOCK.SNAP,d)+'%'; $('p425-lane-snap-v').textContent=Math.round(clockVal(CLOCK.SNAP,d))+'%';
+}
+$('p425-clock-slider').addEventListener('input',paintClock);
+paintClock();
+})();
+</script>
+<script>
+(function(){
+'use strict';
+/* Essay 24 overhaul · photo-finish race layer. Presentation only: it reads the
+   engine's own readout values after the engine has run and animates a pulse of
+   light along the track schematic plus a developer wipe over the strip.
+   It writes no state, changes no numbers, and is inert under reduced motion. */
+var V=document.getElementById('the-speed-trap');
+if(!V) return;
+if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+function $(id){return document.getElementById(id);}
+function parseLat(id){var el=$(id);if(!el) return NaN;var n=parseFloat(el.textContent);return isFinite(n)?n:NaN;}
+var NS='http://www.w3.org/2000/svg';
+function wrapStrip(svg){
+  if(!svg||!svg.parentElement) return null;
+  var w=document.createElement('div'); w.className='p425-stripwrap';
+  svg.parentElement.insertBefore(w,svg); w.appendChild(svg);
+  var bar=document.createElement('div'); bar.className='p425-wipebar'; bar.setAttribute('aria-hidden','true'); w.appendChild(bar);
+  return {wrap:w,bar:bar,svg:svg};
+}
+var panelStrip=wrapStrip($('p425-strip'));
+var heroStrip=wrapStrip($('p425-h-strip'));
+function wipe(ctx,dur){
+  if(!ctx||!ctx.bar.animate) return;
+  /* Travel the strip's own width, not the wrapper's: the strip svg carries a
+     max-width and sits narrower than the full panel column. */
+  var dist=ctx.svg.clientWidth+200;
+  ctx.bar.animate([
+    {transform:'translateX(0)',opacity:0},
+    {transform:'translateX('+(dist*0.22)+'px)',opacity:1,offset:0.22},
+    {transform:'translateX('+dist+'px)',opacity:1}
+  ],{duration:dur,easing:'cubic-bezier(.3,.6,.3,1)'});
+}
+function runPulse(svg,fromX,latMs,passGate,passFrac){
+  if(!svg||!isFinite(latMs)) return 0;
+  var dur=Math.max(480,Math.min(1600,latMs*170));
+  var g=document.createElementNS(NS,'g');
+  var trail=document.createElementNS(NS,'line');
+  trail.setAttribute('class','p425-pulsetrail');
+  trail.setAttribute('x1',fromX); trail.setAttribute('x2',fromX);
+  trail.setAttribute('y1','96'); trail.setAttribute('y2','96');
+  var dot=document.createElementNS(NS,'circle');
+  dot.setAttribute('class','p425-pulse'); dot.setAttribute('r','5.5');
+  dot.setAttribute('cx',fromX); dot.setAttribute('cy','96');
+  g.appendChild(trail); g.appendChild(dot); svg.appendChild(g);
+  var finishX=669,start=null,passed=false;
+  function frame(ts){
+    if(start===null) start=ts;
+    var t=Math.min(1,(ts-start)/dur);
+    var x=fromX+(finishX-fromX)*t;
+    dot.setAttribute('cx',x); trail.setAttribute('x2',x);
+    if(passGate&&!passed&&passFrac>0&&t>=passFrac){
+      passed=true; passGate.classList.add('p425-passflash');
+      setTimeout(function(){passGate.classList.remove('p425-passflash');},420);
+    }
+    if(t<1){ requestAnimationFrame(frame); return; }
+    var m=svg.querySelector('.p425-muscle');
+    if(m){ m.classList.add('p425-hit'); setTimeout(function(){m.classList.remove('p425-hit');},380); }
+    g.style.transition='opacity .25s ease'; g.style.opacity='0';
+    setTimeout(function(){ if(g.parentNode) g.parentNode.removeChild(g); },300);
+  }
+  requestAnimationFrame(frame);
+  return dur;
+}
+var panelTrack=V.querySelector('#p425-panel .p425-tracksvg');
+var heroTrack=V.querySelector('#p425-hero .p425-tracksvg');
+function pulseW(track){ return runPulse(track,545,parseLat('p425-ro-wlat'),null,0); }
+function pulseE(track,gate1){
+  var el=parseLat('p425-ro-elat'), wl=parseLat('p425-ro-wlat'), frac=0;
+  if(isFinite(el)&&isFinite(wl)&&el>0) frac=Math.max(0.05,Math.min(0.95,(el-wl)/el));
+  return runPulse(track,145,el,gate1,frac);
+}
+var sw=$('p425-stim-w'), se=$('p425-stim-e'), hf=$('p425-fire');
+if(sw) sw.addEventListener('click',function(){ var d=pulseW(panelTrack); wipe(panelStrip,d||900); });
+if(se) se.addEventListener('click',function(){ var d=pulseE(panelTrack,$('p425-gate1')); wipe(panelStrip,d||1200); });
+if(hf) hf.addEventListener('click',function(){
+  var d1=pulseW(heroTrack); wipe(heroStrip,d1||900);
+  setTimeout(function(){ var d2=pulseE(heroTrack,$('p425-h-gate1')); wipe(heroStrip,d2||1200); },800);
+});
+})();
+</script>
+
+<div class="view" id="the-muscle-microphone">
+<div class="p426-wrap">
+
+<header class="p426-hero" id="p426-hero">
+<div class="p426-hero-inner">
+<p class="p426-kicker">The PM&amp;R Files · Essay 25 · Electrodiagnostics · Needle EMG</p>
+<h1 class="p426-title">The Muscle Microphone</h1>
+<p class="p426-answer">An EMG is a listening exam. A needle microphone sits in the muscle and reports what it hears: silence, static, single voices, and crowds. This essay teaches you to hear the four things it can tell apart. Its sounds stay off until you switch them on, and every one is simulated: synthesized in your browser from the numbers that draw the traces, not a recording of any patient.</p>
+<div class="p426-byline-row"><span class="p426-byline">By a PM&amp;R resident physician</span></div>
+<svg class="p426-scope p426-heroscope" id="p426-hero-scope" viewBox="0 0 400 180" role="img" aria-label="The hero oscilloscope: a flat trace, waiting for the needle.">
+<g class="p426-grid"></g>
+<path id="p426-hero-trace" class="p426-trace" fill="none"/>
+<text x="8" y="18" class="p426-svgtext" id="p426-hero-gain">GAIN 50 µV/DIV</text>
+<text x="200" y="18" text-anchor="middle" class="p426-svgtext p426-sweepnote">SWEEP IS DECORATIVE</text>
+<text x="392" y="18" text-anchor="end" class="p426-svgtext">10 ms</text>
+<text x="8" y="172" class="p426-svgtext" id="p426-hero-state">NEEDLE OUT</text>
+</svg>
+<div class="p426-launch-btns">
+<button type="button" class="p426-lower" id="p426-lower">Lower the needle</button>
+<button type="button" class="p426-skip" id="p426-skip">Skip</button>
+</div>
+<div class="p426-soundpanel">
+<button type="button" class="p426-sndtoggle" id="p426-snd-toggle" aria-pressed="false"><span class="p426-snd-dot" aria-hidden="true"></span><span id="p426-snd-toggle-lab">Simulated sound · Off</span></button>
+<p class="p426-snd-note">Every sound in this essay is simulated: synthesized live in your browser from the rates and sizes on this page. None is a recording.</p>
+</div>
+<div class="p426-doors">
+<div class="p426-door" id="p426-door-1"><span class="p426-door-name">ROOM ONE</span><span class="p426-door-sub">At rest</span></div>
+<div class="p426-door" id="p426-door-2"><span class="p426-door-name">ROOM TWO</span><span class="p426-door-sub">One voice</span></div>
+<div class="p426-door" id="p426-door-3"><span class="p426-door-name">ROOM THREE</span><span class="p426-door-sub">The crowd</span></div>
+</div>
+<p class="p426-orient">Three rooms and one clock, in the order a real study actually runs: what the muscle says when it should say nothing, what one motor unit sounds like, how the crowd is marshalled, and the schedule on which injury announces itself.</p>
+<p class="p426-cue" id="p426-cue" hidden>Enter room one ↓</p>
+</div>
+</header>
+
+<div class="p426-main">
+
+<section class="p426-sec" id="p426-sec-needle">
+<p class="p426-ch-label">The instrument</p>
+<h2 class="p426-h2" tabindex="-1">First, the needle goes in</h2>
+<p class="p426-body">A needle EMG begins before anyone listens for anything. The needle is a concentric electrode, a fine wire inside a hollow shaft, recording from the small territory of muscle right around its tip. Push it in and the fibres it disturbs fire for a moment: a brief burst, over in a few hundred milliseconds, like static from a bumped microphone.</p>
+<p class="p426-body">That burst has a normal budget. Activity running on well beyond about 300 milliseconds after the needle stops moving is increased insertional activity, the study's first finding: an irritable membrane announcing itself before any named signal appears. Activity that dies too fast makes the opposite suggestion, muscle replaced by fat or scar, or too swollen to answer. And learn the screen's conventions now, because every trace in this essay obeys them: time runs at 10 milliseconds per division, so a spike's width is a physical duration you can measure, and each simulated trace carries its display gain in microvolts per division. Judge a signal's size by its scale, not by how tall it is drawn: a loud trace at low gain is a big signal; the same trace at high gain may be a whisper. One exception waits in room one: a place where healthy muscle does talk at rest, and it is the room's favourite trap.</p>
+<figure class="p426-fig">
+<svg viewBox="0 0 720 200" role="img" aria-label="Schematic: muscle fibres drawn as long tubes; one motor unit's fibres are highlighted, scattered among the others; a needle tip sits among them." class="p426-needlesvg">
+<g class="p426-fibres">
+<rect x="30" y="18" width="560" height="16" rx="8" class="p426-fibre p426-unitfibre"/>
+<rect x="30" y="48" width="560" height="16" rx="8" class="p426-fibre"/>
+<rect x="30" y="78" width="560" height="16" rx="8" class="p426-fibre p426-unitfibre"/>
+<rect x="30" y="108" width="560" height="16" rx="8" class="p426-fibre"/>
+<rect x="30" y="138" width="560" height="16" rx="8" class="p426-fibre p426-unitfibre"/>
+<rect x="30" y="168" width="560" height="16" rx="8" class="p426-fibre"/>
+</g>
+<path d="M690 6 L512 128" class="p426-needleline"/>
+<path d="M512 128 L498 142 L506 118 Z" class="p426-needletip"/>
+<text x="36" y="12" class="p426-svgtext">ONE MOTOR UNIT'S FIBRES, SCATTERED AMONG THE OTHERS</text>
+<text x="640" y="40" text-anchor="middle" class="p426-svgtext">THE NEEDLE</text>
+</svg>
+<figcaption class="p426-caption">Schematic: one motor unit's fibres lie scattered among other units' fibres. That is why one needle position hears a crowd, and why the same unit can be sampled from several spots.</figcaption>
+</figure>
+</section>
+
+<section class="p426-sec p426-room" id="p426-sec-rest">
+<div class="p426-roomgrid">
+<div class="p426-prose">
+<p class="p426-ch-label">Room one · At rest</p>
+<h2 class="p426-h2" tabindex="-1">At rest: static</h2>
+<p class="p426-body">Room one is the resting muscle, and the first lesson is that health is quiet. A normal muscle at rest is electrically silent. Anything heard at rest is a signal with a name, and the names are the curriculum.</p>
+<p class="p426-body">First, the one healthy exception, and the trap built into it. Near the end-plate zone, where nerve meets fibre, the needle hears two things. Miniature end-plate potentials are tiny, about 10 to 50 microvolts, monophasic negative: a seashell murmur of single vesicles of transmitter landing. Irritate the terminal branch itself and you get end-plate spikes, bigger and crucially biphasic, starting negative and swinging positive. That initial negativity is the fingerprint. The commonest waveform in this room runs the other way, and telling the two apart is a board favourite.</p>
+<p class="p426-body">The fibrillation is a single muscle fibre firing on its own, spontaneously, because its membrane has turned unstable: after denervation, and also in some primary muscle diseases. Its shape is a fingerprint too: a brief spike, 1 to 5 milliseconds, 20 to 300 microvolts, starting positive, repeating with metronome regularity at 0.5 to 15 hertz in the textbook's account, while in practice most fire between 1 and 5 hertz. Grade them by how widely they are found as the needle samples spot after spot, from 1+ to 4+; the strip under the scope shows the four grades, and each grade summarises many sampled sites, not one window.</p>
+<p class="p426-body">Positive sharp waves come from the same condition and often share the trace: a positive dive, then a long slow return, 10 to 100 milliseconds long, up to about a millivolt, firing at similar rates. The sharp wave is not a different disease. It is widely read as a fibrillation whose fibre the needle has injured, or whose shape the recording geometry has stretched. Fibs and sharp waves arrive together and mean the same thing: a muscle-fibre membrane that will not sit still. They do not by themselves prove denervation; the distribution, the motor units, and the recruitment establish the pattern.</p>
+<p class="p426-body">Then the signals that do not point at an orphaned fibre. Fasciculations are whole motor units firing spontaneously, visible as a twitch under the skin: big, irregular, slow, widely spaced. They belong mostly to motor neuron and root disease, and they are not specific; healthy people fasciculate too. Volume and company matter: widespread fasciculations beside weakness, wasting, and denervation findings are the concerning pattern; the odd twitch in a healthy calf is not. Myotonic discharges are single fibres firing in runs that wax and wane in both rate and size, 20 to 150 hertz in the classic textbook range: the dive bomber of the old audio descriptions. And complex repetitive discharges are the strangest in the room, a group of fibres driving each other in a loop, every complex identical to the last, 5 to 100 hertz in the classic account, starting and stopping like a machine switching on and off. They appear in chronic neurogenic and myopathic conditions alike, so they mark chronicity more than they name a disease. With experience the room reads by shape and rhythm alone. The chips beside the scope are the seven sounds, one at a time.</p>
+</div>
+<div class="p426-rail">
+<div class="p426-scopebox">
+<svg class="p426-scope" id="p426-r1-scope" viewBox="0 0 400 180" role="img" aria-label="Room one oscilloscope.">
+<g class="p426-grid"></g>
+<path id="p426-r1-trace" class="p426-trace" fill="none"/>
+<text x="8" y="18" class="p426-svgtext" id="p426-r1-gain">GAIN 50 µV/DIV</text>
+<text x="392" y="18" text-anchor="end" class="p426-svgtext">10 ms</text>
+<text x="8" y="170" class="p426-svgtext p426-sweepnote">SWEEP IS DECORATIVE · WINDOW IS 100 MS</text>
+</svg>
+<div class="p426-chips" role="group" aria-label="Room one signals">
+<button type="button" class="p426-chipbtn" data-p426-sig="silence" aria-pressed="true">Silence</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="fib" aria-pressed="false">Fibrillation</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="psw" aria-pressed="false">Positive sharp wave</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="endplate" aria-pressed="false">End-plate spike</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="fasciculation" aria-pressed="false">Fasciculation</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="myotonic" aria-pressed="false">Myotonic discharge</button>
+<button type="button" class="p426-chipbtn" data-p426-sig="crd" aria-pressed="false">Complex repetitive</button>
+</div>
+<div class="p426-ro3">
+<div class="p426-ro"><span class="p426-ro-lab">Shape</span><span class="p426-ro-val" id="p426-r1-shape">Flat baseline</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">Rate</span><span class="p426-ro-val" id="p426-r1-rate">No events</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">What it means</span><span class="p426-ro-val" id="p426-r1-means">The normal resting muscle: nothing to report.</span></div>
+</div>
+<div class="p426-scope-btns">
+<button type="button" class="p426-sbtn" id="p426-r1-play">Pause</button>
+<button type="button" class="p426-sbtn" id="p426-r1-speed">One-tenth time</button>
+<span class="p426-speedstate" id="p426-r1-speedstate">Speed: real time</span>
+<button type="button" class="p426-sbtn" id="p426-r1-step">Step 100 ms</button>
+<button type="button" class="p426-sbtn p426-hearbtn" id="p426-r1-hear" aria-pressed="false">Hear this signal</button>
+</div>
+</div>
+</div>
+</div>
+<div class="p426-grades" aria-label="Fibrillation grading strip">
+<div class="p426-grade"><svg viewBox="0 0 200 60" class="p426-gradewin"><path id="p426-g1" class="p426-trace p426-gradetrace" fill="none"/></svg><p class="p426-grade-lab">1+ · persistent, in at least two areas</p></div>
+<div class="p426-grade"><svg viewBox="0 0 200 60" class="p426-gradewin"><path id="p426-g2" class="p426-trace p426-gradetrace" fill="none"/></svg><p class="p426-grade-lab">2+ · moderate numbers, three or more areas</p></div>
+<div class="p426-grade"><svg viewBox="0 0 200 60" class="p426-gradewin"><path id="p426-g3" class="p426-trace p426-gradetrace" fill="none"/></svg><p class="p426-grade-lab">3+ · many, in all areas</p></div>
+<div class="p426-grade"><svg viewBox="0 0 200 60" class="p426-gradewin"><path id="p426-g4" class="p426-trace p426-gradetrace" fill="none"/></svg><p class="p426-grade-lab">4+ · profuse, filling the screen in all areas</p></div>
+</div>
+</section>
+
+<section class="p426-sec" id="p426-sec-clock">
+<p class="p426-ch-label">The clock</p>
+<h2 class="p426-h2" tabindex="-1">Denervation runs on a schedule</h2>
+<p class="p426-body">Here is the fact that organises the whole room: fibrillations are not immediate. Cut a nerve today and the muscle it orphaned stays electrically quiet at rest for days, because the fibre has to degenerate before its membrane turns irritable. What changes at once is recruitment, the crowd's behaviour in room three, and the evoked responses a conduction study measures. The clock below is the schedule, and it is the single most useful timing instrument in electrodiagnostics.</p>
+<p class="p426-body">Injury announces itself in a march, proximal before distal, because the membrane changes arrive sooner in muscles near the injury. Fibrillations can appear as early as days 10 to 14 in muscles near the lesion; positive sharp waves lead them by a few days. In the paraspinals the window is roughly one to two weeks; in proximal leg muscles, two to three; further down the leg, three to four; in the foot, five to six. The evoked responses fail earlier still, on the conduction study's own clock of days 3 to 11. And the recovery signal, the nascent motor unit, belongs to the far end of the scale, at about six weeks and beyond. Read the clock the way the literature means it: the day counts are textbook tradition and clinical experience, honest bands rather than dated measurements, and no verdict on this page dates an injury to a day.</p>
+<p class="p426-body">The clock's top row is the conduction study's own story, told from the other side: <a href="#the-speed-trap" data-open-view="the-speed-trap">The Speed Trap</a> follows the same dying axon with its two gates.</p>
+<div class="p426-clockpanel" id="p426-clock">
+<div class="p426-clock-head"><span class="p426-panel-tag">THE DENERVATION CLOCK</span><span class="p426-clock-day" id="p426-clock-day">Day 0 · the day of injury</span></div>
+<input type="range" class="p426-range p426-clock-range" id="p426-clock-slider" min="0" max="43" step="1" value="0" aria-label="Day since the injury">
+<div class="p426-clock-rows">
+<div class="p426-clock-row"><span class="p426-clock-rowlab">THE NERVE ITSELF (EVOKED)</span><span class="p426-cchip" data-day="4">Motor response failing · day 4</span><span class="p426-cchip" data-day="7">Sensory response failing · day 7</span></div>
+<div class="p426-clock-row"><span class="p426-clock-rowlab">PARASPINAL</span><span class="p426-cchip" data-day="0">Recruitment already reduced · day 0</span><span class="p426-cchip" data-day="7">Positive sharp waves · day 7</span><span class="p426-cchip" data-day="12">Fibrillations · day 12</span><span class="p426-cchip" data-day="43">Nascent units · about 6 weeks</span></div>
+<div class="p426-clock-row"><span class="p426-clock-rowlab">PROXIMAL LEG</span><span class="p426-cchip" data-day="0">Recruitment already reduced · day 0</span><span class="p426-cchip" data-day="12">Positive sharp waves · day 12</span><span class="p426-cchip" data-day="17">Fibrillations · day 17</span><span class="p426-cchip" data-day="42">Nascent units · about 6 weeks</span></div>
+<div class="p426-clock-row"><span class="p426-clock-rowlab">FOOT</span><span class="p426-cchip" data-day="0">Recruitment already reduced · day 0</span><span class="p426-cchip" data-day="15">Positive sharp waves · day 15</span><span class="p426-cchip" data-day="38">Fibrillations · day 38</span></div>
+</div>
+<p class="p426-caption">Chips print the calibrated midpoint of each published band: paraspinal fibrillations at days 10 to 14, proximal leg at two to three weeks, foot at five to six weeks. The band is the sourced quantity; the day is its midpoint. The top row is measured serial-study data after nerve injury; the muscle rows are the textbook tradition's bands for a root-level lesion example.</p>
+<p class="p426-verdict" id="p426-clock-verdict">Today this study can show reduced recruitment and almost nothing else. A clean resting muscle proves nothing yet.</p>
+</div>
+</section>
+
+<section class="p426-sec p426-room" id="p426-sec-voice">
+<div class="p426-roomgrid">
+<div class="p426-prose">
+<p class="p426-ch-label">Room two · One voice</p>
+<h2 class="p426-h2" tabindex="-1">One voice</h2>
+<p class="p426-body">Voluntary contraction brings the second room's subject: the motor unit action potential, one motor unit speaking. A motor unit is one motor neuron, its axon, and every muscle fibre that axon supplies. The needle hears the fibres of that unit near its tip fire together, summed into a single voice with a size, a length, and a shape.</p>
+<p class="p426-body">Size is amplitude: how many of the unit's fibres near the needle are firing. Length is duration: how spread out in space and time those fibres are, which makes duration the most informative and least glamorous measurement in the room. Shape is counted in phases, the number of times the waveform crosses its baseline, plus one; more than four phases is polyphasic. A separate count, turns, tracks direction changes that never cross the baseline. This essay marks turns on the captured window and prints no normative table for them, because none is reproduced here from source.</p>
+<p class="p426-body">The normal voice, first card: duration 5 to 15 milliseconds by the range printed here, amplitude from 100 microvolts to 2 millivolts, two to four phases. A second standard textbook prints the tighter duration range of 5 to 10; the Sources drawer carries the disagreement. Learn the voice as a person, not a range.</p>
+<p class="p426-body">Then the two ways a voice changes, because they point at opposite diseases. In myopathy the unit keeps its neuron and loses fibres: the voice comes out short, small, and polyphasic, a choir missing most of its singers but still on stage. In chronic reinnervation the unit has adopted orphaned fibres from a dead neighbour: the voice comes out long, tall, and polyphasic, sometimes trailing a small late satellite potential from the newest, slowest sprouts. And the fourth card is the voice the clock promised: the nascent unit, the first small, unstable voice of a muscle being reinnervated, its amplitude wandering from discharge to discharge.</p>
+</div>
+<div class="p426-rail">
+<div class="p426-scopebox">
+<svg class="p426-scope" id="p426-r2-scope" viewBox="0 0 400 180" role="img" aria-label="Room two oscilloscope: one motor unit, captured.">
+<g class="p426-grid"></g>
+<g id="p426-r2-markers"></g>
+<path id="p426-r2-trace" class="p426-trace" fill="none"/>
+<text x="8" y="18" class="p426-svgtext" id="p426-r2-gain">GAIN 250 µV/DIV</text>
+<text x="392" y="18" text-anchor="end" class="p426-svgtext">10 ms</text>
+<text x="8" y="170" class="p426-svgtext p426-sweepnote">SWEEP IS DECORATIVE · WINDOW IS 100 MS</text>
+</svg>
+<div class="p426-chips p426-voicecards" role="group" aria-label="Motor unit voices">
+<button type="button" class="p426-chipbtn" data-p426-voice="normal" aria-pressed="true">Normal · the healthy voice</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="myopathic" aria-pressed="false">Myopathic · short, small, polyphasic</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="reinnervated" aria-pressed="false">Reinnervated · long, tall, polyphasic</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="nascent" aria-pressed="false">Nascent · the first voice back</button>
+</div>
+<div class="p426-ro3">
+<div class="p426-ro"><span class="p426-ro-lab">Duration</span><span class="p426-ro-val" id="p426-r2-dur">11.6 ms</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">Amplitude</span><span class="p426-ro-val" id="p426-r2-amp">800 µV</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">Phases</span><span class="p426-ro-val" id="p426-r2-pha">3</span></div>
+</div>
+<p class="p426-note-line" id="p426-r2-note">Printed ranges: duration 5 to 15 ms, amplitude 100 µV to 2 mV (Daube and Rubin). The captured window is phase locked to the unit's own firing.</p>
+<div class="p426-scope-btns">
+<button type="button" class="p426-sbtn" id="p426-r2-play">Play it live</button>
+<button type="button" class="p426-sbtn p426-hearbtn" id="p426-r2-hear" aria-pressed="false">Hear this voice</button>
+</div>
+</div>
+</div>
+</div>
+<p class="p426-note-line">Each voice is a simulated example, not a diagnostic cutoff. Normal values shift with the muscle sampled, age, the electrode, and how many units are counted.</p>
+</section>
+
+<section class="p426-sec p426-room" id="p426-sec-crowd">
 <div class="p426-roomgrid">
 <div class="p426-prose">
 <p class="p426-ch-label">Room three · The crowd</p>
@@ -3685,887 +4298,4 @@ dRender();rxRender();
 </div>
 <span class="p431-viz-note">Counts are from Schnakers et al. 2009, as detailed in the Sources drawer below. The mini ward is a schematic unit chart: one rectangle per patient, green where the scale reclassified the patient as minimally conscious.</span>
 </div>
-<p class="p431-body">The practical lesson is modest and strict. A vegetative diagnosis should not rest on impression alone, however experienced: the cost of the error is paid by a person who cannot protest it. A behavioral category informs counseling; it does not by itself establish one person's eventual recovery, comprehension, or eligibility for a treatment. The structured response is trained serial assessment: address the confounders first, then examine with the scale, and again on other days, letting repeated scored examinations, not one sheet, settle the call. Somewhere tonight a patient will follow a mirror twice, briefly, and then not again for hours. This corner of medicine is a machine for not missing those brief followings.</p>
-</section>
-
-<section class="p431-sec" id="p431-recap-sec">
-<p class="p431-ch-label">Recap</p>
-<h2 class="p431-h2">So what have we learned</h2>
-<p class="p431-body">Telling vegetative from minimally conscious is the highest stakes sorting problem on a brain injury unit, and honest experts get it wrong at a measurable rate. Of 44 patients a full treating team agreed were vegetative, 18, or 41 percent, met CRS-R criteria for minimally conscious in this study. We learned the mechanism of the error: the signal is intermittent, and unstructured observation, even by an expert team, catches it unreliably, while a standardized examination that elicits set responses, repeats items within the sitting, and scores only responses meeting written criteria catches more. And the corrected claim to carry onto the ward: when the room is unsure, the scale usually finds someone in there. The structured examination is not paperwork. It is how the patient gets found.</p>
-<div class="p431-sources p431-reveal p3-drawer p3-closed" id="p431-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p431-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Schnakers C, Vanhaudenhuyse A, Giacino J, Ventura M, Boly M, Majerus S, Moonen G, Laureys S. Diagnostic accuracy of the vegetative and minimally conscious state: clinical consensus versus standardized neurobehavioral assessment. BMC Neurology. 2009;9:35. PMID 19622138. One hundred three patients with disorders of consciousness were each classified by clinical consensus of the treating team and by the Coma Recovery Scale-Revised (CRS-R). Of 44 patients the consensus called vegetative, 18 (41 percent) were found to be in a minimally conscious state on the CRS-R. Of the patients whose consensus diagnosis was uncertain, 89 percent were in a minimally conscious state on the CRS-R. The research team was not masked to the consensus diagnosis, which was communicated before the CRS-R assessment, and the authors discuss possible false positive CRS-R classifications. Each patient received one CRS-R examination in this study.</li>
-<li>Giacino JT, Katz DI, Schiff ND, Whyte J, Ashman EJ, Ashwal S, et al. Comprehensive systematic review update summary: disorders of consciousness. Neurology. 2018;91(10):461 to 470. This review's summary of the Schnakers 2009 cohort reports the uncertain diagnosis group as 18 patients, of whom 89 percent (16 of 18) showed clear signs of consciousness on standardized examination. The group size is consistent with the cohort arithmetic of the primary paper: 103 patients in total, less 44 called vegetative and 41 called minimally conscious by consensus, leaves 18 uncertain.</li>
-<li>The Coma Recovery Scale-Revised (CRS-R) groups its standardized items into six subscales: auditory, visual, motor, oromotor, communication, and arousal. Stated qualitatively in this essay, as standard descriptive content about the instrument.</li>
-<li>Giacino JT, Bodien YG, Chatelle C. Coma Recovery Scale-Revised: Administration and Scoring Guidelines. Updated 2020. Visual pursuit scores when the eyes follow a mirror through 45 degrees without loss of fixation on 2 occasions in any direction. Localization to noxious stimulation scores when the nonstimulated limb locates and makes contact with the stimulated body part at the point of stimulation on at least 2 of 4 trials.</li>
-<li>Giacino JT, Katz DI, Schiff ND, et al. Practice guideline update recommendations summary: Disorders of consciousness. Neurology. 2018;91(10):450 to 460. PMCID PMC6139814. The guideline recommends identifying and treating confounding conditions, optimizing arousal, and performing serial standardized assessments; states that pain always should be assessed and treated; and cautions against definitive conclusions about pain and suffering in disorders of consciousness. A diagnostic category informs counseling about outcomes, which remain individual.</li>
-</ol>
-<p class="p431-note" style="margin-top:14px">Method note: every number in this essay was taken from a source verified in the research pass and is recorded, claim by claim, in the essay source map. The three patients in Scene 1 are invented teaching cases and are labeled as invented on the page. No real patient is depicted anywhere in this essay.</p>
-</div>
-<div class="p431-methods" id="p431-methods">
-<h3>Data and Methods</h3>
-<p>The study data behind this essay come from Schnakers et al. 2009: 103 patients with disorders of consciousness, each classified by the clinical consensus of the treating team and by CRS-R assessments performed by research staff. The ward grids in this essay are schematic unit charts built from the published counts: 44 patients called vegetative by consensus, of whom 18 met CRS-R criteria for minimally conscious state and 26 did not. The uncertain diagnosis finding is printed as 89 percent with its denominator: the primary abstract reports the 89 percent figure, and the group size of 18 is corroborated by the Neurology 2018 systematic review summary of this cohort and by the cohort arithmetic (103 total, less 44 vegetative and 41 minimally conscious by consensus), giving 16 of 18. The three Scene 1 patients, their animations, and their scale readings are invented teaching material, labeled as invented on the page. All patient and apparatus drawings are SVG schematics created for this essay. No photographs and no AI imagery are used. Each patient in the Schnakers study received one CRS-R examination; the serial examinations recommended in current practice guidance were not part of this study's comparison. The CRS-R raters were not masked to the consensus diagnosis.</p>
-</div>
-<div class="p431-footer">
-<span>The PM&amp;R Files · Essay 30 · The Patient Who Was In There</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
-
-</div>
-</div>
-<script>
-/* Essay 30 interactions: examine and commit, ward build, CRS-R reversal, director's cut stepper */
-(function(){
-var root=document.getElementById('the-patient-who-was-in-there');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-
-/* Scene 1: vignette players */
-function runSteps(steps){
- steps.forEach(function(st){
-  if(reduced){st.fn();}
-  else{setTimeout(st.fn,st.at);}
- });
-}
-var statusA=root.querySelector('#p431-status-a');
-var eyesA=root.querySelector('#p431-eyes-a');
-var lidsA=root.querySelector('#p431-lids-a');
-function eyesOpen(open){
- if(eyesA)eyesA.setAttribute('opacity',open?'1':'0');
- if(lidsA)lidsA.setAttribute('opacity',open?'0':'1');
-}
-var playA=root.querySelector('#p431-play-a');
-if(playA){playA.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){eyesOpen(true);statusA.textContent='Eyes open. The patient is awake in the simple sense: lids up, eyes open to the room.';}},
-  {at:900,fn:function(){eyesOpen(false);statusA.textContent='Eyes close again. The cycle turns on its own, waking and sleeping, waking and sleeping.';}},
-  {at:1800,fn:function(){eyesOpen(true);statusA.textContent='Eyes open once more. A sound is made at the bedside. Nothing turns toward it.';}},
-  {at:2700,fn:function(){eyesOpen(false);statusA.textContent='Eyes close. Through the whole examination the gaze never followed anything and nothing responded.';}},
-  {at:3400,fn:function(){eyesOpen(true);statusA.textContent='Examination over. Eyes that open and close on their own cycle, with no tracking and no response. Make your call.';}}
- ]);
-});}
-var statusB=root.querySelector('#p431-status-b');
-var armB=root.querySelector('#p431-arm-b');
-var playB=root.querySelector('#p431-play-b');
-if(playB){playB.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){armB.style.transform='';statusB.textContent='The stimulus is applied, a firm pinch to one hand, shown here as a marker. Watch the opposite hand.';}},
-  {at:700,fn:function(){armB.style.transform='translate(-13px,9px)';statusB.textContent='Trial one. The opposite hand moves, slowly, across to the stimulated hand and makes contact with the spot itself. Not a flinch away. A move toward and a touch, called localizing.';}},
-  {at:2200,fn:function(){armB.style.transform='';statusB.textContent='The hand settles. The item runs four trials in all, two on each side.';}},
-  {at:3200,fn:function(){armB.style.transform='translate(-13px,9px)';statusB.textContent='A later trial. The opposite hand reaches across and makes contact again. That is contact on two of the four trials.';}},
-  {at:4700,fn:function(){armB.style.transform='';statusB.textContent='Examination over. Contact on two of four trials, the pattern the item requires. A single reach would not have scored. Reflex, or purpose? Make your call.';}}
- ]);
-});}
-var statusC=root.querySelector('#p431-status-c');
-var mirrorC=root.querySelector('#p431-mirror-c');
-var eyesC=root.querySelector('#p431-eyes-c');
-var playC=root.querySelector('#p431-play-c');
-if(playC){playC.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){mirrorC.style.transform='';eyesC.style.transform='';statusC.textContent='First pass. The mirror moves slowly in front of the face.';}},
-  {at:500,fn:function(){mirrorC.style.transform='translateX(58px)';eyesC.style.transform='translateX(8px)';statusC.textContent='The eyes follow. Across the midline and out to 45 degrees, holding the whole way. That is one qualifying occasion. One alone does not score.';}},
-  {at:2600,fn:function(){mirrorC.style.transform='translateX(-58px)';statusC.textContent='Second pass, same mirror, back the other way. This time the eyes do not follow. The failure is written down too.';}},
-  {at:4400,fn:function(){mirrorC.style.transform='translateX(58px)';eyesC.style.transform='translateX(8px)';statusC.textContent='Third pass. The eyes follow through 45 degrees again. Two qualifying occasions, with a failure between them. That is what the item requires.';}},
-  {at:6400,fn:function(){mirrorC.style.transform='';eyesC.style.transform='';statusC.textContent='Examination over. Followed on two occasions, failed once in between. Which passes were the patient? Make your call.';}}
- ]);
-});}
-
-/* Scene 1: commit calls, locked once made */
-var calls={};
-var callsCount=root.querySelector('#p431-calls-count');
-root.querySelectorAll('.p431-commit').forEach(function(btn){
- btn.addEventListener('click',function(){
-  var bed=btn.getAttribute('data-bed');
-  var call=btn.getAttribute('data-call');
-  if(calls[bed])return;
-  calls[bed]=call;
-  var card=root.querySelector('#p431-card-'+bed);
-  if(card){
-   card.classList.add('locked');
-   card.querySelectorAll('.p431-commit').forEach(function(b){
-    b.disabled=true;
-    if(b===btn)b.classList.add('chosen');
-   });
-  }
-  var item=root.querySelector('#p431-call-'+bed);
-  if(item){item.textContent='Bed '+bed.toUpperCase()+' · '+cap(call);item.classList.add('filled');}
-  var n=Object.keys(calls).length;
-  if(callsCount)callsCount.textContent=n+' of 3 calls made'+(n===3?' · all locked':'');
- });
-});
-
-/* Scenes 2 and 3: the ward builds bed by bed on scroll, then the CRS-R re-sorts it on scroll. Manual buttons are a takeover route to the same states. */
-var ward=root.querySelector('#p431-ward');
-var counter=root.querySelector('#p431-counter');
-var buildBtn=root.querySelector('#p431-build');
-var runBtn=root.querySelector('#p431-run-scale');
-var readout=root.querySelector('#p431-readout');
-var FLIP=[2,5,7,10,12,15,18,20,23,25,28,30,33,35,38,40,42,44];
-var FINAL_READOUT='18 of 44 beds changed. That is 41 percent. Of the patients the whole team called vegetative, 18 met the scale criteria for minimally conscious, and 26 were unchanged.';
-var FINAL_COUNTER='44 beds · 18 minimally conscious on the scale · 26 unchanged';
-var wardManual=false, manualStage=0, flippedDone=false;
-var cells=[];
-function lerpN(a,b,t){return Math.round(a+(b-a)*t);}
-function makeAllBeds(){
- ward.innerHTML='';cells=[];
- for(var i=1;i<=44;i++){
-  var cell=document.createElement('div');
-  cell.className='p431-bed-cell';
-  cell.setAttribute('data-state','vegetative');
-  cell.style.opacity='0';
-  var lab=document.createElement('span');
-  lab.textContent='Bed '+i+' · Vegetative';
-  cell.appendChild(lab);
-  cell._mcs=false;
-  ward.appendChild(cell);
-  cells.push(cell);
- }
-}
-makeAllBeds();
-function clearFlipInline(cell){
- cell.style.backgroundColor='';cell.style.borderColor='';cell.style.boxShadow='';
- var s=cell.querySelector('span');if(s)s.style.color='';
-}
-function setBedFlip(cell,num,on){
- cell.classList.toggle('flipped',on);
- cell.setAttribute('data-state',on?'mcs':'vegetative');
- if(cell._mcs!==on){cell._mcs=on;cell.querySelector('span').textContent='Bed '+num+(on?' · Minimally conscious':' · Vegetative');}
-}
-function applyWard(build,scale){
- var visFloat=build*44, flipFloat=scale*18;
- var visCount=0, flipCount=0;
- var flipMap={};
- FLIP.forEach(function(num,k){flipMap[num]=clamp01(flipFloat-k);});
- cells.forEach(function(cell,i){
-  var num=i+1;
-  var cp=reduced?(visFloat>i?1:0):clamp01(visFloat-i);
-  if(cp>0.5)visCount++;
-  var fp=(flipMap[num]!==undefined)?flipMap[num]:0;
-  if(fp>=0.5)flipCount++;
-  var pulse=(fp>0&&fp<1)?1+0.07*Math.sin(fp*Math.PI):1;
-  cell.style.opacity=String(cp);
-  cell.style.transform='translateY('+((1-cp)*16).toFixed(1)+'px) scale('+((0.92+0.08*cp)*pulse).toFixed(3)+')';
-  setBedFlip(cell,num,fp>=0.5);
-  if(fp>0&&fp<1){
-   cell.style.backgroundColor='rgb('+lerpN(13,63,fp)+','+lerpN(64,224,fp)+','+lerpN(66,140,fp)+')';
-   cell.style.boxShadow='0 0 '+(18*fp).toFixed(1)+'px rgba(63,224,140,'+(0.45*fp).toFixed(2)+')';
-   var sp=cell.querySelector('span');
-   if(fp>=0.5)sp.style.color='#041E20';
-  } else {
-   clearFlipInline(cell);
-  }
- });
- var cText;
- if(wardManual&&manualStage===1&&scale===0)cText='3 beds · your three patients, before the ward grows';
- else if(scale>=1)cText=FINAL_COUNTER;
- else if(flipCount>0)cText='44 beds · '+flipCount+' minimally conscious on the scale so far';
- else if(build>=1)cText='44 beds · consensus: vegetative';
- else if(visCount>0)cText=visCount+' beds · consensus: vegetative';
- else cText='0 beds · the ward is not built yet';
- if(counter&&counter.textContent!==cText)counter.textContent=cText;
- var rText;
- if(scale>=1)rText=FINAL_READOUT;
- else if(flipCount>0)rText=flipCount+' of 44 beds changed so far. The scale is still running.';
- else if(build>=1)rText='The ward is built: 44 beds, all consensus vegetative. Keep scrolling and the CRS-R runs, bed by bed.';
- else rText='The scale has not run yet. Build the ward first, then run the CRS-R and watch what changes.';
- if(readout&&readout.textContent!==rText)readout.textContent=rText;
- if(runBtn&&!flippedDone){
-  if(scale>=1){runBtn.disabled=true;if(runBtn.textContent!=='The scale has run')runBtn.textContent='The scale has run';}
-  else{
-   runBtn.disabled=!(build>=1);
-   if(runBtn.textContent!=='Run the scale (CRS-R)')runBtn.textContent='Run the scale (CRS-R)';
-  }
- }
- return {vis:visCount,flip:flipCount};
-}
-if(buildBtn){buildBtn.addEventListener('click',function(){
- wardManual=true;
- if(manualStage===0){
-  manualStage=1;
-  applyWard(3/44,0);
-  buildBtn.textContent='Expand to the full ward (step 2 of 2)';
- } else if(manualStage===1){
-  manualStage=2;
-  applyWard(1,0);
-  buildBtn.textContent='Ward built · 44 beds';
-  buildBtn.disabled=true;
-  if(runBtn)runBtn.disabled=false;
- }
-});}
-if(runBtn){runBtn.addEventListener('click',function(){
- if(flippedDone)return;
- wardManual=true;manualStage=2;
- applyWard(1,0);
- if(buildBtn){buildBtn.textContent='Ward built · 44 beds';buildBtn.disabled=true;}
- flippedDone=true;
- runBtn.disabled=true;
- runBtn.textContent='The scale has run';
- var done=0;
- FLIP.forEach(function(num,k){
-  setTimeout(function(){
-   var cell=cells[num-1];
-   if(cell){clearFlipInline(cell);setBedFlip(cell,num,true);}
-   done++;
-   if(done===FLIP.length){
-    if(readout)readout.textContent=FINAL_READOUT;
-    if(counter)counter.textContent=FINAL_COUNTER;
-   }
-  },reduced?0:k*110);
- });
-});}
-
-/* Scene 5: static mini ward, 44 beds, 18 green */
-var mini=root.querySelector('#p431-miniward');
-if(mini){
- for(var i=1;i<=44;i++){
-  var m=document.createElement('div');
-  m.className='p431-mini-bed'+(FLIP.indexOf(i)>=0?' mcs':'');
-  mini.appendChild(m);
- }
-}
-
-/* Scene 4: director's cut. Scroll steps the frames continuously; the buttons and play are a manual takeover. */
-var FRAMES=[
- {mx:0,ex:0,text:'Frame 1 of 6. The mirror starts at the center, held in front of the patient’s face. This is the visual subscale item called visual pursuit: do the eyes follow a moving target?'},
- {mx:30,ex:4,text:'Frame 2 of 6. The mirror moves slowly to one side, toward 45 degrees. The eyes begin to turn with it. A brief reflexive glance does not count here. The eyes have to follow through the full 45 degrees without losing the target, and do it on two occasions, to score.'},
- {mx:58,ex:8,text:'Frame 3 of 6. The mirror crosses the midline and the eyes cross with it, still following, out to 45 degrees on the far side. That completes the first qualifying occasion. One occasion is not yet a score.'},
- {mx:82,ex:10,text:'Frame 4 of 6. The mirror comes back and the pass ends. The trial is written down as one qualifying occasion, but the item is not scored yet. The manual requires a second occasion, so the examination repeats the item.'},
- {mx:28,ex:10,text:'Frame 5 of 6. The item is repeated, the mirror moving again. This time the eyes do not follow. A visit that caught only this pass could easily miss the patient entirely. The scale writes the failure down beside the success and keeps testing.'},
- {mx:58,ex:8,text:'Frame 6 of 6. Repeated once more, the eyes follow through 45 degrees again. That is the second qualifying occasion the item requires, so visual pursuit scores. Fluctuation is real, but only responses meeting the written criteria count, which is exactly why the scale catches what one impression misses.'}
-];
-var dcMirror=root.querySelector('#p431-dc-mirror');
-var dcEyes=root.querySelector('#p431-dc-eyes');
-var dcInd=root.querySelector('#p431-frame-ind');
-var dcComm=root.querySelector('#p431-frame-commentary');
-var prevBtn=root.querySelector('#p431-frame-prev');
-var nextBtn=root.querySelector('#p431-frame-next');
-var dcPlayBtn=root.querySelector('#p431-frame-play');
-var frame=0,dcTimer=null,dcPlaying=false,dcManual=false;
-function renderFrame(){
- var f=FRAMES[frame];
- if(dcMirror)dcMirror.style.transform='translateX('+f.mx+'px)';
- if(dcEyes)dcEyes.style.transform='translateX('+f.ex+'px)';
- if(dcInd)dcInd.textContent='Frame '+(frame+1)+' of 6';
- if(dcComm)dcComm.textContent=f.text;
- if(prevBtn)prevBtn.disabled=(frame===0);
- if(nextBtn)nextBtn.disabled=(frame===FRAMES.length-1);
-}
-function dcStopPlay(){
- dcPlaying=false;
- if(dcTimer){clearInterval(dcTimer);dcTimer=null;}
- if(dcPlayBtn){dcPlayBtn.textContent='Play the replay';dcPlayBtn.setAttribute('aria-pressed','false');}
-}
-if(prevBtn){prevBtn.addEventListener('click',function(){dcManual=true;dcStopPlay();if(frame>0){frame--;renderFrame();}});}
-if(nextBtn){nextBtn.addEventListener('click',function(){dcManual=true;dcStopPlay();if(frame<FRAMES.length-1){frame++;renderFrame();}});}
-if(dcPlayBtn){dcPlayBtn.addEventListener('click',function(){
- dcManual=true;
- if(dcPlaying){dcStopPlay();return;}
- if(frame>=FRAMES.length-1)frame=0;
- if(reduced){frame=FRAMES.length-1;renderFrame();return;}
- dcPlaying=true;
- dcPlayBtn.textContent='Pause the replay';
- dcPlayBtn.setAttribute('aria-pressed','true');
- dcTimer=setInterval(function(){
-  if(frame>=FRAMES.length-1){dcStopPlay();return;}
-  frame++;renderFrame();
-  if(frame>=FRAMES.length-1)dcStopPlay();
- },1900);
-});}
-renderFrame();
-
-/* Sources drawer */
-var drawer=root.querySelector('#p431-sources');
-if(drawer){
- var dBtn2=drawer.querySelector('.p3-drawer-btn');
- if(dBtn2){dBtn2.addEventListener('click',function(){
-   var closed=drawer.classList.toggle('p3-closed');
-   dBtn2.setAttribute('aria-expanded',String(!closed));
- });}
-}
-/* Scroll choreography engine: scroll position drives the stages.
-   Passive scroll listener, requestAnimationFrame interpolation, values
-   smoothed toward their scroll targets so motion eases and reverses. */
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function lerpF(a,b,t){return a+(b-a)*t;}
-var wardScrolly=root.querySelector('#p431-ward-scrolly');
-var dcScrolly=root.querySelector('#p431-dc-scrolly');
-var claimSec=root.querySelector('#p431-claim-sec');
-var bignum=root.querySelector('.p431-bignum');
-var statTiles=root.querySelectorAll('.p431-stat');
-var sCur={ward:0,dir:0,claim:0};
-var sTgt={ward:0,dir:0,claim:0};
-var scrollRaf=false;
-function progressOf(el){
- if(!el)return 0;
- var r=el.getBoundingClientRect();
- var vh=window.innerHeight||800;
- var denom=Math.max(1,r.height-vh*0.30);
- return clamp01((vh*0.85-r.top)/denom);
-}
-function smoothTo(cur,target){return reduced?target:cur+(target-cur)*0.16;}
-function measureScroll(){
- sTgt.ward=progressOf(wardScrolly);
- sTgt.dir=progressOf(dcScrolly);
- sTgt.claim=progressOf(claimSec);
-}
-function applyScroll(){
- if(!wardManual){
-  var build=clamp01((sCur.ward-0.03)/0.32);
-  var scale=clamp01((sCur.ward-0.52)/0.40);
-  applyWard(build,scale);
- }
- if(!dcManual&&dcMirror&&dcEyes){
-  var pos=sCur.dir*(FRAMES.length-1);
-  var i=Math.min(FRAMES.length-2,Math.floor(pos));
-  var fr=pos-i;
-  dcMirror.style.transform='translateX('+lerpF(FRAMES[i].mx,FRAMES[i+1].mx,fr).toFixed(1)+'px)';
-  dcEyes.style.transform='translateX('+lerpF(FRAMES[i].ex,FRAMES[i+1].ex,fr).toFixed(1)+'px)';
-  var nearest=Math.round(pos);
-  if(nearest!==frame){
-   frame=nearest;
-   if(dcInd)dcInd.textContent='Frame '+(frame+1)+' of 6';
-   if(dcComm)dcComm.textContent=FRAMES[frame].text;
-   if(prevBtn)prevBtn.disabled=(frame===0);
-   if(nextBtn)nextBtn.disabled=(frame===FRAMES.length-1);
-  }
- }
- if(bignum){
-  bignum.style.opacity=String(0.3+0.7*sCur.claim);
-  bignum.style.transform='translateY('+((1-sCur.claim)*22).toFixed(1)+'px) scale('+(0.97+0.03*sCur.claim).toFixed(3)+')';
- }
- statTiles.forEach(function(st,idx){
-  var lp=clamp01(sCur.claim*2.2-idx*0.35);
-  st.style.opacity=String(0.35+0.65*lp);
-  st.style.transform='translateY('+((1-lp)*16).toFixed(1)+'px)';
- });
-}
-function scrollFrame(){
- scrollRaf=false;
- measureScroll();
- var maxDelta=0;
- ['ward','dir','claim'].forEach(function(k){
-  var d=Math.abs(sTgt[k]-sCur[k]);
-  if(d>maxDelta)maxDelta=d;
-  sCur[k]=smoothTo(sCur[k],sTgt[k]);
- });
- applyScroll();
- if(!reduced&&maxDelta>0.002){requestScrollFrame();}
-}
-function requestScrollFrame(){
- if(!scrollRaf){scrollRaf=true;requestAnimationFrame(scrollFrame);}
-}
-window.addEventListener('scroll',requestScrollFrame,{ passive: true });
-window.addEventListener('resize',requestScrollFrame,{ passive: true });
-/* Step activation: the step nearest the viewport centre is the lit one */
-if('IntersectionObserver' in window){
- var stepIO=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){en.target.classList.toggle('p431-step-active',en.isIntersecting);});
- },{rootMargin:'-42% 0px -42% 0px',threshold:0});
- root.querySelectorAll('.p431-step').forEach(function(st){stepIO.observe(st);});
-}
-requestScrollFrame();
-
-/* Reveals */
-var reveals=root.querySelectorAll('.p431-reveal');
-if('IntersectionObserver' in window&&!reduced){
- root.classList.add('p431-anim');
- var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
- },{threshold:0.08});
- reveals.forEach(function(el){io.observe(el)});
-} else {
- reveals.forEach(function(el){el.classList.add('in')});
-}
-})();
-</script>
-
-<div class="view" id="where-does-the-rehab-day-go">
-<div class="p432-wrap">
-
-<header class="p432-hero">
-<p class="p432-kicker">The PM&amp;R Files · Essay 31</p>
-<h1 class="p432-title">Where Does the Rehab Day Actually Go?</h1>
-<p class="p432-answer">Inpatient rehabilitation is famous for one promise: three hours of therapy a day. But a rehab day is much longer than three hours, and nobody hands you a map of the rest of it. One way to get that map is to watch. In behavioral mapping, observers record what each person is doing, where they are, and who is with them, at set moments across the day. When Bernhardt and colleagues did that work in 2004, they mapped acute stroke units in the first 14 days after stroke, a different setting from an inpatient rehabilitation facility, and the day they recorded looked very different from the day the promise describes.</p>
-<div class="p432-byline-row">
-<span class="p432-byline">By a PM&amp;R resident physician</span>
-</div>
-<p class="p432-body">Behavioral mapping is plain, patient work. An observer with a schedule and a set of categories watches a unit and writes down what is happening at set moments: who is in bed, who is sitting up, who is moving, who is alone. A routine schedule or chart does not capture activity, company, and location together the way direct observation at set moments does. In Bernhardt 2004, observers sampled each patient every 10 minutes across two days. Someone has to stand there and look, again and again, until the ordinary hours stop being invisible. The categories sound dull. The picture they build is not.</p>
-<p class="p432-cue">Scroll drives the day · Inhabit, follow, audit</p>
-</header>
-
-<section class="p432-sec" id="p432-wake-sec">
-<p class="p432-ch-label">Scene one and two · The ward wakes up, scroll is time</p>
-<h2 class="p432-h2">One ward, one whole day, run by your scroll</h2>
-<p class="p432-note">The floor plan and every figure on it are drawn schematics, created for this essay. The plan is a schematic of a rehab unit, not the plan of any real hospital. The patient itineraries are schematic too: they illustrate the mapped categories from the study, and they are not the records of individual real patients.</p>
-<div class="p432-scrolly" id="p432-day-scrolly" data-scrolly="day">
-<div class="p432-stagebox p432-stage-sticky" id="p432-stagebox">
-<div class="p432-stage-head"><span>The Ward · Overhead Plan</span><span>Schematic · Warm daylight</span></div>
-<div class="p432-clockbar">
-<span class="p432-clock" id="p432-clock" aria-label="Ward clock">8:00 AM</span>
-<span class="p432-clock-lab">Ward clock · Observed day 8 AM to 5 PM</span>
-</div>
-<div class="p432-dayrail" aria-hidden="true"><span class="p432-dayfill" id="p432-dayfill"></span><span class="p432-daydot" id="p432-daydot"></span></div>
-<div class="p432-planwrap" id="p432-planwrap">
-<div class="p432-sunwash" id="p432-sunwash" aria-hidden="true"></div>
-<div class="p432-zone p432-bay" style="left:2%;top:3%;width:46%;height:34%"><span class="p432-zone-lab">Ward Bay A</span></div>
-<div class="p432-zone p432-bay" style="left:52%;top:3%;width:46%;height:34%"><span class="p432-zone-lab">Ward Bay B</span></div>
-<div class="p432-zone p432-corridor" style="left:2%;top:40%;width:96%;height:10%"><span class="p432-zone-lab">Corridor</span></div>
-<div class="p432-zone p432-dining" id="p432-dining" data-state="idle" style="left:2%;top:53%;width:30%;height:44%"><span class="p432-zone-lab">Dining Room</span></div>
-<div class="p432-zone p432-dayroom" style="left:34%;top:53%;width:30%;height:44%"><span class="p432-zone-lab">Day Room · Chairs</span></div>
-<div class="p432-zone p432-gym" id="p432-gym" data-state="idle" style="left:66%;top:53%;width:32%;height:44%"><span class="p432-zone-lab">Gym · Therapy</span></div>
-<span class="p432-bedmark" style="left:10%;top:16%"></span>
-<span class="p432-bedmark" style="left:24%;top:16%"></span>
-<span class="p432-bedmark" style="left:38%;top:16%"></span>
-<span class="p432-bedmark" style="left:10%;top:29%"></span>
-<span class="p432-bedmark" style="left:24%;top:29%"></span>
-<span class="p432-bedmark" style="left:38%;top:29%"></span>
-<span class="p432-bedmark" style="left:60%;top:16%"></span>
-<span class="p432-bedmark" style="left:74%;top:16%"></span>
-<span class="p432-bedmark" style="left:88%;top:16%"></span>
-<span class="p432-bedmark" style="left:60%;top:29%"></span>
-<span class="p432-bedmark" style="left:74%;top:29%"></span>
-<span class="p432-bedmark" style="left:88%;top:29%"></span>
-<span class="p432-furn p432-table" style="left:9%;top:66%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:20%;top:66%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:9%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:20%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:40%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:50%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:60%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:45%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:55%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:71%;top:64%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:82%;top:64%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:71%;top:82%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:82%;top:82%" aria-hidden="true"></span>
-<span class="p432-furn p432-bench" style="left:76%;top:74%" aria-hidden="true"></span>
-<div class="p432-wheelchair" id="p432-wheelchair" aria-hidden="true"><span class="p432-wc-wheel"></span><span class="p432-wc-seat"></span></div>
-<button type="button" class="p432-patient" data-patient="1" style="left:10%;top:16%" aria-label="Patient 1, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">1</span></button>
-<button type="button" class="p432-patient" data-patient="2" style="left:24%;top:16%" aria-label="Patient 2, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">2</span></button>
-<button type="button" class="p432-patient" data-patient="3" style="left:38%;top:16%" aria-label="Patient 3, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">3</span></button>
-<button type="button" class="p432-patient" data-patient="4" style="left:10%;top:29%" aria-label="Patient 4, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">4</span></button>
-<button type="button" class="p432-patient" data-patient="5" style="left:24%;top:29%" aria-label="Patient 5, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">5</span></button>
-<button type="button" class="p432-patient" data-patient="6" style="left:38%;top:29%" aria-label="Patient 6, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">6</span></button>
-<button type="button" class="p432-patient" data-patient="7" style="left:60%;top:16%" aria-label="Patient 7, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">7</span></button>
-<button type="button" class="p432-patient" data-patient="8" style="left:74%;top:16%" aria-label="Patient 8, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">8</span></button>
-<button type="button" class="p432-patient" data-patient="9" style="left:88%;top:16%" aria-label="Patient 9, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">9</span></button>
-<button type="button" class="p432-patient" data-patient="10" style="left:60%;top:29%" aria-label="Patient 10, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">10</span></button>
-<button type="button" class="p432-patient" data-patient="11" style="left:74%;top:29%" aria-label="Patient 11, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">11</span></button>
-<button type="button" class="p432-patient" data-patient="12" style="left:88%;top:29%" aria-label="Patient 12, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">12</span></button>
-</div>
-<p class="p432-narration" id="p432-narration" aria-live="polite">8:00 AM. 0 patients are in the gym. 12 are in bed. 0 are sitting out of bed.</p>
-<div class="p432-controls">
-<button type="button" class="p432-btn" id="p432-play" aria-pressed="false">Play the day</button>
-<label class="p432-scrub-lab" for="p432-scrub">Time of day</label>
-<input type="range" class="p432-scrub" id="p432-scrub" min="480" max="1020" step="10" value="480" aria-label="Scrub the time of day from 8 AM to 5 PM">
-<span class="p432-scrub-val" id="p432-scrub-val">8:00 AM</span>
-</div>
-<span class="p432-viz-note">Scroll to run the ward clock from 8 AM to 5 PM: patients travel between bed, chairs, and gym, the gym lights amber during therapy blocks, and daylight warms across the plan. Play and the scrubber are manual takeovers of the same clock. Figures breathe quietly while the plan is on screen, and a wheelchair crosses the corridor on its own loop. Click any patient figure to open that patient mapped day in the next scene.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="morning-start"><p class="p432-step-kicker">Step 1 of 6 · 8:00 AM · The ward wakes up</p><p class="p432-body">This is a rehab unit at 8:00 AM, drawn as a floor plan and seen from above. Ward bays with beds, a gym, a dining room, and a corridor that joins them. Small figures rest in the beds, and the ward clock reads 8:00 AM, the start of the window Bernhardt and colleagues observed, from 8 AM to 5 PM. Nothing dramatic is happening yet.</p></div>
-<div class="p432-step" data-step="morning-therapy"><p class="p432-step-kicker">Step 2 of 6 · Morning · Therapy lights the gym</p><p class="p432-body">Keep scrolling and the morning therapy block arrives. The gym lights amber, and a few figures make the trip from bed to chair to gym. Watch the readout keep count in plain words. Before any panel puts a number on it, make your own estimate: at a typical moment, how many of these 12 figures would you guess are in the gym? Mid morning is the busiest this ward gets.</p></div>
-<div class="p432-step" data-step="midday"><p class="p432-step-kicker">Step 3 of 6 · Midday · The ward settles</p><p class="p432-body">By midday the block ends, the gym light goes out, and the ward settles. The dining room tints at lunch, a chair fills here and there, and then the plan goes quiet again. Most figures, most of the time, do not move at all. That stillness is the drawing illustrating, at ward scale, the pattern the study panels below actually measure.</p></div>
-<div class="p432-step" data-step="afternoon-therapy"><p class="p432-step-kicker">Step 4 of 6 · Afternoon · The second block</p><p class="p432-body">The afternoon brings a second therapy block, and the same shape repeats: a short bright interval of activity set inside a long plain stretch of rest and waiting. The numbers move a little. The pattern does not.</p></div>
-<div class="p432-step" data-step="late"><p class="p432-step-kicker">Step 5 of 6 · Late afternoon · Quiet again</p><p class="p432-body">Late afternoon looks much like early morning. The gym is dark, the chairs empty out, and the beds fill again. The shape matches the one the study level shares below describe: the day has a rhythm, and the rhythm is mostly rest.</p></div>
-<div class="p432-step" data-step="day-end"><p class="p432-step-kicker">Step 6 of 6 · 5:00 PM · The window closes</p><p class="p432-body">At 5:00 PM the observed day ends, where the mapping window ended. You have now lived the whole window at ward scale, and felt its quiet for yourself. The next scenes put numbers on it, and the numbers are easier to believe after the quiet.</p></div>
-</div>
-</div>
-</section>
-
-<section class="p432-sec" id="p432-person-sec">
-<p class="p432-ch-label">Scene three · Click a person</p>
-<h2 class="p432-h2">Click on a person to explore</h2>
-<p class="p432-body">Pick any figure on the plan above and click. What opens below holds two separate objects. The first is an illustrative patient schedule: a schematic timeline of the hours between 8 AM and 5 PM, showing where this figure spent the day, block by block, bed and chair and gym. The second is study level observation shares: the mapped categories from Bernhardt 2004 drawn as proportional shares of the observed day, identical whichever figure you click. The timeline shows how a day can be spent. The shares show how days were actually spent, across the whole study, when observers did the counting.</p>
-<div class="p432-person-panel" id="p432-person-panel" hidden>
-<div class="p432-stage-head"><span id="p432-person-title">Patient 1 · Illustrative schedule</span><span>Schedule schematic · Shares study level</span></div>
-<p class="p432-panel-lab">Illustrative patient schedule · Schematic timeline · 8 AM to 5 PM</p>
-<div class="p432-timeline" id="p432-timeline" role="img" aria-label="Schematic timeline of this patient day from 8 AM to 5 PM, divided into resting in bed, sitting out of bed, and time in the gym."></div>
-<div class="p432-timeline-scale"><span>8 AM</span><span>11 AM</span><span>2 PM</span><span>5 PM</span></div>
-<p class="p432-panel-lab">Study level observation shares · Bernhardt 2004 · Share of the observed day</p>
-<div class="p432-ribbon" id="p432-ribbon">
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Resting in bed</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-bed p432-seg-open" style="width:68%"></span><span class="p432-halfmark" aria-hidden="true"></span></span><span class="p432-ribbon-val">over half</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Sitting out of bed</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-sit" style="width:28%"></span></span><span class="p432-ribbon-val">28 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">In moderate or high activity</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-act" style="width:12.8%"></span></span><span class="p432-ribbon-val">12.8 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">With a therapist</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-ther" style="width:5.2%"></span></span><span class="p432-ribbon-val">5.2 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Alone</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-alone" style="width:60.4%"></span></span><span class="p432-ribbon-val">60.4 percent</span></div>
-</div>
-<p class="p432-ribbon-caption" id="p432-ribbon-caption">This is a composite day built from the study mapped shares, not a real patient record. The shares overlap by design: a patient can be in bed and alone at the same time, so the rows describe the same day from different angles and do not add up to one whole. The bed row is drawn just past the halfway mark to show over half, the only figure the study reports for that category.</p>
-<p class="p432-note" style="margin:10px 22px 0">Alone, in both studies, means no other person was present at the sampled moment. It is a record of company, not a measure of loneliness, and not a record of care given between visits.</p>
-</div>
-<p class="p432-body">Read the composite day slowly. The largest fact in it is not therapy. It is the bed. The second largest fact is aloneness. A patient can be resting, sitting, even active, and still be alone for most of it, because alone is not an activity. It is a record of who was present at the sampled moment, and it is the background condition the other categories happen inside. The mapping categories were never slices of a pie. They are lenses on the same hours, and the hours look different through each lens.</p>
-</section>
-
-<section class="p432-sec" id="p432-audit-sec">
-<p class="p432-ch-label">Scene four · The hunt for the three hours</p>
-<h2 class="p432-h2">Where the promised three hours sit</h2>
-<p class="p432-body">Now set the mapped day beside the promise, as a comparison, not a compliance check. Bernhardt 2004 mapped acute stroke units in the first 14 days after stroke, and neither study in this essay tested the United States rehabilitation rule. The familiar promise is three hours of therapy, and the top band below draws those three hours at full size against the nine hour observed day, from 8 AM to 5 PM. It is not small because someone drew it small. It is one third of the window, and the other two thirds are the subject of this essay. Below the promise, the mapped categories from Bernhardt 2004 fill the same scale, each with its denominator attached, so every figure carries the day it is a share of. Put the bright band next to the therapist row and the shape of the problem appears.</p>
-<div class="p432-scrolly p432-scrolly-bars" id="p432-audit-scrolly" data-scrolly="audit">
-<div class="p432-stagebox p432-stage-sticky" id="p432-audit-stage">
-<div class="p432-stage-head"><span>The Audit · One Scale, Nine Hours</span><span>Bernhardt 2004</span></div>
-<div class="p432-audit">
-<div class="p432-audit-row">
-<span class="p432-audit-lab">The familiar promise · Therapy</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-promise" data-w="33.3" style="width:33.3%"></span></span>
-<span class="p432-audit-val">3 hours in a 9 hour observed day</span>
-<span class="p432-audit-den">United States CMS expectation for an inpatient rehabilitation facility: generally at least 3 hours of therapy a day on at least 5 days a week, or, in well documented cases, at least 15 hours within a 7 day period. Neither paper in this essay tested that requirement.</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Resting in bed</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-bed p432-seg-open" style="width:68%"></span><span class="p432-halfmark" aria-hidden="true"></span></span>
-<span class="p432-audit-val">over half of the day</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units · The bar fades past the halfway mark because the study reports no exact figure for this row</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Sitting out of bed</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-sit" data-w="28" style="width:28%"></span></span>
-<span class="p432-audit-val" data-count="28" data-decimals="0" data-suffix=" percent">28 percent</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">In moderate or high activity</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-act" data-w="12.8" style="width:12.8%"></span></span>
-<span class="p432-audit-val" data-count="12.8" data-decimals="1" data-suffix=" percent">12.8 percent</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Alone</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-alone" data-w="60.4" style="width:60.4%"></span></span>
-<span class="p432-audit-val" data-count="60.4" data-decimals="1" data-suffix=" percent of the time">60.4 percent of the time</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">In contact with a therapist</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-ther" data-w="5.2" style="width:5.2%"></span></span>
-<span class="p432-audit-val" data-count="5.2" data-decimals="1" data-suffix=" percent of the day">5.2 percent of the day</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-</div>
-<span class="p432-viz-note">All shares are from Bernhardt et al. 2004, as detailed in the Sources drawer below. Categories overlap: the same hour can count as resting in bed and as alone. The bed bar fades past the halfway mark to encode over half, the only figure the study reports for that category. Therapist contact means a therapist present at a sampled moment. It is not a tally of billed therapy minutes.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="audit-promise"><p class="p432-step-kicker">Audit · Step 1 of 3</p><p class="p432-step-copy">Scroll and the promise band lands first, at full size: three hours against the nine hour window.</p></div>
-<div class="p432-step" data-step="audit-fill"><p class="p432-step-kicker">Audit · Step 2 of 3</p><p class="p432-step-copy">Then the mapped categories grow into the same scale, counting up as they land. The therapist row is the one to watch.</p></div>
-<div class="p432-step" data-step="audit-den"><p class="p432-step-kicker">Audit · Step 3 of 3</p><p class="p432-step-copy">Every figure carries its denominator. Notice, too, what each row measures: bed is a location, activity is a level of movement, alone is company, and therapist is presence. Different lenses on the same hours, which is why the rows overlap.</p></div>
-</div>
-</div>
-<p class="p432-body">The number that should stop you is the smallest one. Patients were in contact with a therapist at 5.2 percent of sampled moments in the observed day. Set that beside the promise and beside the bed, and the mapped day looks like a rest day with therapy inside it. None of this says the therapy failed, or that rest is waste. Recovery needs rest, and a body healing a stroke is doing work no observer can see. But the comparison changes the question a resident should ask on rounds. Not only, what happened in therapy today? Also, what happened in the other hours, and who was there?</p>
-</section>
-
-<section class="p432-sec" id="p432-compare-sec">
-<p class="p432-ch-label">Scene five · The two studies agree</p>
-<h2 class="p432-h2">Same shape, different unit, years apart</h2>
-<p class="p432-body">One study could be one place having a quiet month. So check the shape somewhere the setting is different on purpose: a dedicated brain injury rehabilitation unit, mapped years later by Adey-Wakeling and colleagues. The broad shape holds, with one sharp difference. Patients there were alone for about half the therapeutic day and with an allied health therapist for 29 percent of it, far above the Bernhardt therapist share. They were physically inactive for most of their awake time and in goal related activity, the work aimed at their own recovery goals, for only a quarter of it. Two kinds of unit, two patient groups, the same long quiet stretches with bright intervals inside them. These two studies identify substantial inactive or solitary time in their settings. Neither turns two samples into a description of every inpatient day.</p>
-<div class="p432-scrolly p432-scrolly-bars" id="p432-compare-scrolly" data-scrolly="compare">
-<div class="p432-stagebox p432-stage-sticky" id="p432-compare-stage">
-<div class="p432-stage-head"><span>Shape of the Day · Two Studies</span><span>Side by side</span></div>
-<div class="p432-compare">
-<div class="p432-compare-col">
-<p class="p432-compare-title">Bernhardt 2004 · Acute stroke units</p>
-<p class="p432-mini-head">Observed day measures · 8 AM to 5 PM</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Alone</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-alone" data-w="60.4" style="width:60.4%"></span></span><span class="p432-mini-val" data-count="60.4" data-decimals="1" data-suffix=" percent">60.4 percent</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">Moderate or high activity</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-act" data-w="12.8" style="width:12.8%"></span></span><span class="p432-mini-val" data-count="12.8" data-decimals="1" data-suffix=" percent">12.8 percent</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">With a therapist</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-ther" data-w="5.2" style="width:5.2%"></span></span><span class="p432-mini-val" data-count="5.2" data-decimals="1" data-suffix=" percent">5.2 percent</span></div>
-<p class="p432-compare-note">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units. This study is the spine of this essay.</p>
-</div>
-<div class="p432-compare-col">
-<p class="p432-compare-title">Adey-Wakeling 2021 · Brain injury rehab unit</p>
-<p class="p432-mini-head">Therapeutic day measures · 8:30 AM to 4:30 PM</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Alone</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-alone" data-w="49" style="width:49%"></span></span><span class="p432-mini-val" data-count="49" data-decimals="0" data-suffix=" percent of the therapeutic day">49 percent of the therapeutic day</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">With an allied health therapist</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-ther" data-w="29" style="width:29%"></span></span><span class="p432-mini-val" data-count="29" data-decimals="0" data-suffix=" percent of the therapeutic day">29 percent of the therapeutic day</span></div>
-<p class="p432-mini-head">Awake time measures · A different denominator, not paired with the panel opposite</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Physically inactive</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-bed" data-w="76" style="width:76%"></span></span><span class="p432-mini-val" data-count="76" data-decimals="0" data-suffix=" percent of awake time">76 percent of awake time</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">Goal-related activity</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-goal" data-w="25" style="width:25%"></span></span><span class="p432-mini-val" data-count="25" data-decimals="0" data-suffix=" percent of awake time">25 percent of awake time</span></div>
-<p class="p432-compare-note">Nine patients observed · dedicated brain injury rehabilitation unit · 42 beds · mapped every 15 minutes.</p>
-</div>
-</div>
-<div class="p432-flagbox">
-<p class="p432-flag-title">Sized honestly</p>
-<p>The brain injury mapping observed nine patients on a 42-bed unit, mapped every 15 minutes. Patients in post traumatic amnesia or a minimally conscious state were excluded, so the patients least able to take part are not in this sample. That is a small sample, and this essay treats it that way: Bernhardt is the spine, Adey-Wakeling is the corroboration. The point of the second study is not precision. It is that a dedicated rehabilitation unit, mapped carefully, produced the same shape of day as the acute stroke units did.</p>
-</div>
-<span class="p432-viz-note">Goal-related activity is drawn in the quiet green reserved for it in this essay. Therapy contact in the Bernhardt panel is drawn in the warm amber reserved for therapy activity.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="compare-bernhardt"><p class="p432-step-kicker">Compare · Step 1 of 3</p><p class="p432-step-copy">Scroll and the Bernhardt shape lands first: alone, active, with a therapist.</p></div>
-<div class="p432-step" data-step="compare-adey"><p class="p432-step-kicker">Compare · Step 2 of 3</p><p class="p432-step-copy">Then the brain injury unit answers, with its own windows: a therapeutic day for company and therapist presence, awake time for activity.</p></div>
-<div class="p432-step" data-step="compare-agree"><p class="p432-step-kicker">Compare · Step 3 of 3</p><p class="p432-step-copy">Same shape, different unit, years apart. The flag inside the stage sizes the second study honestly.</p></div>
-</div>
-</div>
-<p class="p432-body">So the closing question is the residency question. Rehabilitation talks about dose the way medicine talks about dose: more practice, more repetitions, more time on task should build more recovery. Sessions are where the dose is prescribed and counted. But sessions are a small share of the day. If recovery is dose, what is the dose between sessions? Who designs those hours, the sitting and the waiting and the being alone, and what would it take to make more of them count?</p>
-<p class="p432-body">One bounded response fits what a mapping study can actually support. The team agrees on one safe between session task tied to the patient own goal, records the help needed and the rest plan around it, and later checks whether the patient did it. Mobility readiness and medical restrictions set the limits, because a descriptive study does not prove that filling every quiet interval improves recovery.</p>
-</section>
-
-<section class="p432-sec" id="p432-recap-sec">
-<p class="p432-ch-label">Recap</p>
-<h2 class="p432-h2">So what have we learned</h2>
-<p class="p432-body">We learned that the mapped day, when observers sample it every few minutes, is mostly not therapy. In Bernhardt 2004, across the 58 patients who completed mapping on five acute stroke units between 8 AM and 5 PM (64 were recruited), patients spent over half the day resting in bed, 28 percent sitting out of bed, and only 12.8 percent in moderate or high activity. They were alone 60.4 percent of the time and with a therapist at 5.2 percent of sampled moments. A dedicated brain injury unit mapped years later showed the same broad shape in its own sample: alone about half the therapeutic day, inactive for most of awake time, and in goal related activity only a quarter of it. These two studies identify substantial inactive and solitary time in their settings. They do not show how much of that quiet was planned, needed, or avoidable.</p>
-<div class="p432-sources p432-reveal p3-drawer p3-closed" id="p432-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p432-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Bernhardt J, Dewey H, Thrift A, Donnan G. Inactive and alone: physical activity within the first 14 days of acute stroke unit care. Stroke. 2004;35:1005 to 1009. PMID 14988574. DOI 10.1161/01.STR.0000120727.40792.40. Behavioral mapping on five acute stroke units: 64 patients were recruited and 58 completed two days of observation, sampled every 10 minutes from 8 AM to 5 PM. Of sampled moments, patients spent over half the day resting in bed, 28 percent sitting out of bed, 12.8 percent in moderate or high activity, and 60.4 percent alone, with a therapist present at 5.2 percent. The abstract reports the activity and alone shares rounded, as 13 percent and over 60 percent. The decimals here are the full text values; the alone and therapist decimals are also reported in the team follow up report of the same study (Bernhardt et al., Journal of Rehabilitation Medicine, 2007;39:43 to 48).</li>
-<li>Adey-Wakeling Z, Jolliffe L, O’Shannessy E, Hunter P, Morarty J, Cameron ID, Liu E, Lannin NA. Activity, Participation, and Goal Awareness After Acquired Brain Injury: A Prospective Observational Study of Inpatient Rehabilitation. Annals of Rehabilitation Medicine. 2021;45(6):413 to 421. DOI 10.5535/arm.21034. PMCID PMC8743846. Behavioral mapping every 15 minutes on a dedicated brain injury rehabilitation unit with 42 beds; nine patients were observed, and patients in post traumatic amnesia or a minimally conscious state were excluded. During the therapeutic day, 8:30 AM to 4:30 PM, patients were alone 49 percent of the time and with allied health therapists 29 percent of the time. Of awake time, patients were physically inactive 76 percent of the time and in goal related activity 25 percent of the time.</li>
-</ol>
-<p class="p432-note" style="margin-top:14px">Method note: every number in this essay was taken from a source verified in the research pass and is recorded, claim by claim, in the essay source map. The three hours of therapy framing is the familiar inpatient rehabilitation expectation, stated on the page as a promise, not as a figure measured by either paper. The floor plan, the patient itineraries, and the composite mapped day are schematics labeled as such on the page. No real patient is depicted anywhere in this essay.</p>
-</div>
-<div class="p432-methods" id="p432-methods">
-<h3>Data and Methods</h3>
-<p>The spine of this essay is Bernhardt et al. 2004: behavioral mapping of 58 patients who completed the study (64 recruited) across five acute stroke units, observed from 8 AM to 5 PM on two days and sampled every 10 minutes, with activity, location, and company recorded in mapped categories. All Bernhardt shares in this essay are shares of that observed day, and each is labeled with that denominator on the page. Therapist shares in both studies mean a therapist present at a sampled moment, not billed therapy minutes. The three hour band is the United States CMS expectation for inpatient rehabilitation facilities, generally at least 3 hours of therapy a day on at least 5 days a week, or at least 15 hours within a 7 day period in well documented cases; neither study tested that rule, and Bernhardt mapped acute care, not a rehabilitation facility. The corroboration is Adey-Wakeling et al. 2021: behavioral mapping every 15 minutes on a dedicated brain injury rehabilitation unit with 42 beds, with nine patients observed and patients in post traumatic amnesia or a minimally conscious state excluded; its inactivity and goal related figures are shares of awake time, and its alone and therapist figures are shares of its therapeutic day, 8:30 AM to 4:30 PM, as labeled. The ward clock runs the Bernhardt window, 8 AM to 5 PM. Patient itineraries on the floor plan are schematic illustrations of the mapped categories, built for this essay; the clicked mapped day is a composite built from the study mapped shares, not a real patient record. The resting in bed share is reported by the study only as over half, and it is drawn and printed that way here, with no precise figure invented. All drawings are SVG or CSS schematics created for this essay. No photographs and no AI imagery are used.</p>
-</div>
-<div class="p432-footer">
-<span>The PM&amp;R Files · Essay 31 · Where Does the Rehab Day Actually Go?</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
-
-</div>
-</div>
-<script>
-/* Essay 31 interactions: scroll driven ward clock with Play and scrubber takeovers, interpolated patient travel, daylight shift, audit and comparison bars counting in on scroll, clicked composite day, sources drawer */
-(function(){
-var root=document.getElementById('where-does-the-rehab-day-go');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var START=480,END=1020;
-var clockEl=root.querySelector('#p432-clock');
-var narrationEl=root.querySelector('#p432-narration');
-var scrub=root.querySelector('#p432-scrub');
-var scrubVal=root.querySelector('#p432-scrub-val');
-var playBtn=root.querySelector('#p432-play');
-var gym=root.querySelector('#p432-gym');
-var dining=root.querySelector('#p432-dining');
-var planwrap=root.querySelector('#p432-planwrap');
-var stagebox=root.querySelector('#p432-stagebox');
-var sunwash=root.querySelector('#p432-sunwash');
-var dayfill=root.querySelector('#p432-dayfill');
-var daydot=root.querySelector('#p432-daydot');
-var dayScrolly=root.querySelector('#p432-day-scrolly');
-var auditScrolly=root.querySelector('#p432-audit-scrolly');
-var compareScrolly=root.querySelector('#p432-compare-scrolly');
-
-/* Schematic itineraries. Each entry is start, end, place. Places are bed, chair, gym. They illustrate the mapped categories, not real patient records. */
-var ITIN={
-1:[[540,600,'gym'],[600,720,'chair'],[810,870,'gym'],[870,960,'chair']],
-2:[[540,600,'chair'],[600,660,'gym'],[780,840,'chair'],[840,900,'gym']],
-3:[[600,660,'gym'],[720,780,'chair'],[840,900,'gym']],
-4:[[540,600,'chair'],[840,900,'gym']],
-5:[[660,750,'chair'],[840,930,'chair']],
-6:[[570,630,'gym'],[630,720,'chair'],[780,840,'gym']],
-7:[[600,690,'chair'],[840,900,'gym']],
-8:[[720,810,'chair']],
-9:[[630,660,'gym'],[690,780,'chair'],[870,900,'gym']],
-10:[[555,645,'chair'],[780,840,'gym'],[840,900,'chair']],
-11:[[600,660,'chair'],[810,870,'gym']],
-12:[[600,660,'gym'],[660,720,'chair'],[840,900,'chair']]
-};
-var BEDS={1:[10,16],2:[24,16],3:[38,16],4:[10,29],5:[24,29],6:[38,29],7:[60,16],8:[74,16],9:[88,16],10:[60,29],11:[74,29],12:[88,29]};
-var CHAIRS=[[40,68],[50,68],[60,68],[40,84],[50,84],[60,84],[45,76],[55,76]];
-var GYMS=[[73,68],[83,68],[93,68],[73,84],[83,84],[93,84]];
-var patients=Array.prototype.slice.call(root.querySelectorAll('.p432-patient'));
-function locAt(n,t){
- var list=ITIN[n]||[];
- for(var i=0;i<list.length;i++){if(t>=list[i][0]&&t<list[i][1])return list[i][2];}
- return 'bed';
-}
-/* Fixed slot per itinerary block: count same place blocks from lower numbered patients that overlap this block, so simultaneous figures never share a spot. */
-var SLOT={};
-Object.keys(ITIN).forEach(function(k){
- var n=parseInt(k,10);SLOT[n]=[];
- ITIN[n].forEach(function(block,bi){
-  var place=block[2],pool=place==='gym'?GYMS:CHAIRS,idx=0;
-  Object.keys(ITIN).forEach(function(k2){
-   var m=parseInt(k2,10);if(m>=n)return;
-   ITIN[m].forEach(function(b2){if(b2[2]===place&&b2[0]<block[1]&&block[0]<b2[1])idx++;});
-  });
-  SLOT[n][bi]=pool[idx%pool.length];
- });
-});
-/* Stays per patient: bed, block, bed, block, bed. Travel happens in a window centred on each stay boundary. */
-var STAYS={};
-Object.keys(ITIN).forEach(function(k){
- var n=parseInt(k,10),stays=[],cur=START;
- ITIN[n].forEach(function(block,bi){
-  if(block[0]>cur)stays.push([cur,block[0],BEDS[n]]);
-  stays.push([block[0],block[1],SLOT[n][bi]]);
-  cur=block[1];
- });
- if(cur<END)stays.push([cur,END,BEDS[n]]);
- if(!stays.length)stays=[[START,END,BEDS[n]]];
- STAYS[n]=stays;
-});
-function smoothstep(v){return v*v*(3-2*v);}
-function posAt(n,t){
- var stays=STAYS[n];
- for(var i=0;i<stays.length-1;i++){
-  var b=stays[i][1],w=20;
-  if(t>=b-w&&t<b){
-   var f=smoothstep((t-(b-w))/w);
-   return [stays[i][2][0]+(stays[i+1][2][0]-stays[i][2][0])*f, stays[i][2][1]+(stays[i+1][2][1]-stays[i][2][1])*f];
-  }
- }
- for(var j=0;j<stays.length;j++){if(t>=stays[j][0]&&t<stays[j][1])return stays[j][2];}
- return stays[stays.length-1][2];
-}
-function fmt(t){
- var h=Math.floor(t/60),m=t%60,ap=h>=12?'PM':'AM',hh=h%12;if(hh===0)hh=12;
- return hh+':'+(m<10?'0':'')+m+' '+ap;
-}
-function wordLoc(loc){return loc==='gym'?'in the gym':(loc==='chair'?'sitting out of bed':'resting in bed');}
-/* Daylight stops: cool morning, bright midday, warm afternoon. Values are red, green, blue, alpha of the wash over the plan. */
-var DAYLIGHT=[[480,168,192,228,0.17],[720,255,244,200,0.04],[900,247,205,130,0.13],[1020,217,142,27,0.22]];
-function daylightAt(t){
- for(var i=0;i<DAYLIGHT.length-1;i++){
-  var a=DAYLIGHT[i],b=DAYLIGHT[i+1];
-  if(t>=a[0]&&t<=b[0]){
-   var f=(t-a[0])/(b[0]-a[0]);
-   var r=Math.round(a[1]+(b[1]-a[1])*f),g=Math.round(a[2]+(b[2]-a[2])*f),bl=Math.round(a[3]+(b[3]-a[3])*f),al=a[4]+(b[4]-a[4])*f;
-   return 'rgba('+r+','+g+','+bl+','+al.toFixed(3)+')';
-  }
- }
- return 'rgba(217,142,27,0.22)';
-}
-var displayTime=START,lastQ=-1,dayManual=false,playing=false,timer=null;
-function renderDay(){
- var t=displayTime;
- var q=Math.max(START,Math.min(END,Math.round(t/10)*10));
- /* Positions, daylight, and the day rail move every frame with the float time. */
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var pos=posAt(n,t);
-  btn.style.left=pos[0].toFixed(2)+'%';
-  btn.style.top=pos[1].toFixed(2)+'%';
- });
- if(sunwash)sunwash.style.background=daylightAt(t);
- var dp=(t-START)/(END-START);
- if(dayfill)dayfill.style.width=(dp*100).toFixed(2)+'%';
- if(daydot)daydot.style.left=(dp*100).toFixed(2)+'%';
- if(q===lastQ)return;
- lastQ=q;
- var label=fmt(q);
- if(clockEl)clockEl.textContent=label;
- if(scrubVal)scrubVal.textContent=label;
- if(scrub&&document.activeElement!==scrub)scrub.value=String(q);
- var gymCount=0,bedCount=0,chairCount=0;
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var loc=locAt(n,q);
-  if(loc==='gym')gymCount++;else if(loc==='chair')chairCount++;else bedCount++;
-  btn.setAttribute('data-loc',loc);
-  btn.classList.toggle('in-gym',loc==='gym');
-  btn.classList.toggle('in-chair',loc==='chair');
-  btn.setAttribute('aria-label','Patient '+n+', '+wordLoc(loc)+'. Click to explore this patient mapped day.');
- });
- var gymActive=(q>=540&&q<660)||(q>=780&&q<900);
- if(gym){
-  gym.classList.toggle('lit',gymActive);
-  gym.setAttribute('data-state',gymActive?'active':'idle');
- }
- if(dining){
-  var lunch=(q>=720&&q<780);
-  dining.classList.toggle('lit',lunch);
-  dining.setAttribute('data-state',lunch?'active':'idle');
- }
- if(narrationEl){
-  narrationEl.textContent=label+'. '+gymCount+' patients are in the gym. '+bedCount+' are in bed. '+chairCount+' are sitting out of bed.';
- }
-}
-function setManualTime(t){
- dayManual=true;
- displayTime=Math.max(START,Math.min(END,t));
- lastQ=-1;
- if(scrub)scrub.value=String(Math.round(displayTime/10)*10);
- renderDay();
-}
-function stopPlay(){
- playing=false;
- if(timer){clearInterval(timer);timer=null;}
- if(playBtn){playBtn.textContent='Play the day';playBtn.setAttribute('aria-pressed','false');}
-}
-if(playBtn){playBtn.addEventListener('click',function(){
- if(playing){stopPlay();return;}
- if(displayTime>=END-1)displayTime=START;
- dayManual=true;
- playing=true;
- playBtn.textContent='Pause the day';
- playBtn.setAttribute('aria-pressed','true');
- if(reduced){setManualTime(Math.min(END,displayTime+60));stopPlay();return;}
- timer=setInterval(function(){
-  if(displayTime>=END){stopPlay();return;}
-  displayTime=Math.min(END,displayTime+5);
-  renderDay();
-  if(displayTime>=END)stopPlay();
- },90);
-});}
-if(scrub){scrub.addEventListener('input',function(){stopPlay();setManualTime(parseInt(scrub.value,10));});}
-/* Pause idle motion off screen. */
-if(planwrap&&'IntersectionObserver' in window){
- var pio=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){planwrap.classList.toggle('offscreen',!en.isIntersecting);});
- },{threshold:0.05});
- pio.observe(planwrap);
-}
-/* Scene 3: click a person. Kept as a click beat inside the scroll flow, because choosing a person is the reader act this scene is about. */
-var panel=root.querySelector('#p432-person-panel');
-var personTitle=root.querySelector('#p432-person-title');
-var timeline=root.querySelector('#p432-timeline');
-function renderTimeline(n){
- if(!timeline)return;
- timeline.innerHTML='';
- var points=[START];
- (ITIN[n]||[]).forEach(function(s){points.push(s[0],s[1]);});
- points.push(END);
- points=points.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
- var segs=[];
- for(var i=0;i<points.length-1;i++){
-  var a=points[i],b=points[i+1],loc=locAt(n,a+1);
-  var last=segs[segs.length-1];
-  if(last&&last[2]===loc&&last[1]===a){last[1]=b;}
-  else{segs.push([a,b,loc]);}
- }
- if(!segs.length)segs=[[START,END,'bed']];
- segs.forEach(function(s){
-  var d=document.createElement('span');
-  d.className='p432-tl-seg p432-tl-'+s[2];
-  d.style.left=((s[0]-START)/(END-START)*100)+'%';
-  d.style.width=((s[1]-s[0])/(END-START)*100)+'%';
-  var lab=document.createElement('span');
-  lab.className='p432-tl-lab';
-  lab.textContent=s[2]==='gym'?'Gym':(s[2]==='chair'?'Chair':'Bed');
-  if((s[1]-s[0])>=60)d.appendChild(lab);
-  timeline.appendChild(d);
- });
-}
-patients.forEach(function(btn){
- btn.addEventListener('click',function(){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  patients.forEach(function(b){b.classList.remove('selected');});
-  btn.classList.add('selected');
-  if(personTitle)personTitle.textContent='Patient '+n+' · Illustrative schedule';
-  renderTimeline(n);
-  if(panel){
-   panel.hidden=false;
-   panel.classList.remove('open');
-   void panel.offsetWidth;
-   panel.classList.add('open');
-   panel.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
-  }
- });
-});
-/* Audit and comparison bars: each segment grows and its value counts with the section scroll progress, staggered by row. Counting starts only once the section has been seen, so unseen figures stay printed in full. */
-function collectBars(scrolly){
- if(!scrolly)return [];
- var rows=[];
- scrolly.querySelectorAll('.p432-audit-seg,.p432-mini-seg').forEach(function(seg){
-  var rowEl=seg.closest('.p432-audit-row,.p432-mini-row');
-  var val=rowEl?rowEl.querySelector('[data-count]'):null;
-  rows.push({seg:seg,val:val,target:parseFloat(seg.getAttribute('data-w')||'0'),count:val?parseFloat(val.getAttribute('data-count')):null,dec:val?parseInt(val.getAttribute('data-decimals')||'0',10):0,suffix:val?(val.getAttribute('data-suffix')||''):''});
- });
- return rows;
-}
-var auditBars=collectBars(auditScrolly),compareBars=collectBars(compareScrolly);
-var auditSeen=false,compareSeen=false;
-function applyBars(rows,p){
- rows.forEach(function(r,i){
-  var rp=Math.max(0,Math.min(1,(p*1.3-i*0.07)/0.75));
+<p class="p431-body">The practical lesson is modest and strict. A vegetative diagnosis should not rest on impression alone, however experienced: the cost of the error is paid by a person who cannot protest it. A behavioral category informs counseling; it does not by itself establish one person's eventual recovery, comprehension, or eligibility for a treatment. The structured response is trained serial assessment: address the confounders first, then examine with the scale, and again on other days, letting repeated scored examinations, not one sheet, settle the call. Somewhere tonight a pati
