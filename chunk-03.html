@@ -1,913 +1,4 @@
-ent will follow a mirror twice, briefly, and then not again for hours. This corner of medicine is a machine for not missing those brief followings.</p>
-</section>
-
-<section class="p431-sec" id="p431-recap-sec">
-<p class="p431-ch-label">Recap</p>
-<h2 class="p431-h2">So what have we learned</h2>
-<p class="p431-body">Telling vegetative from minimally conscious is the highest stakes sorting problem on a brain injury unit, and honest experts get it wrong at a measurable rate. Of 44 patients a full treating team agreed were vegetative, 18, or 41 percent, met CRS-R criteria for minimally conscious in this study. We learned the mechanism of the error: the signal is intermittent, and unstructured observation, even by an expert team, catches it unreliably, while a standardized examination that elicits set responses, repeats items within the sitting, and scores only responses meeting written criteria catches more. And the corrected claim to carry onto the ward: when the room is unsure, the scale usually finds someone in there. The structured examination is not paperwork. It is how the patient gets found.</p>
-<div class="p431-sources p431-reveal p3-drawer p3-closed" id="p431-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p431-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Schnakers C, Vanhaudenhuyse A, Giacino J, Ventura M, Boly M, Majerus S, Moonen G, Laureys S. Diagnostic accuracy of the vegetative and minimally conscious state: clinical consensus versus standardized neurobehavioral assessment. BMC Neurology. 2009;9:35. PMID 19622138. One hundred three patients with disorders of consciousness were each classified by clinical consensus of the treating team and by the Coma Recovery Scale-Revised (CRS-R). Of 44 patients the consensus called vegetative, 18 (41 percent) were found to be in a minimally conscious state on the CRS-R. Of the patients whose consensus diagnosis was uncertain, 89 percent were in a minimally conscious state on the CRS-R. The research team was not masked to the consensus diagnosis, which was communicated before the CRS-R assessment, and the authors discuss possible false positive CRS-R classifications. Each patient received one CRS-R examination in this study.</li>
-<li>Giacino JT, Katz DI, Schiff ND, Whyte J, Ashman EJ, Ashwal S, et al. Comprehensive systematic review update summary: disorders of consciousness. Neurology. 2018;91(10):461 to 470. This review's summary of the Schnakers 2009 cohort reports the uncertain diagnosis group as 18 patients, of whom 89 percent (16 of 18) showed clear signs of consciousness on standardized examination. The group size is consistent with the cohort arithmetic of the primary paper: 103 patients in total, less 44 called vegetative and 41 called minimally conscious by consensus, leaves 18 uncertain.</li>
-<li>The Coma Recovery Scale-Revised (CRS-R) groups its standardized items into six subscales: auditory, visual, motor, oromotor, communication, and arousal. Stated qualitatively in this essay, as standard descriptive content about the instrument.</li>
-<li>Giacino JT, Bodien YG, Chatelle C. Coma Recovery Scale-Revised: Administration and Scoring Guidelines. Updated 2020. Visual pursuit scores when the eyes follow a mirror through 45 degrees without loss of fixation on 2 occasions in any direction. Localization to noxious stimulation scores when the nonstimulated limb locates and makes contact with the stimulated body part at the point of stimulation on at least 2 of 4 trials.</li>
-<li>Giacino JT, Katz DI, Schiff ND, et al. Practice guideline update recommendations summary: Disorders of consciousness. Neurology. 2018;91(10):450 to 460. PMCID PMC6139814. The guideline recommends identifying and treating confounding conditions, optimizing arousal, and performing serial standardized assessments; states that pain always should be assessed and treated; and cautions against definitive conclusions about pain and suffering in disorders of consciousness. A diagnostic category informs counseling about outcomes, which remain individual.</li>
-</ol>
-<p class="p431-note" style="margin-top:14px">Method note: every number in this essay was taken from a source verified in the research pass and is recorded, claim by claim, in the essay source map. The three patients in Scene 1 are invented teaching cases and are labeled as invented on the page. No real patient is depicted anywhere in this essay.</p>
-</div>
-<div class="p431-methods" id="p431-methods">
-<h3>Data and Methods</h3>
-<p>The study data behind this essay come from Schnakers et al. 2009: 103 patients with disorders of consciousness, each classified by the clinical consensus of the treating team and by CRS-R assessments performed by research staff. The ward grids in this essay are schematic unit charts built from the published counts: 44 patients called vegetative by consensus, of whom 18 met CRS-R criteria for minimally conscious state and 26 did not. The uncertain diagnosis finding is printed as 89 percent with its denominator: the primary abstract reports the 89 percent figure, and the group size of 18 is corroborated by the Neurology 2018 systematic review summary of this cohort and by the cohort arithmetic (103 total, less 44 vegetative and 41 minimally conscious by consensus), giving 16 of 18. The three Scene 1 patients, their animations, and their scale readings are invented teaching material, labeled as invented on the page. All patient and apparatus drawings are SVG schematics created for this essay. No photographs and no AI imagery are used. Each patient in the Schnakers study received one CRS-R examination; the serial examinations recommended in current practice guidance were not part of this study's comparison. The CRS-R raters were not masked to the consensus diagnosis.</p>
-</div>
-<div class="p431-footer">
-<span>The PM&amp;R Files · Essay 30 · The Patient Who Was In There</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
-
-</div>
-</div>
-<script>
-/* Essay 30 interactions: examine and commit, ward build, CRS-R reversal, director's cut stepper */
-(function(){
-var root=document.getElementById('the-patient-who-was-in-there');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function cap(s){return s.charAt(0).toUpperCase()+s.slice(1);}
-
-/* Scene 1: vignette players */
-function runSteps(steps){
- steps.forEach(function(st){
-  if(reduced){st.fn();}
-  else{setTimeout(st.fn,st.at);}
- });
-}
-var statusA=root.querySelector('#p431-status-a');
-var eyesA=root.querySelector('#p431-eyes-a');
-var lidsA=root.querySelector('#p431-lids-a');
-function eyesOpen(open){
- if(eyesA)eyesA.setAttribute('opacity',open?'1':'0');
- if(lidsA)lidsA.setAttribute('opacity',open?'0':'1');
-}
-var playA=root.querySelector('#p431-play-a');
-if(playA){playA.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){eyesOpen(true);statusA.textContent='Eyes open. The patient is awake in the simple sense: lids up, eyes open to the room.';}},
-  {at:900,fn:function(){eyesOpen(false);statusA.textContent='Eyes close again. The cycle turns on its own, waking and sleeping, waking and sleeping.';}},
-  {at:1800,fn:function(){eyesOpen(true);statusA.textContent='Eyes open once more. A sound is made at the bedside. Nothing turns toward it.';}},
-  {at:2700,fn:function(){eyesOpen(false);statusA.textContent='Eyes close. Through the whole examination the gaze never followed anything and nothing responded.';}},
-  {at:3400,fn:function(){eyesOpen(true);statusA.textContent='Examination over. Eyes that open and close on their own cycle, with no tracking and no response. Make your call.';}}
- ]);
-});}
-var statusB=root.querySelector('#p431-status-b');
-var armB=root.querySelector('#p431-arm-b');
-var playB=root.querySelector('#p431-play-b');
-if(playB){playB.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){armB.style.transform='';statusB.textContent='The stimulus is applied, a firm pinch to one hand, shown here as a marker. Watch the opposite hand.';}},
-  {at:700,fn:function(){armB.style.transform='translate(-13px,9px)';statusB.textContent='Trial one. The opposite hand moves, slowly, across to the stimulated hand and makes contact with the spot itself. Not a flinch away. A move toward and a touch, called localizing.';}},
-  {at:2200,fn:function(){armB.style.transform='';statusB.textContent='The hand settles. The item runs four trials in all, two on each side.';}},
-  {at:3200,fn:function(){armB.style.transform='translate(-13px,9px)';statusB.textContent='A later trial. The opposite hand reaches across and makes contact again. That is contact on two of the four trials.';}},
-  {at:4700,fn:function(){armB.style.transform='';statusB.textContent='Examination over. Contact on two of four trials, the pattern the item requires. A single reach would not have scored. Reflex, or purpose? Make your call.';}}
- ]);
-});}
-var statusC=root.querySelector('#p431-status-c');
-var mirrorC=root.querySelector('#p431-mirror-c');
-var eyesC=root.querySelector('#p431-eyes-c');
-var playC=root.querySelector('#p431-play-c');
-if(playC){playC.addEventListener('click',function(){
- runSteps([
-  {at:0,fn:function(){mirrorC.style.transform='';eyesC.style.transform='';statusC.textContent='First pass. The mirror moves slowly in front of the face.';}},
-  {at:500,fn:function(){mirrorC.style.transform='translateX(58px)';eyesC.style.transform='translateX(8px)';statusC.textContent='The eyes follow. Across the midline and out to 45 degrees, holding the whole way. That is one qualifying occasion. One alone does not score.';}},
-  {at:2600,fn:function(){mirrorC.style.transform='translateX(-58px)';statusC.textContent='Second pass, same mirror, back the other way. This time the eyes do not follow. The failure is written down too.';}},
-  {at:4400,fn:function(){mirrorC.style.transform='translateX(58px)';eyesC.style.transform='translateX(8px)';statusC.textContent='Third pass. The eyes follow through 45 degrees again. Two qualifying occasions, with a failure between them. That is what the item requires.';}},
-  {at:6400,fn:function(){mirrorC.style.transform='';eyesC.style.transform='';statusC.textContent='Examination over. Followed on two occasions, failed once in between. Which passes were the patient? Make your call.';}}
- ]);
-});}
-
-/* Scene 1: commit calls, locked once made */
-var calls={};
-var callsCount=root.querySelector('#p431-calls-count');
-root.querySelectorAll('.p431-commit').forEach(function(btn){
- btn.addEventListener('click',function(){
-  var bed=btn.getAttribute('data-bed');
-  var call=btn.getAttribute('data-call');
-  if(calls[bed])return;
-  calls[bed]=call;
-  var card=root.querySelector('#p431-card-'+bed);
-  if(card){
-   card.classList.add('locked');
-   card.querySelectorAll('.p431-commit').forEach(function(b){
-    b.disabled=true;
-    if(b===btn)b.classList.add('chosen');
-   });
-  }
-  var item=root.querySelector('#p431-call-'+bed);
-  if(item){item.textContent='Bed '+bed.toUpperCase()+' · '+cap(call);item.classList.add('filled');}
-  var n=Object.keys(calls).length;
-  if(callsCount)callsCount.textContent=n+' of 3 calls made'+(n===3?' · all locked':'');
- });
-});
-
-/* Scenes 2 and 3: the ward builds bed by bed on scroll, then the CRS-R re-sorts it on scroll. Manual buttons are a takeover route to the same states. */
-var ward=root.querySelector('#p431-ward');
-var counter=root.querySelector('#p431-counter');
-var buildBtn=root.querySelector('#p431-build');
-var runBtn=root.querySelector('#p431-run-scale');
-var readout=root.querySelector('#p431-readout');
-var FLIP=[2,5,7,10,12,15,18,20,23,25,28,30,33,35,38,40,42,44];
-var FINAL_READOUT='18 of 44 beds changed. That is 41 percent. Of the patients the whole team called vegetative, 18 met the scale criteria for minimally conscious, and 26 were unchanged.';
-var FINAL_COUNTER='44 beds · 18 minimally conscious on the scale · 26 unchanged';
-var wardManual=false, manualStage=0, flippedDone=false;
-var cells=[];
-function lerpN(a,b,t){return Math.round(a+(b-a)*t);}
-function makeAllBeds(){
- ward.innerHTML='';cells=[];
- for(var i=1;i<=44;i++){
-  var cell=document.createElement('div');
-  cell.className='p431-bed-cell';
-  cell.setAttribute('data-state','vegetative');
-  cell.style.opacity='0';
-  var lab=document.createElement('span');
-  lab.textContent='Bed '+i+' · Vegetative';
-  cell.appendChild(lab);
-  cell._mcs=false;
-  ward.appendChild(cell);
-  cells.push(cell);
- }
-}
-makeAllBeds();
-function clearFlipInline(cell){
- cell.style.backgroundColor='';cell.style.borderColor='';cell.style.boxShadow='';
- var s=cell.querySelector('span');if(s)s.style.color='';
-}
-function setBedFlip(cell,num,on){
- cell.classList.toggle('flipped',on);
- cell.setAttribute('data-state',on?'mcs':'vegetative');
- if(cell._mcs!==on){cell._mcs=on;cell.querySelector('span').textContent='Bed '+num+(on?' · Minimally conscious':' · Vegetative');}
-}
-function applyWard(build,scale){
- var visFloat=build*44, flipFloat=scale*18;
- var visCount=0, flipCount=0;
- var flipMap={};
- FLIP.forEach(function(num,k){flipMap[num]=clamp01(flipFloat-k);});
- cells.forEach(function(cell,i){
-  var num=i+1;
-  var cp=reduced?(visFloat>i?1:0):clamp01(visFloat-i);
-  if(cp>0.5)visCount++;
-  var fp=(flipMap[num]!==undefined)?flipMap[num]:0;
-  if(fp>=0.5)flipCount++;
-  var pulse=(fp>0&&fp<1)?1+0.07*Math.sin(fp*Math.PI):1;
-  cell.style.opacity=String(cp);
-  cell.style.transform='translateY('+((1-cp)*16).toFixed(1)+'px) scale('+((0.92+0.08*cp)*pulse).toFixed(3)+')';
-  setBedFlip(cell,num,fp>=0.5);
-  if(fp>0&&fp<1){
-   cell.style.backgroundColor='rgb('+lerpN(13,63,fp)+','+lerpN(64,224,fp)+','+lerpN(66,140,fp)+')';
-   cell.style.boxShadow='0 0 '+(18*fp).toFixed(1)+'px rgba(63,224,140,'+(0.45*fp).toFixed(2)+')';
-   var sp=cell.querySelector('span');
-   if(fp>=0.5)sp.style.color='#041E20';
-  } else {
-   clearFlipInline(cell);
-  }
- });
- var cText;
- if(wardManual&&manualStage===1&&scale===0)cText='3 beds · your three patients, before the ward grows';
- else if(scale>=1)cText=FINAL_COUNTER;
- else if(flipCount>0)cText='44 beds · '+flipCount+' minimally conscious on the scale so far';
- else if(build>=1)cText='44 beds · consensus: vegetative';
- else if(visCount>0)cText=visCount+' beds · consensus: vegetative';
- else cText='0 beds · the ward is not built yet';
- if(counter&&counter.textContent!==cText)counter.textContent=cText;
- var rText;
- if(scale>=1)rText=FINAL_READOUT;
- else if(flipCount>0)rText=flipCount+' of 44 beds changed so far. The scale is still running.';
- else if(build>=1)rText='The ward is built: 44 beds, all consensus vegetative. Keep scrolling and the CRS-R runs, bed by bed.';
- else rText='The scale has not run yet. Build the ward first, then run the CRS-R and watch what changes.';
- if(readout&&readout.textContent!==rText)readout.textContent=rText;
- if(runBtn&&!flippedDone){
-  if(scale>=1){runBtn.disabled=true;if(runBtn.textContent!=='The scale has run')runBtn.textContent='The scale has run';}
-  else{
-   runBtn.disabled=!(build>=1);
-   if(runBtn.textContent!=='Run the scale (CRS-R)')runBtn.textContent='Run the scale (CRS-R)';
-  }
- }
- return {vis:visCount,flip:flipCount};
-}
-if(buildBtn){buildBtn.addEventListener('click',function(){
- wardManual=true;
- if(manualStage===0){
-  manualStage=1;
-  applyWard(3/44,0);
-  buildBtn.textContent='Expand to the full ward (step 2 of 2)';
- } else if(manualStage===1){
-  manualStage=2;
-  applyWard(1,0);
-  buildBtn.textContent='Ward built · 44 beds';
-  buildBtn.disabled=true;
-  if(runBtn)runBtn.disabled=false;
- }
-});}
-if(runBtn){runBtn.addEventListener('click',function(){
- if(flippedDone)return;
- wardManual=true;manualStage=2;
- applyWard(1,0);
- if(buildBtn){buildBtn.textContent='Ward built · 44 beds';buildBtn.disabled=true;}
- flippedDone=true;
- runBtn.disabled=true;
- runBtn.textContent='The scale has run';
- var done=0;
- FLIP.forEach(function(num,k){
-  setTimeout(function(){
-   var cell=cells[num-1];
-   if(cell){clearFlipInline(cell);setBedFlip(cell,num,true);}
-   done++;
-   if(done===FLIP.length){
-    if(readout)readout.textContent=FINAL_READOUT;
-    if(counter)counter.textContent=FINAL_COUNTER;
-   }
-  },reduced?0:k*110);
- });
-});}
-
-/* Scene 5: static mini ward, 44 beds, 18 green */
-var mini=root.querySelector('#p431-miniward');
-if(mini){
- for(var i=1;i<=44;i++){
-  var m=document.createElement('div');
-  m.className='p431-mini-bed'+(FLIP.indexOf(i)>=0?' mcs':'');
-  mini.appendChild(m);
- }
-}
-
-/* Scene 4: director's cut. Scroll steps the frames continuously; the buttons and play are a manual takeover. */
-var FRAMES=[
- {mx:0,ex:0,text:'Frame 1 of 6. The mirror starts at the center, held in front of the patient’s face. This is the visual subscale item called visual pursuit: do the eyes follow a moving target?'},
- {mx:30,ex:4,text:'Frame 2 of 6. The mirror moves slowly to one side, toward 45 degrees. The eyes begin to turn with it. A brief reflexive glance does not count here. The eyes have to follow through the full 45 degrees without losing the target, and do it on two occasions, to score.'},
- {mx:58,ex:8,text:'Frame 3 of 6. The mirror crosses the midline and the eyes cross with it, still following, out to 45 degrees on the far side. That completes the first qualifying occasion. One occasion is not yet a score.'},
- {mx:82,ex:10,text:'Frame 4 of 6. The mirror comes back and the pass ends. The trial is written down as one qualifying occasion, but the item is not scored yet. The manual requires a second occasion, so the examination repeats the item.'},
- {mx:28,ex:10,text:'Frame 5 of 6. The item is repeated, the mirror moving again. This time the eyes do not follow. A visit that caught only this pass could easily miss the patient entirely. The scale writes the failure down beside the success and keeps testing.'},
- {mx:58,ex:8,text:'Frame 6 of 6. Repeated once more, the eyes follow through 45 degrees again. That is the second qualifying occasion the item requires, so visual pursuit scores. Fluctuation is real, but only responses meeting the written criteria count, which is exactly why the scale catches what one impression misses.'}
-];
-var dcMirror=root.querySelector('#p431-dc-mirror');
-var dcEyes=root.querySelector('#p431-dc-eyes');
-var dcInd=root.querySelector('#p431-frame-ind');
-var dcComm=root.querySelector('#p431-frame-commentary');
-var prevBtn=root.querySelector('#p431-frame-prev');
-var nextBtn=root.querySelector('#p431-frame-next');
-var dcPlayBtn=root.querySelector('#p431-frame-play');
-var frame=0,dcTimer=null,dcPlaying=false,dcManual=false;
-function renderFrame(){
- var f=FRAMES[frame];
- if(dcMirror)dcMirror.style.transform='translateX('+f.mx+'px)';
- if(dcEyes)dcEyes.style.transform='translateX('+f.ex+'px)';
- if(dcInd)dcInd.textContent='Frame '+(frame+1)+' of 6';
- if(dcComm)dcComm.textContent=f.text;
- if(prevBtn)prevBtn.disabled=(frame===0);
- if(nextBtn)nextBtn.disabled=(frame===FRAMES.length-1);
-}
-function dcStopPlay(){
- dcPlaying=false;
- if(dcTimer){clearInterval(dcTimer);dcTimer=null;}
- if(dcPlayBtn){dcPlayBtn.textContent='Play the replay';dcPlayBtn.setAttribute('aria-pressed','false');}
-}
-if(prevBtn){prevBtn.addEventListener('click',function(){dcManual=true;dcStopPlay();if(frame>0){frame--;renderFrame();}});}
-if(nextBtn){nextBtn.addEventListener('click',function(){dcManual=true;dcStopPlay();if(frame<FRAMES.length-1){frame++;renderFrame();}});}
-if(dcPlayBtn){dcPlayBtn.addEventListener('click',function(){
- dcManual=true;
- if(dcPlaying){dcStopPlay();return;}
- if(frame>=FRAMES.length-1)frame=0;
- if(reduced){frame=FRAMES.length-1;renderFrame();return;}
- dcPlaying=true;
- dcPlayBtn.textContent='Pause the replay';
- dcPlayBtn.setAttribute('aria-pressed','true');
- dcTimer=setInterval(function(){
-  if(frame>=FRAMES.length-1){dcStopPlay();return;}
-  frame++;renderFrame();
-  if(frame>=FRAMES.length-1)dcStopPlay();
- },1900);
-});}
-renderFrame();
-
-/* Sources drawer */
-var drawer=root.querySelector('#p431-sources');
-if(drawer){
- var dBtn2=drawer.querySelector('.p3-drawer-btn');
- if(dBtn2){dBtn2.addEventListener('click',function(){
-   var closed=drawer.classList.toggle('p3-closed');
-   dBtn2.setAttribute('aria-expanded',String(!closed));
- });}
-}
-/* Scroll choreography engine: scroll position drives the stages.
-   Passive scroll listener, requestAnimationFrame interpolation, values
-   smoothed toward their scroll targets so motion eases and reverses. */
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function lerpF(a,b,t){return a+(b-a)*t;}
-var wardScrolly=root.querySelector('#p431-ward-scrolly');
-var dcScrolly=root.querySelector('#p431-dc-scrolly');
-var claimSec=root.querySelector('#p431-claim-sec');
-var bignum=root.querySelector('.p431-bignum');
-var statTiles=root.querySelectorAll('.p431-stat');
-var sCur={ward:0,dir:0,claim:0};
-var sTgt={ward:0,dir:0,claim:0};
-var scrollRaf=false;
-function progressOf(el){
- if(!el)return 0;
- var r=el.getBoundingClientRect();
- var vh=window.innerHeight||800;
- var denom=Math.max(1,r.height-vh*0.30);
- return clamp01((vh*0.85-r.top)/denom);
-}
-function smoothTo(cur,target){return reduced?target:cur+(target-cur)*0.16;}
-function measureScroll(){
- sTgt.ward=progressOf(wardScrolly);
- sTgt.dir=progressOf(dcScrolly);
- sTgt.claim=progressOf(claimSec);
-}
-function applyScroll(){
- if(!wardManual){
-  var build=clamp01((sCur.ward-0.03)/0.32);
-  var scale=clamp01((sCur.ward-0.52)/0.40);
-  applyWard(build,scale);
- }
- if(!dcManual&&dcMirror&&dcEyes){
-  var pos=sCur.dir*(FRAMES.length-1);
-  var i=Math.min(FRAMES.length-2,Math.floor(pos));
-  var fr=pos-i;
-  dcMirror.style.transform='translateX('+lerpF(FRAMES[i].mx,FRAMES[i+1].mx,fr).toFixed(1)+'px)';
-  dcEyes.style.transform='translateX('+lerpF(FRAMES[i].ex,FRAMES[i+1].ex,fr).toFixed(1)+'px)';
-  var nearest=Math.round(pos);
-  if(nearest!==frame){
-   frame=nearest;
-   if(dcInd)dcInd.textContent='Frame '+(frame+1)+' of 6';
-   if(dcComm)dcComm.textContent=FRAMES[frame].text;
-   if(prevBtn)prevBtn.disabled=(frame===0);
-   if(nextBtn)nextBtn.disabled=(frame===FRAMES.length-1);
-  }
- }
- if(bignum){
-  bignum.style.opacity=String(0.3+0.7*sCur.claim);
-  bignum.style.transform='translateY('+((1-sCur.claim)*22).toFixed(1)+'px) scale('+(0.97+0.03*sCur.claim).toFixed(3)+')';
- }
- statTiles.forEach(function(st,idx){
-  var lp=clamp01(sCur.claim*2.2-idx*0.35);
-  st.style.opacity=String(0.35+0.65*lp);
-  st.style.transform='translateY('+((1-lp)*16).toFixed(1)+'px)';
- });
-}
-function scrollFrame(){
- scrollRaf=false;
- measureScroll();
- var maxDelta=0;
- ['ward','dir','claim'].forEach(function(k){
-  var d=Math.abs(sTgt[k]-sCur[k]);
-  if(d>maxDelta)maxDelta=d;
-  sCur[k]=smoothTo(sCur[k],sTgt[k]);
- });
- applyScroll();
- if(!reduced&&maxDelta>0.002){requestScrollFrame();}
-}
-function requestScrollFrame(){
- if(!scrollRaf){scrollRaf=true;requestAnimationFrame(scrollFrame);}
-}
-window.addEventListener('scroll',requestScrollFrame,{ passive: true });
-window.addEventListener('resize',requestScrollFrame,{ passive: true });
-/* Step activation: the step nearest the viewport centre is the lit one */
-if('IntersectionObserver' in window){
- var stepIO=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){en.target.classList.toggle('p431-step-active',en.isIntersecting);});
- },{rootMargin:'-42% 0px -42% 0px',threshold:0});
- root.querySelectorAll('.p431-step').forEach(function(st){stepIO.observe(st);});
-}
-requestScrollFrame();
-
-/* Reveals */
-var reveals=root.querySelectorAll('.p431-reveal');
-if('IntersectionObserver' in window&&!reduced){
- root.classList.add('p431-anim');
- var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
- },{threshold:0.08});
- reveals.forEach(function(el){io.observe(el)});
-} else {
- reveals.forEach(function(el){el.classList.add('in')});
-}
-})();
-</script>
-
-<div class="view" id="where-does-the-rehab-day-go">
-<div class="p432-wrap">
-
-<header class="p432-hero">
-<p class="p432-kicker">The PM&amp;R Files · Essay 31</p>
-<h1 class="p432-title">Where Does the Rehab Day Actually Go?</h1>
-<p class="p432-answer">Inpatient rehabilitation is famous for one promise: three hours of therapy a day. But a rehab day is much longer than three hours, and nobody hands you a map of the rest of it. One way to get that map is to watch. In behavioral mapping, observers record what each person is doing, where they are, and who is with them, at set moments across the day. When Bernhardt and colleagues did that work in 2004, they mapped acute stroke units in the first 14 days after stroke, a different setting from an inpatient rehabilitation facility, and the day they recorded looked very different from the day the promise describes.</p>
-<div class="p432-byline-row">
-<span class="p432-byline">By a PM&amp;R resident physician</span>
-</div>
-<p class="p432-body">Behavioral mapping is plain, patient work. An observer with a schedule and a set of categories watches a unit and writes down what is happening at set moments: who is in bed, who is sitting up, who is moving, who is alone. A routine schedule or chart does not capture activity, company, and location together the way direct observation at set moments does. In Bernhardt 2004, observers sampled each patient every 10 minutes across two days. Someone has to stand there and look, again and again, until the ordinary hours stop being invisible. The categories sound dull. The picture they build is not.</p>
-<p class="p432-cue">Scroll drives the day · Inhabit, follow, audit</p>
-</header>
-
-<section class="p432-sec" id="p432-wake-sec">
-<p class="p432-ch-label">Scene one and two · The ward wakes up, scroll is time</p>
-<h2 class="p432-h2">One ward, one whole day, run by your scroll</h2>
-<p class="p432-note">The floor plan and every figure on it are drawn schematics, created for this essay. The plan is a schematic of a rehab unit, not the plan of any real hospital. The patient itineraries are schematic too: they illustrate the mapped categories from the study, and they are not the records of individual real patients.</p>
-<div class="p432-scrolly" id="p432-day-scrolly" data-scrolly="day">
-<div class="p432-stagebox p432-stage-sticky" id="p432-stagebox">
-<div class="p432-stage-head"><span>The Ward · Overhead Plan</span><span>Schematic · Warm daylight</span></div>
-<div class="p432-clockbar">
-<span class="p432-clock" id="p432-clock" aria-label="Ward clock">8:00 AM</span>
-<span class="p432-clock-lab">Ward clock · Observed day 8 AM to 5 PM</span>
-</div>
-<div class="p432-dayrail" aria-hidden="true"><span class="p432-dayfill" id="p432-dayfill"></span><span class="p432-daydot" id="p432-daydot"></span></div>
-<div class="p432-planwrap" id="p432-planwrap">
-<div class="p432-sunwash" id="p432-sunwash" aria-hidden="true"></div>
-<div class="p432-zone p432-bay" style="left:2%;top:3%;width:46%;height:34%"><span class="p432-zone-lab">Ward Bay A</span></div>
-<div class="p432-zone p432-bay" style="left:52%;top:3%;width:46%;height:34%"><span class="p432-zone-lab">Ward Bay B</span></div>
-<div class="p432-zone p432-corridor" style="left:2%;top:40%;width:96%;height:10%"><span class="p432-zone-lab">Corridor</span></div>
-<div class="p432-zone p432-dining" id="p432-dining" data-state="idle" style="left:2%;top:53%;width:30%;height:44%"><span class="p432-zone-lab">Dining Room</span></div>
-<div class="p432-zone p432-dayroom" style="left:34%;top:53%;width:30%;height:44%"><span class="p432-zone-lab">Day Room · Chairs</span></div>
-<div class="p432-zone p432-gym" id="p432-gym" data-state="idle" style="left:66%;top:53%;width:32%;height:44%"><span class="p432-zone-lab">Gym · Therapy</span></div>
-<span class="p432-bedmark" style="left:10%;top:16%"></span>
-<span class="p432-bedmark" style="left:24%;top:16%"></span>
-<span class="p432-bedmark" style="left:38%;top:16%"></span>
-<span class="p432-bedmark" style="left:10%;top:29%"></span>
-<span class="p432-bedmark" style="left:24%;top:29%"></span>
-<span class="p432-bedmark" style="left:38%;top:29%"></span>
-<span class="p432-bedmark" style="left:60%;top:16%"></span>
-<span class="p432-bedmark" style="left:74%;top:16%"></span>
-<span class="p432-bedmark" style="left:88%;top:16%"></span>
-<span class="p432-bedmark" style="left:60%;top:29%"></span>
-<span class="p432-bedmark" style="left:74%;top:29%"></span>
-<span class="p432-bedmark" style="left:88%;top:29%"></span>
-<span class="p432-furn p432-table" style="left:9%;top:66%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:20%;top:66%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:9%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-table" style="left:20%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:40%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:50%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:60%;top:68%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:45%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-chairmark" style="left:55%;top:84%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:71%;top:64%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:82%;top:64%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:71%;top:82%" aria-hidden="true"></span>
-<span class="p432-furn p432-mat" style="left:82%;top:82%" aria-hidden="true"></span>
-<span class="p432-furn p432-bench" style="left:76%;top:74%" aria-hidden="true"></span>
-<div class="p432-wheelchair" id="p432-wheelchair" aria-hidden="true"><span class="p432-wc-wheel"></span><span class="p432-wc-seat"></span></div>
-<button type="button" class="p432-patient" data-patient="1" style="left:10%;top:16%" aria-label="Patient 1, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">1</span></button>
-<button type="button" class="p432-patient" data-patient="2" style="left:24%;top:16%" aria-label="Patient 2, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">2</span></button>
-<button type="button" class="p432-patient" data-patient="3" style="left:38%;top:16%" aria-label="Patient 3, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">3</span></button>
-<button type="button" class="p432-patient" data-patient="4" style="left:10%;top:29%" aria-label="Patient 4, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">4</span></button>
-<button type="button" class="p432-patient" data-patient="5" style="left:24%;top:29%" aria-label="Patient 5, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">5</span></button>
-<button type="button" class="p432-patient" data-patient="6" style="left:38%;top:29%" aria-label="Patient 6, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">6</span></button>
-<button type="button" class="p432-patient" data-patient="7" style="left:60%;top:16%" aria-label="Patient 7, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">7</span></button>
-<button type="button" class="p432-patient" data-patient="8" style="left:74%;top:16%" aria-label="Patient 8, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">8</span></button>
-<button type="button" class="p432-patient" data-patient="9" style="left:88%;top:16%" aria-label="Patient 9, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">9</span></button>
-<button type="button" class="p432-patient" data-patient="10" style="left:60%;top:29%" aria-label="Patient 10, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">10</span></button>
-<button type="button" class="p432-patient" data-patient="11" style="left:74%;top:29%" aria-label="Patient 11, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">11</span></button>
-<button type="button" class="p432-patient" data-patient="12" style="left:88%;top:29%" aria-label="Patient 12, resting in bed. Click to explore this patient mapped day."><span class="p432-fig" aria-hidden="true"></span><span class="p432-pnum" aria-hidden="true">12</span></button>
-</div>
-<p class="p432-narration" id="p432-narration" aria-live="polite">8:00 AM. 0 patients are in the gym. 12 are in bed. 0 are sitting out of bed.</p>
-<div class="p432-controls">
-<button type="button" class="p432-btn" id="p432-play" aria-pressed="false">Play the day</button>
-<label class="p432-scrub-lab" for="p432-scrub">Time of day</label>
-<input type="range" class="p432-scrub" id="p432-scrub" min="480" max="1020" step="10" value="480" aria-label="Scrub the time of day from 8 AM to 5 PM">
-<span class="p432-scrub-val" id="p432-scrub-val">8:00 AM</span>
-</div>
-<span class="p432-viz-note">Scroll to run the ward clock from 8 AM to 5 PM: patients travel between bed, chairs, and gym, the gym lights amber during therapy blocks, and daylight warms across the plan. Play and the scrubber are manual takeovers of the same clock. Figures breathe quietly while the plan is on screen, and a wheelchair crosses the corridor on its own loop. Click any patient figure to open that patient mapped day in the next scene.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="morning-start"><p class="p432-step-kicker">Step 1 of 6 · 8:00 AM · The ward wakes up</p><p class="p432-body">This is a rehab unit at 8:00 AM, drawn as a floor plan and seen from above. Ward bays with beds, a gym, a dining room, and a corridor that joins them. Small figures rest in the beds, and the ward clock reads 8:00 AM, the start of the window Bernhardt and colleagues observed, from 8 AM to 5 PM. Nothing dramatic is happening yet.</p></div>
-<div class="p432-step" data-step="morning-therapy"><p class="p432-step-kicker">Step 2 of 6 · Morning · Therapy lights the gym</p><p class="p432-body">Keep scrolling and the morning therapy block arrives. The gym lights amber, and a few figures make the trip from bed to chair to gym. Watch the readout keep count in plain words. Before any panel puts a number on it, make your own estimate: at a typical moment, how many of these 12 figures would you guess are in the gym? Mid morning is the busiest this ward gets.</p></div>
-<div class="p432-step" data-step="midday"><p class="p432-step-kicker">Step 3 of 6 · Midday · The ward settles</p><p class="p432-body">By midday the block ends, the gym light goes out, and the ward settles. The dining room tints at lunch, a chair fills here and there, and then the plan goes quiet again. Most figures, most of the time, do not move at all. That stillness is the drawing illustrating, at ward scale, the pattern the study panels below actually measure.</p></div>
-<div class="p432-step" data-step="afternoon-therapy"><p class="p432-step-kicker">Step 4 of 6 · Afternoon · The second block</p><p class="p432-body">The afternoon brings a second therapy block, and the same shape repeats: a short bright interval of activity set inside a long plain stretch of rest and waiting. The numbers move a little. The pattern does not.</p></div>
-<div class="p432-step" data-step="late"><p class="p432-step-kicker">Step 5 of 6 · Late afternoon · Quiet again</p><p class="p432-body">Late afternoon looks much like early morning. The gym is dark, the chairs empty out, and the beds fill again. The shape matches the one the study level shares below describe: the day has a rhythm, and the rhythm is mostly rest.</p></div>
-<div class="p432-step" data-step="day-end"><p class="p432-step-kicker">Step 6 of 6 · 5:00 PM · The window closes</p><p class="p432-body">At 5:00 PM the observed day ends, where the mapping window ended. You have now lived the whole window at ward scale, and felt its quiet for yourself. The next scenes put numbers on it, and the numbers are easier to believe after the quiet.</p></div>
-</div>
-</div>
-</section>
-
-<section class="p432-sec" id="p432-person-sec">
-<p class="p432-ch-label">Scene three · Click a person</p>
-<h2 class="p432-h2">Click on a person to explore</h2>
-<p class="p432-body">Pick any figure on the plan above and click. What opens below holds two separate objects. The first is an illustrative patient schedule: a schematic timeline of the hours between 8 AM and 5 PM, showing where this figure spent the day, block by block, bed and chair and gym. The second is study level observation shares: the mapped categories from Bernhardt 2004 drawn as proportional shares of the observed day, identical whichever figure you click. The timeline shows how a day can be spent. The shares show how days were actually spent, across the whole study, when observers did the counting.</p>
-<div class="p432-person-panel" id="p432-person-panel" hidden>
-<div class="p432-stage-head"><span id="p432-person-title">Patient 1 · Illustrative schedule</span><span>Schedule schematic · Shares study level</span></div>
-<p class="p432-panel-lab">Illustrative patient schedule · Schematic timeline · 8 AM to 5 PM</p>
-<div class="p432-timeline" id="p432-timeline" role="img" aria-label="Schematic timeline of this patient day from 8 AM to 5 PM, divided into resting in bed, sitting out of bed, and time in the gym."></div>
-<div class="p432-timeline-scale"><span>8 AM</span><span>11 AM</span><span>2 PM</span><span>5 PM</span></div>
-<p class="p432-panel-lab">Study level observation shares · Bernhardt 2004 · Share of the observed day</p>
-<div class="p432-ribbon" id="p432-ribbon">
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Resting in bed</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-bed p432-seg-open" style="width:68%"></span><span class="p432-halfmark" aria-hidden="true"></span></span><span class="p432-ribbon-val">over half</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Sitting out of bed</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-sit" style="width:28%"></span></span><span class="p432-ribbon-val">28 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">In moderate or high activity</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-act" style="width:12.8%"></span></span><span class="p432-ribbon-val">12.8 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">With a therapist</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-ther" style="width:5.2%"></span></span><span class="p432-ribbon-val">5.2 percent</span></div>
-<div class="p432-ribbon-row"><span class="p432-ribbon-lab">Alone</span><span class="p432-ribbon-track"><span class="p432-ribbon-seg p432-seg-alone" style="width:60.4%"></span></span><span class="p432-ribbon-val">60.4 percent</span></div>
-</div>
-<p class="p432-ribbon-caption" id="p432-ribbon-caption">This is a composite day built from the study mapped shares, not a real patient record. The shares overlap by design: a patient can be in bed and alone at the same time, so the rows describe the same day from different angles and do not add up to one whole. The bed row is drawn just past the halfway mark to show over half, the only figure the study reports for that category.</p>
-<p class="p432-note" style="margin:10px 22px 0">Alone, in both studies, means no other person was present at the sampled moment. It is a record of company, not a measure of loneliness, and not a record of care given between visits.</p>
-</div>
-<p class="p432-body">Read the composite day slowly. The largest fact in it is not therapy. It is the bed. The second largest fact is aloneness. A patient can be resting, sitting, even active, and still be alone for most of it, because alone is not an activity. It is a record of who was present at the sampled moment, and it is the background condition the other categories happen inside. The mapping categories were never slices of a pie. They are lenses on the same hours, and the hours look different through each lens.</p>
-</section>
-
-<section class="p432-sec" id="p432-audit-sec">
-<p class="p432-ch-label">Scene four · The hunt for the three hours</p>
-<h2 class="p432-h2">Where the promised three hours sit</h2>
-<p class="p432-body">Now set the mapped day beside the promise, as a comparison, not a compliance check. Bernhardt 2004 mapped acute stroke units in the first 14 days after stroke, and neither study in this essay tested the United States rehabilitation rule. The familiar promise is three hours of therapy, and the top band below draws those three hours at full size against the nine hour observed day, from 8 AM to 5 PM. It is not small because someone drew it small. It is one third of the window, and the other two thirds are the subject of this essay. Below the promise, the mapped categories from Bernhardt 2004 fill the same scale, each with its denominator attached, so every figure carries the day it is a share of. Put the bright band next to the therapist row and the shape of the problem appears.</p>
-<div class="p432-scrolly p432-scrolly-bars" id="p432-audit-scrolly" data-scrolly="audit">
-<div class="p432-stagebox p432-stage-sticky" id="p432-audit-stage">
-<div class="p432-stage-head"><span>The Audit · One Scale, Nine Hours</span><span>Bernhardt 2004</span></div>
-<div class="p432-audit">
-<div class="p432-audit-row">
-<span class="p432-audit-lab">The familiar promise · Therapy</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-promise" data-w="33.3" style="width:33.3%"></span></span>
-<span class="p432-audit-val">3 hours in a 9 hour observed day</span>
-<span class="p432-audit-den">United States CMS expectation for an inpatient rehabilitation facility: generally at least 3 hours of therapy a day on at least 5 days a week, or, in well documented cases, at least 15 hours within a 7 day period. Neither paper in this essay tested that requirement.</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Resting in bed</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-bed p432-seg-open" style="width:68%"></span><span class="p432-halfmark" aria-hidden="true"></span></span>
-<span class="p432-audit-val">over half of the day</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units · The bar fades past the halfway mark because the study reports no exact figure for this row</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Sitting out of bed</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-sit" data-w="28" style="width:28%"></span></span>
-<span class="p432-audit-val" data-count="28" data-decimals="0" data-suffix=" percent">28 percent</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">In moderate or high activity</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-act" data-w="12.8" style="width:12.8%"></span></span>
-<span class="p432-audit-val" data-count="12.8" data-decimals="1" data-suffix=" percent">12.8 percent</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">Alone</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-alone" data-w="60.4" style="width:60.4%"></span></span>
-<span class="p432-audit-val" data-count="60.4" data-decimals="1" data-suffix=" percent of the time">60.4 percent of the time</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-<div class="p432-audit-row">
-<span class="p432-audit-lab">In contact with a therapist</span>
-<span class="p432-audit-track"><span class="p432-audit-seg p432-seg-ther" data-w="5.2" style="width:5.2%"></span></span>
-<span class="p432-audit-val" data-count="5.2" data-decimals="1" data-suffix=" percent of the day">5.2 percent of the day</span>
-<span class="p432-audit-den">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units</span>
-</div>
-</div>
-<span class="p432-viz-note">All shares are from Bernhardt et al. 2004, as detailed in the Sources drawer below. Categories overlap: the same hour can count as resting in bed and as alone. The bed bar fades past the halfway mark to encode over half, the only figure the study reports for that category. Therapist contact means a therapist present at a sampled moment. It is not a tally of billed therapy minutes.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="audit-promise"><p class="p432-step-kicker">Audit · Step 1 of 3</p><p class="p432-step-copy">Scroll and the promise band lands first, at full size: three hours against the nine hour window.</p></div>
-<div class="p432-step" data-step="audit-fill"><p class="p432-step-kicker">Audit · Step 2 of 3</p><p class="p432-step-copy">Then the mapped categories grow into the same scale, counting up as they land. The therapist row is the one to watch.</p></div>
-<div class="p432-step" data-step="audit-den"><p class="p432-step-kicker">Audit · Step 3 of 3</p><p class="p432-step-copy">Every figure carries its denominator. Notice, too, what each row measures: bed is a location, activity is a level of movement, alone is company, and therapist is presence. Different lenses on the same hours, which is why the rows overlap.</p></div>
-</div>
-</div>
-<p class="p432-body">The number that should stop you is the smallest one. Patients were in contact with a therapist at 5.2 percent of sampled moments in the observed day. Set that beside the promise and beside the bed, and the mapped day looks like a rest day with therapy inside it. None of this says the therapy failed, or that rest is waste. Recovery needs rest, and a body healing a stroke is doing work no observer can see. But the comparison changes the question a resident should ask on rounds. Not only, what happened in therapy today? Also, what happened in the other hours, and who was there?</p>
-</section>
-
-<section class="p432-sec" id="p432-compare-sec">
-<p class="p432-ch-label">Scene five · The two studies agree</p>
-<h2 class="p432-h2">Same shape, different unit, years apart</h2>
-<p class="p432-body">One study could be one place having a quiet month. So check the shape somewhere the setting is different on purpose: a dedicated brain injury rehabilitation unit, mapped years later by Adey-Wakeling and colleagues. The broad shape holds, with one sharp difference. Patients there were alone for about half the therapeutic day and with an allied health therapist for 29 percent of it, far above the Bernhardt therapist share. They were physically inactive for most of their awake time and in goal related activity, the work aimed at their own recovery goals, for only a quarter of it. Two kinds of unit, two patient groups, the same long quiet stretches with bright intervals inside them. These two studies identify substantial inactive or solitary time in their settings. Neither turns two samples into a description of every inpatient day.</p>
-<div class="p432-scrolly p432-scrolly-bars" id="p432-compare-scrolly" data-scrolly="compare">
-<div class="p432-stagebox p432-stage-sticky" id="p432-compare-stage">
-<div class="p432-stage-head"><span>Shape of the Day · Two Studies</span><span>Side by side</span></div>
-<div class="p432-compare">
-<div class="p432-compare-col">
-<p class="p432-compare-title">Bernhardt 2004 · Acute stroke units</p>
-<p class="p432-mini-head">Observed day measures · 8 AM to 5 PM</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Alone</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-alone" data-w="60.4" style="width:60.4%"></span></span><span class="p432-mini-val" data-count="60.4" data-decimals="1" data-suffix=" percent">60.4 percent</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">Moderate or high activity</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-act" data-w="12.8" style="width:12.8%"></span></span><span class="p432-mini-val" data-count="12.8" data-decimals="1" data-suffix=" percent">12.8 percent</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">With a therapist</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-ther" data-w="5.2" style="width:5.2%"></span></span><span class="p432-mini-val" data-count="5.2" data-decimals="1" data-suffix=" percent">5.2 percent</span></div>
-<p class="p432-compare-note">Share of the observed day · 8 AM to 5 PM · sampled every 10 minutes over 2 days · 58 patients completed (64 recruited) · five acute stroke units. This study is the spine of this essay.</p>
-</div>
-<div class="p432-compare-col">
-<p class="p432-compare-title">Adey-Wakeling 2021 · Brain injury rehab unit</p>
-<p class="p432-mini-head">Therapeutic day measures · 8:30 AM to 4:30 PM</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Alone</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-alone" data-w="49" style="width:49%"></span></span><span class="p432-mini-val" data-count="49" data-decimals="0" data-suffix=" percent of the therapeutic day">49 percent of the therapeutic day</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">With an allied health therapist</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-ther" data-w="29" style="width:29%"></span></span><span class="p432-mini-val" data-count="29" data-decimals="0" data-suffix=" percent of the therapeutic day">29 percent of the therapeutic day</span></div>
-<p class="p432-mini-head">Awake time measures · A different denominator, not paired with the panel opposite</p>
-<div class="p432-mini-row"><span class="p432-mini-lab">Physically inactive</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-bed" data-w="76" style="width:76%"></span></span><span class="p432-mini-val" data-count="76" data-decimals="0" data-suffix=" percent of awake time">76 percent of awake time</span></div>
-<div class="p432-mini-row"><span class="p432-mini-lab">Goal-related activity</span><span class="p432-mini-track"><span class="p432-mini-seg p432-seg-goal" data-w="25" style="width:25%"></span></span><span class="p432-mini-val" data-count="25" data-decimals="0" data-suffix=" percent of awake time">25 percent of awake time</span></div>
-<p class="p432-compare-note">Nine patients observed · dedicated brain injury rehabilitation unit · 42 beds · mapped every 15 minutes.</p>
-</div>
-</div>
-<div class="p432-flagbox">
-<p class="p432-flag-title">Sized honestly</p>
-<p>The brain injury mapping observed nine patients on a 42-bed unit, mapped every 15 minutes. Patients in post traumatic amnesia or a minimally conscious state were excluded, so the patients least able to take part are not in this sample. That is a small sample, and this essay treats it that way: Bernhardt is the spine, Adey-Wakeling is the corroboration. The point of the second study is not precision. It is that a dedicated rehabilitation unit, mapped carefully, produced the same shape of day as the acute stroke units did.</p>
-</div>
-<span class="p432-viz-note">Goal-related activity is drawn in the quiet green reserved for it in this essay. Therapy contact in the Bernhardt panel is drawn in the warm amber reserved for therapy activity.</span>
-</div>
-<div class="p432-steps-side">
-<div class="p432-step" data-step="compare-bernhardt"><p class="p432-step-kicker">Compare · Step 1 of 3</p><p class="p432-step-copy">Scroll and the Bernhardt shape lands first: alone, active, with a therapist.</p></div>
-<div class="p432-step" data-step="compare-adey"><p class="p432-step-kicker">Compare · Step 2 of 3</p><p class="p432-step-copy">Then the brain injury unit answers, with its own windows: a therapeutic day for company and therapist presence, awake time for activity.</p></div>
-<div class="p432-step" data-step="compare-agree"><p class="p432-step-kicker">Compare · Step 3 of 3</p><p class="p432-step-copy">Same shape, different unit, years apart. The flag inside the stage sizes the second study honestly.</p></div>
-</div>
-</div>
-<p class="p432-body">So the closing question is the residency question. Rehabilitation talks about dose the way medicine talks about dose: more practice, more repetitions, more time on task should build more recovery. Sessions are where the dose is prescribed and counted. But sessions are a small share of the day. If recovery is dose, what is the dose between sessions? Who designs those hours, the sitting and the waiting and the being alone, and what would it take to make more of them count?</p>
-<p class="p432-body">One bounded response fits what a mapping study can actually support. The team agrees on one safe between session task tied to the patient own goal, records the help needed and the rest plan around it, and later checks whether the patient did it. Mobility readiness and medical restrictions set the limits, because a descriptive study does not prove that filling every quiet interval improves recovery.</p>
-</section>
-
-<section class="p432-sec" id="p432-recap-sec">
-<p class="p432-ch-label">Recap</p>
-<h2 class="p432-h2">So what have we learned</h2>
-<p class="p432-body">We learned that the mapped day, when observers sample it every few minutes, is mostly not therapy. In Bernhardt 2004, across the 58 patients who completed mapping on five acute stroke units between 8 AM and 5 PM (64 were recruited), patients spent over half the day resting in bed, 28 percent sitting out of bed, and only 12.8 percent in moderate or high activity. They were alone 60.4 percent of the time and with a therapist at 5.2 percent of sampled moments. A dedicated brain injury unit mapped years later showed the same broad shape in its own sample: alone about half the therapeutic day, inactive for most of awake time, and in goal related activity only a quarter of it. These two studies identify substantial inactive and solitary time in their settings. They do not show how much of that quiet was planned, needed, or avoidable.</p>
-<div class="p432-sources p432-reveal p3-drawer p3-closed" id="p432-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p432-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Bernhardt J, Dewey H, Thrift A, Donnan G. Inactive and alone: physical activity within the first 14 days of acute stroke unit care. Stroke. 2004;35:1005 to 1009. PMID 14988574. DOI 10.1161/01.STR.0000120727.40792.40. Behavioral mapping on five acute stroke units: 64 patients were recruited and 58 completed two days of observation, sampled every 10 minutes from 8 AM to 5 PM. Of sampled moments, patients spent over half the day resting in bed, 28 percent sitting out of bed, 12.8 percent in moderate or high activity, and 60.4 percent alone, with a therapist present at 5.2 percent. The abstract reports the activity and alone shares rounded, as 13 percent and over 60 percent. The decimals here are the full text values; the alone and therapist decimals are also reported in the team follow up report of the same study (Bernhardt et al., Journal of Rehabilitation Medicine, 2007;39:43 to 48).</li>
-<li>Adey-Wakeling Z, Jolliffe L, O’Shannessy E, Hunter P, Morarty J, Cameron ID, Liu E, Lannin NA. Activity, Participation, and Goal Awareness After Acquired Brain Injury: A Prospective Observational Study of Inpatient Rehabilitation. Annals of Rehabilitation Medicine. 2021;45(6):413 to 421. DOI 10.5535/arm.21034. PMCID PMC8743846. Behavioral mapping every 15 minutes on a dedicated brain injury rehabilitation unit with 42 beds; nine patients were observed, and patients in post traumatic amnesia or a minimally conscious state were excluded. During the therapeutic day, 8:30 AM to 4:30 PM, patients were alone 49 percent of the time and with allied health therapists 29 percent of the time. Of awake time, patients were physically inactive 76 percent of the time and in goal related activity 25 percent of the time.</li>
-</ol>
-<p class="p432-note" style="margin-top:14px">Method note: every number in this essay was taken from a source verified in the research pass and is recorded, claim by claim, in the essay source map. The three hours of therapy framing is the familiar inpatient rehabilitation expectation, stated on the page as a promise, not as a figure measured by either paper. The floor plan, the patient itineraries, and the composite mapped day are schematics labeled as such on the page. No real patient is depicted anywhere in this essay.</p>
-</div>
-<div class="p432-methods" id="p432-methods">
-<h3>Data and Methods</h3>
-<p>The spine of this essay is Bernhardt et al. 2004: behavioral mapping of 58 patients who completed the study (64 recruited) across five acute stroke units, observed from 8 AM to 5 PM on two days and sampled every 10 minutes, with activity, location, and company recorded in mapped categories. All Bernhardt shares in this essay are shares of that observed day, and each is labeled with that denominator on the page. Therapist shares in both studies mean a therapist present at a sampled moment, not billed therapy minutes. The three hour band is the United States CMS expectation for inpatient rehabilitation facilities, generally at least 3 hours of therapy a day on at least 5 days a week, or at least 15 hours within a 7 day period in well documented cases; neither study tested that rule, and Bernhardt mapped acute care, not a rehabilitation facility. The corroboration is Adey-Wakeling et al. 2021: behavioral mapping every 15 minutes on a dedicated brain injury rehabilitation unit with 42 beds, with nine patients observed and patients in post traumatic amnesia or a minimally conscious state excluded; its inactivity and goal related figures are shares of awake time, and its alone and therapist figures are shares of its therapeutic day, 8:30 AM to 4:30 PM, as labeled. The ward clock runs the Bernhardt window, 8 AM to 5 PM. Patient itineraries on the floor plan are schematic illustrations of the mapped categories, built for this essay; the clicked mapped day is a composite built from the study mapped shares, not a real patient record. The resting in bed share is reported by the study only as over half, and it is drawn and printed that way here, with no precise figure invented. All drawings are SVG or CSS schematics created for this essay. No photographs and no AI imagery are used.</p>
-</div>
-<div class="p432-footer">
-<span>The PM&amp;R Files · Essay 31 · Where Does the Rehab Day Actually Go?</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
-
-</div>
-</div>
-<script>
-/* Essay 31 interactions: scroll driven ward clock with Play and scrubber takeovers, interpolated patient travel, daylight shift, audit and comparison bars counting in on scroll, clicked composite day, sources drawer */
-(function(){
-var root=document.getElementById('where-does-the-rehab-day-go');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var START=480,END=1020;
-var clockEl=root.querySelector('#p432-clock');
-var narrationEl=root.querySelector('#p432-narration');
-var scrub=root.querySelector('#p432-scrub');
-var scrubVal=root.querySelector('#p432-scrub-val');
-var playBtn=root.querySelector('#p432-play');
-var gym=root.querySelector('#p432-gym');
-var dining=root.querySelector('#p432-dining');
-var planwrap=root.querySelector('#p432-planwrap');
-var stagebox=root.querySelector('#p432-stagebox');
-var sunwash=root.querySelector('#p432-sunwash');
-var dayfill=root.querySelector('#p432-dayfill');
-var daydot=root.querySelector('#p432-daydot');
-var dayScrolly=root.querySelector('#p432-day-scrolly');
-var auditScrolly=root.querySelector('#p432-audit-scrolly');
-var compareScrolly=root.querySelector('#p432-compare-scrolly');
-
-/* Schematic itineraries. Each entry is start, end, place. Places are bed, chair, gym. They illustrate the mapped categories, not real patient records. */
-var ITIN={
-1:[[540,600,'gym'],[600,720,'chair'],[810,870,'gym'],[870,960,'chair']],
-2:[[540,600,'chair'],[600,660,'gym'],[780,840,'chair'],[840,900,'gym']],
-3:[[600,660,'gym'],[720,780,'chair'],[840,900,'gym']],
-4:[[540,600,'chair'],[840,900,'gym']],
-5:[[660,750,'chair'],[840,930,'chair']],
-6:[[570,630,'gym'],[630,720,'chair'],[780,840,'gym']],
-7:[[600,690,'chair'],[840,900,'gym']],
-8:[[720,810,'chair']],
-9:[[630,660,'gym'],[690,780,'chair'],[870,900,'gym']],
-10:[[555,645,'chair'],[780,840,'gym'],[840,900,'chair']],
-11:[[600,660,'chair'],[810,870,'gym']],
-12:[[600,660,'gym'],[660,720,'chair'],[840,900,'chair']]
-};
-var BEDS={1:[10,16],2:[24,16],3:[38,16],4:[10,29],5:[24,29],6:[38,29],7:[60,16],8:[74,16],9:[88,16],10:[60,29],11:[74,29],12:[88,29]};
-var CHAIRS=[[40,68],[50,68],[60,68],[40,84],[50,84],[60,84],[45,76],[55,76]];
-var GYMS=[[73,68],[83,68],[93,68],[73,84],[83,84],[93,84]];
-var patients=Array.prototype.slice.call(root.querySelectorAll('.p432-patient'));
-function locAt(n,t){
- var list=ITIN[n]||[];
- for(var i=0;i<list.length;i++){if(t>=list[i][0]&&t<list[i][1])return list[i][2];}
- return 'bed';
-}
-/* Fixed slot per itinerary block: count same place blocks from lower numbered patients that overlap this block, so simultaneous figures never share a spot. */
-var SLOT={};
-Object.keys(ITIN).forEach(function(k){
- var n=parseInt(k,10);SLOT[n]=[];
- ITIN[n].forEach(function(block,bi){
-  var place=block[2],pool=place==='gym'?GYMS:CHAIRS,idx=0;
-  Object.keys(ITIN).forEach(function(k2){
-   var m=parseInt(k2,10);if(m>=n)return;
-   ITIN[m].forEach(function(b2){if(b2[2]===place&&b2[0]<block[1]&&block[0]<b2[1])idx++;});
-  });
-  SLOT[n][bi]=pool[idx%pool.length];
- });
-});
-/* Stays per patient: bed, block, bed, block, bed. Travel happens in a window centred on each stay boundary. */
-var STAYS={};
-Object.keys(ITIN).forEach(function(k){
- var n=parseInt(k,10),stays=[],cur=START;
- ITIN[n].forEach(function(block,bi){
-  if(block[0]>cur)stays.push([cur,block[0],BEDS[n]]);
-  stays.push([block[0],block[1],SLOT[n][bi]]);
-  cur=block[1];
- });
- if(cur<END)stays.push([cur,END,BEDS[n]]);
- if(!stays.length)stays=[[START,END,BEDS[n]]];
- STAYS[n]=stays;
-});
-function smoothstep(v){return v*v*(3-2*v);}
-function posAt(n,t){
- var stays=STAYS[n];
- for(var i=0;i<stays.length-1;i++){
-  var b=stays[i][1],w=20;
-  if(t>=b-w&&t<b){
-   var f=smoothstep((t-(b-w))/w);
-   return [stays[i][2][0]+(stays[i+1][2][0]-stays[i][2][0])*f, stays[i][2][1]+(stays[i+1][2][1]-stays[i][2][1])*f];
-  }
- }
- for(var j=0;j<stays.length;j++){if(t>=stays[j][0]&&t<stays[j][1])return stays[j][2];}
- return stays[stays.length-1][2];
-}
-function fmt(t){
- var h=Math.floor(t/60),m=t%60,ap=h>=12?'PM':'AM',hh=h%12;if(hh===0)hh=12;
- return hh+':'+(m<10?'0':'')+m+' '+ap;
-}
-function wordLoc(loc){return loc==='gym'?'in the gym':(loc==='chair'?'sitting out of bed':'resting in bed');}
-/* Daylight stops: cool morning, bright midday, warm afternoon. Values are red, green, blue, alpha of the wash over the plan. */
-var DAYLIGHT=[[480,168,192,228,0.17],[720,255,244,200,0.04],[900,247,205,130,0.13],[1020,217,142,27,0.22]];
-function daylightAt(t){
- for(var i=0;i<DAYLIGHT.length-1;i++){
-  var a=DAYLIGHT[i],b=DAYLIGHT[i+1];
-  if(t>=a[0]&&t<=b[0]){
-   var f=(t-a[0])/(b[0]-a[0]);
-   var r=Math.round(a[1]+(b[1]-a[1])*f),g=Math.round(a[2]+(b[2]-a[2])*f),bl=Math.round(a[3]+(b[3]-a[3])*f),al=a[4]+(b[4]-a[4])*f;
-   return 'rgba('+r+','+g+','+bl+','+al.toFixed(3)+')';
-  }
- }
- return 'rgba(217,142,27,0.22)';
-}
-var displayTime=START,lastQ=-1,dayManual=false,playing=false,timer=null;
-function renderDay(){
- var t=displayTime;
- var q=Math.max(START,Math.min(END,Math.round(t/10)*10));
- /* Positions, daylight, and the day rail move every frame with the float time. */
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var pos=posAt(n,t);
-  btn.style.left=pos[0].toFixed(2)+'%';
-  btn.style.top=pos[1].toFixed(2)+'%';
- });
- if(sunwash)sunwash.style.background=daylightAt(t);
- var dp=(t-START)/(END-START);
- if(dayfill)dayfill.style.width=(dp*100).toFixed(2)+'%';
- if(daydot)daydot.style.left=(dp*100).toFixed(2)+'%';
- if(q===lastQ)return;
- lastQ=q;
- var label=fmt(q);
- if(clockEl)clockEl.textContent=label;
- if(scrubVal)scrubVal.textContent=label;
- if(scrub&&document.activeElement!==scrub)scrub.value=String(q);
- var gymCount=0,bedCount=0,chairCount=0;
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var loc=locAt(n,q);
-  if(loc==='gym')gymCount++;else if(loc==='chair')chairCount++;else bedCount++;
-  btn.setAttribute('data-loc',loc);
-  btn.classList.toggle('in-gym',loc==='gym');
-  btn.classList.toggle('in-chair',loc==='chair');
-  btn.setAttribute('aria-label','Patient '+n+', '+wordLoc(loc)+'. Click to explore this patient mapped day.');
- });
- var gymActive=(q>=540&&q<660)||(q>=780&&q<900);
- if(gym){
-  gym.classList.toggle('lit',gymActive);
-  gym.setAttribute('data-state',gymActive?'active':'idle');
- }
- if(dining){
-  var lunch=(q>=720&&q<780);
-  dining.classList.toggle('lit',lunch);
-  dining.setAttribute('data-state',lunch?'active':'idle');
- }
- if(narrationEl){
-  narrationEl.textContent=label+'. '+gymCount+' patients are in the gym. '+bedCount+' are in bed. '+chairCount+' are sitting out of bed.';
- }
-}
-function setManualTime(t){
- dayManual=true;
- displayTime=Math.max(START,Math.min(END,t));
- lastQ=-1;
- if(scrub)scrub.value=String(Math.round(displayTime/10)*10);
- renderDay();
-}
-function stopPlay(){
- playing=false;
- if(timer){clearInterval(timer);timer=null;}
- if(playBtn){playBtn.textContent='Play the day';playBtn.setAttribute('aria-pressed','false');}
-}
-if(playBtn){playBtn.addEventListener('click',function(){
- if(playing){stopPlay();return;}
- if(displayTime>=END-1)displayTime=START;
- dayManual=true;
- playing=true;
- playBtn.textContent='Pause the day';
- playBtn.setAttribute('aria-pressed','true');
- if(reduced){setManualTime(Math.min(END,displayTime+60));stopPlay();return;}
- timer=setInterval(function(){
-  if(displayTime>=END){stopPlay();return;}
-  displayTime=Math.min(END,displayTime+5);
-  renderDay();
-  if(displayTime>=END)stopPlay();
- },90);
-});}
-if(scrub){scrub.addEventListener('input',function(){stopPlay();setManualTime(parseInt(scrub.value,10));});}
-/* Pause idle motion off screen. */
-if(planwrap&&'IntersectionObserver' in window){
- var pio=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){planwrap.classList.toggle('offscreen',!en.isIntersecting);});
- },{threshold:0.05});
- pio.observe(planwrap);
-}
-/* Scene 3: click a person. Kept as a click beat inside the scroll flow, because choosing a person is the reader act this scene is about. */
-var panel=root.querySelector('#p432-person-panel');
-var personTitle=root.querySelector('#p432-person-title');
-var timeline=root.querySelector('#p432-timeline');
-function renderTimeline(n){
- if(!timeline)return;
- timeline.innerHTML='';
- var points=[START];
- (ITIN[n]||[]).forEach(function(s){points.push(s[0],s[1]);});
- points.push(END);
- points=points.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
- var segs=[];
- for(var i=0;i<points.length-1;i++){
-  var a=points[i],b=points[i+1],loc=locAt(n,a+1);
-  var last=segs[segs.length-1];
-  if(last&&last[2]===loc&&last[1]===a){last[1]=b;}
-  else{segs.push([a,b,loc]);}
- }
- if(!segs.length)segs=[[START,END,'bed']];
- segs.forEach(function(s){
-  var d=document.createElement('span');
-  d.className='p432-tl-seg p432-tl-'+s[2];
-  d.style.left=((s[0]-START)/(END-START)*100)+'%';
-  d.style.width=((s[1]-s[0])/(END-START)*100)+'%';
-  var lab=document.createElement('span');
-  lab.className='p432-tl-lab';
-  lab.textContent=s[2]==='gym'?'Gym':(s[2]==='chair'?'Chair':'Bed');
-  if((s[1]-s[0])>=60)d.appendChild(lab);
-  timeline.appendChild(d);
- });
-}
-patients.forEach(function(btn){
- btn.addEventListener('click',function(){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  patients.forEach(function(b){b.classList.remove('selected');});
-  btn.classList.add('selected');
-  if(personTitle)personTitle.textContent='Patient '+n+' · Illustrative schedule';
-  renderTimeline(n);
-  if(panel){
-   panel.hidden=false;
-   panel.classList.remove('open');
-   void panel.offsetWidth;
-   panel.classList.add('open');
-   panel.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
-  }
- });
-});
-/* Audit and comparison bars: each segment grows and its value counts with the section scroll progress, staggered by row. Counting starts only once the section has been seen, so unseen figures stay printed in full. */
-function collectBars(scrolly){
- if(!scrolly)return [];
- var rows=[];
- scrolly.querySelectorAll('.p432-audit-seg,.p432-mini-seg').forEach(function(seg){
-  var rowEl=seg.closest('.p432-audit-row,.p432-mini-row');
-  var val=rowEl?rowEl.querySelector('[data-count]'):null;
-  rows.push({seg:seg,val:val,target:parseFloat(seg.getAttribute('data-w')||'0'),count:val?parseFloat(val.getAttribute('data-count')):null,dec:val?parseInt(val.getAttribute('data-decimals')||'0',10):0,suffix:val?(val.getAttribute('data-suffix')||''):''});
- });
- return rows;
-}
-var auditBars=collectBars(auditScrolly),compareBars=collectBars(compareScrolly);
-var auditSeen=false,compareSeen=false;
-function applyBars(rows,p){
- rows.forEach(function(r,i){
-  var rp=Math.max(0,Math.min(1,(p*1.3-i*0.07)/0.75));
-  r.seg.style.transform='scaleX('+rp.toFixed(4)+')';
-  if(r.val&&r.count!==null){
-   var v=r.count*rp;
-   r.val.textContent=(r.dec===0?String(Math.round(v)):v.toFixed(r.dec))+r.suffix;
-  }
- });
-}
-/* Scroll choreography engine: scroll position drives the stages.
-   Passive scroll listener, requestAnimationFrame interpolation, values
-   smoothed toward their scroll targets so motion eases and reverses. */
-var sCur={day:0,audit:0,compare:0};
-var sTgt={day:0,audit:0,compare:0};
-var scrollRaf=false;
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function progressOf(el){
- if(!el)return 0;
- var r=el.getBoundingClientRect();
- var vh=window.innerHeight||800;
- var denom=Math.max(1,r.height-vh*0.30);
- return clamp01((vh*0.85-r.top)/denom);
-}
-function smoothTo(cur,target){return reduced?target:cur+(target-cur)*0.16;}
-function measureScroll(){
- sTgt.day=progressOf(dayScrolly);
- sTgt.audit=progressOf(auditScrolly);
- sTgt.compare=progressOf(compareScrolly);
+y);
  if(sTgt.audit>0.01)auditSeen=true;
  if(sTgt.compare>0.01)compareSeen=true;
 }
@@ -4165,4 +3256,593 @@ var tankFill=root.querySelector('#p436-tank-fill');
 var tankLine=root.querySelector('#p436-tank-line');
 var tankVal=root.querySelector('#p436-tank-val');
 var floorG=root.querySelector('#p436-floor');
-var bedCellsG=root.querySelector('#p436-be
+var bedCellsG=root.querySelector('#p436-bed-cells');
+var lifeCellsG=root.querySelector('#p436-life-cells');
+var trainCellsG=root.querySelector('#p436-train-cells');
+var bedCount=root.querySelector('#p436-bed-count');
+var lifeCount=root.querySelector('#p436-life-count');
+var trainCount=root.querySelector('#p436-train-count');
+var bedPct=root.querySelector('#p436-bed-pct');
+var lifePct=root.querySelector('#p436-life-pct');
+var trainPct=root.querySelector('#p436-train-pct');
+var raceProg=root.querySelector('#p436-race-prog');
+var racePhase=root.querySelector('#p436-race-phase');
+var raceReadout=root.querySelector('#p436-race-readout');
+var dial=root.querySelector('#p436-dial');
+var raceManual=false;
+var bedCells=[],lifeCells=[],trainCells=[];
+if(bedCellsG){for(var i=0;i<20;i++)bedCells.push(makeRect(bedCellsG,250+i*21,104,16,26,'#FF7A59'));}
+if(lifeCellsG){for(var j=0;j<30;j++)lifeCells.push(makeRect(lifeCellsG,250+j*13.5,208,9.5,22,'#EAF3FC'));}
+if(trainCellsG){for(var k=0;k<6;k++)trainCells.push(makeRect(trainCellsG,250+k*44,308,36,24,'#A8D8EA'));}
+function litCells(cells,n,color){
+ cells.forEach(function(c,idx){
+  if(idx<n){c.setAttribute('fill',color);c.setAttribute('data-lit','1');}
+  else{c.setAttribute('fill','none');c.setAttribute('data-lit','0');}
+ });
+}
+function applyRace(s,syncDial){
+ var i0=Math.min(2,Math.floor(s)), f=s-i0;
+ var tank=lerp(STOPS[i0].tank,STOPS[i0+1].tank,f);
+ var idx=Math.round(s), stop=STOPS[idx];
+ var y=tankY(tank);
+ if(tankFill){tankFill.setAttribute('y',y.toFixed(1));tankFill.setAttribute('height',(372-y).toFixed(1));}
+ if(tankLine){tankLine.setAttribute('y1',y.toFixed(1));tankLine.setAttribute('y2',y.toFixed(1));}
+ if(tankVal){tankVal.textContent=tank.toFixed(1)+' L/MIN';tankVal.setAttribute('y',Math.max(104,Math.min(360,y+20)).toFixed(1));}
+ if(floorG)floorG.setAttribute('opacity',seg(s,0.82,0.97).toFixed(3));
+ var bedLit=Math.round(20*seg(s,0,1));
+ litCells(bedCells,bedLit,'#FF7A59');
+ if(bedCellsG)bedCellsG.setAttribute('opacity',s<=1?'1':'0.5');
+ if(bedCount)bedCount.textContent='DAY '+bedLit+' OF 20';
+ if(bedPct)bedPct.setAttribute('opacity',seg(s,0.8,1).toFixed(3));
+ var lifeLit=Math.round(30*seg(s,1,2));
+ litCells(lifeCells,lifeLit,'#EAF3FC');
+ if(lifeCount)lifeCount.textContent='YEAR '+lifeLit+' OF 30';
+ if(lifePct)lifePct.setAttribute('opacity',seg(s,1.8,2).toFixed(3));
+ var trainLit=Math.round(6*seg(s,2,3));
+ litCells(trainCells,trainLit,'#A8D8EA');
+ if(trainCount)trainCount.textContent='MONTH '+trainLit+' OF 6';
+ if(trainPct)trainPct.setAttribute('opacity',seg(s,2.8,3).toFixed(3));
+ if(raceProg)raceProg.style.width=(s/3*100).toFixed(1)+'%';
+ if(racePhase)racePhase.textContent=stop.phase;
+ if(raceReadout)raceReadout.textContent=stop.readout;
+ if(syncDial&&dial)dial.value=String(idx);
+ if(raceStage)raceStage.setAttribute('data-progress',(s/3).toFixed(3));
+}
+if(dial){dial.addEventListener('input',function(){
+ raceManual=true;
+ applyRace(parseInt(dial.value,10),false);
+});}
+
+/* Scene 3: the cascade. Rows light cumulatively and stay lit: the
+   heart first, muscle and sugar within a week, bone last. */
+var cascadeStage=root.querySelector('#p436-cascade-stage');
+var cascadeProg=root.querySelector('#p436-cascade-prog');
+var cascadePhase=root.querySelector('#p436-cascade-phase');
+var rows=[1,2,3,4,5].map(function(n){return root.querySelector('#p436-row-'+n);});
+var ROW_START=[0,0.12,0.34,0.46,0.68];
+function renderCascade(p){
+ rows.forEach(function(row,i){
+  if(row)row.style.opacity=(0.32+0.68*seg(p,ROW_START[i],ROW_START[i]+0.16)).toFixed(3);
+ });
+ if(cascadeProg)cascadeProg.style.width=(p*100).toFixed(1)+'%';
+ if(cascadePhase)cascadePhase.textContent=p<0.34?'The cascade · The heart first':(p<0.68?'The cascade · Muscle and sugar':'The cascade · Bone keeps the receipt');
+ if(cascadeStage)cascadeStage.setAttribute('data-progress',p.toFixed(3));
+}
+
+/* Sources drawer */
+var drawer=root.querySelector('#p436-sources');
+if(drawer){
+ var dBtn=drawer.querySelector('.p3-drawer-btn');
+ if(dBtn){dBtn.addEventListener('click',function(){
+  var closed=drawer.classList.toggle('p3-closed');
+  dBtn.setAttribute('aria-expanded',String(!closed));
+ });}
+}
+
+/* Scroll choreography engine: scroll position drives the stages.
+   Passive scroll listener, requestAnimationFrame interpolation, values
+   smoothed toward their scroll targets so motion eases and reverses. */
+var raceScrolly=root.querySelector('#p436-race-scrolly');
+var cascadeScrolly=root.querySelector('#p436-cascade-scrolly');
+var sCur={race:0,cascade:0};
+var sTgt={race:0,cascade:0};
+var scrollRaf=false;
+function progressOf(el){
+ if(!el)return 0;
+ var r=el.getBoundingClientRect();
+ var vh=window.innerHeight||800;
+ var denom=Math.max(1,r.height-vh*0.30);
+ return clamp01((vh*0.85-r.top)/denom);
+}
+function smoothTo(cur,target){
+ if(reduced)return target;
+ var next=cur+(target-cur)*0.16;
+ return Math.abs(target-next)<0.002?target:next;
+}
+function snapEnds(v){return v<0.005?0:(v>0.995?1:v);}
+function measureScroll(){
+ sTgt.race=snapEnds(progressOf(raceScrolly));
+ sTgt.cascade=snapEnds(progressOf(cascadeScrolly));
+}
+function applyScroll(){
+ if(!raceManual)applyRace(sCur.race*3,true);
+ renderCascade(sCur.cascade);
+}
+function scrollFrame(){
+ scrollRaf=false;
+ measureScroll();
+ var maxDelta=0;
+ ['race','cascade'].forEach(function(k){var d=Math.abs(sTgt[k]-sCur[k]);if(d>maxDelta)maxDelta=d;sCur[k]=smoothTo(sCur[k],sTgt[k]);});
+ applyScroll();
+ if(!reduced&&maxDelta>0.002){requestScrollFrame();}
+}
+function requestScrollFrame(){
+ if(!scrollRaf){scrollRaf=true;requestAnimationFrame(scrollFrame);}
+}
+window.addEventListener('scroll',requestScrollFrame,{ passive: true });
+window.addEventListener('resize',requestScrollFrame,{ passive: true });
+/* Step activation: the step nearest the viewport centre is the lit one */
+if('IntersectionObserver' in window){
+ var stepIO=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){en.target.classList.toggle('p436-step-active',en.isIntersecting);});
+ },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+ root.querySelectorAll('.p436-step').forEach(function(st){stepIO.observe(st);});
+}
+requestScrollFrame();
+/* Reveals */
+var reveals=root.querySelectorAll('.p436-reveal');
+if('IntersectionObserver' in window&&!reduced){
+ root.classList.add('p436-anim');
+ var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+ },{threshold:0.08});
+ reveals.forEach(function(el){io.observe(el)});
+} else {
+ reveals.forEach(function(el){el.classList.add('in');});
+}
+applyRace(0,true);renderCascade(0);
+})();
+</script>
+
+<div class="view" id="marathon-on-the-moon">
+<div class="p435-wrap">
+
+<header class="p435-hero">
+<p class="p435-kicker">The PM&amp;R Files · Essay 34 · The first what if</p>
+<h1 class="p435-title">What If You Ran a Marathon on the Moon?</h1>
+<p class="p435-answer">Gravity writes the rules of walking and running, and on the Moon the rules invert. Lunar gravity is about one sixth of Earth's, 0.17 g. Down there, in reduced gravity experiments and in the Apollo film archive, running turns cheaper than walking, the walk to run switch trips earlier, and the body invents a third gait. Project the measured costs forward and the clock halves, on paper. Then the wall arrives: air, heat, and a self carrying suit. Nobody has run a marathon on the Moon. Here is what the numbers say would happen if somebody tried.</p>
+<div class="p435-byline-row">
+<span class="p435-byline">By a PM&amp;R resident physician</span>
+
+</div>
+<p class="p435-body">First, the rule of this series: the counterfactual is the hook, never the evidence. Every measured number carries its source. Anything drawn between measurements is dashed and labeled model drawn; anything projected is labeled a model, assumptions printed beside it. The Moon is the ideal first case: twelve astronauts moved around up there in pressurized suits, and Earth laboratories have been unloading runners ever since.</p>
+<p class="p435-cue">Scroll · Survey the course, turn gravity down, run the model, meet the wall</p>
+</header>
+
+<section class="p435-sec" id="p435-course-sec">
+<p class="p435-ch-label">Scene one · The course</p>
+<h2 class="p435-h2">A dashed line on a dark map</h2>
+<p class="p435-body">Set the course first. A marathon is 42.195 kilometers. On the Moon there is no road, no breathable atmosphere, and no guaranteed shade, so picture the dashed line below, lander to crater rim. Crews worked inside a shrinking circle set by suit supplies; Apollo 17's longest excursion ranged 7.6 kilometers from the Lunar Module, by rover.</p>
+<p class="p435-body">The longest excursion of the Apollo program lasted 7 hours and 37 minutes. Apollo 17 drove its rover 35.7 kilometers across three excursions: less than a marathon. And the locomotion was improvised: of 38 gait events classified from film and reports, only 10 were walking; the rest were loping and running.</p>
+<div class="p435-stagebox">
+<div class="p435-stage-head"><span>The Course · A Marathon Traverse, Lander to Crater Rim</span><span>Traverse chart · Schematic</span></div>
+<div class="p435-svgwrap">
+<svg class="p435-svg" viewBox="0 0 720 360" role="img" aria-label="Schematic lunar traverse chart at night: a lander at the left, a dashed course line running 42.195 kilometers to a crater rim at the right, a bounding trace arcing above the course, and Earth hanging in a black sky.">
+<rect x="0" y="0" width="720" height="360" fill="#0C0F14"></rect>
+<g class="p435-stars" fill="#E9E6DA"><circle cx="60" cy="40" r="1.4"></circle><circle cx="150" cy="86" r="1"></circle><circle cx="238" cy="34" r="1.2"></circle><circle cx="330" cy="70" r="1"></circle><circle cx="420" cy="30" r="1.4"></circle><circle cx="500" cy="92" r="1"></circle><circle cx="556" cy="140" r="1.1"></circle><circle cx="120" cy="150" r="1"></circle><circle cx="300" cy="130" r="1.2"></circle><circle cx="668" cy="120" r="1"></circle><circle cx="40" cy="110" r="1"></circle><circle cx="470" cy="160" r="1"></circle></g>
+<g class="p435-earth"><circle cx="618" cy="62" r="30" fill="none" stroke="#7FB2E5" stroke-width="1" opacity="0.45"></circle><circle cx="618" cy="62" r="25" fill="#7FB2E5"></circle><path d="M 600 48 Q 612 40 624 50 Q 616 58 606 56 Q 598 54 600 48 Z" fill="#0C0F14" opacity="0.35"></path><path d="M 606 70 Q 618 64 630 72 Q 622 80 610 78 Q 604 76 606 70 Z" fill="#0C0F14" opacity="0.3"></path><text x="618" y="112" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#8E94A0" text-anchor="middle">EARTH</text></g>
+<rect x="0" y="248" width="720" height="112" fill="#171C25"></rect>
+<g fill="none" stroke="#232B38" stroke-width="1.2"><path d="M -10 300 Q 180 282 370 296 Q 540 308 730 292"></path><path d="M -10 330 Q 200 314 400 326 Q 560 336 730 322"></path><ellipse cx="648" cy="300" rx="86" ry="13"></ellipse><ellipse cx="648" cy="300" rx="52" ry="7"></ellipse></g>
+<line x1="0" y1="248" x2="720" y2="248" stroke="#E9E6DA" stroke-width="1.4" opacity="0.65"></line>
+<g stroke="#E9E6DA" stroke-width="1.6" fill="none" opacity="0.9"><path d="M 78 248 L 92 214 L 122 214 L 136 248"></path><line x1="85" y1="248" x2="66" y2="264"></line><line x1="129" y1="248" x2="148" y2="264"></line><line x1="92" y1="228" x2="122" y2="228"></line></g>
+<text x="107" y="284" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#8E94A0" text-anchor="middle">LANDER · SCHEMATIC</text>
+<path class="p435-route" d="M 150 240 Q 300 226 440 234 Q 540 240 614 228" fill="none" stroke="#E9E6DA" stroke-width="2" stroke-dasharray="8 5"></path>
+<path d="M 150 240 Q 185 190 220 234 Q 255 182 292 232 Q 330 176 368 230 Q 408 172 446 230 Q 486 180 522 230 Q 562 186 614 228" fill="none" stroke="#E9E6DA" stroke-width="1.4" opacity="0.55"></path>
+<g fill="#E9E6DA"><circle cx="220" cy="234" r="2.4"></circle><circle cx="368" cy="230" r="2.4"></circle><circle cx="522" cy="230" r="2.4"></circle></g>
+<g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#8E94A0" text-anchor="middle"><text x="220" y="262">10 KM</text><text x="368" y="258">20 KM</text><text x="522" y="258">30 KM</text></g>
+<text x="614" y="206" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#E9E6DA" text-anchor="middle">42.195 KM · CRATER RIM</text>
+<text x="40" y="40" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#8E94A0">TRAVERSE CHART · MARE FLOOR · NOT TO SCALE</text>
+</svg>
+</div>
+<div class="p435-beats">
+<div class="p435-beat"><span class="p435-beat-num">0.17 g</span><span class="p435-beat-lab">lunar gravity, about one sixth of Earth's: the whole race is run under this number</span></div>
+<div class="p435-beat"><span class="p435-beat-num">7 h 37 min</span><span class="p435-beat-lab">the longest single excursion anyone has ever made on the surface, Apollo 17</span></div>
+<div class="p435-beat"><span class="p435-beat-num">0</span><span class="p435-beat-lab">documented marathons on the lunar surface: the record book is blank</span></div>
+</div>
+<span class="p435-viz-note">Schematic traverse chart drawn for this essay. The course line, the bounding trace above it, the lander, and the crater are drawings, not photographs and not to scale. The three figures in the boxes are measured or documented values, sourced in the Sources drawer: lunar gravity as used by Carr and McGee 2009; the Apollo 17 excursion duration from NASA mission records.</span>
+</div>
+</section>
+
+<section class="p435-sec" id="p435-machine-sec">
+<p class="p435-ch-label">Scene two · The gravity machine</p>
+<h2 class="p435-h2">Turn gravity down and the gaits trade places</h2>
+<p class="p435-body">On Earth, walking is the cheap gait and it is not close. A walking mile uses about half the energy of a running mile. Walking has a best speed, a gentle one, where its cost bottoms out near 2 joules per kilogram per meter. Running costs about 4, roughly the same at any speed. So Earth runners walk to the start line and run the race.</p>
+<p class="p435-body">Gravity is the load both gaits carry, taxed unequally. Farley and McMahon hung runners in harnesses that lifted away part of their weight. Cut gravity to a quarter: running's energy rate fell 72 percent, nearly in proportion to the weight removed; walking's fell only 33 percent. Running spends its energy supporting body weight against gravity, step after step; walking splits its bill between support, leg swing, and trading height for speed.</p>
+<div class="p435-scrolly" id="p435-machine-scrolly" data-scrolly="machine">
+<div class="p435-stagebox p435-stage-sticky" id="p435-machine-stage" data-progress="0">
+<div class="p435-stage-head"><span>The Gravity Machine · Cost of Transport by Gait</span><span id="p435-chart-note">Solid: measured · Dashed: model drawn</span></div>
+<div class="p435-svgwrap">
+<svg class="p435-svg" viewBox="0 0 720 430" role="img" aria-label="Cost of transport chart. A walking curve and a running line are drawn for the gravity set by scrolling or by the gravity dial. A marker shows the walk to run switch speed. Measured points are solid; interpolated curves are dashed and labeled model drawn.">
+<rect x="0" y="0" width="720" height="430" fill="#12161D"></rect>
+<g stroke="#232B38" stroke-width="1"><line x1="70" y1="289" x2="690" y2="289"></line><line x1="70" y1="199" x2="690" y2="199"></line><line x1="70" y1="108" x2="690" y2="108"></line><line x1="242" y1="60" x2="242" y2="380"></line><line x1="415" y1="60" x2="415" y2="380"></line><line x1="587" y1="60" x2="587" y2="380"></line></g>
+<g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8E94A0"><text x="62" y="293" text-anchor="end">2</text><text x="62" y="203" text-anchor="end">4</text><text x="62" y="112" text-anchor="end">6</text><text x="70" y="400">0</text><text x="242" y="400" text-anchor="middle">1</text><text x="415" y="400" text-anchor="middle">2</text><text x="587" y="400" text-anchor="middle">3</text><text x="380" y="422" text-anchor="middle" letter-spacing="2">SPEED, METERS PER SECOND</text><text x="24" y="220" text-anchor="middle" letter-spacing="2" transform="rotate(-90 24 220)">COST, JOULES PER KG PER METER</text></g>
+<line x1="70" y1="380" x2="690" y2="380" stroke="#E9E6DA" stroke-width="1.6"></line>
+<line x1="70" y1="60" x2="70" y2="380" stroke="#E9E6DA" stroke-width="1.6"></line>
+<path id="p435-walk-path" d="M 70 238 L 156 273 L 261 289 L 346 279 L 442 243" fill="none" stroke="#E9E6DA" stroke-width="2.5"></path>
+<path id="p435-run-path" d="M 70 197 L 690 197" fill="none" stroke="#E9E6DA" stroke-width="2.5"></path>
+<g id="p435-anchors"><circle id="p435-anchor-walk" cx="261" cy="289" r="5.5" fill="#E9E6DA"></circle><circle id="p435-anchor-run" cx="640" cy="197" r="5.5" fill="#E9E6DA"></circle><circle id="p435-anchor-moon" cx="640" cy="289" r="5.5" fill="#E9E6DA" opacity="0"></circle></g>
+<g id="p435-trans-group"><line id="p435-trans-line" x1="442" y1="66" x2="442" y2="380" stroke="#7FB2E5" stroke-width="2"></line><polygon id="p435-trans-tri" points="442,58 434,72 450,72" fill="#7FB2E5"></polygon><text id="p435-trans-label" x="442" y="48" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#7FB2E5" text-anchor="middle">SWITCH 2.16 M/S</text></g>
+<g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#E9E6DA"><text id="p435-walk-label" x="120" y="222">WALK</text><text id="p435-run-label" x="600" y="182">RUN</text></g>
+<text id="p435-modeldrawn-tag" x="380" y="34" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#8E94A0" text-anchor="middle">EARTH: BOTH CURVES MEASURED</text>
+<g id="p435-bounce-group"><path id="p435-bounce-arc" d="M 566 380 Q 618 366 670 380" fill="none" stroke="#E9E6DA" stroke-width="1.4" opacity="0.6"></path><circle cx="670" cy="372" r="4" fill="none" stroke="#E9E6DA" stroke-width="1.4"></circle><path d="M 670 376 L 666 380 M 674 380 L 678 376" stroke="#E9E6DA" stroke-width="1.4" fill="none"></path></g>
+</svg>
+</div>
+<div class="p435-scrub-controls">
+<label class="p435-slider-lab" for="p435-dial">Gravity dial</label>
+<div class="p435-slider-row">
+<span class="p435-slider-end">Earth 1.00 g</span>
+<input type="range" class="p435-slider" id="p435-dial" min="0" max="3" step="1" value="0" aria-describedby="p435-machine-readout">
+<span class="p435-slider-end">Moon 0.17 g</span>
+</div>
+</div>
+<div class="p435-meter" aria-hidden="true"><span class="p435-meter-fill" id="p435-machine-prog"></span></div>
+<p class="p435-phase" id="p435-machine-phase">Gravity · Earth, 1.00 g</p>
+<p class="p435-readout" id="p435-machine-readout" aria-live="polite">Earth, 1.00 g. Walk to run switch at a derived 2.16 meters per second (Froude 0.50, the reference value). Running costs about 4 joules per kilogram per meter; walking bottoms out near 2. Walking wins on Earth.</p>
+<span class="p435-step-alt">Scroll turns the gravity down through four stops, and the dial is a manual alternative for the same four stops. Switch speeds are computed from the published transition Froude numbers for a 0.95 meter leg, the leg length Carr and McGee use in their own worked example; the formula is in Data and Methods.</span>
+<span class="p435-viz-note">Cost chart drawn for this essay. Cost of transport means the energy to move one kilogram of body one meter; energy per second is a different quantity, a rate, and the two are never interchanged here. The Froude number compares a speed with a scale set by gravity and leg length, which is why a slower speed can carry a higher Froude number when gravity falls. Solid marks and lines are measured anchors: on Earth, walking's minimum of about 2 joules per kilogram per meter and running's roughly flat 4 (Minetti 2001; Farley and McMahon 1992); at lunar gravity, running's level of about 2, measured in a suspension rig (Pavei et al. 2015). Dashed curves are model drawn between those anchors and are tagged as such on the chart. Away from Earth, the walking curves are schematic shapes: their heights are drawing choices and encode no values; only their position relative to the running line is claimed, per Carr and McGee. Pavei et al. simulated 0.36 g for Mars and 0.16 g for the Moon; the dial labels, 0.38 g and 0.17 g, are the planetary roundings. Each walking curve stops at that gravity's switch speed: above it, walking is no longer the gait the body picks. The small arc at the lower right is a schematic of the bounce, drawn taller as gravity falls; it encodes no number.</span>
+</div>
+<div class="p435-steps-side">
+<div class="p435-step" data-step="machine-earth"><p class="p435-step-kicker">Step 1 of 4 · Earth, 1.00 g</p><p class="p435-body">Start where the reader lives. The walking curve dips to its minimum near 2 joules per kilogram per meter, the running line rides flat at about 4, and the switch trips at 2.16 meters per second, Froude number about 0.5. On Earth, walking wins every slow meter.</p></div>
+<div class="p435-step" data-step="machine-half"><p class="p435-step-kicker">Step 2 of 4 · Half gravity, 0.50 g</p><p class="p435-body">Half gravity is the neighborhood of the flip. The transition Froude number, from the published fit, rises to 0.56, and the switch falls to 1.62 meters per second. Both curves here are model drawn between measured anchors: solid anchors, drawn path.</p></div>
+<div class="p435-step" data-step="machine-mars"><p class="p435-step-kicker">Step 3 of 4 · Mars, 0.38 g</p><p class="p435-body">Mars, at 0.38 g, sits below the inversion threshold. The fit puts the transition Froude number at 0.63 and the switch at a derived 1.49 meters per second. The Froude number rises even as the speed falls, because the scale it is measured against shrinks faster.</p></div>
+<div class="p435-step" data-step="machine-moon"><p class="p435-step-kicker">Step 4 of 4 · The Moon, 0.17 g</p><p class="p435-body">At one sixth gravity, the inversion completes. The unsuited switch falls to 1.18 meters per second, and an Apollo suit dropped it to about 0.75, at Froude 0.36, fitted. Running now costs about 2 joules per kilogram per meter, Earth walking's price, and in the conditions studied it costs less per meter than walking.</p></div>
+</div>
+</div>
+</section>
+
+<section class="p435-sec" id="p435-apollo-sec">
+<p class="p435-ch-label">Scene three · What Apollo actually did</p>
+<h2 class="p435-h2">The film archive votes for the bounce</h2>
+<p class="p435-body">Carr and McGee classified every gait event they could measure in the Apollo Lunar Surface Journal and NASA reports: 38 in all. Ten were walking. Ten were loping, the bounding gait they settled into. Eighteen were running. The mean Froude number across all 38 was 0.49. The authors work one example: Neil Armstrong, running across the television picture on Apollo 11, about 22 meters in about 25 seconds, 0.89 meters per second. Nine of the events come from a single three minute gait evaluation by Aldrin, so the counts show what could be classified, not how crews usually traveled.</p>
+<p class="p435-body">Then the suit rewrote the numbers: a pressurized suit is a balloon shaped like a person, and its pressure, 26.2 kilopascals, pushes its joints toward straight. Carr and McGee's idealized calculation has this force beating the lunar weight of the heaviest suit, the 96 kilogram A7LB, by a factor of 2.8: on the Moon, the suit carries itself. That, on their main comparison, is the paper's explanation for 60 percent of why the suited switch tripped at Froude 0.36 instead of 0.90. It is also why Charles Duke kept jumping on Apollo 16 to bend his knee and retrieve a dropped hammer.</p>
+<div class="p435-scrolly" id="p435-events-scrolly" data-scrolly="events">
+<div class="p435-stagebox p435-stage-sticky" id="p435-events-stage" data-progress="0">
+<div class="p435-stage-head"><span>The Apollo Archive · 38 Classified Gait Events</span><span>Carr and McGee 2009 · Lunar Surface Journal and NASA reports</span></div>
+<div class="p435-svgwrap">
+<svg class="p435-svg" viewBox="0 0 720 330" role="img" aria-label="Three lanes of tick marks counting the 38 Apollo gait events classified by Carr and McGee: 10 walking, 10 loping, 18 running. Below, two bars compare the unsuited walk to run switch, Froude 0.90, with the suited switch, Froude 0.36.">
+<rect x="0" y="0" width="720" height="330" fill="#12161D"></rect>
+<g id="p435-lane-walk"><line x1="150" y1="86" x2="660" y2="86" stroke="#3A4353" stroke-width="2"></line><g stroke="#E9E6DA" stroke-width="3"><line x1="160" y1="72" x2="160" y2="100"></line><line x1="188" y1="72" x2="188" y2="100"></line><line x1="216" y1="72" x2="216" y2="100"></line><line x1="244" y1="72" x2="244" y2="100"></line><line x1="272" y1="72" x2="272" y2="100"></line><line x1="300" y1="72" x2="300" y2="100"></line><line x1="328" y1="72" x2="328" y2="100"></line><line x1="356" y1="72" x2="356" y2="100"></line><line x1="384" y1="72" x2="384" y2="100"></line><line x1="412" y1="72" x2="412" y2="100"></line></g><text x="36" y="92" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#E9E6DA">WALK · 10</text></g>
+<g id="p435-lane-lope"><line x1="150" y1="156" x2="660" y2="156" stroke="#3A4353" stroke-width="2"></line><g stroke="#E9E6DA" stroke-width="3"><line x1="160" y1="142" x2="160" y2="170"></line><line x1="188" y1="142" x2="188" y2="170"></line><line x1="216" y1="142" x2="216" y2="170"></line><line x1="244" y1="142" x2="244" y2="170"></line><line x1="272" y1="142" x2="272" y2="170"></line><line x1="300" y1="142" x2="300" y2="170"></line><line x1="328" y1="142" x2="328" y2="170"></line><line x1="356" y1="142" x2="356" y2="170"></line><line x1="384" y1="142" x2="384" y2="170"></line><line x1="412" y1="142" x2="412" y2="170"></line></g><text x="36" y="162" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#E9E6DA">LOPE · 10</text></g>
+<g id="p435-lane-run"><line x1="150" y1="226" x2="660" y2="226" stroke="#3A4353" stroke-width="2"></line><g stroke="#E9E6DA" stroke-width="3"><line x1="160" y1="212" x2="160" y2="240"></line><line x1="188" y1="212" x2="188" y2="240"></line><line x1="216" y1="212" x2="216" y2="240"></line><line x1="244" y1="212" x2="244" y2="240"></line><line x1="272" y1="212" x2="272" y2="240"></line><line x1="300" y1="212" x2="300" y2="240"></line><line x1="328" y1="212" x2="328" y2="240"></line><line x1="356" y1="212" x2="356" y2="240"></line><line x1="384" y1="212" x2="384" y2="240"></line><line x1="412" y1="212" x2="412" y2="240"></line><line x1="440" y1="212" x2="440" y2="240"></line><line x1="468" y1="212" x2="468" y2="240"></line><line x1="496" y1="212" x2="496" y2="240"></line><line x1="524" y1="212" x2="524" y2="240"></line><line x1="552" y1="212" x2="552" y2="240"></line><line x1="580" y1="212" x2="580" y2="240"></line><line x1="608" y1="212" x2="608" y2="240"></line><line x1="636" y1="212" x2="636" y2="240"></line></g><text x="36" y="232" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="2" fill="#E9E6DA">RUN · 18</text></g>
+<text x="160" y="196" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#8E94A0">ARMSTRONG, APOLLO 11: 22 M IN ABOUT 25 S, ABOUT 0.89 M/S</text>
+<g id="p435-fr-bars" opacity="0"><text x="150" y="276" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#8E94A0">THE SWITCH, AS A FROUDE NUMBER</text><rect x="150" y="284" width="342" height="10" fill="#E9E6DA"></rect><text x="500" y="293" font-family="IBM Plex Mono, monospace" font-size="11" fill="#E9E6DA">UNSUITED 0.90</text><rect x="150" y="302" width="137" height="10" fill="#E9E6DA" opacity="0.55"></rect><text x="295" y="311" font-family="IBM Plex Mono, monospace" font-size="11" fill="#E9E6DA">IN THE SUIT 0.36</text><g stroke="#E9E6DA" stroke-width="1.6"><line x1="245" y1="322" x2="329" y2="322"></line><line x1="245" y1="317" x2="245" y2="327"></line><line x1="329" y1="317" x2="329" y2="327"></line></g><text x="337" y="326" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8E94A0">± 0.11</text></g>
+<text x="36" y="34" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#8E94A0">EACH TICK IS ONE CLASSIFIED EVENT · TICK ORDER ENCODES NOTHING</text>
+</svg>
+</div>
+<div class="p435-meter" aria-hidden="true"><span class="p435-meter-fill" id="p435-events-prog"></span></div>
+<p class="p435-phase" id="p435-events-phase">Archive · The count</p>
+<span class="p435-viz-note">Counts are the published counts from Carr and McGee 2009: 38 classifiable events, 10 walking, 10 loping, 18 running, mean Froude number 0.49 across events. Tick positions are a drawing choice and encode nothing. The two bars are the paper's transition Froude numbers, unsuited estimate 0.90 and suited fit 0.36 plus or minus 0.11, drawn to scale against each other.</span>
+</div>
+<div class="p435-steps-side">
+<div class="p435-step" data-step="events-count"><p class="p435-step-kicker">Step 1 of 3 · The count</p><p class="p435-body">Thirty eight events could be classified from film and reports. Walking, the gait the plans assumed, is the minority: 10 of 38.</p></div>
+<div class="p435-step" data-step="events-lope"><p class="p435-step-kicker">Step 2 of 3 · The invented gait</p><p class="p435-body">Loping is the gait nobody briefed: 10 events, a bounding rhythm keeping walking's pendular energy exchange, the trade of height for speed. Its Froude numbers showed no detected difference from the walking events, which is why the analysis pools walk and lope against running.</p></div>
+<div class="p435-step" data-step="events-run"><p class="p435-step-kicker">Step 3 of 3 · The plurality</p><p class="p435-body">Running is the plurality: 18 of 38 events, in suits never designed for it. The bars below are a fit, not a count: the suited switch sits at Froude 0.36 plus or minus 0.11, against an unsuited 0.90 interpolated from laboratory data. The suit moved the switch itself: it was carrying its own weight.</p></div>
+</div>
+</div>
+<div class="p435-stagebox">
+<div class="p435-stage-head"><span>The Suit Carries Itself · The Self Support Calculation</span><span>Carr and McGee 2009</span></div>
+<div class="p435-beats">
+<div class="p435-beat"><span class="p435-beat-num">96 kg</span><span class="p435-beat-lab">the heaviest Apollo suit, the A7LB, at its maximum wet mass on Apollo 15 to 17</span></div>
+<div class="p435-beat"><span class="p435-beat-num">156 N</span><span class="p435-beat-lab">what that suit weighs on the Moon, the load the astronaut would expect to carry</span></div>
+<div class="p435-beat"><span class="p435-beat-num">2.8×</span><span class="p435-beat-lab">the suit's pressure force over that weight: at 26.2 kPa the balloon holds itself up</span></div>
+</div>
+<span class="p435-viz-note">The Apollo Number formalizes this: Ap equals the Froude number divided by M, the share of the total transported mass the human actually supports. Suited on the Moon, the fitted Apollo Number was 0.68 plus or minus 0.20, and the number accounts for 60 percent of the gap between the suited and unsuited switch points on the paper's main comparison, and 38 percent against an alternative unsuited estimate. Read the number as load path first: the moving mass is body plus suit, M is the share of it the legs actually support, and dividing by that share is what raises the suited value toward the unsuited one.</span>
+</div>
+</section>
+
+<section class="p435-sec" id="p435-bench-sec">
+<p class="p435-ch-label">Scene four · The marathon bench</p>
+<h2 class="p435-h2">The model says half the clock</h2>
+<p class="p435-body">Now run the model. A marathon is raced at a sustainable metabolic power: the rate the body can supply energy for hours. The bench holds that power per kilogram fixed and swaps in the lunar cost measured in simulation, about 2 joules per kilogram per meter, against Earth's 4. If the price per meter halved and the power held, speed would double and the clock would halve. Pick your Earth time, then read the assumptions: the model has never met a suit, a crater, or the Sun.</p>
+<div class="p435-stagebox" id="p435-bench-stage">
+<div class="p435-stage-head"><span>The Marathon Bench · An Equal Power Model</span><span>Model · Not a measurement</span></div>
+<div class="p435-chips" role="group" aria-label="Pick an Earth marathon time">
+<button type="button" class="p435-chip" data-earth="4:30" data-moon="2:15:00" data-speed="5.21">Earth 4:30</button>
+<button type="button" class="p435-chip p435-chip-on" data-earth="3:30" data-moon="1:45:00" data-speed="6.70">Earth 3:30</button>
+<button type="button" class="p435-chip" data-earth="2:45" data-moon="1:22:30" data-speed="8.52">Earth 2:45</button>
+</div>
+<p class="p435-model-cond">If the cost per meter halved and sustainable power held steady</p>
+<div class="p435-model-row"><span class="p435-model-out" id="p435-model-out">1:45:00</span><span class="p435-model-tag" id="p435-model-tag">Model</span></div>
+<p class="p435-model-sub" id="p435-model-sub" aria-live="polite">Earth marathon 3:30, run at the same sustainable power per kilogram, with the lunar cost swapped in. Implied speed: 6.70 meters per second, beyond the 3.61 meters per second ceiling of the lunar cost study. Walking the same distance at one steady speed instead, the model's unsuited transition speed of 1.18 meters per second, takes about 9 hours 56 minutes.</p>
+<div class="p435-assump">
+<h4>The model's assumptions, printed because they are the model</h4>
+<ul>
+<li>You hold the same sustainable metabolic power per kilogram as in your Earth marathon.</li>
+<li>Lunar running cost is 2 joules per kilogram per meter, the level measured in simulation (Pavei et al. 2015), held flat at every speed; Earth cost is 4.</li>
+<li>No suit, no dust, a flat and firm course, no heat limit and no oxygen limit applied.</li>
+<li>Nobody has run a marathon distance anywhere off Earth. This is an extrapolation from measured submaximal data, and it behaves like one.</li>
+</ul>
+</div>
+<span class="p435-viz-note">The bench's two inputs are measured anchors, and its arithmetic is division: at fixed power, speed scales inversely with cost per meter, so halving the cost halves the clock. A suspension rig at a quarter gravity measured how unevenly the two gaits respond, in energy rates (Farley and McMahon 1992); that is a different protocol and a different quantity, and the bench does not use it. The bench uses the direct lunar cost figure.</span>
+</div>
+</section>
+
+<section class="p435-sec" id="p435-wall-sec">
+<p class="p435-ch-label">Scene five · The wall</p>
+<h2 class="p435-h2">Why nobody has run it</h2>
+<p class="p435-body">So why has nobody done it? The marathon's opponent on the Moon is not gravity. It is the life support budget. Apollo's rule was the walkback limit: never roam farther than your remaining oxygen, carbon dioxide scrubbing, and cooling water let you walk home. The safe circle shrinks every hour. Heat is the sharper edge of the same budget: two Apollo 16 traverses were estimated at 326 and 429 watts, a heat load the backpack must shed.</p>
+<p class="p435-body">Add the ground. The surface is dust over rubble, and how a boot meets that loose soil could itself decide the gait, the treadmill researchers suggested. Above everything sits the clock: 7 hours and 37 minutes is the longest anyone has worked outside on the Moon, wearing up to 96 kilograms of suit. A marathon at model pace fits inside that clock; at Apollo paces, nowhere close. Redraw the course as loops past the lander, each banking enough supply to walk home, and the design problem stops being the distance.</p>
+<div class="p435-statbox">
+<div class="p435-stage-head"><span>The Wall at a Glance</span><span>Operational record, not model outputs</span></div>
+<div class="p435-stats">
+<div class="p435-stat"><span class="p435-stat-num">7 h 37 min</span><span class="p435-stat-lab">longest single excursion on the lunar surface, Apollo 17, NASA mission records</span></div>
+<div class="p435-stat"><span class="p435-stat-num">35.7 km</span><span class="p435-stat-lab">Apollo 17 rover distance across three excursions</span></div>
+<div class="p435-stat"><span class="p435-stat-num">326 · 429 W</span><span class="p435-stat-lab">estimated metabolic rates in two Apollo 16 traverses: sustained rates like these are a heat load the suit must shed</span></div>
+</div>
+<p class="p435-verdict-close">The laboratory says each meter gets cheaper as gravity falls. The record says no suited human has yet been supplied, cooled, and paced for 42.195 kilometers. What would settle it is not a better model but a tested suited pace, a tested route, and a support plan. The gap between those two statements is the essay.</p>
+</div>
+</section>
+
+<section class="p435-sec" id="p435-rehab-sec">
+<p class="p435-ch-label">Scene six · The rehab bridge</p>
+<h2 class="p435-h2">The same dial hangs in the clinic</h2>
+<p class="p435-body">The coda is why this essay lives in a rehabilitation journal's neighborhood. The rigs that simulated lunar gravity are cousins of the body weight support treadmills in rehab gyms; Carr and McGee note the kinship. Unload a patient after spinal cord injury and the same question appears: how much support changes which gait is cheapest, and where the transition sits. In the gym the dials turn separately: harness support up, treadmill speed up, while the therapist watches step quality, effort, and tolerance. A harness changes the load the patient bears; gravity still acts on the swinging limbs.</p>
+<p class="p435-body">Carr and McGee worked the exoskeleton example: a frame carrying a second body weight's worth of load, a prediction that the switch falls from about 2.2 meters per second to about 1.5. That is an added load path, not a harness unloading a patient, and not a prescription. What carries over is narrower: support changes the task's demands, and the response depends on the device and the person. The lope has a laboratory cousin, too: at lunar gravity, skipping costs almost exactly what running costs, a third gait in the repertoire.</p>
+</section>
+
+<section class="p435-sec" id="p435-recap-sec">
+<p class="p435-ch-label">Recap</p>
+<h2 class="p435-h2">So what have we learned</h2>
+<p class="p435-body">Gravity is not a backdrop to gait; it is the pricing mechanism. On Earth walking is cheap and running dear. Turn gravity down and running's price falls in proportion to weight while walking's barely moves, until below about 0.5 g the order inverts. The archive shows it: 10 walks, 10 lopes, 18 runs, in self carrying suits that reset the switch to Froude 0.36. Run the measured costs forward and the clock halves, if the power held. The walkback limit, the heat, and the record say nobody gets to try it yet.</p>
+<div class="p435-sources p435-reveal p3-drawer p3-closed" id="p435-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p435-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
+<h3>Sources</h3>
+<ol>
+<li>Carr CE, McGee J. The Apollo number: space suits, self support, and the walk-run transition. PLoS ONE. 2009;4(8):e6614. PMID 19672305. DOI 10.1371/journal.pone.0006614. Read in full for this essay. From the Apollo Lunar Surface Journal and NASA technical reports, 38 classifiable gait events: 10 walking, 10 loping, 18 running, mean Froude number 0.49. Below 0.5 g, running is cheaper per distance than walking. The unsuited transition Froude number is about 0.5 on Earth and rises to 0.9 at 1/6 g; the suited lunar value is 0.36 plus or minus 0.11, with an Apollo Number of 0.68 plus or minus 0.20. Suit pressure force exceeds the 96 kilogram A7LB suit's lunar weight of 156 newtons by a factor of 2.8. Apollo 16 suited traverses estimated at 326 and 429 watts; Carr and McGee call them running conditions, while Kubis, the original time and motion study, describes the 326 watt traverse as a walking gait. The paper also frames the walkback limit in consumables, predicts the exoskeleton transition shift, and notes that partial body weight support is also used in rehabilitation.</li>
+<li>Farley CT, McMahon TA. Energetics of walking and running: insights from simulated reduced gravity experiments. Journal of Applied Physiology. 1992;73(6):2709 to 2712. DOI 10.1152/jappl.1992.73.6.2709. Harness simulated reduced gravity. On Earth, walking a mile uses about one half the energy of running a mile. When gravity was reduced by 75 percent, the rate of energy consumption fell 72 percent during running and 33 percent during walking; the running rate falls in proportion to body weight, the walking rate does not.</li>
+<li>Kram R, Domingo A, Ferris DP. Effect of reduced gravity on the preferred walk-run transition speed. Journal of Experimental Biology. 1997;200:821 to 826. The reduced gravity transition measurements behind the power law fit Carr and McGee report (Fr* = 0.42 times G to the power minus 0.42, adjusted R squared 0.98); cited here through Carr and McGee 2009, whose fit the machine uses for the two middle dial stops.</li>
+<li>Pavei G, Biancardi CM, Minetti AE. Skipping vs. running as the bipedal gait of choice in hypogravity. Journal of Applied Physiology. 2015;119(1):93 to 100. DOI 10.1152/japplphysiol.01021.2014. Bungee suspension rig, simulated Mars gravity 0.36 g and Moon gravity 0.16 g, speeds 0.83 to 3.61 meters per second. At lunar gravity, running and skipping both approach a cost of about 2 joules per kilogram per meter, the cost of walking on Earth, and skipping is never cheaper than running but nearly ties it. The authors name control of the boot on the regolith among the non metabolic factors that may decide the gait.</li>
+<li>Minetti AE. Walking on other planets. Nature. 2001;409:467 to 469. DOI 10.1038/35054166. The terrestrial reference values used as the chart's Earth anchors: walking's minimum cost is about 2 joules per kilogram per meter, a value independently reported for Earth walking by Pavei et al. 2015, and running costs about 4 joules per kilogram per meter, roughly independent of speed. The optimum speed the review implies is not printed as a value anywhere in this essay.</li>
+<li>NASA. Apollo 17 mission summary. Lunar and Planetary Institute, Universities Space Research Association. The second Apollo 17 excursion was the longest of the program at 7 hours 37 minutes, with a 20.4 kilometer roundtrip traverse; the crew drove the rover 35.7 kilometers in total and reached a maximum of 7.6 kilometers from the Lunar Module. Mars gravity, 0.38 g, as used on the dial, is the standard planetary value (NASA Mars fact sheet).</li>
+</ol>
+<p class="p435-note" style="margin-top:14px">Method note: every measured number in this essay was taken from a source verified for this build and is recorded, claim by claim, in the essay source map. The marathon times in Scene 4 are model outputs, labeled as a model wherever they appear; no human has run a marathon on the Moon, and no Apollo speed beyond Armstrong's documented event is claimed anywhere in this essay.</p>
+</div>
+<div class="p435-methods" id="p435-methods">
+<h3>Data and Methods</h3>
+<p>This essay keeps three registers separate, and labels them on the page. Measured: values taken from the sources above and drawn solid, including the Farley and McMahon rate changes at a quarter gravity (running down 72 percent, walking down 33 percent), the Carr and McGee Apollo event counts and Froude numbers, and the Pavei et al. lunar running cost of about 2 joules per kilogram per meter. Model drawn: curves interpolated between measured anchors, drawn dashed and tagged on the chart; the running costs at half gravity and Mars gravity are a straight line in gravity between the measured 4 at Earth gravity and the measured 2 at lunar gravity, and the walking curves away from Earth are drawn shapes scaled by dynamic similarity, with no walking minimum at reduced gravity printed as a number anywhere. Model: the Scene 4 bench, which holds sustainable metabolic power per kilogram fixed, divides by the measured lunar cost, and prints its assumptions beside the output. Switch speeds are computed as v* = the square root of (Fr* times g times L) with L = 0.95 meters, the leg length Carr and McGee use in their own worked prediction, and are labeled derived wherever the dial prints them: Earth 2.16 meters per second from the reference Fr* of 0.50; the half gravity and Mars values (1.62 and 1.49) from their published power law fit to the Kram et al. measurements; the Moon unsuited 1.18 from the interpolated Fr* of 0.90, for which the paper reports no interval; the Moon suited 0.75 from the fitted Fr* of 0.36. The lunar arithmetic uses one sixth of Earth gravity; the dial rounds the label to 0.17 g. The traverse chart, cost chart, event lanes, and bounce arc are drawn SVG schematics created for this essay and labeled schematic in place. No photographs and no AI imagery are used.</p>
+</div>
+<div class="p435-footer">
+<span>The PM&amp;R Files · Essay 34 · What If You Ran a Marathon on the Moon?</span>
+<span>Educational content only, not medical advice</span>
+</div>
+</section>
+
+</div>
+</div>
+<script>
+/* Essay 34 interactions: the first what if build. Scene 2 is a gravity
+   machine: scroll (or the dial) moves through four gravity stops and the
+   cost curves morph between them. Measured anchors are solid; every
+   interpolated state is dashed and tagged model drawn. Scene 3 counts
+   the Apollo archive. Scene 4 is a labeled model bench whose inputs are
+   measured and whose output never appears without its MODEL tag. */
+(function(){
+var root=document.getElementById('marathon-on-the-moon');
+if(!root)return;
+var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function clamp01(v){return v<0?0:(v>1?1:v);}
+function seg(p,a,b){return clamp01((p-a)/Math.max(0.0001,b-a));}
+function lerp(a,b,f){return a+(b-a)*f;}
+
+/* The four gravity stops. Fr* at Earth (0.50), Moon unsuited (0.90) and
+   Moon suited (0.36, in the readout) are Carr and McGee's reported
+   values; Fr* at 0.50 g and Mars come from their published power law
+   fit to Kram et al. 1997. Switch speeds are sqrt(Fr* g L), L = 0.95 m.
+   Running costs: 4.0 at Earth and about 2.0 at the Moon are measured
+   anchors; the middle values are a straight line in gravity between
+   them. Walking minima away from Earth and the optimum speeds (scaled
+   by the square root of gravity) are model drawn drawing parameters,
+   never printed as measurements. */
+var STOPS=[
+ {g:1.00,fr:0.50,v:2.16,run:4.00,walkMin:2.00,walkOpt:1.11,k:0.90,
+  note:'EARTH: CURVES DRAWN FROM MEASURED ANCHORS',phase:'Gravity · Earth, 1.00 g',
+  readout:'Earth, 1.00 g. Walk to run switch at a derived 2.16 meters per second (Froude 0.50, the reference value). Running costs about 4 joules per kilogram per meter; walking bottoms out near 2. Walking wins on Earth.'},
+ {g:0.50,fr:0.56,v:1.62,run:2.80,walkMin:2.50,walkOpt:0.78,k:1.60,
+  note:'MODEL DRAWN BETWEEN MEASURED ANCHORS',phase:'Gravity · Half gravity, 0.50 g',
+  readout:'Half gravity, 0.50 g. Switch at a derived 1.62 meters per second (Froude 0.56, from the published fit). Both curves on this stop are model drawn between the measured anchors at Earth and Moon gravity.'},
+ {g:0.38,fr:0.63,v:1.49,run:2.51,walkMin:2.65,walkOpt:0.68,k:2.00,
+  note:'MODEL DRAWN BETWEEN MEASURED ANCHORS',phase:'Gravity · Mars, 0.38 g',
+  readout:'Mars, 0.38 g. Switch at a derived 1.49 meters per second (Froude 0.63, from the published fit). Below about 0.5 g, the literature says the order inverts: running undercuts walking.'},
+ {g:0.17,fr:0.90,v:1.18,run:2.00,walkMin:2.95,walkOpt:0.46,k:2.60,
+  note:'MOON: RUNNING MEASURED · WALKING MODEL DRAWN',phase:'Gravity · The Moon, 0.17 g',
+  readout:'The Moon, 0.17 g. Switch at a derived 1.18 meters per second unsuited (Froude 0.90, interpolated from the laboratory data); in an Apollo suit, about 0.75 (Froude 0.36 plus or minus 0.11, fitted from the suited events; Scene 3 shows the fit). Running costs about 2 joules per kilogram per meter, the price of Earth walking, and in the conditions studied it costs less per meter than walking.'}
+];
+function X(v){return 70+v*172.222;}
+function Y(c){return 380-c*45.714;}
+var machineStage=root.querySelector('#p435-machine-stage');
+var walkPath=root.querySelector('#p435-walk-path');
+var runPath=root.querySelector('#p435-run-path');
+var anchorWalk=root.querySelector('#p435-anchor-walk');
+var anchorRun=root.querySelector('#p435-anchor-run');
+var anchorMoon=root.querySelector('#p435-anchor-moon');
+var transLine=root.querySelector('#p435-trans-line');
+var transTri=root.querySelector('#p435-trans-tri');
+var transLabel=root.querySelector('#p435-trans-label');
+var walkLabel=root.querySelector('#p435-walk-label');
+var runLabel=root.querySelector('#p435-run-label');
+var drawnTag=root.querySelector('#p435-modeldrawn-tag');
+var bounceArc=root.querySelector('#p435-bounce-arc');
+var machineProg=root.querySelector('#p435-machine-prog');
+var machinePhase=root.querySelector('#p435-machine-phase');
+var machineReadout=root.querySelector('#p435-machine-readout');
+var chartNote=root.querySelector('#p435-chart-note');
+var dial=root.querySelector('#p435-dial');
+var machineManual=false;
+function paramsAt(s){
+ var i=Math.min(2,Math.floor(s)), f=s-i;
+ var a=STOPS[i], b=STOPS[i+1], o={};
+ ['g','fr','v','run','walkMin','walkOpt','k'].forEach(function(key){o[key]=lerp(a[key],b[key],f);});
+ return o;
+}
+function walkD(p){
+ var pts=[], n=26, i, v, c;
+ for(i=0;i<=n;i++){v=p.v*i/n;c=p.walkMin+p.k*Math.pow(v-p.walkOpt,2);pts.push((i?'L ':'M ')+X(v).toFixed(1)+' '+Y(c).toFixed(1));}
+ return pts.join(' ');
+}
+function applyMachine(s,syncDial){
+ var p=paramsAt(s);
+ var idx=Math.round(s);
+ var stop=STOPS[idx];
+ var settled=Math.abs(s-idx)<0.02;
+ if(walkPath){walkPath.setAttribute('d',walkD(p));walkPath.setAttribute('stroke-dasharray',settled?(idx===0?'none':'7 6'):'7 6');}
+ if(runPath){runPath.setAttribute('d','M '+X(0)+' '+Y(p.run).toFixed(1)+' L '+X(3.6)+' '+Y(p.run).toFixed(1));runPath.setAttribute('stroke-dasharray',settled?((idx===1||idx===2)?'7 6':'none'):'7 6');}
+ if(anchorWalk){anchorWalk.setAttribute('cx',X(p.walkOpt).toFixed(1));anchorWalk.setAttribute('cy',Y(p.walkMin).toFixed(1));anchorWalk.setAttribute('opacity',idx===0?'1':'0.35');}
+ if(anchorRun){anchorRun.setAttribute('cy',Y(p.run).toFixed(1));anchorRun.setAttribute('opacity',idx===0?'1':'0.25');}
+ if(anchorMoon){anchorMoon.setAttribute('opacity',idx===3?'1':'0');}
+ var tx=X(p.v);
+ if(transLine){transLine.setAttribute('x1',tx.toFixed(1));transLine.setAttribute('x2',tx.toFixed(1));}
+ if(transTri){transTri.setAttribute('points',tx.toFixed(1)+',58 '+(tx-8).toFixed(1)+',72 '+(tx+8).toFixed(1)+',72');}
+ if(transLabel){var lx=Math.max(96,Math.min(624,tx));transLabel.setAttribute('x',lx.toFixed(1));transLabel.textContent='SWITCH '+p.v.toFixed(2)+' M/S';}
+ if(walkLabel){walkLabel.setAttribute('x',Math.max(84,X(p.walkOpt)-96).toFixed(1));walkLabel.setAttribute('y',(Y(p.walkMin)-58).toFixed(1));}
+ if(runLabel){runLabel.setAttribute('y',(Y(p.run)-14).toFixed(1));}
+ if(drawnTag)drawnTag.textContent=settled?stop.note:'BETWEEN STOPS · SCHEMATIC MORPH, NOT DATA';
+ if(chartNote)chartNote.textContent=settled?(idx===0?'Solid: measured · Dashed: model drawn':'Model drawn state · Anchors solid at the ends'):'Between stops · Schematic morph, not a gravity state';
+ if(bounceArc){var h=14+(1-p.g)*30;bounceArc.setAttribute('d','M 566 380 Q 618 '+(380-h).toFixed(1)+' 670 380');}
+ if(machineProg)machineProg.style.width=(s/3*100).toFixed(1)+'%';
+ if(machinePhase)machinePhase.textContent=stop.phase;
+ if(machineReadout)machineReadout.textContent=stop.readout;
+ if(syncDial&&dial)dial.value=String(idx);
+ if(machineStage)machineStage.setAttribute('data-progress',(s/3).toFixed(3));
+}
+if(dial){dial.addEventListener('input',function(){
+ machineManual=true;
+ applyMachine(parseInt(dial.value,10),false);
+});}
+
+/* Scene 3: the Apollo archive. Scroll walks the emphasis down the
+   three lanes, then the suited versus unsuited switch bars arrive. */
+var eventsStage=root.querySelector('#p435-events-stage');
+var eventsProg=root.querySelector('#p435-events-prog');
+var eventsPhase=root.querySelector('#p435-events-phase');
+var laneWalk=root.querySelector('#p435-lane-walk');
+var laneLope=root.querySelector('#p435-lane-lope');
+var laneRun=root.querySelector('#p435-lane-run');
+var frBars=root.querySelector('#p435-fr-bars');
+function renderEvents(p){
+ if(laneWalk)laneWalk.style.opacity=(1-0.55*seg(p,0.30,0.45)).toFixed(3);
+ if(laneLope)laneLope.style.opacity=(0.45+0.55*(seg(p,0.25,0.40)-seg(p,0.62,0.78))).toFixed(3);
+ if(laneRun)laneRun.style.opacity=(0.45+0.55*seg(p,0.60,0.78)).toFixed(3);
+ if(frBars)frBars.style.opacity=seg(p,0.68,0.92).toFixed(3);
+ if(eventsProg)eventsProg.style.width=(p*100).toFixed(1)+'%';
+ if(eventsPhase)eventsPhase.textContent=p<0.33?'Archive · The count':(p<0.68?'Archive · The invented gait':'Archive · The plurality, and the suit');
+ if(eventsStage)eventsStage.setAttribute('data-progress',p.toFixed(3));
+}
+
+/* Scene 4: the bench. Chips pick an Earth marathon time; the output is
+   the equal power model and always travels with its MODEL tag. */
+var chips=root.querySelectorAll('.p435-chip');
+var modelOut=root.querySelector('#p435-model-out');
+var modelSub=root.querySelector('#p435-model-sub');
+var WALK_TAIL=' Walking the same distance at one steady speed instead, the model unsuited transition speed of 1.18 meters per second, takes about 9 hours 56 minutes.';
+chips.forEach(function(chip){
+ chip.addEventListener('click',function(){
+  chips.forEach(function(c){c.classList.remove('p435-chip-on');});
+  chip.classList.add('p435-chip-on');
+  if(modelOut)modelOut.textContent=chip.getAttribute('data-moon');
+  if(modelSub)modelSub.textContent='Earth marathon '+chip.getAttribute('data-earth')+', run at the same sustainable power per kilogram, with the lunar cost swapped in. Implied speed: '+chip.getAttribute('data-speed')+' meters per second, beyond the 3.61 meters per second ceiling of the lunar cost study.'+WALK_TAIL;
+ });
+});
+
+/* Sources drawer */
+var drawer=root.querySelector('#p435-sources');
+if(drawer){
+ var dBtn=drawer.querySelector('.p3-drawer-btn');
+ if(dBtn){dBtn.addEventListener('click',function(){
+  var closed=drawer.classList.toggle('p3-closed');
+  dBtn.setAttribute('aria-expanded',String(!closed));
+ });}
+}
+
+/* Scroll choreography engine: scroll position drives the stages.
+   Passive scroll listener, requestAnimationFrame interpolation, values
+   smoothed toward their scroll targets so motion eases and reverses. */
+var machineScrolly=root.querySelector('#p435-machine-scrolly');
+var eventsScrolly=root.querySelector('#p435-events-scrolly');
+var sCur={machine:0,events:0};
+var sTgt={machine:0,events:0};
+var scrollRaf=false;
+function progressOf(el){
+ if(!el)return 0;
+ var r=el.getBoundingClientRect();
+ var vh=window.innerHeight||800;
+ var denom=Math.max(1,r.height-vh*0.30);
+ return clamp01((vh*0.85-r.top)/denom);
+}
+function smoothTo(cur,target){
+ if(reduced)return target;
+ var next=cur+(target-cur)*0.16;
+ return Math.abs(target-next)<0.002?target:next;
+}
+function snapEnds(v){return v<0.005?0:(v>0.995?1:v);}
+function measureScroll(){
+ sTgt.machine=snapEnds(progressOf(machineScrolly));
+ sTgt.events=snapEnds(progressOf(eventsScrolly));
+}
+function applyScroll(){
+ if(!machineManual)applyMachine(sCur.machine*3,true);
+ renderEvents(sCur.events);
+}
+function scrollFrame(){
+ scrollRaf=false;
+ measureScroll();
+ var maxDelta=0;
+ ['machine','events'].forEach(function(k){var d=Math.abs(sTgt[k]-sCur[k]);if(d>maxDelta)maxDelta=d;sCur[k]=smoothTo(sCur[k],sTgt[k]);});
+ applyScroll();
+ if(!reduced&&maxDelta>0.002){requestScrollFrame();}
+}
+function requestScrollFrame(){
+ if(!scrollRaf){scrollRaf=true;requestAnimationFrame(scrollFrame);}
+}
+window.addEventListener('scroll',requestScrollFrame,{ passive: true });
+window.addEventListener('resize',requestScrollFrame,{ passive: true });
+/* Step activation: the step nearest the viewport centre is the lit one */
+if('IntersectionObserver' in window){
+ var stepIO=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){en.target.classList.toggle('p435-step-active',en.isIntersecting);});
+ },{rootMargin:'-42% 0px -42% 0px',threshold:0});
+ root.querySelectorAll('.p435-step').forEach(function(st){stepIO.observe(st);});
+}
+requestScrollFrame();
+/* Reveals */
+var reveals=root.querySelectorAll('.p435-reveal');
+if('IntersectionObserver' in window&&!reduced){
+ root.classList.add('p435-anim');
+ var io=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+ },{threshold:0.08});
+ reveals.forEach(function(el){io.observe(el)});
+} else {
+ reveals.forEach(function(el){el.classList.add('in');});
+}
+applyMachine(0,true);renderEvents(0);
+})();
+</script>
+
+<div class="view" id="about">
+<div class="copy about-wrap">
+<p class="home-kicker">About</p>
+<h1>The PM&amp;R Files</h1>
+<p class="dek">Physical Medicine and Rehabilitation (PM&amp;R), explained by the numbers.</p>
+<p>The PM&amp;R Files is built by a PM&amp;R resident physician, as a side project and for fun: learning code and animation, and researching what he likes. The essays take rehabilitation research out from behind the jargon and the paywalls, show the actual numbers, and say plainly what the evidence cannot prove.</p>
+<h2>About this site</h2>
+<p>The PM&amp;R Files is a collection of data-driven visual essays about bodies in motion. Every number is traceable to a published source. Educational content only, not medical advice.</p>
+<h2>Card photo credits</h2><p>The newest essay cards use real photographs: <a href="https://commons.wikimedia.org/wiki/File:Pacific_Partnership_2024-1-_Physical_Therapy_at_BNH_(8187679).jpg" target="_blank" rel="noopener">leg stretch during physical therapy</a>, U.S. Navy photo by Gavin Arnoldhendershot (public domain); <a href="https://commons.wikimedia.org/wiki/File:Tomas_Petrecek_-_Running_-_Jeseniky_mountains_2017.jpg" target="_blank" rel="noopener">mountain run in the Jeseníky range</a> by Romanterik (CC BY-SA 4.0); <a href="https://commons.wikimedia.org/wiki/File:2014_Invictus_Games_140911-N-PW494-556.jpg" target="_blank" rel="noopener">sprint start at the 2014 Invictus Games</a>, U.S. Navy photo by Joshua Sheppard (public domain); <a href="https://commons.wikimedia.org/wiki/File:Nerve_conduction_velocity.jpg" target="_blank" rel="noopener">nerve conduction study</a> via Wikimedia Commons (CC BY-SA 3.0); <a href="https://commons.wikimedia.org/wiki/File:Needle_EMG_of_paravertebral_muscles(2J009).jpg" target="_blank" rel="noopener">needle EMG</a> by Kychot (CC BY-SA 3.0); trabecular bone microscopy by Michael J. F. Blumer, Annals of Anatomy 2021, via Wikimedia Commons (CC BY 4.0); <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8915729/" target="_blank" rel="noopener">wind-up summation raster</a> from Mendell, Frontiers in Pain Research 2022, cropped and duotoned (CC BY 4.0); <a href="https://commons.wikimedia.org/wiki/File:Gray839.png" target="_blank" rel="noopener">autonomic nervous system plate</a> from Gray's Anatomy (public domain).</p> <h2>Contact</h2>
+<p>Found a mistake in an essay? <a href="https://github.com/jonnybyrne/rehab-lab/issues" target="_blank" rel="noopener">Open an issue on GitHub</a>.</p>
+</div>
+<footer class="home-footer"><div class="home-footer-inner"><p><strong>Educational content only, not medical advice.</strong> Talk to your clinician about personal health decisions.</p></div></footer>
+</div>
+<div class="view" id="essay-backpain">
+<div class="p402-pacs" aria-hidden="true"><i class="p402-cn p402-tl"></i><i class="p402-cn p402-tr"></i><i class="p402-cn p402-bl"></i><i class="p402-cn p402-br"></i><span class="p402-pacs-tag">PACS · L-SPINE · T2 SAG</span></div>
+<div class="p402-rad" aria-hidden="true"><svg class="p402-rad-svg" viewBox="0 0 120 70" focusable="false"><rect x="8" y="6" width="32" height="46" rx="2" fill="#0b1220" stroke="#7ee2a8" stroke-width="2"/><line x1="14" y1="16" x2="34" y2="16" stroke="#7ee2a8" stroke-width="1.6"/><line x1="14" y1="24" x2="34" y2="24" stroke="#7ee2a8" stroke-width="1.6" opacity="0.6"/><line x1="14" y1="32" x2="28" y2="32" stroke="#7ee2a8" stroke-width="1.6" opacity="0.35"/><circle class="p402-wheel" cx="14" cy="59" r="5" fill="none" stroke="#e8eef7" stroke-width="2"/><circle class="p402-wheel" cx="34" cy="59" r="5" fill="none" stroke="#e8eef7" stroke-width="2"/><circle cx="74" cy="12" r="8" fill="#e8eef7"/><rect x="66" y="22" width="16" height="24" rx="6" fill="#e8eef7"/><path d="M66,30 L44,34" stroke="#e8eef7" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M68,46 L62,64 M80,46 L86,64" stroke="#e8eef7" stroke-width="5" stroke-linecap="round" fill="none"/></svg></div>
+<header class="hero bp-hero"><div><div class="issue">Essay 01 · Data essay</div><h1>If you had no back pain, what would your <span class="p402-mri-word">MRI</span> say?</h1>
+<p class="byline">By a PM&amp;R resident physician</p>
+<p class="why-line"><strong>Why this essay:</strong> Back pain is the most common thing I see, and the scariest thing patients hear is a radiology report.</p><p class="dek">A scan can describe the spine in remarkable detail. It cannot, by itself, tell you why a person hurts.</p></div><figure class="bp-mri-figure"><div class="bp-mri-frame"><div class="p402-scanlines" aria-hidden="true"></div><img src="data:image/jpeg;base64,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
