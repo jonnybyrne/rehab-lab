@@ -1,0 +1,21 @@
+name: Assemble essays 40-41 index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble index.html from chunks
+        run: |
+          cat chunk-*.html > index.html
+          echo "55b22da26f79be7716191fd716ec1d59  index.html" | md5sum -c -
+      - name: Commit assembled index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Assemble essays 40-41 index from chunks"
+          git push
