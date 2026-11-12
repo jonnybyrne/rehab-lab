@@ -1,4 +1,29 @@
-o the crowd assembles early: a full interference pattern at a force where a healthy muscle would still be idling, every voice small. The bench's myopathy mode reaches its full pattern at about 40 percent of the slider. In chronic axon loss, the opposite: few voices survive, so each must fire far beyond its station, at rates of 25 to 40 hertz, and the ratio doubles or worse while the screen stays strangely empty between giants.</p>
+tton" class="p426-chipbtn" data-p426-voice="reinnervated" aria-pressed="false">Reinnervated · long, tall, polyphasic</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="nascent" aria-pressed="false">Nascent · the first voice back</button>
+</div>
+<div class="p426-ro3">
+<div class="p426-ro"><span class="p426-ro-lab">Duration</span><span class="p426-ro-val" id="p426-r2-dur">11.6 ms</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">Amplitude</span><span class="p426-ro-val" id="p426-r2-amp">800 µV</span></div>
+<div class="p426-ro"><span class="p426-ro-lab">Phases</span><span class="p426-ro-val" id="p426-r2-pha">3</span></div>
+</div>
+<p class="p426-note-line" id="p426-r2-note">Printed ranges: duration 5 to 15 ms, amplitude 100 µV to 2 mV (Daube and Rubin). The captured window is phase locked to the unit's own firing.</p>
+<div class="p426-scope-btns">
+<button type="button" class="p426-sbtn" id="p426-r2-play">Play it live</button>
+<button type="button" class="p426-sbtn p426-hearbtn" id="p426-r2-hear" aria-pressed="false">Hear this voice</button>
+</div>
+</div>
+</div>
+</div>
+<p class="p426-note-line">Each voice is a simulated example, not a diagnostic cutoff. Normal values shift with the muscle sampled, age, the electrode, and how many units are counted.</p>
+</section>
+
+<section class="p426-sec p426-room" id="p426-sec-crowd">
+<div class="p426-roomgrid">
+<div class="p426-prose">
+<p class="p426-ch-label">Room three · The crowd</p>
+<h2 class="p426-h2" tabindex="-1">The crowd</h2>
+<p class="p426-body">One voice offers clues; the pattern across units and muscles is the diagnosis. The crowd is diagnosis by arithmetic. As you contract harder, the nervous system recruits: it fires the first motor unit faster, and at orderly intervals brings in the next. In the classic rule of fives, the second unit joins when the first is firing at about 10 hertz, the third as the rates reach 15, the fourth at 20. Divide the fastest firing rate on screen by the number of units producing it and you get the recruitment ratio. In a healthy muscle, at the moment a new unit joins, that ratio is about 5. It is the cleanest number in this essay, and the bench beside this text lets you break it both ways.</p>
+<p class="p426-body">In myopathy, each unit is weak, so the crowd assembles early: a full interference pattern at a force where a healthy muscle would still be idling, every voice small. The bench's myopathy mode reaches its full pattern at about 40 percent of the slider. In chronic axon loss, the opposite: few voices survive, so each must fire far beyond its station, at rates of 25 to 40 hertz, and the ratio doubles or worse while the screen stays strangely empty between giants.</p>
 <p class="p426-body">Read the interpreter line under the bench the way an electromyographer reads a study: not pattern names first, but two questions. Did the count change, or did the size? The room, the voice, and the crowd answer together.</p>
 </div>
 <div class="p426-rail">
@@ -4536,57 +4561,4 @@ patients.forEach(function(btn){
  btn.addEventListener('click',function(){
   var n=parseInt(btn.getAttribute('data-patient'),10);
   patients.forEach(function(b){b.classList.remove('selected');});
-  btn.classList.add('selected');
-  if(personTitle)personTitle.textContent='Patient '+n+' · Illustrative schedule';
-  renderTimeline(n);
-  if(panel){
-   panel.hidden=false;
-   panel.classList.remove('open');
-   void panel.offsetWidth;
-   panel.classList.add('open');
-   panel.scrollIntoView({behavior:reduced?'auto':'smooth',block:'nearest'});
-  }
- });
-});
-/* Audit and comparison bars: each segment grows and its value counts with the section scroll progress, staggered by row. Counting starts only once the section has been seen, so unseen figures stay printed in full. */
-function collectBars(scrolly){
- if(!scrolly)return [];
- var rows=[];
- scrolly.querySelectorAll('.p432-audit-seg,.p432-mini-seg').forEach(function(seg){
-  var rowEl=seg.closest('.p432-audit-row,.p432-mini-row');
-  var val=rowEl?rowEl.querySelector('[data-count]'):null;
-  rows.push({seg:seg,val:val,target:parseFloat(seg.getAttribute('data-w')||'0'),count:val?parseFloat(val.getAttribute('data-count')):null,dec:val?parseInt(val.getAttribute('data-decimals')||'0',10):0,suffix:val?(val.getAttribute('data-suffix')||''):''});
- });
- return rows;
-}
-var auditBars=collectBars(auditScrolly),compareBars=collectBars(compareScrolly);
-var auditSeen=false,compareSeen=false;
-function applyBars(rows,p){
- rows.forEach(function(r,i){
-  var rp=Math.max(0,Math.min(1,(p*1.3-i*0.07)/0.75));
-  r.seg.style.transform='scaleX('+rp.toFixed(4)+')';
-  if(r.val&&r.count!==null){
-   var v=r.count*rp;
-   r.val.textContent=(r.dec===0?String(Math.round(v)):v.toFixed(r.dec))+r.suffix;
-  }
- });
-}
-/* Scroll choreography engine: scroll position drives the stages.
-   Passive scroll listener, requestAnimationFrame interpolation, values
-   smoothed toward their scroll targets so motion eases and reverses. */
-var sCur={day:0,audit:0,compare:0};
-var sTgt={day:0,audit:0,compare:0};
-var scrollRaf=false;
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function progressOf(el){
- if(!el)return 0;
- var r=el.getBoundingClientRect();
- var vh=window.innerHeight||800;
- var denom=Math.max(1,r.height-vh*0.30);
- return clamp01((vh*0.85-r.top)/denom);
-}
-function smoothTo(cur,target){return reduced?target:cur+(target-cur)*0.16;}
-function measureScroll(){
- sTgt.day=progressOf(dayScrolly);
- sTgt.audit=progressOf(auditScrolly);
- sTgt.compare=progressOf(compareScroll
+  btn.clas
