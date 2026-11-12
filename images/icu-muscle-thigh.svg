@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="Schematic cross-section of a thigh on day 7: the skin outline and femur stay fixed while the muscle field inside has lost 12.5 percent of its area; the dashed outline marks day 1.">
+<rect x="0" y="0" width="720" height="300" fill="#171226"></rect>
+<rect x="0" y="0" width="720" height="300" fill="#9D8CFF" opacity="0.07"></rect>
+<text x="360" y="30" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#E8B34B">MEASURED STATE · DAY 7 · WHOLE COHORT</text>
+<ellipse cx="360" cy="158" rx="252" ry="112" fill="#B99B78"></ellipse>
+<ellipse cx="360" cy="158" rx="234" ry="99" fill="#EFE6D2" opacity="0.92"></ellipse>
+<ellipse cx="360" cy="156" rx="208" ry="84" fill="none" stroke="#F2EFFA" stroke-width="1.6" stroke-dasharray="7 6" opacity="0.65"></ellipse>
+<g transform="translate(360 156) scale(0.9354) translate(-360 -156)">
+<ellipse cx="360" cy="156" rx="208" ry="84" fill="#DE6274"></ellipse>
+<ellipse cx="360" cy="112" rx="118" ry="33" fill="#F6A3AE" opacity="0.9"></ellipse>
+</g>
+<ellipse cx="360" cy="170" rx="34" ry="26" fill="#F4EDDC" stroke="#C4B28E" stroke-width="1.5"></ellipse>
+<g font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9A92B5">
+<text x="120" y="292">DASHED · DAY 1</text>
+<text x="600" y="292" text-anchor="end" fill="#E86A7A">DAY 7 · DOWN 12.5 PERCENT</text>
+</g>
+</svg>

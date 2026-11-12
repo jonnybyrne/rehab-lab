@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" role="img" aria-label="The ward clock: a 24 hour clock face at hour zero, the start of the first day after stroke onset, with amber session arcs around the rim.">
+<rect x="0" y="0" width="720" height="300" fill="#F7ECD2"></rect>
+<rect x="0" y="0" width="720" height="300" fill="#E9A13B" opacity="0.10"></rect>
+<circle cx="212" cy="150" r="118" fill="#1B1B30"></circle>
+<circle cx="212" cy="150" r="106" fill="#FBF3DF"></circle>
+<path d="M129.5 84.6 A100 100 0 0 1 294.5 84.6" fill="none" stroke="#E9A13B" stroke-width="10" stroke-linecap="round" opacity="0.85"></path>
+<g fill="none" stroke="#D98E22" stroke-width="9" stroke-linecap="round" opacity="0.8">
+<path d="M292 96 A100 100 0 0 1 310 138"/><path d="M306 190 A100 100 0 0 1 282 226"/><path d="M232 244 A100 100 0 0 1 188 242"/>
+</g>
+<g stroke="#26264A" stroke-width="2" opacity="0.55">
+<line x1="212" y1="52" x2="212" y2="66"/><line x1="310" y1="150" x2="296" y2="150"/>
+<line x1="212" y1="248" x2="212" y2="234"/><line x1="114" y1="150" x2="128" y2="150"/>
+</g>
+<g fill="#26264A" font-family="Verdana, sans-serif" font-size="15" font-weight="700">
+<text x="212" y="90" text-anchor="middle">0</text>
+<text x="272" y="156" text-anchor="middle">6</text>
+<text x="212" y="224" text-anchor="middle">12</text>
+<text x="152" y="156" text-anchor="middle">18</text>
+</g>
+<text x="212" y="122" text-anchor="middle" fill="#8A6D1F" font-family="Verdana, sans-serif" font-size="9" letter-spacing="2">HOURS SINCE ONSET</text>
+<line x1="212" y1="164" x2="212" y2="76" stroke="#C0452F" stroke-width="5" stroke-linecap="round"/>
+<circle cx="212" cy="76" r="7" fill="#C0452F"/>
+<circle cx="212" cy="150" r="11" fill="#26264A"/>
+<circle cx="212" cy="150" r="4.5" fill="#E9A13B"/>
+<g font-family="Verdana, sans-serif" fill="#26264A">
+<text x="392" y="118" font-size="13" letter-spacing="2">THE WARD CLOCK</text>
+<text x="392" y="148" font-size="12" letter-spacing="1" fill="#5D564A">ONE TRIAL · 2,104 PATIENTS</text>
+<text x="392" y="174" font-size="12" letter-spacing="1" fill="#5D564A">EARLIER · MORE · HIGHER TOTAL DOSE</text>
+<text x="392" y="216" font-size="12" letter-spacing="1" fill="#C0452F">THE RESULT RAN BACKWARDS</text>
+</g>
+</svg>
