@@ -1,4 +1,122 @@
-sList.add('selected');
+
+ return 'rgba(217,142,27,0.22)';
+}
+var displayTime=START,lastQ=-1,dayManual=false,playing=false,timer=null;
+function renderDay(){
+ var t=displayTime;
+ var q=Math.max(START,Math.min(END,Math.round(t/10)*10));
+ /* Positions, daylight, and the day rail move every frame with the float time. */
+ patients.forEach(function(btn){
+  var n=parseInt(btn.getAttribute('data-patient'),10);
+  var pos=posAt(n,t);
+  btn.style.left=pos[0].toFixed(2)+'%';
+  btn.style.top=pos[1].toFixed(2)+'%';
+ });
+ if(sunwash)sunwash.style.background=daylightAt(t);
+ var dp=(t-START)/(END-START);
+ if(dayfill)dayfill.style.width=(dp*100).toFixed(2)+'%';
+ if(daydot)daydot.style.left=(dp*100).toFixed(2)+'%';
+ if(q===lastQ)return;
+ lastQ=q;
+ var label=fmt(q);
+ if(clockEl)clockEl.textContent=label;
+ if(scrubVal)scrubVal.textContent=label;
+ if(scrub&&document.activeElement!==scrub)scrub.value=String(q);
+ var gymCount=0,bedCount=0,chairCount=0;
+ patients.forEach(function(btn){
+  var n=parseInt(btn.getAttribute('data-patient'),10);
+  var loc=locAt(n,q);
+  if(loc==='gym')gymCount++;else if(loc==='chair')chairCount++;else bedCount++;
+  btn.setAttribute('data-loc',loc);
+  btn.classList.toggle('in-gym',loc==='gym');
+  btn.classList.toggle('in-chair',loc==='chair');
+  btn.setAttribute('aria-label','Patient '+n+', '+wordLoc(loc)+'. Click to explore this patient mapped day.');
+ });
+ var gymActive=(q>=540&&q<660)||(q>=780&&q<900);
+ if(gym){
+  gym.classList.toggle('lit',gymActive);
+  gym.setAttribute('data-state',gymActive?'active':'idle');
+ }
+ if(dining){
+  var lunch=(q>=720&&q<780);
+  dining.classList.toggle('lit',lunch);
+  dining.setAttribute('data-state',lunch?'active':'idle');
+ }
+ if(narrationEl){
+  narrationEl.textContent=label+'. '+gymCount+' patients are in the gym. '+bedCount+' are in bed. '+chairCount+' are sitting out of bed.';
+ }
+}
+function setManualTime(t){
+ dayManual=true;
+ displayTime=Math.max(START,Math.min(END,t));
+ lastQ=-1;
+ if(scrub)scrub.value=String(Math.round(displayTime/10)*10);
+ renderDay();
+}
+function stopPlay(){
+ playing=false;
+ if(timer){clearInterval(timer);timer=null;}
+ if(playBtn){playBtn.textContent='Play the day';playBtn.setAttribute('aria-pressed','false');}
+}
+if(playBtn){playBtn.addEventListener('click',function(){
+ if(playing){stopPlay();return;}
+ if(displayTime>=END-1)displayTime=START;
+ dayManual=true;
+ playing=true;
+ playBtn.textContent='Pause the day';
+ playBtn.setAttribute('aria-pressed','true');
+ if(reduced){setManualTime(Math.min(END,displayTime+60));stopPlay();return;}
+ timer=setInterval(function(){
+  if(displayTime>=END){stopPlay();return;}
+  displayTime=Math.min(END,displayTime+5);
+  renderDay();
+  if(displayTime>=END)stopPlay();
+ },90);
+});}
+if(scrub){scrub.addEventListener('input',function(){stopPlay();setManualTime(parseInt(scrub.value,10));});}
+/* Pause idle motion off screen. */
+if(planwrap&&'IntersectionObserver' in window){
+ var pio=new IntersectionObserver(function(entries){
+  entries.forEach(function(en){planwrap.classList.toggle('offscreen',!en.isIntersecting);});
+ },{threshold:0.05});
+ pio.observe(planwrap);
+}
+/* Scene 3: click a person. Kept as a click beat inside the scroll flow, because choosing a person is the reader act this scene is about. */
+var panel=root.querySelector('#p432-person-panel');
+var personTitle=root.querySelector('#p432-person-title');
+var timeline=root.querySelector('#p432-timeline');
+function renderTimeline(n){
+ if(!timeline)return;
+ timeline.innerHTML='';
+ var points=[START];
+ (ITIN[n]||[]).forEach(function(s){points.push(s[0],s[1]);});
+ points.push(END);
+ points=points.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
+ var segs=[];
+ for(var i=0;i<points.length-1;i++){
+  var a=points[i],b=points[i+1],loc=locAt(n,a+1);
+  var last=segs[segs.length-1];
+  if(last&&last[2]===loc&&last[1]===a){last[1]=b;}
+  else{segs.push([a,b,loc]);}
+ }
+ if(!segs.length)segs=[[START,END,'bed']];
+ segs.forEach(function(s){
+  var d=document.createElement('span');
+  d.className='p432-tl-seg p432-tl-'+s[2];
+  d.style.left=((s[0]-START)/(END-START)*100)+'%';
+  d.style.width=((s[1]-s[0])/(END-START)*100)+'%';
+  var lab=document.createElement('span');
+  lab.className='p432-tl-lab';
+  lab.textContent=s[2]==='gym'?'Gym':(s[2]==='chair'?'Chair':'Bed');
+  if((s[1]-s[0])>=60)d.appendChild(lab);
+  timeline.appendChild(d);
+ });
+}
+patients.forEach(function(btn){
+ btn.addEventListener('click',function(){
+  var n=parseInt(btn.getAttribute('data-patient'),10);
+  patients.forEach(function(b){b.classList.remove('selected');});
+  btn.classList.add('selected');
   if(personTitle)personTitle.textContent='Patient '+n+' · Illustrative schedule';
   renderTimeline(n);
   if(panel){
@@ -2748,872 +2866,586 @@ window.__p441d = { panels: panels.length };
 })();
 </script>
 </div>
-<div class="view" id="only-one-lung">
-<div class="p438-wrap">
+<div class="view" id="second-wind">
+<div class="p445r" id="p445r-root">
+<div id="p445r-ribbon"><span class="r-title">The Second Wind · One run</span><span class="r-clock" id="p445r-clock">MIN 0 · THE START</span><span class="r-prog" id="p445r-prog">0% of the run</span></div>
 
-<header class="p438-hero">
-<p class="p438-kicker">The PM&amp;R Files · Essay 37 · What if, the medical wave</p>
-<h1 class="p438-title">What If You Had Only One Lung?</h1>
-<p class="p438-answer">Take away one lung and the arithmetic looks brutal: half the bellows, half the breathing. The record says otherwise. Six months after a whole lung was removed, group averages had fallen a third for lung volume, a fifth for maximal oxygen uptake, and breathlessness was the most reported reason for stopping. These were surgical patients around sixty, counted only if they survived and returned for testing.</p>
-<div class="p438-byline-row">
-<span class="p438-byline">By a PM&amp;R resident physician</span>
+  <section class="scene" data-scene="0" data-clock="MIN 0 · THE START">
+    <svg class="scene-art" data-art="scene-opening" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a dawn road at first light, seen from just behind and above a lone runner at the start line. The sky is still dark; a first glow sits on the horizon." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s0-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0B1220"/><stop offset=".6" stop-color="#1D2C4E"/><stop offset=".88" stop-color="#4A3550"/><stop offset="1" stop-color="#7A4A3C"/></linearGradient>
+<linearGradient id="s0-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s0-sky)"/><ellipse cx="720" cy="402" rx="430" ry="36" fill="#E9A13B" opacity=".28"/><path d="M0 400 L300 356 L560 400 Z" fill="#141D33"/><path d="M1440 400 L1120 348 L880 400 Z" fill="#111A2E"/><rect x="0" y="398" width="1440" height="222" fill="#171E30"/><polygon points="240,620 660,400 780,400 1200,620" fill="#232B42"/><polygon points="700,470 740,470 744,492 696,492" fill="#C3CDE6" opacity=".5"/><polygon points="694,528 746,528 752,560 688,560" fill="#C3CDE6" opacity=".5"/><rect x="596" y="540" width="248" height="7" fill="#F7F1E2" opacity=".85"/><g stroke-linecap="round" fill="none"><path d="M706 452 L700 500" stroke="#2E9E7B" stroke-width="17"/><path d="M700 500 L682 548" stroke="#31456E" stroke-width="14"/><path d="M682 548 L684 584" stroke="url(#s0-skin)" stroke-width="12"/><path d="M700 500 L726 546" stroke="#31456E" stroke-width="14"/><path d="M726 546 L730 584" stroke="url(#s0-skin)" stroke-width="12"/><path d="M710 460 L690 492" stroke="url(#s0-skin)" stroke-width="11"/><path d="M714 460 L736 490" stroke="url(#s0-skin)" stroke-width="11"/></g><circle cx="712" cy="434" r="19" fill="url(#s0-skin)"/><path d="M693 428 Q712 404 733 426 L730 436 Q712 420 696 438 Z" fill="#0B1220"/><ellipse cx="706" cy="592" rx="90" ry="9" fill="#000000" opacity=".35"/><rect x="452" y="470" width="7" height="86" fill="#0B1220"/><rect x="420" y="440" width="104" height="38" rx="4" fill="#F7F1E2"/><text x="472" y="465" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="17" fill="#1D2438">START</text></svg>
+    <div class="scene-inner">
+      <p class="kicker">Essay 45 · Muscle Metabolism · The Body · The PM&amp;R Files</p>
+      <h1>The Second Wind</h1>
+      <p class="lede">Her muscles carry a full tank of sugar they cannot spend. The rescue arrives by road.</p>
+      <p class="howto">One run, read at road pace. Scenes drawn; numbers measured.</p>
+      <div class="byline"><span>By a PM&amp;R resident physician</span><span class="stamp">The Run</span><span>One enzyme missing, one wind measured since 1961</span></div>
+    </div>
+  </section>
 
-</div>
-<p class="p438-body">The same people, measured before and after an operation: of 80 consecutive patients, 68 completed testing at 3 and 6 months, 18 after losing a whole lung, 50 after mixed partial resections.</p>
-<p class="p438-cue">Scroll · Open the bellows, run the gauges, follow the long arc</p>
-</header>
+  <section class="scene" data-scene="1" data-clock="MIN 3 · THE STOP">
+    <svg class="scene-art" data-art="scene-stop" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the runner stopped and bent double beside a minute three sign on the dark road. She is a drawn composite, not a patient." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131F3A"/><stop offset=".62" stop-color="#5A4038"/><stop offset="1" stop-color="#C97E3F"/></linearGradient>
+<linearGradient id="s1-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s1-sky)"/><circle cx="1150" cy="330" r="42" fill="#F6C667" opacity=".9"/><path d="M0 400 L340 360 L620 400 Z" fill="#1A2338"/><path d="M1440 400 L1080 356 L860 400 Z" fill="#16203A"/><rect x="0" y="398" width="1440" height="222" fill="#1B2338"/><polygon points="240,620 660,400 780,400 1200,620" fill="#28324E"/><polygon points="700,470 740,470 744,492 696,492" fill="#C3CDE6" opacity=".45"/><polygon points="694,528 746,528 752,560 688,560" fill="#C3CDE6" opacity=".45"/><g stroke-linecap="round" fill="none"><path d="M668 408 L724 452" stroke="#2E9E7B" stroke-width="30"/><path d="M724 452 L700 540" stroke="#31456E" stroke-width="22"/><path d="M700 540 L706 592" stroke="url(#s1-skin)" stroke-width="18"/><path d="M724 452 L772 536" stroke="#31456E" stroke-width="22"/><path d="M772 536 L776 592" stroke="url(#s1-skin)" stroke-width="18"/><path d="M700 436 L742 512" stroke="url(#s1-skin)" stroke-width="16"/><path d="M716 444 L772 500" stroke="url(#s1-skin)" stroke-width="16"/></g><circle cx="756" cy="428" r="30" fill="url(#s1-skin)"/><path d="M728 420 Q756 388 788 418 L784 434 Q756 410 732 436 Z" fill="#131F3A"/><ellipse cx="724" cy="598" rx="150" ry="10" fill="#000000" opacity=".35"/><rect x="1028" y="392" width="9" height="150" fill="#131F3A"/><rect x="958" y="330" width="168" height="66" rx="5" fill="#F7F1E2"/><text x="1042" y="372" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="26" fill="#1D2438">MIN 3</text></svg>
+    <div class="scene-inner">
+      <p class="kicker">Minute 3 · The stop</p>
+      <h2>Stopped at minute three</h2>
+      <p class="prose p445r-counted">She is a drawn composite, not a patient: a runner built from what the studies describe. Every run of her life starts the same way. The first minutes feel easy, almost ordinary. Then, right on schedule, her legs begin to burn and tighten, and by minute three she is stopped at the side of the road, again.</p>
+      <p class="prose p445r-counted">She has been called lazy in schoolyards and slow in gyms. Her muscles were never lazy. They were locked out of their own pantry.</p>
+      <p class="reg">Drawn composite · Not a patient · Her pattern is the studies' pattern</p>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-bellows-sec">
-<p class="p438-ch-label">Scene one · The operation</p>
-<h2 class="p438-h2">Two chambers under one rib cage</h2>
-<p class="p438-body">A pneumonectomy removes an entire lung. The comparison operations removed part of one lung: mostly one lobe, plus smaller, extended, and two lobe resections, mainly for lung cancer, around age sixty.</p>
-<p class="p438-body">Spirometry measures air forced out, and how much leaves in the first second; plethysmography, how much air the lungs can hold. A symptom limited cycle test measures peak oxygen use and what patients report stopped them.</p>
-<p class="p438-body">The teaching bellows: two chambers, one windpipe, a schematic, not a scan. Gauges come next.</p>
-<div class="p438-stagebox">
-<div class="p438-stage-head"><span>The Bellows · Two Chambers, One Windpipe</span><span>Physiology lab drawing · Schematic</span></div>
-<div class="p438-svgwrap">
-<svg class="p438-svg" viewBox="0 0 720 300" role="img" aria-label="Schematic drawing of the two lungs as ribbed glass bellows chambers under a windpipe. The left chamber is divided into two lobes, the right into three.">
-<rect x="0" y="0" width="720" height="300" fill="#10281F"></rect>
-<defs>
-<linearGradient id="p438-glass1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26543F"/><stop offset=".45" stop-color="#173B2D"/><stop offset="1" stop-color="#0D231A"/></linearGradient>
-<linearGradient id="p438-brass1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2CE6B"/><stop offset=".55" stop-color="#D9A62E"/><stop offset="1" stop-color="#96700F"/></linearGradient>
-</defs>
-<ellipse cx="360" cy="130" rx="336" ry="120" fill="#A8D8CE" opacity="0.05"></ellipse>
-<g stroke="#F0E7CE" stroke-width="1" opacity="0.05"><line x1="180" y1="6" x2="180" y2="294"></line><line x1="540" y1="6" x2="540" y2="294"></line><line x1="6" y1="228" x2="714" y2="228"></line></g>
-<g stroke="#9DB4A4" stroke-width="1.6" opacity="0.8"><line x1="351" y1="26" x2="369" y2="26"></line><line x1="351" y1="38" x2="369" y2="38"></line><line x1="351" y1="50" x2="369" y2="50"></line></g>
-<path d="M 360 14 L 360 62" stroke="#F0E7CE" stroke-width="7" fill="none"></path>
-<path d="M 360 62 Q 300 74 252 92 M 360 62 Q 420 74 468 92" stroke="#F0E7CE" stroke-width="5" fill="none"></path>
-<g>
-<rect x="90" y="72" width="240" height="142" rx="34" fill="url(#p438-glass1)" stroke="#F0E7CE" stroke-width="2"></rect>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.2" opacity="0.7"><path d="M 100 104 Q 210 92 320 104"></path><path d="M 98 140 Q 210 128 322 140"></path><path d="M 100 176 Q 210 164 320 176"></path></g>
-<line x1="96" y1="143" x2="324" y2="143" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
-<text x="210" y="196" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">LEFT LUNG · 2 LOBES</text>
-</g>
-<g>
-<rect x="390" y="72" width="240" height="142" rx="34" fill="url(#p438-glass1)" stroke="#F0E7CE" stroke-width="2"></rect>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.2" opacity="0.7"><path d="M 400 104 Q 510 92 620 104"></path><path d="M 398 140 Q 510 128 622 140"></path><path d="M 400 176 Q 510 164 620 176"></path></g>
-<line x1="396" y1="119" x2="624" y2="119" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
-<line x1="396" y1="167" x2="624" y2="167" stroke="#D9A62E" stroke-width="1.6" stroke-dasharray="5 5"></line>
-<text x="510" y="196" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">RIGHT LUNG · 3 LOBES</text>
-</g>
-<g>
-<polygon points="126,80 172,80 138,206 106,206" fill="#F0E7CE" opacity="0.055"></polygon>
-<polygon points="426,80 472,80 438,206 406,206" fill="#F0E7CE" opacity="0.055"></polygon>
-<g fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.20"><path d="M 152 78 Q 146 143 152 208"></path><path d="M 268 78 Q 274 143 268 208"></path><path d="M 452 78 Q 446 143 452 208"></path><path d="M 568 78 Q 574 143 568 208"></path></g>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.1" opacity="0.55"><path d="M 102 88 Q 210 76 318 88"></path><path d="M 102 192 Q 210 180 318 192"></path><path d="M 402 88 Q 510 76 618 88"></path><path d="M 402 192 Q 510 180 618 192"></path></g>
-<rect x="94" y="76" width="232" height="134" rx="30" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
-<rect x="394" y="76" width="232" height="134" rx="30" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
-<rect x="168" y="64" width="84" height="13" rx="6.5" fill="url(#p438-brass1)"></rect>
-<rect x="468" y="64" width="84" height="13" rx="6.5" fill="url(#p438-brass1)"></rect>
-<rect x="168" y="209" width="84" height="11" rx="5.5" fill="url(#p438-brass1)" opacity="0.9"></rect>
-<rect x="468" y="209" width="84" height="11" rx="5.5" fill="url(#p438-brass1)" opacity="0.9"></rect>
-<g fill="url(#p438-brass1)" stroke="#0C1F19" stroke-width="0.8"><circle cx="110" cy="92" r="3.2"></circle><circle cx="310" cy="92" r="3.2"></circle><circle cx="110" cy="194" r="3.2"></circle><circle cx="310" cy="194" r="3.2"></circle><circle cx="410" cy="92" r="3.2"></circle><circle cx="610" cy="92" r="3.2"></circle><circle cx="410" cy="194" r="3.2"></circle><circle cx="610" cy="194" r="3.2"></circle></g>
-<ellipse cx="210" cy="226" rx="128" ry="7" fill="#000000" opacity="0.28"></ellipse>
-<ellipse cx="510" cy="226" rx="128" ry="7" fill="#000000" opacity="0.28"></ellipse>
-</g>
-<path d="M 70 238 Q 360 262 650 238" fill="none" stroke="#F0E7CE" stroke-width="1.6" opacity="0.65"></path>
-<path d="M 84 246 Q 360 268 636 246" fill="none" stroke="#9DB4A4" stroke-width="1" opacity="0.35"></path>
-<text x="360" y="272" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9DB4A4" text-anchor="middle">THE DIAPHRAGM BELOW · DRAWN FOR THIS ESSAY · NOT TO SCALE</text>
-<text x="36" y="40" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#9DB4A4">A TEACHING BELLOWS · SCHEMATIC</text>
-</svg>
-</div>
-<div class="p438-beats">
-<div class="p438-beat"><span class="p438-beat-num">68 of 80</span><span class="p438-beat-lab">consecutive patients completed testing before surgery and at 3 and 6 months</span></div>
-<div class="p438-beat"><span class="p438-beat-num">18</span><span class="p438-beat-lab">patients had a whole lung removed</span></div>
-<div class="p438-beat"><span class="p438-beat-num">50</span><span class="p438-beat-lab">patients had mixed partial resections, mostly one lobe</span></div>
-</div>
-<span class="p438-viz-note">Schematic drawing of the two lungs as bellows chambers, drawn for this essay. The lobe counts are anatomy. The group sizes are from Bolliger et al. 1996; the measured results are revealed on the gauge board in the next scene, and detailed in the Sources drawer.</span>
-</div>
-</section>
+  <section class="scene" data-scene="2" data-clock="MIN 3 · THE LOCK">
+    <svg class="scene-art" data-art="scene-lock" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the road narrows in near darkness; at the roadside a magnified view of the runner's calf glows red where the contracture locks." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s2-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0A101E"/><stop offset=".7" stop-color="#1A2440"/><stop offset="1" stop-color="#3E3448"/></linearGradient>
+<linearGradient id="s2-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+<radialGradient id="s2-calf" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E86A4A"/><stop offset="1" stop-color="#C0452F" stop-opacity=".12"/></radialGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s2-sky)"/><path d="M0 400 L420 366 L700 400 Z" fill="#10182C"/><path d="M1440 400 L980 362 L760 400 Z" fill="#0D1526"/><rect x="0" y="398" width="1440" height="222" fill="#131B2E"/><polygon points="430,620 668,400 772,400 1010,620" fill="#1F2942"/><polygon points="706,472 734,472 737,492 703,492" fill="#C3CDE6" opacity=".35"/><polygon points="700,530 740,530 745,560 695,560" fill="#C3CDE6" opacity=".35"/><circle cx="1130" cy="428" r="128" fill="#EFE6D2"/><circle cx="1130" cy="428" r="128" fill="none" stroke="#F7F1E2" stroke-width="5"/><rect x="1096" y="318" width="68" height="118" rx="30" fill="url(#s2-skin)"/><ellipse cx="1130" cy="428" rx="52" ry="62" fill="url(#s2-calf)"/><g stroke="#C0452F" stroke-width="5" stroke-linecap="round"><line x1="1196" y1="392" x2="1226" y2="378"/><line x1="1204" y1="428" x2="1238" y2="428"/><line x1="1196" y1="464" x2="1226" y2="478"/></g><text x="1130" y="592" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" fill="#F2D3C2">THE CALF, LOCKED HARD</text></svg>
+    <div class="scene-inner">
+      <p class="kicker coral">Minute 3 · The lock</p>
+      <h2>A lock, not a cramp</h2>
+      <p class="prose p445r-counted">What stops her is not ordinary tiredness, and it is not a stitch. The working muscles are running out of spendable energy in real time, and they answer with pain and a hard, board-like tightness called a contracture. It feels like a cramp, but it is the muscle locking, not just complaining.</p>
+      <p class="cap">A McArdle contracture is a hard, silent contraction, not an ordinary cramp; it is one of the disease's signature signs (GeneReviews).</p>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-gauges-sec">
-<p class="p438-ch-label">Scene two · The gauge board</p>
-<h2 class="p438-h2">The gauges refuse to halve</h2>
-<p class="p438-body">Four gauges, group averages indexed to the preoperative group mean, baseline 100: forced vital capacity, air forced out in one full breath; FEV1, how much leaves in its first second; total lung capacity, how much air the lungs can hold; maximal oxygen uptake, oxygen used per minute at hardest effort.</p>
-<p class="p438-body">Anatomy, test performance, and symptoms are three different questions; their gap is not a direct measure of compensation.</p>
-<div class="p438-scrolly" id="p438-gauges-scrolly" data-scrolly="gauges">
-<div class="p438-stagebox p438-stage-sticky" id="p438-gauges-stage" data-progress="0">
-<div class="p438-stage-head"><span>The Gauge Board · Group Averages, Preoperative Mean = 100</span><span id="p438-state-tag">MEASURED · PREOPERATIVE GROUP BASELINE</span></div>
-<div class="p438-presets">
-<span class="p438-presets-lab">The operation</span>
-<button type="button" class="p438-preset p438-preset-on" data-set="pneum" aria-pressed="true">Whole lung</button>
-<button type="button" class="p438-preset" data-set="lob" aria-pressed="false">Partial resection</button>
-<span class="p438-lamp-note" id="p438-dataset-label">Whole lung removed · 18 patients</span>
-</div>
-<div class="p438-svgwrap">
-<svg class="p438-svg" viewBox="0 0 720 430" role="img" aria-label="A gauge board. Two bellows chambers sit above four horizontal gauges: forced vital capacity, FEV1, total lung capacity, and maximal oxygen uptake, each reading as a group average indexed to that group's preoperative mean, baseline 100. Scrolling runs the states: before surgery, the ghosted hypothetical, the measured volumes at six months, and the measured oxygen at six months.">
-<rect x="0" y="0" width="720" height="430" fill="#10281F"></rect>
-<defs>
-<linearGradient id="p438-glass2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26543F"/><stop offset=".5" stop-color="#173B2D"/><stop offset="1" stop-color="#0D231A"/></linearGradient>
-<linearGradient id="p438-brass2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2CE6B"/><stop offset=".55" stop-color="#D9A62E"/><stop offset="1" stop-color="#96700F"/></linearGradient>
-</defs>
-<ellipse cx="360" cy="86" rx="330" ry="86" fill="#A8D8CE" opacity="0.05"></ellipse>
-<g stroke="#F0E7CE" stroke-width="1" opacity="0.045"><line x1="60" y1="140" x2="660" y2="140"></line><line x1="60" y1="392" x2="660" y2="392"></line></g>
-<path d="M 360 8 L 360 34" stroke="#F0E7CE" stroke-width="5"></path>
-<path d="M 360 34 Q 306 42 262 52 M 360 34 Q 414 42 458 52" stroke="#F0E7CE" stroke-width="4" fill="none"></path>
-<g class="p438-breathe">
-<rect x="90" y="48" width="240" height="76" rx="26" fill="url(#p438-glass2)" stroke="#F0E7CE" stroke-width="1.8"></rect>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.1" opacity="0.7"><path d="M 100 74 Q 210 64 320 74"></path><path d="M 100 98 Q 210 88 320 98"></path></g>
-<line x1="96" y1="86" x2="324" y2="86" stroke="#D9A62E" stroke-width="1.3" stroke-dasharray="4 4"></line>
-<text x="210" y="112" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">LEFT · 2 LOBES</text>
-</g>
-<g id="p438-chamber-right">
-<g class="p438-breathe-r">
-<rect x="390" y="48" width="240" height="76" rx="26" fill="url(#p438-glass2)" stroke="#F0E7CE" stroke-width="1.8"></rect>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.1" opacity="0.7"><path d="M 400 74 Q 510 64 620 74"></path><path d="M 400 98 Q 510 88 620 98"></path></g>
-<line x1="396" y1="73" x2="624" y2="73" stroke="#D9A62E" stroke-width="1.3" stroke-dasharray="4 4"></line>
-<line x1="396" y1="99" x2="624" y2="99" stroke="#D9A62E" stroke-width="1.3" stroke-dasharray="4 4"></line>
-<text x="510" y="112" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2" fill="#F0E7CE" text-anchor="middle">RIGHT · 3 LOBES</text>
-</g>
-</g>
-<g>
-<polygon points="118,54 152,54 128,118 104,118" fill="#F0E7CE" opacity="0.055"></polygon>
-<polygon points="418,54 452,54 428,118 404,118" fill="#F0E7CE" opacity="0.055"></polygon>
-<rect x="94" y="52" width="232" height="68" rx="22" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
-<rect x="394" y="52" width="232" height="68" rx="22" fill="none" stroke="#A8D8CE" stroke-width="1" opacity="0.22"></rect>
-<rect x="176" y="41" width="68" height="11" rx="5.5" fill="url(#p438-brass2)"></rect>
-<rect x="476" y="41" width="68" height="11" rx="5.5" fill="url(#p438-brass2)"></rect>
-<g fill="url(#p438-brass2)" stroke="#0C1F19" stroke-width="0.7"><circle cx="106" cy="62" r="2.8"></circle><circle cx="314" cy="62" r="2.8"></circle><circle cx="406" cy="62" r="2.8"></circle><circle cx="614" cy="62" r="2.8"></circle></g>
-</g>
-<g id="p438-lobe-shade" opacity="0">
-<rect x="390" y="48" width="240" height="26" rx="13" fill="#D9A62E" opacity="0.4"></rect>
-<rect x="392" y="50" width="236" height="22" rx="11" fill="none" stroke="#F2CE6B" stroke-width="1.2" stroke-dasharray="5 4"></rect>
-<text x="510" y="40" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="2" fill="#D9A62E" text-anchor="middle">ONE LOBE, AS DRAWN</text>
-</g>
-<g id="p438-stopper" opacity="0">
-<line x1="404" y1="56" x2="616" y2="116" stroke="#D9A62E" stroke-width="4" stroke-linecap="round"></line>
-<line x1="616" y1="56" x2="404" y2="116" stroke="#D9A62E" stroke-width="4" stroke-linecap="round"></line>
-<circle cx="510" cy="86" r="16" fill="#10281F" stroke="url(#p438-brass2)" stroke-width="3"></circle>
-<circle cx="510" cy="86" r="4.5" fill="url(#p438-brass2)"></circle>
-<rect x="468" y="26" width="84" height="16" rx="6" fill="#D9A62E"></rect>
-<text x="510" y="38" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="1" fill="#0C1F19" text-anchor="middle">STOPPER</text>
-</g>
-<g stroke="#9DB4A4" stroke-width="1" opacity="0.4"><line x1="287.5" y1="168" x2="287.5" y2="382"></line><line x1="405" y1="168" x2="405" y2="382"></line><line x1="522.5" y1="168" x2="522.5" y2="382"></line></g>
-<line id="p438-ref-line" x1="405" y1="162" x2="405" y2="382" stroke="#D9A62E" stroke-width="1.8" stroke-dasharray="7 5"></line>
-<text id="p438-ref-label" x="405" y="154" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.5" fill="#D9A62E" text-anchor="middle">HALF · THE GUESS LINE</text>
-<text id="p438-ghost-tag" x="360" y="172" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#D9A62E" text-anchor="middle" opacity="0">HYPOTHETICAL · NO MEASUREMENTS</text>
-<text id="p438-vo2-next" x="640" y="340" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.5" fill="#A8D8CE" text-anchor="end" opacity="0">OXYGEN REVEALED NEXT</text>
-<g font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.4" fill="#F0E7CE">
-<text x="20" y="201">FVC · VITAL CAPACITY</text>
-<text x="20" y="255">FEV1 · ONE SECOND</text>
-<text x="20" y="309">TLC · TOTAL CAPACITY</text>
-<text x="20" y="363" fill="#A8D8CE">VO2MAX · OXYGEN</text>
-</g>
-<g>
-<rect x="170" y="183" width="470" height="26" fill="#0C1F19" stroke="rgba(240,231,206,.30)"></rect>
-<rect id="p438-bar-fvc" x="170" y="183" width="470" height="26" fill="#F0E7CE"></rect>
-<rect x="170" y="237" width="470" height="26" fill="#0C1F19" stroke="rgba(240,231,206,.30)"></rect>
-<rect id="p438-bar-fev1" x="170" y="237" width="470" height="26" fill="#F0E7CE"></rect>
-<rect x="170" y="291" width="470" height="26" fill="#0C1F19" stroke="rgba(240,231,206,.30)"></rect>
-<rect id="p438-bar-tlc" x="170" y="291" width="470" height="26" fill="#F0E7CE"></rect>
-<rect x="170" y="345" width="470" height="26" fill="#0C1F19" stroke="rgba(240,231,206,.30)"></rect>
-<rect id="p438-bar-vo2" x="170" y="345" width="470" height="26" fill="#A8D8CE"></rect>
-</g>
-<g fill="url(#p438-brass2)"><rect x="165" y="180" width="5" height="32" rx="2"></rect><rect x="165" y="234" width="5" height="32" rx="2"></rect><rect x="165" y="288" width="5" height="32" rx="2"></rect><rect x="165" y="342" width="5" height="32" rx="2"></rect><rect x="640" y="180" width="9" height="32" rx="2"></rect><rect x="640" y="234" width="9" height="32" rx="2"></rect><rect x="640" y="288" width="9" height="32" rx="2"></rect><rect x="640" y="342" width="9" height="32" rx="2"></rect></g>
-<g fill="#F0E7CE" opacity="0.07"><rect x="170" y="186" width="470" height="7"></rect><rect x="170" y="240" width="470" height="7"></rect><rect x="170" y="294" width="470" height="7"></rect><rect x="170" y="348" width="470" height="7"></rect></g>
-<g font-family="IBM Plex Mono, monospace" font-size="17" font-weight="700" fill="#F0E7CE">
-<text id="p438-val-fvc" x="652" y="202">100</text>
-<text id="p438-val-fev1" x="652" y="256">100</text>
-<text id="p438-val-tlc" x="652" y="310">100</text>
-<text id="p438-val-vo2" x="652" y="364" fill="#A8D8CE">100</text>
-</g>
-<g font-family="IBM Plex Mono, monospace" font-size="10" fill="#9DB4A4"><text x="170" y="402">0</text><text x="405" y="402" text-anchor="middle">50</text><text x="640" y="402" text-anchor="end">100</text><text x="405" y="420" text-anchor="middle" letter-spacing="2">GROUP AVERAGE · PREOPERATIVE MEAN = 100 · SIX MONTHS AT FINAL STATE</text></g>
-<rect x="9" y="9" width="702" height="412" fill="none" stroke="#F0E7CE" stroke-width="1" opacity="0.13"></rect>
-<g fill="url(#p438-brass2)" stroke="#0C1F19" stroke-width="0.8"><circle cx="22" cy="22" r="4"></circle><circle cx="698" cy="22" r="4"></circle><circle cx="22" cy="408" r="4"></circle><circle cx="698" cy="408" r="4"></circle></g>
-</svg>
-</div>
-<div class="p438-lamps">
-<span class="p438-lamps-lab">Most reported reason for stopping</span>
-<span class="p438-lamp p438-lamp-on" id="p438-lamp-legs">LEGS</span>
-<span class="p438-lamp" id="p438-lamp-breath">BREATH</span>
-<span class="p438-lamp-note" id="p438-lamp-note">Legs lead · 56 percent before surgery, this group</span>
-</div>
-<div class="p438-scrub-controls">
-<label class="p438-slider-lab" for="p438-bench">Bench control · Run the states by hand</label>
-<div class="p438-slider-row">
-<span class="p438-slider-end">Before</span>
-<input type="range" class="p438-slider" id="p438-bench" min="0" max="3" step="1" value="0" aria-describedby="p438-gauges-readout">
-<span class="p438-slider-end">Six months, measured</span>
-</div>
-</div>
-<div class="p438-meter" aria-hidden="true"><span class="p438-meter-fill" id="p438-gauges-prog"></span></div>
-<p class="p438-phase" id="p438-gauges-phase">Gauges · Before surgery</p>
-<p class="p438-readout" id="p438-gauges-readout" aria-live="polite">Before surgery, whole lung group. All four gauges read 100: group averages indexed to this group's preoperative mean. Leg fatigue was the most reported reason for stopping, in 56 percent of this group.</p>
-<span class="p438-step-alt">Scroll runs the bench, and the bench control is a manual alternative for the same four states. The scroll run follows the 18 patients who lost a whole lung; the operation control reruns the same states for the 50 who had mixed partial resections.</span>
-<span class="p438-viz-note">Gauge board drawn for this essay. Solid bars are measured group averages from Bolliger et al. 1996, indexed to each group's preoperative mean, baseline 100: 100 minus the published group deficit. Before surgery, leg fatigue limited exercise in 53 percent of all 68 patients pooled. The ghosted state is a hypothetical, drawn dashed and tagged inside the plot, because no patient was measured there. The right chamber is the one stoppered in the drawing; the study's published deficits are not split by side, and none is printed here.</span>
-</div>
-<div class="p438-steps-side">
-<div class="p438-step" data-step="gauges-before"><p class="p438-step-kicker">Step 1 of 4 · Before</p><p class="p438-body">Every gauge at 100, the baseline. Before surgery, leg fatigue was the most reported stop reason, 56 percent in the whole lung group, 52 in the partial group.</p></div>
-<div class="p438-step" data-step="gauges-guess"><p class="p438-step-kicker">Step 2 of 4 · The guess</p><p class="p438-body">Imagine one chamber gone: every gauge should fall to 50. Hold that ghost while the measurements land.</p></div>
-<div class="p438-step" data-step="gauges-volumes"><p class="p438-step-kicker">Step 3 of 4 · The volumes land</p><p class="p438-body">Six months on, the bellows gauges land at 64, 66, and 67: a third gone, not a half, and no significant recovery since three months.</p></div>
-<div class="p438-step" data-step="gauges-oxygen"><p class="p438-step-kicker">Step 4 of 4 · The oxygen lands</p><p class="p438-body">The oxygen gauge lands at 80, down a fifth. Breathlessness was the most reported stop reason: 61 percent at three months, 50 at six.</p></div>
-</div>
-</div>
-</section>
+  <section class="scene" data-scene="3" data-clock="THE FUEL LINE · THE BLOCK">
+    <svg class="scene-art" data-art="scene-depot" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the road passes a fuel depot, a full tank of stored sugar behind a chained gate. A schematic of the missing enzyme, labelled." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s3-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101A30"/><stop offset=".65" stop-color="#2A3A5E"/><stop offset="1" stop-color="#6E4A3E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s3-sky)"/><path d="M1440 400 L1100 360 L880 400 Z" fill="#141E34"/><rect x="0" y="398" width="1440" height="222" fill="#182238"/><polygon points="560,620 700,400 800,400 1440,620" fill="#26314E"/><polygon points="820,478 858,478 864,500 814,500" fill="#C3CDE6" opacity=".4"/><polygon points="880,534 928,534 936,566 872,566" fill="#C3CDE6" opacity=".4"/><g transform="translate(210,0)"><rect x="70" y="286" width="520" height="196" rx="86" fill="#6E3A4E"/><rect x="70" y="286" width="520" height="196" rx="86" fill="none" stroke="#EFF3FA" stroke-width="4"/><g fill="#E9A13B"><circle cx="140" cy="340" r="15"/><circle cx="182" cy="386" r="17"/><circle cx="136" cy="424" r="12"/><circle cx="228" cy="336" r="12"/><circle cx="238" cy="410" r="15"/><circle cx="288" cy="362" r="16"/><circle cx="316" cy="428" r="12"/><circle cx="188" cy="316" r="10"/><circle cx="262" cy="452" r="10"/><circle cx="330" cy="330" r="11"/></g><g fill="#EFF3FA"><rect x="392" y="296" width="9" height="176"/><rect x="414" y="296" width="9" height="176"/><rect x="436" y="296" width="9" height="176"/></g><path d="M388 366 Q418 330 448 366" fill="none" stroke="#E9A13B" stroke-width="9"/><rect x="378" y="362" width="84" height="64" rx="9" fill="#E9A13B"/><circle cx="420" cy="386" r="8" fill="#1D2438"/><rect x="416" y="386" width="8" height="17" fill="#1D2438"/><g fill="#31456E"><circle cx="510" cy="346" r="13"/><circle cx="540" cy="396" r="15"/><circle cx="506" cy="436" r="11"/></g><text x="330" y="252" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="19" fill="#E9A13B">GLYCOGEN · FULL</text><text x="90" y="530" font-family="IBM Plex Mono, monospace" font-size="16" fill="#EFF3FA">MYOPHOSPHORYLASE · MISSING</text><text x="590" y="566" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="15" fill="#8FD8C2">THE STORE IS FINE. THE TAP IS GONE.</text></g></svg>
+    <div class="scene-inner inner-right">
+      <p class="kicker">The fuel line · The block</p>
+      <h2>The full tank with no tap</h2>
+      <div class="signboard">
+        <p class="prose p445r-counted">The cause sits one step into the fuel line. Her muscles store sugar as glycogen, exactly as yours do, but the enzyme that cashes it in, myophosphorylase, is missing, written out of the PYGM gene. The tank is full. The tap is gone. McArdle disease, described in 1951, affects roughly 1 in 100,000 people.</p>
+        <p class="cap onboard">PYGM sits at chromosome 11q13.1 and the disease is autosomal recessive: two broken copies, one missing enzyme (GeneReviews).</p>
+      </div>
+      <div class="signposts"><i></i><i></i></div>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-chain-sec">
-<p class="p438-ch-label">Scene three · The chain</p>
-<h2 class="p438-h2">The lung was never the whole chain</h2>
-<p class="p438-body">Air reaches the lung, oxygen crosses into blood, the heart delivers blood, and muscle uses oxygen. Peak uptake reflects that whole pathway, never the lung alone. Lung tests alone overestimate the loss after resection, the authors concluded, proposing a smaller gas exchange area.</p>
-<p class="p438-body">The remaining lung takes the full blood flow and ventilation, expanding into the emptied chest. Its margins narrow: breathing reserve and peak arterial oxygen partial pressure averaged lower than after partial resection.</p>
-<div class="p438-stagebox">
-<div class="p438-stage-head"><span>The Chain · What an Exercise Test Actually Measures</span><span>Diagram · Schematic</span></div>
-<div class="p438-svgwrap">
-<svg class="p438-svg" viewBox="0 0 720 210" role="img" aria-label="Diagram of the oxygen chain in four blocks: air in, gas exchange, delivery by heart and blood, extraction by muscle. A bracket under the first two blocks marks the lung, where the operation shortens the chain. The last two blocks are marked not operated on.">
-<rect x="0" y="0" width="720" height="210" fill="#10281F"></rect>
-<defs>
-<linearGradient id="p438-glass3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26543F"/><stop offset="1" stop-color="#0D231A"/></linearGradient>
-<linearGradient id="p438-brass3" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F2CE6B"/><stop offset="1" stop-color="#96700F"/></linearGradient>
-</defs>
-<line x1="24" y1="83" x2="696" y2="83" stroke="#A8D8CE" stroke-width="9" opacity="0.07"></line>
-<ellipse cx="360" cy="86" rx="330" ry="66" fill="#A8D8CE" opacity="0.04"></ellipse>
-<g font-family="IBM Plex Mono, monospace">
-<rect x="30" y="52" width="150" height="62" fill="url(#p438-glass3)" stroke="#F0E7CE" stroke-width="1.6"></rect>
-<rect x="195" y="52" width="150" height="62" fill="url(#p438-glass3)" stroke="#F0E7CE" stroke-width="1.6"></rect>
-<rect x="360" y="52" width="150" height="62" fill="url(#p438-glass3)" stroke="#F0E7CE" stroke-width="1.6"></rect>
-<rect x="525" y="52" width="150" height="62" fill="url(#p438-glass3)" stroke="#F0E7CE" stroke-width="1.6"></rect>
-<g font-size="12" letter-spacing="1.5" fill="#F0E7CE" text-anchor="middle"><text x="105" y="80">AIR IN</text><text x="270" y="80">GAS EXCHANGE</text><text x="435" y="80">DELIVERY</text><text x="600" y="80">EXTRACTION</text></g>
-<g font-size="9.5" fill="#9DB4A4" text-anchor="middle"><text x="105" y="99">the bellows</text><text x="270" y="99">the membrane</text><text x="435" y="99">heart and blood</text><text x="600" y="99">the muscle</text></g>
-<g fill="#D9A62E"><polygon points="182,78 193,83 182,88"></polygon><polygon points="347,78 358,83 347,88"></polygon><polygon points="512,78 523,83 512,88"></polygon></g>
-<line x1="30" y1="132" x2="345" y2="132" stroke="#D9A62E" stroke-width="1.6"></line>
-<line x1="360" y1="132" x2="675" y2="132" stroke="#9DB4A4" stroke-width="1.6"></line>
-<text x="187" y="154" font-size="10" letter-spacing="1.5" fill="#D9A62E" text-anchor="middle">THE LUNG · ONE CHAMBER REMOVED</text>
-<text x="517" y="154" font-size="10" letter-spacing="1.5" fill="#9DB4A4" text-anchor="middle">NOT OPERATED ON</text>
-<text x="360" y="190" font-size="10" letter-spacing="2" fill="#9DB4A4" text-anchor="middle">PEAK OXYGEN UPTAKE REFLECTS THE WHOLE PATHWAY</text>
-<g fill="url(#p438-brass3)"><rect x="30" y="52" width="150" height="4"></rect><rect x="195" y="52" width="150" height="4"></rect></g>
-<g fill="#9DB4A4" opacity="0.55"><rect x="360" y="52" width="150" height="4"></rect><rect x="525" y="52" width="150" height="4"></rect></g>
-<g stroke="#D9A62E" stroke-width="2"><line x1="181" y1="83" x2="194" y2="83"></line><line x1="346" y1="83" x2="359" y2="83"></line><line x1="511" y1="83" x2="524" y2="83"></line></g>
-<g stroke-width="1.8"><line x1="30" y1="126" x2="30" y2="138" stroke="#D9A62E"></line><line x1="345" y1="126" x2="345" y2="138" stroke="#D9A62E"></line><line x1="360" y1="126" x2="360" y2="138" stroke="#9DB4A4"></line><line x1="675" y1="126" x2="675" y2="138" stroke="#9DB4A4"></line></g>
-<g fill="url(#p438-brass3)" stroke="#0C1F19" stroke-width="0.7"><circle cx="42" cy="64" r="2.6"></circle><circle cx="168" cy="64" r="2.6"></circle><circle cx="207" cy="64" r="2.6"></circle><circle cx="333" cy="64" r="2.6"></circle></g>
-</g>
-</svg>
-</div>
-<span class="p438-viz-note">Schematic diagram drawn for this essay. The operation affects the first two steps; the exercise test measures all four. That mismatch is the study's own conclusion.</span>
-</div>
-<div class="p438-statbox">
-<div class="p438-stage-head"><span>The Margins at a Glance · Bolliger et al. 1996</span><span>Six months after surgery unless noted</span></div>
-<div class="p438-stats">
-<div class="p438-stat"><span class="p438-stat-num">24 vs 33%</span><span class="p438-stat-lab">breathing reserve at six months, group averages, pneumonectomy against partial resection: unused ventilatory capacity at peak exercise, estimated from FEV1 (28 against 37 at three months)</span></div>
-<div class="p438-stat"><span class="p438-stat-num">76 vs 85</span><span class="p438-stat-lab">peak arterial oxygen partial pressure, millimeters of mercury, group averages, pneumonectomy against partial resection</span></div>
-<div class="p438-stat"><span class="p438-stat-num">20%</span><span class="p438-stat-lab">fall in maximal oxygen uptake after a whole lung, against the 50 the halving predicted; the largest volume gauge fell 36%</span></div>
-</div>
-<p class="p438-verdict-close">Spirometry measures the lung alone. The exercise test measures the whole pathway, so its ceiling falls by less.</p>
-</div>
-</section>
+  <section class="scene" data-scene="4" data-clock="MIN 6 TO 8 · THE CLIMB">
+    <svg class="scene-art" data-art="scene-climb" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the road climbs; on a measurement board at the roadside a heart rate and effort curve rises steeply to a peak at six to eight minutes, then falls. The shape between measured anchors is drawn." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s4-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14213C"/><stop offset=".65" stop-color="#31456E"/><stop offset="1" stop-color="#9A6248"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s4-sky)"/><path d="M0 420 L360 350 L700 420 L1440 330 L1440 620 L0 620 Z" fill="#182238"/><polygon points="180,620 620,408 760,408 1150,620" fill="#26314E"/><polygon points="668,478 716,478 722,502 660,502" fill="#C3CDE6" opacity=".4"/><polygon points="650,540 716,540 726,574 640,574" fill="#C3CDE6" opacity=".4"/><g><rect x="856" y="96" width="520" height="330" rx="10" fill="#101A30"/><rect x="856" y="96" width="520" height="330" rx="10" fill="none" stroke="#EFF3FA" stroke-width="3"/><rect x="1032" y="426" width="14" height="86" fill="#5A4630"/><rect x="1186" y="426" width="14" height="86" fill="#5A4630"/><rect x="1072" y="120" width="150" height="282" fill="#E9A13B" opacity=".16"/><line x1="906" y1="402" x2="1330" y2="402" stroke="#EFF3FA" stroke-width="3"/><line x1="906" y1="402" x2="906" y2="128" stroke="#EFF3FA" stroke-width="3"/><path d="M906 388 C 966 378 1006 322 1048 246 C 1078 192 1110 158 1148 150 C 1184 144 1212 158 1242 196 C 1278 242 1304 250 1330 252" fill="none" stroke="#E86A4A" stroke-width="5" stroke-linecap="round"/><circle cx="906" cy="388" r="7" fill="#EFF3FA"/><circle cx="1148" cy="150" r="8" fill="#E86A4A" stroke="#EFF3FA" stroke-width="2"/><circle cx="1330" cy="252" r="7" fill="#EFF3FA"/><g font-family="IBM Plex Mono, monospace" font-size="14" fill="#C3CDE6"><text x="906" y="428" text-anchor="middle">0</text><text x="1148" y="428" text-anchor="middle">8</text><text x="1330" y="428" text-anchor="middle">12</text><text x="1330" y="452" text-anchor="end">MINUTES</text><text x="1148" y="126" text-anchor="middle" fill="#E9A13B">PEAK · MINUTES 6 TO 8</text></g></g></svg>
+    <div class="scene-inner">
+      <p class="kicker coral">Minutes 4 to 8 · The climb</p>
+      <h2>The climb</h2>
+      <p class="bignum">6 to 8 MIN</p>
+      <p class="prose p445r-counted">Put her on a laboratory bike at one steady workload and the pattern draws itself. Heart rate and effort climb far beyond what the pedalling should cost, and they peak at six to eight minutes, at values you would expect near maximum. The curve between the measured points here is drawn; the peak is not.</p>
+      <p class="cap">Anchors: the peak window is measured (Preisler, Haller and Vissing 2015). The curve's shape between anchors is drawn, and no number is read off it.</p>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-arc-sec">
-<p class="p438-ch-label">Scene four · The long arc</p>
-<h2 class="p438-h2">Years later, different questions</h2>
-<p class="p438-body">Basel stops at six months. Different studies then ask what people could do years later, and whether the remaining lung itself changed.</p>
-<div class="p438-scrolly" id="p438-arc-scrolly" data-scrolly="arc">
-<div class="p438-stagebox p438-stage-sticky" id="p438-arc-stage" data-progress="0">
-<div class="p438-stage-head"><span>The Long Arc · Three Panels, Three Timescales</span><span>Three different baselines, labeled in each panel</span></div>
-<div class="p438-arc-panel" id="p438-panel-a">
-<p class="p438-arc-head"><span>Percent of predicted at one late visit</span><span>Vainshelboim et al. 2015 · 17 patients</span></p>
-<div class="p438-minibar-row"><span class="p438-minibar-lab">Six minute walk</span><span class="p438-minibar-track"><span class="p438-minibar-fill" style="width:89%"></span></span><span class="p438-minibar-val">89%</span></div>
-<div class="p438-minibar-row"><span class="p438-minibar-lab">Maximal oxygen uptake</span><span class="p438-minibar-track"><span class="p438-minibar-fill p438-fill-air" style="width:48%"></span></span><span class="p438-minibar-val">48%</span></div>
-<p class="p438-arc-note">Mean values at one visit, a mean of 5.5 years after pneumonectomy, percent of predicted for healthy peers: walk 89 percent, standard deviation 25; maximal uptake 48 percent, standard deviation 17. Breathing reserve was generally preserved at testing; the authors interpreted the pattern as mainly cardiovascular in this sample.</p>
-</div>
-<div class="p438-arc-panel" id="p438-panel-b" style="opacity:.45">
-<p class="p438-arc-head"><span>Change over time in one person</span><span>Butler et al. 2012 · Single case</span></p>
-<div class="p438-arc-nums">
-<div class="p438-arc-num"><b>+77%</b><span>increase in the remaining lung's volume over 15 years, in one woman whose right lung was removed at 33</span></div>
-<div class="p438-arc-num"><b>+64%</b><span>estimated increase in air sac number, from imaging and geometry, not a direct count</span></div>
-</div>
-<p class="p438-arc-note">Imaging was consistent with an estimated 64 percent increase in air sacs, new sacs rather than stretched ones; the estimated sacs were shallower than normal. One patient, followed with serial scans and gas MRI: possibility, demonstrated; probability, unknown.</p>
-</div>
-<div class="p438-arc-panel" id="p438-panel-c" style="opacity:.45">
-<p class="p438-arc-head"><span>Age comparison in a selected historical subgroup</span><span>Laros and Westermann 1987</span></p>
-<div class="p438-arc-nums">
-<div class="p438-arc-num"><b>230</b><span>patients in the full series, operated on at ages 2 to 40</span></div>
-<div class="p438-arc-num"><b>33 yrs</b><span>mean follow up, long enough for childhood surgery to meet middle age</span></div>
-<div class="p438-arc-num"><b>Age 0 to 5</b><span>published age bin, youngest operated patient aged 2: ventilatory capacity near predicted for two lungs, in the selected subgroup</span></div>
-</div>
-<p class="p438-arc-note">The age pattern rests on the 98 patients with relatively undisturbed expiration, out of 230 in the full series; the abstract also names 32 with persistently disturbed expiration and does not account for the rest. The authors suggested growth by new tissue without directly measuring it.</p>
-</div>
-<div class="p438-meter" aria-hidden="true"><span class="p438-meter-fill" id="p438-arc-prog"></span></div>
-<p class="p438-phase" id="p438-arc-phase">Long arc · The split</p>
-<span class="p438-viz-note">Three panels, three different baselines, labeled in place: percent of predicted in the first, percent change in one patient in the second, a cohort description in the third. They are not one scale and are never drawn as one.</span>
-</div>
-<div class="p438-steps-side">
-<div class="p438-step" data-step="arc-split"><p class="p438-step-kicker">Step 1 of 3 · The split</p><p class="p438-body">Seventeen patients, tested once, a mean 5.5 years out: walk 89 percent of predicted, maximal uptake 48 percent. Two different activities, not a recovery path.</p></div>
-<div class="p438-step" data-step="arc-case"><p class="p438-step-kicker">Step 2 of 3 · One woman</p><p class="p438-body">One woman, 15 years after her right lung was removed at 33: volume up 77 percent, imaging consistent with an estimated 64 percent more air sacs, shallower than normal. Possibility, not probability.</p></div>
-<div class="p438-step" data-step="arc-young"><p class="p438-step-kicker">Step 3 of 3 · The young</p><p class="p438-body">230 patients, operated on at ages 2 to 40, followed a mean 33 years. Among the selected 98 with undisturbed expiration, surgery at ages 0 to 5 ended near predicted two lung capacity.</p></div>
-</div>
-</div>
-</section>
+  <section class="scene" data-scene="5" data-clock="MIN 8 TO 12 · THE SECOND WIND">
+    <svg class="scene-art" data-art="scene-sunrise" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: sunrise breaks over the road at the second wind. The road widens, delivery trucks carrying glucose and fatty acids pass, and the runner rises and runs." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s5-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A4470"/><stop offset=".58" stop-color="#B0714C"/><stop offset="1" stop-color="#F2B45C"/></linearGradient>
+<linearGradient id="s5-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s5-sky)"/><circle cx="720" cy="398" r="150" fill="#F6C667" opacity=".35"/><circle cx="720" cy="398" r="92" fill="#F6C667"/><path d="M0 400 L320 362 L600 400 Z" fill="#22304E"/><path d="M1440 400 L1100 358 L860 400 Z" fill="#1E2C4A"/><rect x="0" y="398" width="1440" height="222" fill="#202A44"/><polygon points="120,620 640,400 800,400 1320,620" fill="#2E3A58"/><polygon points="694,478 746,478 752,504 686,504" fill="#F7F1E2" opacity=".55"/><polygon points="682,542 758,542 768,580 672,580" fill="#F7F1E2" opacity=".55"/><path d="M210 470 C 340 440 470 428 590 436" fill="none" stroke="#2E9E7B" stroke-width="10" stroke-linecap="round" opacity=".85"/><g><rect x="120" y="428" width="150" height="66" rx="6" fill="#1F7A63"/><rect x="270" y="448" width="42" height="46" rx="6" fill="#2E9E7B"/><circle cx="152" cy="500" r="13" fill="#10182C"/><circle cx="238" cy="500" r="13" fill="#10182C"/><circle cx="292" cy="500" r="13" fill="#10182C"/><text x="195" y="468" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" fill="#F7F1E2">GLUCOSE</text></g><g><rect x="1150" y="440" width="170" height="74" rx="6" fill="#1F7A63"/><rect x="1098" y="462" width="52" height="52" rx="6" fill="#2E9E7B"/><circle cx="1130" cy="520" r="14" fill="#10182C"/><circle cx="1184" cy="520" r="14" fill="#10182C"/><circle cx="1276" cy="520" r="14" fill="#10182C"/><text x="1235" y="484" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="15" fill="#F7F1E2">FATTY ACIDS</text></g><g transform="translate(195,0)"><g stroke="#8FD8C2" stroke-width="5" stroke-linecap="round" opacity=".85"><line x1="470" y1="392" x2="566" y2="392"/><line x1="436" y1="420" x2="556" y2="420"/><line x1="478" y1="448" x2="572" y2="448"/></g><g stroke-linecap="round" fill="none"><path d="M712 396 L700 452" stroke="#2E9E7B" stroke-width="24"/><path d="M700 452 L652 492" stroke="#31456E" stroke-width="19"/><path d="M652 492 L606 484" stroke="url(#s5-skin)" stroke-width="16"/><path d="M700 452 L748 486" stroke="#31456E" stroke-width="19"/><path d="M748 486 L792 472" stroke="url(#s5-skin)" stroke-width="16"/><path d="M706 406 L672 428" stroke="url(#s5-skin)" stroke-width="15"/><path d="M716 406 L756 424" stroke="url(#s5-skin)" stroke-width="15"/></g><circle cx="718" cy="374" r="25" fill="url(#s5-skin)"/><path d="M694 366 Q718 338 744 364 L740 380 Q718 356 698 382 Z" fill="#1D2438"/><ellipse cx="706" cy="540" rx="130" ry="9" fill="#000000" opacity=".3"/></g></svg>
+    <div class="scene-inner">
+      <p class="kicker teal">Minutes 8 to 12 · Sunrise</p>
+      <h2>The wind arrives</h2>
+      <p class="prose p445r-counted">Then the delivery system catches up. The liver pours glucose into the blood, fat tissue sends fatty acids down the same road, and the muscle, which can burn both perfectly well, finally has fuel it is allowed to spend. Effort falls away at the very same workload. The phenomenon has a name from 1961: the second wind.</p>
+      <div class="board">
+        <p class="prose p445r-counted">In the laboratory, eight patients with no working enzyme at all raised their oxygen use from 13.0 to 16.5 units as the wind arrived between minutes eight and twelve.</p>
+        <div class="stat"><span class="n">+25%</span><span class="l">rise in peak oxygen uptake as the second wind arrived, and more · 8 patients with complete deficiency · Haller and Vissing 2002</span></div>
+        <div class="stat"><span class="n teal">19.9</span><span class="l">oxygen uptake, mL per kg per minute, after glucose was infused past the wind: more delivered fuel, more wind · Haller and Vissing 2002</span></div>
+      </div>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-rehab-sec">
-<p class="p438-ch-label">Scene five · The rehab ledger</p>
-<h2 class="p438-h2">What rehabilitation does with one lung</h2>
-<p class="p438-body">For rehabilitation, read the late tests separately: the authors interpreted maximal exercise in this small cohort as mainly cardiovascular, breathing reserve generally preserved. They did not test training.</p>
-<p class="p438-body">All cardiac output now crosses one lung's vascular bed. Echo estimated systolic pulmonary artery pressure averaged 38 millimeters of mercury (SD 12); mean left ventricular systolic function was normal by ejection fraction.</p>
-<p class="p438-body">Match assessment and goals to activity, symptoms, and findings: level walking near predicted does not answer a question about stairs or hills, where the maximal ceiling matters.</p>
-<p class="p438-body">None of this makes one lung small: a third of the bellows gone, the reserve thinner. These are averages from selected samples, not a forecast for any reader.</p>
-<div class="p438-statbox">
-<div class="p438-stage-head"><span>Walking versus Maximal Effort · The Late Cohort</span><span>Vainshelboim et al. 2015 · 17 patients</span></div>
-<div class="p438-stats">
-<div class="p438-stat"><span class="p438-stat-num">89% ± 25</span><span class="p438-stat-lab">six minute walk distance, percent of predicted, mean and standard deviation, in the same 17 patients</span></div>
-<div class="p438-stat"><span class="p438-stat-num">48% ± 17</span><span class="p438-stat-lab">maximal oxygen uptake, percent of predicted, mean and standard deviation, in the same 17 patients</span></div>
-</div>
-<p class="p438-verdict-close">Half the bellows never meant half the engine: in the observed surgical cohorts it meant a third of the volume and a fifth off the maximal ceiling at six months, and each person still needs their own assessment.</p>
-</div>
-</section>
+  <section class="scene" data-scene="6" data-clock="THE STATION · 2003">
+    <svg class="scene-art" data-art="scene-station" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a drinks station at the roadside in morning light, with a cyclist, a sucrose bottle carrying 75 grams, and a dashed outline placebo bottle." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s6-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A5A8C"/><stop offset=".6" stop-color="#C98A5A"/><stop offset="1" stop-color="#F6C667"/></linearGradient>
+<linearGradient id="s6-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s6-sky)"/><circle cx="300" cy="150" r="52" fill="#F6C667"/><path d="M0 400 L340 364 L620 400 Z" fill="#26365A"/><path d="M1440 400 L1100 362 L860 400 Z" fill="#223258"/><rect x="0" y="398" width="1440" height="222" fill="#242F4E"/><polygon points="180,620 650,400 790,400 1260,620" fill="#333F60"/><polygon points="692,478 748,478 754,504 684,504" fill="#F7F1E2" opacity=".5"/><polygon points="682,542 758,542 768,580 672,580" fill="#F7F1E2" opacity=".5"/><g><rect x="986" y="300" width="330" height="18" fill="#6E5638"/><rect x="1010" y="318" width="12" height="150" fill="#5A4630"/><rect x="1280" y="318" width="12" height="150" fill="#5A4630"/><rect x="1000" y="452" width="302" height="14" fill="#9A7A55"/><rect x="1080" y="352" width="52" height="100" rx="10" fill="#2E9E7B"/><rect x="1096" y="334" width="20" height="20" fill="#1D2438"/><text x="1106" y="408" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="17" fill="#F7F1E2">75 g</text><rect x="1170" y="362" width="44" height="90" rx="10" fill="none" stroke="#F7F1E2" stroke-width="3" stroke-dasharray="6 5"/><text x="1106" y="486" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#1F7A63">SUCROSE</text><text x="1192" y="486" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#C3CDE6">PLACEBO</text></g><g><circle cx="420" cy="486" r="58" fill="none" stroke="#10182C" stroke-width="6"/><circle cx="640" cy="486" r="58" fill="none" stroke="#10182C" stroke-width="6"/><g stroke="#31456E" stroke-width="7" fill="none"><line x1="420" y1="486" x2="512" y2="404"/><line x1="640" y1="486" x2="540" y2="486"/><line x1="540" y1="486" x2="512" y2="404"/><line x1="540" y1="486" x2="576" y2="398"/></g><circle cx="530" cy="356" r="19" fill="url(#s6-skin)"/><path d="M530 375 L540 410 L586 392" fill="none" stroke="#2E9E7B" stroke-width="13" stroke-linecap="round"/><path d="M540 410 L548 486 L500 440" fill="none" stroke="#31456E" stroke-width="12" stroke-linecap="round"/></g></svg>
+    <div class="scene-inner">
+      <p class="kicker teal">The drinks station · The trial, 2003</p>
+      <h2>Sugar, sent early</h2>
+      <p class="prose p445r-counted">Copenhagen tested whether the delivery could be sent early. Twelve patients drank a soft drink carrying 75 grams of sucrose before cycling, and on another day a sweetened placebo. With sugar aboard, blood glucose rose, effort fell dramatically, and heart rate ran 34 beats a minute lower. There was no second wind, because none was needed.</p>
+      <div class="board station">
+        <p class="paint">The station board · Heart rate, painted as measured</p>
+        <p class="prose p445r-counted">On the placebo day the old pattern showed itself in numbers: heart rate peaked at a mean of 156 beats a minute in the seventh minute, then dropped 35 beats as the spontaneous wind arrived.</p>
+        <div class="stat"><span class="n">34 ± 3</span><span class="l">beats per minute lower heart rate on sucrose than placebo, at the widest gap · P less than 0.001 · Vissing and Haller, NEJM 2003</span></div>
+        <div class="stat"><span class="n teal">75 g</span><span class="l">of sucrose in 660 ml, after an overnight fast · 12 patients, each tested both ways</span></div>
+        <p class="cap">Blood glucose rose by more than 36 mg per decilitre (2.0 mmol per litre) on the sucrose day (Vissing and Haller 2003).</p>
+      </div>
+    </div>
+  </section>
 
-<section class="p438-sec" id="p438-recap-sec">
-<p class="p438-ch-label">Recap</p>
-<h2 class="p438-h2">So what have we learned</h2>
-<p class="p438-body">Removing a lung does not halve the engine. At six months, group volumes sat a third down (36, FEV1 34, 33 percent), uptake a fifth down, breathlessness the most reported stop reason. Partial resection cost a tenth of volume, with no statistically significant six month reduction in maximal uptake. Years later, in separate selected samples, walking tested near predicted, the ceiling near half, and the youngest subgroup's lung may have grown new tissue, unmeasured by its authors.</p>
-<div class="p438-sources p438-reveal p3-drawer p3-closed" id="p438-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p438-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Bolliger CT, Jordan P, Solèr M, Stulz P, Tamm M, Wyser C, Gonon M, Perruchoud AP. Pulmonary function and exercise capacity after lung resection. European Respiratory Journal. 1996;9(3):415 to 421. PMID 8729998. DOI 10.1183/09031936.96.09030415. Sixty eight of 80 consecutive patients completed testing before resection and at 3 and 6 months: 50 mixed partial resection (34 simple lobectomies, nine smaller resections, five extended lobectomies, and two bilobectomies in the full text Methods; mean age 61) and 18 pneumonectomy (mean age 59). Exercise testing was symptom limited cycle ergometry in the full text. At 6 months, group deficits against preoperative group values after pneumonectomy were 36 percent for forced vital capacity, 34 percent for FEV1, and 33 percent for total lung capacity, but maximal oxygen uptake fell 20 percent, and pneumonectomy values showed no significant recovery between months 3 and 6 while partial resection values rose significantly. Partial resection deficits at 6 months were 7, 9, and 10 percent, with no statistically significant reduction in maximal oxygen uptake. Exercise was limited by leg fatigue in 53 percent of all patients before surgery (56 percent in the pneumonectomy group and 52 percent in the partial resection group in the full text); after pneumonectomy, dyspnea limited 61 percent at 3 months and 50 percent at 6 months, and four postoperative responses were ambiguous. Breathing reserve was 24 percent after pneumonectomy against 33 percent after partial resection at 6 months, and peak arterial oxygen partial pressure was 76 against 85 millimeters of mercury.</li>
-<li>Vainshelboim B, Fox BD, Saute M, Sagie A, Yehoshua L, Fuks L, Schneer S, Kramer MR. Limitations in exercise and functional capacity in long-term postpneumonectomy patients. Journal of Cardiopulmonary Rehabilitation and Prevention. 2015;35(1):56 to 64. PMID 25350720. DOI 10.1097/HCR.0000000000000085. Seventeen patients, tested once, an average of 5.5 years after pneumonectomy: maximal oxygen uptake 48 percent of predicted (standard deviation 17), six minute walk distance 89 percent of predicted (standard deviation 25), breathing reserve generally preserved, exercise limited primarily by the cardiovascular system, with no significant difference between right and left pneumonectomy in this small sample. Echo estimated systolic pulmonary artery pressure was mildly elevated at a mean of 38 millimeters of mercury (standard deviation 12), with normal mean left ventricular systolic function by ejection fraction (60 percent).</li>
-<li>Butler JP, Loring SH, Patz S, Tsuda A, Yablonskiy DA, Mentzer SJ. Evidence for growth of an adult human lung. New England Journal of Medicine. 2012;367(3):244 to 247. PMID 22808959. DOI 10.1056/NEJMoa1203983. A single case: a woman whose right lung was removed at 33 for adenocarcinoma, followed for 15 years. The remaining lung's volume increased 77 percent over the 15 years, and hyperpolarized helium 3 MRI was consistent with an estimated 64 percent increase in the number of alveoli, from imaging and geometry rather than a direct count: new air sacs rather than enlargement of existing ones, though the estimated sacs were shallower than normal.</li>
-<li>Laros CD, Westermann CJJ. Dilatation, compensatory growth, or both after pneumonectomy during childhood and adolescence: a thirty year follow up study. Journal of Thoracic and Cardiovascular Surgery. 1987;93(4):570 to 576. PMID 3561005. Two hundred thirty patients, pneumonectomy at ages 2 to 40, followed a mean of 33 years. In the selected subgroup of 98 patients whose forced expiration stayed relatively undisturbed, those in the published 0 to 5 age bin (the youngest operated patient was 2) had ventilatory capacity hardly smaller than predicted for two lungs, which the authors suggested reflected compensatory growth by new tissue, without directly measuring it; from 6 to 20 years the advantage persisted but faded with age at surgery. The abstract also names 32 patients with persistently disturbed expiration and does not account for the remainder of the 230.</li>
-</ol>
-<p class="p438-note" style="margin-top:14px">Method note: every measured number in this essay was taken from a source verified for this build and is recorded, claim by claim, in the essay source map. The expectation states on the gauge board are drawn, not measured, and are labeled as such wherever they appear. No real patient is depicted; the bellows, gauges, and chain are drawings.</p>
-</div>
-<div class="p438-methods" id="p438-methods">
-<h3>Data and Methods</h3>
-<p>This essay rests on four sources and keeps their baselines separate. Bolliger et al. 1996 tested patients before resection and at 3 and 6 months after; its figures are group deficits against the preoperative group value, and the Scene 2 gauges plot group averages indexed to that preoperative mean, baseline 100: what remains, 100 minus the published group deficit. Its comparator group had mixed partial resections, not one operation. Vainshelboim et al. 2015 tested 17 patients once, years after pneumonectomy; its figures are percent of predicted for healthy peers, a different baseline, labeled as such wherever they appear. Butler et al. 2012 is one patient. Laros and Westermann 1987 followed 230 patients for a mean of 33 years, and its age gradient is drawn from the selected 98 patients whose forced expiration stayed relatively undisturbed, as the paper itself restricts that analysis. The hypothetical states in Scene 2 are not data: 50 percent by halving for a whole lung, and, shown only as a pure hypothetical, 80 percent if five lobes shared function equally, which is not mapped to the mixed partial resection cohort. No side specific share of lung function is printed anywhere in this essay: the familiar claim that the right lung performs the larger share of the work was not verified against a primary source for this build, and the long term cohort's nonsignificant right against left comparison, in 17 patients, cannot establish that the sides are equivalent. The bellows, gauge board, chain diagram, and long arc panels are drawn schematics labeled in place. No photographs and no AI imagery are used.</p>
-</div>
-<div class="p438-footer">
-<span>The PM&amp;R Files · Essay 37 · What If You Had Only One Lung?</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
+  <section class="scene" data-scene="7" data-clock="THE POCKET DOSE · 2008">
+    <svg class="scene-art" data-art="scene-pocket" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a wayside board comparing the two sucrose timings, 75 grams forty minutes before exercise and 37 grams five minutes before, the smaller later dose lasting longer. Bar length is a drawing, not a measurement." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s7-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A6FA5"/><stop offset=".62" stop-color="#D9A05E"/><stop offset="1" stop-color="#F8CE7A"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s7-sky)"/><circle cx="1180" cy="130" r="58" fill="#F8CE7A"/><path d="M0 400 L340 366 L620 400 Z" fill="#2C3E60"/><path d="M1440 400 L1100 364 L860 400 Z" fill="#283A5C"/><rect x="0" y="398" width="1440" height="222" fill="#2A3757"/><polygon points="180,620 650,400 790,400 1260,620" fill="#3A4A6E"/><polygon points="692,478 748,478 754,504 684,504" fill="#F7F1E2" opacity=".5"/><polygon points="682,542 758,542 768,580 672,580" fill="#F7F1E2" opacity=".5"/><g><rect x="120" y="120" width="700" height="270" rx="10" fill="#FBF6E9"/><rect x="120" y="120" width="700" height="270" rx="10" fill="none" stroke="#1D2438" stroke-width="3"/><rect x="330" y="390" width="14" height="80" fill="#5A4630"/><rect x="596" y="390" width="14" height="80" fill="#5A4630"/><rect x="160" y="160" width="30" height="50" rx="8" fill="#31456E"/><text x="206" y="192" font-family="IBM Plex Mono, monospace" font-size="19" fill="#1D2438">75 g · 40 MIN BEFORE</text><rect x="206" y="212" width="330" height="22" rx="11" fill="#93A3C8"/><text x="206" y="262" font-family="IBM Plex Mono, monospace" font-size="15" fill="#44507A">WORKED</text><rect x="160" y="282" width="30" height="50" rx="8" fill="#2E9E7B"/><text x="206" y="314" font-family="IBM Plex Mono, monospace" font-size="19" fill="#1D2438">37 g · 5 MIN BEFORE</text><rect x="206" y="334" width="470" height="22" rx="11" fill="#2E9E7B"/><text x="206" y="382" font-family="IBM Plex Mono, monospace" font-size="15" fill="#1F7A63">WORKED, AND LASTED LONGER</text></g></svg>
+    <div class="scene-inner inner-right">
+      <p class="kicker">Further along · The follow-up, 2008</p>
+      <h2>The pocket dose</h2>
+      <div class="signboard flat">
+        <p class="prose p445r-counted">The follow-up made it pocket sized. Six patients took 37 grams of sucrose, a can of soda's worth, just five minutes before exercise, and it worked as well as the big dose forty minutes ahead, and lasted longer. Fuel, timed right, is a prescription a person can actually carry.</p>
+        <p class="cap onboard">Andersen, Haller and Vissing, Archives of Neurology 2008: a placebo-controlled crossover in 6 patients; both timings beat placebo.</p>
+      </div>
+      <div class="signposts"><i></i><i></i></div>
+    </div>
+  </section>
 
-</div>
+  <section class="scene" data-scene="8" data-clock="14 WEEKS · THE TRAINING">
+    <svg class="scene-art" data-art="scene-laps" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the same road in better light on a later lap, fourteen week ticks along the verge, the runner moving freely with wind lines at her back." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s8-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5480B8"/><stop offset=".6" stop-color="#E0AA60"/><stop offset="1" stop-color="#FBD98B"/></linearGradient>
+<linearGradient id="s8-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s8-sky)"/><circle cx="240" cy="140" r="56" fill="#FBD98B"/><path d="M0 400 L340 366 L620 400 Z" fill="#33476E"/><path d="M1440 400 L1100 364 L860 400 Z" fill="#30456A"/><rect x="0" y="398" width="1440" height="222" fill="#31435F"/><polygon points="180,620 650,400 790,400 1260,620" fill="#42557A"/><polygon points="692,478 748,478 754,504 684,504" fill="#F7F1E2" opacity=".55"/><polygon points="682,542 758,542 768,580 672,580" fill="#F7F1E2" opacity=".55"/><g fill="#F7F1E2"><rect x="96" y="428" width="16" height="30"/><rect x="118" y="442" width="16" height="30"/><rect x="140" y="456" width="16" height="30"/><rect x="162" y="470" width="16" height="30"/><rect x="184" y="484" width="16" height="30"/><rect x="206" y="498" width="16" height="30"/><rect x="228" y="512" width="16" height="30"/><rect x="250" y="526" width="16" height="30"/><rect x="272" y="540" width="16" height="30"/><rect x="294" y="554" width="16" height="30"/><rect x="316" y="568" width="16" height="30"/><rect x="338" y="582" width="16" height="30"/><rect x="360" y="596" width="16" height="30"/><rect x="382" y="610" width="16" height="30"/></g><text x="110" y="416" font-family="IBM Plex Mono, monospace" font-size="14" fill="#F7F1E2">14 WEEKS OF LAPS</text><g stroke="#8FD8C2" stroke-width="5" stroke-linecap="round" opacity=".85"><line x1="480" y1="392" x2="576" y2="392"/><line x1="446" y1="420" x2="566" y2="420"/><line x1="488" y1="448" x2="582" y2="448"/></g><g stroke-linecap="round" fill="none"><path d="M712 396 L700 452" stroke="#2E9E7B" stroke-width="24"/><path d="M700 452 L652 492" stroke="#31456E" stroke-width="19"/><path d="M652 492 L606 484" stroke="url(#s8-skin)" stroke-width="16"/><path d="M700 452 L748 486" stroke="#31456E" stroke-width="19"/><path d="M748 486 L792 472" stroke="url(#s8-skin)" stroke-width="16"/><path d="M706 406 L672 428" stroke="url(#s8-skin)" stroke-width="15"/><path d="M716 406 L756 424" stroke="url(#s8-skin)" stroke-width="15"/></g><circle cx="718" cy="374" r="25" fill="url(#s8-skin)"/><path d="M694 366 Q718 338 744 364 L740 380 Q718 356 698 382 Z" fill="#1D2438"/><ellipse cx="706" cy="540" rx="130" ry="9" fill="#000000" opacity=".28"/></svg>
+    <div class="scene-inner">
+      <p class="kicker teal">Later laps · The training, 2006</p>
+      <h2>Train the road, not the tank</h2>
+      <p class="prose p445r-counted">Training attacks the other side of the problem: the road, not the tank. Eight patients cycled thirty to forty minutes a day, four days a week, for fourteen weeks, at a moderate heart rate. Work capacity rose 36 percent. The second wind still came, neither bigger nor smaller: the lock never changed, but everything delivered around it grew stronger.</p>
+      <div class="board">
+        <div class="stat"><span class="n">+36%</span><span class="l">average work capacity after 14 weeks of training · Haller 2006</span></div>
+        <div class="stat"><span class="n teal">+14%</span><span class="l">oxygen uptake over the same programme · Haller 2006</span></div>
+        <div class="stat"><span class="n">+80%</span><span class="l">citrate synthase, a mitochondrial marker; the fat-burning enzyme beta-HAD rose 62% · Haller 2006</span></div>
+        <p class="cap">Sessions ran at 60 to 70 percent of maximal heart rate, and the trial recorded no pain, no cramping, and no rise in creatine kinase (Haller 2006).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene scene-narrow" data-scene="9" data-clock="THE WARNING ZONE">
+    <svg class="scene-art" data-art="scene-warning" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a warning zone on the road at rose dusk. Warning signs line the road; a board shows a muscle fibre tearing under strain beside a jar of dark urine, the visible sign of muscle breakdown." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s9-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E1E2E"/><stop offset=".62" stop-color="#6E3A4E"/><stop offset="1" stop-color="#C96A3B"/></linearGradient>
+<linearGradient id="s9-fibre" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93586C"/><stop offset="1" stop-color="#6E3A4E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s9-sky)"/><path d="M0 400 L340 366 L620 400 Z" fill="#2A1E30"/><path d="M1440 400 L1100 364 L860 400 Z" fill="#261C2C"/><rect x="0" y="398" width="1440" height="222" fill="#2C2132"/><polygon points="180,620 650,400 790,400 1260,620" fill="#3E3049"/><polygon points="692,478 748,478 754,504 684,504" fill="#F2D3C2" opacity=".4"/><polygon points="682,542 758,542 768,580 672,580" fill="#F2D3C2" opacity=".4"/><g><polygon points="240,300 282,372 198,372" fill="#C0452F"/><text x="240" y="356" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="34" fill="#F7F1E2">!</text><rect x="236" y="372" width="8" height="66" fill="#1D2438"/><polygon points="1150,318 1184,376 1116,376" fill="#C0452F"/><text x="1150" y="362" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="28" fill="#F7F1E2">!</text><rect x="1146" y="376" width="7" height="56" fill="#1D2438"/></g><g transform="translate(-140,10) scale(0.94)"><rect x="880" y="120" width="470" height="240" rx="10" fill="#3A1F22"/><rect x="880" y="120" width="470" height="240" rx="10" fill="none" stroke="#F2D3C2" stroke-width="3"/><rect x="1174" y="360" width="13" height="76" fill="#5A4630"/><rect x="1043" y="360" width="13" height="76" fill="#5A4630"/><rect x="916" y="176" width="250" height="92" rx="42" fill="url(#s9-fibre)" stroke="#F2D3C2" stroke-width="3"/><path d="M1010 180 L1000 214 L1018 232 L1004 258 L1014 270" fill="none" stroke="#E86A4A" stroke-width="5" stroke-linecap="round"/><rect x="1216" y="160" width="66" height="104" rx="10" fill="#D8DEE8" opacity=".3" stroke="#F2D3C2" stroke-width="3"/><rect x="1216" y="204" width="66" height="60" rx="10" fill="#7A4416"/><text x="1041" y="302" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#F2D3C2">A CONTRACTURE PUSHED THROUGH CAN TEAR THE MUSCLE DOWN</text><text x="1249" y="330" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#F2D3C2">DARK URINE: A STOP SIGN</text></g></svg>
+    <div class="scene-inner">
+      <p class="kicker coral">Warning zone · The risk</p>
+      <h2>The dangerous minutes</h2>
+      <p class="bigline">Rest treats the tight minutes. Pushing through is the injury.</p>
+      <p class="prose p445r-counted">But the first minutes are genuinely dangerous, and this is the scene that keeps the story honest. Sprinting, heavy lifting, and held, straining contractions are the classic triggers. Push a contracture instead of resting and the muscle can tear itself down: roughly half of people with McArdle disease have had episodes of muscle breakdown darkening the urine, and severe episodes can injure the kidneys.</p>
+      <p class="cap">GeneReviews puts recurrent myoglobinuria at approximately 50 percent of affected individuals; severe episodes can result in acute renal failure.</p>
+    </div>
+  </section>
+
+  <section class="scene scene-narrow" data-scene="10" data-clock="THE ROAD'S END · LIMITS">
+    <svg class="scene-art" data-art="scene-limits" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the road ends at a large sign. On the sign, icon rows draw one figure per patient in the four studies this essay leans on: twelve, eight, eight, and six patients." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s10-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D1526"/><stop offset=".7" stop-color="#16223C"/><stop offset="1" stop-color="#2A3A5E"/></linearGradient>
+<g id="coh-p"><circle cx="0" cy="-9" r="6.5" fill="#8FD8C2"/><path d="M-8 12 Q0 -4 8 12 Z" fill="#8FD8C2"/></g>
+<g id="coh-q"><circle cx="0" cy="-9" r="6.5" fill="#E9A13B"/><path d="M-8 12 Q0 -4 8 12 Z" fill="#E9A13B"/></g>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s10-sky)"/><rect x="0" y="470" width="1440" height="150" fill="#131E33"/><polygon points="430,620 668,472 772,472 1010,620" fill="#1F2942"/><g transform="translate(430,120) scale(0.62)"><rect x="380" y="118" width="680" height="336" rx="10" fill="#16223C"/><rect x="380" y="118" width="680" height="336" rx="10" fill="none" stroke="#EFF3FA" stroke-width="3"/><rect x="520" y="454" width="14" height="90" fill="#5A4630"/><rect x="906" y="454" width="14" height="90" fill="#5A4630"/><g class="cohort-rows" transform="translate(448,146)">
+<use href="#coh-p" transform="translate(52,52)"/><use href="#coh-p" transform="translate(86,52)"/><use href="#coh-p" transform="translate(120,52)"/><use href="#coh-p" transform="translate(154,52)"/><use href="#coh-p" transform="translate(188,52)"/><use href="#coh-p" transform="translate(222,52)"/><use href="#coh-p" transform="translate(256,52)"/><use href="#coh-p" transform="translate(290,52)"/><use href="#coh-p" transform="translate(324,52)"/><use href="#coh-p" transform="translate(358,52)"/><use href="#coh-p" transform="translate(392,52)"/><use href="#coh-p" transform="translate(426,52)"/>
+<use href="#coh-q" transform="translate(52,118)"/><use href="#coh-q" transform="translate(86,118)"/><use href="#coh-q" transform="translate(120,118)"/><use href="#coh-q" transform="translate(154,118)"/><use href="#coh-q" transform="translate(188,118)"/><use href="#coh-q" transform="translate(222,118)"/><use href="#coh-q" transform="translate(256,118)"/><use href="#coh-q" transform="translate(290,118)"/>
+<use href="#coh-p" transform="translate(52,184)"/><use href="#coh-p" transform="translate(86,184)"/><use href="#coh-p" transform="translate(120,184)"/><use href="#coh-p" transform="translate(154,184)"/><use href="#coh-p" transform="translate(188,184)"/><use href="#coh-p" transform="translate(222,184)"/><use href="#coh-p" transform="translate(256,184)"/><use href="#coh-p" transform="translate(290,184)"/>
+<use href="#coh-q" transform="translate(52,250)"/><use href="#coh-q" transform="translate(86,250)"/><use href="#coh-q" transform="translate(120,250)"/><use href="#coh-q" transform="translate(154,250)"/><use href="#coh-q" transform="translate(188,250)"/><use href="#coh-q" transform="translate(222,250)"/>
+</g><g font-family="IBM Plex Mono, monospace" font-size="14" fill="#C3CDE6"><text x="900" y="203">12 · SUCROSE</text><text x="900" y="269">8 · WIND STUDY</text><text x="900" y="335">8 · TRAINING</text><text x="900" y="401">6 · DOSE</text></g><text x="448" y="152" font-family="IBM Plex Mono, monospace" font-size="12" fill="#93A3C8">ONE FIGURE PER PATIENT, AS PRINTED IN EACH STUDY</text></g></svg>
+    <div class="scene-inner">
+      <p class="kicker">The road's end · The honest limits</p>
+      <h2>What this cannot prove</h2>
+      <p class="prose p445r-counted">Hold the whole story at arm's length for one sign. This is a rare disease, and its evidence base is a handful of small physiology studies: twelve patients here, eight there, six there. A Cochrane review found no randomised trial of aerobic training at all, only three small open studies. Nothing on this page is a dose, and none of it replaces a specialist who knows the person.</p>
+      <div class="board">
+        <div class="stat"><span class="n">0</span><span class="l">randomised trials of aerobic training in McArdle disease, per the Cochrane review; the largest open study had nine participants</span></div>
+        <p class="cap">About a quarter of affected individuals develop fixed weakness later in life (GeneReviews, approximately 25 percent), one more reason the prescription is individual.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="11" data-clock="MIN 10 ONWARD · PACING">
+    <svg class="scene-art" data-art="scene-pacing" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: full morning light. The runner flows past a minute ten sign, wind lines at her back, on the same road that stopped her at minute three." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s11-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6E9BD8"/><stop offset=".58" stop-color="#F2C063"/><stop offset="1" stop-color="#FCE3A1"/></linearGradient>
+<linearGradient id="s11-skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3D3AC"/><stop offset="1" stop-color="#DFAF7E"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s11-sky)"/><circle cx="260" cy="150" r="62" fill="#FCE3A1"/><circle cx="260" cy="150" r="44" fill="#FFF3C4"/><path d="M0 400 L340 366 L620 400 Z" fill="#47608C"/><path d="M1440 400 L1100 364 L860 400 Z" fill="#425C88"/><rect x="0" y="398" width="1440" height="222" fill="#3E5982"/><polygon points="180,620 650,400 790,400 1260,620" fill="#546E99"/><polygon points="692,478 748,478 754,504 684,504" fill="#F7F1E2" opacity=".6"/><polygon points="682,542 758,542 768,580 672,580" fill="#F7F1E2" opacity=".6"/><g stroke="#8FD8C2" stroke-width="6" stroke-linecap="round" opacity=".9"><line x1="440" y1="386" x2="566" y2="386"/><line x1="402" y1="416" x2="556" y2="416"/><line x1="452" y1="446" x2="574" y2="446"/></g><g stroke-linecap="round" fill="none"><path d="M712 396 L700 452" stroke="#2E9E7B" stroke-width="24"/><path d="M700 452 L652 492" stroke="#31456E" stroke-width="19"/><path d="M652 492 L606 484" stroke="url(#s11-skin)" stroke-width="16"/><path d="M700 452 L748 486" stroke="#31456E" stroke-width="19"/><path d="M748 486 L792 472" stroke="url(#s11-skin)" stroke-width="16"/><path d="M706 406 L672 428" stroke="url(#s11-skin)" stroke-width="15"/><path d="M716 406 L756 424" stroke="url(#s11-skin)" stroke-width="15"/></g><circle cx="718" cy="374" r="25" fill="url(#s11-skin)"/><path d="M694 366 Q718 338 744 364 L740 380 Q718 356 698 382 Z" fill="#1D2438"/><ellipse cx="706" cy="540" rx="130" ry="9" fill="#000000" opacity=".25"/><rect x="1052" y="392" width="9" height="150" fill="#1D2438"/><rect x="972" y="322" width="180" height="72" rx="5" fill="#F7F1E2"/><text x="1062" y="368" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="27" fill="#1D2438">MIN 10</text></svg>
+    <div class="scene-inner">
+      <p class="kicker teal">Minute 10 onward · The inheritance</p>
+      <h2>Pacing is the prescription</h2>
+      <p class="prose p445r-counted">So the prescription writes itself as pacing. Warm up gently and let the wind arrive before asking for real work. Take carbohydrate aboard before starting, the way the trials did. Train the delivery system with steady aerobic work, supervised and individual. And treat the first tight minutes as a signal to ease off, never as weakness to bully through.</p>
+      <p class="reg">The second wind is not a loophole in the disease · It is the disease, mapped</p>
+    </div>
+  </section>
+
+  <section class="scene" data-scene="12" data-clock="FINISH · RECEIPTS">
+    <svg class="scene-art" data-art="scene-finish" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: the finish gantry of the dawn run in full morning light, two posts and a banner across the road." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="s12-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5480B8"/><stop offset=".6" stop-color="#E0AA60"/><stop offset="1" stop-color="#FBD98B"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s12-sky)"/><circle cx="720" cy="180" r="70" fill="#FBD98B" opacity=".8"/><path d="M0 400 L340 366 L620 400 Z" fill="#33476E"/><path d="M1440 400 L1100 364 L860 400 Z" fill="#30456A"/><rect x="0" y="398" width="1440" height="222" fill="#31435F"/><polygon points="180,620 650,400 790,400 1260,620" fill="#42557A"/><rect x="330" y="240" width="18" height="260" fill="#1D2438"/><rect x="1092" y="240" width="18" height="260" fill="#1D2438"/><rect x="330" y="240" width="780" height="64" fill="#F7F1E2"/><text x="720" y="284" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="30" letter-spacing="14" fill="#1D2438">FINISH</text></svg>
+    <div class="scene-inner inner-center">
+      <p class="kicker teal">Finish · Receipts</p>
+      <h2 class="ink">The results board</h2>
+      <div class="finishband">Finish · The Second Wind · Essay 45</div>
+      <div class="results">
+        <h3>The run, on the record</h3>
+        <ul class="recap">
+          <li>Minute three: at one steady workload, effort and heart rate climb out of proportion and peak at 6 to 8 minutes (Preisler, Haller and Vissing 2015).</li>
+          <li>The block: myophosphorylase, the PYGM enzyme that cashes in muscle glycogen, is missing; the store is full and unspendable (Preisler 2015; GeneReviews).</li>
+          <li>The wind: between minutes 8 and 12, oxygen uptake rises more than 25 percent, 13.0 to 16.5 mL per kg per minute, in 8 patients with complete deficiency (Haller and Vissing 2002).</li>
+          <li>Sugar early: 75 g of sucrose before cycling cut heart rate by 34 plus or minus 3 beats per minute versus placebo in 12 patients (Vissing and Haller, NEJM 2003); 37 g five minutes before worked and lasted longer (Andersen 2008, 6 patients).</li>
+          <li>Training: 14 weeks of moderate aerobic cycling raised work capacity 36 percent in 8 patients, with no pain, cramping, or creatine kinase rise, and the second wind unchanged (Haller 2006).</li>
+          <li>The risk: roughly half of affected individuals have recurrent myoglobinuria; pushing through the early tight minutes is a classic route to it (GeneReviews).</li>
+          <li>The limit: no randomised trial of aerobic training exists; the Cochrane review found three small open studies, the largest with nine participants (Quinlivan 2011).</li>
+        </ul>
+        <h3>Sources</h3>
+        <ol class="receipts">
+          <li>Preisler N, Haller RG, Vissing J. Exercise in muscle glycogen storage diseases. J Inherit Metab Dis. 2015. DOI 10.1007/s10545-014-9771-y.</li>
+          <li>Haller RG, Vissing J. Spontaneous "second wind" and glucose-induced second "second wind" in McArdle disease: oxidative mechanisms. Arch Neurol. 2002;59(9):1395 to 1402. PMID 12223025.</li>
+          <li>Vissing J, Haller RG. The effect of oral sucrose on exercise tolerance in patients with McArdle's disease. N Engl J Med. 2003;349(26):2503 to 2509. PMID 14695410.</li>
+          <li>Andersen ST, Haller RG, Vissing J. Effect of oral sucrose shortly before exercise on work capacity in McArdle disease. Arch Neurol. 2008;65(6):786 to 789. PMID 18541798.</li>
+          <li>Haller RG, Wyrick P, Taivassalo T, Vissing J. Aerobic conditioning: an effective therapy in McArdle's disease. Ann Neurol. 2006;59(6):922 to 928. PMID 16718692.</li>
+          <li>Martín MA, Lucia A, Arenas J, et al. Glycogen Storage Disease Type V. GeneReviews. Updated June 20, 2019. NCBI Bookshelf NBK1344.</li>
+          <li>Quinlivan R, et al. Physical training for McArdle disease. Cochrane Database Syst Rev. 2011;(12):CD003458.</li>
+        </ol>
+        <h3>Data and Methods</h3>
+        <p class="methods">Every measured number on this page comes from the seven receipts above, each opened and read for this build. The claim-by-claim audit sits in the build's SOURCES.md, including the provenance note on the 156 and 35 beats anchors and the figures deliberately not printed: the OCR-degraded Andersen heart-rate deltas, the single-patient running case, supplement trials, and registry percentages. Percentages are as printed in the sources, and oxygen uptake is printed in the sources' units, mL per kg per minute.</p>
+        <p class="methods">House note: the runner is a drawn composite, labelled as drawn in her first scene; no patient is depicted. The heart-rate curve is drawn between measured anchors and says so on its board. The gauge, gate, pipes, and icon rows are schematics of the printed statements, and no number is read off a drawing.</p>
+      </div>
+    </div>
+  </section>
+
+<p class="p445r-foot">The PM&amp;R Files · Essay 45 · The Second Wind · The Run format · Educational content only, not medical advice</p>
 </div>
 <script>
-/* Essay 37 interactions: a glass gauge board in a physiology lab.
-   Scene 2 is the bellows machine: four gauges (FVC, FEV1, TLC, and the
-   oxygen gauge VO2max) read as group averages indexed to each
-   group's preoperative mean, baseline 100. Scroll runs four states:
-   before surgery, the ghosted hypothetical, the measured volumes
-   at six months, and the measured oxygen at six months. A preset
-   control reruns the same states for the mixed partial resection
-   group, the study's observational comparator; a
-   slider runs the states by hand. Solid bars are measured endpoints
-   from Bolliger et al. 1996; the expectation state is ghosted because
-   nobody was ever measured there. Scene 4 advances emphasis down
-   three long term panels. */
 (function(){
-var root=document.getElementById('only-one-lung');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function seg(p,a,b){return clamp01((p-a)/Math.max(0.0001,b-a));}
-function lerp(a,b,f){return a+(b-a)*f;}
-
-var DATASETS={
- pneum:{label:'Whole lung removed · 18 patients',mode:'stopper',refVal:50,refLabel:'HALF · THE GUESS LINE',
-  states:[
-   {vals:[100,100,100,100],ghost:[0,0,0,0],lamp:0,tag:'MEASURED · PREOPERATIVE GROUP BASELINE',phase:'Gauges · Before surgery',
-    lampNote:'Legs lead · 56 percent before surgery, this group',
-    readout:'Before surgery, whole lung group. All four gauges read 100: group averages indexed to this group\u2019s preoperative mean. Leg fatigue was the most reported reason for stopping, in 56 percent of this group.'},
-   {vals:[50,50,50,50],ghost:[1,1,1,1],lamp:0,tag:'HYPOTHETICAL HALVING · NO MEASUREMENTS',phase:'Gauges · The hypothetical',
-    lampNote:'Legs lead · 56 percent before surgery, this group',
-    readout:'The hypothetical halving, drawn ghosted. Take one of two lungs away and every gauge should halve. Nobody in this study was measured in this state; it is a prediction, not a result.'},
-   {vals:[64,66,67,50],ghost:[0,0,0,1],lamp:0,tag:'MEASURED · SIX MONTHS AFTER SURGERY',phase:'Gauges · The volumes, six months on',
-    lampNote:'Legs lead · As before surgery',
-    readout:'Measured, six months after the whole lung was removed. Group averages: forced vital capacity down 36 percent, FEV1 down 34 percent, total lung capacity down 33 percent. The bellows lost a third, not a half. The oxygen gauge is revealed next; it still shows the guess.'},
-   {vals:[64,66,67,80],ghost:[0,0,0,0],lamp:1,tag:'MEASURED · SIX MONTHS AFTER SURGERY',phase:'Gauges · The oxygen, six months on',
-    lampNote:'Breath leads · 50 percent at six months',
-    readout:'Measured, six months after the whole lung was removed. Maximal oxygen uptake down 20 percent, not 50. Breathing reserve averaged 24 percent after pneumonectomy against 33 percent after partial resection, and breathlessness was the most reported reason for stopping, in 50 percent. Four postoperative responses in the study were ambiguous.'}
-  ]},
- lob:{label:'Mixed partial resection · 50 patients',mode:'lobe',refVal:80,refLabel:'HYPOTHETICAL · EQUAL LOBES ONLY',
-  states:[
-   {vals:[100,100,100,100],ghost:[0,0,0,0],lamp:0,tag:'MEASURED · PREOPERATIVE GROUP BASELINE',phase:'Gauges · Before surgery',
-    lampNote:'Legs lead · 52 percent before surgery, this group',
-    readout:'Before surgery, partial resection group. All four gauges read 100: group averages indexed to this group\u2019s preoperative mean. Leg fatigue was the most reported reason for stopping, in 52 percent of this group.'},
-   {vals:[80,80,80,80],ghost:[1,1,1,1],lamp:0,tag:'HYPOTHETICAL · EQUAL LOBES · NO MEASUREMENTS',phase:'Gauges · The hypothetical',
-    lampNote:'Legs lead · 52 percent before surgery, this group',
-    readout:'A pure hypothetical, drawn ghosted. If five lobes shared function equally, removing one would leave 80. Lobes do not share equally, this cohort had mixed partial operations, and nobody was measured in this state.'},
-   {vals:[93,91,90,80],ghost:[0,0,0,1],lamp:0,tag:'MEASURED · SIX MONTHS AFTER SURGERY',phase:'Gauges · The volumes, six months on',
-    lampNote:'Legs lead · Unchanged',
-    readout:'Measured, six months after partial resection. Forced vital capacity down 7 percent, FEV1 down 9 percent, total lung capacity down 10 percent. These gauges sat lower at three months and rose significantly by six; after a whole lung, they did not. The oxygen gauge is revealed next.'},
-   {vals:[93,91,90,101],ghost:[0,0,0,0],lamp:0,tag:'MEASURED · SIX MONTHS AFTER SURGERY',phase:'Gauges · The oxygen, six months on',
-    lampNote:'Legs lead · Unchanged by partial resection',
-    readout:'Measured, six months after partial resection. Maximal oxygen uptake showed no significant deficit: the group mean was 18.8 against 18.6 milliliters per kilogram per minute before surgery, about 101 indexed, a change that was not significant. Early values had dipped and recovered. The test still most often stopped for leg fatigue.'}
-  ]}
-};
-var GAUGE_IDS=['fvc','fev1','tlc','vo2'];
-var PLOT_X=170, PLOT_W=470;
-var dataset='pneum';
-var machineS=0;
-var machineStage=root.querySelector('#p438-gauges-stage');
-var bars={}, vals={}, ghostNote=null;
-GAUGE_IDS.forEach(function(id){bars[id]=root.querySelector('#p438-bar-'+id);vals[id]=root.querySelector('#p438-val-'+id);});
-var stateTag=root.querySelector('#p438-state-tag');
-var refLine=root.querySelector('#p438-ref-line');
-var refLabel=root.querySelector('#p438-ref-label');
-var stopperG=root.querySelector('#p438-stopper');
-var lobeG=root.querySelector('#p438-lobe-shade');
-var chamberRight=root.querySelector('#p438-chamber-right');
-var lampLegs=root.querySelector('#p438-lamp-legs');
-var lampBreath=root.querySelector('#p438-lamp-breath');
-var lampNoteEl=root.querySelector('#p438-lamp-note');
-var datasetLabel=root.querySelector('#p438-dataset-label');
-var gaugesProg=root.querySelector('#p438-gauges-prog');
-var gaugesPhase=root.querySelector('#p438-gauges-phase');
-var gaugesReadout=root.querySelector('#p438-gauges-readout');
-var ghostTag=root.querySelector('#p438-ghost-tag');
-var vo2Next=root.querySelector('#p438-vo2-next');
-var bench=root.querySelector('#p438-bench');
-var machineManual=false;
-
-function paramsAt(ds,s){
- var st=DATASETS[ds].states;
- var i=Math.min(2,Math.floor(s)), f=s-i;
- var a=st[i], b=st[i+1], out=[];
- for(var g=0;g<4;g++)out.push(lerp(a.vals[g],b.vals[g],f));
- return out;
-}
-function applyMachine(s,syncBench){
- machineS=s;
- var ds=DATASETS[dataset];
- var idx=Math.round(s);
- var stop=ds.states[idx];
- var p=paramsAt(dataset,s);
- GAUGE_IDS.forEach(function(id,g){
-  var bar=bars[id], val=vals[id];
-  if(bar){
-   bar.setAttribute('width',(Math.min(p[g],100)*PLOT_W/100).toFixed(1));
-   if(stop.ghost[g]){bar.setAttribute('fill','rgba(240,231,206,.08)');bar.setAttribute('stroke','#F0E7CE');bar.setAttribute('stroke-width','1.4');bar.setAttribute('stroke-dasharray','6 5');}
-   else{bar.setAttribute('fill',g===3?'#A8D8CE':'#F0E7CE');bar.setAttribute('stroke','none');bar.setAttribute('stroke-dasharray','none');}
+"use strict";
+var scenes = document.querySelectorAll('#p445r-root .scene');
+var clockEl = document.getElementById('p445r-clock');
+var progEl = document.getElementById('p445r-prog');
+var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function setClock(el){
+  if (!el) return;
+  var label = el.getAttribute('data-clock');
+  if (clockEl && label) clockEl.textContent = label;
+  var idx = parseInt(el.getAttribute('data-scene'), 10);
+  if (progEl && !isNaN(idx) && scenes.length > 1) {
+    progEl.textContent = Math.round((idx / (scenes.length - 1)) * 100) + "% of the run";
   }
-  if(val)val.textContent=String(stop.vals[g]);
- });
- var removed=idx>=1?1:0;
- if(stopperG)stopperG.setAttribute('opacity',dataset==='pneum'?String(removed):'0');
- if(lobeG)lobeG.setAttribute('opacity',dataset==='lob'?String(removed):'0');
- if(chamberRight)chamberRight.setAttribute('opacity',dataset==='pneum'?(removed?'0.25':'1'):'1');
- if(stateTag)stateTag.textContent=stop.tag;
- if(ghostTag)ghostTag.setAttribute('opacity',stop.ghost.some(function(x){return x===1;})?'1':'0');
- if(vo2Next)vo2Next.setAttribute('opacity',idx===2?'1':'0');
- if(refLine){var rx=PLOT_X+ds.refVal*PLOT_W/100;refLine.setAttribute('x1',rx);refLine.setAttribute('x2',rx);}
- if(refLabel){var lx2=PLOT_X+ds.refVal*PLOT_W/100;refLabel.setAttribute('x',lx2);refLabel.textContent=ds.refLabel;}
- if(lampLegs)lampLegs.classList.toggle('p438-lamp-on',stop.lamp===0);
- if(lampBreath)lampBreath.classList.toggle('p438-lamp-on',stop.lamp===1);
- if(lampNoteEl)lampNoteEl.textContent=stop.lampNote;
- if(datasetLabel)datasetLabel.textContent=ds.label;
- if(gaugesProg)gaugesProg.style.width=(s/3*100).toFixed(1)+'%';
- if(gaugesPhase)gaugesPhase.textContent=stop.phase;
- if(gaugesReadout)gaugesReadout.textContent=stop.readout;
- if(syncBench&&bench)bench.value=String(idx);
- if(machineStage)machineStage.setAttribute('data-progress',(s/3).toFixed(3));
 }
-if(bench){bench.addEventListener('input',function(){
- machineManual=true;
- applyMachine(parseInt(bench.value,10),false);
-});}
-var presets=root.querySelectorAll('.p438-preset');
-presets.forEach(function(btn){
- btn.addEventListener('click',function(){
-  presets.forEach(function(b){b.classList.remove('p438-preset-on');b.setAttribute('aria-pressed','false');});
-  btn.classList.add('p438-preset-on');
-  btn.setAttribute('aria-pressed','true');
-  dataset=btn.getAttribute('data-set');
-  applyMachine(machineS,false);
- });
-});
-
-/* Scene 4: the long arc. Scroll walks the emphasis down the three
-   panels; the numbers in each panel are static measured values. */
-var arcStage=root.querySelector('#p438-arc-stage');
-var arcProg=root.querySelector('#p438-arc-prog');
-var arcPhase=root.querySelector('#p438-arc-phase');
-var panelA=root.querySelector('#p438-panel-a');
-var panelB=root.querySelector('#p438-panel-b');
-var panelC=root.querySelector('#p438-panel-c');
-function renderArc(p){
- if(panelA)panelA.style.opacity=(1-0.55*seg(p,0.30,0.45)).toFixed(3);
- if(panelB)panelB.style.opacity=(0.45+0.55*(seg(p,0.26,0.42)-seg(p,0.64,0.80))).toFixed(3);
- if(panelC)panelC.style.opacity=(0.45+0.55*seg(p,0.62,0.80)).toFixed(3);
- if(arcProg)arcProg.style.width=(p*100).toFixed(1)+'%';
- if(arcPhase)arcPhase.textContent=p<0.36?'Long arc · The split':(p<0.70?'Long arc · One woman, fifteen years':'Long arc · The young');
- if(arcStage)arcStage.setAttribute('data-progress',p.toFixed(3));
-}
-
-/* Sources drawer */
-var drawer=root.querySelector('#p438-sources');
-if(drawer){
- var dBtn=drawer.querySelector('.p3-drawer-btn');
- if(dBtn){dBtn.addEventListener('click',function(){
-  var closed=drawer.classList.toggle('p3-closed');
-  dBtn.setAttribute('aria-expanded',String(!closed));
- });}
-}
-
-/* Scroll choreography engine: scroll position drives the stages.
-   Passive scroll listener, requestAnimationFrame interpolation, values
-   smoothed toward their scroll targets so motion eases and reverses. */
-var gaugesScrolly=root.querySelector('#p438-gauges-scrolly');
-var arcScrolly=root.querySelector('#p438-arc-scrolly');
-var sCur={gauges:0,arc:0};
-var sTgt={gauges:0,arc:0};
-var scrollRaf=false;
-function progressOf(el){
- if(!el)return 0;
- var r=el.getBoundingClientRect();
- var vh=window.innerHeight||800;
- var denom=Math.max(1,r.height-vh*0.30);
- return clamp01((vh*0.85-r.top)/denom);
-}
-function smoothTo(cur,target){
- if(reduced)return target;
- var next=cur+(target-cur)*0.16;
- return Math.abs(target-next)<0.002?target:next;
-}
-function snapEnds(v){return v<0.005?0:(v>0.995?1:v);}
-function measureScroll(){
- sTgt.gauges=snapEnds(progressOf(gaugesScrolly));
- sTgt.arc=snapEnds(progressOf(arcScrolly));
-}
-function applyScroll(){
- if(!machineManual)applyMachine(sCur.gauges*3,true);
- renderArc(sCur.arc);
-}
-function scrollFrame(){
- scrollRaf=false;
- measureScroll();
- var maxDelta=0;
- ['gauges','arc'].forEach(function(k){var d=Math.abs(sTgt[k]-sCur[k]);if(d>maxDelta)maxDelta=d;sCur[k]=smoothTo(sCur[k],sTgt[k]);});
- applyScroll();
- if(!reduced&&maxDelta>0.002){requestScrollFrame();}
-}
-function requestScrollFrame(){
- if(!scrollRaf){scrollRaf=true;requestAnimationFrame(scrollFrame);}
-}
-window.addEventListener('scroll',requestScrollFrame,{ passive: true });
-window.addEventListener('resize',requestScrollFrame,{ passive: true });
-/* Step activation: the step nearest the viewport centre is the lit one */
-if('IntersectionObserver' in window){
- var stepIO=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){en.target.classList.toggle('p438-step-active',en.isIntersecting);});
- },{rootMargin:'-42% 0px -42% 0px',threshold:0});
- root.querySelectorAll('.p438-step').forEach(function(st){stepIO.observe(st);});
-}
-requestScrollFrame();
-/* Reveals */
-var reveals=root.querySelectorAll('.p438-reveal');
-if('IntersectionObserver' in window&&!reduced){
- root.classList.add('p438-anim');
- var io=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
- },{threshold:0.08});
- reveals.forEach(function(el){io.observe(el)});
+if (reduced || !("IntersectionObserver" in window)) {
+  scenes.forEach(function(s){ s.classList.add("in"); });
+  if (scenes.length) setClock(scenes[0]);
 } else {
- reveals.forEach(function(el){el.classList.add('in');});
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); setClock(e.target); } });
+  }, {threshold: 0.18});
+  scenes.forEach(function(s){ io.observe(s); });
+  var ioClock = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) setClock(e.target); });
+  }, {rootMargin: "-45% 0px -45% 0px"});
+  scenes.forEach(function(s){ ioClock.observe(s); });
 }
-applyMachine(0,true);renderArc(0);
+window.__p445r = { scenes: scenes.length };
 })();
 </script>
+</div>
+<div class="view" id="bladder-500">
+<div class="p444c" id="p444c-root">
+<article class="sheet" aria-label="A bladder diary and urodynamics flowsheet that fills itself in as you scroll. The chart is the essay.">
 
-<div class="view" id="no-cerebellum-at-all">
-<div class="p437-wrap">
+  <header class="chart-head block" data-block="0">
+    <div class="formline"><span>The PM&amp;R Files · Essay 44 · Neurogenic Bladder</span><span>Form: bladder chart</span></div>
+    <p class="formname">Bladder Diary and Urodynamics Flowsheet</p>
+    <h1>Why 500 mL for everyone?</h1>
+    <div class="fields">
+      <div class="field"><span class="fl">Subject</span><span class="fv">Every bladder on the ward</span></div>
+      <div class="field"><span class="fl">Chart type</span><span class="fv">The essay itself, not one patient</span></div>
+      <div class="field"><span class="fl">This chart keeps</span><span class="fv">The rule, the measurements, and the gaps</span></div>
+    </div>
+    <div class="admit"><span class="fl">Admission note</span><p class="lede">One flat number guards every bladder on the ward. It was never fitted to yours.</p></div>
+    <p class="howto">This chart fills itself in as you scroll · Entries are written, results are stamped, and blank rows are blank on purpose · Vessels drawn; numbers measured</p>
+    <div class="byline"><span>By a PM&amp;R resident physician</span><span class="stamp">The Chart</span><span>One threshold, every body, checked</span></div>
+  </header>
 
-<header class="p437-hero">
-<p class="p437-kicker">The PM&amp;R Files · Essay 36 · What if</p>
-<h1 class="p437-title">What If You Had No Cerebellum at All?</h1>
-<p class="p437-answer">The cerebellum helps calibrate movement. Born without it, the prediction is no steady hand, clear speech, or balance. Yet the ninth living case tabulated by Yu and colleagues (Brain, 2015) had real, mild to moderate deficits: she walked and spoke, years late and unsteadily. Of nine cases tabulated including her, eight had symptoms; the one normal examination was subtotal.</p>
-<div class="p437-byline-row">
-<span class="p437-byline">By a PM&amp;R resident physician</span>
+  <section class="block" data-block="1">
+    <div class="bhead"><span class="blabel">Night entry · the small hours</span><span class="bnote">First · The scene</span></div>
+    <div class="entryrow">
+      <div class="ecell"><span class="fl">Time</span><span class="etime">3 AM</span></div>
+      <div class="ecell"><span class="fl">Event, as written on the night chart</span><span class="hand">Night catheterization. The bag came up heavy.</span></div>
+      <div class="ecell"><span class="fl">Volume drained</span><span class="hand big red">700 mL</span> <span class="stamp">Drawn example</span></div>
+    </div>
+    <p class="cnote p444c-counted">Picture the night shift on a spinal cord injury unit. It is 3 AM, the ward is dark, and the catheterization of a small, slight patient drains 700 mL into the bag.</p>
+    <p class="cnote p444c-counted">That scene is drawn, not reported: no such patient appears in any source here. But the number on the bag breaks a real rule, and that rule is the subject of this essay.</p>
+  </section>
 
-</div>
-<p class="p437-body">The what if rule holds: the counterfactual is the hook, never the evidence. This is one published case (Yu and colleagues, Brain, 2015): complete primary cerebellar agenesis, not a rate, prognosis, or promise.</p>
-<p class="p437-cue">Scroll · Read the scan, read the job card, run the bench, walk the timeline</p>
-</header>
+  <section class="block" data-block="2">
+    <div class="bhead"><span class="blabel">Standing orders · written once</span><span class="bnote">First · The rule itself</span></div>
+    <h2>One flat line, ordered for every chart</h2>
+    <span class="hand">Written once, at the top of every chart on the unit. Nobody rewrites it per patient.</span>
+    <p class="cnote p444c-counted">The rule is one flat line. The Alberta SCI Bladder Management Pathway, a provincial guideline for neurogenic bladder, asks that the volume of urine in the bladder remain less than 500 mL at any one time, protecting the bladder wall and keeping urine from backing up toward the kidneys.</p>
+    <p class="cnote p444c-counted">Around the line sits a schedule: catheterize four to six times a day, and never let urine sit longer than six hours. One threshold, one clock, every body.</p>
+    <div class="measure-row"><div class="measure"><span class="n">500 mL</span><span class="l">The ceiling: bladder volume to stay under this, at any one time · Alberta SCI Bladder Management Pathway</span></div><div class="measure"><span class="n">6 hours</span><span class="l">The clock: the longest urine should sit, with catheterization four to six times a day · Alberta pathway</span></div></div>
+  </section>
 
-<section class="p437-sec" id="p437-scan-sec">
-<p class="p437-ch-label">Scene one · The scan</p>
-<h2 class="p437-h2">An empty compartment at the back of the skull</h2>
-<p class="p437-body">She was 24, admitted with dizziness and unsteady walking for over 20 years, plus nausea and vomiting for about a month. No cerebellar tissue was found. The posterior fossa, the space at the back of the skull, held cerebrospinal fluid, fluid that cushions the brain; the brainstem was slimmed, its pons (part of the brainstem) hypoplastic, smaller, not fully developed.</p>
-<p class="p437-body">All three cerebellar artery types were missing on both sides: posterior inferior, anterior inferior, superior. Diffusion imaging showed no cerebellar connections. Conservative care relieved her presenting symptoms; relief held at a 4 year follow-up.</p>
-<div class="p437-stagebox">
-<div class="p437-stage-head"><span>The Scan, Drawn · The Posterior Fossa, Side View</span><span>Schematic · Not the patient's imaging</span></div>
-<div class="p437-svgwrap">
-<svg class="p437-svg" viewBox="0 0 720 340" role="img" aria-label="Schematic side view of a head and brain. The large cerebral hemisphere is drawn at the top; at the back, low down, the compartment where the cerebellum should sit is shown filled with pale fluid and labeled empty, beside a small slim brainstem. A brass gear floats outside the compartment, disconnected.">
-<defs><radialGradient id="p437-scan-glow" cx="80%" cy="10%" r="70%"><stop offset="0%" stop-color="#C9A227" stop-opacity="0.12"></stop><stop offset="55%" stop-color="#C9A227" stop-opacity="0"></stop></radialGradient></defs>
-<rect x="0" y="0" width="720" height="340" fill="#182B23"></rect>
-<rect x="0" y="0" width="720" height="340" fill="url(#p437-scan-glow)"></rect>
-<rect x="18" y="18" width="684" height="304" fill="none" stroke="#F2EBD9" stroke-opacity="0.16"></rect>
-<g stroke="#9DB4A4" stroke-width="1" opacity="0.4"><line x1="78" y1="18" x2="78" y2="27"></line><line x1="138" y1="18" x2="138" y2="27"></line><line x1="198" y1="18" x2="198" y2="27"></line><line x1="258" y1="18" x2="258" y2="27"></line><line x1="318" y1="18" x2="318" y2="27"></line><line x1="378" y1="18" x2="378" y2="27"></line><line x1="438" y1="18" x2="438" y2="27"></line><line x1="498" y1="18" x2="498" y2="27"></line><line x1="558" y1="18" x2="558" y2="27"></line><line x1="618" y1="18" x2="618" y2="27"></line></g>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.3"><circle cx="34" cy="34" r="4"></circle><circle cx="686" cy="306" r="4"></circle><circle cx="34" cy="306" r="4"></circle></g>
-<g stroke="#9DB4A4" stroke-width="1"><line x1="31" y1="34" x2="37" y2="34"></line><line x1="683" y1="306" x2="689" y2="306"></line><line x1="31" y1="306" x2="37" y2="306"></line></g>
-<g transform="translate(-30,8)">
-<path d="M 120 250 Q 90 150 170 84 Q 260 18 420 30 Q 560 40 606 130 Q 640 196 596 252 Q 560 292 470 288 L 210 288 Q 140 286 120 250 Z" fill="none" stroke="#F2EBD9" stroke-width="2"></path>
-<path d="M 150 236 Q 132 156 196 102 Q 272 44 408 52 Q 524 60 562 128 Q 578 158 572 190 L 300 190 Q 190 190 150 236 Z" fill="#233A30" stroke="#9DB4A4" stroke-width="1.2"></path>
-<path d="M 166 226 Q 152 162 204 110 Q 274 54 398 64 Q 500 72 540 126" fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.35"></path>
-<g fill="none" stroke="#9DB4A4" stroke-width="1" opacity="0.55"><path d="M 200 120 Q 300 92 420 104"></path><path d="M 190 160 Q 310 132 470 146"></path><path d="M 250 84 Q 330 66 430 76"></path><path d="M 214 186 Q 330 164 486 172" opacity="0.6"></path><path d="M 292 68 Q 360 56 448 64" opacity="0.6"></path></g>
-<text x="330" y="130" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#9DB4A4" text-anchor="middle">CEREBRAL HEMISPHERE</text>
-<path d="M 452 196 Q 540 190 588 214 Q 606 250 580 276 Q 520 292 466 278 Q 446 240 452 196 Z" fill="#86C5BB" opacity="0.22"></path>
-<g fill="none" stroke="#86C5BB" stroke-width="1.1" opacity="0.55"><path d="M 484 238 q 9 -6 18 0 t 18 0 t 18 0"></path></g>
-<path d="M 452 196 Q 540 190 588 214 Q 606 250 580 276 Q 520 292 466 278 Q 446 240 452 196 Z" fill="none" stroke="#86C5BB" stroke-width="1.6" stroke-dasharray="6 5"></path>
-<text x="518" y="222" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="1" fill="#F2EBD9" text-anchor="middle">POSTERIOR FOSSA</text>
-<text x="524" y="254" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.3" fill="#86C5BB" text-anchor="middle">CEREBROSPINAL FLUID</text>
-<text x="524" y="269" font-family="IBM Plex Mono, monospace" font-size="8.5" letter-spacing="0.3" fill="#86C5BB" text-anchor="middle">NO CEREBELLAR TISSUE</text>
-<path d="M 413 196 Q 410 240 413 284 L 433 284 Q 436 240 433 196 Q 423 203 413 196 Z" fill="#2A4438" stroke="#F2EBD9" stroke-width="1.4" opacity="0.95"></path><g fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.6"><path d="M 414 226 Q 423 232 432 226"></path><path d="M 414 244 Q 423 250 432 244"></path></g>
-<path d="M 422 206 L 421 272" fill="none" stroke="#9DB4A4" stroke-width="0.8" opacity="0.5"></path>
-<line x1="398" y1="254" x2="409" y2="254" stroke="#9DB4A4" stroke-width="1" stroke-dasharray="3 3"></line>
-<circle cx="411" cy="254" r="2.2" fill="#C9A227"></circle>
-<text x="392" y="246" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9DB4A4" text-anchor="end">BRAINSTEM,</text>
-<text x="392" y="262" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9DB4A4" text-anchor="end">PRESENT, SLIMMED</text>
-</g>
-<circle cx="662" cy="62" r="31" fill="none" stroke="#C9A227" stroke-width="1" stroke-dasharray="3 5" opacity="0.55"></circle>
-<g class="p437-gear"><g transform="translate(662,62)"><circle r="21" fill="none" stroke="#C9A227" stroke-width="3"></circle><circle r="11" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.6"></circle><circle r="6" fill="#C9A227"></circle><circle r="2.4" fill="#182B23"></circle><g fill="#C9A227"><rect x="-3.5" y="-29" width="7" height="10"></rect><rect x="-3.5" y="19" width="7" height="10"></rect><rect x="-29" y="-3.5" width="10" height="7"></rect><rect x="19" y="-3.5" width="10" height="7"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(45)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(45)"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(90)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(90)"></rect><rect x="-3.5" y="-29" width="7" height="10" transform="rotate(135)"></rect><rect x="-3.5" y="19" width="7" height="10" transform="rotate(135)"></rect></g></g></g>
-<text x="662" y="118" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#C9A227" text-anchor="middle">THE FINEST GEAR,</text>
-<text x="662" y="134" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#C9A227" text-anchor="middle">NEVER FITTED</text>
-<text x="50" y="315" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9DB4A4">SCHEMATIC · NOT HER SCAN · SIDE VIEW</text>
-</svg>
-</div>
-<div class="p437-beats">
-<div class="p437-beat"><span class="p437-beat-num">0</span><span class="p437-beat-lab">cerebellar tissue on CT and MRI: no remnants of any kind, per the case report</span></div>
-<div class="p437-beat"><span class="p437-beat-num">3</span><span class="p437-beat-lab">cerebellar artery types absent on each side: posterior inferior, anterior inferior, and superior, on both sides</span></div>
-<div class="p437-beat"><span class="p437-beat-num">0</span><span class="p437-beat-lab">cerebellar connections seen on diffusion imaging</span></div>
-</div>
-<span class="p437-viz-note">Schematic drawing made for this essay. It is not the patient's scan and depicts no real patient; the published imaging lives in the case report itself. The three figures are the report's findings: complete absence of cerebellar tissue, of its three artery types on each side, and no cerebellar connections seen on diffusion imaging. The brainstem findings (hypoplastic pons, attenuated medulla) are the report's as well.</span>
-</div>
-</section>
+  <section class="block" data-block="3">
+    <div class="bhead"><span class="blabel">Ward audit · tally of the real charts</span><span class="bnote">First · The rule meets the ward</span></div>
+    <h2>Half the ward breaks it</h2> <span class="stamp amber">Audited</span>
+    <span class="hand">Counted across the whole ward, every measured cath, every measured gap.</span>
+    <p class="cnote p444c-counted">Real wards do not hold the line. A 2025 study in Spinal Cord audited inpatient catheterizations in 413 adults with spinal cord injury: 8,016 measurements. A measurement counted as off guideline if the volume passed 500 mL or the gap since the last catheterization passed six hours.</p>
+    <p class="cnote p444c-counted">Half of everything failed one test or the other. Hospitalizations with off guideline catheterizations saw urinary tract infections in 12.5 percent of cases versus 10.4 percent on guideline, a gap the study could not separate from chance (P = 0.49).</p>
+    <div class="measure-row"><div class="measure"><span class="n">50.2%</span><span class="l">Of 8,016 catheterization measurements were off guideline · Spinal Cord, 2025</span></div></div>
+  </section>
 
-<section class="p437-sec" id="p437-job-sec">
-<p class="p437-ch-label">Scene two · The job description</p>
-<h2 class="p437-h2">What the missing gear was for</h2>
-<p class="p437-body">Azevedo and colleagues counted the cerebellum at about a tenth of brain mass in that sample, holding 69 billion of 86 billion neurons, against 16 billion in the cortex: rounded means from four adult male brains, estimating no individual's cells.</p>
-<p class="p437-body">The cerebellum helps coordinate timing and accuracy, adjusting movement with practice: predicting consequences, comparing prediction with reality, using each error next time. The job card carries the consensus list.</p>
-<div class="p437-stagebox">
-<div class="p437-stage-head"><span>The Job Card · What the Calibration Loop Does</span><span>Consensus framing · Manto et al. 2012</span></div>
-<div class="p437-beats">
-<div class="p437-beat"><span class="p437-beat-num">Predict</span><span class="p437-beat-lab">model where a movement is heading before feedback arrives</span></div>
-<div class="p437-beat"><span class="p437-beat-num">Time</span><span class="p437-beat-lab">sequence the components of an act so they land together</span></div>
-<div class="p437-beat"><span class="p437-beat-num">Correct</span><span class="p437-beat-lab">compare prediction with reality and trim the error, mid flight</span></div>
-<div class="p437-beat"><span class="p437-beat-num">Adapt</span><span class="p437-beat-lab">use each error to recalibrate the next attempt: learning, stored</span></div>
-<div class="p437-beat"><span class="p437-beat-num">Scale</span><span class="p437-beat-lab">set grip force, eye movements, and motor speech to the size of the job</span></div>
-</div>
-<span class="p437-viz-note">The job list is the qualitative consensus of the cerebellum literature, summarized from the field's 2012 consensus paper on motor control; it carries no numbers because the source assigns none. The neuron counts above are from Azevedo et al. 2009, means from four adult male donor brains; the census counts neurons and assigns none of them to a single task. The next scene turns one line of this card, prediction and correction, into a working bench.</span>
-</div>
-</section>
+  <section class="block" data-block="4">
+    <div class="bhead"><span class="blabel">Voiding diary · three bodies, one line</span><span class="bnote">Second · The question</span></div>
+    <h2>Same line, different bladders</h2>
+    <svg viewBox="0 0 720 372" role="img" aria-label="Diary plate: three drawn bladder vessels of different sizes, invented examples, cut by one dashed line at the same height labelled 500 mL." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="cdiary-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0A58E"/><stop offset="1" stop-color="#C96A52"/></linearGradient>
+<linearGradient id="cdiary-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CE6B"/><stop offset="1" stop-color="#DE9A33"/></linearGradient>
+</defs><rect x="2" y="2" width="716" height="368" rx="6" fill="#FDF9EF" stroke="#C9BFA6" stroke-width="2"/><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z" fill="url(#cdiary-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="cd-c1"><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z"/></clipPath><g clip-path="url(#cd-c1)"><rect x="10" y="135.1" width="220" height="170" fill="url(#cdiary-fill)" opacity="0.92"/></g><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z" fill="url(#cdiary-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="cd-c2"><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z"/></clipPath><g clip-path="url(#cd-c2)"><rect x="210" y="154.4" width="300" height="230" fill="url(#cdiary-fill)" opacity="0.92"/></g><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z" fill="url(#cdiary-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="cd-c3"><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z"/></clipPath><g clip-path="url(#cd-c3)"><rect x="415" y="186.0" width="370" height="280" fill="url(#cdiary-fill)" opacity="0.92"/></g><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><line x1="24" y1="135" x2="696" y2="135" stroke="#A86E0F" stroke-width="3.5" stroke-dasharray="12 8"/><text x="696" y="30" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="15" fill="#A86E0F">500 mL · THE RULE</text><text x="120" y="358" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5A6A72">SMALL BODY</text><text x="360" y="358" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5A6A72">MIDDLE BODY</text><text x="600" y="358" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#5A6A72">LARGE BODY</text><text x="24" y="30" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#B3402E">VESSELS ARE DRAWN EXAMPLES · THE LINE IS REAL</text></svg>
+    <p class="figcap">Diary plate · three drawn bladders under the one ordered line</p>
+    <p class="cnote p444c-counted">So the line is broken constantly, and breaking it may matter less than the posters imply. Which raises the ruder question underneath: why is the line at the same height for everyone?</p>
+    <p class="cnote p444c-counted">The three bladders here are examples, invented for this page. The dashed line is not invented: 500 mL, identical on every chart. A volume that badly stretches one person's bladder can be an ordinary fill for another's, yet the rule reads both charts the same.</p>
+  </section>
 
-<section class="p437-sec" id="p437-bench-sec">
-<p class="p437-ch-label">Scene three · The calibration bench</p>
-<h2 class="p437-h2">One task, three ways of finishing it</h2>
-<p class="p437-body">A tracer must ride the target line. The bench is a labeled simulation of one function, not a model of the whole structure, not data.</p>
-<div class="p437-scrolly" id="p437-bench-scrolly" data-scrolly="bench">
-<div class="p437-stagebox p437-stage-sticky" id="p437-bench-stage" data-progress="0">
-<div class="p437-stage-head"><span>The Calibration Bench · Keep the Tracer on the Line</span><span>Simulation · Labeled as such</span></div>
-<div class="p437-svgwrap">
-<svg class="p437-svg" viewBox="0 0 720 400" role="img" aria-label="Illustration only, no patient data. A bench plate with an engraved wavy target line. A tracer line is drawn three ways depending on scroll position: riding the target exactly in an idealized reference with the correction gear fitted, swinging wide of it with the gear missing, or following in small late steps as one possible compensation strategy drawn as a hypothesis.">
-<defs><radialGradient id="p437-bench-glow" cx="84%" cy="8%" r="65%"><stop offset="0%" stop-color="#C9A227" stop-opacity="0.10"></stop><stop offset="55%" stop-color="#C9A227" stop-opacity="0"></stop></radialGradient></defs>
-<rect x="0" y="0" width="720" height="400" fill="#182B23"></rect>
-<rect x="0" y="0" width="720" height="400" fill="url(#p437-bench-glow)"></rect>
-<rect x="20" y="20" width="680" height="360" fill="none" stroke="#F2EBD9" stroke-opacity="0.16"></rect>
-<g stroke="#9DB4A4" stroke-width="1" opacity="0.4"><line x1="120" y1="20" x2="120" y2="29"></line><line x1="210" y1="20" x2="210" y2="32"></line><line x1="300" y1="20" x2="300" y2="29"></line><line x1="360" y1="20" x2="360" y2="32"></line><line x1="420" y1="20" x2="420" y2="29"></line><line x1="510" y1="20" x2="510" y2="32"></line><line x1="600" y1="20" x2="600" y2="29"></line><line x1="120" y1="371" x2="120" y2="380"></line><line x1="210" y1="368" x2="210" y2="380"></line><line x1="300" y1="371" x2="300" y2="380"></line><line x1="360" y1="368" x2="360" y2="380"></line><line x1="420" y1="371" x2="420" y2="380"></line><line x1="510" y1="368" x2="510" y2="380"></line><line x1="600" y1="371" x2="600" y2="380"></line></g>
-<g fill="none" stroke="#9DB4A4" stroke-width="1.3"><circle cx="36" cy="36" r="4"></circle><circle cx="684" cy="36" r="4"></circle><circle cx="684" cy="364" r="4"></circle><circle cx="36" cy="364" r="4"></circle></g>
-<g stroke="#233A30" stroke-width="1"><line x1="60" y1="90" x2="660" y2="90"></line><line x1="60" y1="150" x2="660" y2="150"></line><line x1="60" y1="270" x2="660" y2="270"></line><line x1="60" y1="310" x2="660" y2="310"></line><line x1="60" y1="50" x2="60" y2="350"></line><line x1="210" y1="50" x2="210" y2="350"></line><line x1="360" y1="50" x2="360" y2="350"></line><line x1="510" y1="50" x2="510" y2="350"></line><line x1="660" y1="50" x2="660" y2="350"></line></g>
-<path d="M 60 210 C 160 118, 260 118, 340 210 C 420 302, 520 302, 660 210" fill="none" stroke="#9DB4A4" stroke-width="1.6" stroke-dasharray="7 6"></path>
-<text x="60" y="76" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#9DB4A4">TARGET LINE, ENGRAVED</text>
-<path id="p437-trace-off" d="M 60 210 L 112 148 L 152 270 L 204 126 L 252 288 L 302 148 L 352 264 L 404 136 L 452 280 L 502 156 L 552 252 L 602 168 L 660 210" fill="none" stroke="#F2EBD9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity="0"></path>
-<path id="p437-trace-comp" d="M 60 210 L 122 176 L 122 194 L 192 156 L 192 176 L 262 166 L 262 188 L 332 204 L 332 224 L 402 238 L 402 254 L 472 262 L 472 242 L 542 224 L 542 208 L 660 210" fill="none" stroke="#F2EBD9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 4" opacity="0"></path>
-<path id="p437-trace-on" d="M 60 210 C 160 118, 260 118, 340 210 C 420 302, 520 302, 660 210" fill="none" stroke="#C9A227" stroke-width="3" stroke-linecap="round"></path>
-<circle cx="60" cy="210" r="4" fill="#C9A227"></circle>
-<circle cx="660" cy="210" r="4.5" fill="none" stroke="#C9A227" stroke-width="1.6"></circle>
-<g id="p437-gear-on"><g transform="translate(648,52)"><circle r="25" fill="none" stroke="#C9A227" stroke-width="1" stroke-dasharray="2 4" opacity="0.4"></circle><circle r="17" fill="none" stroke="#C9A227" stroke-width="2.6"></circle><circle r="10" fill="none" stroke="#C9A227" stroke-width="1" opacity="0.6"></circle><circle r="5" fill="#C9A227"></circle><circle r="2" fill="#182B23"></circle><g fill="#C9A227"><rect x="-3" y="-24" width="6" height="8"></rect><rect x="-3" y="16" width="6" height="8"></rect><rect x="-24" y="-3" width="8" height="6"></rect><rect x="16" y="-3" width="8" height="6"></rect><rect x="-3" y="-24" width="6" height="8" transform="rotate(45)"></rect><rect x="-3" y="16" width="6" height="8" transform="rotate(45)"></rect><rect x="-3" y="-24" width="6" height="8" transform="rotate(90)"></rect><rect x="-3" y="16" width="6" height="8" transform="rotate(90)"></rect><rect x="-3" y="-24" width="6" height="8" transform="rotate(135)"></rect><rect x="-3" y="16" width="6" height="8" transform="rotate(135)"></rect></g></g></g>
-<g id="p437-gear-off" opacity="0"><g transform="translate(648,52)"><circle r="25" fill="none" stroke="#9DB4A4" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"></circle><circle r="17" fill="none" stroke="#9DB4A4" stroke-width="2" stroke-dasharray="4 4"></circle><text y="4" font-family="IBM Plex Mono, monospace" font-size="13" fill="#9DB4A4" text-anchor="middle">?</text></g></g>
-<line x1="60" y1="344" x2="660" y2="344" stroke="#F2EBD9" stroke-width="1" opacity="0.18"></line>
-<text id="p437-bench-tag" x="60" y="368" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#C9A227">SIMULATION · CORRECTION FITTED</text>
-<text x="660" y="368" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="1" fill="#9DB4A4" text-anchor="end">ILLUSTRATION ONLY · NO PATIENT DATA</text>
-</svg>
-</div>
-<div class="p437-scrub-controls">
-<label class="p437-slider-lab" for="p437-bench-dial">Bench setting</label>
-<div class="p437-slider-row">
-<span class="p437-slider-end">Correction on</span>
-<input type="range" class="p437-slider" id="p437-bench-dial" min="0" max="2" step="1" value="0" aria-describedby="p437-bench-readout">
-<span class="p437-slider-end">Years to improvise</span>
-</div>
-</div>
-<div class="p437-meter" aria-hidden="true"><span class="p437-meter-fill" id="p437-bench-prog"></span></div>
-<p class="p437-phase" id="p437-bench-phase">Bench · Correction fitted</p>
-<p class="p437-readout" id="p437-bench-readout" aria-live="polite">Correction fitted, idealized reference. The tracer rides the target line exactly: every deviation is predicted, timed, and trimmed before it can grow. Illustration only; no patient data.</p>
-<span class="p437-step-alt">Scroll runs the bench through its three settings, and the slider is a manual alternative for the same three. All three traces are drawings that teach one function; none of them is a recording of any patient. Illustration only; no patient data in any state.</span>
-<span class="p437-viz-note">Simulation, stated plainly: the target line and the three tracer paths are drawn for this essay to show what a prediction and correction layer contributes to a movement. Real cerebellar work is faster, quieter, and spread across the whole body. The middle trace shows one illustrated coordination error, an overshoot, a type of dysmetria. Her report documents dysmetria and ataxia and describes voice tremor in her speech; no tremor is drawn here, and the names come from the examination literature, not from this drawing.</span>
-</div>
-<div class="p437-steps-side">
-<div class="p437-step" data-step="bench-on"><p class="p437-step-kicker">Step 1 of 3 · Correction fitted</p><p class="p437-body">In this idealized reference, trace and target are one line: working calibration is invisible.</p></div>
-<div class="p437-step" data-step="bench-off"><p class="p437-step-kicker">Step 2 of 3 · Correction removed</p><p class="p437-body">Remove the gear: one illustrated coordination error, an overshoot, a type of dysmetria, corrected late. A drawing, not her examination.</p></div>
-<div class="p437-step" data-step="bench-comp"><p class="p437-step-kicker">Step 3 of 3 · A childhood to improvise</p><p class="p437-body">Given years, the trace turns stepwise: late, close, workable. One possible compensation strategy, drawn as a hypothesis.</p></div>
-</div>
-</div>
-</section>
+  <section class="block" data-block="5">
+    <div class="bhead"><span class="blabel">Pediatric page · clipped to the corner</span><span class="bnote">Second · Where scaling lives</span></div>
+    <div class="clip">
+      <div class="bhead"><span class="blabel">Children's chart · the same question, answered differently</span></div>
+      <h2>Kids get a formula</h2>
+      <p class="cnote p444c-counted">Children's medicine never accepted a flat line. In infants, expected bladder capacity is estimated from body weight: about 7 mL for every kilogram, from a 1991 study of 125 babies measured on cystography.</p>
+      <p class="cnote p444c-counted">In schoolchildren, functional bladder capacity, the largest volume in a voiding diary, tracks weight, height, and trunk length, though that study calls the relationship loose. A national spina bifida protocol, choosing between them, picked age based rules over weight based formulas because nobody would have to calculate anything.</p>
+      <div class="measure-row"><div class="measure"><span class="n">7 mL/kg</span><span class="l">Expected infant bladder capacity, straight from body weight · Fairhurst 1991</span></div><div class="measure"><span class="n">125</span><span class="l">Infants whose capacity was measured to build that formula · Fairhurst 1991</span></div></div>
+    </div>
+  </section>
 
-<section class="p437-sec" id="p437-timeline-sec">
-<p class="p437-ch-label">Scene four · The timeline</p>
-<h2 class="p437-h2">Stood at four, spoke at six, walked at seven</h2>
-<p class="p437-body">Her mother reported: stood at 4, speech intelligible at 6, walked at 7, unsteadily ever since; never ran or jumped; did not enter school.</p>
-<div class="p437-scrolly" id="p437-timeline-scrolly" data-scrolly="timeline">
-<div class="p437-stagebox p437-stage-sticky" id="p437-timeline-stage" data-progress="0">
-<div class="p437-stage-head"><span>The Timeline, as Reported · Yu et al. 2015</span><span>One case · History and examination</span></div>
-<div class="p437-tl" id="p437-tl">
-<div class="p437-tl-row" id="p437-tl-0"><span class="p437-tl-when">Age 4 · Mother's account</span><span class="p437-tl-what">Stood unassisted, years after the usual calendar</span></div>
-<div class="p437-tl-row" id="p437-tl-1"><span class="p437-tl-when">Age 6 · Mother's account</span><span class="p437-tl-what">Speech became intelligible; she never entered school</span></div>
-<div class="p437-tl-row" id="p437-tl-2"><span class="p437-tl-when">Age 7 · Mother's account</span><span class="p437-tl-what">Walked unassisted, with a persistently unsteady gait</span></div>
-<div class="p437-tl-row" id="p437-tl-3"><span class="p437-tl-when">Never · Mother's account</span><span class="p437-tl-what">Ran or jumped</span></div>
-<div class="p437-tl-row" id="p437-tl-4"><span class="p437-tl-when">Adult · History</span><span class="p437-tl-what">Married, with a daughter; her pregnancy and delivery were uneventful</span></div>
-<div class="p437-tl-row" id="p437-tl-5"><span class="p437-tl-when">At 24 · Exam</span><span class="p437-tl-what">Word comprehension and expression intact, no aphasia; she could cooperate and fully orientate</span></div>
-</div>
-<div class="p437-meter" aria-hidden="true"><span class="p437-meter-fill" id="p437-timeline-prog"></span></div>
-<p class="p437-phase" id="p437-timeline-phase">Timeline · The milestones assemble</p>
-<span class="p437-step-alt">Scroll assembles the reported timeline row by row. Every row is a fact from the published case report: the developmental history as her mother reported it, and the examination findings at presentation. Yu and colleagues tabulated nine living cases including this patient: eight had symptoms, and the one normal neurological examination was in a subtotal case.</span>
-<span class="p437-viz-note">Each entry is reported fact, not reconstruction: ages 4, 6, and 7 from the developmental history in Yu et al. 2015; the adult entries from the same report's history and examination. The report does not give finer dates, so the timeline does not invent any.</span>
-</div>
-<div class="p437-steps-side">
-<div class="p437-step" data-step="timeline-early"><p class="p437-step-kicker">Step 1 of 3 · The milestones</p><p class="p437-body">Standing, speaking, walking: each years late, on her mother's account. The delays are the deficit.</p></div>
-<div class="p437-step" data-step="timeline-never"><p class="p437-step-kicker">Step 2 of 3 · The ceiling</p><p class="p437-body">The limits persisted in the reported history: no running or jumping, a gait still unsteady. Speed is what the history does not show.</p></div>
-<div class="p437-step" data-step="timeline-adult"><p class="p437-step-kicker">Step 3 of 3 · The adult</p><p class="p437-body">Exam at 24 found language understood and produced, beside the motor findings below. Marriage and a daughter are history, not recovery measures.</p></div>
-</div>
-</div>
-<p class="p437-body">Examination at 24. Walking and balance: gait moderately unsteady, tandem impaired, speed reduced; Romberg and heel to shin tests impaired. Hands: finger to nose dysmetria mild to moderate; alternating movements slightly irregular and slowed. Speech: mild to moderate dysarthria, speech hard to produce clearly, though language understanding and expression stayed intact. Tone mildly increased; no focal paresis was reported; sensation normal. The authors reported mild cognitive impairment and moderate motor deficits, less severe than expected.</p>
-</section>
+  <section class="block" data-block="6">
+    <div class="bhead"><span class="blabel">Urodynamics tracing · the adult evidence</span><span class="bnote">Second · The adult evidence</span></div>
+    <h2>The dial that does not turn</h2>
+    <svg viewBox="0 0 720 250" role="img" aria-label="Drawn urodynamics tracing strip: the abdominal pressure line climbs as body mass index rises, while the capacity line sits flat." xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="716" height="246" rx="6" fill="#FDF9EF" stroke="#C9BFA6" stroke-width="2"/><line x1="70" y1="30" x2="70" y2="205" stroke="#14313A" stroke-width="2.5"/><line x1="70" y1="205" x2="680" y2="205" stroke="#14313A" stroke-width="2.5"/><path d="M78 178 C 220 168, 330 140, 450 104 C 540 78, 610 58, 668 44" fill="none" stroke="#C0452F" stroke-width="4"/><path d="M78 128 C 240 124, 420 130, 668 126" fill="none" stroke="#2E7D6B" stroke-width="4"/><text x="668" y="34" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#C0452F">ABDOMINAL PRESSURE AT MAXIMUM CAPACITY · CLIMBS</text><text x="668" y="112" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#2E7D6B">CAPACITY · SITS FLAT</text><text x="375" y="232" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#5A6A72">BODY MASS INDEX, LOW TO HIGH</text><text x="24" y="26" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="2" fill="#B3402E">TRACING DRAWN FROM THE PRIDE URODYNAMICS RESULT</text></svg>
+    <p class="figcap">Tracing strip · pressure is what rises; capacity is what does not</p>
+    <span class="hand">Pressure climbs the page. Capacity will not move.</span>
+    <p class="cnote p444c-counted">In adults, the size dial mostly stops working. When 69 young adults drank measured water and held on as long as they could, body weight, height, and body mass index did not significantly change how much the bladder held, once gender was accounted for.</p>
+    <p class="cnote p444c-counted">Urodynamics agrees, from the other side. In the PRIDE trial's urodynamic study of 110 women, higher body mass index raised the abdominal pressure recorded at maximum cystometric capacity, by 0.4 cm of water per unit of BMI. The capacity itself just sat there, averaging 433 mL.</p>
+    <div class="measure-row"><div class="measure"><span class="n">69</span><span class="l">Young adults in the holding study where weight, height, and BMI did not move capacity · Janjua 2017</span></div><div class="measure"><span class="n">433 mL</span><span class="l">Average maximum cystometric capacity while pressure, not capacity, rose with BMI · PRIDE urodynamics</span></div></div>
+  </section>
 
-<section class="p437-sec" id="p437-contrast-sec">
-<p class="p437-ch-label">Scene five · The contrast</p>
-<h2 class="p437-h2">Born without it is not the same as losing it</h2>
-<p class="p437-body">Acquired cerebellar disease can affect planning, spatial skills, emotion, and language. This cohort does not compare congenital with adult loss, or measure adult recovery.</p>
-<p class="p437-body">Kept separate from her case: Schmahmann and Sherman (1998) studied 20 patients with disease confined to the cerebellum. Worst from posterior lobe and vermis lesions, it disturbed executive function, spatial cognition, personality, and language; anterior lesions changed little.</p>
-<div class="p437-stagebox">
-<div class="p437-stage-head"><span>The Contrast Cohort · Cerebellar Cognitive Affective Syndrome</span><span>Schmahmann and Sherman 1998 · 20 patients</span></div>
-<div class="p437-clusters">
-<div class="p437-cluster"><span class="p437-cluster-name">Executive</span><span class="p437-cluster-desc">Planning, switching between tasks, verbal fluency, abstract reasoning, and working memory impaired</span></div>
-<div class="p437-cluster"><span class="p437-cluster-name">Spatial</span><span class="p437-cluster-desc">Visual spatial organization and memory disrupted</span></div>
-<div class="p437-cluster"><span class="p437-cluster-name">Personality</span><span class="p437-cluster-desc">Affect blunted or flattened, or behavior disinhibited and inappropriate</span></div>
-<div class="p437-cluster"><span class="p437-cluster-name">Language</span><span class="p437-cluster-desc">Trouble forming grammatical sentences, and altered speech rhythm and melody</span></div>
-</div>
-<span class="p437-viz-note">The four clusters are the syndrome as its authors defined it in 20 patients with disease confined to the cerebellum, with behavioral change most prominent in posterior lobe and vermis lesions. It is printed here, visually separate from her case, as the acquired disease contrast: a cohort of damaged cerebella, not a description of the agenesis case, whose own examination sits in Scene four.</span>
-</div>
-<p class="p437-body">Yu and colleagues tabulated nine living cases including her: eight symptomatic; the one normal examination was subtotal. They read her milder than expected deficits as consistent with early compensation, yet concluded the cerebellum is necessary for normal development: she stood, spoke, and walked years late, and never ran or jumped.</p>
-<div class="p437-statbox">
-<div class="p437-stage-head"><span>The Gap at a Glance</span><span>Case and counts, as published</span></div>
-<div class="p437-stats">
-<div class="p437-stat"><span class="p437-stat-num">69 billion</span><span class="p437-stat-lab">mean neurons counted in the cerebellum, of 86 billion in the whole brain (Azevedo et al. 2009, four adult male brains)</span></div>
-<div class="p437-stat"><span class="p437-stat-num">Nine</span><span class="p437-stat-lab">living cases tabulated by Yu and colleagues (2015), including this patient: eight had symptoms; the one normal neurological examination was in a subtotal case, not a complete absence</span></div>
-</div>
-<p class="p437-verdict-close">Predicted: a movement system with no calibrator. Observed: she walks and speaks understandably, yet her gait stays unsteady and her speech stays dysarthric. A task can become possible without normal coordination returning. Yu and colleagues read that gap as consistent with early compensation, not as proof the part is optional.</p>
-</div>
-</section>
+  <section class="block" data-block="7">
+    <div class="bhead"><span class="blabel">Amendment · each bladder, its own line</span><span class="bnote">Second · What individualizes</span></div>
+    <h2>The dial that does</h2>
+    <svg viewBox="0 0 720 372" role="img" aria-label="The same three drawn bladder vessels, each now with its own solid line at its own height, labelled measured, not guessed. Drawn examples." xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="cown-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0A58E"/><stop offset="1" stop-color="#C96A52"/></linearGradient>
+<linearGradient id="cown-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CE6B"/><stop offset="1" stop-color="#DE9A33"/></linearGradient>
+</defs><rect x="2" y="2" width="716" height="368" rx="6" fill="#FDF9EF" stroke="#C9BFA6" stroke-width="2"/><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z" fill="url(#cown-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="co-c0"><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z"/></clipPath><g clip-path="url(#co-c0)"><rect x="10" y="194.6" width="220" height="170" fill="url(#cown-fill)" opacity="0.92"/></g><path d="M 102.4 130 C 54.0 177.6, 65.0 223.5, 71.6 262.6 C 82.6 300 157.4 300 168.4 262.6 C 175.0 223.5, 186.0 177.6, 137.6 130 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><line x1="51.0" y1="195" x2="189.0" y2="195" stroke="#2E7D6B" stroke-width="3.5"/><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z" fill="url(#cown-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="co-c1"><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z"/></clipPath><g clip-path="url(#co-c1)"><rect x="210" y="140.6" width="300" height="230" fill="url(#cown-fill)" opacity="0.92"/></g><path d="M 336.0 90 C 270.0 154.4, 285.0 216.5, 294.0 269.4 C 309.0 320 411.0 320 426.0 269.4 C 435.0 216.5, 450.0 154.4, 384.0 90 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><line x1="271.0" y1="141" x2="449.0" y2="141" stroke="#2E7D6B" stroke-width="3.5"/><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z" fill="url(#cown-wall)" stroke="#14313A" stroke-width="3.5"/><clipPath id="co-c2"><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z"/></clipPath><g clip-path="url(#co-c2)"><rect x="415" y="149.59999999999997" width="370" height="280" fill="url(#cown-fill)" opacity="0.92"/></g><path d="M 570.4 60 C 489.0 138.4, 507.5 214.0, 518.6 278.4 C 537.1 340 662.9 340 681.4 278.4 C 692.5 214.0, 711.0 138.4, 629.6 60 Z" fill="none" stroke="#14313A" stroke-width="3.5"/><line x1="493.5" y1="150" x2="706.5" y2="150" stroke="#2E7D6B" stroke-width="3.5"/><text x="360" y="358" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="2" fill="#5A6A72">EACH LINE MEASURED, NOT GUESSED · DRAWN EXAMPLES</text></svg>
+    <p class="figcap">Diary plate, amended · the shared line replaced by measured lines</p>
+    <span class="hand">Same three bladders. New lines, measured one by one.</span>
+    <p class="cnote p444c-counted">What clinicians actually individualize on is not the tape measure. It is the bladder's behaviour under filling: the pressure it generates and how stretchy its wall is, measured on urodynamics. A small, stiff, high pressure bladder is dangerous at volumes a large, compliant one shrugs off.</p>
+    <p class="cnote p444c-counted">So the honest variable was never body size. It is the measured capacity and compliance of the one bladder in front of you, and the flat 500 stands in for a measurement most patients never get.</p>
+  </section>
 
-<section class="p437-sec" id="p437-rehab-sec">
-<p class="p437-ch-label">Scene six · Why rehab cares</p>
-<h2 class="p437-h2">Compensation is a childhood head start, not a loophole</h2>
-<p class="p437-body">Rehab keeps that distinction: a task can become possible while coordination stays abnormal: she walks, and walks unsteadily. One goal: make a sit to stand transfer, or a short supported walk, safer with practice and supports. This case cannot show training speed, effect, or ceiling. Recovery is specific to the task practiced.</p>
-</section>
+  <section class="block" data-block="8">
+    <div class="bhead"><span class="blabel">Methods of measurement · the ladder</span><span class="bnote">Third · Measuring a bladder</span></div>
+    <h2>Four rungs up to a number</h2>
+    <p class="cnote p444c-counted">How would you even measure a person's own capacity? The ladder has four rungs. What comes out of the catheter is the gold standard: the bladder's contents, counted. A bladder scanner estimates the same volume through the abdominal wall, no tube required.</p>
+    <p class="cnote p444c-counted">A voiding diary gives functional capacity, the largest single void across ordinary days. And cystometry fills the bladder at a controlled rate and records the maximum cystometric capacity, a number earned in a lab, not in a life.</p>
+    <div class="mrows">
+      <div class="mrow"><span class="mn">Catheter</span><span class="md">What drains out is collected and counted, the contents themselves.</span><span class="mk">Counted</span></div>
+      <div class="mrow"><span class="mn">Bladder scanner</span><span class="md">Ultrasound through the abdominal wall estimates the volume, no tube required.</span><span class="mk">Estimated</span></div>
+      <div class="mrow"><span class="mn">Voiding diary</span><span class="md">The largest single void across ordinary days: functional capacity, lived.</span><span class="mk">Lived</span></div>
+      <div class="mrow"><span class="mn">Cystometry</span><span class="md">Controlled filling in the lab records the maximum cystometric capacity, and the pressures on the way.</span><span class="mk">In a lab</span></div>
+    </div>
+  </section>
 
-<section class="p437-sec" id="p437-recap-sec">
-<p class="p437-ch-label">Recap</p>
-<h2 class="p437-h2">So what have we learned</h2>
-<p class="p437-body">Most brain neurons sit in the cerebellum. Born with none, she stood at 4, spoke at 6, walked at 7; never ran or jumped; did not enter school; at 24 still walked unsteadily, with dysarthric speech. She married, with a daughter. Yu and colleagues tabulated nine living cases including her: eight symptomatic; the one normal examination was subtotal.</p>
-<div class="p437-sources p437-reveal p3-drawer p3-closed" id="p437-sources"><button type="button" class="p3-drawer-btn" aria-expanded="false" aria-controls="p437-sources"><span class="p3-drawer-title">Sources</span><span class="p3-drawer-hint">Where every number in this essay comes from</span><span class="p3-drawer-chev" aria-hidden="true">+</span></button>
-<h3>Sources</h3>
-<ol>
-<li>Yu F, Jiang QJ, Sun XY, Zhang RW. A new case of complete primary cerebellar agenesis: clinical and imaging findings in a living patient. Brain. 2015;138:e353. PMID 25149410. PMCID PMC4614135. Read in full for this essay. A 24 year old woman with complete primary cerebellar agenesis: CT and MRI showed no cerebellar tissue, the posterior fossa filled with cerebrospinal fluid, a hypoplastic pons and attenuated medulla; angiography showed the three cerebellar arteries absent bilaterally; diffusion imaging showed a complete lack of the cerebellum's afferent and efferent limbs. History: stood unassisted at 4, speech intelligible at 6, walked unassisted at 7 with a persistently unsteady gait, never ran or jumped, never entered school; married with a daughter. Examination: mild mental impairment, moderate motor deficits, mild to moderate cerebellar dysarthria, mild to moderate dysmetria, moderately unsteady gait. Symptoms relieved by conservative management and maintained at 4 year follow up. The authors counted eight living cases reported before hers, making hers the ninth, and concluded both that early extracerebellar plasticity kept her deficits less severe than expected and that the cerebellum is necessary for normal development.</li>
-<li>Azevedo FAC, Carvalho LRB, Grinberg LT, Farfel JM, Ferretti REL, Leite REP, Jacob Filho W, Lent R, Herculano-Houzel S. Equal numbers of neuronal and nonneuronal cells make the human brain an isometrically scaled-up primate brain. Journal of Comparative Neurology. 2009;513:532 to 541. DOI 10.1002/cne.21974. Cell counts by the isotropic fractionator in four adult male brains: the whole brain averaged 86 billion neurons, the cerebellum 69 billion of them, and the cerebral cortex 16 billion, while the cerebellum is roughly a tenth of brain mass in that sample.</li>
-<li>Schmahmann JD, Sherman JC. The cerebellar cognitive affective syndrome. Brain. 1998;121(Pt 4):561 to 579. PMID 9577385. DOI 10.1093/brain/121.4.561. Twenty patients with diseases confined to the cerebellum: lesions of the posterior lobe and vermis produced clinically prominent changes in executive function (planning, set shifting, verbal fluency, abstract reasoning, working memory), spatial cognition, personality (blunting of affect or disinhibited behavior), and language (agrammatism, dysprosodia); anterior lobe lesions produced only minor changes in executive and visual spatial functions.</li>
-<li>Manto M, Bower JM, Conforto AB, Delgado-Garcia JM, da Guarda SNF, Gerwig M, Habas C, Hagura N, Ivry RB, Marien P, Molinari M, Naito E, Nowak DA, Oulad Ben Taib N, Pelisson D, Tesche CD, Tilikete C, Timmann D. Consensus paper: roles of the cerebellum in motor control, the diversity of ideas on cerebellar involvement in movement. Cerebellum. 2012;11:457 to 487. PMID 22161499. DOI 10.1007/s12311-011-0331-9. The field's consensus survey of cerebellar motor control, spanning voluntary limb movement, timing, grip force control, motor speech, eye movements, and error based adaptation and internal models. Cited here for the qualitative job description only; it assigns no numbers to the job card.</li>
-</ol>
-<p class="p437-note" style="margin-top:14px">Method note: every number in this essay was taken from a source verified for this build and is recorded, claim by claim, in the essay source map. The case is presented exactly as published in a de-identified case report; no real patient is depicted anywhere in this essay, and the Scene one drawing is a labeled schematic, not her imaging. Scene three's bench is a labeled simulation of one function, not a model of the whole cerebellum and not patient data.</p>
-</div>
-<div class="p437-methods" id="p437-methods">
-<h3>Data and Methods</h3>
-<p>This essay rests on four sources. Yu et al. 2015 (Brain), read in full, is the spine: every case fact comes from it (the imaging findings, the developmental ages 4, 6, and 7, never ran or jumped, the examination findings, conservative management and 4 year follow up, and the count of nine living cases including the one completely normal examination in a subtotal case). Azevedo et al. 2009 (Journal of Comparative Neurology) supplies the cell counts: 86 billion neurons in the whole brain, 69 billion in the cerebellum, 16 billion in the cerebral cortex, counted in four adult male brains. Schmahmann and Sherman 1998 (Brain) supplies the adult loss contrast: 20 patients, four deficit clusters, posterior lobe and vermis prominent, anterior lobe minor. Manto et al. 2012 (Cerebellum), the consensus paper, frames the qualitative job description (prediction, timing, error correction and adaptation, grip force, motor speech, eye movements) and is cited for framing only, with no numbers drawn from it. Single case material is framed as one case throughout: no rate, prevalence, or prognosis is computed from it, and the nine case count is the publishing authors' own literature count. The Scene one fossa drawing, Scene two job card, and Scene three tracer bench are drawn schematics labeled in place; the bench is a simulation of prediction and error correction, labeled a simulation at every state, and its third setting is labeled a hypothesis, one possible compensation strategy, since no imaging demonstrates the rerouting directly. No photographs and no AI imagery are used.</p>
-</div>
-<div class="p437-footer">
-<span>The PM&amp;R Files · Essay 36 · What If You Had No Cerebellum at All?</span>
-<span>Educational content only, not medical advice</span>
-</div>
-</section>
+  <section class="block" data-block="9">
+    <div class="bhead"><span class="blabel">Wearable monitor row · opened, not filled</span><span class="bnote">Third · The wearable future</span></div>
+    <h2>The patch that is not ready</h2>
+    <p class="cnote p444c-counted">The newest rung is a wearable ultrasound patch that watches the bladder fill and pings before it is full. It is not there yet: in children with neurogenic bladder, the DFree device called the volume right only 46 percent of the time, and no wearable has been prospectively validated in adults with spinal cord injury.</p>
+    <div class="measure-row"><div class="measure"><span class="n">46%</span><span class="l">Accuracy of a wearable ultrasound device in children with neurogenic bladder · Int Neurourol J review, 2026</span></div></div>
+    <div class="blankcells" aria-label="The wearable monitor row of this chart is deliberately blank: no validated entries exist for adults with spinal cord injury.">
+      <div class="bcell"><span class="fl">Device</span></div>
+      <div class="bcell"><span class="fl">Reading</span></div>
+      <div class="bcell"><span class="fl">Checked against</span></div>
+      <div class="bcell"><span class="fl">Entered by</span></div>
+      <span class="stamp blankstamp">Not validated in adults with SCI</span>
+    </div>
+    <span class="hand">Row opened for the wearable monitors. Nothing honest to enter yet.</span>
+  </section>
 
-</div>
+  <section class="block" data-block="10">
+    <div class="bhead"><span class="blabel">Assessment · the bottom line of the chart</span><span class="bnote">Third · What nobody has tested</span></div>
+    <div class="assess">
+      <p class="bigline">Should the limit scale with the person? Nobody has run that trial.</p>
+      <p class="cnote p444c-counted">No study has tested size adjusted catheterization thresholds in adults with spinal cord injury. The flat number survives because it is simple, memorable, and safe enough for most, a defensible reason, and not the same as being fitted to you. Until someone measures the alternative, 500 stays: worn by everyone, tailored to no one.</p>
+      <p class="cap-note">House note: this series already has a neurogenic bladder essay, about the pressure that makes a bladder dangerous. This essay asks about the other number, the volume line, and where it came from.</p>
+    </div>
+  </section>
+
+  <footer class="block signoff" data-block="11">
+    <div class="bhead"><span class="blabel">Sign-off · recap, references, methods note</span><span class="bnote">Back page · The recap</span></div>
+    <h2>The rule, in one screen</h2>
+    <ul class="recap">
+      <li>The adult rule is flat: keep bladder volume under 500 mL, catheterize four to six times a day, never let urine sit past six hours (Alberta SCI Bladder Management Pathway).</li>
+      <li>Half of real inpatient catheterizations break it: 50.2 percent of 8,016 measurements (Spinal Cord, 2025), and crossing the line was not clearly tied to more infections in that cohort (12.5 versus 10.4 percent, P = 0.49).</li>
+      <li>Pediatrics scales: infant capacity is estimated at 7 mL per kilogram of body weight (Fairhurst 1991, 125 infants), and schoolchild functional capacity tracks weight, height, and trunk length, loosely.</li>
+      <li>Adult size evidence is weak: weight, height, and BMI did not significantly move holding capacity in 69 young adults (Janjua 2017); in PRIDE, BMI raised pressure at maximum capacity while capacity itself averaged 433 mL.</li>
+      <li>What individualizes in practice is measured capacity and compliance on urodynamics, not body size. Wearable monitors are not validated for this job in adults with spinal cord injury (DFree accuracy 46 percent in children with neurogenic bladder).</li>
+      <li>The gap: size adjusted cath thresholds have never been tested in adult spinal cord injury.</li>
+    </ul>
+    <h3>References, as the chart keeps them</h3>
+    <ol class="receipts">
+      <li>Alberta Health Services. Bladder Management for Patients with Neurogenic Bladder Dysfunction. Adapted from the Alberta Spinal Cord Injury Bladder Management Pathway (Provincial Spinal Cord Injury Bladder Management Working Group, 2018; adapted July 2022). The flat rule as printed: volume less than 500 mL at any one time; urine stasis no longer than 6 hours.</li>
+      <li>He M, Hon E, Xu L, Hampton S, Waddell K, et al. Quantifying guideline-discordant intermittent catheterization in adults hospitalized with spinal cord injury: a retrospective cohort study. Spinal Cord. 2025;63:270 to 276. PMID 40301533. DOI 10.1038/s41393-025-01078-w.</li>
+      <li>Fairhurst JJ, Rubin CME, Hyde I, Freeman NV, Williams JD. Bladder capacity in infants. Journal of Pediatric Surgery. 1991;26(1):55 to 57. PMID 2005527.</li>
+      <li>Assessing bladder capacity in children: is it feasible at all? Functional bladder capacity in schoolchildren correlated with weight, height, and trunk length; the authors call the relationship loose. PMID 16496390.</li>
+      <li>Design and methodological considerations of the Centers for Disease Control and Prevention Urologic and Renal Protocol for the newborn and young child with spina bifida. Journal of Urology. 2016;196(6):1728 to 1734. DOI 10.1016/j.juro.2016.07.081. The age based approach was chosen over weight based formulas for its simplicity.</li>
+      <li>Janjua QM, Saeed S, Mahmud Q, Naqvi Z, Latif W, Malik S. Effect of gender and BMI on maximum urine holding capacity of the urinary bladder. Biomedica. 2017;33(2):128 to 130.</li>
+      <li>Richter HE, Creasman JM, Myers DL, Wheeler TL, Burgio KL, Subak LL. Urodynamic characterization of obese women with urinary incontinence undergoing a weight loss program: the Program to Reduce Incontinence by Diet and Exercise (PRIDE) trial. International Urogynecology Journal. 2008;19(12):1653 to 1658. DOI 10.1007/s00192-008-0694-8.</li>
+      <li>Wearable ultrasound devices for continuous bladder monitoring: emerging utility and current limitations in neurourology. International Neurourology Journal. 2026;30(2):95 to 104. DOI 10.5213/inj.2652030.015.</li>
+    </ol>
+    <h3>Data and Methods</h3>
+    <p class="methods">Every measured number in this essay passed a fresh verification pass against its primary source on November 13, 2026; the pass is logged in this build's SOURCES.md. Three kinds of content appear on this page and are kept apart: measured numbers from the sources above; the flat rule itself, quoted from the Alberta pathway document; and drawn examples. The 3 AM scene, its 700 mL bag, the three bladder vessels, and the heights of their individual lines are invented illustrations, labelled as drawn examples wherever they appear, and no patient, measurement, or guideline is fabricated. One claim here is an absence, stated as such: no adult guideline found in the November 12 and 13, 2026 searches stratifies the catheterization threshold by body size, and no trial of size adjusted thresholds in adult spinal cord injury was found.</p>
+    <p class="sig">Reviewed and signed off, The PM&amp;R Files</p>
+    <p class="sigsmall">Sign-off stands in for the receipts page of the panel edition</p>
+  </footer>
+
+</article>
+<p class="p444c-foot">The PM&amp;R Files · Essay 44 · The Chart Is the Page · Educational content only, not medical advice</p>
 </div>
 <script>
-/* Essay 36 interactions: the calibration bench and the reported
-   timeline. Scene 3 is a labeled simulation with three settings:
-   correction fitted, correction removed, and a childhood to improvise.
-   Scroll (or the bench slider, its manual alternative) selects the
-   setting; the traces are drawings, never data. Scene 4 assembles the
-   published case timeline row by row as scroll advances. */
 (function(){
-var root=document.getElementById('no-cerebellum-at-all');
-if(!root)return;
-var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function clamp01(v){return v<0?0:(v>1?1:v);}
-function seg(p,a,b){return clamp01((p-a)/Math.max(0.0001,b-a));}
-
-var STATES=[
- {tag:'SIMULATION · CORRECTION FITTED',phase:'Bench · Correction fitted',
-  readout:'Correction fitted, idealized reference. The tracer rides the target line exactly: every deviation is predicted, timed, and trimmed before it can grow. Illustration only; no patient data.'},
- {tag:'SIMULATION · CORRECTION REMOVED',phase:'Bench · Correction removed',
-  readout:'Correction removed, nothing else changed. The tracer overshoots its target: an illustrated overshoot, a type of dysmetria. Her examination documented dysmetria and ataxia; this drawing is illustration only, no patient data.'},
- {tag:'HYPOTHESIS · ONE POSSIBLE COMPENSATION STRATEGY',phase:'Bench · A childhood to improvise',
-  readout:'Years instead of seconds. The trace arrives in small, deliberate steps: late, coarse, and close. This setting is a hypothesis, one possible compensation strategy, drawn and labeled as one. Illustration only; no patient data. The timeline that follows is the documented version.'}
-];
-var benchStage=root.querySelector('#p437-bench-stage');
-var traceOn=root.querySelector('#p437-trace-on');
-var traceOff=root.querySelector('#p437-trace-off');
-var traceComp=root.querySelector('#p437-trace-comp');
-var gearOn=root.querySelector('#p437-gear-on');
-var gearOff=root.querySelector('#p437-gear-off');
-var pendG=root.querySelector('#p437-pendulum-g');
-var benchTag=root.querySelector('#p437-bench-tag');
-var benchProg=root.querySelector('#p437-bench-prog');
-var benchPhase=root.querySelector('#p437-bench-phase');
-var benchReadout=root.querySelector('#p437-bench-readout');
-var dial=root.querySelector('#p437-bench-dial');
-var benchManual=false;
-function applyBench(s,syncDial){
- var idx=Math.max(0,Math.min(2,Math.round(s)));
- var st=STATES[idx];
- if(traceOn)traceOn.style.opacity=idx===0?'1':'0';
- if(traceOff)traceOff.style.opacity=idx===1?'1':'0';
- if(traceComp)traceComp.style.opacity=idx===2?'1':'0';
- if(gearOn)gearOn.style.opacity=idx===0?'1':'0';
- if(gearOff)gearOff.style.opacity=idx===1?'1':'0';
- if(pendG)pendG.style.opacity=idx===2?'1':'0';
- if(benchTag)benchTag.textContent=st.tag;
- if(benchProg)benchProg.style.width=(s/2*100).toFixed(1)+'%';
- if(benchPhase)benchPhase.textContent=st.phase;
- if(benchReadout)benchReadout.textContent=st.readout;
- if(syncDial&&dial)dial.value=String(idx);
- if(benchStage)benchStage.setAttribute('data-progress',(s/2).toFixed(3));
+"use strict";
+var blocks = document.querySelectorAll('#p444c-root .block');
+var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduced || !("IntersectionObserver" in window)) {
+  blocks.forEach(function(b){ b.classList.add("in"); });
+} else {
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold: 0.1});
+  blocks.forEach(function(b){ io.observe(b); });
 }
-if(dial){dial.addEventListener('input',function(){
- benchManual=true;
- applyBench(parseInt(dial.value,10),false);
-});}
+window.__p444c = { blocks: blocks.length };
+})();
+</script>
+</div>
+<div class="view" id="treadmill-front-door">
+<div class="p443w" id="p443w-root">
+<div class="p443w-ribbon" aria-hidden="true">
+  <div class="p443w-ribbon-track"><div class="p443w-ribbon-fill"></div><div class="p443w-ribbon-dot"></div></div>
+  <div class="p443w-ribbon-label">The Corridor</div>
+</div>
+<div class="p443w-route">
 
-/* Scene 4: the timeline. Six reported rows light in sequence as
-   scroll advances; the phase line names the stretch being read. */
-var tlStage=root.querySelector('#p437-timeline-stage');
-var tlProg=root.querySelector('#p437-timeline-prog');
-var tlPhase=root.querySelector('#p437-timeline-phase');
-var tlRows=[0,1,2,3,4,5].map(function(i){return root.querySelector('#p437-tl-'+i);});
-function renderTimeline(p){
- tlRows.forEach(function(row,i){
-  if(row)row.style.opacity=(0.18+0.82*seg(p,i/6,(i+1)/6)).toFixed(3);
- });
- if(tlProg)tlProg.style.width=(p*100).toFixed(1)+'%';
- if(tlPhase)tlPhase.textContent=p<0.55?'Timeline · The milestones assemble':(p<0.8?'Timeline · The ceiling':'Timeline · The adult examination');
- if(tlStage)tlStage.setAttribute('data-progress',p.toFixed(3));
-}
+  <section class="p443w-place pl-masthead in" data-place="The Hospital">
+    <div class="p443w-stage">
+      <svg class="p443w-scene" data-art="route-start" viewBox="0 0 1000 720" role="img" aria-label="The start of the route: a hospital corridor at night, a lit doorway ahead marked as the locomotor training room, and the pale route path beginning at the reader's feet and running toward the door.">
+        <defs>
+          <linearGradient id="p443w-g-wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#24402F"/><stop offset="100%" stop-color="#101F16"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-floor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2C4A38"/><stop offset="100%" stop-color="#14251B"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-doorlight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F3D489"/><stop offset="100%" stop-color="#DFA32E"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1000" height="720" fill="url(#p443w-g-wall)"/>
+        <path d="M0 470 L1000 470 L1000 720 L0 720 Z" fill="url(#p443w-g-floor)"/>
+        <path d="M0 470 L330 300 L330 720 L0 720 Z" fill="#0D1B12" opacity="0.55"/>
+        <path d="M1000 470 L670 300 L670 720 L1000 720 Z" fill="#0D1B12" opacity="0.55"/>
+        <rect x="330" y="120" width="340" height="350" fill="#1A2F22"/>
+        <rect x="428" y="196" width="204" height="274" fill="url(#p443w-g-doorlight)" stroke="#F6EFDB" stroke-width="5"/>
+        <path d="M448 470 L448 250 L540 250 L540 470" fill="none" stroke="#7A5A10" stroke-width="7"/>
+        <rect x="470" y="428" width="120" height="16" rx="7" fill="#7A5A10"/>
+        <line x1="500" y1="250" x2="492" y2="330" stroke="#7A5A10" stroke-width="5"/>
+        <line x1="560" y1="250" x2="570" y2="330" stroke="#7A5A10" stroke-width="5"/>
+        <rect x="404" y="150" width="252" height="30" fill="#0A140F" stroke="#DFA32E" stroke-width="2"/>
+        <text x="530" y="171" font-family="Verdana, sans-serif" font-size="16" letter-spacing="3" fill="#DFA32E" text-anchor="middle">LOCOMOTOR TRAINING</text>
+        <line x1="60" y1="392" x2="300" y2="330" stroke="#F6EFDB" stroke-width="5" opacity="0.35"/>
+        <rect x="86" y="238" width="120" height="86" fill="#BFD6C9" opacity="0.28"/>
+        <rect x="800" y="238" width="120" height="86" fill="#BFD6C9" opacity="0.22"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="rgba(16,24,16,.4)" stroke-width="86" stroke-linecap="round"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="#E7D6A8" stroke-width="70" stroke-linecap="round"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="rgba(122,95,40,.4)" stroke-width="3" stroke-dasharray="16 14"/>
+        <ellipse cx="530" cy="700" rx="150" ry="16" fill="#000" opacity="0.25"/>
+      </svg>
+      <div class="p443w-prose">
+        <p class="p443w-issue">The PM&amp;R Files · Essay 43 · Stroke Rehabilitation · The Trial</p>
+        <h1>The Treadmill and the <em>Front Door</em></h1>
+        <p class="p443w-standfirst p443w-counted">Two months after a stroke, walking is the whole question. Not fast, and not far: walking to the bathroom, down the hall, out of the front door. In 2011, the biggest walking trial in stroke rehabilitation set the most advanced machine in the field against the plainest challenger imaginable. A harness over a treadmill, with therapists moving patients' legs by hand, was matched stride for stride by a home exercise programme that barely practised walking at all.</p>
+      </div>
+      <div class="p443w-byline"><span>By a PM&amp;R resident physician</span><span class="p443w-stamp">The Walk</span><span>One trial, one dead heat</span></div>
+    </div>
+  </section>
 
-/* Sources drawer */
-var drawer=root.querySelector('#p437-sources');
-if(drawer){
- var dBtn=drawer.querySelector('.p3-drawer-btn');
- if(dBtn){dBtn.addEventListener('click',function(){
-  var closed=drawer.classList.toggle('p3-closed');
-  dBtn.setAttribute('aria-expanded',String(!closed));
- });}
-}
+  <section class="p443w-place pl-corridor" data-place="The Corridor">
+    <div class="p443w-stage">
+      <svg class="p443w-scene" data-art="scene-corridor" viewBox="0 0 1000 700" role="img" aria-label="The corridor: a walker with a rollator on the route path, approaching a doorway crossed by the trial's two speed gates, marked 0.4 and 0.8 metres per second.">
+        <defs>
+          <linearGradient id="p443w-g-hall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F7E8C4"/><stop offset="100%" stop-color="#E3CF9F"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-hallfloor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#C9A97E"/><stop offset="100%" stop-color="#A9885C"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1000" height="700" fill="url(#p443w-g-hall)"/>
+        <path d="M0 430 L1000 430 L1000 700 L0 700 Z" fill="url(#p443w-g-hallfloor)"/>
+        <rect x="60" y="120" width="110" height="240" fill="#FFFDF4" stroke="#22302A" stroke-width="4"/>
+        <rect x="830" y="120" width="110" height="240" fill="#FFFDF4" stroke="#22302A" stroke-width="4"/>
+        <rect x="392" y="90" width="216" height="330" fill="#FBF5E7" stroke="#22302A" stroke-width="5"/>
+        <path d="M404 420 L404 102 L500 102 L500 420 Z" fill="#2E7D6B"/>
+        <circle cx="486" cy="262" r="7" fill="#DFA32E"/>
+        <line x1="230" y1="330" x2="392" y2="300" stroke="#22302A" stroke-width="5" opacity="0.4"/>
+        <path d="M500 -6 L500 110 C500 260 430 330 430 470 C430 580 500 640 500 706" fill="none" stroke="rgba(34,48,42,.3)" stroke-width="86"/>
+        <path d="M500 -6 L500 110 C500 260 430 330 430 470 C430 580 500 640 500 706" fill="none" stroke="#EFE0BC" stroke-width="70"/>
+        <line x1="392" y1="512" x2="560" y2="512" stroke="#DFA32E" stroke-width="7"/>
+        <line x1="408" y1="238" x2="576" y2="238" stroke="#2E7D6B" stroke-width="7"/>
+        <g font-family="Verdana, sans-serif" font-size="17" font-weight="700" fill="#22302A">
+          <rect x="576" y="492" width="118" height="38" fill="#FFFDF4" stroke="#22302A" stroke-width="3"/>
+          <text x="635" y="518" text-anchor="middle">0.4 M/S</text>
+          <rect x="592" y="218" width="118" height="38" fill="#FFFDF4" stroke="#22302A" stroke-width="3"/>
+          <text x="651" y="244" text-anchor="middle">0.8 M/S</text>
+        </g>
+        <line x1="635" y1="530" x2="635" y2="560" stroke="#22302A" stroke-width="4"/>
+        <line x1="651" y1="256" x2="651" y2="286" stroke="#22302A" stroke-width="4"/>
+        <g stroke="#22302A" stroke-width="6" stroke-linecap="round" fill="none">
+          <path d="M648 566 L676 496 L716 496 L734 566"/>
+          <line x1="676" y1="496" x2="668" y2="566"/>
+          <line x1="716" y1="496" x2="728" y2="566"/>
+        </g>
+        <circle cx="692" cy="414" r="19" fill="#EEC39F" stroke="#22302A" stroke-width="3.5"/>
+        <path d="M692 433 L688 492 L716 496" fill="none" stroke="#2E7D6B" stroke-width="12" stroke-linecap="round"/>
+        <path d="M688 492 L672 540 L680 564 M688 492 L712 536 L706 562" fill="none" stroke="#22302A" stroke-width="11" stroke-linecap="round"/>
+        <path d="M690 448 L714 480" stroke="#BC4A26" stroke-width="10" stroke-linecap="round"/>
+        <ellipse cx="500" cy="690" rx="330" ry="12" fill="#7A5F36" opacity="0.3"/>
+      </svg>
+      <div class="p443w-prose">
+        <p class="p443w-kicker">First place · The Corridor</p>
+        <h2 class="p443w-ptitle">Two months after the stroke</h2>
+        <p class="p443w-text p443w-counted">Start with one walker, two months out from a stroke. The leg works: it swings through, stiff and slow, and every step costs concentration. Speed is the measure that decides a life, so the trial sorted its walkers by pace and set two gates, at 0.4 and 0.8 metres per second. Cross the gate for your starting group and your walking counted as functionally improved. Those are the same gates this site's gait-speed essay walks through.</p>
+      </div>
+      <div class="p443w-marks">
+        <div class="p443w-mark"><span class="n">2 months</span><span class="l">After stroke onset, every participant entered the trial</span></div>
+        <div class="p443w-mark"><span class="n">0.4 m/s</span><span class="l">The lower of the trial's two functional walking gates</span></div>
+        <div class="p443w-mark"><span class="n">0.8 m/s</span><span class="l">The upper gate: crossing either gate for your group counted as improved</span></div>
+      </div>
+    </div>
+  </section>
 
-/* Scroll choreography engine: same engine family as essays 34 a
+  <section class="p443w-place pl-treadmill" data-place="The Treadmill Room">
+    <div class="p443w-stage">
+      <svg class="p443w-scene" data-art="scene-treadmill-room" viewBox="0 0 1000 700" role="img" aria-label="The treadmill room: a patient suspended in a harness over a moving treadmill belt beside the route, a therapist guiding one leg by hand.">
+        <defs>
+          <linearGradient id="p443w-g-gym" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#33523F"/><stop offset="100%" stop-color="#1D3325"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-belt" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4A4A55"/><stop offset="100%" stop-color="#2B2B33"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-gymfloor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3E5C48"/><stop offset="100%" stop-color="#22392B"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1000" height="700" fill="url(#p443w-g-gym)"/>
+        <rect x="70" y="90" width="240" height="150" fill="#BFD6C9" opacity="0.25"/>
+        <line x1="70" y1="165" x2="310" y2="165" stroke="#0E1A14" stroke-width="4" opacity="0.4"/>
+        <line x1="190" y1="90" x2="190" y2="240" stroke="#0E1A14" stroke-width="4" opacity="0.4"/>
+        <path d="M0 470 L1000 470 L1000 700 L0 700 Z" fill="url(#p443w-g-gymfloor)"/>
+        <path d="M500 -6 L500 120 C500 260 590 330 590 470 C590 590 500 640 500 706" fill="none" stroke="rgba(10,18,12,.4)" stroke-width="86"/>
+        <path d="M500 -6 L500 120 C500 260 590 330 590 470 C590 590 500 640 500 706" fill="none" stroke="#E7D6A8" stroke-width="70"/>
+        <path d="M250 452 L250 130 L560 130 L560 452" fill="none" stroke="#F6EFDB" stroke-width="8"/>
+        <rect x="196" y="440" width="330" height="34" rx="14" fill="url(#p443w-g-belt)" stroke="#0E1A14" stroke-width="3.5"/>
+        <line x1="226" y1="474" x2="226" y2="500" stroke="#F6EFDB" stroke-width="6"/>
+        <line x1="496" y1="474" x2="496" y2="500" stroke="#F6EFDB" stroke-width="6"/>
+        <line x1="392" y1="130" x2="378" y2="212" stroke="#BC4A26" stroke-width="5"/>
+        <line x1="392" y1="130" x2="410" y2="212" stroke="#BC4A26" stroke-width="5"/>
+        <circle cx="394" cy="182" r="17" fill="#EEC39F" stroke="#0E1A14" stroke-width="3.5"/>
+        <path d="M394 199 L393 244" stroke="#BC4A26" stroke-width="15" stroke-linecap="round"/>
+        <path d="M378 224 L410 224 L413 252 L376 252 Z" fill="#0E1A14"/>
+        <path d="M386 252 L372 300 L380 330 M402 252 L418 296 L410 326" fill="none" stroke="#0E1A14" stroke-width="10" stroke-linecap="round"/>
+        <path d="M380 330 L360 396 L368 436 M410 326 L392 392 L402 434" fill="none" stroke="#22302A" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="620" cy="212" r="18" fill="#EEC39F" stroke="#0E1A14" stroke-width="3.5"/>
+        <path d="M620 230 L615 292 L628 340" fill="none" stroke="#2E7D6B" stroke-width="12" stroke-linecap="round"/>
+        <path d="M617 252 L500 300 L414 300" fill="n

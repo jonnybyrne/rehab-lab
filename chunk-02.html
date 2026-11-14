@@ -1,4 +1,36 @@
-tton" class="p426-chipbtn" data-p426-voice="reinnervated" aria-pressed="false">Reinnervated · long, tall, polyphasic</button>
+p426-cchip" data-day="12">Fibrillations · day 12</span><span class="p426-cchip" data-day="43">Nascent units · about 6 weeks</span></div>
+<div class="p426-clock-row"><span class="p426-clock-rowlab">PROXIMAL LEG</span><span class="p426-cchip" data-day="0">Recruitment already reduced · day 0</span><span class="p426-cchip" data-day="12">Positive sharp waves · day 12</span><span class="p426-cchip" data-day="17">Fibrillations · day 17</span><span class="p426-cchip" data-day="42">Nascent units · about 6 weeks</span></div>
+<div class="p426-clock-row"><span class="p426-clock-rowlab">FOOT</span><span class="p426-cchip" data-day="0">Recruitment already reduced · day 0</span><span class="p426-cchip" data-day="15">Positive sharp waves · day 15</span><span class="p426-cchip" data-day="38">Fibrillations · day 38</span></div>
+</div>
+<p class="p426-caption">Chips print the calibrated midpoint of each published band: paraspinal fibrillations at days 10 to 14, proximal leg at two to three weeks, foot at five to six weeks. The band is the sourced quantity; the day is its midpoint. The top row is measured serial-study data after nerve injury; the muscle rows are the textbook tradition's bands for a root-level lesion example.</p>
+<p class="p426-verdict" id="p426-clock-verdict">Today this study can show reduced recruitment and almost nothing else. A clean resting muscle proves nothing yet.</p>
+</div>
+</section>
+
+<section class="p426-sec p426-room" id="p426-sec-voice">
+<div class="p426-roomgrid">
+<div class="p426-prose">
+<p class="p426-ch-label">Room two · One voice</p>
+<h2 class="p426-h2" tabindex="-1">One voice</h2>
+<p class="p426-body">Voluntary contraction brings the second room's subject: the motor unit action potential, one motor unit speaking. A motor unit is one motor neuron, its axon, and every muscle fibre that axon supplies. The needle hears the fibres of that unit near its tip fire together, summed into a single voice with a size, a length, and a shape.</p>
+<p class="p426-body">Size is amplitude: how many of the unit's fibres near the needle are firing. Length is duration: how spread out in space and time those fibres are, which makes duration the most informative and least glamorous measurement in the room. Shape is counted in phases, the number of times the waveform crosses its baseline, plus one; more than four phases is polyphasic. A separate count, turns, tracks direction changes that never cross the baseline. This essay marks turns on the captured window and prints no normative table for them, because none is reproduced here from source.</p>
+<p class="p426-body">The normal voice, first card: duration 5 to 15 milliseconds by the range printed here, amplitude from 100 microvolts to 2 millivolts, two to four phases. A second standard textbook prints the tighter duration range of 5 to 10; the Sources drawer carries the disagreement. Learn the voice as a person, not a range.</p>
+<p class="p426-body">Then the two ways a voice changes, because they point at opposite diseases. In myopathy the unit keeps its neuron and loses fibres: the voice comes out short, small, and polyphasic, a choir missing most of its singers but still on stage. In chronic reinnervation the unit has adopted orphaned fibres from a dead neighbour: the voice comes out long, tall, and polyphasic, sometimes trailing a small late satellite potential from the newest, slowest sprouts. And the fourth card is the voice the clock promised: the nascent unit, the first small, unstable voice of a muscle being reinnervated, its amplitude wandering from discharge to discharge.</p>
+</div>
+<div class="p426-rail">
+<div class="p426-scopebox">
+<svg class="p426-scope" id="p426-r2-scope" viewBox="0 0 400 180" role="img" aria-label="Room two oscilloscope: one motor unit, captured.">
+<g class="p426-grid"></g>
+<g id="p426-r2-markers"></g>
+<path id="p426-r2-trace" class="p426-trace" fill="none"/>
+<text x="8" y="18" class="p426-svgtext" id="p426-r2-gain">GAIN 250 µV/DIV</text>
+<text x="392" y="18" text-anchor="end" class="p426-svgtext">10 ms</text>
+<text x="8" y="170" class="p426-svgtext p426-sweepnote">SWEEP IS DECORATIVE · WINDOW IS 100 MS</text>
+</svg>
+<div class="p426-chips p426-voicecards" role="group" aria-label="Motor unit voices">
+<button type="button" class="p426-chipbtn" data-p426-voice="normal" aria-pressed="true">Normal · the healthy voice</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="myopathic" aria-pressed="false">Myopathic · short, small, polyphasic</button>
+<button type="button" class="p426-chipbtn" data-p426-voice="reinnervated" aria-pressed="false">Reinnervated · long, tall, polyphasic</button>
 <button type="button" class="p426-chipbtn" data-p426-voice="nascent" aria-pressed="false">Nascent · the first voice back</button>
 </div>
 <div class="p426-ro3">
@@ -4444,121 +4476,3 @@ function daylightAt(t){
    return 'rgba('+r+','+g+','+bl+','+al.toFixed(3)+')';
   }
  }
- return 'rgba(217,142,27,0.22)';
-}
-var displayTime=START,lastQ=-1,dayManual=false,playing=false,timer=null;
-function renderDay(){
- var t=displayTime;
- var q=Math.max(START,Math.min(END,Math.round(t/10)*10));
- /* Positions, daylight, and the day rail move every frame with the float time. */
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var pos=posAt(n,t);
-  btn.style.left=pos[0].toFixed(2)+'%';
-  btn.style.top=pos[1].toFixed(2)+'%';
- });
- if(sunwash)sunwash.style.background=daylightAt(t);
- var dp=(t-START)/(END-START);
- if(dayfill)dayfill.style.width=(dp*100).toFixed(2)+'%';
- if(daydot)daydot.style.left=(dp*100).toFixed(2)+'%';
- if(q===lastQ)return;
- lastQ=q;
- var label=fmt(q);
- if(clockEl)clockEl.textContent=label;
- if(scrubVal)scrubVal.textContent=label;
- if(scrub&&document.activeElement!==scrub)scrub.value=String(q);
- var gymCount=0,bedCount=0,chairCount=0;
- patients.forEach(function(btn){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  var loc=locAt(n,q);
-  if(loc==='gym')gymCount++;else if(loc==='chair')chairCount++;else bedCount++;
-  btn.setAttribute('data-loc',loc);
-  btn.classList.toggle('in-gym',loc==='gym');
-  btn.classList.toggle('in-chair',loc==='chair');
-  btn.setAttribute('aria-label','Patient '+n+', '+wordLoc(loc)+'. Click to explore this patient mapped day.');
- });
- var gymActive=(q>=540&&q<660)||(q>=780&&q<900);
- if(gym){
-  gym.classList.toggle('lit',gymActive);
-  gym.setAttribute('data-state',gymActive?'active':'idle');
- }
- if(dining){
-  var lunch=(q>=720&&q<780);
-  dining.classList.toggle('lit',lunch);
-  dining.setAttribute('data-state',lunch?'active':'idle');
- }
- if(narrationEl){
-  narrationEl.textContent=label+'. '+gymCount+' patients are in the gym. '+bedCount+' are in bed. '+chairCount+' are sitting out of bed.';
- }
-}
-function setManualTime(t){
- dayManual=true;
- displayTime=Math.max(START,Math.min(END,t));
- lastQ=-1;
- if(scrub)scrub.value=String(Math.round(displayTime/10)*10);
- renderDay();
-}
-function stopPlay(){
- playing=false;
- if(timer){clearInterval(timer);timer=null;}
- if(playBtn){playBtn.textContent='Play the day';playBtn.setAttribute('aria-pressed','false');}
-}
-if(playBtn){playBtn.addEventListener('click',function(){
- if(playing){stopPlay();return;}
- if(displayTime>=END-1)displayTime=START;
- dayManual=true;
- playing=true;
- playBtn.textContent='Pause the day';
- playBtn.setAttribute('aria-pressed','true');
- if(reduced){setManualTime(Math.min(END,displayTime+60));stopPlay();return;}
- timer=setInterval(function(){
-  if(displayTime>=END){stopPlay();return;}
-  displayTime=Math.min(END,displayTime+5);
-  renderDay();
-  if(displayTime>=END)stopPlay();
- },90);
-});}
-if(scrub){scrub.addEventListener('input',function(){stopPlay();setManualTime(parseInt(scrub.value,10));});}
-/* Pause idle motion off screen. */
-if(planwrap&&'IntersectionObserver' in window){
- var pio=new IntersectionObserver(function(entries){
-  entries.forEach(function(en){planwrap.classList.toggle('offscreen',!en.isIntersecting);});
- },{threshold:0.05});
- pio.observe(planwrap);
-}
-/* Scene 3: click a person. Kept as a click beat inside the scroll flow, because choosing a person is the reader act this scene is about. */
-var panel=root.querySelector('#p432-person-panel');
-var personTitle=root.querySelector('#p432-person-title');
-var timeline=root.querySelector('#p432-timeline');
-function renderTimeline(n){
- if(!timeline)return;
- timeline.innerHTML='';
- var points=[START];
- (ITIN[n]||[]).forEach(function(s){points.push(s[0],s[1]);});
- points.push(END);
- points=points.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
- var segs=[];
- for(var i=0;i<points.length-1;i++){
-  var a=points[i],b=points[i+1],loc=locAt(n,a+1);
-  var last=segs[segs.length-1];
-  if(last&&last[2]===loc&&last[1]===a){last[1]=b;}
-  else{segs.push([a,b,loc]);}
- }
- if(!segs.length)segs=[[START,END,'bed']];
- segs.forEach(function(s){
-  var d=document.createElement('span');
-  d.className='p432-tl-seg p432-tl-'+s[2];
-  d.style.left=((s[0]-START)/(END-START)*100)+'%';
-  d.style.width=((s[1]-s[0])/(END-START)*100)+'%';
-  var lab=document.createElement('span');
-  lab.className='p432-tl-lab';
-  lab.textContent=s[2]==='gym'?'Gym':(s[2]==='chair'?'Chair':'Bed');
-  if((s[1]-s[0])>=60)d.appendChild(lab);
-  timeline.appendChild(d);
- });
-}
-patients.forEach(function(btn){
- btn.addEventListener('click',function(){
-  var n=parseInt(btn.getAttribute('data-patient'),10);
-  patients.forEach(function(b){b.classList.remove('selected');});
-  btn.clas
