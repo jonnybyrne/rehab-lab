@@ -1,0 +1,51 @@
+<svg width="720" height="300" viewBox="0 300 1200 500" preserveAspectRatio="xMidYMid slice" role="img" aria-label="A quiet ward before dawn. On a workbench in the first light, a large orange restraining mitt rests beside a hanging stopwatch: the two motifs of this essay.">
+      <defs>
+        <linearGradient id="s0-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2C414D"/><stop offset="58%" stop-color="#1C2B33"/><stop offset="100%" stop-color="#10191F"/>
+        </linearGradient>
+        <radialGradient id="s0-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F2B25C" stop-opacity=".55"/><stop offset="60%" stop-color="#E07B2A" stop-opacity=".18"/><stop offset="100%" stop-color="#E07B2A" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="s0-wood" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8A6D4F"/><stop offset="100%" stop-color="#5D4A35"/>
+        </linearGradient>
+        <linearGradient id="s0-mitt" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#F09A4E"/><stop offset="100%" stop-color="#D96F1E"/>
+        </linearGradient>
+        <radialGradient id="s0-face" cx="42%" cy="38%" r="75%">
+          <stop offset="0%" stop-color="#FFFDF6"/><stop offset="70%" stop-color="#FBF3DF"/><stop offset="100%" stop-color="#F0DFC0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1200" height="1000" fill="url(#s0-bg)"/>
+      <ellipse cx="950" cy="230" rx="430" ry="300" fill="url(#s0-glow)"/>
+      <g opacity=".35" stroke="#0B1216" stroke-width="10">
+        <rect x="872" y="60" width="250" height="330" fill="#3A5563"/>
+        <line x1="997" y1="60" x2="997" y2="390"/><line x1="872" y1="225" x2="1122" y2="225"/>
+      </g>
+      <rect y="700" width="1200" height="300" fill="#131E24"/>
+      <ellipse cx="600" cy="772" rx="540" ry="30" fill="#000" opacity=".35"/>
+      <rect x="60" y="690" width="1080" height="26" rx="8" fill="url(#s0-wood)"/>
+      <rect x="100" y="716" width="22" height="90" fill="#4A3826"/><rect x="1078" y="716" width="22" height="90" fill="#4A3826"/>
+      <g transform="translate(700,520) scale(1.55)">
+        <path d="M18 268 L18 104 Q18 26 88 26 L98 26 Q168 26 168 104 L168 268 Z" fill="url(#s0-mitt)" stroke="#10191F" stroke-width="3"/>
+        <ellipse cx="184" cy="176" rx="29" ry="52" fill="url(#s0-mitt)" stroke="#10191F" stroke-width="3" transform="rotate(-18 184 176)"/>
+        <path d="M38 96 Q48 62 78 56 M88 92 Q98 58 128 56 M134 96 Q144 66 160 62" fill="none" stroke="#10191F" stroke-width="2.4" opacity=".5"/>
+        <rect x="4" y="238" width="180" height="38" rx="9" fill="#9C4A12" stroke="#10191F" stroke-width="3"/>
+        <rect x="4" y="252" width="180" height="4" fill="#10191F" opacity=".3"/>
+      </g>
+      <path d="M905 0 L905 300" stroke="#0B1216" stroke-width="5"/>
+      <g transform="translate(920,405)">
+        <rect x="-15" y="-140" width="30" height="22" rx="5" fill="#0B1216"/>
+        <path d="M-34 -128 A96 96 0 0 1 34 -128" fill="none" stroke="#0B1216" stroke-width="6"/>
+        <circle r="118" fill="#0B1216"/>
+        <circle r="104" fill="url(#s0-face)"/>
+        <g stroke="#22303A" stroke-width="3" opacity=".6">
+          <line x1="0" y1="-88" x2="0" y2="-74"/><line x1="76" y1="-62" x2="66" y2="-52"/>
+          <line x1="88" y1="0" x2="74" y2="0"/><line x1="76" y1="62" x2="66" y2="52"/>
+          <line x1="0" y1="88" x2="0" y2="74"/><line x1="-76" y1="62" x2="-66" y2="52"/>
+          <line x1="-88" y1="0" x2="-74" y2="0"/><line x1="-76" y1="-62" x2="-66" y2="-52"/>
+        </g>
+        <g transform="rotate(48)"><line x1="0" y1="14" x2="0" y2="-78" stroke="#B3402A" stroke-width="6" stroke-linecap="round"/></g>
+        <circle r="11" fill="#22303A"/><circle r="4.5" fill="#E07B2A"/>
+      </g>
+    </svg>

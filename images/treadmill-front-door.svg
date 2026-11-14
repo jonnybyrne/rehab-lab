@@ -1,0 +1,32 @@
+<svg width="720" height="300" viewBox="0 140 1000 417" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The start of the route: a hospital corridor at night, a lit doorway ahead marked as the locomotor training room, and the pale route path beginning at the reader's feet and running toward the door.">
+        <defs>
+          <linearGradient id="p443w-g-wall" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#24402F"/><stop offset="100%" stop-color="#101F16"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-floor" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2C4A38"/><stop offset="100%" stop-color="#14251B"/>
+          </linearGradient>
+          <linearGradient id="p443w-g-doorlight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F3D489"/><stop offset="100%" stop-color="#DFA32E"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1000" height="720" fill="url(#p443w-g-wall)"/>
+        <path d="M0 470 L1000 470 L1000 720 L0 720 Z" fill="url(#p443w-g-floor)"/>
+        <path d="M0 470 L330 300 L330 720 L0 720 Z" fill="#0D1B12" opacity="0.55"/>
+        <path d="M1000 470 L670 300 L670 720 L1000 720 Z" fill="#0D1B12" opacity="0.55"/>
+        <rect x="330" y="120" width="340" height="350" fill="#1A2F22"/>
+        <rect x="428" y="196" width="204" height="274" fill="url(#p443w-g-doorlight)" stroke="#F6EFDB" stroke-width="5"/>
+        <path d="M448 470 L448 250 L540 250 L540 470" fill="none" stroke="#7A5A10" stroke-width="7"/>
+        <rect x="470" y="428" width="120" height="16" rx="7" fill="#7A5A10"/>
+        <line x1="500" y1="250" x2="492" y2="330" stroke="#7A5A10" stroke-width="5"/>
+        <line x1="560" y1="250" x2="570" y2="330" stroke="#7A5A10" stroke-width="5"/>
+        <rect x="404" y="150" width="252" height="30" fill="#0A140F" stroke="#DFA32E" stroke-width="2"/>
+        <text x="530" y="171" font-family="Verdana, sans-serif" font-size="16" letter-spacing="3" fill="#DFA32E" text-anchor="middle">LOCOMOTOR TRAINING</text>
+        <line x1="60" y1="392" x2="300" y2="330" stroke="#F6EFDB" stroke-width="5" opacity="0.35"/>
+        <rect x="86" y="238" width="120" height="86" fill="#BFD6C9" opacity="0.28"/>
+        <rect x="800" y="238" width="120" height="86" fill="#BFD6C9" opacity="0.22"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="rgba(16,24,16,.4)" stroke-width="86" stroke-linecap="round"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="#E7D6A8" stroke-width="70" stroke-linecap="round"/>
+        <path d="M500 726 L500 640 C500 590 545 566 596 548" fill="none" stroke="rgba(122,95,40,.4)" stroke-width="3" stroke-dasharray="16 14"/>
+        <ellipse cx="530" cy="700" rx="150" ry="16" fill="#000" opacity="0.25"/>
+      </svg>
