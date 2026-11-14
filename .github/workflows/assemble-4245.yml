@@ -1,0 +1,33 @@
+name: Assemble essays 42-45 index
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render JPG card art from pushed SVG sources
+        run: |
+          pip install --quiet cairosvg pillow
+          python3 - << 'EOF'
+          import cairosvg, io
+          from PIL import Image
+          for src, dst in [('cardart-src/bladder-500-diary.svg', 'images/bladder-500-vessels.jpg'),
+                           ('cardart-src/second-wind-opening.svg', 'images/second-wind-road.jpg')]:
+              png = cairosvg.svg2png(url=src, output_width=1440)
+              Image.open(io.BytesIO(png)).convert('RGB').save(dst, quality=88)
+              print('rendered', dst)
+          EOF
+      - name: Assemble index.html from chunks
+        run: |
+          cat chunk-*.html > index.html
+          echo "ca4475dbb5b49c7726558595a1709d50  index.html" | md5sum -c -
+      - name: Commit assembled index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html images/bladder-500-vessels.jpg images/second-wind-road.jpg
+          git commit -m "Assemble essays 42-45 index from chunks"
+          git push
