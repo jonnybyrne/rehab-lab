@@ -1,0 +1,34 @@
+name: Assemble essay 48 index
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/assemble-48.yml'
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render JPG card art from pushed SVG source
+        run: |
+          pip install --quiet cairosvg pillow
+          python3 - << 'EOF'
+          import cairosvg, io
+          from PIL import Image
+          png = cairosvg.svg2png(url='cardart-src/switchboard-opening.svg', output_width=1440)
+          Image.open(io.BytesIO(png)).convert('RGB').save('images/switchboard-face.jpg', quality=88)
+          print('rendered images/switchboard-face.jpg')
+          EOF
+      - name: Assemble index.html from chunks
+        run: |
+          cat chunk48-*.html > index.html
+          echo "60ff2d6d6dae8612fe3f530957995c58  index.html" | md5sum -c -
+      - name: Commit assembled index
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html images/switchboard-face.jpg
+          git commit -m "Assemble essay 48 index from chunks"
+          git push
