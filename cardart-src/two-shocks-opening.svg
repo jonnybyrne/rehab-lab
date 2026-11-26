@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a house at dusk after a storm, cut open like a doll's house. A lightning bolt has struck the trunk line at the roof. Inside, on the left, amber pipes run down from a pump to a pressure gauge whose needle sits low. On the right, cyan wires run to a switchboard whose switches are all dark. The house is a drawn metaphor for a spinal cord injury and its two failing systems."><defs>
+<linearGradient id="h-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#131B36"/><stop offset=".62" stop-color="#27335F"/><stop offset="1" stop-color="#3A3560"/></linearGradient>
+<linearGradient id="h-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A3B2E"/><stop offset="1" stop-color="#5D4630"/></linearGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#h-sky)"/>
+<g fill="#E8EEF4"><circle cx="180" cy="70" r="2.6"/><circle cx="420" cy="120" r="2.2"/><circle cx="1240" cy="64" r="2.6"/><circle cx="1330" cy="150" r="2.2"/><circle cx="90" cy="180" r="2"/><circle cx="1150" cy="200" r="2"/></g>
+<ellipse cx="330" cy="86" rx="190" ry="44" fill="#0D1329"/><ellipse cx="430" cy="66" rx="130" ry="36" fill="#0D1329"/>
+<path d="M352 118 L306 196 L340 196 L288 292 L392 176 L356 176 L398 118 Z" fill="#F5D9A8"/>
+<rect x="0" y="540" width="1440" height="80" fill="#0C0F1E"/>
+<g><path d="M470 190 L720 96 L970 190 L940 190 L720 112 L500 190 Z" fill="#241A20"/><rect x="500" y="190" width="440" height="350" fill="url(#h-wall)"/><rect x="500" y="190" width="440" height="14" fill="#2E2118"/><rect x="500" y="356" width="440" height="12" fill="#2E2118"/><rect x="712" y="190" width="14" height="350" fill="#2E2118"/>
+<path d="M560 128 L560 172 M560 150 L632 150 M664 150 L720 150" stroke="#F5D9A8" stroke-width="5" stroke-linecap="round"/><path d="M640 138 l10 10 M642 162 l10 -10" stroke="#FFF3D6" stroke-width="4" stroke-linecap="round"/>
+<g stroke="#E89B3C" stroke-width="13" stroke-linecap="round" fill="none"><path d="M566 204 L566 300"/><path d="M566 300 L566 420 L640 420"/></g>
+<circle cx="566" cy="330" r="30" fill="#B96A14"/><circle cx="566" cy="330" r="17" fill="#F6CD8D"/>
+<g><path d="M596 250 A52 52 0 0 1 700 250" fill="none" stroke="#F8F2E4" stroke-width="8"/><path d="M648 250 L622 224" stroke="#E4572E" stroke-width="7" stroke-linecap="round"/><circle cx="648" cy="250" r="8" fill="#F8F2E4"/></g>
+<rect x="540" y="452" width="150" height="52" rx="10" fill="#31456E" opacity=".55"/>
+<g stroke="#6FB3D6" stroke-width="9" stroke-linecap="round" fill="none"><path d="M872 204 L872 300"/><path d="M872 300 L872 420 L806 420"/></g>
+<g><rect x="756" y="228" width="104" height="128" rx="10" fill="#1B2745"/><rect x="770" y="244" width="32" height="18" rx="4" fill="#39496E"/><rect x="814" y="244" width="32" height="18" rx="4" fill="#39496E"/><rect x="770" y="278" width="32" height="18" rx="4" fill="#39496E"/><rect x="814" y="278" width="32" height="18" rx="4" fill="#39496E"/><rect x="770" y="312" width="32" height="18" rx="4" fill="#2A3858"/><rect x="814" y="312" width="32" height="18" rx="4" fill="#2A3858"/></g>
+<rect x="756" y="452" width="150" height="52" rx="10" fill="#31456E" opacity=".55"/>
+<path d="M612 540 L640 470 L668 540 L700 440 L724 540" stroke="#E89B3C" stroke-width="6" fill="none" opacity=".8"/></g>
+<g font-family="monospace" font-size="19" fill="#F5D9A8"><text x="120" y="300">THE PLUMBING</text><text x="120" y="330">FAILS IN HOURS</text></g>
+<g font-family="monospace" font-size="19" fill="#A8CFE4"><text x="1090" y="300">THE WIRING</text><text x="1090" y="330">FAILS FOR WEEKS</text></g>
+</svg>
