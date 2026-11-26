@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 620" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Drawn scene: a face run like a switchboard. Two glass control rooms, one per hemisphere, sit above the face. Brass cords run from both rooms to the forehead half of a junction box at the base of the skull; one teal cord crosses to its mouth half; a single nerve cable leaves the box for the face. The face is drawn in the classic stroke pattern: forehead lit, lower face dark on one side. Drawn, not photographed."><defs>
+<linearGradient id="s-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E2C34"/><stop offset="1" stop-color="#175263"/></linearGradient>
+<radialGradient id="s-dome" cx=".5" cy=".35" r=".85"><stop offset="0" stop-color="#FFE9B8"/><stop offset=".55" stop-color="#E8A33D" stop-opacity=".55"/><stop offset="1" stop-color="#E8A33D" stop-opacity=".12"/></radialGradient>
+</defs><rect x="0" y="0" width="1440" height="620" fill="url(#s-wall)"/>
+<g transform="translate(0,-72)"><path d="M170 218 A130 118 0 0 1 430 218 Z" fill="url(#s-dome)"/><rect x="158" y="218" width="284" height="16" rx="8" fill="#0A1A20"/><rect x="196" y="240" width="208" height="24" rx="6" fill="#0A1A20" opacity=".72"/><text x="300" y="257" font-family="monospace" font-size="15" fill="#F5D9A8" text-anchor="middle" letter-spacing="2">CONTROL ROOM · LEFT</text></g>
+<g transform="translate(0,-72)"><path d="M1010 218 A130 118 0 0 1 1270 218 Z" fill="url(#s-dome)"/><rect x="998" y="218" width="284" height="16" rx="8" fill="#0A1A20"/><rect x="1036" y="240" width="208" height="24" rx="6" fill="#0A1A20" opacity=".72"/><text x="1140" y="257" font-family="monospace" font-size="15" fill="#F5D9A8" text-anchor="middle" letter-spacing="2">CONTROL ROOM · RIGHT</text></g>
+<path d="M262 156 C340 280 520 330 648 396" stroke="#E8A33D" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M1178 156 C1100 280 920 330 792 396" stroke="#E8A33D" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M1178 156 C1080 260 840 320 756 402" stroke="#4FB3A9" stroke-width="9" fill="none" stroke-linecap="round"/>
+<g transform="translate(720 218) scale(0.74) translate(-720 -322)"><rect x="700" y="392" width="52" height="120" rx="14" fill="#D9A97E"/><path d="M600 620 L648 500 Q720 462 792 500 L840 620 Z" fill="#31456E"/>
+<ellipse cx="543" cy="330" rx="26" ry="40" fill="#D9A97E"/><ellipse cx="897" cy="330" rx="26" ry="40" fill="#D9A97E"/>
+<ellipse cx="720" cy="322" rx="192" ry="218" fill="#E8BC8F"/>
+<path d="M528 322 A192 218 0 0 1 912 322 L912 268 A192 160 0 0 0 528 268 Z" fill="#241A28"/>
+<ellipse class="fx fx-glow" cx="720" cy="196" rx="168" ry="66" fill="#E8A33D" fill-opacity=".16"/>
+<path d="M586 208 Q650 188 712 204" stroke="#C99A68" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path class="fx fx-wrinkle" d="M730 204 Q800 188 856 208" stroke="#C99A68" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M592 232 Q652 216 706 230" stroke="#C99A68" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path class="fx fx-wrinkle" d="M734 230 Q792 216 848 232" stroke="#C99A68" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M584 272 Q634 252 690 268" stroke="#3A2A20" stroke-width="13" fill="none" stroke-linecap="round"/>
+<path class="fx fx-brow" d="M750 268 Q806 252 856 272" stroke="#3A2A20" stroke-width="13" fill="none" stroke-linecap="round"/>
+<path class="fx fx-browflat" d="M750 292 Q806 284 856 290" stroke="#3A2A20" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M588 306 Q634 284 682 306 Q634 326 588 306 Z" fill="#FFFDF6"/>
+<path d="M758 306 Q806 284 852 306 Q806 326 758 306 Z" fill="#FFFDF6"/>
+<circle cx="635" cy="305" r="16" fill="#2E2018"/><circle cx="635" cy="305" r="7" fill="#0E0A08"/>
+<g class="fx-pupil"><circle cx="805" cy="305" r="16" fill="#2E2018"/><circle cx="805" cy="305" r="7" fill="#0E0A08"/></g>
+<path class="fx fx-lid" d="M758 306 Q806 284 852 306 Q806 318 758 306 Z" fill="#E8BC8F"/>
+<path d="M720 316 L706 372 Q720 382 734 372" stroke="#C99A68" stroke-width="7" fill="none" stroke-linecap="round"/>
+<ellipse cx="700" cy="392" rx="7" ry="5" fill="#B98A5A"/><ellipse cx="740" cy="392" rx="7" ry="5" fill="#B98A5A"/>
+<path d="M612 372 Q596 424 622 452" stroke="#C99A68" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path class="fx fx-fold" d="M828 372 Q844 424 818 452" stroke="#C99A68" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path class="fx fx-mouth-smile" d="M640 452 Q720 492 800 452" stroke="#8A4B32" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path class="fx fx-mouth-droop" d="M640 452 Q716 488 792 470 Q812 464 818 446" stroke="#8A4B32" stroke-width="11" fill="none" stroke-linecap="round"/>
+<path class="fx fx-dim-upper" d="M720 104 A192 218 0 0 1 912 322 L720 322 Z" fill="#26343F" fill-opacity=".34"/>
+<path class="fx fx-dim-lower" d="M720 322 L912 322 A192 218 0 0 1 720 540 Z" fill="#26343F" fill-opacity=".42"/>
+</g>
+<g transform="translate(0,-144)"><rect x="636" y="540" width="168" height="58" rx="14" fill="#0A1A20" stroke="#F5D9A8" stroke-width="2"/><rect x="648" y="550" width="66" height="17" rx="6" fill="#4FB3A9"/><rect x="726" y="550" width="66" height="17" rx="6" fill="#E8A33D"/><rect x="648" y="573" width="144" height="15" rx="6" fill="#31456E"/><text x="720" y="618" font-family="monospace" font-size="14" fill="#F5D9A8" text-anchor="middle" letter-spacing="2">JUNCTION BOX · THE PONS</text></g>
+<path d="M804 422 C862 400 886 350 874 308" stroke="#E8A33D" stroke-width="11" fill="none" stroke-linecap="round"/>
+<text x="916" y="392" font-family="monospace" font-size="14" fill="#F5D9A8" letter-spacing="2">THE NERVE</text></svg>
